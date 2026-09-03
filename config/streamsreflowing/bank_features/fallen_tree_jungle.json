@@ -1,0 +1,11 @@
+{
+  "features": [
+    "streamsreflowing:fallen_tree_jungle_a",
+    "streamsreflowing:fallen_tree_jungle_b",
+    "streamsreflowing:fallen_tree_acacia"
+  ],
+  "tags": [
+    "minecraft:is_jungle"
+  ],
+  "chance": 2
+}

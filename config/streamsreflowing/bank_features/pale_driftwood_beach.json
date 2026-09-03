@@ -1,0 +1,12 @@
+{
+  "features": [
+    "streamsreflowing:fallen_log_a_pale",
+    "streamsreflowing:fallen_log_b_pale",
+    "streamsreflowing:fallen_log_stub_a_pale",
+    "streamsreflowing:fallen_log_stub_b_pale"
+  ],
+  "tags": [
+    "minecraft:is_beach"
+  ],
+  "chance": 3
+}

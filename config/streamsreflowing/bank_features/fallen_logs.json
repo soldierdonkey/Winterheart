@@ -1,0 +1,13 @@
+{
+  "features": [
+    "streamsreflowing:fallen_log_a",
+    "streamsreflowing:fallen_log_b",
+    "streamsreflowing:fallen_log_stub_a",
+    "streamsreflowing:fallen_log_stub_b",
+    "streamsreflowing:fallen_tree_small"
+  ],
+  "tags": [
+    "minecraft:is_forest"
+  ],
+  "chance": 2
+}

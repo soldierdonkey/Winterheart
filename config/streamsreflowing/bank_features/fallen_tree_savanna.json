@@ -1,0 +1,11 @@
+{
+  "features": [
+    "streamsreflowing:fallen_tree_acacia"
+  ],
+  "biomes": [
+    "minecraft:savanna",
+    "minecraft:savanna_plateau",
+    "minecraft:windswept_savanna"
+  ],
+  "chance": 2
+}
