@@ -1,0 +1,18 @@
+{
+  "features": [
+    "streamsreflowing:fallen_log_a_pale",
+    "streamsreflowing:fallen_log_b_pale",
+    "streamsreflowing:fallen_log_stub_a_pale",
+    "streamsreflowing:fallen_log_stub_b_pale"
+  ],
+  "biomes": [
+    "minecraft:desert",
+    "minecraft:badlands",
+    "minecraft:eroded_badlands",
+    "minecraft:wooded_badlands",
+    "minecraft:savanna",
+    "minecraft:savanna_plateau",
+    "minecraft:windswept_savanna"
+  ],
+  "chance": 2
+}

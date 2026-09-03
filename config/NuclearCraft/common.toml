@@ -1,0 +1,310 @@
+
+[Energy]
+	#Multiplier for all power generation in the mod
+	#Range: 0.001 ~ 1000.0
+	generation_multiplier = 1.0
+	#Allow solar panel registration: du, elite, advanced, basic
+	register_panel = [true, true, true, true]
+	#Solar panel power generation: du, elite, advanced, basic
+	panel_power = [448, 1792, 112, 28]
+	#Allow rtg registration: uranium_rtg, americium_rtg, plutonium_rtg, californium_rtg
+	register_rtg = [true, true, true, true]
+	#rtg generation: uranium_rtg, americium_rtg, plutonium_rtg, californium_rtg
+	rtg_power = [112, 448, 1792, 4096]
+	#rtg radiation: uranium_rtg, americium_rtg, plutonium_rtg, californium_rtg
+	rtg_radiation = [560, 57800, 200000, 1900000]
+	#Steam turbine (one block) base power gen
+	steam_turbine_power_gen = 80
+	#Decay Generator base power gen
+	decay_generator_power_gen = 128
+
+[energy_storage]
+	lightning_rod_charge = 1048576
+	#Allow block registration: basic_voltaic_pile, elite_voltaic_pile, advanced_voltaic_pile, basic_lithium_ion_battery, elite_lithium_ion_battery, du_lithium_ion_battery, du_voltaic_pile, advanced_lithium_ion_battery
+	energy_block_registration = [true, true, true, true, true, true, true, true]
+	#Storage: basic_voltaic_pile, elite_voltaic_pile, advanced_voltaic_pile, basic_lithium_ion_battery, elite_lithium_ion_battery, du_lithium_ion_battery, du_voltaic_pile, advanced_lithium_ion_battery
+	energy_block_storage = [1600000, 102400000, 6400000, 32000000, 2048000000, 512000000, 25600000, 128000000]
+	lithium_ion_battery_storage = 1048576
+	qnp_energy_storage = 2097152
+	qnp_energy_per_block = 200
+
+[Misc]
+	#Debug logging. Enable in case of issues to collect more data
+	debug_logging = false
+
+["GregTech Energy Compatibility"]
+	#Tiers: ULV, LV, MV, HV, EV, IV, LuV, ZPM, UV, UHV, UEV, UIV, UXV, OpV, MAX
+	#ONLY_FE - Only FE energy system is used
+	#ONLY_GTCEU - Only GregTech Energy system is used
+	#GTCEU_AND_FE - Both systems are used, but GTCEU is preferred
+	#Allowed Values: ONLY_FE, ONLY_GTCEU, GTCEU_AND_FE
+	gregtech_energy_compatibility = "GTCEU_AND_FE"
+	#This only counts if GTCEU is supported
+	#Allowed Values: ULV, LV, MV, HV, EV, IV, LuV, ZPM, UV, UHV, UEV, UIV, UXV, OpV, MAX
+	fission_reactor_energy_tier = "EV"
+	#This only counts if GTCEU is supported
+	#Explode machines when input energy is more than max input
+	#This doesn't count FE energy input
+	gregtech_energy_overcharge_explosions = true
+	#This only counts if GTCEU_AND_FE compatibility used
+	#Output FE/t will be limited to max GTCEU output
+	#Formula: FE/t = voltage * amperage * (EU to FE convertion rate, usually 4)
+	limit_fe_output = false
+	#This only counts if GTCEU is supported
+	#Allowed Values: ULV, LV, MV, HV, EV, IV, LuV, ZPM, UV, UHV, UEV, UIV, UXV, OpV, MAX
+	turbine_energy_tier = "EV"
+	#This only counts if GTCEU is supported
+	#Allowed Values: ULV, LV, MV, HV, EV, IV, LuV, ZPM, UV, UHV, UEV, UIV, UXV, OpV, MAX
+	fusion_reactor_energy_tier = "IV"
+	#This only counts if GTCEU is supported
+	#Allowed Values: ULV, LV, MV, HV, EV, IV, LuV, ZPM, UV, UHV, UEV, UIV, UXV, OpV, MAX
+	kugelblitz_energy_tier = "ZPM"
+	#This only counts if GTCEU is supported
+	#Allowed Values: ULV, LV, MV, HV, EV, IV, LuV, ZPM, UV, UHV, UEV, UIV, UXV, OpV, MAX
+	accelerators_energy_tier = "ZPM"
+	#This only counts if GTCEU is supported
+	#Allowed Values: ULV, LV, MV, HV, EV, IV, LuV, ZPM, UV, UHV, UEV, UIV, UXV, OpV, MAX
+	processor_energy_tier = "MV"
+	#This only counts if GTCEU is supported
+	#How many energy upgrades are needed for processor to reach next energy tier
+	#Range: 8 ~ 64
+	energy_upgrades_for_next_tier = 16
+
+[q36_quantite_disruptor]
+	#Cooldown between pulse shots, in ticks
+	#Range: 1 ~ 1200
+	pulse_cooldown_ticks = 10
+	#Quantite charge cost per pulse shot
+	#Range: > 0
+	pulse_qc_cost = 200
+	#Pulse projectile damage on direct hit
+	#Range: 0.0 ~ 100000.0
+	pulse_damage = 50.0
+	#Pulse radiation dose applied on direct hit
+	#Range: 0 ~ 9223372036854775807
+	pulse_radiation = 200000
+	#Muzzle flash FX duration after a pulse shot, in ticks
+	#Range: 0 ~ 200
+	pulse_fx_ticks = 10
+	#Cooldown between beam shots, in ticks
+	#Range: 1 ~ 1200
+	beam_cooldown_ticks = 60
+	#Quantite charge cost per beam shot
+	#Range: > 0
+	beam_qc_cost = 2000
+	#Beam direct hit damage
+	#Range: 0.0 ~ 100000.0
+	beam_damage = 200.0
+	#Beam radiation dose applied on direct hit
+	#Range: 0 ~ 9223372036854775807
+	beam_radiation = 2000000
+	#Beam maximum range in blocks
+	#Range: 1.0 ~ 512.0
+	beam_range = 64.0
+	#Beam impact block break radius (0 disables block breaking)
+	#Range: 0 ~ 16
+	beam_block_break_radius = 3
+	#Muzzle flash FX duration after a beam shot, in ticks
+	#Range: 0 ~ 200
+	beam_fx_ticks = 20
+
+[pu_239_bomb]
+	#Horizontal blast radius in blocks (default 128 = 8 chunks)
+	#Range: 16 ~ 384
+	radius_horizontal = 196
+	#Vertical blast radius in blocks (default 64)
+	#Range: 8 ~ 256
+	radius_vertical = 64
+	#Ticks between redstone arming and detonation (default 60 = 3 s)
+	#Range: 1 ~ 12000
+	fuse_ticks = 60
+	#Block ops applied per server tick during detonation (default 2048)
+	#Range: 64 ~ 65536
+	ops_per_tick = 16384
+	#Whole-chunk packets resent to clients per server tick during detonation. Raise to make blast visible to players faster; bandwidth cost scales with player count.
+	#Range: 1 ~ 1024
+	chunk_resends_per_tick = 16
+	#If true, bombs mutate chunk sections directly and resend whole chunks instead of using server.setBlock per op. ~50-100x faster but skips neighbor updates, fluid flow, falling-block triggers, and Forge block events inside the blast. Set false to roll back to vanilla setBlock path.
+	fast_block_writes = true
+
+[anomalies]
+	#Master switch for the Wasteland anomaly system
+	enabled = true
+	#Enable the per-variant anomaly post-process shaders (distortion/glow/lightning). Disable on weak GPUs.
+	shader = true
+	#Probability (0..1) that a given placement cell contains an anomaly
+	#Range: 0.0 ~ 1.0
+	spawn_chance_per_cell = 0.45
+	#Side length, in blocks, of each square placement cell
+	#Range: 16 ~ 4096
+	cell_size = 128
+	#How many cells around each player are scanned for spawning
+	#Range: 0 ~ 8
+	activation_cell_radius = 2
+
+	[anomalies.variants]
+		enable_gravitational = true
+		#Range: 0 ~ 1000
+		weight_gravitational = 2
+		enable_electric = true
+		#Range: 0 ~ 1000
+		weight_electric = 3
+		enable_radioactive = true
+		#Range: 0 ~ 1000
+		weight_radioactive = 3
+		enable_burning = true
+		#Range: 0 ~ 1000
+		weight_burning = 3
+		enable_psycho = true
+		#Range: 0 ~ 1000
+		weight_psycho = 2
+		enable_teleporting = true
+		#Range: 0 ~ 1000
+		weight_teleporting = 2
+
+	[anomalies.gravitational]
+		#Range: 1.0 ~ 32.0
+		radius = 12.0
+		#Per-tick velocity added toward the centre at the edge of the radius
+		#Range: 0.0 ~ 2.0
+		pull = 0.3
+		#Per-tick chance to fling a caught living entity upward
+		#Range: 0.0 ~ 1.0
+		launch_chance = 0.05
+		#Upward velocity applied when a living entity is launched. ~2.0 hurls them well into the sky.
+		#Range: 0.0 ~ 10.0
+		launch_power = 2.0
+		#Absorbed blocks needed to trigger the collapse explosion (counterplay)
+		#Range: 1 ~ 100000
+		absorb_threshold = 320
+		#Range: 1 ~ 1200
+		absorb_interval_ticks = 50
+		#Allow the anomaly to remove (absorb) nearby blocks. Disable to prevent terrain edits.
+		block_absorb = true
+		explosion_on_collapse = true
+		#Range: 0.0 ~ 64.0
+		explosion_power = 18.0
+		#Extra radius/pull multiplier gained as the anomaly absorbs mass. 0 = no growth; 1.0 = up to 2x radius and pull at the collapse threshold.
+		#Range: 0.0 ~ 8.0
+		mass_scale = 1.0
+
+	[anomalies.electric]
+		#Range: 1.0 ~ 64.0
+		radius = 28.0
+		#Range: 0.0 ~ 1000.0
+		damage = 16.0
+		#Range: 1 ~ 1200
+		strike_interval_ticks = 50
+		#Free energy buffer (FE) an adjacent battery must offer to neutralise it. 10 MFE = 10,000,000 FE.
+		#Range: > 1
+		discharge_fe_threshold = 100000000
+
+	[anomalies.radioactive]
+		#Range: 4 ~ 256
+		radius = 48
+		#Radiation dose applied to each living entity within radius per emit (scaled by distance falloff). Same units as the player radiation capability.
+		#Range: 0 ~ 9223372036854775807
+		dose = 100000
+		#Range: 1 ~ 1200
+		emit_interval_ticks = 20
+
+	[anomalies.burning]
+		#Range: 1.0 ~ 64.0
+		radius = 10.0
+		#Range: 0.0 ~ 64.0
+		explosion_radius = 2.0
+		#Range: 1 ~ 24000
+		explosion_min_ticks = 200
+		#Range: 1 ~ 24000
+		explosion_max_ticks = 400
+		#Water source blocks within 3 blocks needed to extinguish it (counterplay)
+		#Range: 1 ~ 1000
+		water_blocks_to_neutralize = 8
+		#Allow the anomaly to set nearby flammable blocks on fire. Disable to prevent fire spread.
+		block_ignite = true
+		periodic_explosion = true
+
+	[anomalies.psycho]
+		#Range: 1.0 ~ 128.0
+		radius = 48.0
+		#Range: 1 ~ 1200
+		interval_ticks = 40
+		#Range: 0 ~ 10
+		effect_amplifier = 0
+		#Average ticks between vex spawns (actual timing jittered +/-25%)
+		#Range: 1 ~ 1200
+		vex_spawn_interval_ticks = 40
+		#Max vexes allowed within radius before spawning is suppressed. 0 disables vex spawning.
+		#Range: 0 ~ 64
+		vex_max_nearby = 6
+		#Ticks a spawned vex lives before vanishing. 0 = no limit (persistent).
+		#Range: 0 ~ 24000
+		vex_lifetime_ticks = 1200
+
+	[anomalies.teleporting]
+		#Range: 1.0 ~ 32.0
+		victim_radius = 5.0
+		#Range: 1 ~ 1000
+		victim_max_distance = 100
+		#Range: 1 ~ 1200
+		self_blink_min_ticks = 60
+		#Range: 1 ~ 1200
+		self_blink_max_ticks = 120
+		#Range: 1.0 ~ 32.0
+		self_blink_radius = 12.0
+		#Range: 0 ~ 32
+		hover_offset = 3
+
+	[anomalies.shards]
+		#Drop resonite shards when an anomaly is resolved through its counterplay
+		shard_drops_enabled = true
+		#Range: 0 ~ 64
+		shard_drop_min = 1
+		#Range: 0 ~ 64
+		shard_drop_max = 2
+		#Range: 0.0 ~ 1.0
+		shard_drop_chance = 1.0
+		#Relative weights for the rarity rolled when a crystal is analyzed
+		#Range: 0 ~ 1000000
+		rarity_weight_common = 85
+		#Range: 0 ~ 1000000
+		rarity_weight_rare = 8
+		#Range: 0 ~ 1000000
+		rarity_weight_epic = 6
+		#Range: 0 ~ 1000000
+		rarity_weight_legendary = 1
+		#How often (ticks) carried analyzed crystals re-apply their buff
+		#Range: 1 ~ 1200
+		buff_refresh_ticks = 120
+		#Duration (ticks) of the applied buff; keep above the refresh interval
+		#Range: 1 ~ 24000
+		buff_duration_ticks = 240
+		#Effect ids excluded from the crystal analysis buff pool
+		buff_effect_blacklist = ["minecraft:hero_of_the_village", "minecraft:dolphins_grace", "minecraft:conduit_power"]
+
+[pipes]
+	#Ticks between active pipe transfer passes
+	#Range: 1 ~ 200
+	transfer_interval_ticks = 1
+	#Items moved per active-pull operation, per connector
+	#Range: > 1
+	item_throughput = 512
+	#Fluid moved per active-pull operation, per connector (mB)
+	#Range: > 1
+	fluid_throughput = 512000
+	#Energy moved per active-pull operation, per connector (FE)
+	#Range: > 1
+	energy_throughput = 512000
+	#Node budget for a single pipe network's flood-fill discovery; caps recompute cost
+	#Range: > 16
+	max_network_size = 4096
+
+[storage_blocks]
+	#Blocks to store items, fluids, etc...
+	#Allow container registration: advanced_barrel, basic_barrel, elite_barrel, du_barrel
+	container_block_registration = [true, true, true, true]
+	#Allow barrel registration: advanced_barrel, basic_barrel, elite_barrel, du_barrel
+	barrel_block_registration = [true, true, true, true]
+	#Barrel capacity in Buckets: advanced_barrel, basic_barrel, elite_barrel, du_barrel
+	barrel_capacity = [512, 128, 8192, 2048]
+

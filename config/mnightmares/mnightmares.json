@@ -1,0 +1,18 @@
+{
+  "sleepOverlay": {
+    "minSlideDisplayTimeMs": 2500,
+    "maxSlideDisplayTimeMs": 4000,
+    "fadeInDurationMs": 300,
+    "fadeOutDurationMs": 300,
+    "overlayOpacity": 0.4,
+    "textOpacity": 1.0,
+    "imageOpacity": 0.6,
+    "enableImage": true,
+    "userContentReplaces": false,
+    "hideChatWhenSleeping": true,
+    "eyeAnimationSpeedMs": 100
+  },
+  "server": {
+    "resetPhantomTimerForNonSleepers": true
+  }
+}

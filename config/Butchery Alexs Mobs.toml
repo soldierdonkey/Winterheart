@@ -1,0 +1,29 @@
+
+[General]
+	#Enable to have carcasses drop with ONLY cleavers. Disable to have carcasses drop no matter what kills the mob.
+	"Only Cleavers Drop Carcasses" = true
+	#Enable organ drops
+	Organs = true
+	#Enable looting when butchering carcasses
+	"Looting Enchant" = true
+	#Instantly bleed carcasses.
+	"Instant Bleed" = false
+	#Enable blood puddles dropping when no blood grate is below a carcass.
+	"Blood Puddle" = true
+	#Enable blood spread
+	"Blood Spread" = true
+	#Show overlay hints
+	"Show Overlay Hints" = true
+	#Enable Bald Eagle Carcass
+	"Blad Eagle" = true
+	#Enable Blobfish Carcass
+	Blobfish = true
+	#Enable Caiman Carcass
+	Caiman = true
+	#Enable Capuchin Carcass
+	Capuchin = true
+	#Enable Crow Carcass
+	Crow = true
+	#Enable Emu Carcass
+	Emu = true
+
