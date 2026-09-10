@@ -1,7 +1,7 @@
 {
-  "dayFogDistance": 6.0,
-  "nightFogDistance": 3.0,
-  "renderDistance": 8,
+  "dayFogDistance": 7.5,
+  "nightFogDistance": 2.5,
+  "renderDistance": 6,
   "voidFogDistance": 2.5,
   "dynamicLightEnabled": true,
   "noStarsEnabled": true,

@@ -1,0 +1,27 @@
+# To reset this config to default, delete this file and rerun the game.
+# Movement Speed penalty while traversing leaves, 0 = no penalty, 99 = 99% slower (Range: 0 - 99) | Default: 50
+SpeedPenalty = 50
+
+# Whether Armor value reduces movement penalty | Default: true
+ArmorHelps = true
+
+# How much armor is required to completely negate the SpeedPenalty (Range: 0 - 255) | Default: 20
+ArmorCap = 20
+
+# Whether leaves behave like ladders | Default: true
+CanClimb = true
+
+# Whether Leaves can only be traversed while mounted | Default: false
+MountedOnly = false
+
+# List of traversable blocks. | Default: ["#minecraft:leaves"]
+Traversable=[
+ "#minecraft:leaves"
+]
+
+# Whether Entities is a "WHITELIST" or a "BLACKLIST" | Default: "BLACKLIST"
+Entities-Whitelist-Blacklist = "BLACKLIST"
+
+# List of Entities that can/cannot traverse blocks | Default: []
+Entities=[
+]
