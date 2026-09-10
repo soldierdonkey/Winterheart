@@ -7,6 +7,30 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
+          "biome": "minecraft:deep_frozen_ocean",
+          "parameters": {
+            "temperature": [-1.0, 1.0],
+            "humidity": [-1.0, 1.0],
+            "continentalness": [-1.2, -0.45],
+            "erosion": [-1.0, 1.0],
+            "weirdness": [-1.0, 1.0],
+            "depth": 0,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "minecraft:frozen_ocean",
+          "parameters": {
+            "temperature": [-1.0, 1.0],
+            "humidity": [-1.0, 1.0],
+            "continentalness": [-0.45, -0.15],
+            "erosion": [-1.0, 1.0],
+            "weirdness": [-1.0, 1.0],
+            "depth": 0,
+            "offset": 0.0
+          }
+        },
+        {
           "biome": "streamsreflowing:stream",
           "parameters": {
             "temperature": [-1.0, 1.0],
@@ -71,7 +95,7 @@
           "parameters": {
             "temperature": [-1.0, 1.0],
             "humidity": [0.0, 1.0],
-            "continentalness": [-1.2, 1.0],
+            "continentalness": [-0.15, 1.0],
             "erosion": [-0.1, 1.0],
             "weirdness": [-1.0, -0.05],
             "depth": 0,
@@ -83,7 +107,7 @@
           "parameters": {
             "temperature": [-1.0, 1.0],
             "humidity": [0.0, 1.0],
-            "continentalness": [-1.2, 1.0],
+            "continentalness": [-0.15, 1.0],
             "erosion": [-0.1, 1.0],
             "weirdness": [0.05, 1.0],
             "depth": 0,
@@ -95,7 +119,7 @@
           "parameters": {
             "temperature": [-1.0, 1.0],
             "humidity": [-1.0, 0.0],
-            "continentalness": [-1.2, 1.0],
+            "continentalness": [-0.15, 1.0],
             "erosion": [-0.1, 1.0],
             "weirdness": [-0.65, -0.05],
             "depth": 0,
@@ -107,7 +131,7 @@
           "parameters": {
             "temperature": [-1.0, 1.0],
             "humidity": [-1.0, 0.0],
-            "continentalness": [-1.2, 1.0],
+            "continentalness": [-0.15, 1.0],
             "erosion": [-0.1, 1.0],
             "weirdness": [0.05, 0.65],
             "depth": 0,
@@ -119,7 +143,7 @@
           "parameters": {
             "temperature": [-1.0, 1.0],
             "humidity": [-1.0, 0.0],
-            "continentalness": [-1.2, 1.0],
+            "continentalness": [-0.15, 1.0],
             "erosion": [-0.1, 1.0],
             "weirdness": [-1.0, -0.65],
             "depth": 0,
@@ -131,7 +155,7 @@
           "parameters": {
             "temperature": [-1.0, 1.0],
             "humidity": [-1.0, 0.0],
-            "continentalness": [-1.2, 1.0],
+            "continentalness": [-0.15, 1.0],
             "erosion": [-0.1, 1.0],
             "weirdness": [0.65, 1.0],
             "depth": 0,
