@@ -1,0 +1,27 @@
+
+[Features]
+	#Enable fake snow layers on plants when surrounded by snow blocks
+	#This creates the plant+snow combined models for grass/ferns in snow
+	enablePlantSnowLayers = true
+	#Enable snow overlay on blocks with snow on top
+	#Adds a small snow edge to sides of blocks like stone, dirt, wood when snow is above them
+	#Only works in cold biomes for performance optimization. It is recommended to use with Embeddium or other optimization mods.
+	enableSnowOverlay = false
+	#Enable icicle generation on trees in cold biomes
+	enableIcicles = true
+
+["Biome Configuration"]
+	#Automatically apply snowy effects to cold biomes based on temperature, useful for large biome mods
+	#Enable this if you don't want to manually add biomes to the whitelist
+	useTemperatureFallback = false
+	#Biomes that get snowy effects (leaves, grass blocks, plants)
+	#Affects: snowy leaves, snowy plant textures, permanently snowy grass blocks, plant+snow layers
+	#Format: minecraft:snowy_taiga, terralith:alpine_grove, etc.
+	snowyBiomes = ["minecraft:snowy_plains", "minecraft:ice_spikes", "minecraft:snowy_taiga", "minecraft:snowy_beach", "minecraft:grove", "minecraft:snowy_slopes", "minecraft:jagged_peaks", "minecraft:frozen_peaks", "minecraft:frozen_river", "minecraft:frozen_ocean", "minecraft:deep_frozen_ocean", "biomesoplenty:snowy_coniferous_forest", "biomesoplenty:snowy_fir_clearing", "biomesoplenty:auroral_garden", "biomesoplenty:muskeg", "biomesoplenty:snowblossom_grove", "biomesoplenty:snowy_maple_woods", "windswept:snowy_pine_forest", "windswept:snowy_chestnut_forest", "regions_unexplored:cold_boreal_taiga", "regions_unexplored:cold_deciduous_forest", "regions_unexplored:frozen_pine_taiga", "regions_unexplored:icy_heights", "regions_unexplored:spires", "terralith:alpine_grove", "terralith:emerald_peaks", "terralith:frozen_cliffs", "terralith:scarlet_mountains", "terralith:siberian_grove", "terralith:skyland_winter", "terralith:snowy_badlands", "terralith:wintry_forest", "byg:frosted_coniferous_forest", "byg:frosted_taiga", "byg:howling_peaks", "byg:shattered_glacier", "biomeswevegone:eroded_borealis", "biomeswevegone:frosted_coniferous_forest", "biomeswevegone:frosted_taiga", "biomeswevegone:howling_peaks"]
+	#Biomes to exclude from snowy effects even if they match temperature fallback
+	snowyBiomesBlacklist = []
+	#Biomes that get white/snowy dirt blocks (this is for rare cases in some biomes feature)
+	#This is a separate list and is NOT affected by temperature fallback
+	#Format: minecraft:snowy_plains, etc.
+	snowBlockBiomes = ["minecraft:grove", "minecraft:jagged_peaks", "minecraft:ice_spikes", "minecraft:frozen_peaks", "minecraft:snowy_slopes", "terralith:alpine_grove", "terralith:frozen_cliffs", "terralith:wintry_forest"]
+

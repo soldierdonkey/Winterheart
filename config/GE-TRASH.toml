@@ -1,0 +1,7 @@
+
+["Debug things"]
+	"Toughness entities naturally spawning" = false
+	"Vanished items when burned" = false
+	"Spawn sharpness particles into toughness entities" = false
+	"Show damage number" = false
+

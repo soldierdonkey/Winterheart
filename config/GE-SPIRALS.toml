@@ -1,0 +1,14 @@
+
+[Spiral]
+	"Spiral tornado, field particle amount" = 70.0
+	"Spiral tornado, eye particle amount" = 46.0
+
+["Vulnerability effect"]
+	"Amount of particles with level one" = 40.0
+	"Amount of particles with level two" = 125.0
+	"Amount of particles with level three" = 4.0
+
+[Ashes]
+	#Canon is five
+	"Required charge of Ashtray Cycle" = 5.0
+

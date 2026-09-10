@@ -59,6 +59,13 @@
     "registry_name": "OFF",
     "mod_name": true
   },
+  "dynamictrees": {
+    "rooty_water": true,
+    "pod": true,
+    "fruit": true,
+    "rooty": true,
+    "branch": true
+  },
   "balm": {
     "jade": true
   }

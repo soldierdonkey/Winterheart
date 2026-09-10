@@ -1,0 +1,11 @@
+{
+  "dayFogDistance": 6.0,
+  "nightFogDistance": 3.0,
+  "renderDistance": 8,
+  "voidFogDistance": 2.5,
+  "dynamicLightEnabled": true,
+  "noStarsEnabled": true,
+  "flickeringLightEnabled": true,
+  "voidFogEnabled": true,
+  "showConfigButton": true
+}
