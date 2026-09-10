@@ -1,0 +1,75 @@
+
+[Names]
+	#A list of names ghost players will use
+	"List of names" = []
+	#The chance of picking recent player names (1 is 100%). Highest priority (default = 0.1)
+	"Chance of a recent player name" = 0.1
+	#The chance of a spooky name being chosen (1 is 100%). Medium priority (default = 0.3)
+	"Chance of a spooky name" = 0.3
+	#The chance of a name from the list being chosen (1 is 100%). Lowest priority (default = 0.5)
+	"Chance of a list name" = 0.5
+	#If a random name should be generated when every other option fails (if false, will default to: .)
+	"Generate a random name" = true
+	#The name that empty players will use. Leave blank for no names
+	"Empty Player name" = "Player"
+
+[List]
+	#Whether the name list will be used or not
+	"Allow the name list to be used" = false
+	#Whether the name list is the only list that should be used or not
+	"Only use the name list" = false
+
+[Spawns]
+	#If the white eyes should spawn
+	"Spawn White Eyes" = true
+	#The timer before a ghost spawns in ticks (default = 1200)
+	"Timer for Ghost Players" = 1200.0
+	#If empty steve/alex should spawn naturally
+	"Spawn Empty Player" = true
+	#The chance of an empty player spawning (default = 0.4) [1 is 100%]
+	"Chance of an Empty Player spawning" = 0.4
+	#If empty players should be able to spawn on the surface
+	"Empty Players can spawn on the surface" = false
+	#The chance of a white eyes spawning instead of a ghost (default = 0.04) [1 is 100%]
+	"Chance of a White Eyes spawning" = 0.04
+	#The area in which a ghost player cannot spawn next to another one (in blocks, both directions. For one direction, divide by 2) [default = 80]
+	"Separation between Ghost Players" = 80.0
+	#The area in which a white eyes cannot spawn next to another one (in blocks, both directions. For one direction, divide by 2) [default = 80]
+	"Separation between White Eyes" = 100.0
+	#The area in which an empty player cannot spawn next to another one (in blocks, both directions. For one direction, divide by 2) [default = 80]
+	"Separation between Empty Players" = 80.0
+	#The area in which an empty player cannot spawn next to the player (in blocks, both directions. For one direction, divide by 2) [default = 45]
+	"Separation between Empty Players and the player" = 45.0
+	#The time it takes before a white eyes despawns (default = 800) [in ticks]
+	"Despawn time for White Eyes" = 800.0
+	#The time it takes before an empty player despawns (default = 2400) [in ticks]
+	"Despawn time for Empty Player" = 2400.0
+	#The chance of an empty player walking towards the nearest player (default = 0.1) [1 is 100%]
+	"Empty Player walking chance" = 0.1
+	#The chance of an empty player running towards the nearest player and attacking them (default = 0.1) [1 is 100%]
+	"Empty Player aggressive chance" = 0.1
+	#The chance of a white eyes cancelling the spawn (to make the entity rarer) (default = 0.5) [1 is 100%]
+	"White Eyes despawn chance" = 0.5
+
+[Misc]
+	#If random sounds should play from time-to-time while in caves
+	"Do random sound event" = true
+	#If sounds of blocks being broken should play when a ghost players spawns
+	"Do block breaking sounds" = true
+	#The chance to play block breaking sounds when a ghost player spawns (default = 0.1) [1 is 100%]
+	"Chance of block breaking sounds" = 0.1
+	#The attenuation distance of the block breaking sounds, how far you can hear them (default = 3) [value of config * 16 is the true distance]
+	"Attenuation of the breaking sounds" = 3.0
+	#The chance of an empty player spawning with a pickaxe (default = 0.25) [1 is 100%]
+	"Chance of an Empty Player spawning with a pickaxe" = 0.25
+	#The chance of a white eyes jumpscaring the player (default = 0.75) [1 is 100%]
+	"Chance for White Eyes to jumpscare" = 0.75
+	#The chance for a random sound event to play each tick (default = 0.001) [1 is 100%]
+	"Chance for a random sound event to play" = 0.001
+	#How close the player needs to be to the empty player for the entity to start walking towards the player (default = 60) [in blocks, in an square area]
+	"Empty Player walk distance" = 60.0
+	#How close the player needs to be to the empty player for the entity to start sprinting towards the player (default = 28) [in blocks, in an square area]
+	"Empty Player sprint distance" = 28.0
+	#If empty players should stop other mobs from spawning when they are around (default = false)
+	"Empty Players deny spawning" = false
+

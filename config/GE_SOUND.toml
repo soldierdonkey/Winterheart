@@ -1,0 +1,35 @@
+
+[SFX]
+	gore_death_sound = 1.0
+	gore_hurt_sound = 1.0
+	gore_50_sound = 1.0
+	gore_50_blood_sound = 1.0
+	gore_concentred_damage_sound = 1.0
+	gore_skeleton_death_pieces_sound = 1.0
+	gore_skeleton_hurt_sound = 1.0
+	gore_skeleton_50_sound = 1.0
+	gore_skeleton_concentred_damage_sound = 1.0
+	gore_infernal_machine_explode = 1.0
+	gore_metal_death_pieces = 1.0
+	gore_iron_golem_death_sound = 1.0
+	gore_slime_hurt_sound = 1.0
+	gore_slime_50_sound = 1.0
+	dukeplus_gore_bounce = 1.0
+	gore_skull_destroy = 3.0
+	gore_short_pouring_out_blood = 1.0
+	dukeplus_squished = 1.0
+	gore_multiple_cuts_sound = 1.0
+	gore_disarmed_zombie_ambient = 1.0
+	gore_big_blood_splash = 1.0
+	gore_big_pouring_out_blood = 1.0
+	gore_old_exploded_sound = 3.0
+	gore_severe_damage_sound = 1.0
+	gore_brutal_hurt_sound = 1.0
+	gore_incinerated_sound = 1.0
+	gore_external_burning_hurt_sound = 1.0
+	gore_hurt_severe_sound = 1.0
+	gore_legacy_death_sound = 2.0
+	gore_legacy_hurt_sound = 1.0
+	gore_brutality_series_1 = 0.5
+	gore_bite = 1.0
+

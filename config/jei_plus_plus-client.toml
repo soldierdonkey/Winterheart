@@ -18,6 +18,8 @@ tagGroupingEnabled = true
 jsonGroupingEnabled = true
 #Mix matching default groups from different mod namespaces. JSON groups are always explicit.
 mixNamespaceGroups = true
+#Recipe type ids excluded from the recipe tree, for example ["minecraft:blasting"].
+disabledRecipeTypes = []
 
 #Each built-in suffix group can be disabled independently.
 [defaultGroups]

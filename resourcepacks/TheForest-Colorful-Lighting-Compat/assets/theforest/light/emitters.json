@@ -1,0 +1,288 @@
+{
+  "alexsmobs:crystalized_banana_slug_mucus": "#d6ff66;7",
+  "alexsmobs:sculk_boomer": {
+    "default": "#003d4d;4",
+    "states": {
+      "powered=true,open=false": "#00a8ff;F",
+      "powered=true,open=true": "#00e5ff;F",
+      "powered=false,open=true": "#0088aa;8",
+      "powered=false,open=false": "#003d4d;4"
+    }
+  },
+  "alexsmobs:straddlite_block": "#ff6a1f;F",
+  "biomesoplenty:blackstone_bulb": "#ff8a2a;9",
+  "biomesoplenty:eyebulb": "#ff3355;8",
+  "biomesoplenty:glowflower": "#ffd95a;B",
+  "biomesoplenty:glowing_moss_block": "#80ff75;8",
+  "biomesoplenty:glowing_moss_carpet": "#80ff75;6",
+  "biomesoplenty:glowshroom": "#6fd4ff;9",
+  "biomesoplenty:glowshroom_block": "#47c7ff;A",
+  "biomesoplenty:glowworm_silk": "#baffd9;8",
+  "biomesoplenty:glowworm_silk_strand": "#baffd9;6",
+  "biomesoplenty:potted_glowflower": "#ffd95a;8",
+  "biomesoplenty:potted_glowshroom": "#6fd4ff;7",
+  "butchery:glow_squid_carcass": "#5de8ff;9",
+  "butchery:glow_squid_head": "#5de8ff;8",
+  "butchery:magma_cube_carcass": "#ff6a1f;D",
+  "butchery:medium_magma_cube_carcass": "#ff6a1f;B",
+  "exposure:flash": "white;F",
+  "exposure:lightroom": {
+    "default": "#330000;1",
+    "states": {
+      "lit=true": "#ff4a35;D",
+      "lit=false": "#330000;1"
+    }
+  },
+  "farmersdelight:stove": {
+    "default": "#331000;1",
+    "states": {
+      "lit=true": "#ff7a24;D",
+      "lit=false": "#331000;1"
+    }
+  },
+  "gore_edition:hell_portal_frame": "#ff3a18;C",
+  "mcwbridges:bridge_lantern": "#fff3a7;F",
+  "mcwbridges:bridge_torch": "vanilla",
+  "naturalist:glow_goop": "#a7ff73;7",
+  "refurbished_furniture:acacia_light_ceiling_fan": {
+    "default": "#000000;0",
+    "states": {
+      "lit=true": "#fff3a7;F",
+      "lit=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:birch_light_ceiling_fan": {
+    "default": "#000000;0",
+    "states": {
+      "lit=true": "#fff3a7;F",
+      "lit=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:black_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "#4c4c4c;B",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:blue_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "blue;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:brown_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "brown;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:cherry_light_ceiling_fan": {
+    "default": "#000000;0",
+    "states": {
+      "lit=true": "#fff3a7;F",
+      "lit=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:crimson_light_ceiling_fan": {
+    "default": "#000000;0",
+    "states": {
+      "lit=true": "#ffb0a0;F",
+      "lit=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:cyan_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "cyan;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:dark_ceiling_light": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "#fff3a7;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:dark_electricity_generator": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "#8fc7ff;9",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:dark_oak_light_ceiling_fan": {
+    "default": "#000000;0",
+    "states": {
+      "lit=true": "#fff3a7;F",
+      "lit=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:dark_range_hood": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "#fff3a7;C",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:dark_toaster": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "#ff7a24;A",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:gray_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "gray;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:green_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "green;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:jungle_light_ceiling_fan": {
+    "default": "#000000;0",
+    "states": {
+      "lit=true": "#fff3a7;F",
+      "lit=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:light_blue_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "light_blue;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:light_ceiling_light": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "#fff3a7;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:light_electricity_generator": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "#8fc7ff;9",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:light_gray_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "light_gray;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:light_range_hood": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "#fff3a7;C",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:light_toaster": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "#ff7a24;A",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:lime_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "lime;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:magenta_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "magenta;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:mangrove_light_ceiling_fan": {
+    "default": "#000000;0",
+    "states": {
+      "lit=true": "#fff3a7;F",
+      "lit=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:oak_light_ceiling_fan": {
+    "default": "#000000;0",
+    "states": {
+      "lit=true": "#fff3a7;F",
+      "lit=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:orange_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "orange;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:pink_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "pink;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:purple_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "purple;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:red_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "red;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:spruce_light_ceiling_fan": {
+    "default": "#000000;0",
+    "states": {
+      "lit=true": "#fff3a7;F",
+      "lit=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:warped_light_ceiling_fan": {
+    "default": "#000000;0",
+    "states": {
+      "lit=true": "#9ffff0;F",
+      "lit=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:white_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "white;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "refurbished_furniture:yellow_lamp": {
+    "default": "#000000;0",
+    "states": {
+      "powered=true": "yellow;F",
+      "powered=false": "#000000;0"
+    }
+  },
+  "spelunkers_charm:deepslate_geyser_lava": "orange;F",
+  "spelunkers_charm:light_block": "white;F",
+  "spelunkers_charm:redstone_cluster": "red;8"
+}

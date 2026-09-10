@@ -26,7 +26,7 @@ generateLakes = true
 #Perf: light. One extra pass over each new chunk at generation.
 #World: safe on an existing world -- applies to chunks generated from now on, no restart needed. Land already generated keeps its current look.
 #Range: 0 ~ 2
-rebiomeStreams = 1
+rebiomeStreams = 2
 #
 #The same for the LAKES this mod fills, and independent of the stream setting -- either can run on its own.
 #  0 = off: lakes keep the biome they sit in.
@@ -35,13 +35,13 @@ rebiomeStreams = 1
 #Perf: light. One extra pass over each new chunk at generation.
 #World: safe on an existing world -- applies to chunks generated from now on, no restart needed. Land already generated keeps its current look.
 #Range: 0 ~ 2
-rebiomeLakes = 1
+rebiomeLakes = 2
 #
 #Show the one-time Streams Reflowing notice in chat the first time this world is opened.
 #  true = show it once per world (default).  false = never show it.
 #Perf: none.
 #World: safe on an existing world -- applies the moment you save, everywhere.
-welcomeMessage = true
+welcomeMessage = false
 
 #PERFORMANCE -- how FAST vs. how GOOD generation is. Costs CPU at world-gen time only; each
 #region builds once and is saved to disk forever, so the cost is one-time per area. If live
@@ -96,7 +96,7 @@ welcomeMessage = true
 	#Perf: moderate at generation. More water = more channels to route and carve.
 	#World: CHANGES THE STREAM NETWORK. Takes effect only after the world is RELOADED (quit to title and reopen, or restart the server), and only in NEW chunks -- streams will not line up where new land meets old. Best chosen before starting a world.
 	#Range: 0.05 ~ 20.0
-	wetnessMultiplier = 1.0
+	wetnessMultiplier = 3.0
 	#
 	#DRY-BIOME STREAM FLOOR -- the minimum share of streams (and humidity-scaled lake fill) that still
 	#form in the very driest biomes (deserts, badlands, etc.). 0.0 = fully-dry biomes get NO streams at
@@ -104,7 +104,7 @@ welcomeMessage = true
 	#Perf: negligible.
 	#World: CHANGES THE STREAM NETWORK. Takes effect only after the world is RELOADED (quit to title and reopen, or restart the server), and only in NEW chunks -- streams will not line up where new land meets old. Best chosen before starting a world.
 	#Range: 0.0 ~ 1.0
-	wetnessDryFloor = 0.02
+	wetnessDryFloor = 0.05
 	#
 	#How finely streams BRANCH -- how much upstream drainage a cell needs before it becomes a stream.
 	#  LOWER = more, finer tributaries (denser, more fractal branching).
@@ -114,7 +114,7 @@ welcomeMessage = true
 	#Perf: moderate at generation. Lower values mean many more channels to carve.
 	#World: CHANGES THE STREAM NETWORK. Takes effect only after the world is RELOADED (quit to title and reopen, or restart the server), and only in NEW chunks -- streams will not line up where new land meets old. Best chosen before starting a world.
 	#Range: 0.1 ~ 2.0
-	growDensity = 0.75
+	growDensity = 0.3
 	#
 	#SHORTEST STREAM -- the shortest stream, in BLOCKS, allowed to run from its own source
 	#into the water it drains to. Anything shorter is dropped, which clears the short nubs
@@ -126,7 +126,7 @@ welcomeMessage = true
 	#Perf: negligible (it only removes streams).
 	#World: CHANGES THE STREAM NETWORK. Takes effect only after the world is RELOADED (quit to title and reopen, or restart the server), and only in NEW chunks -- streams will not line up where new land meets old. Best chosen before starting a world.
 	#Range: 0 ~ 2000
-	minStreamLength = 50
+	minStreamLength = 100
 	#
 	#WHICH WATER the shortest-stream rule guards. The setting above clears short stubs; this says
 	#which shorelines it clears them from.
@@ -146,7 +146,7 @@ welcomeMessage = true
 	#Perf: moderate background work. Each step up covers four times the area.
 	#World: safe on an existing world -- applies to chunks generated from now on, no restart needed. Land already generated keeps its current look.
 	#Range: 1 ~ 3
-	riverDrainageSize = 1
+	riverDrainageSize = 2
 	#
 	#SMALLEST LAKE -- the smallest basin (in blocks of water surface area) that fills as a lake.
 	#  1024 is roughly a 32x32 pond. Lower = more small ponds; higher = only sizable lakes.
@@ -154,7 +154,7 @@ welcomeMessage = true
 	#Perf: light. Lower values leave many more small basins to evaluate.
 	#World: CHANGES THE STREAM NETWORK. Takes effect only after the world is RELOADED (quit to title and reopen, or restart the server), and only in NEW chunks -- streams will not line up where new land meets old. Best chosen before starting a world.
 	#Range: 64.0 ~ 1000000.0
-	lakeMinArea = 1024.0
+	lakeMinArea = 8192.0
 	#
 	#LARGEST LAKE -- the largest lake (in blocks of water surface area) allowed to form.
 	#  0 = automatic. New chunks only.
@@ -169,7 +169,7 @@ welcomeMessage = true
 	#Perf: negligible. Shape only.
 	#World: CHANGES THE STREAM NETWORK. Takes effect only after the world is RELOADED (quit to title and reopen, or restart the server), and only in NEW chunks -- streams will not line up where new land meets old. Best chosen before starting a world.
 	#Range: 0.0 ~ 50.0
-	widthScale = 1.0
+	widthScale = 0.4
 	#
 	#Headwater thinness -- the minimum half-width a stream starts at (it tapers to a point above this).
 	#  HIGHER = chunkier sources.  LOWER = finer, threadier headwaters.
@@ -177,7 +177,7 @@ welcomeMessage = true
 	#Perf: negligible. Shape only.
 	#World: CHANGES THE STREAM NETWORK. Takes effect only after the world is RELOADED (quit to title and reopen, or restart the server), and only in NEW chunks -- streams will not line up where new land meets old. Best chosen before starting a world.
 	#Range: 0.1 ~ 4.0
-	baseWidth = 0.4
+	baseWidth = 0.3
 	#
 	#The widest a river can reach -- the half-width cap on the biggest main stem (near the ocean).
 	#  HIGHER = broad rivers.  LOWER = everything stays creek-sized.
@@ -185,7 +185,7 @@ welcomeMessage = true
 	#Perf: negligible. Shape only.
 	#World: CHANGES THE STREAM NETWORK. Takes effect only after the world is RELOADED (quit to title and reopen, or restart the server), and only in NEW chunks -- streams will not line up where new land meets old. Best chosen before starting a world.
 	#Range: 1.0 ~ 32.0
-	maxWidth = 16.0
+	maxWidth = 12.0
 	#
 	#How much streams WIND (steep reaches straighten out automatically).
 	#  HIGHER = lazier, more meandering.  LOWER = straighter, more direct.
@@ -193,7 +193,7 @@ welcomeMessage = true
 	#Perf: negligible. Shape only.
 	#World: CHANGES THE STREAM NETWORK. Takes effect only after the world is RELOADED (quit to title and reopen, or restart the server), and only in NEW chunks -- streams will not line up where new land meets old. Best chosen before starting a world.
 	#Range: 0.0 ~ 5.0
-	meanderStrength = 1.2
+	meanderStrength = 1.8
 	#
 	#How DEEP streams carve in, as a fraction of their width (the bed is a smooth bowl, deepest at
 	#the center).
@@ -202,7 +202,7 @@ welcomeMessage = true
 	#Perf: negligible. Shape only.
 	#World: safe on an existing world, but takes effect only after the world is RELOADED (quit to title and reopen, or restart the server) -- and then only in newly generated chunks.
 	#Range: 0.0 ~ 2.0
-	streamDepth = 0.24
+	streamDepth = 0.4
 	#
 	#Stream width follows the ground: STEEP reaches run narrower, FLAT reaches spread wider -- and a flat reach over
 	#loose sandy or gravelly ground opens out very wide and shallow, as a river does over fine sediment or in a delta.
@@ -297,7 +297,7 @@ welcomeMessage = true
 	#Perf: light at generation.
 	#World: safe on an existing world -- applies to chunks generated from now on, no restart needed. Land already generated keeps its current look.
 	#Range: -1 ~ 2
-	vegetation = -1
+	vegetation = 2
 	#
 	#Extra flora around ALL water sources -- vanilla rivers, lakes and oceans -- not just this mod's
 	#streams. Costs a little extra world-gen scanning in every water-adjacent chunk.
@@ -320,7 +320,7 @@ welcomeMessage = true
 	#Perf: light to moderate. Scans ALL water in a chunk, not just streams.
 	#World: safe on an existing world -- applies to chunks generated from now on, no restart needed. Land already generated keeps its current look.
 	#Range: -1 ~ 2
-	allWaterBanks = -1
+	allWaterBanks = 1
 	#
 	#Where this mod's bank features (the pieces in config/streamsreflowing/bank_features/) may appear:
 	#  0 = nowhere.  1 = this mod's streams.  2 = streams and their lakes.
@@ -479,7 +479,7 @@ welcomeMessage = true
 	#Perf: negligible.
 	#World: safe on an existing world -- applies the moment you save, everywhere.
 	#Range: 0.5 ~ 40.0
-	itemDriftSpeed = 1.5
+	itemDriftSpeed = 8.0
 	#
 	#Give streams (and, with flowVanillaRivers, vanilla rivers) a downstream current while keeping the
 	#water as plain minecraft:water. Because the block stays real water, shaders, particle mods

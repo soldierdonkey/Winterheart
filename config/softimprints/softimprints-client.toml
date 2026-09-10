@@ -1,0 +1,93 @@
+
+[general]
+	#Enables some debug functions
+	debug_mode = false
+	#Master switch for all imprint capture.
+	#When disabled, imprint generation and rendering stop completely.
+	enable_imprints = true
+	#Minimum movement, in blocks, before placing the next imprint stamp.
+	#Larger value = sparser trail
+	#Range: 0.01 .. 1.0
+	imprint_step_distance = 0.15
+	#Use render-model snapshots to place stamps from the visible entity shape.
+	#When disabled, bounding-box contact is used instead.
+	imprint_model_contact = true
+	#What to do when model-contact cannot produce a usable contact shape.
+	#SKIP = skip this entity's imprint tick.
+	#BOUNDING_BOX = use the entity bounding box for this stamp.
+	#LAST_SNAPSHOT = reuse the latest compatible model snapshot without forcing a render.
+	#Available values: SKIP, BOUNDING_BOX, LAST_SNAPSHOT
+	model_contact_fallback_policy = "LAST_SNAPSHOT"
+	#Vertical tolerance above the surface for model-contact sampling.
+	#0.0 keeps the band razor-thin; larger values are more forgiving.
+	#Range: 0.0 .. 0.5
+	imprint_contact_band_height = 0.11
+	#Minimum body rotation before placing a new model-contact stamp.
+	#0.0 disables rotation-triggered updates.
+	#Range: 0.0 .. 360.0
+	imprint_rotation_step_degrees = 10.0
+	#Entity type ids that should never leave imprints in BLACKLIST mode.
+	#Example: ["minecraft:enderman"]
+	imprint_target_blacklist = []
+	#Entity type ids allowed to leave imprints in WHITELIST mode.
+	#Example: ["minecraft:boat"]
+	imprint_target_whitelist = []
+	#Entity target filter mode for imprint tracking.
+	#BLACKLIST = all valid entities except ids in imprint_target_blacklist.
+	#WHITELIST = only ids in imprint_target_whitelist.
+	#Available values: BLACKLIST, WHITELIST
+	imprint_target_filter_mode = "BLACKLIST"
+	#How often dirty chunks are queued for visual rebuilds after imprint changes.
+	#1 = every tick
+	#Range: 1 .. 200
+	imprint_chunk_rebuild_tick_rate = 1
+	#How often the client flushes pending imprint writes into the cache.
+	#1 = every tick, 2 = every 2 ticks, etc.
+	#Range: 1 .. 200
+	imprint_write_check_tick_rate = 1
+	#Drop cached imprint maps when a chunk unloads.
+	clear_imprints_on_chunk_unload = false
+	#Maximum dirty render sections processed per rebuild iteration.
+	#The maximum slider value means unlimited.
+	#Range: 1 .. 21
+	max_sections_rebuild_per_iteration = 6
+	#Maximum entities around the observer checked by the imprint tracker each tick.
+	#The maximum slider value means unlimited.
+	#Range: 1 .. 101
+	max_track_entities = 101
+	#Maximum distance from the observer for entity imprint tracking.
+	#The maximum slider value means unlimited.
+	#Range: 0 .. 257
+	entities_track_range = 257
+	#Maximum imprint block maps kept in the client cache before old entries are discarded.
+	#Higher values preserve more distant imprints but use more memory.
+	#Range: 128 .. 4096
+	max_cached_imprint_blocks = 4096
+	#Capture render-model snapshots every N render frames while target entities are visible.
+	#1 = every frame
+	#Range: 1 .. 20
+	imprint_snapshot_interval = 12
+	#Master switch for imprint decay.
+	#Profiles opt in individually and carry their own grace/ramp/chance values.
+	enable_imprint_decay = true
+	#Ticks between decay passes.
+	#Lower = smoother melting but more frequent section rebuilds.
+	#Range: 1 .. 40
+	imprint_decay_tick_rate = 3
+	#Sub-phases each map's cells are split across within one decay pass.
+	#Only ~1/N of a map's cells are eligible to melt per pass, staggered by a
+	#per-cell offset, so melting looks like continuous seeping instead of the
+	#whole block stepping at once. Chances are scaled up by N to keep the
+	#overall decay speed unchanged. 1 = old synchronous behaviour.
+	#Range: 1 .. 16
+	imprint_decay_cell_phases = 4
+	#Slowest melt-rate multiplier the warp noise applies to the front.
+	#Lower = stronger contrast between weak and strong stretches (more organic
+	#tongues); at 1.0 with span 0 the warp is off and the front is uniform.
+	#Range: 0.0 .. 1.0
+	imprint_decay_warp_rate_min = 0.35
+	#Range the warp noise adds on top of the minimum melt-rate multiplier.
+	#Melt rate varies across the front within [min, min + span].
+	#Range: 0.0 .. 3.0
+	imprint_decay_warp_rate_span = 1.3
+

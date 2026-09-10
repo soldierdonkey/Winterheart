@@ -1,0 +1,57 @@
+
+[General]
+	#0 is none, 1 legacy, 2 is anarchy
+	"Hurt gore system mode" = 2.0
+	#0 is none, 1 legacy, 2 is anarchy
+	"Death gore system mode" = 2.0
+	#Only haves classic
+	"Explode gore system mode" = "classic"
+	#Now works with %
+	"Toughness entities spawn probabilities" = 30.0
+	"Toughness entities survive probabilities" = 70.0
+	"Blood in screen" = true
+	Corpses = true
+	"Invisibility when entity dies" = true
+	"Invisibility when toughness reveals or corpses are true" = true
+	"Cancel death particles because corpses is true or toughness reveals" = true
+	"Cancel explode particles because corpses is true or toughness reveals" = true
+	#Port of shields blocking explosions from one point nineteen point three and one point nineteen point four
+	"One point nineteen point three Shields?" = false
+	"GE undead creatures burns" = true
+	"Corpses can explode" = true
+	#Used for non toughness corpses
+	"Min time required for the corpse can explode" = 20.0
+	#Used for toughness corpses
+	"Max time required for the corpse can explode" = 100.0
+	"Warning screen" = false
+
+[Fire]
+	#manual , hitbox
+	"BHURT METHOD" = "hitbox"
+	#manual , hitbox
+	"FHURT METHOD" = "hitbox"
+	#manual , hitbox
+	"FDEATH METHOD" = "hitbox"
+	#manual , hitbox
+	"BURNING METHOD" = "hitbox"
+
+	[Fire."Smoke particles while burninG"]
+		" BURNING" = true
+
+	[Fire."Hurt flames particles because external damage while burning"]
+		#Fire , FAshes , None
+		" BHURT" = "FAshes"
+
+	[Fire."Hurt particles because burning"]
+		" FHURT" = true
+
+	[Fire."Death with burning particles"]
+		#Fire , FAshes , None
+		" FDEATH" = "Fire"
+
+["Insane things"]
+	"Insane things" = true
+	"Creeper corpse can explode" = true
+	"Creeper corpse can plant Creeper Grass" = true
+	"Toughness rage" = true
+
