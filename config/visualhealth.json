@@ -1,6 +1,6 @@
 {
-  "woundDensityPercentage": 50,
-  "damageTierCount": 5,
+  "woundDensityPercentage": 80,
+  "damageTierCount": 8,
   "damagePassiveMobs": true,
   "damageVillagers": false,
   "damagePlayers": true,

@@ -16,7 +16,38 @@
   // Items here will be unusable completely
   //    Example: minecraft:diamond
   "blacklisted_items": [
-    "examplemod:example_item"
+    "!.*:netherite_.*",
+    "!butchery:.*_helmet",
+    "!butchery:.*_chestplate",
+    "!butchery:.*_leggings",
+    "!butchery:.*_boots",
+    "!nuclearcraft:tough_.*",
+    "!alexsmobs:.*_chestplate",
+    "!aquaculture:neptunium_.*",
+    'minecraft:iron_horse_armor', 
+    'minecraft:turtle_helmet', 
+    'alexsmobs:sombrero', 
+    'alexsmobs:spiked_turtle_shell', 
+    'alexsmobs:emu_leggings', 
+    'alexsmobs:unsettling_kimono', 
+    'legendarysurvivaloverhaul:desert_boots', 
+    'minecraft:turtle_helmet',
+    'minecraft:leather_horse_armor', 
+    'alexsmobs:roadrunner_boots', 
+    'alexsmobs:frontier_cap', 
+    'alexsmobs:fedora', 
+    'legendarysurvivaloverhaul:desert_leggings', 
+    'alexsmobs:novelty_hat', 
+    'legendarysurvivaloverhaul:desert_chestplate',
+    'minecraft:diamond_horse_armor',
+    'minecraft:golden_horse_armor', 
+    'alexsmobs:centipede_leggings', 
+    'alexsmobs:moose_headgear', 
+    'alexsmobs:tarantula_hawk_elytra', 
+    'alexsmobs:froststalker_helmet', 
+    'alexsmobs:flying_fish_boots', 
+    'legendarysurvivaloverhaul:desert_helmet',
+    '.*:.*_smithing_template'
   ],
   // -----------------------------------------------------------
   // Removes an item if it contains certain nbt tag. If the whole entry (or expression) is present, the item gets removed.

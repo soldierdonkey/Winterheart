@@ -519,7 +519,7 @@
 
 		[body-damage.healing-limbs.passive-regeneration]
 			# The limbs will be healed when the player is at max health.
-			" Passive Limb Regeneration On Full Health" = true
+			" Passive Limb Regeneration On Full Health" = false
 			# The limbs will be healed when the player is under one of the mentioned effect, the most damaged limb first.
 			"Passive Limb Regeneration On Effects" = ["minecraft:regeneration", "farmersdelight:comfort"]
 			# Whether the amplification of the effect increase the limb regeneration speed.
