@@ -2,7 +2,7 @@
 [Energy]
 	#Multiplier for all power generation in the mod
 	#Range: 0.001 ~ 1000.0
-	generation_multiplier = 1.0
+	generation_multiplier = 0.25
 	#Allow solar panel registration: du, elite, advanced, basic
 	register_panel = [true, true, true, true]
 	#Solar panel power generation: du, elite, advanced, basic

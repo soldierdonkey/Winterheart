@@ -38,7 +38,7 @@
 		#Range: -1000.0 ~ 1000.0
 		"Cold Breath Temperature Threshold" = 10.0
 		# If enabled, render the temperature values in Fahrenheit.
-		"Temperature In Fahrenheit" = false
+		"Temperature In Fahrenheit" = true
 
 		[hud.temperature.wetness]
 			# The X and Y offset of the wetness indicator. Set both to 0 for no offset.
