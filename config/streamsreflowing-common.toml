@@ -528,9 +528,10 @@ welcomeMessage = false
 	serverStreamParticles = true
 	#
 	#Which biomes a stream is allowed to open its mouth into: a comma-separated list of biome TAGS (written
-	#with a leading #) and plain biome ids. A mouth is accepted when any listed biome sits within one grid
-	#cell of it, so water lying just outside the biome that owns it -- the last blocks of a river, the edge of
-	#a swamp pool -- still counts. Leave it EMPTY to accept any body of water at all.
+	#with a leading #) and plain biome ids. A stream's mouth must END in a listed biome, standing in real
+	#water at least a block below sea level: from where its route reaches sea-level ground it keeps walking,
+	#over ground no higher than the sea, until it does -- then a little further into deeper water so it does
+	#not stop in the shallows. Leave it EMPTY to accept any body of water at all.
 	#This mod's own lakes are never subject to it and end a stream whatever the list says.
 	#A stream that cannot reach water it may join is not generated, so a shorter list means fewer streams.
 	#Perf: none directly; a shorter list means fewer streams to build.
