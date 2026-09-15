@@ -22,5 +22,11 @@ ItemEvents.rightClicked(event => {
             player.tell(`Current sanity: ${get_sanity(player)}`)
             player.tell(`Previous sanity: ${data.getDouble("previous_sanity_" + player.uuid)}`)
             break
+        case 'minecraft:quartz':
+            player.tell('Quartz right-clicked! Running diagnostics!')
+            player.tell(`Current temperature: ${get_temperature(player, server)}`)
+            set_temperature(player, server, get_temperature(player, server) + 5)
+            player.tell(`New temperature: ${get_temperature(player, server)}`)
+            break
     }
 })
