@@ -24,8 +24,13 @@ mods/cipherwright-0.3.0-1.20.1.jar
 mods/dumpeverything-1.0-SNAPSHOT.jar
 moonlight-global-datapacks/
 patchouli-books/
-saves/
-schematics/
+
+# 1. Ignore everything inside the folder
+saves/*
+
+# 2. But do not ignore this specific file
+!saves/Build/
+
 visual_keybinder/
 xaero/
 XaeroWaypoints**/

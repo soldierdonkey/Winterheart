@@ -2,7 +2,8 @@ ItemEvents.rightClicked(event => {
     const player = event.player
     const server = event.server
     const level = event.level
-    let data = level.persistentData
+    let overworld = server.getLevel('minecraft:overworld')
+    let data = overworld.persistentData
 
     switch (event.item.id) {
         case 'minecraft:nether_star':
@@ -27,6 +28,9 @@ ItemEvents.rightClicked(event => {
             player.tell(`Current temperature: ${get_temperature(player, server)}`)
             set_temperature(player, server, get_temperature(player, server) + 5)
             player.tell(`New temperature: ${get_temperature(player, server)}`)
+            break
+        case 'minecraft:nether_brick':
+            player.tell('Nether Brick right-clicked! Running diagnostics!')
             break
     }
 })
