@@ -1,0 +1,9 @@
+{
+  "hiddenCategories": [],
+  "hiddenKeybinds": [
+    "key.old_recording.toggle",
+    "key.old_recording.boost"
+  ],
+  "disabledKeybinds": false,
+  "consoleLogs": false
+}

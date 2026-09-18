@@ -1,0 +1,40 @@
+#Internal config version used by the mod for future migrations. Current version: 2
+#Range: > 1
+config_version = 2
+spawn_wind = true
+wind_must_see_sky = true
+
+#Controls how wind particle density is calculated.
+#CONSTANT = uses constant_wind.minimum_wind_height and constant_wind.spawn_rate_multiplier.
+#Y_LEVEL_SCALING = scales from y_level_scaling_wind.minimum_height_spawn_rate_multiplier to y_level_scaling_wind.maximum_height_spawn_rate_multiplier between the configured Y levels.
+#Allowed values: CONSTANT, Y_LEVEL_SCALING
+wind_density_mode = "CONSTANT"
+
+[constant_wind]
+#Settings used when wind_density_mode is CONSTANT.
+#Wind can spawn at/above minimum_wind_height and uses the same spawn_rate_multiplier at every height.
+minimum_wind_height = 83
+spawn_rate_multiplier = 2.0
+
+[y_level_scaling_wind]
+#Settings used when wind_density_mode is Y_LEVEL_SCALING.
+#Wind starts at minimum_wind_height, reaches maximum_height_spawn_rate_multiplier at maximum_wind_height, and stays at that maximum above it.
+minimum_wind_height = 83
+minimum_height_spawn_rate_multiplier = 1.0
+maximum_wind_height = 180
+maximum_height_spawn_rate_multiplier = 4.0
+
+[biome_wind]
+#Optional biome-based wind rules. These multiply the active CONSTANT or Y_LEVEL_SCALING density.
+#Biome rules are only checked when enabled is true.
+enabled = false
+
+#Biomes or biome tags listed here spawn no wind. Use biome IDs like "minecraft:deep_dark" or tags like "#minecraft:is_nether".
+blacklist = []
+
+[biome_wind.multipliers]
+#Add, remove, or change biome IDs and biome tags here. Biome IDs use "namespace:path"; biome tags use "#namespace:path".
+#Priority: blacklist wins; exact biome ID multipliers override tag multipliers; if multiple tags match, the highest matching tag multiplier is used.
+"#minecraft:is_ocean" = 1.5
+"#minecraft:is_mountain" = 2.0
+"minecraft:desert" = 0.6

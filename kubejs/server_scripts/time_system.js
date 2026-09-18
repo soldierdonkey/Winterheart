@@ -12,7 +12,7 @@ const TIME_CONFIG = {
     // [Start_Speed (Day 1), End_Speed (Day 50)]
     // Higher speed = phase passes faster. Lower speed = phase lasts longer.
     SPEED_INTERVALS: {
-        DAY: [0.8, 1.8],   // Day speed increases -> Days get shorter
+        DAY: [0.6, 2.8],   // Day speed increases -> Days get shorter
         NIGHT: [1.2, 0.4]  // Night speed decreases -> Nights get longer
     },
 
@@ -24,6 +24,19 @@ const TIME_CONFIG = {
         DUSK: 12542,
         NIGHT: 14000,
         MIDNIGHT: 18000
+    },
+
+    // Which ForgeCaps to retain on death and reload. Key = capId, Value = prefix for saved NBT in persistentData.
+    // Sanity is excluded because it is handled separately in the time system.
+    RETAINED_CAPS: {
+        'body_damage_': 'legendarysurvivaloverhaul:body_damage',
+        'temperature_': 'legendarysurvivaloverhaul:temperature',
+        'thirst_': 'legendarysurvivaloverhaul:thirst',
+        'health_': 'legendarysurvivaloverhaul:health',
+        'wetness_': 'legendarysurvivaloverhaul:wetness',
+        'food_': 'legendarysurvivaloverhaul:food',
+        'radiation_': 'nuclearcraft:radiation',
+        'gore_variables_': 'gore_edition:player_variables',
     }
 }
 
@@ -57,6 +70,32 @@ ServerEvents.loaded(event => {
 // ==========================================
 // 2. TIME ENGINE & PHASE LOGIC
 // ==========================================
+
+function saveState(player, server) {
+    const overworld = server.getLevel('minecraft:overworld')
+    const data = overworld.persistentData
+    data.putBoolean('registering_checkpoint', true)
+    data.putDouble('previous_sanity_' + player.uuid, get_sanity(player))
+    for (var prefix in TIME_CONFIG.RETAINED_CAPS) {
+        if (TIME_CONFIG.RETAINED_CAPS.hasOwnProperty(prefix)) {
+            var capId = TIME_CONFIG.RETAINED_CAPS[prefix];
+            savePlayerCap(player, capId, prefix + player.uuid + '_');
+        }
+    }
+    let currentDay = data.getInt('custom_day') || 1
+    const name = player.username
+    player.potionEffects.add('alexsmobs:earthquake', 100, 60, false, false)
+    player.potionEffects.add('minecraft:blindness', 60, 0, false, false)
+    player.server.runCommandSilent(`execute as ${name} run setcheckpoint @s`)
+    player.server.runCommandSilent(`execute as ${name} run setSubaruPlayer @s`)
+    player.tell(Text.gold(`You wake up. Day ${numberToText(currentDay)} begins...`))
+    server.scheduleInTicks(5, () => {
+        player.removeEffect('alexsmobs:earthquake')
+        data.putBoolean('registering_checkpoint', false)
+    })
+    console.log(`[TimeSys] Player ${player.username} slept through the night. Day ${numberToText(currentDay)} begins.`)
+}
+
 LevelEvents.tick(event => {
     const level = event.level
     
@@ -113,13 +152,11 @@ LevelEvents.tick(event => {
 
     if (allSleeping && sleepCooldown <= 0) {
         data.putInt('sleep_cooldown', TIME_CONFIG.SLEEP_COOLDOWN)
-        data.putBoolean('registering_checkpoint', true)
         level.server.scheduleInTicks(95, () => {
             // Abort if any player wakes up during the delay
             allSleeping = players.length > 0 && players.every(p => p.isSleeping())
             if (allSleeping) {
                 players.forEach(p => {
-                    let name = p.username
                     currentDay += 1
                     data.putInt('custom_day', currentDay)
                     data.putDouble('exact_time', 0.0)
@@ -128,26 +165,11 @@ LevelEvents.tick(event => {
                     
                     triggerTimeHook(level, currentDay, 'DAWN', true)
 
-                    p.potionEffects.add('alexsmobs:earthquake', 100, 60, false, false)
-                    p.potionEffects.add('minecraft:blindness', 60, 0, false, false)
+                    saveState(p, level.server)
 
-                    players.forEach(p => {
-                        data.putDouble('previous_sanity_' + p.uuid, get_sanity(p))
-                        console.log(`[TimeSys] Player ${p.username} slept through the night. Day ${currentDay} begins.`)
-                    })
                     p.stopSleeping()
-                    
-                    p.server.runCommandSilent(`execute as ${name} run setcheckpoint @s`)
-                    p.server.runCommandSilent(`execute as ${name} run setSubaruPlayer @s`)
-                    p.tell(Text.gold(`You wake up. Day ${currentDay} begins...`))
                 })
             }
-            level.server.scheduleInTicks(5, () => {
-                players.forEach(p => {
-                    p.removeEffect('alexsmobs:earthquake')
-                })
-                data.putBoolean('registering_checkpoint', false)
-            })
         })
         return
     }
@@ -175,9 +197,7 @@ LevelEvents.tick(event => {
         data.putDouble('exact_time', exactTime)
         
         // Batch time synchronization to every 10 ticks
-        if (global.currentTick % 10 === 0) {
-            level.server.runCommandSilent(`time set ${Math.floor(exactTime)}`)
-        }
+        level.server.runCommandSilent(`time set ${Math.floor(exactTime)}`)
 
         // Phase Transition Detection
         let newPhase = currentPhase
@@ -220,6 +240,20 @@ LevelEvents.tick(event => {
             })
         }
         data.putInt('debug_timer', timer)
+    }
+})
+
+// ==========================================
+// 2.5 PLAYER LOAD IN HOOKS
+// ==========================================
+PlayerEvents.loggedIn(event => {
+    const player = event.player
+    const server = event.server
+    const overworld = server.getLevel('minecraft:overworld')
+    const data = overworld.persistentData
+    if (!data.contains('has_loaded' + player.uuid) || !data.getBoolean('has_loaded' + player.uuid)) {
+        data.putBoolean('has_loaded' + player.uuid, true)
+        saveState(player, server)
     }
 })
 
@@ -283,6 +317,13 @@ function handleDeathLoopReset(server, player) {
         let new_sanity = Math.max(data.getDouble("previous_sanity_" + p.uuid) - 10, 25)
         set_sanity(p, server, new_sanity)
         data.putDouble("previous_sanity_" + p.uuid, new_sanity)
+        for (var prefix in TIME_CONFIG.RETAINED_CAPS) {
+            if (TIME_CONFIG.RETAINED_CAPS.hasOwnProperty(prefix)) {
+                var capId = TIME_CONFIG.RETAINED_CAPS[prefix];
+                console.log(`[TimeSys] Loading ${capId} for player ${p.username} after death.`)
+                loadPlayerCap(p, capId, prefix + p.uuid + '_');
+            }
+        }
     })
 
     server.runCommandSilent('title @a times 10 60 20')
