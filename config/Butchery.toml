@@ -1,11 +1,11 @@
 
 [General]
 	#Give the butchers guide on first join.
-	"First Join Book" = true
+	"First Join Book" = false
 	#Show GUI hints when looking at carcasses.
 	"Show Hints" = true
 	#Enable to have carcasses drop with ONLY cleavers. Disable to have carcasses drop no matter what kills the mob.
-	"Only Cleavers Drop Carcasses" = true
+	"Only Cleavers Drop Carcasses" = false
 	#Instantly bleed carcasses.
 	"Instant Bleeding" = false
 	#Enable organ drops
@@ -23,7 +23,7 @@
 	#Enable blood spread
 	"Blood Spread" = true
 	#Enable random events caused by breaking magic wishbones.
-	"Magic Wishbone" = true
+	"Magic Wishbone" = false
 	#The chance of receiving a wishbone from a chicken carcass. (Range: 0 - 1)
 	"Wishbone Chance" = 0.25
 

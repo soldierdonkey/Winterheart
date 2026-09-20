@@ -17,21 +17,21 @@
     "hotkey_range_max": false
   },
   "area_simple": {
-    "name": "Unnamed",
-    "current": "Unnamed",
+    "name": "Spawn",
+    "current": "Spawn",
     "boxes": [
       {
         "pos1": [
-          -93,
-          65,
-          -133
+          -89,
+          57,
+          -129
         ],
         "pos2": [
-          -113,
+          -117,
           73,
-          -153
+          -157
         ],
-        "name": "Unnamed"
+        "name": "Spawn"
       }
     ],
     "origin": [

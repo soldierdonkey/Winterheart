@@ -84,13 +84,13 @@ function saveState(player, server) {
     }
     let currentDay = data.getInt('custom_day') || 1
     const name = player.username
-    player.potionEffects.add('alexsmobs:earthquake', 100, 60, false, false)
+    player.potionEffects.add('minecraft:unluck', 100, 60, false, false)
     player.potionEffects.add('minecraft:blindness', 60, 0, false, false)
     player.server.runCommandSilent(`execute as ${name} run setcheckpoint @s`)
     player.server.runCommandSilent(`execute as ${name} run setSubaruPlayer @s`)
     player.tell(Text.gold(`You wake up. Day ${numberToText(currentDay)} begins...`))
     server.scheduleInTicks(5, () => {
-        player.removeEffect('alexsmobs:earthquake')
+        player.removeEffect('minecraft:unluck')
         data.putBoolean('registering_checkpoint', false)
     })
     console.log(`[TimeSys] Player ${player.username} slept through the night. Day ${numberToText(currentDay)} begins.`)
@@ -309,8 +309,12 @@ function handleDeathLoopReset(server, player) {
 
     let chosenSplash = OMINOUS_DEATH_SPLASH[Math.floor(Math.random() * OMINOUS_DEATH_SPLASH.length)]
     let chosenMsg = GENERATE_OMINOUS_MESSAGE(death_count)
-
+    
     server.players.forEach(p => {
+        if (day == 1) {
+            server.runCommandSilent(`starterkit give ${p.username}`)
+        }
+
         p.tell(Text.darkRed('☠ ').append(Text.of(chosenMsg).red().italic()))
         server.runCommandSilent(`execute as ${p.username} run playSound minecraft:entity.warden.heartbeat master 1.0 0.6`)
 
@@ -343,9 +347,9 @@ PlayerEvents.tick(event => {
 
     if (data.getBoolean('registering_checkpoint')) return
 
-    let effect = player.hasEffect('alexsmobs:earthquake')
+    let effect = player.hasEffect('minecraft:unluck')
     if (effect) {
-        player.removeEffect('alexsmobs:earthquake')
+        player.removeEffect('minecraft:unluck')
         handleDeathLoopReset(player.server, player)
     }
 })

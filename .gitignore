@@ -29,7 +29,7 @@ patchouli-books/
 saves/*
 
 # 2. But do not ignore this specific file
-!saves/Build/
+!saves/New World (1)/
 
 visual_keybinder/
 xaero/
