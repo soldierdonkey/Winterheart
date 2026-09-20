@@ -1,7 +1,9 @@
 {
   "resolutions": {
     "farmersdelight:organic_compost": "minecraft:crafting|farmersdelight:organic_compost_from_rotten_flesh",
-    "farmersdelight:rich_soil": "farmersdelight:decomposition|runtime/1713478148",
+    "farmersdelight:rice": "farmersdelight:cutting|farmersdelight:cutting/rice_panicle",
+    "farmersdelight:rich_soil": "farmersdelight:decomposition|runtime/1026553337",
+    "farmersdelight:straw": "farmersdelight:cutting|farmersdelight:cutting/rice_panicle",
     "immersive_weathering:charred_planks": "minecraft:furnace|immersive_weathering:charred_planks",
     "kubejs:crude_nitrate_bottle": "minecraft:crafting|kubejs:kjs/crude_nitrate_bottle",
     "kubejs:potassium_nitrate_bottle": "minecraft:brewing|kubejs:brewing/0b6b72d01aa0c2d56beaa81118e5424396a8b595d1b0584430159feeb49a4c11",
