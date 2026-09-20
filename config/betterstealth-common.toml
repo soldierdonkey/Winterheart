@@ -1,0 +1,32 @@
+#Maximum percent the detection range can be reduced by all stealth sources combined.
+#(0.80 = up to 80% reduction.).
+#Range: 0.0 ~ 1.0
+maxDetectionReductionPercent = 1.0
+#Minimum allowed detection radius in blocks.
+#Range: 0.0 ~ 128.0
+minDetectionRadiusBlocks = 0.0
+#Detection range reduction per level of Stealth enchantment.
+#(0.04 = 4% reduction per level).
+#Range: 0.0 ~ 1.0
+stealthEnchantReductionPerLevel = 0.04
+#Detection range reduction while the player is walking on ground.
+#(0.25 = 25% reduction).
+#Range: 0.0 ~ 1.0
+walkingReductionPercent = 0.25
+#Detection range reduction while standing still or crouching.
+#(0.50 = 50% reduction).
+#Range: 0.0 ~ 1.0
+idleOrCrouchReductionPercent = 0.5
+#Detection range reduction when the player is behind the mob's look direction.
+#(0.50 = 50% reduction).
+#Range: 0.0 ~ 1.0
+behindMobReductionPercent = 0.5
+#Detection range reduction when both body and head are concealed by grass.
+#(0.50 = 50% reduction).
+#Range: 0.0 ~ 1.0
+grassCoverReductionPercent = 0.5
+#Follow range reduction factor from Blindness effect applied to mobs.
+#(0.5 = 50% reduction to follow range).
+#Range: 0.0 ~ 1.0
+blindnessFollowRangeReduction = 0.5
+

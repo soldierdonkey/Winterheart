@@ -67,5 +67,4 @@ minecraft:snowy_taiga,
 !minecraft:windswept_hills,
 !minecraft:windswept_savanna,
 !minecraft:wooded_badlands,
-!minecraft:badlands,
-!minecraft:snowy_taiga,
+!minecraft:badlands

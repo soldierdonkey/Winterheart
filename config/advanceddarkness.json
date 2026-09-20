@@ -1,5 +1,5 @@
 {
-  "dayFogDistance": 5.5,
+  "dayFogDistance": 5.0,
   "nightFogDistance": 2.5,
   "renderDistance": 6,
   "voidFogDistance": 2.5,
