@@ -1965,3 +1965,1725 @@
 [Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
 [Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
 [Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (server-start) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (server-start) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (server-start) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (server-start) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (server-start) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (server-start) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (server-start) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (server-start) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (server-start) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (server-start) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (server-start) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (server-start) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (server-start) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (server-start) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (server-start) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (server-start) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] Quantified API starting
+[Quantified] Quantified Core Starting
+[Quantified] Quantified Async Pool Start
+[Quantified] Quantified GPU Acceleration Starting
+[Quantified] [OpenCL] Background probe scheduled
+[Quantified] OpenCL probe deferred (background)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] Vulkan probe deferred (background, isolated legacy runtime)
+[Quantified] [Vulkan] Probe scheduler armed
+[Quantified] Quantified API WebPanel starting
+[Quantified] Forcing API class initialization
+[Quantified] OpenCL core classes loaded
+[Quantified] Vulkan isolated runtime loaded for legacy Minecraft
+[Quantified] API classes initialized successfully
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (retry:unavailable) in 60000 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe queued (client-setup)
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (client-setup) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (client-setup) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (client-setup) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] GPU detected: Apple M3
+[Quantified] [OpenCL] OpenCL probe triggered (OpenGL context ready)
+[Quantified] [Vulkan] Probe running inline (renderer:Apple M3)
+[Quantified] [Vulkan] Inline probe (renderer:Apple M3)
+[Quantified] [Vulkan] Vulkan probe triggered (OpenGL context ready)
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 3 (renderer:Apple M3) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Inline probe unavailable (renderer:Apple M3) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 4 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (server-start) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (server-start) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (server-start) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (server-start) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries

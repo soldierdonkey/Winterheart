@@ -1,5 +1,15 @@
 {
   "bookGuiScale": 0,
   "clickedVisualize": false,
-  "bookData": {}
+  "bookData": {
+    "butchery:butchers_guide": {
+      "viewedEntries": [
+        "butchery:resources/sulfur",
+        "butchery:resources/wishbone",
+        "butchery:items/salt"
+      ],
+      "bookmarks": [],
+      "completedManualQuests": []
+    }
+  }
 }

@@ -1,6 +1,7 @@
 // To generate missing and modded biomes in this list; create a new world once,
 // Any biome listed below without an ! at the start will be randomly chosen to spawn in,
-minecraft:snowy_taiga
+minecraft:snowy_taiga,
+!minecraft:snowy_plains,
 !minecraft:badlands,
 !minecraft:bamboo_jungle,
 !minecraft:basalt_deltas,
@@ -46,7 +47,6 @@ minecraft:snowy_taiga
 !minecraft:savanna_plateau,
 !minecraft:small_end_islands,
 !minecraft:snowy_beach,
-!minecraft:snowy_plains,
 !minecraft:snowy_slopes,
 !minecraft:soul_sand_valley,
 !minecraft:sparse_jungle,
