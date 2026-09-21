@@ -7,21 +7,23 @@ const DEG_TO_RAD = 0.017453292519943295
 // 1. HITBOX & MOB DEFINITIONS
 // ==========================================
 const MOB_TEMPLATES = {
-    'enderman':    { id: 'minecraft:enderman', name: 'Enderman',    width: 1, height: 3 },
-    'spider':      { id: 'minecraft:spider',   name: 'Spider',      width: 2, height: 1 },
-    'stray':       { id: 'minecraft:stray',    name: 'Stray',       width: 1, height: 2 },
-    'skeleton':    { id: 'minecraft:skeleton', name: 'Skeleton',    width: 1, height: 2 },
-    'zombie':      { id: 'minecraft:zombie',   name: 'Zombie',      width: 1, height: 2 },
-    'creeper':     { id: 'minecraft:creeper',  name: 'Creeper',     width: 1, height: 2 },
-    'baby_zombie': { id: 'minecraft:zombie',   name: 'Baby Zombie', width: 1, height: 1, isBaby: true }
+    'enderman':              { id: 'minecraft:enderman',             name: 'Enderman',          width: 1, height: 3 },
+    'spider':                { id: 'minecraft:spider',               name: 'Spider',            width: 2, height: 1 },
+    'skeleton':              { id: 'minecraft:skeleton',             name: 'Skeleton',          width: 1, height: 2 },
+    'zombie':                { id: 'minecraft:zombie',               name: 'Zombie',            width: 1, height: 2 },
+    'cordyceps_zombie':      { id: 'gore_edition:cordyceps_zombie',  name: 'Cordyceps Zombie',  width: 1, height: 2 },
+    'creeper':               { id: 'minecraft:creeper',              name: 'Creeper',           width: 1, height: 2 },
+    'baby_zombie':           { id: 'minecraft:zombie',               name: 'Baby Zombie',       width: 1, height: 1, isBaby: true },
+    'baby_spider':           { id: 'gore_edition:baby_spider',       name: 'Baby Spider',       width: 1, height: 1 }
 }
 
 const LIVESTOCK_TEMPLATES = {
-    'cow':     { id: 'minecraft:cow',     name: 'Cow',     width: 1, height: 2 },
-    'sheep':   { id: 'minecraft:sheep',   name: 'Sheep',   width: 1, height: 2 },
-    'pig':     { id: 'minecraft:pig',     name: 'Pig',     width: 1, height: 2 },
-    'chicken': { id: 'minecraft:chicken', name: 'Chicken', width: 1, height: 1 },
-    'rabbit':  { id: 'minecraft:rabbit',  name: 'Rabbit',  width: 1, height: 1 }
+    'cow':         { id: 'minecraft:cow',         name: 'Cow',         width: 1, height: 2 },
+    'sheep':       { id: 'minecraft:sheep',       name: 'Sheep',       width: 1, height: 2 },
+    'pig':         { id: 'minecraft:pig',         name: 'Pig',         width: 1, height: 2 },
+    'chicken':     { id: 'minecraft:chicken',     name: 'Chicken',     width: 1, height: 1 },
+    'rabbit':      { id: 'minecraft:rabbit',      name: 'Rabbit',      width: 1, height: 1 },
+    'polar_bear':  { id: 'minecraft:polar_bear',  name: 'Polar Bear',  width: 2, height: 2 },
 }
 
 const SPAWNER_CONFIG = {
@@ -491,4 +493,27 @@ EntityEvents.hurt(event => {
     if (source && source.tags && source.tags.contains('synthetic_hostile')) {
         source.tags.add('interacted')
     }
+})
+
+// ==========================================
+// 8. Extra Spawn Prevention
+// ==========================================
+
+EntityEvents.spawned(event => {
+    let entity = event.entity
+    let level = event.level
+    if (level.dimension.toString() !== 'minecraft:overworld' || level.isClientSide()) return
+    let data = level.persistentData
+    let day = data.getInt('custom_day') || 1
+    if (!entity || event.level.isClientSide()) return
+    if (SPAWNER_CONFIG.LIVESTOCK_POOL.includes(entity.id) && day > 30) {
+        console.log("Blocked entity: " + entity.id + " from spawning!")
+        event.cancel()
+        entity.discard()
+    }
+})
+
+ServerEvents.loaded(event => {
+    event.server.runCommandSilent('gamerule doMobSpawning false')
+    console.log('[Spawner Engine] Gamerule doMobSpawning locked to false.')
 })

@@ -15,7 +15,7 @@
       "icon": {
         "item": "tacz:modern_kinetic_gun",
         "nbt": {
-          "GunId": "tacz:glock_17"
+          "GunId": "tacz:m1911"
         }
       }
     },
@@ -25,7 +25,7 @@
       "icon": {
         "item": "tacz:modern_kinetic_gun",
         "nbt": {
-          "GunId": "tacz:ai_awp"
+          "GunId": "tacz:springfield1873"
         }
       }
     },
@@ -55,7 +55,7 @@
       "icon": {
         "item": "tacz:modern_kinetic_gun",
         "nbt": {
-          "GunId": "tacz:hk_mp5a5"
+          "GunId": "tacz:uzi"
         }
       }
     },
@@ -75,7 +75,7 @@
       "icon": {
         "item": "tacz:modern_kinetic_gun",
         "nbt": {
-          "GunId": "tacz:m249"
+          "GunId": "tacz:rpk"
         }
       }
     },

@@ -5,11 +5,12 @@ ServerEvents.recipes(event => {
     // Alternative early-game recipe using Copper and Iron
     event.shaped('minecraft:brewing_stand', [
         ' I ',
-        ' C ',
+        'RRR',
         'SSS'
     ], {
-        I: 'minecraft:iron_ingot',
+        I: 'winterheart:iron_rod',
         C: 'minecraft:copper_ingot',
+        R: 'winterheart:gold_ring',
         S: 'minecraft:cobblestone'
     })
 })
