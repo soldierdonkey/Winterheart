@@ -10,7 +10,18 @@
     "kubejs:saltpeter": "minecraft:furnace|minecraft:kjs/saltpeter",
     "legendarysurvivaloverhaul:purified_water_bottle": "minecraft:blasting|legendarysurvivaloverhaul:purified_water_bottle_from_blasting_potion",
     "minecraft:bone_meal": "minecraft:crafting|minecraft:bone_meal",
-    "minecraft:spruce_planks": "minecraft:crafting|minecraft:spruce_planks"
+    "minecraft:charcoal": "minecraft:furnace|minecraft:charcoal",
+    "minecraft:copper_ingot": "minecraft:furnace|minecraft:copper_ingot_from_smelting_raw_copper",
+    "minecraft:gunpowder": "minecraft:crafting|minecraft:kjs/gunpowder",
+    "minecraft:iron_ingot": "minecraft:furnace|minecraft:iron_ingot_from_smelting_raw_iron",
+    "minecraft:spruce_planks": "minecraft:crafting|minecraft:spruce_planks",
+    "tacz:ammo:tacz:12g": "tacz:gun_smith_table/tacz_ammo_workbench|kubejs:tacz_workbench/tacz_12g",
+    "winterheart:copper_plate": "minecraft:crafting|winterheart:crafting/copper_plate_from_hammer",
+    "winterheart:copper_ring": "minecraft:crafting|winterheart:crafting/copper_ring_from_rod",
+    "winterheart:copper_rod": "minecraft:crafting|winterheart:crafting/copper_rods_from_plate",
+    "winterheart:iron_bolt": "minecraft:crafting|winterheart:crafting/iron_bolts_from_rod",
+    "winterheart:iron_plate": "minecraft:crafting|winterheart:crafting/iron_plate_from_hammer",
+    "winterheart:iron_rod": "minecraft:crafting|winterheart:crafting/iron_rods_from_plate"
   },
   "disabled": []
 }

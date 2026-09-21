@@ -6,3 +6,6 @@ net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen {
 net.minecraft.client.gui.screens.inventory.InventoryScreen {
 }
 
+com.tacz.guns.client.gui.GunSmithTableScreen {
+}
+
