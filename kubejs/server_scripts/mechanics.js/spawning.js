@@ -62,7 +62,9 @@ const SPAWNER_CONFIG = {
         'stray',
         'zombie',
         'creeper',
-        'baby_zombie'
+        'baby_zombie',
+        'cordyceps_zombie',
+        'baby_spider'
     ],
 
     LIVESTOCK_POOL: [
@@ -70,7 +72,8 @@ const SPAWNER_CONFIG = {
         'sheep',
         'pig',
         'chicken',
-        'rabbit'
+        'rabbit',
+        'polar_bear'
     ]
 }
 

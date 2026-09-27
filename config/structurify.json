@@ -8,7 +8,44 @@
     "global_spacing_and_separation_modifier": 1.0
   },
   "structure_namespaces": [],
-  "structures": [],
+  "structures": [
+    {
+      "structure": "antlers:cabin",
+      "disable": true
+    },
+    {
+      "structure": "minecraft:ruined_portal",
+      "disable": true
+    },
+    {
+      "structure": "minecraft:ancient_city",
+      "disable": true
+    },
+    {
+      "structure": "minecraft:ruined_portal_mountain",
+      "disable": true
+    },
+    {
+      "structure": "minecraft:ruined_portal_ocean",
+      "disable": true
+    },
+    {
+      "structure": "minecraft:igloo",
+      "disable": true
+    },
+    {
+      "structure": "minecraft:village_snowy",
+      "disable": true
+    },
+    {
+      "structure": "minecraft:village_taiga",
+      "disable": true
+    },
+    {
+      "structure": "minecraft:monument",
+      "disable": true
+    }
+  ],
   "structure_sets": [],
   "structure_template_pools": []
 }

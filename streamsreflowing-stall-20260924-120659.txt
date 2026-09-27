@@ -1,0 +1,1361 @@
+Streams Reflowing chunk-stall dump 20260924-120659
+no chunk progress for 20 s | world ready=true | chunks carved=0 | chunk holders=2401 | deferred steps pending=0
+sampler pool 2/6 | exec=1/1 queue=0 activeBuilds=0 urgentWaiters=0
+player soldierdonkey at (67,71,54) view 6
+  plate PlateKey[cx=-1, cz=-1] ready=true cached=true marker=false queued=none
+  plate PlateKey[cx=-1, cz=0] ready=true cached=true marker=false queued=none
+  plate PlateKey[cx=0, cz=0] ready=true cached=true marker=false queued=none
+
+"C2ME Storage #1" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME Storage #10" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME Storage #11" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME Storage #12" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME Storage #2" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME Storage #3" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME Storage #4" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME Storage #5" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME Storage #6" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME Storage #7" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME Storage #8" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME Storage #9" prio=4 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.Object.wait(Unknown Source)
+    at TRANSFORMER/c2meforge@0.2.0-forge.9.6/com.ishland.c2me.rewrites.chunkio.common.C2MEStorageThread.run(C2MEStorageThread.java:112)
+
+"C2ME worker #1" prio=4 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"C2ME worker #2" prio=4 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"C2ME worker #3" prio=4 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"C2ME worker #4" prio=4 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"C2ME worker #5" prio=4 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Chunk Render Task Executor #0" prio=3 state=WAITING
+    at MC-BOOTSTRAP/com.google.common@31.1-jre/com.google.common.collect.ImmutableList$1.get(ImmutableList.java:412)
+    at MC-BOOTSTRAP/com.google.common@31.1-jre/com.google.common.collect.AbstractIndexedListIterator.next(AbstractIndexedListIterator.java:82)
+    at TRANSFORMER/forge@47.4.10/net.minecraftforge.client.model.pipeline.QuadBakingVertexConsumer.lambda$new$0(QuadBakingVertexConsumer.java:33)
+    at TRANSFORMER/forge@47.4.10/net.minecraftforge.client.model.pipeline.QuadBakingVertexConsumer$$Lambda$24942/0x0000000802eee238.accept(Unknown Source)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.Util.m_137469_(Util.java:359)
+    at TRANSFORMER/forge@47.4.10/net.minecraftforge.client.model.pipeline.QuadBakingVertexConsumer.<init>(QuadBakingVertexConsumer.java:31)
+    at TRANSFORMER/softimprints@2.8.0/com.nine.softimprints.model.render.EmitHelper.buildStripQuad(EmitHelper.java:33)
+    at TRANSFORMER/softimprints@2.8.0/com.nine.softimprints.model.render.TopSurfaceRenderer.lambda$buildQuads$0(TopSurfaceRenderer.java:41)
+    at TRANSFORMER/softimprints@2.8.0/com.nine.softimprints.model.render.TopSurfaceRenderer$$Lambda$24940/0x0000000802eeb1a8.accept(Unknown Source)
+    at TRANSFORMER/softimprints@2.8.0/com.nine.softimprints.core.map.ImprintStrip.consume(ImprintStrip.java:23)
+    at TRANSFORMER/softimprints@2.8.0/com.nine.softimprints.model.render.TopSurfaceRenderer.buildQuads(TopSurfaceRenderer.java:32)
+    at TRANSFORMER/softimprints@2.8.0/com.nine.softimprints.model.ForgeBaseImprintableStateModel.buildTopQuads(ForgeBaseImprintableStateModel.java:163)
+    at TRANSFORMER/softimprints@2.8.0/com.nine.softimprints.model.ForgeBaseImprintableStateModel.getQuads(ForgeBaseImprintableStateModel.java:140)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.pipeline.BlockRenderer.getGeometry(BlockRenderer.java:147)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.pipeline.BlockRenderer.renderModel(BlockRenderer.java:122)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.tasks.ChunkBuilderMeshingTask.execute(ChunkBuilderMeshingTask.java:139)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.tasks.ChunkBuilderMeshingTask.execute(ChunkBuilderMeshingTask.java:51)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.executor.ChunkJobTyped.execute(ChunkJobTyped.java:44)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.executor.ChunkBuilder$WorkerRunnable.run(ChunkBuilder.java:226)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Chunk Render Task Executor #1" prio=3 state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.Semaphore.acquire(Unknown Source)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.executor.ChunkJobQueue.waitForNextJob(ChunkJobQueue.java:40)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.executor.ChunkBuilder$WorkerRunnable.run(ChunkBuilder.java:213)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Chunk Render Task Executor #2" prio=3 state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.Semaphore.acquire(Unknown Source)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.executor.ChunkJobQueue.waitForNextJob(ChunkJobQueue.java:40)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.executor.ChunkBuilder$WorkerRunnable.run(ChunkBuilder.java:213)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Chunk Render Task Executor #3" prio=3 state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.Semaphore.acquire(Unknown Source)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.executor.ChunkJobQueue.waitForNextJob(ChunkJobQueue.java:40)
+    at TRANSFORMER/embeddium@0.3.31+mc1.20.1/me.jellysquid.mods.sodium.client.render.chunk.compile.executor.ChunkBuilder$WorkerRunnable.run(ChunkBuilder.java:213)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Common-Cleaner" prio=8 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+    at java.base@17.0.8/jdk.internal.ref.CleanerImpl.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+    at java.base@17.0.8/jdk.internal.misc.InnocuousThread.run(Unknown Source)
+
+"CompletableFutureDelayScheduler" prio=4 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"CullThread" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/entityculling@1.11.1/dev.tr7zw.entityculling.CullTask.run(CullTask.java:57)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"DFU cleaning thread" prio=1 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at TRANSFORMER/modernfix@5.27.83+mc1.20.1/org.embeddedt.modernfix.dfu.DFUBlaster$CleanerThread.run(DFUBlaster.java:61)
+
+"FancyMenu-JsonPlaceholder-Cleanup" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.util.TimerThread.mainLoop(Unknown Source)
+    at java.base@17.0.8/java.util.TimerThread.run(Unknown Source)
+
+"FancyMenu-WebUtils-ConnectivityCheck-1" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"FileSystemWatcher" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"FileSystemWatcher" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"FileSystemWatcher" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"FileSystemWatcher" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"FileSystemWatcher" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"FileSystemWatcher" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"FileSystemWatcher" prio=4 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"FileSystemWatcher" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Finalizer" prio=8 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+    at java.base@17.0.8/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+    at java.base@17.0.8/java.lang.ref.Finalizer$FinalizerThread.run(Unknown Source)
+
+"ForkJoinPool.commonPool-worker-1" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"ForkJoinPool.commonPool-worker-2" prio=10 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkUntil(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"ForkJoinPool.commonPool-worker-3" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"ForkJoinPool.commonPool-worker-4" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"ForkJoinPool.commonPool-worker-5" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"ForkJoinPool.commonPool-worker-6" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"ForkJoinPool.commonPool-worker-7" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Fzzy Config File Watcher" prio=10 state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"HttpClient-1-SelectorManager" prio=5 daemon state=RUNNABLE
+    at java.base@17.0.8/sun.nio.ch.KQueue.poll(Native Method)
+    at java.base@17.0.8/sun.nio.ch.KQueueSelectorImpl.doSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.select(Unknown Source)
+    at platform/java.net.http@17.0.8/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(Unknown Source)
+
+"HttpClient-2-SelectorManager" prio=5 daemon state=RUNNABLE
+    at java.base@17.0.8/sun.nio.ch.KQueue.poll(Native Method)
+    at java.base@17.0.8/sun.nio.ch.KQueueSelectorImpl.doSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.select(Unknown Source)
+    at platform/java.net.http@17.0.8/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(Unknown Source)
+
+"HttpClient-4-SelectorManager" prio=10 daemon state=RUNNABLE
+    at java.base@17.0.8/sun.nio.ch.KQueue.poll(Native Method)
+    at java.base@17.0.8/sun.nio.ch.KQueueSelectorImpl.doSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.select(Unknown Source)
+    at platform/java.net.http@17.0.8/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(Unknown Source)
+
+"HttpClient-4-Worker-0" prio=10 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.SynchronousQueue$TransferStack.transfer(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.SynchronousQueue.poll(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"HttpClient-5-SelectorManager" prio=5 daemon state=RUNNABLE
+    at java.base@17.0.8/sun.nio.ch.KQueue.poll(Native Method)
+    at java.base@17.0.8/sun.nio.ch.KQueueSelectorImpl.doSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.select(Unknown Source)
+    at platform/java.net.http@17.0.8/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(Unknown Source)
+
+"HttpClient-6-SelectorManager" prio=4 daemon state=RUNNABLE
+    at java.base@17.0.8/sun.nio.ch.KQueue.poll(Native Method)
+    at java.base@17.0.8/sun.nio.ch.KQueueSelectorImpl.doSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.select(Unknown Source)
+    at platform/java.net.http@17.0.8/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(Unknown Source)
+
+"IO-Worker-4" prio=10 state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.SynchronousQueue$TransferStack.transfer(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.SynchronousQueue.poll(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"JEI Config File Watcher" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingDeque.pollFirst(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingDeque.poll(Unknown Source)
+    at java.base@17.0.8/sun.nio.fs.AbstractWatchService.poll(Unknown Source)
+    at TRANSFORMER/jei@15.56.0.205/mezz.jei.common.config.file.FileWatcherThread.runIteration(FileWatcherThread.java:96)
+    at TRANSFORMER/jei@15.56.0.205/mezz.jei.common.config.file.FileWatcherThread.run(FileWatcherThread.java:75)
+
+"JEI Delayed Executor 0" prio=5 state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"JNA Cleaner" prio=5 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+    at java.base@17.0.8/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+    at MC-BOOTSTRAP/com.sun.jna@5.12.1/com.sun.jna.internal.Cleaner$1.run(Cleaner.java:58)
+
+"Java2D Disposer" prio=10 daemon state=WAITING
+    at java.base@17.0.8/java.lang.Object.wait(Native Method)
+    at java.base@17.0.8/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+    at java.base@17.0.8/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+    at java.desktop@17.0.8/sun.java2d.Disposer.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"KubeJS Background Thread" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/kubejs@2001.6.5-build.26/dev.latvian.mods.kubejs.util.KubeJSBackgroundThread.run(KubeJSBackgroundThread.java:26)
+
+"KubeJS Recipe Event Worker 0" prio=10 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkUntil(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"KubeJS Recipe Event Worker 0" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"KubeJS Recipe Event Worker 0" prio=10 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkUntil(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"KubeJS Recipe Event Worker 0" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"KubeJS Recipe Event Worker 0" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"KubeJS Recipe Event Worker 0" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"KubeJS Recipe Event Worker 0" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"ModernFix integrated server watchdog" prio=4 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/modernfix@5.27.83+mc1.20.1/org.embeddedt.modernfix.world.IntegratedWatchdog.run(IntegratedWatchdog.java:54)
+
+"Netty Local Client IO #0" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at MC-BOOTSTRAP/io.netty.common@4.1.82.Final/io.netty.util.concurrent.SingleThreadEventExecutor.takeTask(SingleThreadEventExecutor.java:244)
+    at MC-BOOTSTRAP/io.netty.transport@4.1.82.Final/io.netty.channel.DefaultEventLoop.run(DefaultEventLoop.java:52)
+    at MC-BOOTSTRAP/io.netty.common@4.1.82.Final/io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+    at MC-BOOTSTRAP/io.netty.common@4.1.82.Final/io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Netty Server IO #0" prio=10 daemon state=RUNNABLE
+    at java.base@17.0.8/sun.nio.ch.KQueue.poll(Native Method)
+    at java.base@17.0.8/sun.nio.ch.KQueueSelectorImpl.doSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.select(Unknown Source)
+    at MC-BOOTSTRAP/io.netty.transport@4.1.82.Final/io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+    at MC-BOOTSTRAP/io.netty.transport@4.1.82.Final/io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+    at MC-BOOTSTRAP/io.netty.transport@4.1.82.Final/io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+    at MC-BOOTSTRAP/io.netty.common@4.1.82.Final/io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+    at MC-BOOTSTRAP/io.netty.common@4.1.82.Final/io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Netty Server IO #1" prio=10 daemon state=RUNNABLE
+    at java.base@17.0.8/sun.nio.ch.KQueue.poll(Native Method)
+    at java.base@17.0.8/sun.nio.ch.KQueueSelectorImpl.doSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+    at java.base@17.0.8/sun.nio.ch.SelectorImpl.select(Unknown Source)
+    at MC-BOOTSTRAP/io.netty.transport@4.1.82.Final/io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+    at MC-BOOTSTRAP/io.netty.transport@4.1.82.Final/io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+    at MC-BOOTSTRAP/io.netty.transport@4.1.82.Final/io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+    at MC-BOOTSTRAP/io.netty.common@4.1.82.Final/io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+    at MC-BOOTSTRAP/io.netty.common@4.1.82.Final/io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Notification Thread" prio=9 daemon state=RUNNABLE
+
+"Quantified-OpenCL-Probe" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Quantified-OpenCL-Probe-Scheduler" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Quantified-Vulkan-Probe-Scheduler" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Reference Handler" prio=10 daemon state=RUNNABLE
+    at java.base@17.0.8/java.lang.ref.Reference.waitForReferencePendingList(Native Method)
+    at java.base@17.0.8/java.lang.ref.Reference.processPendingReferences(Unknown Source)
+    at java.base@17.0.8/java.lang.ref.Reference$ReferenceHandler.run(Unknown Source)
+
+"Render thread" prio=10 state=RUNNABLE
+    at MC-BOOTSTRAP/org.lwjgl.opengl@3.3.1+7/org.lwjgl.opengl.GL15C.nglBufferData(Native Method)
+    at MC-BOOTSTRAP/org.lwjgl.opengl@3.3.1+7/org.lwjgl.opengl.GL15C.glBufferData(GL15C.java:267)
+    at MC-BOOTSTRAP/org.lwjgl.opengl@3.3.1+7/org.lwjgl.opengl.GL15.glBufferData(GL15.java:281)
+    at TRANSFORMER/minecraft@1.20.1/com.mojang.blaze3d.platform.GlStateManager._glBufferData(GlStateManager.java:302)
+    at TRANSFORMER/minecraft@1.20.1/com.mojang.blaze3d.systems.RenderSystem.glBufferData(RenderSystem.java:936)
+    at TRANSFORMER/minecraft@1.20.1/com.mojang.blaze3d.vertex.VertexBuffer.m_231218_(VertexBuffer.java:74)
+    at TRANSFORMER/minecraft@1.20.1/com.mojang.blaze3d.vertex.VertexBuffer.m_231221_(VertexBuffer.java:47)
+    at TRANSFORMER/minecraft@1.20.1/com.mojang.blaze3d.vertex.BufferUploader.m_231213_(BufferUploader.java:54)
+    at TRANSFORMER/minecraft@1.20.1/com.mojang.blaze3d.vertex.BufferUploader.m_231211_(BufferUploader.java:31)
+    at TRANSFORMER/minecraft@1.20.1/com.mojang.blaze3d.vertex.BufferUploader.m_231202_(BufferUploader.java:26)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.renderer.RenderType.m_276775_(RenderType.java:434)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.renderer.MultiBufferSource$BufferSource.m_109912_(MultiBufferSource.java:97)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.renderer.MultiBufferSource$BufferSource.m_109916_(MultiBufferSource.java:76)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.renderer.MultiBufferSource$BufferSource$$Lambda$16183/0x0000000802399878.accept(Unknown Source)
+    at java.base@17.0.8/java.util.Optional.ifPresent(Unknown Source)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.renderer.MultiBufferSource$BufferSource.m_109911_(MultiBufferSource.java:73)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.gui.GuiGraphics.m_280262_(GuiGraphics.java:125)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.gui.GuiGraphics.m_286081_(GuiGraphics.java:93)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.gui.GuiGraphics.m_285795_(GuiGraphics.java:222)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.gui.GuiGraphics.m_280046_(GuiGraphics.java:192)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.gui.GuiGraphics.m_280509_(GuiGraphics.java:188)
+    at TRANSFORMER/old_recording@1.0.0/com.example.cinescope.CineScopeClient.renderOverlay(CineScopeClient.java:221)
+    at TRANSFORMER/old_recording@1.0.0/com.example.cinescope.CineScopeClient.renderHudOverlay(CineScopeClient.java:120)
+    at TRANSFORMER/old_recording@1.0.0/com.example.cinescope.ClientForgeEvents.onHudRender(ClientForgeEvents.java:36)
+    at TRANSFORMER/old_recording@1.0.0/com.example.cinescope.__ClientForgeEvents_onHudRender_Post.invoke(.dynamic)
+    at MC-BOOTSTRAP/net.minecraftforge.eventbus/net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:73)
+    at MC-BOOTSTRAP/net.minecraftforge.eventbus/net.minecraftforge.eventbus.EventBus$$Lambda$4676/0x0000000800e37b58.invoke(Unknown Source)
+    at MC-BOOTSTRAP/net.minecraftforge.eventbus/net.minecraftforge.eventbus.EventBus.post(EventBus.java:315)
+    at MC-BOOTSTRAP/net.minecraftforge.eventbus/net.minecraftforge.eventbus.EventBus.post(EventBus.java:296)
+    at TRANSFORMER/forge@47.4.10/net.minecraftforge.client.gui.overlay.ForgeGui.post(ForgeGui.java:648)
+    at TRANSFORMER/forge@47.4.10/net.minecraftforge.client.gui.overlay.ForgeGui.lambda$render$0(ForgeGui.java:127)
+    at TRANSFORMER/forge@47.4.10/net.minecraftforge.client.gui.overlay.ForgeGui$$Lambda$24630/0x0000000802e6b608.accept(Unknown Source)
+    at MC-BOOTSTRAP/com.google.common@31.1-jre/com.google.common.collect.ImmutableList.forEach(ImmutableList.java:422)
+    at TRANSFORMER/forge@47.4.10/net.minecraftforge.client.gui.overlay.ForgeGui.m_280421_(ForgeGui.java:121)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.renderer.GameRenderer.m_109093_(GameRenderer.java:945)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.Minecraft.m_91383_(Minecraft.java:1146)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.Minecraft.m_91374_(Minecraft.java:718)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.main.Main.main(Main.java:218)
+    at java.base@17.0.8/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at java.base@17.0.8/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+    at java.base@17.0.8/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+    at java.base@17.0.8/java.lang.reflect.Method.invoke(Unknown Source)
+    at MC-BOOTSTRAP/fmlloader@1.20.1-47.4.10/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:111)
+    at MC-BOOTSTRAP/fmlloader@1.20.1-47.4.10/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:99)
+    at MC-BOOTSTRAP/fmlloader@1.20.1-47.4.10/net.minecraftforge.fml.loading.targets.CommonClientLaunchHandler.lambda$makeService$0(CommonClientLaunchHandler.java:25)
+    at MC-BOOTSTRAP/fmlloader@1.20.1-47.4.10/net.minecraftforge.fml.loading.targets.CommonClientLaunchHandler$$Lambda$1189/0x00000008005c6850.run(Unknown Source)
+    at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30)
+    at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53)
+    at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71)
+    at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.Launcher.run(Launcher.java:108)
+    at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.Launcher.main(Launcher.java:78)
+    at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26)
+    at MC-BOOTSTRAP/cpw.mods.modlauncher@10.0.9/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23)
+    at app/cpw.mods.bootstraplauncher@1.1.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141)
+
+"Server thread" prio=4 state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.server.MinecraftServer.m_5667_(MinecraftServer.java:1865)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.util.thread.BlockableEventLoop.m_18701_(BlockableEventLoop.java:141)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.server.MinecraftServer.mixinextras$bridge$m_18701_$265(MinecraftServer.java)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.server.MinecraftServer$$Lambda$21989/0x0000000802ad7a10.call(Unknown Source)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.server.MinecraftServer.wrapOperation$zgn000$managedBlock(MinecraftServer.java:1856)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.server.MinecraftServer.m_130012_(MinecraftServer.java:733)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.server.MinecraftServer.m_130011_(MinecraftServer.java:665)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.server.MinecraftServer.m_206580_(MinecraftServer.java:251)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.server.MinecraftServer$$Lambda$21759/0x0000000802a53d00.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Signal Dispatcher" prio=9 daemon state=RUNNABLE
+
+"Soft Imprints Update Checker" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Sound engine" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.sounds.SoundEngineExecutor.m_5667_(SoundEngineExecutor.java:49)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.util.thread.BlockableEventLoop.m_18701_(BlockableEventLoop.java:141)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.sounds.SoundEngineExecutor.m_120336_(SoundEngineExecutor.java:42)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.client.sounds.SoundEngineExecutor$$Lambda$14964/0x00000008020c9630.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-0" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at TRANSFORMER/modernfix@5.27.83+mc1.20.1/org.embeddedt.modernfix.forge.config.NightConfigWatchThrottler$1$1.iterator(NightConfigWatchThrottler.java:49)
+    at MC-BOOTSTRAP/com.electronwill.nightconfig.core@3.6.4/com.electronwill.nightconfig.core.file.FileWatcher$WatcherThread.run(FileWatcher.java:162)
+
+"Thread-10" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-11" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-12" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-13" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-14" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/tacz@1.1.8-hotfix/com.tacz.guns.util.math.SecondOrderDynamics.update(SecondOrderDynamics.java:89)
+    at TRANSFORMER/tacz@1.1.8-hotfix/com.tacz.guns.util.math.SecondOrderDynamics$$Lambda$9772/0x000000080170e4a8.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.FutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-15" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/tacz@1.1.8-hotfix/com.tacz.guns.util.math.SecondOrderDynamics.update(SecondOrderDynamics.java:89)
+    at TRANSFORMER/tacz@1.1.8-hotfix/com.tacz.guns.util.math.SecondOrderDynamics$$Lambda$9772/0x000000080170e4a8.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.FutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-16" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/tacz@1.1.8-hotfix/com.tacz.guns.util.math.SecondOrderDynamics.update(SecondOrderDynamics.java:89)
+    at TRANSFORMER/tacz@1.1.8-hotfix/com.tacz.guns.util.math.SecondOrderDynamics$$Lambda$9772/0x000000080170e4a8.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.FutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-17" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/tacz@1.1.8-hotfix/com.tacz.guns.util.math.SecondOrderDynamics.update(SecondOrderDynamics.java:89)
+    at TRANSFORMER/tacz@1.1.8-hotfix/com.tacz.guns.util.math.SecondOrderDynamics$$Lambda$9772/0x000000080170e4a8.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.FutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-18" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/configapi@1.1/me.katto.configApi.API.ConfigAPI.lambda$startWatcher$0(ConfigAPI.java:269)
+    at TRANSFORMER/configapi@1.1/me.katto.configApi.API.ConfigAPI$$Lambda$9962/0x00000008017c2fa0.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-22" prio=5 state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/fancymenu@3.9.12/de.keksuccino.fancymenu.customization.server.ServerCache.lambda$init$0(ServerCache.java:33)
+    at TRANSFORMER/fancymenu@3.9.12/de.keksuccino.fancymenu.customization.server.ServerCache$$Lambda$16138/0x000000080237f7a8.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-24" prio=10 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/konkrete@1.8.0/de.keksuccino.konkrete.sound.SoundHandler.lambda$init$0(SoundHandler.java:50)
+    at TRANSFORMER/konkrete@1.8.0/de.keksuccino.konkrete.sound.SoundHandler$$Lambda$17472/0x000000080254f370.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-3" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-4" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/tacz@1.1.8-hotfix/com.tacz.guns.util.math.SecondOrderDynamics.update(SecondOrderDynamics.java:89)
+    at TRANSFORMER/tacz@1.1.8-hotfix/com.tacz.guns.util.math.SecondOrderDynamics$$Lambda$9772/0x000000080170e4a8.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.FutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-5" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-6" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-7" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-8" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Thread-9" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"Timer hack thread" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/java.lang.Thread.sleep(Native Method)
+    at TRANSFORMER/minecraft@1.20.1/net.minecraft.Util$9.run(Util.java:672)
+
+"Worker-Main-1" prio=4 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Worker-Main-2" prio=4 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Worker-Main-3" prio=4 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkUntil(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Worker-Main-5" prio=4 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Worker-Main-6" prio=4 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Worker-ResourceReload-0" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Worker-ResourceReload-1" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Worker-ResourceReload-2" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Worker-ResourceReload-3" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Worker-ResourceReload-4" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Worker-ResourceReload-5" prio=10 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkUntil(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Worker-ResourceReload-6" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"Yggdrasil Key Fetcher" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"c2me-sched" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"minecraft_overworld - Light" prio=4 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"modloading-worker-0" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"modloading-worker-0" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"modloading-worker-0" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"modloading-worker-0" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"modloading-worker-0" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkUntil(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"modloading-worker-0" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"modloading-worker-0" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.awaitWork(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+
+"pool-7-thread-1" prio=5 state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"pool-8-thread-1" prio=5 state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"pool-9-thread-1" prio=5 state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"process reaper" prio=10 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.SynchronousQueue$TransferStack.transfer(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.SynchronousQueue.poll(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-api-log-writer" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-bg-1" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at TRANSFORMER/quantified@2.2.3/org.admany.quantified.core.common.async.core.PriorityScheduler.backgroundLoop(PriorityScheduler.java:369)
+    at TRANSFORMER/quantified@2.2.3/org.admany.quantified.core.common.async.core.PriorityScheduler$$Lambda$10546/0x0000000801910298.run(Unknown Source)
+    at TRANSFORMER/quantified@2.2.3/org.admany.quantified.core.common.async.core.PriorityScheduler.lambda$ensureWorkers$4(PriorityScheduler.java:508)
+    at TRANSFORMER/quantified@2.2.3/org.admany.quantified.core.common.async.core.PriorityScheduler$$Lambda$10545/0x000000080190bcf8.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.FutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-cache-maintainer" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-coalescer" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-dev-overlay" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-disk-cache-maintenance" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-fg-1" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at TRANSFORMER/quantified@2.2.3/org.admany.quantified.core.common.async.core.PriorityScheduler.foregroundLoop(PriorityScheduler.java:288)
+    at TRANSFORMER/quantified@2.2.3/org.admany.quantified.core.common.async.core.PriorityScheduler$$Lambda$10544/0x000000080190bad0.run(Unknown Source)
+    at TRANSFORMER/quantified@2.2.3/org.admany.quantified.core.common.async.core.PriorityScheduler.lambda$ensureWorkers$4(PriorityScheduler.java:508)
+    at TRANSFORMER/quantified@2.2.3/org.admany.quantified.core.common.async.core.PriorityScheduler$$Lambda$10545/0x000000080190bcf8.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.FutureTask.run(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-gpu-telemetry" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-gpu-telemetry" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-gpu-telemetry" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-hk" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"quantified-telemetry" prio=5 daemon state=TIMED_WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"streamsreflowing-prefetch" prio=1 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.PriorityBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"streamsreflowing-stallwatch" prio=1 daemon state=RUNNABLE
+    at java.base@17.0.8/java.lang.Thread.dumpThreads(Native Method)
+    at java.base@17.0.8/java.lang.Thread.getAllStackTraces(Unknown Source)
+    at TRANSFORMER/streamsreflowing@2.13.7/dev.streamsreflowing.worldgen.ChunkStallWatch.a(Unknown Source)
+    at TRANSFORMER/streamsreflowing@2.13.7/dev.streamsreflowing.worldgen.ChunkStallWatch.a(Unknown Source)
+    at TRANSFORMER/streamsreflowing@2.13.7/dev.streamsreflowing.worldgen.ChunkStallWatch$$Lambda$23454/0x0000000802d08000.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"streamsreflowing-urgent" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.PriorityBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"streamsreflowing-urgent" prio=5 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.PriorityBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+
+"tacz-client-asset-preload" prio=10 daemon state=WAITING
+    at java.base@17.0.8/jdk.internal.misc.Unsafe.park(Native Method)
+    at java.base@17.0.8/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.unmanagedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ForkJoinPool.managedBlock(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.LinkedBlockingQueue.take(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+    at java.base@17.0.8/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+    at java.base@17.0.8/java.lang.Thread.run(Unknown Source)
+

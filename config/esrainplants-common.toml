@@ -1,0 +1,9 @@
+#1 out of X chance for crop to skip a growth stage
+#Range: 0 ~ 100
+skipGrowthChance = 4
+#If true, rain has to touch crop for it to grow faster.
+canRainBeBlocked = true
+#Show every Nth particle. 1 = show all, 2 = half, 3 = third, etc. 0 disables entirely.
+#Range: 0 ~ 8
+particleDensity = 1
+

@@ -2,8 +2,10 @@
   "hiddenCategories": [],
   "hiddenKeybinds": [
     "key.old_recording.toggle",
-    "key.old_recording.boost"
+    "key.old_recording.boost",
+    "key.firstperson.toggle",
+    "key.togglePerspective"
   ],
-  "disabledKeybinds": false,
-  "consoleLogs": false
+  "disabledKeybinds": true,
+  "consoleLogs": true
 }

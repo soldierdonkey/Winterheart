@@ -20,7 +20,9 @@
     "winterheart:copper_ring": "minecraft:crafting|winterheart:crafting/copper_ring_from_rod",
     "winterheart:copper_rod": "minecraft:crafting|winterheart:crafting/copper_rods_from_plate",
     "winterheart:iron_bolt": "minecraft:crafting|winterheart:crafting/iron_bolts_from_rod",
+    "winterheart:iron_gear": "minecraft:crafting|winterheart:crafting/iron_gear_from_plates_and_ring",
     "winterheart:iron_plate": "minecraft:crafting|winterheart:crafting/iron_plate_from_hammer",
+    "winterheart:iron_ring": "minecraft:crafting|winterheart:crafting/iron_ring_from_rod",
     "winterheart:iron_rod": "minecraft:crafting|winterheart:crafting/iron_rods_from_plate"
   },
   "disabled": []
