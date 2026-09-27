@@ -75,6 +75,7 @@ function saveState(player, server) {
     const overworld = server.getLevel('minecraft:overworld')
     const data = overworld.persistentData
     data.putBoolean('registering_checkpoint', true)
+    set_sanity(player, server, get_sanity(player) + 30)
     data.putDouble('previous_sanity_' + player.uuid, get_sanity(player))
     for (var prefix in TIME_CONFIG.RETAINED_CAPS) {
         if (TIME_CONFIG.RETAINED_CAPS.hasOwnProperty(prefix)) {

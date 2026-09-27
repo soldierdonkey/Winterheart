@@ -171,3 +171,76 @@ function savePlayerCap(player, capId, prefix) {
 function loadPlayerCap(player, capId, prefix) {
     return global.CapPersistence.loadCap(player, capId, prefix)
 }
+
+function rollrandom(arr) {
+  // Return undefined or handle empty arrays
+  if (!arr || arr.length === 0) return undefined; 
+  
+  // Calculate a random index based on the array length
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  
+  // Return the item at that index
+  return arr[randomIndex];
+}
+
+/**
+ * Executes a callback if a random chance is met.
+ * @param {number} percentage - The percent chance of success (0 to 100).
+ * @param {Function} onSuccess - The function to execute if successful.
+ * @param {Function} [onFailure] - Optional function to execute if unsuccessful (defaults to an empty function).
+ * @returns {*} The return value of the executed function.
+ */
+function randomChance(percentage, onSuccess, onFailure) {
+  const roll = Math.random() * 100;
+  
+  if (roll < percentage) {
+    return onSuccess;
+  }
+  
+  return onFailure != undefined ? onFailure : () => {};
+}
+
+/**
+ * Runs an anonymous function after a random delay.
+ * @param {Internal.ServerJS} server - The Minecraft server instance.
+ * @param {number} min - Minimum delay in ticks.
+ * @param {number} max - Maximum delay in ticks.
+ * @param {function} callback - The anonymous function to run.
+ */
+function randomDelay(server, min, max, callback) {
+    // Generate a random number of ticks between min and max (inclusive)
+    let delay = Math.floor(Math.random() * (max - min + 1)) + min;
+    
+    server.scheduleInTicks(delay, callback);
+}
+
+/**
+ * Displays a highly visible, customizable title message to a specific player.
+ * 
+ * @param {Internal.MinecraftServer} server - The current Minecraft server instance.
+ * @param {Internal.ServerPlayer} player - The specific player who will see the title.
+ * @param {string} msg - The text message content to display.
+ * @param {boolean} bold - Whether the text should be bold.
+ * @param {boolean} italic - Whether the text should be italicized.
+ */
+function showCustomTitle(server, player, msg, bold, italic) {
+    // Safety check to ensure a valid player was passed
+    if (!player) return;
+
+    // Get the player's username to target them safely in commands
+    let target = player.username;
+
+    // Set display times for the specific player (10 ticks fade-in, 60 stay, 20 fade-out)
+    server.runCommandSilent(`title ${target} times 10 60 20`);
+    
+    // Construct the customized JSON text component
+    let titleJson = JSON.stringify({
+        text: msg,
+        color: "dark_red",
+        bold: bold === true,
+        italic: italic === true
+    });
+    
+    // Send the formatted title to the specific player
+    server.runCommandSilent(`title ${target} actionbar ${titleJson}`);
+}
