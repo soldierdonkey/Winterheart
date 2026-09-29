@@ -518,5 +518,6 @@ EntityEvents.spawned(event => {
 
 ServerEvents.loaded(event => {
     event.server.runCommandSilent('gamerule doMobSpawning false')
+    event.server.runCommandSilent('gamerule naturalRegeneration false')
     console.log('[Spawner Engine] Gamerule doMobSpawning locked to false.')
 })

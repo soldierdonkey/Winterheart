@@ -129,6 +129,16 @@ function updatePlayerSidebar(server, player, overworld, id) {
         .addText(server, id, weather.style, `Weather: ${weather.label}`)
         .addSpacer(server, id)
         .addText(server, id, tempStyle, `Ambient: ${ambientTemp}°`)
+
+    // Appended by limb_poisoning.js when any limb is currently poised
+    if (typeof getLimbPoiseSidebarLines === 'function') {
+        let limbLines = getLimbPoiseSidebarLines(player)
+        if (limbLines.length > 0) {
+            CustomSidebar.addSpacer(server, id)
+                .addText(server, id, 'section', '-- Limb Status --')
+            limbLines.forEach(line => CustomSidebar.addText(server, id, line.style, line.text))
+        }
+    }
 }
 
 // ==========================================

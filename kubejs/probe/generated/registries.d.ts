@@ -250,14 +250,14 @@ declare namespace Registry {
     }
     class TemperatureModifiers extends Internal.RegistryEventJS<any> {
     }
-    class MapMarkers extends Internal.RegistryEventJS<any> {
-    }
-    class StructureModifier extends Internal.RegistryEventJS<any> {
+    class SoftFluids extends Internal.RegistryEventJS<any> {
     }
     class BiomeModifier extends Internal.RegistryEventJS<any> {
     }
-    class BankStyle extends Internal.RegistryEventJS<any> {
+    class StructureModifier extends Internal.RegistryEventJS<any> {
     }
-    class SoftFluids extends Internal.RegistryEventJS<any> {
+    class MapMarkers extends Internal.RegistryEventJS<any> {
+    }
+    class BankStyle extends Internal.RegistryEventJS<any> {
     }
 }
