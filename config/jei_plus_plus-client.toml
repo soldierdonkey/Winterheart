@@ -20,6 +20,12 @@ jsonGroupingEnabled = true
 mixNamespaceGroups = true
 #Recipe type ids excluded from the recipe tree, for example ["minecraft:blasting"].
 disabledRecipeTypes = []
+#Show the current page number on the creative-mode item tab bar.
+creativeTabPageNumberEnabled = true
+#Creative-tab ids pinned to the front of the tab order. Right-click a tab in the selector to change this list.
+pinnedCreativeTabs = []
+#Open JEI++'s ingredient directory when clicking a recipe slot with multiple output items.
+recipeIngredientDirectoryEnabled = true
 
 #Each built-in suffix group can be disabled independently.
 [defaultGroups]

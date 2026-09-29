@@ -1,6 +1,6 @@
 /// <reference path="./globals.d.ts" />
 declare const HOUR: 3600000.0;
-declare const global: {"currentTick": 361.0, "activeSidebars": {}, "CapPersistence": {}, "jeiRuntime": Internal.JeiRuntime, "ForgeCaps": {}};
+declare const global: {"currentTick": 506.0, "activeSidebars": {}, "CapPersistence": {}, "jeiRuntime": Internal.JeiRuntime, "ForgeCaps": {}};
 declare const IngredientHelper: Internal.IngredientForgeHelper;
 declare const ForgeModEvents: Internal.ForgeEventWrapper;
 declare const Painter: Internal.Painter;

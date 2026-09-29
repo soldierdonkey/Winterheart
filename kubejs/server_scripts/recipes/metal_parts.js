@@ -39,7 +39,7 @@ ServerEvents.recipes(event => {
       .id(`winterheart:crafting/${mat.name}_rods_from_plate`);
 
     // Rod -> Ring
-    event.shapeless(ring, [rod, '#forge:hammer'])
+    event.shapeless(ring, [Item.of(rod, 2), '#forge:hammer'])
       .damageIngredient('#forge:hammer')
       .id(`winterheart:crafting/${mat.name}_ring_from_rod`);
 

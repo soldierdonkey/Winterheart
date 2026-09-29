@@ -552,16 +552,16 @@
 
 		[body-damage.healing-limbs.custom-health-regen]
 			# Enable custom health regeneration when natural regen is off. Consumes saturation and hunger.
-			"Custom Health Regen Enabled" = true
+			"Custom Health Regen Enabled" = false
 			# Amount of health to regenerate per tick rate.
 			#Range: 0.0 ~ 1000.0
-			"Custom Health Regen Rate" = 1.0
+			"Custom Health Regen Rate" = 0
 			# How often in ticks health regenerates. 20 ticks = 1s
 			#Range: 1 ~ 10000
-			"Custom Health Regen Tick Rate" = 200
+			"Custom Health Regen Tick Rate" = 10000
 			# Food exhaustion per health point regenerated.
 			#Range: 0.0 ~ 100.0
-			"Custom Health Regen Food Exhaustion" = 6.0
+			"Custom Health Regen Food Exhaustion" = 1.0
 
 		# The First Aid Supplies overrides the passive limb regeneration as its effects is meant to be stronger.
 		[body-damage.healing-limbs.first-aid-supplies]

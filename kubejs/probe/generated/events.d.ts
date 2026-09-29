@@ -34,39 +34,39 @@ command(handler: (event: Internal.CommandEventJS) => void):void,
 blockLootTables(handler: (event: Internal.BlockLootEventJS) => void):void,
 tags(type: "enchantment", handler: (event: TagEvent.Enchantment) => void): void
 tags(type: "minecraft:enchantment", handler: (event: TagEvent.Enchantment) => void): void
-tags(type: "cat_variant", handler: (event: TagEvent.CatVariant) => void): void
-tags(type: "minecraft:cat_variant", handler: (event: TagEvent.CatVariant) => void): void
-tags(type: "damage_type", handler: (event: TagEvent.DamageType) => void): void
-tags(type: "minecraft:damage_type", handler: (event: TagEvent.DamageType) => void): void
-tags(type: "fluid", handler: (event: TagEvent.Fluid) => void): void
-tags(type: "minecraft:fluid", handler: (event: TagEvent.Fluid) => void): void
-tags(type: "worldgen/structure", handler: (event: TagEvent.Structure) => void): void
-tags(type: "minecraft:worldgen/structure", handler: (event: TagEvent.Structure) => void): void
-tags(type: "moonlight:map_markers", handler: (event: TagEvent.MapMarkers) => void): void
+tags(type: "worldgen/flat_level_generator_preset", handler: (event: TagEvent.FlatLevelGeneratorPreset) => void): void
+tags(type: "minecraft:worldgen/flat_level_generator_preset", handler: (event: TagEvent.FlatLevelGeneratorPreset) => void): void
+tags(type: "item", handler: (event: TagEvent.Item) => void): void
+tags(type: "minecraft:item", handler: (event: TagEvent.Item) => void): void
 tags(type: "point_of_interest_type", handler: (event: TagEvent.PointOfInterestType) => void): void
 tags(type: "minecraft:point_of_interest_type", handler: (event: TagEvent.PointOfInterestType) => void): void
 tags(type: "painting_variant", handler: (event: TagEvent.PaintingVariant) => void): void
 tags(type: "minecraft:painting_variant", handler: (event: TagEvent.PaintingVariant) => void): void
 tags(type: "instrument", handler: (event: TagEvent.Instrument) => void): void
 tags(type: "minecraft:instrument", handler: (event: TagEvent.Instrument) => void): void
+tags(type: "worldgen/structure", handler: (event: TagEvent.Structure) => void): void
+tags(type: "minecraft:worldgen/structure", handler: (event: TagEvent.Structure) => void): void
 tags(type: "block", handler: (event: TagEvent.Block) => void): void
 tags(type: "minecraft:block", handler: (event: TagEvent.Block) => void): void
+tags(type: "cat_variant", handler: (event: TagEvent.CatVariant) => void): void
+tags(type: "minecraft:cat_variant", handler: (event: TagEvent.CatVariant) => void): void
 tags(type: "entity_type", handler: (event: TagEvent.EntityType) => void): void
 tags(type: "minecraft:entity_type", handler: (event: TagEvent.EntityType) => void): void
-tags(type: "game_event", handler: (event: TagEvent.GameEvent) => void): void
-tags(type: "minecraft:game_event", handler: (event: TagEvent.GameEvent) => void): void
-tags(type: "worldgen/placed_feature", handler: (event: TagEvent.PlacedFeature) => void): void
-tags(type: "minecraft:worldgen/placed_feature", handler: (event: TagEvent.PlacedFeature) => void): void
-tags(type: "worldgen/flat_level_generator_preset", handler: (event: TagEvent.FlatLevelGeneratorPreset) => void): void
-tags(type: "minecraft:worldgen/flat_level_generator_preset", handler: (event: TagEvent.FlatLevelGeneratorPreset) => void): void
-tags(type: "item", handler: (event: TagEvent.Item) => void): void
-tags(type: "minecraft:item", handler: (event: TagEvent.Item) => void): void
 tags(type: "worldgen/biome", handler: (event: TagEvent.Biome) => void): void
 tags(type: "minecraft:worldgen/biome", handler: (event: TagEvent.Biome) => void): void
-tags(type: "banner_pattern", handler: (event: TagEvent.BannerPattern) => void): void
-tags(type: "minecraft:banner_pattern", handler: (event: TagEvent.BannerPattern) => void): void
 tags(type: "worldgen/world_preset", handler: (event: TagEvent.WorldPreset) => void): void
 tags(type: "minecraft:worldgen/world_preset", handler: (event: TagEvent.WorldPreset) => void): void
+tags(type: "worldgen/placed_feature", handler: (event: TagEvent.PlacedFeature) => void): void
+tags(type: "minecraft:worldgen/placed_feature", handler: (event: TagEvent.PlacedFeature) => void): void
+tags(type: "banner_pattern", handler: (event: TagEvent.BannerPattern) => void): void
+tags(type: "minecraft:banner_pattern", handler: (event: TagEvent.BannerPattern) => void): void
+tags(type: "damage_type", handler: (event: TagEvent.DamageType) => void): void
+tags(type: "minecraft:damage_type", handler: (event: TagEvent.DamageType) => void): void
+tags(type: "game_event", handler: (event: TagEvent.GameEvent) => void): void
+tags(type: "minecraft:game_event", handler: (event: TagEvent.GameEvent) => void): void
+tags(type: "moonlight:map_markers", handler: (event: TagEvent.MapMarkers) => void): void
+tags(type: "fluid", handler: (event: TagEvent.Fluid) => void): void
+tags(type: "minecraft:fluid", handler: (event: TagEvent.Fluid) => void): void
     /**
      * @at *server*
     */
@@ -157,11 +157,6 @@ tick(handler: (event: Internal.SanityTickEventJS) => void):void,
 };
 declare const TimelessGunEvents: {
     /**
-     * @at *client*
-    */
-beforeRenderHand(extra: string, handler: (event: Internal.GunKubeJSEvents$BeforeRenderHandEventJS) => void):void,
-beforeRenderHand(handler: (event: Internal.GunKubeJSEvents$BeforeRenderHandEventJS) => void):void,
-    /**
      * @at *server, client*
      * 
      * @cancellable
@@ -170,11 +165,9 @@ gunFireSelect(extra: string, handler: (event: Internal.GunKubeJSEvents$GunFireSe
 gunFireSelect(handler: (event: Internal.GunKubeJSEvents$GunFireSelectEventJS) => void):void,
     /**
      * @at *client*
-     * 
-     * @cancellable
     */
-renderLevelBobHurt(extra: string, handler: (event: Internal.GunKubeJSEvents$RenderLevelBobHurtEventJS) => void):void,
-renderLevelBobHurt(handler: (event: Internal.GunKubeJSEvents$RenderLevelBobHurtEventJS) => void):void,
+beforeRenderHand(extra: string, handler: (event: Internal.GunKubeJSEvents$BeforeRenderHandEventJS) => void):void,
+beforeRenderHand(handler: (event: Internal.GunKubeJSEvents$BeforeRenderHandEventJS) => void):void,
     /**
      * @at *server, client*
      * 
@@ -189,6 +182,13 @@ entityHurtByGunPre(handler: (event: Internal.GunKubeJSEvents$EntityHurtByGunPreE
     */
 ammoHitBlock(extra: string, handler: (event: Internal.GunKubeJSEvents$AmmoHitBlockEventJS) => void):void,
 ammoHitBlock(handler: (event: Internal.GunKubeJSEvents$AmmoHitBlockEventJS) => void):void,
+    /**
+     * @at *client*
+     * 
+     * @cancellable
+    */
+renderLevelBobHurt(extra: string, handler: (event: Internal.GunKubeJSEvents$RenderLevelBobHurtEventJS) => void):void,
+renderLevelBobHurt(handler: (event: Internal.GunKubeJSEvents$RenderLevelBobHurtEventJS) => void):void,
     /**
      * @at *client*
      * 
@@ -209,17 +209,17 @@ gunMelee(handler: (event: Internal.GunKubeJSEvents$GunMeleeEventJS) => void):voi
 attachmentProperty(extra: string, handler: (event: Internal.GunKubeJSEvents$AttachmentPropertyEventJS) => void):void,
 attachmentProperty(handler: (event: Internal.GunKubeJSEvents$AttachmentPropertyEventJS) => void):void,
     /**
-     * @at *client*
-    */
-swapItemWithOffHand(extra: string, handler: (event: Internal.GunKubeJSEvents$SwapItemWithOffHandEventJS) => void):void,
-swapItemWithOffHand(handler: (event: Internal.GunKubeJSEvents$SwapItemWithOffHandEventJS) => void):void,
-    /**
      * @at *server, client*
      * 
      * @cancellable
     */
 gunFire(extra: string, handler: (event: Internal.GunKubeJSEvents$GunFireEventJS) => void):void,
 gunFire(handler: (event: Internal.GunKubeJSEvents$GunFireEventJS) => void):void,
+    /**
+     * @at *client*
+    */
+swapItemWithOffHand(extra: string, handler: (event: Internal.GunKubeJSEvents$SwapItemWithOffHandEventJS) => void):void,
+swapItemWithOffHand(handler: (event: Internal.GunKubeJSEvents$SwapItemWithOffHandEventJS) => void):void,
     /**
      * @at *server, client*
     */
@@ -230,13 +230,6 @@ entityHurtByGunPost(handler: (event: Internal.GunKubeJSEvents$EntityHurtByGunPos
     */
 gunDraw(extra: string, handler: (event: Internal.GunKubeJSEvents$GunDrawEventJS) => void):void,
 gunDraw(handler: (event: Internal.GunKubeJSEvents$GunDrawEventJS) => void):void,
-    /**
-     * @at *client*
-     * 
-     * @cancellable
-    */
-renderLevelBobView(extra: string, handler: (event: Internal.GunKubeJSEvents$RenderLevelBobViewEventJS) => void):void,
-renderLevelBobView(handler: (event: Internal.GunKubeJSEvents$RenderLevelBobViewEventJS) => void):void,
     /**
      * @at *server, client*
      * 
@@ -256,13 +249,20 @@ gunShoot(handler: (event: Internal.GunKubeJSEvents$GunShootEventJS) => void):voi
      * 
      * @cancellable
     */
-renderItemInHandBobView(extra: string, handler: (event: Internal.GunKubeJSEvents$RenderItemInHandBobViewEventJS) => void):void,
-renderItemInHandBobView(handler: (event: Internal.GunKubeJSEvents$RenderItemInHandBobViewEventJS) => void):void,
+renderLevelBobView(extra: string, handler: (event: Internal.GunKubeJSEvents$RenderLevelBobViewEventJS) => void):void,
+renderLevelBobView(handler: (event: Internal.GunKubeJSEvents$RenderLevelBobViewEventJS) => void):void,
     /**
      * @at *server, client*
     */
 entityKillByGun(extra: string, handler: (event: Internal.GunKubeJSEvents$EntityKillByGunEventJS) => void):void,
 entityKillByGun(handler: (event: Internal.GunKubeJSEvents$EntityKillByGunEventJS) => void):void,
+    /**
+     * @at *client*
+     * 
+     * @cancellable
+    */
+renderItemInHandBobView(extra: string, handler: (event: Internal.GunKubeJSEvents$RenderItemInHandBobViewEventJS) => void):void,
+renderItemInHandBobView(handler: (event: Internal.GunKubeJSEvents$RenderItemInHandBobViewEventJS) => void):void,
     /**
      * @at *server, client*
      * 
@@ -956,11 +956,11 @@ registry(type: "forge:structure_modifier_serializers", handler: (event: Registry
 registry(type: "legendarysurvivaloverhaul:dynamic_temperature_modifiers", handler: (event: Registry.DynamicTemperatureModifiers) => void):void,
 registry(type: "legendarysurvivaloverhaul:item_attribute_temperature_modifiers", handler: (event: Registry.ItemAttributeTemperatureModifiers) => void):void,
 registry(type: "legendarysurvivaloverhaul:temperature_modifiers", handler: (event: Registry.TemperatureModifiers) => void):void,
-registry(type: "moonlight:map_markers", handler: (event: Registry.MapMarkers) => void):void,
-registry(type: "forge:structure_modifier", handler: (event: Registry.StructureModifier) => void):void,
-registry(type: "forge:biome_modifier", handler: (event: Registry.BiomeModifier) => void):void,
-registry(type: "streamsreflowing:bank_style", handler: (event: Registry.BankStyle) => void):void,
 registry(type: "moonlight:soft_fluids", handler: (event: Registry.SoftFluids) => void):void,
+registry(type: "forge:biome_modifier", handler: (event: Registry.BiomeModifier) => void):void,
+registry(type: "forge:structure_modifier", handler: (event: Registry.StructureModifier) => void):void,
+registry(type: "moonlight:map_markers", handler: (event: Registry.MapMarkers) => void):void,
+registry(type: "streamsreflowing:bank_style", handler: (event: Registry.BankStyle) => void):void,
     /**
      * @at *startup*
     */

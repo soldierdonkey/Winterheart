@@ -18,8 +18,8 @@ declare namespace com.ferreusveritas.dynamictrees.api.registry {
         abstract runOnNextLock(arg0: Internal.Runnable_): void;
         abstract getAllFor(arg0: string): Internal.Set<V>;
         abstract getName(): string;
-        abstract getType(): V;
         abstract getOptional(arg0: string): Optional<V>;
+        abstract getType(): V;
         abstract getGetterCodec(): Internal.Codec<V>;
         abstract generateIfValidRunnable(arg0: ResourceLocation_, arg1: Internal.Consumer_<V>, arg2: Internal.Runnable_): Internal.Runnable;
         abstract getRegistryNames(): Internal.Set<ResourceLocation>;
@@ -43,538 +43,6 @@ declare namespace com.ferreusveritas.dynamictrees.api.registry {
     type Registry_<V extends Internal.RegistryEntry<V>> = Registry<V>;
 }
 declare namespace Internal {
-    class Options implements Internal.IMixinOptions {
-        constructor(arg0: Internal.Minecraft_, arg1: Internal.File_)
-        panoramaSpeed(): Internal.OptionInstance<number>;
-        touchscreen(): Internal.OptionInstance<boolean>;
-        biomeBlendRadius(): Internal.OptionInstance<number>;
-        cloudStatus(): Internal.OptionInstance<Internal.CloudStatus>;
-        guiScale(): Internal.OptionInstance<number>;
-        chatOpacity(): Internal.OptionInstance<number>;
-        hideLightningFlash(): Internal.OptionInstance<boolean>;
-        chatColors(): Internal.OptionInstance<boolean>;
-        notificationDisplayTime(): Internal.OptionInstance<number>;
-        glintSpeed(): Internal.OptionInstance<number>;
-        getModelPartsFancyMenu(): Internal.Set<any>;
-        ambientOcclusion(): Internal.OptionInstance<boolean>;
-        handler$dop000$load(arg0: boolean, arg1: Internal.CallbackInfo_): void;
-        chatWidth(): Internal.OptionInstance<number>;
-        simulationDistance(): Internal.OptionInstance<number>;
-        chatDelay(): Internal.OptionInstance<number>;
-        chatLinks(): Internal.OptionInstance<boolean>;
-        soundDevice(): Internal.OptionInstance<string>;
-        getSoundSourceVolume(arg0: Internal.SoundSource_): number;
-        getCloudsType(): Internal.CloudStatus;
-        autoSuggestions(): Internal.OptionInstance<boolean>;
-        gamma(): Internal.OptionInstance<number>;
-        screenEffectScale(): Internal.OptionInstance<number>;
-        textBackgroundOpacity(): Internal.OptionInstance<number>;
-        toggleSprint(): Internal.OptionInstance<boolean>;
-        getClass(): typeof any;
-        setCameraType(arg0: Internal.CameraType_): void;
-        showAutosaveIndicator(): Internal.OptionInstance<boolean>;
-        autoJump(): Internal.OptionInstance<boolean>;
-        reducedDebugInfo(): Internal.OptionInstance<boolean>;
-        useNativeTransport(): boolean;
-        bobView(): Internal.OptionInstance<boolean>;
-        getEffectiveRenderDistance(): number;
-        operatorItemsTab(): Internal.OptionInstance<boolean>;
-        chatHeightFocused(): Internal.OptionInstance<number>;
-        load(): void;
-        glintStrength(): Internal.OptionInstance<number>;
-        setKey(arg0: Internal.KeyMapping_, arg1: Internal.InputConstants$Key_): void;
-        toString(): string;
-        fov(): Internal.OptionInstance<number>;
-        static "genericValueLabel(net.minecraft.network.chat.Component,net.minecraft.network.chat.Component)"(arg0: net.minecraft.network.chat.Component_, arg1: net.minecraft.network.chat.Component_): net.minecraft.network.chat.Component;
-        getSoundSourceOptionInstance(arg0: Internal.SoundSource_): Internal.OptionInstance<number>;
-        notifyAll(): void;
-        mipmapLevels(): Internal.OptionInstance<number>;
-        chatHeightUnfocused(): Internal.OptionInstance<number>;
-        updateResourcePacks(arg0: Internal.PackRepository_): void;
-        save(): void;
-        rawMouseInput(): Internal.OptionInstance<boolean>;
-        wait(arg0: number): void;
-        fovEffectScale(): Internal.OptionInstance<number>;
-        invertYMouse(): Internal.OptionInstance<boolean>;
-        chatLinksPrompt(): Internal.OptionInstance<boolean>;
-        dumpOptionsForReport(): string;
-        getBackgroundColor(arg0: number): number;
-        backgroundForChatOnly(): Internal.OptionInstance<boolean>;
-        entityShadows(): Internal.OptionInstance<boolean>;
-        damageTiltStrength(): Internal.OptionInstance<number>;
-        mouseWheelSensitivity(): Internal.OptionInstance<number>;
-        notify(): void;
-        telemetryOptInExtra(): Internal.OptionInstance<boolean>;
-        attackIndicator(): Internal.OptionInstance<Internal.AttackIndicatorStatus>;
-        framerateLimit(): Internal.OptionInstance<number>;
-        chatScale(): Internal.OptionInstance<number>;
-        darknessEffectScale(): Internal.OptionInstance<number>;
-        setServerRenderDistance(arg0: number): void;
-        highContrast(): Internal.OptionInstance<boolean>;
-        broadcastOptions(): void;
-        mainHand(): Internal.OptionInstance<Internal.HumanoidArm>;
-        "getBackgroundColor(int)"(arg0: number): number;
-        particles(): Internal.OptionInstance<Internal.ParticleStatus>;
-        invokeProcessOptionsFancyMenu(arg0: Internal.Options$FieldAccess_): void;
-        static genericValueLabel(arg0: net.minecraft.network.chat.Component_, arg1: net.minecraft.network.chat.Component_): net.minecraft.network.chat.Component;
-        onlyShowSecureChat(): Internal.OptionInstance<boolean>;
-        realmsNotifications(): Internal.OptionInstance<boolean>;
-        getFile(): Internal.File;
-        prioritizeChunkUpdates(): Internal.OptionInstance<Internal.PrioritizeChunkUpdates>;
-        static "genericValueLabel(net.minecraft.network.chat.Component,int)"(arg0: net.minecraft.network.chat.Component_, arg1: number): net.minecraft.network.chat.Component;
-        getBackgroundColor(arg0: number): number;
-        loadSelectedResourcePacks(arg0: Internal.PackRepository_): void;
-        wait(): void;
-        entityDistanceScaling(): Internal.OptionInstance<number>;
-        enableVsync(): Internal.OptionInstance<boolean>;
-        fullscreen(): Internal.OptionInstance<boolean>;
-        showSubtitles(): Internal.OptionInstance<boolean>;
-        discreteMouseScroll(): Internal.OptionInstance<boolean>;
-        isModelPartEnabled(arg0: Internal.PlayerModelPart_): boolean;
-        load(arg0: boolean): void;
-        narrator(): Internal.OptionInstance<Internal.NarratorStatus>;
-        static genericValueLabel(arg0: net.minecraft.network.chat.Component_, arg1: number): net.minecraft.network.chat.Component;
-        wait(arg0: number, arg1: number): void;
-        chatLineSpacing(): Internal.OptionInstance<number>;
-        forceUnicodeFont(): Internal.OptionInstance<boolean>;
-        renderDistance(): Internal.OptionInstance<number>;
-        allowServerListing(): Internal.OptionInstance<boolean>;
-        directionalAudio(): Internal.OptionInstance<boolean>;
-        toggleCrouch(): Internal.OptionInstance<boolean>;
-        hideMatchedNames(): Internal.OptionInstance<boolean>;
-        getBackgroundOpacity(arg0: number): number;
-        toggleModelPart(arg0: Internal.PlayerModelPart_, arg1: boolean): void;
-        getCameraType(): Internal.CameraType;
-        "getBackgroundColor(float)"(arg0: number): number;
-        hashCode(): number;
-        chatVisibility(): Internal.OptionInstance<Internal.ChatVisiblity>;
-        sensitivity(): Internal.OptionInstance<number>;
-        graphicsMode(): Internal.OptionInstance<Internal.GraphicsStatus>;
-        equals(arg0: any): boolean;
-        darkMojangStudiosBackground(): Internal.OptionInstance<boolean>;
-        get modelPartsFancyMenu(): Internal.Set<any>
-        get cloudsType(): Internal.CloudStatus
-        get class(): typeof any
-        set cameraType(arg0: Internal.CameraType_)
-        get effectiveRenderDistance(): number
-        set serverRenderDistance(arg0: number)
-        get file(): Internal.File
-        get cameraType(): Internal.CameraType
-        readonly keySwapOffhand: Internal.KeyMapping;
-        readonly keyDown: Internal.KeyMapping;
-        static readonly RENDER_DISTANCE_NORMAL: (8) & (number);
-        static readonly RENDER_DISTANCE_FAR: (12) & (number);
-        hideBundleTutorial: boolean;
-        readonly keyUp: Internal.KeyMapping;
-        static readonly RENDER_DISTANCE_EXTREME: (32) & (number);
-        skipMultiplayerWarning: boolean;
-        readonly keyShift: Internal.KeyMapping;
-        hideGui: boolean;
-        readonly keyScreenshot: Internal.KeyMapping;
-        pauseOnLostFocus: boolean;
-        languageCode: string;
-        readonly keyPlayerList: Internal.KeyMapping;
-        static readonly AUTO_GUI_SCALE: (0) & (number);
-        readonly keyRight: Internal.KeyMapping;
-        smoothCamera: boolean;
-        readonly keyCommand: Internal.KeyMapping;
-        readonly keyAttack: Internal.KeyMapping;
-        renderFpsChart: boolean;
-        gamma: Internal.OptionInstance<number>;
-        readonly keyChat: Internal.KeyMapping;
-        readonly keyPickItem: Internal.KeyMapping;
-        joinedFirstServer: boolean;
-        static readonly RENDER_DISTANCE_TINY: (2) & (number);
-        incompatibleResourcePacks: Internal.List<string>;
-        readonly keyFullscreen: Internal.KeyMapping;
-        skipRealms32bitWarning: boolean;
-        fullscreenVideoModeString: string;
-        useNativeTransport: boolean;
-        glDebugVerbosity: number;
-        readonly keyTogglePerspective: Internal.KeyMapping;
-        static readonly RENDER_DISTANCE_REALLY_FAR: (16) & (number);
-        readonly keySmoothCamera: Internal.KeyMapping;
-        static readonly UNLIMITED_FRAMERATE_CUTOFF: (260) & (number);
-        overrideWidth: number;
-        readonly keySaveHotbarActivator: Internal.KeyMapping;
-        static readonly RENDER_DISTANCE_SHORT: (4) & (number);
-        overrideHeight: number;
-        renderDebug: boolean;
-        lastMpIp: string;
-        readonly keyAdvancements: Internal.KeyMapping;
-        readonly keyLeft: Internal.KeyMapping;
-        readonly keyJump: Internal.KeyMapping;
-        readonly keyUse: Internal.KeyMapping;
-        readonly keyDrop: Internal.KeyMapping;
-        onboardAccessibility: boolean;
-        resourcePacks: Internal.List<string>;
-        readonly keySocialInteractions: Internal.KeyMapping;
-        readonly keySpectatorOutlines: Internal.KeyMapping;
-        readonly keySprint: Internal.KeyMapping;
-        readonly keyInventory: Internal.KeyMapping;
-        readonly keyLoadHotbarActivator: Internal.KeyMapping;
-        advancedItemTooltips: boolean;
-        renderDebugCharts: boolean;
-        syncWrites: boolean;
-        readonly keyHotbarSlots: Internal.KeyMapping[];
-        hideServerAddress: boolean;
-        tutorialStep: Internal.TutorialSteps;
-        keyMappings: Internal.KeyMapping[];
-        static readonly DEFAULT_SOUND_DEVICE: ("") & (string);
-    }
-    type Options_ = Options;
-    interface Weighted <T> {
-        abstract getSound(arg0: Internal.RandomSource_): T;
-        abstract getWeight(): number;
-        abstract preloadIfRequired(arg0: Internal.SoundEngine_): void;
-        get weight(): number
-    }
-    type Weighted_<T> = Weighted<T>;
-    class Heightmap {
-        constructor(arg0: Internal.ChunkAccess_, arg1: Internal.Heightmap$Types_)
-        getClass(): typeof any;
-        getHighestTaken(arg0: number, arg1: number): number;
-        toString(): string;
-        notifyAll(): void;
-        getFirstAvailable(arg0: number, arg1: number): number;
-        notify(): void;
-        wait(arg0: number, arg1: number): void;
-        update(arg0: number, arg1: number, arg2: number, arg3: Internal.BlockState_): boolean;
-        setRawData(arg0: Internal.ChunkAccess_, arg1: Internal.Heightmap$Types_, arg2: number[]): void;
-        hashCode(): number;
-        static primeHeightmaps(arg0: Internal.ChunkAccess_, arg1: Internal.Set_<Internal.Heightmap$Types>): void;
-        wait(): void;
-        wait(arg0: number): void;
-        getRawData(): number[];
-        equals(arg0: any): boolean;
-        get class(): typeof any
-        get rawData(): number[]
-    }
-    type Heightmap_ = Heightmap;
-    class CustomCommandEventJS extends Internal.EntityEventJS {
-        constructor(l: Internal.Level_, e: Internal.Entity_, p: BlockPos_, i: string)
-        getClass(): typeof any;
-        /**
-         * Stops the event with default exit value. Execution will be stopped **immediately**.
-         * 
-         * `exit` denotes a `default` outcome.
-        */
-        exit(): any;
-        /**
-         * Cancels the event with the given exit value. Execution will be stopped **immediately**.
-         * 
-         * `cancel` denotes a `false` outcome.
-        */
-        cancel(value: any): any;
-        toString(): string;
-        notifyAll(): void;
-        /**
-         * Stops the event with the given exit value. Execution will be stopped **immediately**.
-         * 
-         * `exit` denotes a `default` outcome.
-        */
-        exit(value: any): any;
-        getId(): string;
-        notify(): void;
-        wait(arg0: number, arg1: number): void;
-        getLevel(): Internal.Level;
-        /**
-         * Stops the event with the given exit value. Execution will be stopped **immediately**.
-         * 
-         * `success` denotes a `true` outcome.
-        */
-        success(value: any): any;
-        hashCode(): number;
-        getEntity(): Internal.Entity;
-        wait(): void;
-        /**
-         * Cancels the event with default exit value. Execution will be stopped **immediately**.
-         * 
-         * `cancel` denotes a `false` outcome.
-        */
-        cancel(): any;
-        wait(arg0: number): void;
-        getPlayer(): Internal.Player;
-        /**
-         * Stops the event with default exit value. Execution will be stopped **immediately**.
-         * 
-         * `success` denotes a `true` outcome.
-        */
-        success(): any;
-        equals(arg0: any): boolean;
-        getServer(): Internal.MinecraftServer;
-        getBlock(): Internal.BlockContainerJS;
-        get class(): typeof any
-        get id(): string
-        get level(): Internal.Level
-        get entity(): Internal.Entity
-        get player(): Internal.Player
-        get server(): Internal.MinecraftServer
-        get block(): Internal.BlockContainerJS
-    }
-    type CustomCommandEventJS_ = CustomCommandEventJS;
-    interface RepeatedDelayStrategy {
-        abstract delayCyclesAfterSuccess(): number;
-        exponentialBackoff(arg0: number): this;
-        abstract delayCyclesAfterFailure(): number;
-        readonly CONSTANT: Internal.RepeatedDelayStrategy;
-    }
-    type RepeatedDelayStrategy_ = RepeatedDelayStrategy;
-    abstract class AbstractWidget implements Internal.AbstractWidgetInvoker, Internal.LayoutElement, Internal.NarratableEntry, Internal.GuiEventListener, Internal.UniqueWidget, Internal.CustomizableWidget, Internal.AbstractWidgetAccessor, Internal.IMixinAbstractWidget, Internal.Renderable {
-        constructor(arg0: number, arg1: number, arg2: number, arg3: number, arg4: net.minecraft.network.chat.Component_)
-        charTyped(arg0: string, arg1: number): boolean;
-        setNineSliceBorderTop_FancyMenu(arg0: number): void;
-        setCustomBackgroundNormalFancyMenu(arg0: Internal.RenderableResource_): void;
-        onRelease(arg0: number, arg1: number): void;
-        getY(): number;
-        setFocused(arg0: boolean): void;
-        mouseClicked(arg0: number, arg1: number, arg2: number): boolean;
-        keyReleased(arg0: number, arg1: number, arg2: number): boolean;
-        getTooltip(): Internal.Tooltip;
-        addHoverOrFocusStateListenerFancyMenu(arg0: Internal.Consumer_<any>): void;
-        onClick(arg0: number, arg1: number): void;
-        setAlpha(arg0: number): void;
-        setCustomYFancyMenu(arg0: number): void;
-        getAlphaFancyMenu(): number;
-        nextFocusPath(arg0: Internal.FocusNavigationEvent_): Internal.ComponentPath;
-        setLastHoverStateFancyMenu(arg0: boolean): void;
-        setLabelHoverColorFancyMenu(arg0: Internal.DrawableColor_): void;
-        getLastHoverOrFocusStateFancyMenu(): boolean;
-        getWidth(): number;
-        isNineSliceCustomBackgroundTexture_FancyMenu(): boolean;
-        setLabelBaseColorFancyMenu(arg0: Internal.DrawableColor_): void;
-        keyPressed(arg0: number, arg1: number, arg2: number): boolean;
-        setCustomBackgroundHoverFancyMenu(arg0: Internal.RenderableResource_): void;
-        setUnhoverSoundFancyMenu(arg0: Internal.IAudio_): void;
-        setHiddenFancyMenu(arg0: boolean): void;
-        isHoveredOrFocused(): boolean;
-        setNineSliceBorderBottom_FancyMenu(arg0: number): void;
-        render(arg0: Internal.GuiGraphics_, arg1: number, arg2: number, arg3: number): void;
-        stopHoverSoundFancyMenu(): void;
-        setMessage(arg0: net.minecraft.network.chat.Component_): void;
-        setMessageFieldFancyMenu(arg0: net.minecraft.network.chat.Component_): void;
-        setHoverSoundFancyMenu(arg0: Internal.IAudio_): void;
-        getClass(): typeof any;
-        setNineSliceBorderLeft_FancyMenu(arg0: number): void;
-        isFocused(): boolean;
-        getX(): number;
-        setCustomHeightFancyMenu(arg0: number): void;
-        getCustomLabelFancyMenu(): net.minecraft.network.chat.Component;
-        isActive(): boolean;
-        getTabOrderGroup(): number;
-        tickHoverStateListenersFancyMenu(arg0: boolean): void;
-        setCustomLabelFancyMenu(arg0: net.minecraft.network.chat.Component_): void;
-        getLabelScaleFancyMenu(): number;
-        getMessage(): net.minecraft.network.chat.Component;
-        getCustomWidthFancyMenu(): number;
-        getCustomHeightFancyMenu(): number;
-        setWidth(arg0: number): void;
-        getHeight(): number;
-        resetWidgetSizeAndPositionFancyMenu(): void;
-        getFGColor(): number;
-        toString(): string;
-        setLabelShadowFancyMenu(arg0: boolean): void;
-        narrationPriority(): Internal.NarratableEntry$NarrationPriority;
-        notifyAll(): void;
-        setCustomClickSoundFancyMenu(arg0: Internal.IAudio_): void;
-        isHiddenFancyMenu(): boolean;
-        stopUnhoverSoundFancyMenu(): void;
-        playDownSound(arg0: Internal.SoundManager_): void;
-        setCustomXFancyMenu(arg0: number): void;
-        static wrapDefaultNarrationMessage(arg0: net.minecraft.network.chat.Component_): Internal.MutableComponent;
-        getFocusStateListenersFancyMenu(): Internal.List<any>;
-        getCurrentFocusPath(): Internal.ComponentPath;
-        static renderScrollingString(arg0: Internal.GuiGraphics_, arg1: net.minecraft.client.gui.Font_, arg2: net.minecraft.network.chat.Component_, arg3: number, arg4: number, arg5: number, arg6: number, arg7: number): void;
-        setFGColor(arg0: number): void;
-        getHoverStateListenersFancyMenu(): Internal.List<any>;
-        wait(arg0: number): void;
-        getNineSliceCustomBackgroundBorderBottom_FancyMenu(): number;
-        setHeight(arg0: number): void;
-        getLabelBaseColorFancyMenu(): Internal.DrawableColor;
-        setNineSliceBorderRight_FancyMenu(arg0: number): void;
-        getCustomClickSoundFancyMenu(): Internal.IAudio;
-        setCustomBackgroundResetBehaviorFancyMenu(arg0: Internal.CustomizableWidget$CustomBackgroundResetBehavior_): void;
-        notify(): void;
-        getHitboxHorizontalTiltDegreesFancyMenu(): number;
-        setLastHoverOrFocusStateFancyMenu(arg0: boolean): void;
-        setWidgetIdentifierFancyMenu(arg0: string): this;
-        getHoverLabelFancyMenu(): net.minecraft.network.chat.Component;
-        setTooltip(arg0: Internal.Tooltip_): void;
-        getResetCustomizationsListenersFancyMenu(): Internal.List<any>;
-        clearFGColor(): void;
-        setX(arg0: number): void;
-        resetWidgetCustomizationsFancyMenu(): void;
-        mouseMoved(arg0: number, arg1: number): void;
-        tickHoverOrFocusStateListenersFancyMenu(arg0: boolean): void;
-        setCustomWidthFancyMenu(arg0: number): void;
-        getWidgetIdentifierFancyMenu(): string;
-        getRectangle(): Internal.ScreenRectangle;
-        isHovered(): boolean;
-        getCustomXFancyMenu(): number;
-        addHoverStateListenerFancyMenu(arg0: Internal.Consumer_<any>): void;
-        setHoverLabelFancyMenu(arg0: net.minecraft.network.chat.Component_): void;
-        getNineSliceCustomBackgroundBorderTop_FancyMenu(): number;
-        setPosition(arg0: number, arg1: number): void;
-        getLastFocusStateFancyMenu(): boolean;
-        addResetCustomizationsListenerFancyMenu(arg0: Internal.Runnable_): void;
-        setHeightFancyMenu(arg0: number): void;
-        visitWidgets(arg0: Internal.Consumer_<Internal.AbstractWidget>): void;
-        setUnderlineLabelOnHoverFancyMenu(arg0: boolean): void;
-        getUnhoverSoundFancyMenu(): Internal.IAudio;
-        getHitboxRotationDegreesFancyMenu(): number;
-        wait(): void;
-        tickFocusStateListenersFancyMenu(arg0: boolean): void;
-        setLabelScaleFancyMenu(arg0: number): void;
-        getNineSliceCustomBackgroundBorderRight_FancyMenu(): number;
-        setHitboxRotationFancyMenu(arg0: number, arg1: number, arg2: number): void;
-        setLastFocusStateFancyMenu(arg0: boolean): void;
-        isMouseOver(arg0: number, arg1: number): boolean;
-        getHoverSoundFancyMenu(): Internal.IAudio;
-        getCustomBackgroundResetBehaviorFancyMenu(): Internal.CustomizableWidget$CustomBackgroundResetBehavior;
-        updateTooltip(): void;
-        getLastHoverStateFancyMenu(): boolean;
-        getHoverOrFocusStateListenersFancyMenu(): Internal.List<any>;
-        setCustomBackgroundInactiveFancyMenu(arg0: Internal.RenderableResource_): void;
-        softimprints$setHeight(arg0: number): void;
-        setNineSliceCustomBackground_FancyMenu(arg0: boolean): void;
-        mouseScrolled(arg0: number, arg1: number, arg2: number): boolean;
-        wait(arg0: number, arg1: number): void;
-        setTooltipDelay(arg0: number): void;
-        getCustomYFancyMenu(): number;
-        stopCustomClickSoundFancyMenu(): void;
-        setY(arg0: number): void;
-        getNineSliceCustomBackgroundBorderX_FancyMenu(): number;
-        resolveLabelScaleFancyMenu(): number;
-        mouseDragged(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): boolean;
-        setNineSliceBorderY_FancyMenu(arg0: number): void;
-        getNineSliceCustomBackgroundBorderY_FancyMenu(): number;
-        getCustomBackgroundNormalFancyMenu(): Internal.RenderableResource;
-        setTabOrderGroup(arg0: number): void;
-        setNineSliceBorderX_FancyMenu(arg0: number): void;
-        getNineSliceCustomBackgroundBorderLeft_FancyMenu(): number;
-        getCustomBackgroundHoverFancyMenu(): Internal.RenderableResource;
-        getCustomBackgroundInactiveFancyMenu(): Internal.RenderableResource;
-        renderTexture(arg0: Internal.GuiGraphics_, arg1: ResourceLocation_, arg2: number, arg3: number, arg4: number, arg5: number, arg6: number, arg7: number, arg8: number, arg9: number, arg10: number): void;
-        addFocusStateListenerFancyMenu(arg0: Internal.Consumer_<any>): void;
-        mouseReleased(arg0: number, arg1: number, arg2: number): boolean;
-        isUnderlineLabelOnHoverFancyMenu(): boolean;
-        getOriginalMessageFancyMenu(): net.minecraft.network.chat.Component;
-        hashCode(): number;
-        updateNarration(arg0: Internal.NarrationElementOutput_): void;
-        getHitboxVerticalTiltDegreesFancyMenu(): number;
-        isLabelShadowFancyMenu(): boolean;
-        renderCustomBackgroundFancyMenu(arg0: Internal.AbstractWidget_, arg1: Internal.GuiGraphics_, arg2: number, arg3: number, arg4: number, arg5: number): boolean;
-        equals(arg0: any): boolean;
-        getLabelHoverColorFancyMenu(): Internal.DrawableColor;
-        set nineSliceBorderTop_FancyMenu(arg0: number)
-        set customBackgroundNormalFancyMenu(arg0: Internal.RenderableResource_)
-        get y(): number
-        set focused(arg0: boolean)
-        get tooltip(): Internal.Tooltip
-        set alpha(arg0: number)
-        set customYFancyMenu(arg0: number)
-        get alphaFancyMenu(): number
-        set lastHoverStateFancyMenu(arg0: boolean)
-        set labelHoverColorFancyMenu(arg0: Internal.DrawableColor_)
-        get lastHoverOrFocusStateFancyMenu(): boolean
-        get width(): number
-        get nineSliceCustomBackgroundTexture_FancyMenu(): boolean
-        set labelBaseColorFancyMenu(arg0: Internal.DrawableColor_)
-        set customBackgroundHoverFancyMenu(arg0: Internal.RenderableResource_)
-        set unhoverSoundFancyMenu(arg0: Internal.IAudio_)
-        set hiddenFancyMenu(arg0: boolean)
-        get hoveredOrFocused(): boolean
-        set nineSliceBorderBottom_FancyMenu(arg0: number)
-        set message(arg0: net.minecraft.network.chat.Component_)
-        set messageFieldFancyMenu(arg0: net.minecraft.network.chat.Component_)
-        set hoverSoundFancyMenu(arg0: Internal.IAudio_)
-        get class(): typeof any
-        set nineSliceBorderLeft_FancyMenu(arg0: number)
-        get focused(): boolean
-        get x(): number
-        set customHeightFancyMenu(arg0: number)
-        get customLabelFancyMenu(): net.minecraft.network.chat.Component
-        get active(): boolean
-        get tabOrderGroup(): number
-        set customLabelFancyMenu(arg0: net.minecraft.network.chat.Component_)
-        get labelScaleFancyMenu(): number
-        get message(): net.minecraft.network.chat.Component
-        get customWidthFancyMenu(): number
-        get customHeightFancyMenu(): number
-        set width(arg0: number)
-        get height(): number
-        get FGColor(): number
-        set labelShadowFancyMenu(arg0: boolean)
-        set customClickSoundFancyMenu(arg0: Internal.IAudio_)
-        get hiddenFancyMenu(): boolean
-        set customXFancyMenu(arg0: number)
-        get focusStateListenersFancyMenu(): Internal.List<any>
-        get currentFocusPath(): Internal.ComponentPath
-        set FGColor(arg0: number)
-        get hoverStateListenersFancyMenu(): Internal.List<any>
-        get nineSliceCustomBackgroundBorderBottom_FancyMenu(): number
-        set height(arg0: number)
-        get labelBaseColorFancyMenu(): Internal.DrawableColor
-        set nineSliceBorderRight_FancyMenu(arg0: number)
-        get customClickSoundFancyMenu(): Internal.IAudio
-        set customBackgroundResetBehaviorFancyMenu(arg0: Internal.CustomizableWidget$CustomBackgroundResetBehavior_)
-        get hitboxHorizontalTiltDegreesFancyMenu(): number
-        set lastHoverOrFocusStateFancyMenu(arg0: boolean)
-        set widgetIdentifierFancyMenu(arg0: string)
-        get hoverLabelFancyMenu(): net.minecraft.network.chat.Component
-        set tooltip(arg0: Internal.Tooltip_)
-        get resetCustomizationsListenersFancyMenu(): Internal.List<any>
-        set x(arg0: number)
-        set customWidthFancyMenu(arg0: number)
-        get widgetIdentifierFancyMenu(): string
-        get rectangle(): Internal.ScreenRectangle
-        get hovered(): boolean
-        get customXFancyMenu(): number
-        set hoverLabelFancyMenu(arg0: net.minecraft.network.chat.Component_)
-        get nineSliceCustomBackgroundBorderTop_FancyMenu(): number
-        get lastFocusStateFancyMenu(): boolean
-        set heightFancyMenu(arg0: number)
-        set underlineLabelOnHoverFancyMenu(arg0: boolean)
-        get unhoverSoundFancyMenu(): Internal.IAudio
-        get hitboxRotationDegreesFancyMenu(): number
-        set labelScaleFancyMenu(arg0: number)
-        get nineSliceCustomBackgroundBorderRight_FancyMenu(): number
-        set lastFocusStateFancyMenu(arg0: boolean)
-        get hoverSoundFancyMenu(): Internal.IAudio
-        get customBackgroundResetBehaviorFancyMenu(): Internal.CustomizableWidget$CustomBackgroundResetBehavior
-        get lastHoverStateFancyMenu(): boolean
-        get hoverOrFocusStateListenersFancyMenu(): Internal.List<any>
-        set customBackgroundInactiveFancyMenu(arg0: Internal.RenderableResource_)
-        set nineSliceCustomBackground_FancyMenu(arg0: boolean)
-        set tooltipDelay(arg0: number)
-        get customYFancyMenu(): number
-        set y(arg0: number)
-        get nineSliceCustomBackgroundBorderX_FancyMenu(): number
-        set nineSliceBorderY_FancyMenu(arg0: number)
-        get nineSliceCustomBackgroundBorderY_FancyMenu(): number
-        get customBackgroundNormalFancyMenu(): Internal.RenderableResource
-        set tabOrderGroup(arg0: number)
-        set nineSliceBorderX_FancyMenu(arg0: number)
-        get nineSliceCustomBackgroundBorderLeft_FancyMenu(): number
-        get customBackgroundHoverFancyMenu(): Internal.RenderableResource
-        get customBackgroundInactiveFancyMenu(): Internal.RenderableResource
-        get underlineLabelOnHoverFancyMenu(): boolean
-        get originalMessageFancyMenu(): net.minecraft.network.chat.Component
-        get hitboxVerticalTiltDegreesFancyMenu(): number
-        get labelShadowFancyMenu(): boolean
-        get labelHoverColorFancyMenu(): Internal.DrawableColor
-        tooltip: Internal.Tooltip;
-        visible: boolean;
-        static readonly WIDGETS_LOCATION: (ResourceLocation) & (ResourceLocation);
-        height: number;
-        static readonly ACCESSIBILITY_TEXTURE: (ResourceLocation) & (ResourceLocation);
-        x: number;
-        y: number;
-        static readonly UNSET_FG_COLOR: (-1) & (number);
-        tooltipMsDelay: number;
-        active: boolean;
-    }
-    type AbstractWidget_ = AbstractWidget;
     class EntityEvent extends net.minecraftforge.eventbus.api.Event {
         constructor()
         constructor(arg0: Internal.Entity_)
@@ -609,6 +77,51 @@ declare namespace Internal {
         get phase(): Internal.EventPriority
     }
     type EntityEvent_ = EntityEvent;
+    class State extends Internal.Enum<Internal.State> {
+        static valueOf<T extends Internal.Enum<T>>(arg0: T, arg1: string): T;
+        getClass(): typeof any;
+        isExtraLoud(): boolean;
+        getTransitionDestination(): this;
+        toString(): string;
+        canTransition(): boolean;
+        notifyAll(): void;
+        compareTo(arg0: Internal.State_): number;
+        notify(): void;
+        wait(arg0: number, arg1: number): void;
+        compareTo(arg0: any): number;
+        name(): string;
+        static values(): Internal.State[];
+        getDeclaringClass(): typeof Internal.State;
+        hashCode(): number;
+        describeConstable(): Optional<Internal.Enum$EnumDesc<Internal.State>>;
+        ordinal(): number;
+        wait(): void;
+        getName(): string;
+        wait(arg0: number): void;
+        static valueOf(name: string): Internal.State;
+        "compareTo(java.lang.Object)"(arg0: any): number;
+        equals(arg0: any): boolean;
+        "compareTo(eu.ha3.presencefootsteps.sound.State)"(arg0: Internal.State_): number;
+        get class(): typeof any
+        get extraLoud(): boolean
+        get transitionDestination(): Internal.State
+        get declaringClass(): typeof Internal.State
+        get name(): string
+        static readonly DOWN: (Internal.State) & (Internal.State);
+        static readonly WANDER: (Internal.State) & (Internal.State);
+        static readonly CLIMB_RUN: (Internal.State) & (Internal.State);
+        static readonly JUMP: (Internal.State) & (Internal.State);
+        static readonly CLIMB: (Internal.State) & (Internal.State);
+        static readonly UP_RUN: (Internal.State) & (Internal.State);
+        static readonly DOWN_RUN: (Internal.State) & (Internal.State);
+        static readonly SWIM: (Internal.State) & (Internal.State);
+        static readonly WALK: (Internal.State) & (Internal.State);
+        static readonly STAND: (Internal.State) & (Internal.State);
+        static readonly RUN: (Internal.State) & (Internal.State);
+        static readonly UP: (Internal.State) & (Internal.State);
+        static readonly LAND: (Internal.State) & (Internal.State);
+    }
+    type State_ = "wander" | "jump" | "down" | "walk" | "climb" | "up_run" | "swim" | "run" | "stand" | "climb_run" | "land" | "up" | State | "down_run";
     class DragonscalearmorItem$Boots extends Internal.DragonscalearmorItem {
         constructor()
         getDrinkingSound(): Internal.SoundEvent;
@@ -698,9 +211,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -747,7 +261,6 @@ declare namespace Internal {
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         getEquipSound(): Internal.SoundEvent;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -780,8 +293,8 @@ declare namespace Internal {
         readShareTag(arg0: Internal.ItemStack_, arg1: Internal.CompoundTag_): void;
         getEquipmentSlot(arg0: Internal.ItemStack_): Internal.EquipmentSlot;
         getName(arg0: Internal.ItemStack_): net.minecraft.network.chat.Component;
-        getToughness(): number;
         getDefaultAttributeModifiers(arg0: Internal.EquipmentSlot_): Internal.Multimap<Internal.Attribute, Internal.AttributeModifier>;
+        getToughness(): number;
         arch$registryName(): ResourceLocation;
         getIdLocation(): ResourceLocation;
         getAttributeModifiers(arg0: Internal.EquipmentSlot_, arg1: Internal.ItemStack_): Internal.Multimap<Internal.Attribute, Internal.AttributeModifier>;
@@ -893,11 +406,11 @@ declare namespace Internal {
         stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         /**
          * @deprecated
@@ -915,8 +428,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -986,8 +499,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -1030,8 +543,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -1425,106 +938,6 @@ declare namespace Internal {
         get class(): typeof any
     }
     type BuilderType_<T> = BuilderType<T>;
-    class BlockContainerJS implements Internal.SpecialEquality {
-        constructor(blockEntity: Internal.BlockEntity_)
-        constructor(w: Internal.Level_, p: BlockPos_)
-        getTags(): Internal.Collection<ResourceLocation>;
-        getWest(): this;
-        getY(): number;
-        static checkSpecialEquality(o: any, o1: any, shallow: boolean): boolean;
-        getNorth(): this;
-        getBlockLight(): number;
-        notify(): void;
-        spawnLightning(): void;
-        spawnFireworks(fireworks: Internal.FireworksJS_): void;
-        getPos(): BlockPos;
-        getDown(): this;
-        getLight(): number;
-        getDrops(): Internal.List<Internal.ItemStack>;
-        getSouth(): this;
-        getSkyLight(): number;
-        mergeEntityData(tag: Internal.CompoundTag_): void;
-        getCanSeeSky(): boolean;
-        getDimension(): ResourceLocation;
-        getBlockState(): Internal.BlockState;
-        specialEquals(o: any, shallow: boolean): boolean;
-        hasTag(tag: ResourceLocation_): boolean;
-        getTypeData(): Internal.CompoundTag;
-        getInventory(): Internal.InventoryKJS;
-        wait(): void;
-        offset(x: number, y: number, z: number): this;
-        offset(f: Internal.Direction_): this;
-        getClass(): typeof any;
-        offset(f: Internal.Direction_, d: number): this;
-        spawnLightning(effectOnly: boolean, player: Internal.ServerPlayer_): void;
-        getEast(): this;
-        getEntityId(): string;
-        getX(): number;
-        createEntity(type: Internal.EntityType_<any>): Internal.Entity;
-        getDrops(entity: Internal.Entity_, heldItem: Internal.ItemStack_): Internal.List<Internal.ItemStack>;
-        set(id: Special.Block, properties: Internal.Map_<any, any>): void;
-        popItem(item: Internal.ItemStack_): void;
-        set(id: Special.Block, properties: Internal.Map_<any, any>, flags: number): void;
-        wait(arg0: number, arg1: number): void;
-        getLevel(): Internal.Level;
-        setBlockState(state: Internal.BlockState_, flags: number): void;
-        popItemFromFace(item: Internal.ItemStack_, dir: Internal.Direction_): void;
-        getEntity(): Internal.BlockEntity;
-        getPlayersInRadius(radius: number): Internal.EntityArrayList;
-        clearCache(): void;
-        getUp(): this;
-        getZ(): number;
-        getEntityData(): Internal.CompoundTag;
-        spawnLightning(effectOnly: boolean): void;
-        toString(): string;
-        getItem(): Internal.ItemStack;
-        notifyAll(): void;
-        getInventory(facing: Internal.Direction_): Internal.InventoryKJS;
-        getId(): Special.Block&`${string}:${string}`;
-        canSeeSkyFromBelowWater(): boolean;
-        hashCode(): number;
-        getProperties(): Internal.Map<string, string>;
-        createExplosion(): Internal.ExplosionJS;
-        setEntityData(tag: Internal.CompoundTag_): void;
-        set(id: Special.Block): void;
-        getPlayersInRadius(): Internal.EntityArrayList;
-        wait(arg0: number): void;
-        equals(obj: any): boolean;
-        getBiomeId(): ResourceLocation;
-        get tags(): Internal.Collection<ResourceLocation>
-        get west(): Internal.BlockContainerJS
-        get y(): number
-        get north(): Internal.BlockContainerJS
-        get blockLight(): number
-        get pos(): BlockPos
-        get down(): Internal.BlockContainerJS
-        get light(): number
-        get drops(): Internal.List<Internal.ItemStack>
-        get south(): Internal.BlockContainerJS
-        get skyLight(): number
-        get canSeeSky(): boolean
-        get dimension(): ResourceLocation
-        get blockState(): Internal.BlockState
-        get typeData(): Internal.CompoundTag
-        get inventory(): Internal.InventoryKJS
-        get class(): typeof any
-        get east(): Internal.BlockContainerJS
-        get entityId(): string
-        get x(): number
-        get level(): Internal.Level
-        get entity(): Internal.BlockEntity
-        get up(): Internal.BlockContainerJS
-        get z(): number
-        get entityData(): Internal.CompoundTag
-        get item(): Internal.ItemStack
-        get id(): Special.Block&`${string}:${string}`
-        get properties(): Internal.Map<string, string>
-        set entityData(tag: Internal.CompoundTag_)
-        get playersInRadius(): Internal.EntityArrayList
-        get biomeId(): ResourceLocation
-        readonly minecraftLevel: Internal.Level;
-    }
-    type BlockContainerJS_ = BlockContainerJS;
     class RawllamasteakItem extends Internal.Item {
         constructor()
         getDrinkingSound(): Internal.SoundEvent;
@@ -1609,9 +1022,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -1657,7 +1071,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -1785,6 +1198,106 @@ declare namespace Internal {
         set craftingRemainder(arg0: Internal.Item_)
     }
     type RawllamasteakItem_ = RawllamasteakItem;
+    class BlockContainerJS implements Internal.SpecialEquality {
+        constructor(blockEntity: Internal.BlockEntity_)
+        constructor(w: Internal.Level_, p: BlockPos_)
+        getTags(): Internal.Collection<ResourceLocation>;
+        getWest(): this;
+        getY(): number;
+        static checkSpecialEquality(o: any, o1: any, shallow: boolean): boolean;
+        getNorth(): this;
+        getBlockLight(): number;
+        notify(): void;
+        spawnLightning(): void;
+        spawnFireworks(fireworks: Internal.FireworksJS_): void;
+        getPos(): BlockPos;
+        getDown(): this;
+        getLight(): number;
+        getDrops(): Internal.List<Internal.ItemStack>;
+        getSouth(): this;
+        getSkyLight(): number;
+        mergeEntityData(tag: Internal.CompoundTag_): void;
+        getCanSeeSky(): boolean;
+        getDimension(): ResourceLocation;
+        getBlockState(): Internal.BlockState;
+        specialEquals(o: any, shallow: boolean): boolean;
+        hasTag(tag: ResourceLocation_): boolean;
+        getTypeData(): Internal.CompoundTag;
+        getInventory(): Internal.InventoryKJS;
+        wait(): void;
+        offset(x: number, y: number, z: number): this;
+        offset(f: Internal.Direction_): this;
+        getClass(): typeof any;
+        offset(f: Internal.Direction_, d: number): this;
+        getEntityId(): string;
+        getEast(): this;
+        spawnLightning(effectOnly: boolean, player: Internal.ServerPlayer_): void;
+        getX(): number;
+        createEntity(type: Internal.EntityType_<any>): Internal.Entity;
+        getDrops(entity: Internal.Entity_, heldItem: Internal.ItemStack_): Internal.List<Internal.ItemStack>;
+        set(id: Special.Block, properties: Internal.Map_<any, any>): void;
+        popItem(item: Internal.ItemStack_): void;
+        set(id: Special.Block, properties: Internal.Map_<any, any>, flags: number): void;
+        wait(arg0: number, arg1: number): void;
+        getLevel(): Internal.Level;
+        setBlockState(state: Internal.BlockState_, flags: number): void;
+        popItemFromFace(item: Internal.ItemStack_, dir: Internal.Direction_): void;
+        getEntity(): Internal.BlockEntity;
+        getPlayersInRadius(radius: number): Internal.EntityArrayList;
+        clearCache(): void;
+        getUp(): this;
+        getZ(): number;
+        getEntityData(): Internal.CompoundTag;
+        spawnLightning(effectOnly: boolean): void;
+        toString(): string;
+        getItem(): Internal.ItemStack;
+        notifyAll(): void;
+        getInventory(facing: Internal.Direction_): Internal.InventoryKJS;
+        getId(): Special.Block&`${string}:${string}`;
+        canSeeSkyFromBelowWater(): boolean;
+        hashCode(): number;
+        getProperties(): Internal.Map<string, string>;
+        createExplosion(): Internal.ExplosionJS;
+        setEntityData(tag: Internal.CompoundTag_): void;
+        set(id: Special.Block): void;
+        getPlayersInRadius(): Internal.EntityArrayList;
+        wait(arg0: number): void;
+        equals(obj: any): boolean;
+        getBiomeId(): ResourceLocation;
+        get tags(): Internal.Collection<ResourceLocation>
+        get west(): Internal.BlockContainerJS
+        get y(): number
+        get north(): Internal.BlockContainerJS
+        get blockLight(): number
+        get pos(): BlockPos
+        get down(): Internal.BlockContainerJS
+        get light(): number
+        get drops(): Internal.List<Internal.ItemStack>
+        get south(): Internal.BlockContainerJS
+        get skyLight(): number
+        get canSeeSky(): boolean
+        get dimension(): ResourceLocation
+        get blockState(): Internal.BlockState
+        get typeData(): Internal.CompoundTag
+        get inventory(): Internal.InventoryKJS
+        get class(): typeof any
+        get entityId(): string
+        get east(): Internal.BlockContainerJS
+        get x(): number
+        get level(): Internal.Level
+        get entity(): Internal.BlockEntity
+        get up(): Internal.BlockContainerJS
+        get z(): number
+        get entityData(): Internal.CompoundTag
+        get item(): Internal.ItemStack
+        get id(): Special.Block&`${string}:${string}`
+        get properties(): Internal.Map<string, string>
+        set entityData(tag: Internal.CompoundTag_)
+        get playersInRadius(): Internal.EntityArrayList
+        get biomeId(): ResourceLocation
+        readonly minecraftLevel: Internal.Level;
+    }
+    type BlockContainerJS_ = BlockContainerJS;
     class EnderDragon extends Internal.Mob implements Internal.Enemy {
         constructor(arg0: Internal.EntityType_<Internal.EnderDragon>, arg1: Internal.Level_)
         getKnockBackStrength(): number;
@@ -1800,11 +1313,11 @@ declare namespace Internal {
         isOnFire(): boolean;
         getPositionCodec(): Internal.VecDeltaCodec;
         getPickedResult(arg0: Internal.HitResult_): Internal.ItemStack;
-        setMaxUpStep(arg0: number): void;
         /**
          * @deprecated
         */
         updateFluidHeightAndDoFluidPushing(arg0: Internal.TagKey_<Internal.Fluid>, arg1: number): boolean;
+        setMaxUpStep(arg0: number): void;
         convertTo<T extends Internal.Mob>(arg0: Internal.EntityType_<T>, arg1: boolean): T;
         getFallFlyingTicks(): number;
         runCommandSilent(command: string): number;
@@ -1836,26 +1349,26 @@ declare namespace Internal {
         setPathfindingMalus(arg0: Internal.BlockPathTypes_, arg1: number): void;
         getRandomZ(arg0: number): number;
         setAggressive(arg0: boolean): void;
+        getFusionModel(layerIndex: number): Internal.Triple<any, any, any>;
         setRemoved(arg0: Internal.Entity$RemovalReason_): void;
-        getDistanceSq(arg0: number, arg1: number, arg2: number): number;
         isInWaterRainOrBubble(): boolean;
+        getDistanceSq(arg0: number, arg1: number, arg2: number): number;
         getRemovalReason(): Internal.Entity$RemovalReason;
-        handler$bnj000$Entity_load(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfo_): void;
         etf$getVelocity(): Vec3d;
         onFlap(): void;
+        setEc$BoundingBox(ec$BoundingBox: Internal.AABB_): void;
         getIndirectPassengers(): Internal.Iterable<Internal.Entity>;
         resetFallDistance(): void;
         canSprint(): boolean;
         blockPosition(): BlockPos;
-        setLevel(arg0: Internal.Level_): void;
         setBoundingBox(arg0: Internal.AABB_): void;
         isAmbientCreature(): boolean;
         setZza(arg0: number): void;
         getBlock(): Internal.BlockContainerJS;
         setEquipment(slot: Internal.EquipmentSlot_, item: Internal.ItemStack_): void;
         etf$getHandItems(): Internal.Iterable<any>;
-        randomTeleport(arg0: number, arg1: number, arg2: number, arg3: boolean): boolean;
         invalidateCaps(): void;
+        randomTeleport(arg0: number, arg1: number, arg2: number, arg3: boolean): boolean;
         getName(): net.minecraft.network.chat.Component;
         playAmbientSound(): void;
         onGround(): boolean;
@@ -1876,8 +1389,8 @@ declare namespace Internal {
         isAutoSpinAttack(): boolean;
         getRemainingFireTicks(): number;
         onlyOpCanSetNbt(): boolean;
-        addMotion(arg0: number, arg1: number, arg2: number): void;
         fireImmune(): boolean;
+        addMotion(arg0: number, arg1: number, arg2: number): void;
         getMaxFallDistance(): number;
         isHolding(arg0: Internal.Item_): boolean;
         getZ(arg0: number): number;
@@ -1911,7 +1424,6 @@ declare namespace Internal {
         canStartSwimming(): boolean;
         setDeltaMovement(arg0: Vec3d_): void;
         getLeashOffset(arg0: number): Vec3d;
-        handler$bnj000$Entity_saveWithoutId(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfoReturnable_<any>): void;
         isBaby(): boolean;
         isCulled(): boolean;
         damageEquipment(slot: Internal.EquipmentSlot_): void;
@@ -1928,6 +1440,7 @@ declare namespace Internal {
         hasLineOfSight(arg0: Internal.Entity_): boolean;
         onClimbable(): boolean;
         isAttackable(): boolean;
+        getStepGenerator(engine: eu.ha3.presencefootsteps.sound.SoundEngine_): Optional<any>;
         getSlot(arg0: number): Internal.SlotAccess;
         "deserializeNBT(net.minecraft.nbt.CompoundTag)"(arg0: Internal.CompoundTag_): void;
         emf$isInLava(): boolean;
@@ -1944,7 +1457,6 @@ declare namespace Internal {
         canTakeItem(arg0: Internal.ItemStack_): boolean;
         shouldDropExperience(): boolean;
         hasPassenger(arg0: Internal.Entity_): boolean;
-        handler$ban001$onTick(ci: Internal.CallbackInfo_): void;
         setSecondsOnFire(arg0: number): void;
         moveTo(arg0: number, arg1: number, arg2: number): void;
         emf$getZ(): number;
@@ -1976,6 +1488,7 @@ declare namespace Internal {
         setSwimming(arg0: boolean): void;
         canHydrateInFluidType(arg0: Internal.FluidType_): boolean;
         getMainArm(): Internal.HumanoidArm;
+        setEc$PBlockPos(ec$PBlockPos: BlockPos_): void;
         checkSpawnRules(arg0: Internal.LevelAccessor_, arg1: Internal.MobSpawnType_): boolean;
         getRotationVector(): Internal.Vec2;
         abstract sdl$getDynamicLightY(): number;
@@ -1984,8 +1497,8 @@ declare namespace Internal {
         etf$getBlockY(): number;
         isMaxGroupSizeReached(arg0: number): boolean;
         getMotionY(): number;
-        getOffhandItem(): Internal.ItemStack;
         resetKnockBackStrength(): void;
+        getOffhandItem(): Internal.ItemStack;
         canCollideWith(arg0: Internal.Entity_): boolean;
         getBlockExplosionResistance(arg0: Internal.Explosion_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.FluidState_, arg5: number): number;
         getFluidFallDistanceModifier(arg0: Internal.FluidType_): number;
@@ -1993,12 +1506,13 @@ declare namespace Internal {
         canSpawnSprintParticle(): boolean;
         "moveTo(net.minecraft.core.BlockPos,float,float)"(arg0: BlockPos_, arg1: number, arg2: number): void;
         getLastHurtMob(): Internal.LivingEntity;
-        moveRelative(arg0: number, arg1: Vec3d_): void;
         getSelfAndPassengers(): Internal.Stream<Internal.Entity>;
+        moveRelative(arg0: number, arg1: Vec3d_): void;
         isAddedToWorld(): boolean;
         saveAsPassenger(arg0: Internal.CompoundTag_): boolean;
         getSoundSource(): Internal.SoundSource;
         getLastDamageSource(): DamageSource;
+        isJumping(): boolean;
         setNoActionTime(arg0: number): void;
         setMovementSpeedAddition(speed: number): void;
         equipmentHasChanged(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
@@ -2011,6 +1525,7 @@ declare namespace Internal {
         isLeftHanded(): boolean;
         etf$getUuid(): Internal.UUID;
         removeVehicle(): void;
+        shouldFusionRecomputeModel(layerIndex: number): boolean;
         setZ(z: number): void;
         getY(): number;
         hashCode(): number;
@@ -2033,7 +1548,6 @@ declare namespace Internal {
         handleRelativeFrictionAndCalculateMovement(arg0: Vec3d_, arg1: number): Vec3d;
         turn(arg0: number, arg1: number): void;
         getAirSupply(): number;
-        handler$boi000$postTurnHook(arg0: Internal.CallbackInfo_): void;
         moveTo(arg0: BlockPos_, arg1: number, arg2: number): void;
         isPlayer(): boolean;
         isAnimal(): boolean;
@@ -2073,15 +1587,17 @@ declare namespace Internal {
         setStuckInLeaves(arg0: boolean): void;
         getFluidJumpThreshold(): number;
         emf$getVariableMap(): Internal.Map<any, any>;
-        "setPositionAndRotation(double,double,double,float,float)"(x: number, y: number, z: number, yaw: number, pitch: number): void;
+        "setPositionAndRotation(double,double,double,float,float)"(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
         isInvisibleTo(arg0: Internal.Player_): boolean;
         stopSleeping(): void;
         setAirSupply(arg0: number): void;
         getOnPos(): BlockPos;
         etf$getWorld(): Internal.Level;
+        redirect$ddl000$fixSpawnAnimX(instance: Internal.Mob_, v: number): number;
         isUndead(): boolean;
         static createLivingAttributes(): Internal.AttributeSupplier$Builder;
         getBlockPosBelowThatAffectsMyMovement(): BlockPos;
+        getNextStepDistance(): number;
         getStepHeight(): number;
         isSleeping(): boolean;
         stopUsingItem(): void;
@@ -2148,8 +1664,8 @@ declare namespace Internal {
         hurt(arg0: Internal.EnderDragonPart_, arg1: DamageSource_, arg2: number): boolean;
         getBbHeight(): number;
         getMeleeAttackRangeSqr(arg0: Internal.LivingEntity_): number;
-        getViewVector(arg0: number): Vec3d;
         getTags(): Internal.Set<string>;
+        getViewVector(arg0: number): Vec3d;
         getLastAttacker(): Internal.LivingEntity;
         hasControllingPassenger(): boolean;
         closerThan(arg0: Internal.Entity_, arg1: number, arg2: number): boolean;
@@ -2176,6 +1692,7 @@ declare namespace Internal {
         isWaterCreature(): boolean;
         toString(): string;
         etf$getScoreboardTeam(): Internal.Team;
+        handler$bnm000$Entity_load(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfo_): void;
         setLastHurtByPlayer(arg0: Internal.Player_): void;
         "getServer()"(): Internal.MinecraftServer;
         wasExperienceConsumed(): boolean;
@@ -2189,7 +1706,6 @@ declare namespace Internal {
         setMotionY(y: number): void;
         static createAttributes(): Internal.AttributeSupplier$Builder;
         setRotation(yaw: number, pitch: number): void;
-        handler$boi000$preTurnHook(arg0: Internal.CallbackInfo_): void;
         setFightOrigin(arg0: BlockPos_): void;
         abstract sdl$resetDynamicLight(): void;
         calculateEntityAnimation(arg0: boolean): void;
@@ -2197,7 +1713,7 @@ declare namespace Internal {
         setChestArmorItem(item: Internal.ItemStack_): void;
         abstract sodiumdynamiclights$scheduleTrackedChunksRebuild(arg0: Internal.LevelRenderer_): void;
         onAboveBubbleCol(arg0: boolean): void;
-        "playSound(net.minecraft.sounds.SoundEvent,float,float)"(arg0: Internal.SoundEvent_, arg1: number, arg2: number): void;
+        "playSound(net.minecraft.sounds.SoundEvent,float,float)"(id: Internal.SoundEvent_, volume: number, pitch: number): void;
         isPassenger(): boolean;
         hasPose(arg0: Internal.Pose_): boolean;
         /**
@@ -2212,8 +1728,10 @@ declare namespace Internal {
         "getAttributeValue(net.minecraft.core.Holder)"(arg0: Internal.Holder_<Internal.Attribute>): number;
         shouldRender(arg0: number, arg1: number, arg2: number): boolean;
         getJumpControl(): Internal.JumpControl;
+        handler$bbe001$onTick(ci: Internal.CallbackInfo_): void;
         isFlapping(): boolean;
         getFeetArmorItem(): Internal.ItemStack;
+        getEc$BoundingBox(): Internal.AABB;
         static getViewScale(): number;
         getVisualRotationYInDegrees(): number;
         setSpeed(arg0: number): void;
@@ -2254,7 +1772,7 @@ declare namespace Internal {
         getBlockZ(): number;
         dampensVibrations(): boolean;
         isSilent(): boolean;
-        "playSound(net.minecraft.sounds.SoundEvent)"(arg0: Internal.SoundEvent_): void;
+        "playSound(net.minecraft.sounds.SoundEvent)"(id: Internal.SoundEvent_): void;
         getPitch(): number;
         getPathfindingMalus(arg0: Internal.BlockPathTypes_): number;
         getRandom(): Internal.RandomSource;
@@ -2271,6 +1789,7 @@ declare namespace Internal {
         "isHolding(java.util.function.Predicate)"(arg0: Internal.Predicate_<Internal.ItemStack>): boolean;
         getNoActionTime(): number;
         isVisuallyCrawling(): boolean;
+        isShouldEntityAppearGlowing(): boolean;
         getDataHolder(): Internal.ShooterDataHolder;
         isAggressive(): boolean;
         setYya(arg0: number): void;
@@ -2297,16 +1816,16 @@ declare namespace Internal {
         removeWhenFarAway(arg0: number): boolean;
         wait(arg0: number): void;
         isIgnoringBlockTriggers(): boolean;
-        setRecordPlayingNearby(arg0: BlockPos_, arg1: boolean): void;
         consumesAmmoOrNot(): boolean;
+        setRecordPlayingNearby(arg0: BlockPos_, arg1: boolean): void;
         isInRain(): boolean;
         getHandHoldingItemAngle(arg0: Internal.Item_): Vec3d;
         etf$getItemsEquipped(): Internal.Iterable<any>;
         hasItemInSlot(arg0: Internal.EquipmentSlot_): boolean;
         crawl(arg0: boolean): void;
         canUpdate(arg0: boolean): void;
-        getEyeInFluidType(): Internal.FluidType;
         distanceToSqr(arg0: Vec3d_): number;
+        getEyeInFluidType(): Internal.FluidType;
         isSteppingCarefully(): boolean;
         getSoundFromFluidType(arg0: Internal.FluidType_, arg1: Internal.SoundAction_): Internal.SoundEvent;
         "spawnAtLocation(net.minecraft.world.item.ItemStack,float)"(arg0: Internal.ItemStack_, arg1: number): Internal.ItemEntity;
@@ -2367,14 +1886,13 @@ declare namespace Internal {
         dismountsUnderwater(): boolean;
         abstract sodiumdynamiclights$updateDynamicLight(arg0: Internal.LevelRenderer_): boolean;
         isAffectedByPotions(): boolean;
-        playerTouch(arg0: Internal.Player_): void;
         addTag(arg0: string): boolean;
+        playerTouch(arg0: Internal.Player_): void;
         getCitadelEntityData(): Internal.CompoundTag;
         getEyeHeight(arg0: Internal.Pose_): number;
         getAddEntityPacket(): Internal.Packet<Internal.ClientGamePacketListener>;
-        isWithinRestriction(arg0: BlockPos_): boolean;
         static getEquipmentForSlot(arg0: Internal.EquipmentSlot_, arg1: number): Internal.Item;
-        redirect$cpe000$fixSpawnAnimX(instance: Internal.Mob_, v: number): number;
+        isWithinRestriction(arg0: BlockPos_): boolean;
         getTeam(): Internal.Team;
         needCheckAmmo(): boolean;
         setTicksFrozen(arg0: number): void;
@@ -2396,7 +1914,6 @@ declare namespace Internal {
         doEnchantDamageEffects(arg0: Internal.LivingEntity_, arg1: Internal.Entity_): void;
         etf$distanceTo(entity: Internal.Entity_): number;
         setCustomName(arg0: net.minecraft.network.chat.Component_): void;
-        handler$ban000$onRemove(ci: Internal.CallbackInfo_): void;
         getTeamId(): string;
         canBeRiddenUnderFluidType(arg0: Internal.FluidType_, arg1: Internal.Entity_): boolean;
         setStingerCount(arg0: number): void;
@@ -2423,6 +1940,7 @@ declare namespace Internal {
         updateFluidHeightAndDoFluidPushing(arg0: Internal.Predicate_<Internal.FluidState>): void;
         isOnRails(): boolean;
         getStingerCount(): number;
+        markFusionRecomputeModels(): void;
         getFallSounds(): Internal.LivingEntity$Fallsounds;
         getAttributeTotalValue(attribute: Internal.Attribute_): number;
         getDimensionChangingDelay(): number;
@@ -2437,11 +1955,12 @@ declare namespace Internal {
         fillCrashReportCategory(arg0: Internal.CrashReportCategory_): void;
         self(): Internal.Entity;
         refreshDimensions(): void;
-        "spawnAtLocation(net.minecraft.world.level.ItemLike)"(arg0: Internal.ItemLike_): Internal.ItemEntity;
+        setEc$Position(ec$Position: Vec3d_): void;
         "getAttributeValue(net.minecraft.world.entity.ai.attributes.Attribute)"(arg0: Internal.Attribute_): number;
+        "spawnAtLocation(net.minecraft.world.level.ItemLike)"(arg0: Internal.ItemLike_): Internal.ItemEntity;
         "isHolding(net.minecraft.world.item.Item)"(arg0: Internal.Item_): boolean;
-        setShiftKeyDown(arg0: boolean): void;
         getEyePosition(arg0: number): Vec3d;
+        setShiftKeyDown(arg0: boolean): void;
         getPassengers(): Internal.EntityArrayList;
         getSynMeleeCoolDown(): number;
         getMaxHeightFluidType(): Internal.FluidType;
@@ -2468,6 +1987,7 @@ declare namespace Internal {
         fireSelect(): void;
         getAmbientSoundInterval(): number;
         emf$isOnFire(): boolean;
+        setShouldEntityAppearGlowing(shouldEntityAppearGlowing: boolean): void;
         setArrowCount(arg0: number): void;
         getMotionZ(): number;
         isPersistenceRequired(): boolean;
@@ -2505,7 +2025,7 @@ declare namespace Internal {
         "hasPassenger(net.minecraft.world.entity.Entity)"(arg0: Internal.Entity_): boolean;
         isCrouching(): boolean;
         etf$canBeBright(): boolean;
-        "getAttributeBaseValue(net.minecraft.world.entity.ai.attributes.Attribute)"(arg0: Internal.Attribute_): number;
+        "getAttributeBaseValue(net.minecraft.world.entity.ai.attributes.Attribute)"(attribute: Internal.Attribute_): number;
         onLeaveCombat(): void;
         setY(y: number): void;
         getAttributeValue(arg0: Internal.Attribute_): number;
@@ -2554,9 +2074,11 @@ declare namespace Internal {
         swing(arg0: Internal.InteractionHand_): void;
         hasEffect(arg0: Internal.MobEffect_): boolean;
         getHeldItem(hand: Internal.InteractionHand_): Internal.ItemStack;
+        setFusionModel(layerIndex: number, model: Internal.Triple_<any, any, any>): void;
         getRootVehicle(): Internal.Entity;
         onPathfindingDone(): void;
         save(arg0: Internal.CompoundTag_): boolean;
+        getEc$Position(): Vec3d;
         sdl$getLuminance(): number;
         getLocalBoundsForPose(arg0: Internal.Pose_): Internal.AABB;
         isNoGravity(): boolean;
@@ -2596,13 +2118,16 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         getDimensionsForge(arg0: Internal.Pose_): Internal.EntityDimensions;
+        getEc$PBlockPos(): BlockPos;
         setExtension(key: any, value: any): void;
+        handler$bnm000$Entity_saveWithoutId(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfoReturnable_<any>): void;
         deserializeNBT(arg0: Internal.Tag_): void;
         collective_setStored(arg0: Internal.CompoundTag_): void;
         revive(): void;
         getBbWidth(): number;
         isEyeInFluidType(arg0: Internal.FluidType_): boolean;
         addDeltaMovement(arg0: Vec3d_): void;
+        handler$bol000$postTurnHook(arg0: Internal.CallbackInfo_): void;
         canDrownInFluidType(arg0: Internal.FluidType_): boolean;
         "getName()"(): net.minecraft.network.chat.Component;
         mirror(arg0: Internal.Mirror_): number;
@@ -2612,7 +2137,6 @@ declare namespace Internal {
         getLatencyPos(arg0: number, arg1: number): number[];
         getVisibilityPercent(arg0: Internal.Entity_): number;
         getMaxSpawnClusterSize(): number;
-        reallyHurt(arg0: DamageSource_, arg1: number): boolean;
         emf$prevZ(): number;
         getUsername(): string;
         transition$getRawPosition(): Vec3d;
@@ -2629,14 +2153,14 @@ declare namespace Internal {
         findClosestNode(): number;
         getRandomY(): number;
         getDisplayName(): net.minecraft.network.chat.Component;
+        setNextStepDistance(arg0: number): void;
         getMobType(): Internal.MobType;
         travel(arg0: Vec3d_): void;
         getItemInHand(arg0: Internal.InteractionHand_): Internal.ItemStack;
         getFightOrigin(): BlockPos;
-        shouldBeSaved(): boolean;
         getFluidTypeHeight(arg0: Internal.FluidType_): number;
+        shouldBeSaved(): boolean;
         "areCapsCompatible(net.minecraftforge.common.capabilities.CapabilityProvider)"(arg0: Internal.CapabilityProvider_<Internal.Entity>): boolean;
-        restoreLeashFromSave(): void;
         removeTag(arg0: string): boolean;
         isHoldingInAnyHand(i: Internal.Ingredient_): boolean;
         /**
@@ -2668,8 +2192,8 @@ declare namespace Internal {
         getEatingSound(arg0: Internal.ItemStack_): Internal.SoundEvent;
         setId(arg0: number): void;
         getPerceivedTargetDistanceSquareForMeleeAttack(arg0: Internal.LivingEntity_): number;
-        getHorizontalFacing(): Internal.Direction;
         onSyncedDataUpdated(arg0: Internal.List_<Internal.SynchedEntityData$DataValue<any>>): void;
+        getHorizontalFacing(): Internal.Direction;
         getType(): string;
         isDamageSourceBlocked(arg0: DamageSource_): boolean;
         getLightProbePosition(arg0: number): Vec3d;
@@ -2686,6 +2210,7 @@ declare namespace Internal {
         getHeadPartYOffset(arg0: number, arg1: number[], arg2: number[]): number;
         canDisableShield(): boolean;
         nextBulletIsTracer(arg0: number): boolean;
+        handler$bbe000$onRemove(ci: Internal.CallbackInfo_): void;
         setMotionX(x: number): void;
         getHandSlots(): Internal.Iterable<Internal.ItemStack>;
         distanceToEntity(arg0: Internal.Entity_): number;
@@ -2694,6 +2219,7 @@ declare namespace Internal {
         getTeamColor(): number;
         setNbt(nbt: Internal.CompoundTag_): void;
         "isInFluidType(net.minecraftforge.fluids.FluidType)"(arg0: Internal.FluidType_): boolean;
+        handler$bol000$preTurnHook(arg0: Internal.CallbackInfo_): void;
         checkSpawnObstruction(arg0: Internal.LevelReader_): boolean;
         extinguish(): void;
         getRestrictRadius(): number;
@@ -2737,8 +2263,8 @@ declare namespace Internal {
         set removed(arg0: Internal.Entity$RemovalReason_)
         get inWaterRainOrBubble(): boolean
         get removalReason(): Internal.Entity$RemovalReason
+        set ec$BoundingBox(ec$BoundingBox: Internal.AABB_)
         get indirectPassengers(): Internal.Iterable<Internal.Entity>
-        set level(arg0: Internal.Level_)
         set boundingBox(arg0: Internal.AABB_)
         get ambientCreature(): boolean
         set zza(arg0: number)
@@ -2788,6 +2314,7 @@ declare namespace Internal {
         get stringUuid(): string
         set swimming(arg0: boolean)
         get mainArm(): Internal.HumanoidArm
+        set ec$PBlockPos(ec$PBlockPos: BlockPos_)
         get rotationVector(): Internal.Vec2
         get hurtDir(): number
         get sprinting(): boolean
@@ -2798,6 +2325,7 @@ declare namespace Internal {
         get addedToWorld(): boolean
         get soundSource(): Internal.SoundSource
         get lastDamageSource(): DamageSource
+        get jumping(): boolean
         set noActionTime(arg0: number)
         set movementSpeedAddition(speed: number)
         get pose(): Internal.Pose
@@ -2832,6 +2360,7 @@ declare namespace Internal {
         get onPos(): BlockPos
         get undead(): boolean
         get blockPosBelowThatAffectsMyMovement(): BlockPos
+        get nextStepDistance(): number
         get stepHeight(): number
         get sleeping(): boolean
         get armorBonus(): number
@@ -2885,6 +2414,7 @@ declare namespace Internal {
         get jumpControl(): Internal.JumpControl
         get flapping(): boolean
         get feetArmorItem(): Internal.ItemStack
+        get ec$BoundingBox(): Internal.AABB
         get viewScale(): number
         get visualRotationYInDegrees(): number
         set speed(arg0: number)
@@ -2906,6 +2436,7 @@ declare namespace Internal {
         get passengersAndSelf(): Internal.Stream<Internal.Entity>
         get noActionTime(): number
         get visuallyCrawling(): boolean
+        get shouldEntityAppearGlowing(): boolean
         get dataHolder(): Internal.ShooterDataHolder
         get aggressive(): boolean
         set yya(arg0: number)
@@ -2977,6 +2508,7 @@ declare namespace Internal {
         get pickRadius(): number
         get removed(): boolean
         get jumpBoostPower(): number
+        set ec$Position(ec$Position: Vec3d_)
         set shiftKeyDown(arg0: boolean)
         get passengers(): Internal.EntityArrayList
         get synMeleeCoolDown(): number
@@ -2991,6 +2523,7 @@ declare namespace Internal {
         set fabricBalmData(arg0: Internal.CompoundTag_)
         get lookAngle(): Vec3d
         get ambientSoundInterval(): number
+        set shouldEntityAppearGlowing(shouldEntityAppearGlowing: boolean)
         set arrowCount(arg0: number)
         get motionZ(): number
         get persistenceRequired(): boolean
@@ -3023,6 +2556,7 @@ declare namespace Internal {
         get inLava(): boolean
         get inWater(): boolean
         get rootVehicle(): Internal.Entity
+        get ec$Position(): Vec3d
         get noGravity(): boolean
         set citadelEntityData(arg0: Internal.CompoundTag_)
         get synDrawCoolDown(): number
@@ -3035,6 +2569,7 @@ declare namespace Internal {
         get armorSlots(): Internal.Iterable<Internal.ItemStack>
         set dragonFight(arg0: Internal.EndDragonFight_)
         get headArmorItem(): Internal.ItemStack
+        get ec$PBlockPos(): BlockPos
         get bbWidth(): number
         get "name()"(): net.minecraft.network.chat.Component
         get ticksRequiredToFreeze(): number
@@ -3048,6 +2583,7 @@ declare namespace Internal {
         get absorptionAmount(): number
         get randomY(): number
         get displayName(): net.minecraft.network.chat.Component
+        set nextStepDistance(arg0: number)
         get mobType(): Internal.MobType
         get fightOrigin(): BlockPos
         get passengersRidingOffset(): number
@@ -3197,9 +2733,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         isWater(arg0: Internal.Level_, arg1: BlockPos_): boolean;
         setAttackDamage(attackDamage: number): void;
@@ -3244,7 +2781,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -3456,9 +2992,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -3504,7 +3041,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -3660,8 +3196,8 @@ declare namespace Internal {
         applyWithFormatting(arg0: string): net.minecraft.network.chat.Component;
         wait(): void;
         wait(arg0: number): void;
-        equals(arg0: any): boolean;
         setFiltered(arg0: number): void;
+        equals(arg0: any): boolean;
         static write(arg0: Internal.FriendlyByteBuf_, arg1: Internal.FilterMask_): void;
         isFullyFiltered(): boolean;
         get class(): typeof any
@@ -3716,8 +3252,8 @@ declare namespace Internal {
         animateTick(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.FluidState_, arg3: Internal.RandomSource_): void;
         getAdjacentBlockPathType(arg0: Internal.FluidState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Mob_, arg4: Internal.BlockPathTypes_): Internal.BlockPathTypes;
         hashCode(): number;
-        getDropOff(arg0: Internal.LevelReader_): number;
         randomTick(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.FluidState_, arg3: Internal.RandomSource_): void;
+        getDropOff(arg0: Internal.LevelReader_): number;
         canHydrate(arg0: Internal.FluidState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: BlockPos_): boolean;
         wait(): void;
         createLegacyBlock(arg0: Internal.FluidState_): Internal.BlockState;
@@ -3756,8 +3292,8 @@ declare namespace Internal {
         static register<T extends Internal.GameRules$Value<T>>(arg0: string, arg1: Internal.GameRules$Category_, arg2: Internal.GameRules$Type_<T>): Internal.GameRules$Key<T>;
         get(rule: string): Internal.GameRules$Value<any>;
         hashCode(): number;
-        getBoolean(arg0: Internal.GameRules$Key_<Internal.GameRules$BooleanValue>): boolean;
         static visitGameRuleTypes(arg0: Internal.GameRules$GameRuleTypeVisitor_): void;
+        getBoolean(arg0: Internal.GameRules$Key_<Internal.GameRules$BooleanValue>): boolean;
         assignFrom(arg0: Internal.GameRules_, arg1: Internal.MinecraftServer_): void;
         wait(): void;
         wait(arg0: number): void;
@@ -3820,24 +3356,24 @@ declare namespace Internal {
     }
     type CraftingContainerKJS_ = CraftingContainerKJS;
     class Instant implements Internal.Comparable<Internal.Instant>, Internal.Temporal, Internal.TemporalAdjuster, Internal.Serializable {
-        plus(arg0: number, arg1: Internal.TemporalUnit_): Internal.Temporal;
+        plus(arg0: number, arg1: Internal.TemporalUnit_): this;
         notify(): void;
         compareTo(arg0: any): number;
         static ofEpochSecond(arg0: number, arg1: number): Internal.Instant;
         plusSeconds(arg0: number): this;
-        "with"(arg0: Internal.TemporalAdjuster_): Internal.Temporal;
         plus(arg0: Internal.TemporalAmount_): this;
         "compareTo(java.time.Instant)"(arg0: Internal.Instant_): number;
-        "with"(arg0: Internal.TemporalField_, arg1: number): Internal.Temporal;
         isSupported(arg0: Internal.TemporalField_): boolean;
+        "with"(arg0: Internal.TemporalField_, arg1: number): this;
         truncatedTo(arg0: Internal.TemporalUnit_): this;
         "isSupported(java.time.temporal.TemporalField)"(arg0: Internal.TemporalField_): boolean;
         static now(arg0: Internal.Clock_): Internal.Instant;
+        minus(arg0: number, arg1: Internal.TemporalUnit_): this;
         atOffset(arg0: Internal.ZoneOffset_): Internal.OffsetDateTime;
         range(arg0: Internal.TemporalField_): Internal.ValueRange;
         plusMillis(arg0: number): this;
-        toEpochMilli(): number;
         isAfter(arg0: Internal.Instant_): boolean;
+        toEpochMilli(): number;
         get(arg0: Internal.TemporalField_): number;
         wait(): void;
         compareTo(arg0: Internal.Instant_): number;
@@ -3852,12 +3388,12 @@ declare namespace Internal {
         static ofEpochSecond(arg0: number): Internal.Instant;
         getLong(arg0: Internal.TemporalField_): number;
         static now(): Internal.Instant;
-        minus(arg0: number, arg1: Internal.TemporalUnit_): Internal.Temporal;
         static from(arg0: Internal.TemporalAccessor_): Internal.Instant;
         minusNanos(arg0: number): this;
         toString(): string;
         adjustInto(arg0: Internal.Temporal_): Internal.Temporal;
         notifyAll(): void;
+        "with"(arg0: Internal.TemporalAdjuster_): this;
         query<R>(arg0: Internal.TemporalQuery_<R>): R;
         until(arg0: Internal.Temporal_, arg1: Internal.TemporalUnit_): number;
         isSupported(arg0: Internal.TemporalUnit_): boolean;
@@ -3867,8 +3403,8 @@ declare namespace Internal {
         atZone(arg0: Internal.ZoneId_): Internal.ZonedDateTime;
         wait(arg0: number): void;
         plusNanos(arg0: number): this;
-        equals(arg0: any): boolean;
         static ofEpochMilli(arg0: number): Internal.Instant;
+        equals(arg0: any): boolean;
         minus(arg0: Internal.TemporalAmount_): Internal.Temporal;
         get class(): typeof any
         get nano(): number
@@ -3878,6 +3414,25 @@ declare namespace Internal {
         static readonly MIN: (Internal.Instant) & (Internal.Instant);
     }
     type Instant_ = Instant;
+    interface ImmutableStringReader {
+        abstract getTotalLength(): number;
+        abstract getCursor(): number;
+        abstract peek(): string;
+        abstract getRead(): string;
+        abstract canRead(): boolean;
+        abstract getRemainingLength(): number;
+        abstract getRemaining(): string;
+        abstract canRead(arg0: number): boolean;
+        abstract peek(arg0: number): string;
+        abstract getString(): string;
+        get totalLength(): number
+        get cursor(): number
+        get read(): string
+        get remainingLength(): number
+        get remaining(): string
+        get string(): string
+    }
+    type ImmutableStringReader_ = ImmutableStringReader;
     class GunKubeJSEvents$AttachmentPropertyEventJS extends Internal.GunKubeJSEvents$GunEventJS<Internal.AttachmentPropertyEvent> implements Internal.TimelessForgeEventWrappers$AttachmentPropertyWrapper {
         constructor(arg0: Internal.AttachmentPropertyEvent_)
         getClass(): typeof any;
@@ -3931,25 +3486,6 @@ declare namespace Internal {
         get eventSubId(): ResourceLocation
     }
     type GunKubeJSEvents$AttachmentPropertyEventJS_ = GunKubeJSEvents$AttachmentPropertyEventJS;
-    interface ImmutableStringReader {
-        abstract getTotalLength(): number;
-        abstract getCursor(): number;
-        abstract peek(): string;
-        abstract getRead(): string;
-        abstract canRead(): boolean;
-        abstract getRemainingLength(): number;
-        abstract getRemaining(): string;
-        abstract canRead(arg0: number): boolean;
-        abstract peek(arg0: number): string;
-        abstract getString(): string;
-        get totalLength(): number
-        get cursor(): number
-        get read(): string
-        get remainingLength(): number
-        get remaining(): string
-        get string(): string
-    }
-    type ImmutableStringReader_ = ImmutableStringReader;
     class NetheriteskinningknifeItem extends Internal.SwordItem {
         constructor()
         getDrinkingSound(): Internal.SoundEvent;
@@ -4036,9 +3572,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -4082,7 +3619,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -4251,11 +3787,11 @@ declare namespace Internal {
         stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         /**
          * @deprecated
@@ -4276,8 +3812,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -4347,8 +3883,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -4391,8 +3927,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -4785,9 +4321,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -4833,7 +4370,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -4996,23 +4532,6 @@ declare namespace Internal {
         static readonly ORDINAL_OR_NAME_IGNORECASE: (Internal.EnumGetMethod) & (Internal.EnumGetMethod);
     }
     type EnumGetMethod_ = "name" | "ordinal_or_name" | EnumGetMethod | "ordinal_or_name_ignorecase" | "name_ignorecase";
-    interface IEventBus {
-        abstract unregister(arg0: any): void;
-        abstract addListener<T extends net.minecraftforge.eventbus.api.Event>(arg0: Internal.EventPriority_, arg1: boolean, arg2: Internal.Consumer_<T>): void;
-        abstract post(arg0: net.minecraftforge.eventbus.api.Event_): boolean;
-        abstract addGenericListener<T extends Internal.GenericEvent<any>, F>(arg0: F, arg1: Internal.EventPriority_, arg2: Internal.Consumer_<T>): void;
-        abstract addGenericListener<T extends Internal.GenericEvent<any>, F>(arg0: F, arg1: Internal.Consumer_<T>): void;
-        abstract post(arg0: net.minecraftforge.eventbus.api.Event_, arg1: Internal.IEventBusInvokeDispatcher_): boolean;
-        abstract register(arg0: any): void;
-        abstract addGenericListener<T extends Internal.GenericEvent<any>, F>(arg0: F, arg1: Internal.EventPriority_, arg2: boolean, arg3: Internal.Consumer_<T>): void;
-        abstract addGenericListener<T extends Internal.GenericEvent<any>, F>(arg0: F, arg1: Internal.EventPriority_, arg2: boolean, arg3: T, arg4: Internal.Consumer_<T>): void;
-        abstract shutdown(): void;
-        abstract start(): void;
-        abstract addListener<T extends net.minecraftforge.eventbus.api.Event>(arg0: Internal.EventPriority_, arg1: Internal.Consumer_<T>): void;
-        abstract addListener<T extends net.minecraftforge.eventbus.api.Event>(arg0: Internal.EventPriority_, arg1: boolean, arg2: T, arg3: Internal.Consumer_<T>): void;
-        abstract addListener<T extends net.minecraftforge.eventbus.api.Event>(arg0: Internal.Consumer_<T>): void;
-    }
-    type IEventBus_ = IEventBus;
     class PlaySoundEvent extends net.minecraftforge.client.event.sound.SoundEvent {
         constructor()
         constructor(arg0: Internal.SoundEngine_, arg1: Internal.SoundInstance_)
@@ -5055,6 +4574,23 @@ declare namespace Internal {
         get engine(): Internal.SoundEngine
     }
     type PlaySoundEvent_ = PlaySoundEvent;
+    interface IEventBus {
+        abstract unregister(arg0: any): void;
+        abstract addListener<T extends net.minecraftforge.eventbus.api.Event>(arg0: Internal.EventPriority_, arg1: boolean, arg2: Internal.Consumer_<T>): void;
+        abstract post(arg0: net.minecraftforge.eventbus.api.Event_): boolean;
+        abstract addGenericListener<T extends Internal.GenericEvent<any>, F>(arg0: F, arg1: Internal.EventPriority_, arg2: Internal.Consumer_<T>): void;
+        abstract addGenericListener<T extends Internal.GenericEvent<any>, F>(arg0: F, arg1: Internal.Consumer_<T>): void;
+        abstract post(arg0: net.minecraftforge.eventbus.api.Event_, arg1: Internal.IEventBusInvokeDispatcher_): boolean;
+        abstract register(arg0: any): void;
+        abstract addGenericListener<T extends Internal.GenericEvent<any>, F>(arg0: F, arg1: Internal.EventPriority_, arg2: boolean, arg3: Internal.Consumer_<T>): void;
+        abstract addGenericListener<T extends Internal.GenericEvent<any>, F>(arg0: F, arg1: Internal.EventPriority_, arg2: boolean, arg3: T, arg4: Internal.Consumer_<T>): void;
+        abstract shutdown(): void;
+        abstract start(): void;
+        abstract addListener<T extends net.minecraftforge.eventbus.api.Event>(arg0: Internal.EventPriority_, arg1: Internal.Consumer_<T>): void;
+        abstract addListener<T extends net.minecraftforge.eventbus.api.Event>(arg0: Internal.EventPriority_, arg1: boolean, arg2: T, arg3: Internal.Consumer_<T>): void;
+        abstract addListener<T extends net.minecraftforge.eventbus.api.Event>(arg0: Internal.Consumer_<T>): void;
+    }
+    type IEventBus_ = IEventBus;
     class Proxy$Type extends Internal.Enum<Internal.Proxy$Type> {
         static valueOf<T extends Internal.Enum<T>>(arg0: T, arg1: string): T;
         getClass(): typeof any;
@@ -5128,8 +4664,8 @@ declare namespace Internal {
         isBeneficial(): boolean;
         wait(arg0: number, arg1: number): void;
         initializeClient(arg0: Internal.Consumer_<Internal.IClientMobEffectExtensions>): void;
-        getEffectRendererInternal(): any;
         getColor(): number;
+        getEffectRendererInternal(): any;
         removeAttributeModifiers(arg0: Internal.LivingEntity_, arg1: Internal.AttributeMap_, arg2: number): void;
         applyEffectTick(arg0: Internal.LivingEntity_, arg1: number): void;
         getAttributeModifierValue(arg0: number, arg1: Internal.AttributeModifier_): number;
@@ -5154,8 +4690,8 @@ declare namespace Internal {
         get class(): typeof any
         get instantenous(): boolean
         get beneficial(): boolean
-        get effectRendererInternal(): any
         get color(): number
+        get effectRendererInternal(): any
         get descriptionId(): string
         get category(): Internal.MobEffectCategory
         get curativeItems(): Internal.List<Internal.ItemStack>
@@ -5303,8 +4839,8 @@ declare namespace Internal {
         static hasProperty(obj: Internal.Scriptable_, index: number, cx: Internal.Context_): boolean;
         exportAsJSClass(maxPrototypeId: number, scope: Internal.Scriptable_, sealed: boolean, cx: Internal.Context_): Internal.IdFunctionObject;
         abstract "get(dev.latvian.mods.rhino.Context,int,dev.latvian.mods.rhino.Scriptable)"(arg0: Internal.Context_, arg1: number, arg2: Internal.Scriptable_): any;
-        "setAttributes(dev.latvian.mods.rhino.Context,dev.latvian.mods.rhino.Symbol,int)"(cx: Internal.Context_, key: Internal.Symbol_, attributes: number): void;
         static "hasProperty(dev.latvian.mods.rhino.Scriptable,dev.latvian.mods.rhino.Symbol,dev.latvian.mods.rhino.Context)"(obj: Internal.Scriptable_, key: Internal.Symbol_, cx: Internal.Context_): boolean;
+        "setAttributes(dev.latvian.mods.rhino.Context,dev.latvian.mods.rhino.Symbol,int)"(cx: Internal.Context_, key: Internal.Symbol_, attributes: number): void;
         hashCode(): number;
         getExternalArrayLength(): any;
         "getAttributes(dev.latvian.mods.rhino.Context,dev.latvian.mods.rhino.Symbol)"(cx: Internal.Context_, key: Internal.Symbol_): number;
@@ -5370,34 +4906,6 @@ declare namespace Internal {
         (arg0: number, arg1: number): void;
     }
     type LowResGrid$RowBand_ = LowResGrid$RowBand | ((arg0: number, arg1: number)=> void);
-    class ClientRecipeTracker$Serializer implements Internal.RecipeSerializer<Internal.ClientRecipeTracker> {
-        constructor()
-        getClass(): typeof any;
-        fromJson(arg0: ResourceLocation_, arg1: Internal.JsonObject_, arg2: Internal.ICondition$IContext_): Internal.ClientRecipeTracker;
-        "fromNetwork(net.minecraft.resources.ResourceLocation,net.minecraft.network.FriendlyByteBuf)"(recipeId: ResourceLocation_, buffer: Internal.FriendlyByteBuf_): Internal.ClientRecipeTracker;
-        "fromNetwork(net.minecraft.resources.ResourceLocation,net.minecraft.network.FriendlyByteBuf)"(arg0: ResourceLocation_, arg1: Internal.FriendlyByteBuf_): Internal.Recipe<any>;
-        toString(): string;
-        "toNetwork(net.minecraft.network.FriendlyByteBuf,net.minecraft.world.item.crafting.Recipe)"(arg0: Internal.FriendlyByteBuf_, arg1: Internal.Recipe_<any>): void;
-        notifyAll(): void;
-        fromJson(recipeId: ResourceLocation_, json: Internal.JsonObject_): Internal.ClientRecipeTracker;
-        toNetwork(arg0: Internal.FriendlyByteBuf_, arg1: Internal.Recipe_<any>): void;
-        notify(): void;
-        "fromJson(net.minecraft.resources.ResourceLocation,com.google.gson.JsonObject)"(arg0: ResourceLocation_, arg1: Internal.JsonObject_): Internal.Recipe<any>;
-        wait(arg0: number, arg1: number): void;
-        fromNetwork(recipeId: ResourceLocation_, buffer: Internal.FriendlyByteBuf_): Internal.ClientRecipeTracker;
-        static register<S extends Internal.RecipeSerializer<T>, T extends Internal.Recipe<any>>(arg0: string, arg1: S): S;
-        hashCode(): number;
-        fromJson(arg0: ResourceLocation_, arg1: Internal.JsonObject_): Internal.Recipe<any>;
-        wait(): void;
-        wait(arg0: number): void;
-        toNetwork(buffer: Internal.FriendlyByteBuf_, recipe: Internal.ClientRecipeTracker_): void;
-        "toNetwork(net.minecraft.network.FriendlyByteBuf,com.almostreliable.unified.recipe.ClientRecipeTracker)"(buffer: Internal.FriendlyByteBuf_, recipe: Internal.ClientRecipeTracker_): void;
-        equals(arg0: any): boolean;
-        fromNetwork(arg0: ResourceLocation_, arg1: Internal.FriendlyByteBuf_): Internal.Recipe<any>;
-        "fromJson(net.minecraft.resources.ResourceLocation,com.google.gson.JsonObject)"(recipeId: ResourceLocation_, json: Internal.JsonObject_): Internal.ClientRecipeTracker;
-        get class(): typeof any
-    }
-    type ClientRecipeTracker$Serializer_ = ClientRecipeTracker$Serializer;
     class RawvillagersteakItem extends Internal.Item {
         constructor()
         getDrinkingSound(): Internal.SoundEvent;
@@ -5482,9 +4990,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -5530,7 +5039,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -5782,9 +5290,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -5830,7 +5339,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -6042,9 +5550,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -6090,7 +5599,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -6226,6 +5734,7 @@ declare namespace Internal {
         getClass(): typeof any;
         toString(): string;
         setPhase(arg0: Internal.EventPriority_): void;
+        getEntity(): Internal.LivingEntity;
         notifyAll(): void;
         isCanceled(): boolean;
         notify(): void;
@@ -6236,7 +5745,6 @@ declare namespace Internal {
         getCrafting(): Internal.ItemStack;
         hashCode(): number;
         isCancelable(): boolean;
-        getEntity(): Internal.Entity;
         wait(): void;
         getListenerList(): Internal.ListenerList;
         wait(arg0: number): void;
@@ -6246,12 +5754,12 @@ declare namespace Internal {
         set canceled(arg0: boolean)
         get class(): typeof any
         set phase(arg0: Internal.EventPriority_)
+        get entity(): Internal.LivingEntity
         get canceled(): boolean
         get inventory(): net.minecraft.world.Container
         set result(arg0: Internal.Event$Result_)
         get crafting(): Internal.ItemStack
         get cancelable(): boolean
-        get entity(): Internal.Entity
         get listenerList(): Internal.ListenerList
         get phase(): Internal.EventPriority
     }
@@ -6267,265 +5775,6 @@ declare namespace Internal {
         get index(): number
     }
     type DocumentEvent$ElementChange_ = DocumentEvent$ElementChange;
-    class ItemStraddleboard extends Internal.Item implements Internal.DyeableLeatherItem {
-        constructor(arg0: Internal.Item$Properties_)
-        getDrinkingSound(): Internal.SoundEvent;
-        getShareTag(arg0: Internal.ItemStack_): Internal.CompoundTag;
-        setRarity(arg0: Internal.Rarity_): void;
-        isEnderMask(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.EnderMan_): boolean;
-        isEnabled(arg0: Internal.FeatureFlagSet_): boolean;
-        getDestroySpeed(arg0: Internal.ItemStack_, arg1: Internal.BlockState_): number;
-        getBurnTime(arg0: Internal.ItemStack_, arg1: Internal.RecipeType_<any>): number;
-        moonlight$addAdditionalBehavior(placementOverride: Internal.AdditionalItemPlacement_): void;
-        /**
-         * @deprecated
-        */
-        onDestroyed(arg0: Internal.ItemEntity_): void;
-        isFireResistant(): boolean;
-        onItemUseFirst(arg0: Internal.ItemStack_, arg1: Internal.UseOnContext_): Internal.InteractionResult;
-        onCraftedBy(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        isComplex(): boolean;
-        isCorrectToolForDrops(arg0: Internal.ItemStack_, arg1: Internal.BlockState_): boolean;
-        isPiglinCurrency(arg0: Internal.ItemStack_): boolean;
-        getEnchantmentValue(arg0: Internal.ItemStack_): number;
-        canDisableShield(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: Internal.LivingEntity_, arg3: Internal.LivingEntity_): boolean;
-        onUseTick(arg0: Internal.Level_, arg1: Internal.LivingEntity_, arg2: Internal.ItemStack_, arg3: number): void;
-        appendHoverText(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.List_<net.minecraft.network.chat.Component>, arg3: Internal.TooltipFlag_): void;
-        canBeHurtBy(arg0: DamageSource_): boolean;
-        /**
-         * @deprecated
-        */
-        getFoodProperties(): Internal.FoodProperties;
-        canApplyAtEnchantingTable(arg0: Internal.ItemStack_, arg1: Internal.Enchantment_): boolean;
-        getDescriptionId(): string;
-        getUseAnimation(arg0: Internal.ItemStack_): Internal.UseAnim;
-        isValidRepairItem(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
-        moonlight$getClientAnimationExtension(): any;
-        getXpRepairRatio(arg0: Internal.ItemStack_): number;
-        isBookEnchantable(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
-        getCreativeTab(): string;
-        initCapabilities(arg0: Internal.ItemStack_, arg1: Internal.CompoundTag_): Internal.ICapabilityProvider;
-        asItem(): Internal.Item;
-        onDroppedByPlayer(arg0: Internal.ItemStack_, arg1: Internal.Player_): boolean;
-        hasCustomColor(arg0: Internal.ItemStack_): boolean;
-        getDefaultInstance(): Internal.ItemStack;
-        getTypeData(): Internal.CompoundTag;
-        getDefaultTooltipHideFlags(arg0: Internal.ItemStack_): number;
-        getCreatorModId(arg0: Internal.ItemStack_): string;
-        canContinueUsing(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
-        setBurnTime(i: number): void;
-        setMaxStackSize(arg0: number): void;
-        getFoodProperties(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): Internal.FoodProperties;
-        getBarWidth(arg0: Internal.ItemStack_): number;
-        setMaxDamage(arg0: number): void;
-        getItem(): Internal.Item;
-        getBarColor(arg0: Internal.ItemStack_): number;
-        onDestroyed(arg0: Internal.ItemEntity_, arg1: DamageSource_): void;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
-        onLeftClickEntity(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.Entity_): boolean;
-        getItemBuilder(): Internal.ItemBuilder;
-        makesPiglinsNeutral(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
-        /**
-         * @deprecated
-        */
-        getMaxDamage(): number;
-        removeAttribute(attribute: Internal.Attribute_, uuid: Internal.UUID_): void;
-        asIngredient(): Internal.Ingredient;
-        getDescription(): net.minecraft.network.chat.Component;
-        /**
-         * @deprecated
-        */
-        hasCraftingRemainingItem(): boolean;
-        canPerformAction(arg0: Internal.ItemStack_, arg1: Internal.ToolAction_): boolean;
-        getClass(): typeof any;
-        mfix$getDelegate(arg0: Internal.ResourceKey_<any>): Internal.Holder$Reference<any>;
-        static byId(arg0: number): Internal.Item;
-        getRenderPropertiesInternal(): any;
-        onEntityItemUpdate(arg0: Internal.ItemStack_, arg1: Internal.ItemEntity_): boolean;
-        interactLivingEntity(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.LivingEntity_, arg3: Internal.InteractionHand_): Internal.InteractionResult;
-        moonlight$getAdditionalBehavior(): Internal.AdditionalItemPlacement;
-        moonlight$setClientAnimationExtension(obj: any): void;
-        getCraftingRemainingItem(arg0: Internal.ItemStack_): Internal.ItemStack;
-        useOn(arg0: Internal.UseOnContext_): Internal.InteractionResult;
-        /**
-         * @deprecated
-         * This method is marked to be removed in future!
-        */
-        onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
-        getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
-        shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
-        damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
-        setAttackDamage(attackDamage: number): void;
-        isEdible(): boolean;
-        getTooltipImage(arg0: Internal.ItemStack_): Optional<Internal.TooltipComponent>;
-        arch$holder(): Internal.Holder<Internal.Item>;
-        getArmorTexture(arg0: Internal.ItemStack_, arg1: Internal.Entity_, arg2: Internal.EquipmentSlot_, arg3: string): string;
-        getAttributes(attribute: Internal.Attribute_): Internal.List<Internal.AttributeModifier>;
-        use(arg0: Internal.Level_, arg1: Internal.Player_, arg2: Internal.InteractionHand_): Internal.InteractionResultHolder<Internal.ItemStack>;
-        toString(): string;
-        getEnchantmentValue(): number;
-        setArmorToughness(armorToughness: number): void;
-        notifyAll(): void;
-        getId(): string;
-        isEnchantable(arg0: Internal.ItemStack_): boolean;
-        getSweepHitBox(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.Entity_): Internal.AABB;
-        getEnchantmentLevel(arg0: Internal.ItemStack_, arg1: Internal.Enchantment_): number;
-        getAllEnchantments(arg0: Internal.ItemStack_): Internal.Map<Internal.Enchantment, number>;
-        wait(arg0: number): void;
-        getDigSpeed(): number;
-        setTier(c: Internal.Consumer_<Internal.MutableToolTier>): void;
-        overrideStackedOnOther(arg0: Internal.ItemStack_, arg1: Internal.Slot_, arg2: Internal.ClickAction_, arg3: Internal.Player_): boolean;
-        setFoodProperties(consumer: Internal.Consumer_<Internal.FoodBuilder>): void;
-        onBlockStartBreak(arg0: Internal.ItemStack_, arg1: BlockPos_, arg2: Internal.Player_): boolean;
-        elytraFlightTick(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): boolean;
-        getMaxDamage(arg0: Internal.ItemStack_): number;
-        isFoil(arg0: Internal.ItemStack_): boolean;
-        isRepairable(arg0: Internal.ItemStack_): boolean;
-        isDamageable(arg0: Internal.ItemStack_): boolean;
-        puzzleslib$setRenderProperties(arg0: any): void;
-        useOnRelease(arg0: Internal.ItemStack_): boolean;
-        canAttackBlock(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_): boolean;
-        canGrindstoneRepair(arg0: Internal.ItemStack_): boolean;
-        notify(): void;
-        setDigSpeed(speed: number): void;
-        getDescriptionId(arg0: Internal.ItemStack_): string;
-        releaseUsing(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.LivingEntity_, arg3: number): void;
-        setAttackSpeed(attackSpeed: number): void;
-        isBarVisible(arg0: Internal.ItemStack_): boolean;
-        canWalkOnPowderedSnow(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
-        getUseDuration(arg0: Internal.ItemStack_): number;
-        onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
-        isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
-        /**
-         * @deprecated
-        */
-        getMaxStackSize(): number;
-        /**
-         * @deprecated
-        */
-        static byBlock(arg0: Internal.Block_): Internal.Item;
-        isDamaged(arg0: Internal.ItemStack_): boolean;
-        static dyeArmor(arg0: Internal.ItemStack_, arg1: Internal.List_<Internal.DyeItem>): Internal.ItemStack;
-        setColor(arg0: Internal.ItemStack_, arg1: number): void;
-        overrideFood(arg0: Internal.FoodProperties_): void;
-        canFitInsideContainerItems(): boolean;
-        wait(): void;
-        getHighlightTip(arg0: Internal.ItemStack_, arg1: net.minecraft.network.chat.Component_): net.minecraft.network.chat.Component;
-        isCorrectToolForDrops(arg0: Internal.BlockState_): boolean;
-        verifyTagAfterLoad(arg0: Internal.CompoundTag_): void;
-        canEquip(arg0: Internal.ItemStack_, arg1: Internal.EquipmentSlot_, arg2: Internal.Entity_): boolean;
-        finishUsingItem(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.LivingEntity_): Internal.ItemStack;
-        setArmorKnockbackResistance(knockbackResistance: number): void;
-        setFireResistant(arg0: boolean): void;
-        onInventoryTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_, arg3: number, arg4: number): void;
-        getEatingSound(): Internal.SoundEvent;
-        hasCustomEntity(arg0: Internal.ItemStack_): boolean;
-        puzzleslib$getRenderProperties(): any;
-        canBeDepleted(): boolean;
-        initializeClient(arg0: Internal.Consumer_<Internal.IClientItemExtensions>): void;
-        getDamage(arg0: Internal.ItemStack_): number;
-        getColor(arg0: Internal.ItemStack_): number;
-        mineBlock(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.BlockState_, arg3: BlockPos_, arg4: Internal.LivingEntity_): boolean;
-        wait(arg0: number, arg1: number): void;
-        setNameKey(arg0: string): void;
-        readShareTag(arg0: Internal.ItemStack_, arg1: Internal.CompoundTag_): void;
-        getEquipmentSlot(arg0: Internal.ItemStack_): Internal.EquipmentSlot;
-        getName(arg0: Internal.ItemStack_): net.minecraft.network.chat.Component;
-        /**
-         * @deprecated
-        */
-        getDefaultAttributeModifiers(arg0: Internal.EquipmentSlot_): Internal.Multimap<Internal.Attribute, Internal.AttributeModifier>;
-        arch$registryName(): ResourceLocation;
-        getIdLocation(): ResourceLocation;
-        getAttributeModifiers(arg0: Internal.EquipmentSlot_, arg1: Internal.ItemStack_): Internal.Multimap<Internal.Attribute, Internal.AttributeModifier>;
-        getMod(): string;
-        canElytraFly(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
-        /**
-         * @deprecated
-        */
-        builtInRegistryHolder(): Internal.Holder$Reference<Internal.Item>;
-        createEntity(arg0: Internal.Level_, arg1: Internal.Entity_, arg2: Internal.ItemStack_): Internal.Entity;
-        setArmorProtection(armorProtection: number): void;
-        getEntityLifespan(arg0: Internal.ItemStack_, arg1: Internal.Level_): number;
-        onEntitySwing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
-        inventoryTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Entity_, arg3: number, arg4: boolean): void;
-        hurtEnemy(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: Internal.LivingEntity_): boolean;
-        setDamage(arg0: Internal.ItemStack_, arg1: number): void;
-        /**
-         * @deprecated
-        */
-        getCraftingRemainingItem(): Internal.Item;
-        getTypeItemStackKey(): Internal.ItemStackKey;
-        hasCraftingRemainingItem(arg0: Internal.ItemStack_): boolean;
-        shouldOverrideMultiplayerNbt(): boolean;
-        getMaxStackSize(arg0: Internal.ItemStack_): number;
-        requiredFeatures(): Internal.FeatureFlagSet;
-        hashCode(): number;
-        static getId(arg0: Internal.Item_): number;
-        overrideOtherStackedOnMe(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: Internal.Slot_, arg3: Internal.ClickAction_, arg4: Internal.Player_, arg5: Internal.SlotAccess_): boolean;
-        clearColor(arg0: Internal.ItemStack_): void;
-        setCraftingRemainder(arg0: Internal.Item_): void;
-        doesSneakBypassUse(arg0: Internal.ItemStack_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Player_): boolean;
-        shouldCauseReequipAnimation(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: boolean): boolean;
-        onHorseArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Mob_): void;
-        addAttribute(attribute: Internal.Attribute_, uuid: Internal.UUID_, name: string, d: number, operation: Internal.AttributeModifier$Operation_): void;
-        equals(arg0: any): boolean;
-        get drinkingSound(): Internal.SoundEvent
-        set rarity(arg0: Internal.Rarity_)
-        get fireResistant(): boolean
-        get complex(): boolean
-        /**
-         * @deprecated
-        */
-        get foodProperties(): Internal.FoodProperties
-        get descriptionId(): string
-        get creativeTab(): string
-        get defaultInstance(): Internal.ItemStack
-        get typeData(): Internal.CompoundTag
-        set burnTime(i: number)
-        set maxStackSize(arg0: number)
-        set maxDamage(arg0: number)
-        get item(): Internal.Item
-        get itemBuilder(): Internal.ItemBuilder
-        /**
-         * @deprecated
-        */
-        get maxDamage(): number
-        get description(): net.minecraft.network.chat.Component
-        get class(): typeof any
-        get renderPropertiesInternal(): any
-        set itemBuilder(b: Internal.ItemBuilder_)
-        set attackDamage(attackDamage: number)
-        get edible(): boolean
-        get enchantmentValue(): number
-        set armorToughness(armorToughness: number)
-        get id(): string
-        get digSpeed(): number
-        set tier(c: Internal.Consumer_<Internal.MutableToolTier>)
-        set foodProperties(consumer: Internal.Consumer_<Internal.FoodBuilder>)
-        set digSpeed(speed: number)
-        set attackSpeed(attackSpeed: number)
-        /**
-         * @deprecated
-        */
-        get maxStackSize(): number
-        set armorKnockbackResistance(knockbackResistance: number)
-        set fireResistant(arg0: boolean)
-        get eatingSound(): Internal.SoundEvent
-        set nameKey(arg0: string)
-        get idLocation(): ResourceLocation
-        get mod(): string
-        set armorProtection(armorProtection: number)
-        /**
-         * @deprecated
-        */
-        get craftingRemainingItem(): Internal.Item
-        get typeItemStackKey(): Internal.ItemStackKey
-        set craftingRemainder(arg0: Internal.Item_)
-    }
-    type ItemStraddleboard_ = ItemStraddleboard;
     class DirectionManipulationContext extends Internal.DirectionSelectionContext {
         constructor(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.Species_, arg3: Internal.BranchBlock_, arg4: Internal.GrowSignal_, arg5: number, arg6: number[])
         probMap(): number[];
@@ -6577,35 +5826,6 @@ declare namespace Internal {
         static readonly HALT: (Internal.StreamTagVisitor$EntryResult) & (Internal.StreamTagVisitor$EntryResult);
     }
     type StreamTagVisitor$EntryResult_ = StreamTagVisitor$EntryResult | "break" | "halt" | "skip" | "enter";
-    class FogShape extends Internal.Enum<Internal.FogShape> {
-        static valueOf<T extends Internal.Enum<T>>(arg0: T, arg1: string): T;
-        getClass(): typeof any;
-        toString(): string;
-        notifyAll(): void;
-        getIndex(): number;
-        notify(): void;
-        wait(arg0: number, arg1: number): void;
-        compareTo(arg0: any): number;
-        static valueOf(arg0: string): Internal.FogShape;
-        name(): string;
-        hashCode(): number;
-        describeConstable(): Optional<Internal.Enum$EnumDesc<Internal.FogShape>>;
-        "compareTo(com.mojang.blaze3d.shaders.FogShape)"(arg0: Internal.FogShape_): number;
-        ordinal(): number;
-        wait(): void;
-        wait(arg0: number): void;
-        static values(): Internal.FogShape[];
-        "compareTo(java.lang.Object)"(arg0: any): number;
-        equals(arg0: any): boolean;
-        compareTo(arg0: Internal.FogShape_): number;
-        getDeclaringClass(): typeof Internal.FogShape;
-        get class(): typeof any
-        get index(): number
-        get declaringClass(): typeof Internal.FogShape
-        static readonly CYLINDER: (Internal.FogShape) & (Internal.FogShape);
-        static readonly SPHERE: (Internal.FogShape) & (Internal.FogShape);
-    }
-    type FogShape_ = FogShape | "cylinder" | "sphere";
     class DispenserBlock extends Internal.BaseEntityBlock implements Internal.DispenserBlockAccessor {
         constructor(arg0: Internal.BlockBehaviour$Properties_)
         /**
@@ -6617,7 +5837,6 @@ declare namespace Internal {
          * @deprecated
         */
         getVisualShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.CollisionContext_): Internal.VoxelShape;
-        static getDispenserRegistry_$md$e0e5da$0(): Internal.Map<any, any>;
         static updateOrDestroy(arg0: Internal.BlockState_, arg1: Internal.BlockState_, arg2: Internal.LevelAccessor_, arg3: BlockPos_, arg4: number, arg5: number): void;
         static popResource(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.ItemStack_): void;
         setRandomTickCallback(callback: Internal.Consumer_<any>): void;
@@ -6626,11 +5845,11 @@ declare namespace Internal {
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
         triggerEvent(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: number, arg4: number): boolean;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         static dropResources(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.BlockEntity_, arg4: Internal.Entity_, arg5: Internal.ItemStack_, arg6: boolean): void;
         getTypeData(): Internal.CompoundTag;
@@ -6644,8 +5863,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -6671,6 +5890,7 @@ declare namespace Internal {
         canBeReplaced(arg0: Internal.BlockState_, arg1: Internal.Fluid_): boolean;
         getBlockStates(): Internal.List<Internal.BlockState>;
         setRequiresTool(v: boolean): void;
+        static getDispenserRegistry_$md$e88193$0(): Internal.Map<any, any>;
         addLandingEffects(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.LivingEntity_, arg5: number): boolean;
         puzzleslib$setItem(arg0: Internal.Item_): void;
         /**
@@ -6708,8 +5928,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         use(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_, arg4: Internal.InteractionHand_, arg5: Internal.BlockHitResult_): Internal.InteractionResult;
         setLightEmission(v: number): void;
         setJumpFactor(arg0: number): void;
@@ -6750,8 +5970,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -6789,7 +6009,6 @@ declare namespace Internal {
         */
         getOcclusionShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): Internal.VoxelShape;
         isFlammable(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
-        handler$bha000$onCuttingBoardDispenseFromInject(arg0: Internal.ServerLevel_, arg1: BlockPos_, arg2: Internal.CallbackInfo_, arg3: Internal.BlockSourceImpl_, arg4: Internal.DispenserBlockEntity_, arg5: number, arg6: Internal.ItemStack_): void;
         collisionExtendsVertically(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Entity_): boolean;
         /**
          * @deprecated
@@ -6821,6 +6040,7 @@ declare namespace Internal {
         getProperties(): Internal.BlockBehaviour$Properties;
         isLadder(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.LivingEntity_): boolean;
         onDestroyedByPlayer(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_, arg4: boolean, arg5: Internal.FluidState_): boolean;
+        handler$bhh000$onCuttingBoardDispenseFromInject(arg0: Internal.ServerLevel_, arg1: BlockPos_, arg2: Internal.CallbackInfo_, arg3: Internal.BlockSourceImpl_, arg4: Internal.DispenserBlockEntity_, arg5: number, arg6: Internal.ItemStack_): void;
         /**
          * @deprecated
         */
@@ -6926,7 +6146,6 @@ declare namespace Internal {
          * @deprecated
         */
         spawnAfterBreak(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.ItemStack_, arg4: boolean): void;
-        get dispenserRegistry_$md$e0e5da$0(): Internal.Map<any, any>
         set randomTickCallback(callback: Internal.Consumer_<any>)
         /**
          * @deprecated
@@ -6943,6 +6162,7 @@ declare namespace Internal {
         get traversable(): boolean
         get blockStates(): Internal.List<Internal.BlockState>
         set requiresTool(v: boolean)
+        get dispenserRegistry_$md$e88193$0(): Internal.Map<any, any>
         set lightEmission(v: number)
         set jumpFactor(arg0: number)
         get maxHorizontalOffset(): number
@@ -6964,11 +6184,40 @@ declare namespace Internal {
         get name(): Internal.MutableComponent
         get mod(): string
         set hasCollision(arg0: boolean)
-        static DISPENSER_REGISTRY: ({[key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.RottenTomatoItem]: any, [key: Internal.MobBucketItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.MilkBottleItem]: any, [key: Internal.Item]: any, [key: Internal.ItemAnimalEgg]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.HorseArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.EvokerrobesItem$Chestplate]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.EvokerrobesItem$Boots]: any, [key: Internal.Item]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ItemAnimalEgg]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.MinecartItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.BucketItem]: any, [key: Internal.ItemTarantulaHawkElytra]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SolidBucketItem]: any, [key: Internal.SplashPotionItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.TippedArrowItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.Item]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ClayToolItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.ShieldItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.MobBucketItem]: any, [key: Internal.MobBucketItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.DyeableArmorItem]: any, [key: Internal.MobBucketItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.PillagerarmorItem$Chestplate]: any, [key: Internal.BowlFoodItem]: any, [key: Internal.EvokerrobesItem$Helmet]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.HoneyBottleItem]: any, [key: Internal.ItemModArrow]: any, [key: Internal.BlockItem]: any, [key: Internal.TurtleshellarmorItem$Chestplate]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.Item]: any, [key: Internal.MilkBucketItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.FursuitItem$Helmet]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.VindicatorarmorItem$Helmet]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.PillagerarmorItem$Leggings]: any, [key: Internal.BlockItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.VindicatorarmorItem$Boots]: any, [key: Internal.BoneMealItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.FursuitItem$Leggings]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ItemCosmicCodBucket]: any, [key: Internal.ButchersapronItem$Chestplate]: any, [key: Internal.BlockItem]: any, [key: Internal.InfectedBloodItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.MobBucketItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.DragonscalearmorItem$Helmet]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.FireworkRocketItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.HorseArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.VindicatorarmorItem$Leggings]: any, [key: Internal.DyeableHorseArmorItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SuspiciousStewItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.WitchesclothesItem$Helmet]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.EggItem]: any, [key: Internal.ItemRegistry$3]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.MinecartItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ArmorStandItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.ArmorItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.BucketItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.BoatItem]: any, [key: Internal.BlockItem]: any, [key: Internal.BoatItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.TurtleshellarmorItem$Leggings]: any, [key: Internal.BoatItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.DyeableArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BowlFoodItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.GarlandItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.DragonscalearmorItem$Boots]: any, [key: Internal.ItemModArmor]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.FireChargeItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.FursuitItem$Boots]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.PlayerHeadItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ItemEnderiophageRocket]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.MinecartItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.DragonscalearmorItem$Leggings]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.PotionItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.EvokerrobesItem$Leggings]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.MobBucketItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.BoatItem]: any, [key: Internal.Item]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.Item]: any, [key: Internal.BlockItem]: any, [key: Internal.NeptuniumArmor]: any, [key: Internal.BoatItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ArrowItem]: any, [key: Internal.BlockItem]: any, [key: Internal.BlockItem]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.ShearsItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SnowballItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BowlFoodItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.DyeableArmorItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.NeptuniumArmor]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BloodItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SaddleItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.FlowerCrownItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.BoatItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BucketItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BottleItem]: any, [key: Internal.LingeringPotionItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.FursuitItem$Chestplate]: any, [key: Internal.BoatItem]: any, [key: Internal.BoatItem]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.FlintAndSteelItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.ArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ItemModArmor]: any, [key: Internal.TurtleshellarmorItem$Boots]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ExperienceBottleItem]: any, [key: Internal.BlockItem]: any, [key: Internal.HorseArmorItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.SpectralArrowItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ElytraItem]: any, [key: Internal.DragonscalearmorItem$Chestplate]: any, [key: Internal.NeptuniumArmor]: any, [key: Internal.PillagerarmorItem$Boots]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.WitchesclothesItem$Chestplate]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.MinecartItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.StraynecklaceItem$Chestplate]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.DyeableArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BloodybutchersapronItem$Chestplate]: any, [key: Internal.MinecartItem]: any, [key: Internal.MinecartItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.PiglinbrutearmorItem$Chestplate]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.BlockItem]: any, [key: Internal.HoneycombItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.VindicatorarmorItem$Chestplate]: any, [key: Internal.PillagerarmorItem$Helmet]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.Item]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.ItemModFishBucket]: any, [key: Internal.ArmorItem]: any, [key: Internal.NeptuniumArmor]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any}) & (Internal.Map<Internal.Item, Internal.DispenseItemBehavior>);
+        static DISPENSER_REGISTRY: ({[key: Internal.NeptuniumArmor]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.MilkBucketItem]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.MinecartItem]: any, [key: Internal.BlockItem]: any, [key: Internal.MinecartItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.FursuitItem$Helmet]: any, [key: Internal.SpectralArrowItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BloodItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.NeptuniumArmor]: any, [key: Internal.BlockItem]: any, [key: Internal.DyeableHorseArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SolidBucketItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.VindicatorarmorItem$Leggings]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BackpackItem]: any, [key: Internal.BucketItem]: any, [key: Internal.BloodybutchersapronItem$Chestplate]: any, [key: Internal.FursuitItem$Chestplate]: any, [key: Internal.BoatItem]: any, [key: Internal.MobBucketItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.MobBucketItem]: any, [key: Internal.BoatItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.TurtleshellarmorItem$Chestplate]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.Item]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.NeptuniumArmor]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.Item]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.TurtleshellarmorItem$Boots]: any, [key: Internal.VindicatorarmorItem$Boots]: any, [key: Internal.MobBucketItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorStandItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SuspiciousStewItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SnowballItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.PiglinbrutearmorItem$Chestplate]: any, [key: Internal.EvokerrobesItem$Leggings]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.DyeableArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.PotionItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.GarlandItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ItemRegistry$3]: any, [key: Internal.BoatItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.DragonscalearmorItem$Leggings]: any, [key: Internal.BottleItem]: any, [key: Internal.BoatItem]: any, [key: Internal.BlockItem]: any, [key: Internal.Item]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.HorseArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.LingeringPotionItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.DragonscalearmorItem$Helmet]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.PillagerarmorItem$Chestplate]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ClayToolItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.EvokerrobesItem$Chestplate]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.MobBucketItem]: any, [key: Internal.BowlFoodItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.BlockItem]: any, [key: Internal.BlockItem]: any, [key: Internal.BoatItem]: any, [key: Internal.TippedArrowItem]: any, [key: Internal.MinecartItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.FursuitItem$Boots]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.HoneycombItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.FlintAndSteelItem]: any, [key: Internal.FireChargeItem]: any, [key: Internal.BoneMealItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.DyeableArmorItem]: any, [key: Internal.FursuitItem$Leggings]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.StraynecklaceItem$Chestplate]: any, [key: Internal.BucketItem]: any, [key: Internal.ButchersapronItem$Chestplate]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ExperienceBottleItem]: any, [key: Internal.PillagerarmorItem$Leggings]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.MobBucketItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SaddleItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.MinecartItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.FireworkRocketItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.MinecartItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.BlockItem]: any, [key: Internal.BucketItem]: any, [key: Internal.VindicatorarmorItem$Chestplate]: any, [key: Internal.ArmorItem]: any, [key: Internal.DyeableArmorItem]: any, [key: Internal.HorseArmorItem]: any, [key: Internal.PlayerHeadItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.InfectedBloodItem]: any, [key: Internal.PillagerarmorItem$Helmet]: any, [key: Internal.StrawHatItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.EvokerrobesItem$Helmet]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.HoneyBottleItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.FlowerCrownItem]: any, [key: Internal.DragonscalearmorItem$Chestplate]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.MilkBottleItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SplashPotionItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.VindicatorarmorItem$Helmet]: any, [key: Internal.NeptuniumArmor]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.DyeableArmorItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BowlFoodItem]: any, [key: Internal.BlockItem]: any, [key: Internal.ArrowItem]: any, [key: Internal.Item]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.PillagerarmorItem$Boots]: any, [key: Internal.BoatItem]: any, [key: Internal.BlockItem]: any, [key: Internal.MinecartItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.BlockItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.StandingAndWallBlockItem]: any, [key: Internal.WitchesclothesItem$Helmet]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.BlockItem]: any, [key: Internal.BoatItem]: any, [key: Internal.EggItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ShieldItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.BoatItem]: any, [key: Internal.BoatItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.Item]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.RottenTomatoItem]: any, [key: Internal.BowlFoodItem]: any, [key: Internal.ArmorItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.MobBucketItem]: any, [key: Internal.HorseArmorItem]: any, [key: Internal.WitchesclothesItem$Chestplate]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.SpawnEggItem]: any, [key: Internal.ShearsItem]: any, [key: Internal.ElytraItem]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.DragonscalearmorItem$Boots]: any, [key: Internal.TurtleshellarmorItem$Leggings]: any, [key: Internal.ForgeSpawnEggItem]: any, [key: Internal.EvokerrobesItem$Boots]: any, [key: Internal.BlockItem]: any, [key: Internal.ArmorItem]: any}) & (Internal.Map<Internal.Item, Internal.DispenseItemBehavior>);
         static readonly TRIGGERED: (Internal.BooleanProperty) & (Internal.BooleanProperty);
         static readonly FACING: (Internal.DirectionProperty) & (Internal.DirectionProperty);
     }
     type DispenserBlock_ = DispenserBlock;
+    class FogShape extends Internal.Enum<Internal.FogShape> {
+        static valueOf<T extends Internal.Enum<T>>(arg0: T, arg1: string): T;
+        getClass(): typeof any;
+        toString(): string;
+        notifyAll(): void;
+        getIndex(): number;
+        notify(): void;
+        wait(arg0: number, arg1: number): void;
+        compareTo(arg0: any): number;
+        static valueOf(arg0: string): Internal.FogShape;
+        name(): string;
+        hashCode(): number;
+        describeConstable(): Optional<Internal.Enum$EnumDesc<Internal.FogShape>>;
+        "compareTo(com.mojang.blaze3d.shaders.FogShape)"(arg0: Internal.FogShape_): number;
+        ordinal(): number;
+        wait(): void;
+        wait(arg0: number): void;
+        static values(): Internal.FogShape[];
+        "compareTo(java.lang.Object)"(arg0: any): number;
+        equals(arg0: any): boolean;
+        compareTo(arg0: Internal.FogShape_): number;
+        getDeclaringClass(): typeof Internal.FogShape;
+        get class(): typeof any
+        get index(): number
+        get declaringClass(): typeof Internal.FogShape
+        static readonly CYLINDER: (Internal.FogShape) & (Internal.FogShape);
+        static readonly SPHERE: (Internal.FogShape) & (Internal.FogShape);
+    }
+    type FogShape_ = FogShape | "cylinder" | "sphere";
     class GeodeLayerSettings {
         constructor(arg0: number, arg1: number, arg2: number, arg3: number)
         getClass(): typeof any;
@@ -7042,6 +6291,25 @@ declare namespace Internal {
         (arg0: Internal.CommandContext<S>, arg1: boolean, arg2: number): void;
     }
     type ResultConsumer_<S> = ((arg0: Internal.CommandContext<S>, arg1: boolean, arg2: number)=> void) | ResultConsumer<S>;
+    class ImageCapabilities implements Internal.Cloneable {
+        constructor(arg0: boolean)
+        clone(): any;
+        isAccelerated(): boolean;
+        getClass(): typeof any;
+        hashCode(): number;
+        isTrueVolatile(): boolean;
+        toString(): string;
+        wait(): void;
+        notifyAll(): void;
+        wait(arg0: number): void;
+        equals(arg0: any): boolean;
+        notify(): void;
+        wait(arg0: number, arg1: number): void;
+        get accelerated(): boolean
+        get class(): typeof any
+        get trueVolatile(): boolean
+    }
+    type ImageCapabilities_ = ImageCapabilities;
     class TripWireBlock extends Internal.Block {
         constructor(arg0: Internal.TripWireHookBlock_, arg1: Internal.BlockBehaviour$Properties_)
         /**
@@ -7060,11 +6328,11 @@ declare namespace Internal {
         stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         /**
          * @deprecated
@@ -7150,8 +6418,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -7191,8 +6459,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -7409,25 +6677,6 @@ declare namespace Internal {
         static readonly EAST: (Internal.BooleanProperty) & (Internal.BooleanProperty);
     }
     type TripWireBlock_ = TripWireBlock;
-    class ImageCapabilities implements Internal.Cloneable {
-        constructor(arg0: boolean)
-        clone(): any;
-        isAccelerated(): boolean;
-        getClass(): typeof any;
-        hashCode(): number;
-        isTrueVolatile(): boolean;
-        toString(): string;
-        wait(): void;
-        notifyAll(): void;
-        wait(arg0: number): void;
-        equals(arg0: any): boolean;
-        notify(): void;
-        wait(arg0: number, arg1: number): void;
-        get accelerated(): boolean
-        get class(): typeof any
-        get trueVolatile(): boolean
-    }
-    type ImageCapabilities_ = ImageCapabilities;
     class DecoratedPotRecipe extends Internal.CustomRecipe {
         constructor(arg0: ResourceLocation_, arg1: Internal.CraftingBookCategory_)
         getClass(): typeof any;
@@ -7442,8 +6691,8 @@ declare namespace Internal {
         wait(arg0: number, arg1: number): void;
         assemble(arg0: Internal.CraftingContainer_, arg1: Internal.RegistryAccess_): Internal.ItemStack;
         category(): Internal.CraftingBookCategory;
-        getSerializer(): Internal.RecipeSerializer<any>;
         assemble(arg0: net.minecraft.world.Container_, arg1: Internal.RegistryAccess_): Internal.ItemStack;
+        getSerializer(): Internal.RecipeSerializer<any>;
         getId(): ResourceLocation;
         matches(arg0: net.minecraft.world.Container_, arg1: Internal.Level_): boolean;
         getMod(): string;
@@ -7495,56 +6744,6 @@ declare namespace Internal {
         get accessibleSelectionCount(): number
     }
     type AccessibleSelection_ = AccessibleSelection;
-    class ProjectileImpactEvent extends Internal.EntityEvent {
-        constructor()
-        constructor(arg0: Internal.Projectile_, arg1: Internal.HitResult_)
-        /**
-         * @deprecated
-         * This method is marked to be removed in future!
-        */
-        setCanceled(arg0: boolean): void;
-        getResult(): Internal.Event$Result;
-        getClass(): typeof any;
-        toString(): string;
-        getImpactResult(): Internal.ProjectileImpactEvent$ImpactResult;
-        setPhase(arg0: Internal.EventPriority_): void;
-        notifyAll(): void;
-        getProjectile(): Internal.Projectile;
-        isCanceled(): boolean;
-        notify(): void;
-        wait(arg0: number, arg1: number): void;
-        hasResult(): boolean;
-        setResult(arg0: Internal.Event$Result_): void;
-        hashCode(): number;
-        isCancelable(): boolean;
-        getEntity(): Internal.Entity;
-        wait(): void;
-        getListenerList(): Internal.ListenerList;
-        setImpactResult(arg0: Internal.ProjectileImpactEvent$ImpactResult_): void;
-        wait(arg0: number): void;
-        getPhase(): Internal.EventPriority;
-        getRayTraceResult(): Internal.HitResult;
-        equals(arg0: any): boolean;
-        /**
-         * @deprecated
-         * This method is marked to be removed in future!
-        */
-        set canceled(arg0: boolean)
-        get result(): Internal.Event$Result
-        get class(): typeof any
-        get impactResult(): Internal.ProjectileImpactEvent$ImpactResult
-        set phase(arg0: Internal.EventPriority_)
-        get projectile(): Internal.Projectile
-        get canceled(): boolean
-        set result(arg0: Internal.Event$Result_)
-        get cancelable(): boolean
-        get entity(): Internal.Entity
-        get listenerList(): Internal.ListenerList
-        set impactResult(arg0: Internal.ProjectileImpactEvent$ImpactResult_)
-        get phase(): Internal.EventPriority
-        get rayTraceResult(): Internal.HitResult
-    }
-    type ProjectileImpactEvent_ = ProjectileImpactEvent;
     class ModuleDescriptor$Exports$Modifier extends Internal.Enum<Internal.ModuleDescriptor$Exports$Modifier> {
         static valueOf<T extends Internal.Enum<T>>(arg0: T, arg1: string): T;
         getDeclaringClass(): typeof Internal.ModuleDescriptor$Exports$Modifier;
@@ -7656,9 +6855,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -7704,7 +6904,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -7830,7 +7029,7 @@ declare namespace Internal {
         get craftingRemainingItem(): Internal.Item
         get typeItemStackKey(): Internal.ItemStackKey
         set craftingRemainder(arg0: Internal.Item_)
-        static readonly BY_BLOCK: ({[key: Internal.DrainedorangefrogcarcassBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.OrganicCompostBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.FrostyGrassBlock]: Internal.BlockItem, [key: Internal.MetalFence]: Internal.StackableTooltip, [key: Internal.MetalbutcherstableBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.KatanaStand]: Internal.BlockItem, [key: Internal.DonkeyheadmountBlock]: Internal.BlockItem, [key: Internal.BrownhorseheadmountBlock]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.DarkoakbutcherdisplayBlock]: Internal.BlockItem, [key: Internal.GoatcarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.RepairedIrongolemlegsBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.CaveVinesBlock]: Internal.ItemNameBlockItem, [key: Internal.PotteryBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CrackableWallBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DrainedBrownaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.FrostyGlassBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.EndermancarcassBlock]: Internal.BlockItem, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.IceFernGoldBlock]: Internal.BlockItem, [key: Internal.WhitecatheadmountBlock]: Internal.BlockItem, [key: net.memeland.bsf.block.custom.IcicleBlock]: Internal.BlockItem, [key: Internal.ChorusFlowerBlock]: Internal.BlockItem, [key: Internal.SnifferheadBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.GoldaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.CakeBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.RepairedIrongolemBlock]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BlockRainbowGlass]: Internal.AMBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.DoublePlantBlock]: Internal.BlockItem, [key: Internal.PhotosBlock]: Internal.BlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FieryFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.SniffercarcassblockBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.PlayerWallHeadBlock]: Internal.PlayerHeadItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.CanopylightblueBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.CoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.RegularBrownhorsecarcassBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CyanaxolotlheadBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.GrayhorseheadBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.SheepskeletonBlock]: Internal.BlockItem, [key: Internal.AmethystBlock]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.CharredPillarBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.BaseCoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.OakcounterBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.TripWireHookBlock]: Internal.BlockItem, [key: Internal.MuleskeletonBlock]: Internal.BlockItem, [key: Internal.RedstoneTorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.RavagerheadBlock]: Internal.BlockItem, [key: net.mcreator.butchery.block.RopeBlock]: Internal.BlockItem, [key: Internal.BlackcatheadBlock]: Internal.BlockItem, [key: Internal.VerticalRackD]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SandyWallBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.MediummagmacubecarcassBlock]: Internal.BlockItem, [key: Internal.RotatedFeastBlock]: Internal.PlaceableItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.HayBlock]: Internal.BlockItem, [key: Internal.BlockTransmutationTable]: Internal.BlockItemAMRender, [key: Internal.SandyStairsBlock]: Internal.BlockItem, [key: Internal.BaseCoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.ChickenheadmountBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.OakbutcherdisplayBlock]: Internal.BlockItem, [key: Internal.LargeVesselBlock]: Internal.LargeVesselBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.EndRodBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DoubleGate]: Internal.StackableTooltip, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.RustableDoorBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.WeatheringCopperStairBlock]: Internal.BlockItem, [key: Internal.MossySlabBlock]: Internal.BlockItem, [key: Internal.PolarbearHeadMountBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.MossMultifaceBlock]: Internal.MossClumpItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.KatanaStand]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.RustableBarsBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedSheepcarcassBlock]: Internal.BlockItem, [key: Internal.CampfireBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CrowheadBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.HuskcorpseBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.MushroomBlock]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.SkeletonhorseheadmountBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FishRollMedley1Block]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RustableBarsBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.MossyBlock]: Internal.BlockItem, [key: Internal.DrainedPolarbearcarcassBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.AllblackcatcarcassBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.CreamyllamaheadBlock]: Internal.BlockItem, [key: Internal.CreeperGrassBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.WhitellamaheadmountBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.VerticalRackD]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.CommandBlock]: Internal.GameMasterBlockItem, [key: Internal.VerticalRackC]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.KatanaStand]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.TatamiMatBlock]: Internal.FuelBlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.SunFernGoldBlock]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.GunSmithTableBlockB]: Internal.GunSmithTableItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.ObserverBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.TaxidermytableBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.OnionBlock]: Internal.ItemNameBlockItem, [key: Internal.RegularGrayhorsecarcassBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.DropperBlock]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.DrainedwitchcorpseBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.HorizontalWallHolder]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.MetalFence]: Internal.StackableTooltip, [key: Internal.KatanaStand]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.ZombiepiglinheadBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PotteryBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.DetectorRailBlock]: Internal.BlockItem, [key: Internal.BatcarcassBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.SculkBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.ZombievillagercorpseBlock]: Internal.BlockItem, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BonebarrelBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CrackableWallBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SkeletonhorsecarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.VerticalRackA]: Internal.BlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.Bridge_Lantern]: Internal.LightInfo, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.WeepingVinesBlock]: Internal.BlockItem, [key: Internal.LightningRodBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.HorseArmorStand]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SnowyBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.BlockTerrapinEgg]: Internal.AMBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.PlasticsheetBlock]: Internal.BlockItem, [key: Internal.DrainedRegularCreamyhorsecarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.RegularDarkbrownhorsecarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CrackableMossableSlabBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.RustAffectedDoorBlock]: Internal.BlockItem, [key: Internal.DrainedRegularBrownhorsecarcassBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DrainedcreepercarcassBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.TntBlock]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.WarpedbutcherdisplayBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.TallGrassBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.MossyStairsBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.CoralPlantBlock]: Internal.BlockItem, [key: Internal.BaseCoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.SaltformationtipBlock]: Internal.BlockItem, [key: Internal.StrawBaleBlock]: Internal.FuelBlockItem, [key: Internal.RustableTrapdoorBlock]: Internal.BlockItem, [key: Internal.RopeFenceGateBlock]: Internal.FuelBlockItem, [key: Internal.VerticalRackB]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.RotatedFeastBlock]: Internal.PlaceableItem, [key: Internal.SkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RopeBlock]: Internal.RopeItem, [key: Internal.CowcarcassBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StridercarcassBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.VineBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.BlockReptileEgg]: Internal.AMBlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.BarrierBlock]: Internal.BlockItem, [key: Internal.RustableTrapdoorBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.KatanaStand]: Internal.BlockItem, [key: Internal.SandyBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.TallFlowerBlock]: Internal.DoubleHighBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.SaltformationbaseBlock]: Internal.BlockItem, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperSlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.SilverfishheadmountBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.RustableDoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PowderSnowBlock]: Internal.SolidBucketItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.MagmaBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.SnowfoxheadBlock]: Internal.BlockItem, [key: Internal.DrainedCyanaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DrainedSiamesecatcarcassBlock]: Internal.BlockItem, [key: Internal.RiceRollMedleyBlock]: Internal.PlaceableItem, [key: com.github.wolfiewaffle.hardcore_torches.block.LanternBlock]: Internal.BasicLanternItem, [key: Internal.CauldronBlock]: Internal.Items$1, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StructureBlock]: Internal.GameMasterBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SnowySlabBlock]: Internal.BlockItem, [key: Internal.DrainedfoxcarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.OcelotcarcassBlock]: Internal.BlockItem, [key: Internal.DrainedvillagerBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WeatheringCopperSlabBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.MossySlabBlock]: Internal.BlockItem, [key: Internal.HangingdrainedendermancarcassBlock]: Internal.BlockItem, [key: Internal.DragonEggBlock]: Internal.BlockItem, [key: Internal.PandaskeletonBlock]: Internal.BlockItem, [key: Internal.RegularblackhorsecarcassBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.MossableStairsBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PigheadBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.VerticalRackC]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CoralBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.DrainedGrayhorsecarcassBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.MossyWallBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.InfestedRotatedPillarBlock]: Internal.BlockItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SandBlock]: Internal.AMBlockItem, [key: Internal.CookedbloodsausagesBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.DispenserBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.PiglinbruteheadBlock]: Internal.BlockItem, [key: Internal.SpiderheadmountBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.EmptywardentrimmedheadmountBlock]: Internal.BlockItem, [key: Internal.TallFlowerBlock]: Internal.DoubleHighBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.RustableBarsBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BaseCoralPlantBlock]: Internal.BlockItem, [key: Internal.VerticalRackA]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.ShulkercarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.DrainedPiglinbrutecorpseBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.LoomBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BaldeagleheadBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DrainedgrayfrogcarcassBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.FeastBlock]: Internal.PlaceableItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.SoulSandBlock]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.VerticalRackB]: Internal.BlockItem, [key: Internal.WallTorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.CampfireBlock]: Internal.BlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.BarrelBlock]: Internal.BlockItem, [key: Internal.BlockBisonCarpet]: Internal.AMBlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StrayheadmountBlock]: Internal.BlockItem, [key: Internal.HorseArmorStand]: Internal.BlockItem, [key: Internal.BasicBranchBlock]: Internal.BlockItem, [key: Internal.CreeperskeletonBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.PieBlock]: Internal.PlaceableItem, [key: Internal.CharredFenceBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.RustAffectedTrapdoorBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.TintedGlassBlock]: Internal.BlockItem, [key: Internal.PiglinbrutecorpseBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SandyShrubBlock]: Internal.BlockItem, [key: Internal.EnderdragoncarcassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.RustAffectedDoorBlock]: Internal.BlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.TabbycatheadBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.VerticalWallHolder]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.DrainedhoglincarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.BaseCoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.MetalFence]: Internal.StackableTooltip, [key: Internal.MossableSlabBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BrownMooshroomheadmountBlock]: Internal.BlockItem, [key: Internal.CarvedPumpkinBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PotatoBlock]: Internal.ItemNameBlockItem, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.SalmonbarrelBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.EquipableCarvedPumpkinBlock]: Internal.BlockItem, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.MetaltrayBlock]: Internal.BlockItem, [key: Internal.TatamiHalfMatBlock]: Internal.FuelBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CrackableWallBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.EmptyPlateBlock]: Internal.BlockItem, [key: Internal.StoveBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.EmptySmallPlateBlock]: Internal.BlockItem, [key: Internal.MossBlock]: Internal.BlockItem, [key: Internal.PotteryBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.FishRollMedley3Block]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.EmptyheadmountBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.MossyBlock]: Internal.BlockItem, [key: Internal.CalicocatheadBlock]: Internal.BlockItem, [key: Internal.CrimsonbutcherstableBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.SculkCatalystBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.MossyStairsBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.BeehiveBlock]: Internal.BlockItem, [key: Internal.SilverfishcarcassBlock]: Internal.BlockItem, [key: Internal.VerticalWallHolder]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.SnowyStairsBlock]: Internal.BlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.AnvilBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.SeagrassBlock]: Internal.BlockItem, [key: Internal.DrainedstridercarcassBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.BritishshorthaircatcarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.PigskeletonBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.PieBlock]: Internal.PlaceableItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SandyFarmlandBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.CoralPlantBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.TorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SiamesecatheadBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.GlowsquidcarcassBlock]: Internal.BlockItem, [key: Internal.RustableTrapdoorBlock]: Internal.BlockItem, [key: Internal.SheepCorpseBlock]: Internal.BlockItem, [key: Internal.SpidercarcassBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.WhitecatheadBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FishRollMedley7Block]: Internal.BlockItem, [key: Internal.RustableTrapdoorBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.CreamyhorseheadBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.RootedDirtBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.CuttingBoardBlock]: Internal.FuelBlockItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.AshesUnknownSkullBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.ThickBranchBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PolarbearskeletonBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DrownedheadBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FrogspawnBlock]: Internal.PlaceOnWaterBlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.CanopyblueBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.DonkeyheadBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.PlayercorpseBlock]: Internal.BlockItem, [key: Internal.MossableBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.LayeredCauldronBlock]: Internal.Items$1, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CrackableMossableStairsBlock]: Internal.BlockItem, [key: Internal.GunSmithTableBlockA]: Internal.GunSmithTableItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.CyanaxolotlheadmountBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SandyBlock]: Internal.BlockItem, [key: Internal.KatanaStand]: Internal.BlockItem, [key: Internal.MushroomBlock]: Internal.BlockItem, [key: Internal.VerticalRackB]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FrostBlock]: Internal.FrostItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.VerticalRackC]: Internal.BlockItem, [key: Internal.SmallemptyheadmountBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WitherSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.RepeaterBlock]: Internal.BlockItem, [key: Internal.SmallslimecarcassBlock]: Internal.BlockItem, [key: Internal.BeeheadBlock]: Internal.BlockItem, [key: Internal.DrainedWolfcarcassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.ZombiepiglincorpseBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.DoublePlantBlock]: Internal.DoubleHighBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.VerticalRackA]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.Block]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SandBlock]: Internal.BlockItem, [key: Internal.PinkaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PandaHeadMountBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SandyStairsBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BrainBlock]: Internal.BlockItem, [key: Internal.SnowyDirtBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PiglincorpseBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.CoralPlantBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.SandBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.BellBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DrownedcorpseBlock]: Internal.BlockItem, [key: Internal.RotatedFeastBlock]: Internal.PlaceableItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.LootrInventoryBlock]: Internal.LootrChestBlockItem, [key: Internal.SiltBlock]: Internal.BlockItem, [key: Internal.SnowLayerBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.DrainedCalicocatcarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BatskeletonBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.RedstoneLampBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.HorseArmorStand]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.CalicocatheadmountBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.TintedGlassPane]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.WeightedPressurePlateBlock]: Internal.BlockItem, [key: Internal.ChorusPlantBlock]: Internal.BlockItem, [key: Internal.MudBlock]: Internal.BlockItem, [key: Internal.BasicBranchBlock]: Internal.BlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SandLayerBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.SafetyLanternBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WhitehorseheadBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SnowyStairsBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperStairBlock]: Internal.BlockItem, [key: Internal.GlassBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FishDisplayBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.FishskeletonBlock]: Internal.BlockItem, [key: Internal.FieryFoodBlock]: Internal.FoodBlockItem, [key: Internal.GOLDaxolotlheadBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bamboo_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.EndPortalFrameBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DrainedJelliecatcarcassBlock]: Internal.BlockItem, [key: Internal.SculkSensorBlock]: Internal.BlockItem, [key: Internal.RawbloodsausagesBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.HorizontalWallHolder]: Internal.BlockItem, [key: Internal.SandyStairsBlock]: Internal.BlockItem, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GoatheadBlock]: Internal.BlockItem, [key: Internal.BaseCoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.JelliecatheadBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.BrownmooshroomcarcassBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.FishRollMedley2Block]: Internal.BlockItem, [key: Internal.RabbitheadBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.BaseCoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.MushroomColonyBlock]: Internal.MushroomColonyItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.VerticalRackB]: Internal.BlockItem, [key: Internal.WeatheringCopperSlabBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.StackableTooltip, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.LootrTrappedChestBlock]: Internal.LootrChestBlockItem, [key: Internal.IceFernBlock]: Internal.ItemNameBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.ZoglinheadmountBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.GoldaxolotlheadmountBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.VerticalWallHolder]: Internal.BlockItem, [key: Internal.TwistingVinesBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DragonscaleblockBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.LanternBlock]: Internal.BlockItem, [key: Internal.RustAffectedDoorBlock]: Internal.BlockItem, [key: Internal.MagmacubecarcassBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.SmokerBlock]: Internal.BlockItem, [key: Internal.VerticalRackA]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.DeepslatesulfuroreBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.RedmooshroomcarcassBlock]: Internal.BlockItem, [key: Internal.CalicocatcarcassBlock]: Internal.BlockItem, [key: Internal.TurtleheadBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.BeehiveBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.MyceliumBlock]: Internal.BlockItem, [key: Internal.BloodpuddleBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.Bamboo_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.WaterPlantBlock]: Internal.ItemNameBlockItem, [key: Internal.CoralBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.StonecutterBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WardencarcassBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.BlackhorseheadmountBlock]: Internal.BlockItem, [key: Internal.DrainedocelotcarcassBlock]: Internal.BlockItem, [key: Internal.SmithingTableBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.ZoglinheadBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PinkPetalsBlock]: Internal.BlockItem, [key: Internal.HoglinheadBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.BigDripleafBlock]: Internal.Items$1, [key: Internal.BeecarcassBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SheepcarcassBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.KatanaStand]: Internal.BlockItem, [key: Internal.BaldeaglecarcassBlock]: Internal.BlockItem, [key: Internal.BlobfishcarcassBlock]: Internal.BlockItem, [key: Internal.BlackcatcarcassBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.KatanaStand]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.CanopybrownBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.AcaciabutcherstableBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.DrainedguardiancarcassBlock]: Internal.BlockItem, [key: Internal.CamelheadBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.DrainedgreenfrogcarcassBlock]: Internal.BlockItem, [key: Internal.CommandBlock]: Internal.GameMasterBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RustableBarsBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SquidcarcassBlock]: Internal.BlockItem, [key: Internal.PoweredRailBlock]: Internal.BlockItem, [key: Internal.MossyStairsBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.AcaciabutcherdisplayBlock]: Internal.BlockItem, [key: Internal.WaterlilyBlock]: Internal.PlaceOnWaterBlockItem, [key: Internal.MulecarcassBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.RedcatheadmountBlock]: Internal.BlockItem, [key: Internal.SandySlabBlock]: Internal.BlockItem, [key: Internal.WeedsBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.TrimmedwardenHeadMountBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.SheepheadBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.RespawnAnchorBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.FuelBlockItemWithInfo, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.MossyWallBlock]: Internal.BlockItem, [key: Internal.BaseCoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.DonkeycarcassBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.MossyBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.KatanaStand]: Internal.BlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.KelpBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.BlockVoidWormBeak]: Internal.AMBlockItem, [key: Internal.DolphinheadmountBlock]: Internal.BlockItem, [key: Internal.StrayheadBlock]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.CrackableMossableBlock]: Internal.BlockItem, [key: Internal.BlockSkunkSpray]: Internal.ItemStinkBottle, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.CalibratedSculkSensorBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.CoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.AllblackcatheadBlock]: Internal.BlockItem, [key: Internal.NyliumBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.WitherRoseBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.ExarrackartdownrightBlock]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.EndermiteheadBlock]: Internal.BlockItem, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.BlockBananaSlugSlime]: Internal.AMBlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.ButcherstatueBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.VerticalRackD]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.BatheadmountBlock]: Internal.BlockItem, [key: Internal.BlockBananaPeel]: Internal.AMBlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.FoxskeletonBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.CommandBlock]: Internal.GameMasterBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.HorseArmorStand]: Internal.BlockItem, [key: Internal.RepairedIrongolembodyBlock]: Internal.BlockItem, [key: Internal.VillagerheadBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SnifferEggBlock]: Internal.BlockItem, [key: Internal.DraineddonkeycarcassBlock]: Internal.BlockItem, [key: Internal.AzaleaBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.FieryPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.EvokercorpseBlock]: Internal.BlockItem, [key: Internal.PlasticsheetcornerBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.SiltBlockGrassy]: Internal.BlockItem, [key: Internal.FieryFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.Bridge_Torch]: Internal.LightInfo, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.BrownaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.RedStoneWireBlock]: Internal.ItemNameBlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.SandyBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.WolfheadBlock]: Internal.BlockItem, [key: Internal.CavespiderheadBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.SkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.CyanaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.EvokerHeadMountBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.TrimmedEnderDragonHeadMountBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.TargetBlock]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.TorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CamelskeletonBlock]: Internal.BlockItem, [key: Internal.SquidheadBlock]: Internal.BlockItem, [key: Internal.VerticalRackB]: Internal.BlockItem, [key: Internal.VoidstoneBlock]: Internal.BlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.RedStoneOreBlock]: Internal.BlockItem, [key: Internal.LootrBarrelBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.AxolotlskeletonBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Workbench]: Internal.BlockItem, [key: Internal.RootsBlock]: Internal.BlockItem, [key: Internal.FoxheadBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.CanopyblackBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.PumpkinBlock]: Internal.BlockItem, [key: Internal.WallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.MulchBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.ZombiehorseheadBlock]: Internal.BlockItem, [key: Internal.FlowerPotBlock]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.BlackcatheadmountBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.HorseArmorStand]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.DrainedrabbitcarcassBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.TrophyBlock]: Internal.BlockItem, [key: Internal.PistonBaseBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.IrongolembodyBlock]: Internal.BlockItem, [key: Internal.RustAffectedTrapdoorBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CrimsoncounterBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CanopycyanBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.PiglinbruteHeadMountBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.ShorthaircatheadmountBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.EarthenClayBlock]: Internal.BlockItem, [key: Internal.MelonBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PestleandmortarBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.ChestnuthorseheadBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.CandleBlock]: Internal.BlockItem, [key: net.mcreator.butchery.block.SandBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.HardcoreStove]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WhitecatcarcassBlock]: Internal.BlockItem, [key: Internal.FoxHeadMountBlock]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.CoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BuddingTomatoBlock]: Internal.ModItems$1, [key: Internal.WeatheringCopperStairBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.FuelBlockItemWithInfo, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.StackableTooltip, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.PieBlock]: Internal.PlaceableItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.DrainedRegularDarkbrownhorsecarcassBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DaylightDetectorBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.DirtPathBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.SiltyFarmlandBlock]: Internal.BlockItem, [key: Internal.KatanaStand]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.SkeletonhorseheadBlock]: Internal.BlockItem, [key: Internal.PandaheadBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.PillagerheadBlock]: Internal.BlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.LootrShulkerBlock]: Internal.LootrShulkerBlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CavespiderheadmountBlock]: Internal.BlockItem, [key: Internal.RedcatcarcassBlock]: Internal.BlockItem, [key: Internal.VerticalRackD]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BaseCoralPlantBlock]: Internal.BlockItem, [key: Internal.PiglinskeletonBlock]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.BrownllamaheadBlock]: Internal.BlockItem, [key: Internal.SunFernBlock]: Internal.ItemNameBlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.CharredFenceGateBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.LoamyFarmlandBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.CowheadmountBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.ZombievillagerheadmountBlock]: Internal.BlockItem, [key: Internal.OcelotheadmountBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.BasicBranchBlock]: Internal.BlockItem, [key: Internal.VindicatorcorpseBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.SporeBlossomBlock]: Internal.BlockItem, [key: Internal.AmethystClusterBlock]: Internal.BlockItem, [key: Internal.CrackableMossableBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.VerticalRackD]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FurnaceBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.CodcarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SweetBerryBushBlock]: Internal.ItemNameBlockItem, [key: Internal.DioritebricksBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.VerticalWallHolder]: Internal.BlockItem, [key: Internal.CavespidercarcassBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.DonkeyskeletonBlock]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.CanopyredBlock]: Internal.BlockItem, [key: Internal.WitherskeletoncorpseBlock]: Internal.BlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.PinkaxolotlheadmountBlock]: Internal.BlockItem, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.IvyBlock]: Internal.BlockItem, [key: Internal.PhantomskeletonBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.BeaconBlock]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.BlueaxolotlheadmountBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.BloodyFoxBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WarpedcounterBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.VerticalRackA]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.GuardiancarcassBlock]: Internal.BlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedbaldeaglecarcassBlock]: Internal.BlockItem, [key: Internal.CanopylightgrayBlock]: Internal.BlockItem, [key: Internal.CrimsonbutcherdisplayBlock]: Internal.BlockItem, [key: Internal.SpawnerBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DrainedbrownllamacarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BlockEnderResidue]: Internal.AMBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BlockReptileEgg]: Internal.AMBlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.MangroveRootsBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.EndermiteheadmountBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PointedDripstoneBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CapuchinheadBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.MossableWallBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.RagdollcatheadmountBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.BirchcounterBlock]: Internal.BlockItem, [key: Internal.DrainedZombiepiglincorpseBlock]: Internal.BlockItem, [key: Internal.PersiancatcarcassBlock]: Internal.BlockItem, [key: Internal.RedStoneOreBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.VerticalRackA]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SnowyWallBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.CreamyllamaheadmountBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.DarkbrownhorseheadmountBlock]: Internal.BlockItem, [key: Internal.HorseArmorStand]: Internal.BlockItem, [key: Internal.StraycorpseBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.RustAffectedTrapdoorBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.ComparatorBlock]: Internal.BlockItem, [key: Internal.RedMooshroomheadmountBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.BlockCapsid]: Internal.AMBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.SandyWallBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.AzaleaBlock]: Internal.BlockItem, [key: Internal.ElderguardiancarcassBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.GrayfrogcarcassBlock]: Internal.BlockItem, [key: Internal.VerticalWallHolder]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.FlattenedBlock]: Internal.FlattenedBlockTooltip, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.VerticalRackD]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.SlimeBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SaltformationfrustumBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.HoglincarcassBlock]: Internal.BlockItem, [key: Internal.MossableWallBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.ExarrackartdownleftBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CowskeletonBlock]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SkeletonheadmountBlock]: Internal.BlockItem, [key: Internal.DrainedcapuchincarcassBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedgoatcarcassBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.HorseArmorStand]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.BaseCoralPlantBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.CreamyllamacarcassBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.DrainedchickencarcassBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedpinkaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.MediumslimecarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.EvokerheadBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WolfheadmountBlock]: Internal.BlockItem, [key: Internal.SnowyBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.ModPropaguleBlock]: Internal.BlockItem, [key: Internal.LootrChestBlock]: Internal.LootrChestBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.FishRollMedleyBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.MossyWallBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.BlastFurnaceBlock]: Internal.BlockItem, [key: Internal.JelliecatcarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.ZoglincarcassBlock]: Internal.BlockItem, [key: Internal.BloodyCowBlock]: Internal.BlockItem, [key: Internal.PillagercorpseBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.DraineddrownedcorpseBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CrackableMossableStairsBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CanopygrayBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.DrainedpigcarcassBlock]: Internal.BlockItem, [key: Internal.FoxcarcassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PandacarcassBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.BloodsplatterBlock]: Internal.BlockItem, [key: Internal.FishRollMedley4Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CanopypinkBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SnowySlabBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.NulchBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.AmethystClusterBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.CropBlock]: Internal.ItemNameBlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.BrownhorseheadBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.VerticalRackD]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.VerticalRackC]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.IcicleBlock]: Internal.IcicleItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.HugeMushroomBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BasketBlock]: Internal.FuelBlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.FreezerBlock]: Internal.BlockItem, [key: Internal.ChickencarcassBlock]: Internal.BlockItem, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.BigDripleafStemBlock]: Internal.Items$1, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: com.tacz.guns.block.TargetBlock]: Internal.BlockItem, [key: Internal.BlueaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.AMBlockItem, [key: Internal.ZombiecorpseBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.BasicBranchBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.BloodgrateBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BaseCoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.VindicatorHeadMountBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.PhantomheadmountBlock]: Internal.BlockItem, [key: Internal.MossySlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.NetherrackBlock]: Internal.BlockItem, [key: Internal.ModBlocks$1]: Internal.BlockItem, [key: Internal.VerticalWallHolder]: Internal.BlockItem, [key: Internal.PlayerHeadBlock]: Internal.PlayerHeadItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.CaimancarcassBlock]: Internal.BlockItem, [key: Internal.IrongolemBlock]: Internal.BlockItem, [key: Internal.PotteryBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.BatheadBlock]: Internal.BlockItem, [key: Internal.HoglinheadmountBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.CoralBlock]: Internal.BlockItem, [key: Internal.GravelBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CatskeletonBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.DrainedSnowfoxcarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SafetyNetBlock]: Internal.FuelBlockItem, [key: Internal.BlockReptileEgg]: Internal.AMBlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.VerticalRackA]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.VerticalRackB]: Internal.BlockItem, [key: Internal.StoneWiredFence]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.ZombiehorsecarcassBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BlockVoidWormEffigy]: Internal.AMBlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.HopperBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.JunglebutcherstableBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.HookBlock]: Internal.BlockItem, [key: Internal.LoamBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SulfuroreBlock]: Internal.BlockItem, [key: Internal.ChestnuthorseheadmountBlock]: Internal.BlockItem, [key: Internal.RawsausagesBlock]: Internal.BlockItem, [key: Internal.BlockGustmaker]: Internal.AMBlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.SoulFireBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SandyWallBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.ScaffoldingBlock]: Internal.ScaffoldingBlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DrainedGoldaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.GoatskeletonBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.BrownaxolotlheadBlock]: Internal.BlockItem, [key: Internal.HorseArmorStand]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DrainedbatcarcassBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.DrainedGrayllamacarcassBlock]: Internal.BlockItem, [key: Internal.TallFlowerBlock]: Internal.DoubleHighBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.DrainedzombiecorpseBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.HorizontalWallHolder]: Internal.BlockItem, [key: Internal.WeatheringCopperStairBlock]: Internal.BlockItem, [key: Internal.PolarbearcarcassBlock]: Internal.BlockItem, [key: Internal.SprucebutcherstableBlock]: Internal.BlockItem, [key: Internal.FrostyGrassBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SpiketrapBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.TurtleEggBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SkilletBlock]: Internal.SkilletItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.CaimanheadBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.BirchbutcherdisplayBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.TomatoBlock]: Internal.ModItems$1, [key: Internal.DrainedplayercorpseBlock]: Internal.BlockItem, [key: Internal.MuleheadBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.WeightedPressurePlateBlock]: Internal.BlockItem, [key: Internal.IrongolemlegsBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BlackhorseheadBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SnowyfoxheadmountBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.DrainedWhitecatcarcassBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PermafrostBlockGrassy]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PillagerheadmountBlock]: Internal.BlockItem, [key: Internal.ExarrackarttoprightBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.RustableDoorBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BlockLeafcutterAntChamber]: Internal.AMBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.SnowyBlock]: Internal.BlockItem, [key: Internal.PitcherCropBlock]: Internal.ItemNameBlockItem, [key: Internal.FishRollMedley5Block]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.HuskheadmountBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedzombievillagerBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.StackableTooltip, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.HalfTransparentBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.RailBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.MangroveLeavesBlock]: Internal.BlockItem, [key: Internal.VerticalRackC]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.GrayllamacarcassBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FletchingTableBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WarpedbutcherstableBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedRagdollcatcarcassBlock]: Internal.BlockItem, [key: Internal.LanternBlock]: Internal.BlockItem, [key: Internal.PolarbearheadBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.MeatgrinderBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.LecternBlock]: Internal.BlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.VerticalWallHolder]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.HugeMushroomBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.CoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.BrewingStandBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.CoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FieryWideFoodBlock]: Internal.FoodBlockItem, [key: Internal.PersiancatheadBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.DrainedRedcatcarcassBlock]: Internal.BlockItem, [key: Internal.TripWireBlock]: Internal.ItemNameBlockItem, [key: Internal.DrainedblackcatcarcassBlock]: Internal.BlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.FarmBlock]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.CherryLeavesBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.VerticalRackD]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FarmlandMoistBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.DrainedRegularChestnuthorsecarcassBlock]: Internal.BlockItem, [key: Internal.DrainedTurtlecarcassBlock]: Internal.BlockItem, [key: vectorwing.farmersdelight.common.registry.ModBlocks$1]: Internal.ModItems$2, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FlattenedBlock]: Internal.FlattenedBlockTooltip, [key: Internal.BaseCoralPlantBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DrainedhuskcorpseBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.HorizontalWallHolder]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.LavaCauldronBlock]: Internal.Items$1, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.PhantomheadBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.CoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.RichSoilBlock]: Internal.BlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.CatcarcassBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.RiceBlock]: Internal.RiceItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WetSpongeBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BrownllamaheadmountBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.MetalFence]: Internal.StackableTooltip, [key: Internal.SkeletoncorpseBlock]: Internal.BlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.ChainBlock]: Internal.BlockItem, [key: Internal.WallRootsBlock]: Internal.CeilingAndWallBlockItem, [key: Internal.BrownaxolotlheadmountBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.BrownllamacarcassBlock]: Internal.BlockItem, [key: Internal.PhantomcarcassBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.GlassBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.GlowsquidheadBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.PotteryBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.DarkbrownhorseheadBlock]: Internal.BlockItem, [key: Internal.SandBlock]: Internal.AMBlockItem, [key: Internal.BlockSculkBoomer]: Internal.AMBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.SprucecounterBlock]: Internal.BlockItem, [key: Internal.VerticalRackB]: Internal.BlockItem, [key: Internal.RabbitcarcassBlock]: Internal.BlockItem, [key: Internal.MangrovebutcherstableBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.WoodenspitrotisserieBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.WardenheadBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.TurtleheadmountBlock]: Internal.BlockItem, [key: Internal.VerticalWallHolder]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CanopymagentaBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedBlueaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.RagdollcatcarcassBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.LightBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.HangingTomatoBlock]: Internal.ModItems$1, [key: Internal.AshesFlowerBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FlattenedBlock]: Internal.FlattenedBlockTooltip, [key: Internal.SalmoncarcassBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.NeptunesBountyBlock]: Internal.BlockItemWithoutLevelRenderer, [key: Internal.CoralPlantBlock]: Internal.BlockItem, [key: Internal.JigsawBlock]: Internal.GameMasterBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CoralBlock]: Internal.BlockItem, [key: Internal.CharredStairsBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.RagdollcatheadBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.GrassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.WitherWallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.DuneGrassBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CharredBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.FlattenedBlock]: Internal.FlattenedBlockTooltip, [key: Internal.PinkaxolotlheadBlock]: Internal.BlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedphantomcarcassBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.DrainedzoglincarcassBlock]: Internal.BlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.DrainedcaimancarcassBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.PermafrostBlock]: Internal.BlockItem, [key: Internal.JunglebutcherdisplayBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.SandLayerBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.Block]: Internal.BlockItem, [key: Internal.AmethystClusterBlock]: Internal.BlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.RustAffectedDoorBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.RepairedIrongolemarmsBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.LlamaskeletonBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.VerticalRackB]: Internal.BlockItem, [key: Internal.AshSandBlock]: Internal.BlockItem, [key: Internal.DeadBushBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.VerticalRackA]: Internal.BlockItem, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.WhitellamaheadBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.StemBlock]: Internal.ItemNameBlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SculkShriekerBlock]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.WitchcorpseBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.BlockCrystalizedMucus]: Internal.AMBlockItem, [key: Internal.CabbageBlock]: Internal.ItemNameBlockItem, [key: Internal.AllblackcatheadmountBlock]: Internal.BlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.BambooStalkBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.BlockHummingbirdFeeder]: Internal.AMBlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SiamesecatcarcassBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.RavagerHeadMountBlock]: Internal.BlockItem, [key: Internal.VerticalRackA]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.EnchantmentTableBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.TackleBoxBlock]: Internal.BlockItemWithoutLevelRenderer, [key: Internal.CanopyorangeBlock]: Internal.BlockItem, [key: Internal.RegularWhitehorsecarcassBlock]: Internal.BlockItem, [key: Internal.RegularChestnuthorsecarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: com.github.wolfiewaffle.hardcore_torches.block.LanternBlock]: Internal.SoulLanternItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.SkeletonBlock]: Internal.BlockItem, [key: Internal.VerticalRackA]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.NetherSproutsBlock]: Internal.BlockItem, [key: Internal.VerticalRackB]: Internal.BlockItem, [key: Internal.MossableSlabBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.DrownedheadmountBlock]: Internal.BlockItem, [key: Internal.ExarrackarttopleftBlock]: Internal.BlockItem, [key: Internal.SandyDirtBlockGrassy]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.StatueBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.AnvilBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.HorizontalWallHolder]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.DioriteBrickwallBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.ThickBranchBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.EmptydragontrimmedheadmountBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.CashregisterblockBlock]: Internal.BlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.IronBarsBlock]: Internal.BlockItem, [key: Internal.CamelheadmountBlock]: Internal.BlockItem, [key: Internal.DrainedallblackcatcarcassBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.BlockTriopsEggs]: Internal.AMBlockItem, [key: Internal.ModBlocks$3]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.DraineddolphincarcassBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.AcaciacounterBlock]: Internal.BlockItem, [key: Internal.MushroomColonyBlock]: Internal.MushroomColonyItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.HardcoreCampfire]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.HorizontalWallHolder]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BaseCoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.CrackableMossableWallBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.DrainedcamelcarcassBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.NoteBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SpongeBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.DrainedRegularblackhorsecarcassBlock]: Internal.BlockItem, [key: Internal.PufferfishBlock]: Internal.BlockItem, [key: Internal.CreeperheadmountBlock]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.MossyStairsBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.StackableTooltip, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.RedmooshroomheadBlock]: Internal.BlockItem, [key: Internal.SkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.CamelcarcassBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.DarkoakcounterBlock]: Internal.BlockItem, [key: Internal.ExarrackartdowncenterBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.WildRiceBlock]: Internal.DoubleHighBlockItem, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.TallGrassBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SheepHeadMountBlock]: Internal.BlockItem, [key: Internal.ZombieheadmountBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WebBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SculkVeinBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DioriteBrickSlabBlock]: Internal.BlockItem, [key: Internal.HorizontalWallHolder]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PigHeadMountBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.RedstoneWallTorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.VerticalRackC]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.ChestBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.DrainedmulecarcassBlock]: Internal.BlockItem, [key: Internal.FieryWideFoodBlock]: Internal.FoodBlockItem, [key: Internal.TabbycatheadmountBlock]: Internal.BlockItem, [key: Internal.FieryFoodBlock]: Internal.FoodBlockItem, [key: Internal.RepairedIrongolemheadBlock]: Internal.BlockItem, [key: Internal.TorchflowerCropBlock]: Internal.ItemNameBlockItem, [key: Internal.ThickBranchBlock]: Internal.BlockItem, [key: Internal.CoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.EndermanheadmountBlock]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SnowfoxcarcassBlock]: Internal.BlockItem, [key: Internal.VerticalRackB]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.MossySlabBlock]: Internal.BlockItem, [key: Internal.DecoratedPotBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.RabbitHeadMountBlock]: Internal.BlockItem, [key: Internal.RegularCreamyhorsecarcassBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.GrayllamaheadBlock]: Internal.BlockItem, [key: Internal.CanopypurpleBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.EndermanheadBlock]: Internal.BlockItem, [key: Internal.DrainedPillagercorpseBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DrainedcowcarcassBlock]: Internal.BlockItem, [key: Internal.CreepercarcassBlock]: Internal.BlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.SpiderheadBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.SaltformationmiddleBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.JukeboxBlock]: Internal.BlockItem, [key: Internal.PiglinHeadMountBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.DrainedEmucarcassBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.HorizontalWallHolder]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DoublePlantBlock]: Internal.DoubleHighBlockItem, [key: Internal.CraftingTableBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.VerticalRackD]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WitchheadmountBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PandarugBlock]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.VerticalRackD]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CrackableMossableWallBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.ZombifiedPiglinHeadMountBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.ZombievillagerheadBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.HorseArmorStand]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CrackableMossableSlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.ExarrackarttopcenterBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.StemBlock]: Internal.ItemNameBlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.DrainedWhitellamacarcassBlock]: Internal.BlockItem, [key: Internal.JarBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DrainedendermancarcassBlock]: Internal.BlockItem, [key: Internal.DrainedpiglincorpseBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.RopeFenceBlock]: Internal.FuelBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.CodbarrelBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.DolphincarcassBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.DrainedpandacarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.EmucarcassBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.BasinBlock]: Internal.BlockItem, [key: Internal.DrainedredmooshroomcarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.VindicatorheadBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.ChiseledBookShelfBlock]: Internal.BlockItem, [key: Internal.SilverfishheadBlock]: Internal.BlockItem, [key: Internal.FulguriteBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WhiteLlamaCarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.HorizontalWallHolder]: Internal.BlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.HorseArmorStand]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SeaPickleBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.SandySlabBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WitchheadBlock]: Internal.BlockItem, [key: Internal.SootBlock]: Internal.BlockItem, [key: Internal.DrainedPersiancatcarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.MossyBlock]: Internal.BlockItem, [key: Internal.BasicBranchBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.EarthenClayFarmlandBlock]: Internal.BlockItem, [key: Internal.DrainedBritishshorthaircatcarcassBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.IrongolemheadmountBlock]: Internal.BlockItem, [key: Internal.SnowyWallBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.GrindstoneBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SewingTableBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.DolphinskeletonBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.SnowySlabBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.TrappedChestBlock]: Internal.BlockItem, [key: Internal.FungusBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.CowheadBlock]: Internal.BlockItem, [key: Internal.ClingfilmBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.CanopyyellowBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.ZombiehorseheadmountBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.AmethystClusterBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FrostyGlassPaneBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.GleamingSaladBlock]: Internal.PlaceableItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BaseCoralPlantBlock]: Internal.BlockItem, [key: Internal.VerticalRackA]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.VerticalWallHolder]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Iron_Bridge]: Internal.BlockItemWithInfo, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.RootsBlock]: Internal.BlockItem, [key: Internal.CartographyTableBlock]: Internal.BlockItem, [key: Internal.SnowyStairsBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.LeverBlock]: Internal.BlockItem, [key: Internal.EnderChestBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.VerticalRackC]: Internal.BlockItem, [key: Internal.CactusBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.VerticalRackC]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.WitherskeletonheadmountBlock]: Internal.BlockItem, [key: Internal.CoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.DrainedsniffercarcassblockBlock]: Internal.BlockItem, [key: com.github.wolfiewaffle.hardcore_torches.block.LanternBlock]: Internal.BasicLanternItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.HugeMushroomBlock]: Internal.BlockItem, [key: Internal.WallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.CocoaBlock]: Internal.ItemNameBlockItem, [key: Internal.RootedGrassBlock]: Internal.BlockItem, [key: Internal.RustableDoorBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.CrackableWallBlock]: Internal.BlockItem, [key: Internal.VerticalWallHolder]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.OrangefrogcarcassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.MossableStairsBlock]: Internal.BlockItem, [key: Internal.BirchbutcherstableBlock]: Internal.BlockItem, [key: Internal.DrainedbrownmooshroomcarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.DrainedVindicatorcorpseBlock]: Internal.BlockItem, [key: Internal.BlockLeafcutterAnthill]: Internal.AMBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.CoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.DustLampBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.CanopygreenBlock]: Internal.BlockItem, [key: Internal.WallTorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.RustAffectedTrapdoorBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.MossyWallBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.DrainedTabbycatcarcassBlock]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.SnowyBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CapuchincarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.TallFlowerBlock]: Internal.DoubleHighBlockItem, [key: Internal.BuddingAmethystBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.GreenfrogcarcassBlock]: Internal.BlockItem, [key: Internal.EmptyturtleshellBlock]: Internal.BlockItem, [key: Internal.DrainedCreamyllamacarcassBlock]: Internal.BlockItem, [key: Internal.PistonBaseBlock]: Internal.BlockItem, [key: Internal.BrushableBlock]: Internal.BlockItem, [key: Internal.CarrotBlock]: Internal.ItemNameBlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.VillagercorpseBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.DarkoakbutcherstableBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.GunSmithTableBlockB]: Internal.DefaultTableItem, [key: Internal.BearrugBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.VillagerHeadMountBlock]: Internal.BlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.HorizontalWallHolder]: Internal.BlockItem, [key: Internal.ChickenheadBlock]: Internal.BlockItem, [key: Internal.SpruceButcherdisplayBlock]: Internal.BlockItem, [key: Internal.SandyBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CanopylimeBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BrownmooshroomheadBlock]: Internal.BlockItem, [key: Internal.CryingObsidianBlock]: Internal.BlockItem, [key: Internal.FlattenedBlock]: Internal.FlattenedBlockTooltip, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.HorseArmorStand]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.StructureVoidBlock]: Internal.BlockItem, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.AcidBlockTickBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.DrainedZombiehorsecarcassBlock]: Internal.BlockItem, [key: Internal.SkinrackBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FireBlock]: Internal.BlockItem, [key: Internal.VerticalRackB]: Internal.BlockItem, [key: Internal.EarthenClayBlockGrassy]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.GlowLichenBlock]: Internal.BlockItem, [key: Internal.KatanaStand]: Internal.BlockItem, [key: Internal.MooshroomskeletonBlock]: Internal.BlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.HoglinskeletonBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedWhitehorsecarcassBlock]: Internal.BlockItem, [key: Internal.EndermiteBlock]: Internal.BlockItem, [key: Internal.WithercarcassBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.BlockItemWithInfo, [key: Internal.RiceBaleBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.BlueaxolotlheadBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BeetrootBlock]: Internal.ItemNameBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PigcarcassBlock]: Internal.BlockItem, [key: Internal.SandyDirtBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.PowderSnowCauldronBlock]: Internal.Items$1, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.BrushableBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.NetherWartBlock]: Internal.ItemNameBlockItem, [key: Internal.BasketBlock]: Internal.FuelBlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.ThickBranchBlock]: Internal.BlockItem, [key: Internal.CoolerBlock]: Internal.BlockItem, [key: Internal.GoatHeadMountBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.SiamesecatheadmountBlock]: Internal.BlockItem, [key: Internal.CrackableWallBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CreamyhorseheadmountBlock]: Internal.BlockItem, [key: Internal.ExarrackMonsterHeadBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.CoralBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FungusBlock]: Internal.BlockItem, [key: Internal.RedcatheadBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.CharredSlabBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.MossableBlock]: Internal.BlockItem, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.ConduitBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.WallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Block]: Internal.AMBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.WhitehorseheadmountBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.VerticalRackC]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.OakbutcherstableBlock]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.ThickBranchBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.SmallDripleafBlock]: Internal.DoubleHighBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CanvasRugBlock]: Internal.FuelBlockItem, [key: Internal.SnowyWallBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.WormFarmBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.HoneyBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.MossyBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.LargeemptyheadmountBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.AnvilBlock]: Internal.BlockItem, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.MossableBlock]: Internal.BlockItem, [key: Internal.OcelotskeletonBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.DolphinheadBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.CookedsausagesBlock]: Internal.BlockItem, [key: Internal.WardenHeadMountBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.DrainedevokercorpseBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.IceBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.SaltblockBlock]: Internal.BlockItem, [key: Internal.WolfcarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.PiglinWallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.JelliecatheadmountBlock]: Internal.BlockItem, [key: Internal.ModBlocks$2]: Internal.BlockItem, [key: Internal.WeatheringCopperSlabBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.RepairedirongolemheadmountBlock]: Internal.BlockItem, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.BasicRootsBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.HorizontalWallHolder]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.VerticalRackD]: Internal.BlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.HuskheadBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BaseCoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.RavagerBlock]: Internal.BlockItem, [key: Internal.IrongolemheadBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.GunSmithTableBlockC]: Internal.GunSmithTableItem, [key: Internal.LadderBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DioritebrickstairsBlock]: Internal.BlockItem, [key: Internal.GrayllamaheadmountBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.PoweredBlock]: Internal.BlockItem, [key: Internal.JunglecounterBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.WolfskeletonBlock]: Internal.BlockItem, [key: Internal.EnderDragonHeadMountBlock]: Internal.BlockItem, [key: Internal.FloorstandingSignBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.MuleheadmountBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.TurtlecarcassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.GrayhorseheadmountBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.VerticalRackC]: Internal.BlockItem, [key: Internal.CoralPlantBlock]: Internal.BlockItem, [key: Internal.TatamiBlock]: Internal.FuelBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.ChickenskeletonBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.ComposterBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.TabbycatcarcassBlock]: Internal.BlockItem, [key: Internal.CarpetBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.CookingPotBlock]: Internal.CookingPotItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.EmuheadBlock]: Internal.BlockItem, [key: Internal.PoweredRailBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.IrongolemarmsBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.FierySmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GlassCloche]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.HangingRootsBlock]: Internal.CeilingAndWallBlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.MetalFence]: Internal.StackableTooltip, [key: Internal.HeaterBaseBlock]: Internal.BlockItem, [key: Internal.BloodyPigBlock]: Internal.BlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.ShorthaircatheadBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.SandySlabBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.VerticalRackC]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FishRollMedley6Block]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.NyliumBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SugarCaneBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.ModBlocks$4]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.RichSoilFarmlandBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.OcelotheadBlock]: Internal.BlockItem, [key: Internal.VerticalWallHolder]: Internal.BlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: com.github.wolfiewaffle.hardcore_torches.block.LanternBlock]: Internal.SoulLanternItem, [key: Internal.CrowcarcassBlock]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.ThinIceBlock]: Internal.ThinIceItem, [key: Internal.HangingendermancarcassBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.GoatrugBlock]: Internal.BlockItem, [key: Internal.PersiancatheadmountBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem}) & (Internal.Map<Internal.Block, Internal.Item>);
+        static readonly BY_BLOCK: ({[key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.DrainedgrayfrogcarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.GoldaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.SnowyBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.RiceBlock]: Internal.RiceItem, [key: Internal.StrayheadmountBlock]: Internal.BlockItem, [key: Internal.NulchBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.BearrugBlock]: Internal.BlockItem, [key: Internal.DarkoakbutcherdisplayBlock]: Internal.BlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.EmptywardentrimmedheadmountBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.ZombiehorsecarcassBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: net.mcreator.butchery.block.SandBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: net.memeland.bsf.block.custom.IcicleBlock]: Internal.BlockItem, [key: Internal.PigskeletonBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.WallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.CalibratedSculkSensorBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.EmptyPlateBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.AcaciabutcherstableBlock]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PiglinbruteHeadMountBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CoralPlantBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.AcaciabutcherdisplayBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.BrownmooshroomheadBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.RavagerBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SpawnerBlock]: Internal.BlockItem, [key: Internal.GleamingSaladBlock]: Internal.PlaceableItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.BaseCoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.CabinetBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.NyliumBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SniffercarcassblockBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.SheepcarcassBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.ModBlocks$4]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.DeadBushBlock]: Internal.BlockItem, [key: Internal.SaltblockBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.AshesUnknownSkullBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.FungusBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PandaheadBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.BasinBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.RagdollcatheadmountBlock]: Internal.BlockItem, [key: Internal.ChickenheadBlock]: Internal.BlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.DrainedRegularChestnuthorsecarcassBlock]: Internal.BlockItem, [key: Internal.HuskheadmountBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperSlabBlock]: Internal.BlockItem, [key: Internal.PigheadBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.ChiseledBookShelfBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.SunFernGoldBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.RegularDarkbrownhorsecarcassBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.DrainedGrayhorsecarcassBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SheepCorpseBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.TurtleheadmountBlock]: Internal.BlockItem, [key: Internal.PinkaxolotlheadmountBlock]: Internal.BlockItem, [key: Internal.ZombiehorseheadmountBlock]: Internal.BlockItem, [key: Internal.LootrChestBlock]: Internal.LootrChestBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DrainedhoglincarcassBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.IceFernBlock]: Internal.ItemNameBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.RopeBlock]: Internal.RopeItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SculkCatalystBlock]: Internal.BlockItem, [key: com.github.wolfiewaffle.hardcore_torches.block.LanternBlock]: Internal.SoulLanternItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LlamaskeletonBlock]: Internal.BlockItem, [key: Internal.AmethystClusterBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.TatamiBlock]: Internal.FuelBlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.LadderBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.DrainedGrayllamacarcassBlock]: Internal.BlockItem, [key: Internal.OakcounterBlock]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.DonkeyskeletonBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.CommandBlock]: Internal.GameMasterBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.NeptunesBountyBlock]: Internal.BlockItemWithoutLevelRenderer, [key: Internal.DrainedstridercarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SkilletBlock]: Internal.SkilletItem, [key: Internal.CanopyblackBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BirchbutcherstableBlock]: Internal.BlockItem, [key: Internal.CampfireBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.VindicatorheadBlock]: Internal.BlockItem, [key: Internal.RegularWhitehorsecarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FieryFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.GrassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.FlattenedBlock]: Internal.FlattenedBlockTooltip, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.SmallemptyheadmountBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SpongeBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StonecutterBlock]: Internal.BlockItem, [key: Internal.HardcoreCampfire]: Internal.BlockItem, [key: Internal.LootrInventoryBlock]: Internal.LootrChestBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SheepHeadMountBlock]: Internal.BlockItem, [key: Internal.LootrBarrelBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.BigDripleafBlock]: Internal.Items$1, [key: Internal.MossySlabBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.WolfheadmountBlock]: Internal.BlockItem, [key: Internal.PoweredRailBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.BaseCoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SandBlock]: Internal.BlockItem, [key: Internal.DolphinskeletonBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.HoglincarcassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.PlasticsheetcornerBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedCalicocatcarcassBlock]: Internal.BlockItem, [key: Internal.SugarCaneBlock]: Internal.BlockItem, [key: Internal.DrainedSnowfoxcarcassBlock]: Internal.BlockItem, [key: Internal.MossableWallBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.TomatoBlock]: Internal.ModItems$1, [key: Internal.SpidercarcassBlock]: Internal.BlockItem, [key: Internal.RedcatheadBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.RedStoneOreBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedredmooshroomcarcassBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.BasicBranchBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.CommandBlock]: Internal.GameMasterBlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.BirchbutcherdisplayBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.SulfuroreBlock]: Internal.BlockItem, [key: Internal.MudBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.DrownedheadBlock]: Internal.BlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DrainedvillagerBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.BlackcatheadBlock]: Internal.BlockItem, [key: Internal.FishDisplayBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.ChestBlock]: Internal.BlockItem, [key: Internal.TackleBoxBlock]: Internal.BlockItemWithoutLevelRenderer, [key: Internal.DoubleGate]: Internal.StackableTooltip, [key: Internal.IceBlock]: Internal.BlockItem, [key: Internal.BrownllamacarcassBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.IrongolemheadmountBlock]: Internal.BlockItem, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperStairBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.AllblackcatheadmountBlock]: Internal.BlockItem, [key: Internal.PolarbearcarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GoldaxolotlheadmountBlock]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.DrainedVindicatorcorpseBlock]: Internal.BlockItem, [key: Internal.LeverBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.VillagerHeadMountBlock]: Internal.BlockItem, [key: Internal.SculkSensorBlock]: Internal.BlockItem, [key: Internal.MossableSlabBlock]: Internal.BlockItem, [key: Internal.WeepingVinesBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WormFarmBlock]: Internal.BlockItem, [key: net.mcreator.butchery.block.RopeBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RustAffectedTrapdoorBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.CropFullBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.MossyWallBlock]: Internal.BlockItem, [key: Internal.WhitellamaheadBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SnowfoxheadBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.SiamesecatheadBlock]: Internal.BlockItem, [key: Internal.CoolerBlock]: Internal.BlockItem, [key: Internal.VillagercorpseBlock]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.PistonBaseBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.Bridge_Lantern]: Internal.LightInfo, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WhitellamaheadmountBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.WeatheringCopperSlabBlock]: Internal.BlockItem, [key: Internal.SmithingTableBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CrackableMossableStairsBlock]: Internal.BlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SnowyBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.PotteryBlock]: Internal.BlockItem, [key: Internal.HoneyBlock]: Internal.BlockItem, [key: Internal.LavaCauldronBlock]: Internal.Items$1, [key: Internal.MossableStairsBlock]: Internal.BlockItem, [key: Internal.CoralBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.CanopymagentaBlock]: Internal.BlockItem, [key: Internal.CowcarcassBlock]: Internal.BlockItem, [key: Internal.CoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.TorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.AshesFlowerBlock]: Internal.BlockItem, [key: Internal.CanopyorangeBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.RailBlock]: Internal.BlockItem, [key: Internal.WetSpongeBlock]: Internal.BlockItem, [key: Internal.SprucebutcherstableBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.MossyBlock]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.SnowyStairsBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.EmptyheadmountBlock]: Internal.BlockItem, [key: Internal.RustAffectedTrapdoorBlock]: Internal.BlockItem, [key: Internal.StructureBlock]: Internal.GameMasterBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.ThinIceBlock]: Internal.ThinIceItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.CropFullBlock]: Internal.BlockItem, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.SnowLayerBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SkeletonhorseheadmountBlock]: Internal.BlockItem, [key: Internal.WardenHeadMountBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.PiglinskeletonBlock]: Internal.BlockItem, [key: Internal.PitcherCropBlock]: Internal.ItemNameBlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.TallFlowerBlock]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.HoglinheadBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.GoatheadBlock]: Internal.BlockItem, [key: Internal.PinkaxolotlheadBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WardencarcassBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.BloodyCowBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.RustAffectedTrapdoorBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.OverweightCocoaBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.LecternBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.TatamiMatBlock]: Internal.FuelBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.DrainedJelliecatcarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.JigsawBlock]: Internal.GameMasterBlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.MeatgrinderBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DuneGrassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BatskeletonBlock]: Internal.BlockItem, [key: Internal.ZombievillagercorpseBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.TwistingVinesBlock]: Internal.BlockItem, [key: Internal.ChickenheadmountBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.BaseCoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BlastFurnaceBlock]: Internal.BlockItem, [key: Internal.AmethystClusterBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.DrainedPolarbearcarcassBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FieryPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.CanopylightgrayBlock]: Internal.BlockItem, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.DrainedWhitellamacarcassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PotatoBlock]: Internal.ItemNameBlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SandySlabBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.MangrovebutcherstableBlock]: Internal.BlockItem, [key: Internal.RustableDoorBlock]: Internal.BlockItem, [key: Internal.PermafrostBlockGrassy]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.IvyBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.SnowyBlock]: Internal.BlockItem, [key: Internal.CoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.FrogspawnBlock]: Internal.PlaceOnWaterBlockItem, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.HugeMushroomBlock]: Internal.BlockItem, [key: Internal.ThickBranchBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.SnowyBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WolfheadBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.AcidBlockTickBlock]: Internal.BlockItem, [key: Internal.PhantomskeletonBlock]: Internal.BlockItem, [key: Internal.TallFlowerBlock]: Internal.DoubleHighBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.BeetrootBlock]: Internal.ItemNameBlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SkeletonheadmountBlock]: Internal.BlockItem, [key: Internal.ZoglinheadmountBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CowheadmountBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SaltformationfrustumBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.CoralPlantBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.RotatedFeastBlock]: Internal.PlaceableItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.Bridge_Stairs]: Internal.FuelBlockItemWithInfo, [key: com.tacz.guns.block.TargetBlock]: Internal.BlockItem, [key: Internal.CuttingBoardBlock]: Internal.FuelBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SnifferheadBlock]: Internal.BlockItem, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.RegularBrownhorsecarcassBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.GrayhorseheadBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.TintedGlassPane]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DrainedPillagercorpseBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SalmoncarcassBlock]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.VindicatorHeadMountBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.GoatrugBlock]: Internal.BlockItem, [key: Internal.ChorusPlantBlock]: Internal.BlockItem, [key: Internal.DolphincarcassBlock]: Internal.BlockItem, [key: Internal.FoxHeadMountBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.CarrotBlock]: Internal.ItemNameBlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.FlattenedBlock]: Internal.FlattenedBlockTooltip, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.NoteBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BaseCoralPlantBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.RespawnAnchorBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.RabbitcarcassBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.SpiketrapBlock]: Internal.BlockItem, [key: Internal.MossySlabBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.BarrierBlock]: Internal.BlockItem, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.BlueaxolotlheadmountBlock]: Internal.BlockItem, [key: Internal.PigHeadMountBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.CrackableMossableBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.NyliumBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.GlowsquidcarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.VindicatorcorpseBlock]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.DoublePlantBlock]: Internal.DoubleHighBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.RustableBarsBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.PeeledMelonBlock]: Internal.BlockItem, [key: Internal.BirchcounterBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.FishRollMedley2Block]: Internal.BlockItem, [key: Internal.NetherSproutsBlock]: Internal.BlockItem, [key: Internal.CharredFenceGateBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.SandyBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.CreamyllamacarcassBlock]: Internal.BlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BaseCoralPlantBlock]: Internal.BlockItem, [key: Internal.CreeperGrassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CropBlock]: Internal.ItemNameBlockItem, [key: Internal.RepairedIrongolembodyBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.FlattenedBlock]: Internal.FlattenedBlockTooltip, [key: Internal.TallGrassBlock]: Internal.BlockItem, [key: Internal.RopeFenceGateBlock]: Internal.FuelBlockItem, [key: Internal.BrownllamaheadmountBlock]: Internal.BlockItem, [key: Internal.DrainedchickencarcassBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BloodsplatterBlock]: Internal.BlockItem, [key: Internal.DrainedpiglincorpseBlock]: Internal.BlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.TabbycatheadBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BeecarcassBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.CreamyllamaheadBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.DraineddolphincarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.GunSmithTableBlockB]: Internal.DefaultTableItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SnowySlabBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.CookingPotBlock]: Internal.CookingPotItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.CoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.DrainedCreamyllamacarcassBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.RedcatheadmountBlock]: Internal.BlockItem, [key: Internal.FieryWideFoodBlock]: Internal.FoodBlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.WallRootsBlock]: Internal.CeilingAndWallBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PlasticsheetBlock]: Internal.BlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.EquipableCarvedPumpkinBlock]: Internal.BlockItem, [key: Internal.ThickBranchBlock]: Internal.BlockItem, [key: Internal.BaseCoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.CraftingTableBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.OcelotheadmountBlock]: Internal.BlockItem, [key: Internal.BlueaxolotlheadBlock]: Internal.BlockItem, [key: Internal.BambooStalkBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.GoatHeadMountBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.TaxidermytableBlock]: Internal.BlockItem, [key: Internal.RootsBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.MossMultifaceBlock]: Internal.MossClumpItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.FireBlock]: Internal.BlockItem, [key: Internal.SpruceButcherdisplayBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.DrainedbrownllamacarcassBlock]: Internal.BlockItem, [key: Internal.CharredSlabBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.RedStoneOreBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.SandyFarmlandBlock]: Internal.BlockItem, [key: Internal.RustableDoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.WitherSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Bamboo_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.GunSmithTableBlockB]: Internal.GunSmithTableItem, [key: Internal.SaltformationbaseBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.StackableTooltip, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.FarmlandMoistBlock]: Internal.BlockItem, [key: Internal.SandLayerBlock]: Internal.BlockItem, [key: Internal.RepairedirongolemheadmountBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.RabbitheadBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.ThickBranchBlock]: Internal.BlockItem, [key: Internal.FreezerBlock]: Internal.BlockItem, [key: Internal.TrimmedEnderDragonHeadMountBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.ScaffoldingBlock]: Internal.ScaffoldingBlockItem, [key: Internal.SkeletonhorsecarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.DrainedendermancarcassBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.SiltBlockGrassy]: Internal.BlockItem, [key: Internal.RootedGrassBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.RustableDoorBlock]: Internal.BlockItem, [key: Internal.AcaciacounterBlock]: Internal.BlockItem, [key: Internal.PolarbearHeadMountBlock]: Internal.BlockItem, [key: Internal.PillagerheadBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FieryFoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FishRollMedley3Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.ExarrackarttopcenterBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.PeeledMelonBlock]: Internal.BlockItem, [key: Internal.SeaPickleBlock]: Internal.BlockItem, [key: Internal.DrainedRedcatcarcassBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.HuskheadBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SalmonbarrelBlock]: Internal.BlockItem, [key: Internal.HuskcorpseBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.BigDripleafStemBlock]: Internal.Items$1, [key: Internal.FishskeletonBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.MossableBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.SnowyWallBlock]: Internal.BlockItem, [key: Internal.SandyDirtBlockGrassy]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.RagdollcatheadBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.GrindstoneBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.TntBlock]: Internal.BlockItem, [key: Internal.CavespiderheadmountBlock]: Internal.BlockItem, [key: Internal.SweetBerryBushBlock]: Internal.ItemNameBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FlowerPotBlock]: Internal.BlockItem, [key: Internal.CanopycyanBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.CarpetBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.ExarrackarttopleftBlock]: Internal.BlockItem, [key: Internal.SlimeBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StridercarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.CrackableWallBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.WitherskeletonheadmountBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperSlabBlock]: Internal.BlockItem, [key: Internal.PersiancatcarcassBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.RedcatcarcassBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.GoatcarcassBlock]: Internal.BlockItem, [key: Internal.MushroomColonyBlock]: Internal.MushroomColonyItem, [key: Internal.PersiancatheadmountBlock]: Internal.BlockItem, [key: Internal.DrainedcamelcarcassBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.CoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.SnowySlabBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.EmptydragontrimmedheadmountBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedhuskcorpseBlock]: Internal.BlockItem, [key: Internal.BaseCoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.MediumslimecarcassBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.EndPortalFrameBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.DonkeycarcassBlock]: Internal.BlockItem, [key: Internal.RotatedFeastBlock]: Internal.PlaceableItem, [key: Internal.SkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GrayfrogcarcassBlock]: Internal.BlockItem, [key: Internal.DrainedZombiepiglincorpseBlock]: Internal.BlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.Block]: Internal.BlockItem, [key: Internal.GlassBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.DarkoakbutcherstableBlock]: Internal.BlockItem, [key: Internal.WhitehorseheadBlock]: Internal.BlockItem, [key: Internal.WeightedPressurePlateBlock]: Internal.BlockItem, [key: Internal.SeagrassBlock]: Internal.BlockItem, [key: Internal.DustLampBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.EnchantmentTableBlock]: Internal.BlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.CanopyredBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.EvokerheadBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.LoamBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SoulSandBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.SnifferEggBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.DropperBlock]: Internal.BlockItem, [key: Internal.JelliecatheadBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.MossableWallBlock]: Internal.BlockItem, [key: Internal.SandyWallBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.IcicleBlock]: Internal.IcicleItem, [key: Internal.DirtPathBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.EarthenClayFarmlandBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.CanvasRugBlock]: Internal.FuelBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WarpedbutcherstableBlock]: Internal.BlockItem, [key: Internal.RotatedFeastBlock]: Internal.PlaceableItem, [key: Internal.EndermancarcassBlock]: Internal.BlockItem, [key: Internal.BatheadBlock]: Internal.BlockItem, [key: Internal.EmptyturtleshellBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.LanternBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DrainedgoatcarcassBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.RustableBarsBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.ClingfilmBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.StemBlock]: Internal.ItemNameBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WitchcorpseBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.OverweightAppleBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.BasicBranchBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.SaltformationmiddleBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.FrostyGrassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.ZombievillagerheadmountBlock]: Internal.BlockItem, [key: Internal.PillagerheadmountBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.SandyBlock]: Internal.BlockItem, [key: Internal.DaylightDetectorBlock]: Internal.BlockItem, [key: Internal.PlayerWallHeadBlock]: Internal.PlayerHeadItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: com.github.wolfiewaffle.hardcore_torches.block.LanternBlock]: Internal.BasicLanternItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.SkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.GrayhorseheadmountBlock]: Internal.BlockItem, [key: Internal.BasicBranchBlock]: Internal.BlockItem, [key: Internal.RustAffectedTrapdoorBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.IrongolemBlock]: Internal.BlockItem, [key: Internal.ZombievillagerheadBlock]: Internal.BlockItem, [key: Internal.FoxcarcassBlock]: Internal.BlockItem, [key: Internal.IrongolemlegsBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.FishRollMedley5Block]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.BlockItemWithInfo, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.EvokerHeadMountBlock]: Internal.BlockItem, [key: Internal.CharredPillarBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.ZombiehorseheadBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CalicocatcarcassBlock]: Internal.BlockItem, [key: Internal.DrainedbatcarcassBlock]: Internal.BlockItem, [key: Internal.WoodenspitrotisserieBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BrainBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.BaseCoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.ChainBlock]: Internal.BlockItem, [key: Internal.SnowySlabBlock]: Internal.BlockItem, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.DrainedblackcatcarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.TrimmedwardenHeadMountBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PotteryBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.MossyWallBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.CamelcarcassBlock]: Internal.BlockItem, [key: Internal.DrainedRegularDarkbrownhorsecarcassBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.FieryFoodBlock]: Internal.FoodBlockItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.MetalFence]: Internal.StackableTooltip, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.CarvedPumpkinBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.MossyWallBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CamelheadmountBlock]: Internal.BlockItem, [key: Internal.FurnaceBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.EnderChestBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.Block]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.MuleskeletonBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.CrackableWallBlock]: Internal.BlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CoralPlantBlock]: Internal.BlockItem, [key: Internal.MangroveLeavesBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CowskeletonBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.RedStoneWireBlock]: Internal.ItemNameBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SheepheadBlock]: Internal.BlockItem, [key: Internal.MetalFence]: Internal.StackableTooltip, [key: Internal.LootrTrappedChestBlock]: Internal.LootrChestBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.JelliecatheadmountBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PiglinWallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.TurtleheadBlock]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.FrostyGlassBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BrushableBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CanopybrownBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.MossyWallBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.MangroveRootsBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.BaseCoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FishRollMedley4Block]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.CanopyyellowBlock]: Internal.BlockItem, [key: Internal.EarthenClayBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CoralPlantBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.OverweightCarrotBlock]: Internal.BlockItem, [key: Internal.RustableTrapdoorBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.FishRollMedley7Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.BaseCoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.GlowsquidheadBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.SkeletoncorpseBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CowheadBlock]: Internal.BlockItem, [key: Internal.MulecarcassBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WithercarcassBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.CanopypinkBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FletchingTableBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.AnvilBlock]: Internal.BlockItem, [key: Internal.MossyBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.SandLayerBlock]: Internal.BlockItem, [key: Internal.EnderDragonHeadMountBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.TorchflowerCropBlock]: Internal.ItemNameBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DrainedTabbycatcarcassBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.BrownhorseheadmountBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.LoamyFarmlandBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.EarthenClayBlockGrassy]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PotteryBlock]: Internal.BlockItem, [key: Internal.BlackcatcarcassBlock]: Internal.BlockItem, [key: Internal.DrainedrabbitcarcassBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.GuardiancarcassBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.SculkVeinBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.DoubleGate]: Internal.StackableTooltip, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.GOLDaxolotlheadBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CoralBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.ModBlocks$3]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.WarpedcounterBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.TrappedChestBlock]: Internal.BlockItem, [key: Internal.WaterPlantBlock]: Internal.ItemNameBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BonebarrelBlock]: Internal.BlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: com.github.wolfiewaffle.hardcore_torches.block.LanternBlock]: Internal.BasicLanternItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StoneWiredFence]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.OakbutcherdisplayBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.RegularChestnuthorsecarcassBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SnowyWallBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.SkeletonBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.SandySlabBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SoulFireBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CookedsausagesBlock]: Internal.BlockItem, [key: Internal.HopperBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FoxskeletonBlock]: Internal.BlockItem, [key: Internal.ShulkercarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.MossyBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.CaveVinesBlock]: Internal.ItemNameBlockItem, [key: Internal.ExarrackartdownrightBlock]: Internal.BlockItem, [key: Internal.DrainedzombiecorpseBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WitchheadmountBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.CamelheadBlock]: Internal.BlockItem, [key: Internal.CashregisterblockBlock]: Internal.BlockItem, [key: Internal.LargeVesselBlock]: Internal.LargeVesselBlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.BaseCoralPlantBlock]: Internal.BlockItem, [key: Internal.AzaleaBlock]: Internal.BlockItem, [key: Internal.WardenheadBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.SheepskeletonBlock]: Internal.BlockItem, [key: Internal.SnowyStairsBlock]: Internal.BlockItem, [key: Internal.WhitecatheadmountBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.SandyBlock]: Internal.BlockItem, [key: Internal.RagdollcatcarcassBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.PinkPetalsBlock]: Internal.BlockItem, [key: Internal.BrushableBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.CreepercarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.CanopylightblueBlock]: Internal.BlockItem, [key: Internal.MossyStairsBlock]: Internal.BlockItem, [key: Internal.WallTorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.RawbloodsausagesBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.MossyStairsBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.ModBlocks$2]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.PhantomcarcassBlock]: Internal.BlockItem, [key: Internal.RedMooshroomheadmountBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: vectorwing.farmersdelight.common.registry.ModBlocks$1]: Internal.ModItems$2, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.DoubleGate]: Internal.StackableTooltip, [key: Internal.SnowyfoxheadmountBlock]: Internal.BlockItem, [key: Internal.ExarrackartdownleftBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.DrainedpinkaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.CrackableWallBlock]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PermafrostBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.GunSmithTableBlockC]: Internal.GunSmithTableItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.ExarrackarttoprightBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StemBlock]: Internal.ItemNameBlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.WallTorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.GrayllamaheadBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.FierySmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FoxheadBlock]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.StraycorpseBlock]: Internal.BlockItem, [key: Internal.WitchheadBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.WeatheringCopperSlabBlock]: Internal.BlockItem, [key: Internal.PandaskeletonBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SnowyWallBlock]: Internal.BlockItem, [key: Internal.AshSandBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BaseCoralPlantBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.SilverfishheadBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.WitherWallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.AmethystBlock]: Internal.BlockItem, [key: Internal.AmethystClusterBlock]: Internal.BlockItem, [key: Internal.BarrelBlock]: Internal.BlockItem, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.JelliecatcarcassBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.BuddingTomatoBlock]: Internal.ModItems$1, [key: Internal.IceFernGoldBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.PigcarcassBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.SunFernBlock]: Internal.ItemNameBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BaseCoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.CoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.TurtlecarcassBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.EndermiteBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.BellBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.NetherCropFullBlock]: Internal.BlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FungusBlock]: Internal.BlockItem, [key: Internal.DrainedWhitecatcarcassBlock]: Internal.BlockItem, [key: Internal.RepairedIrongolemheadBlock]: Internal.BlockItem, [key: Internal.ShorthaircatheadmountBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.ShorthaircatheadBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.OakbutcherstableBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.DrainedBritishshorthaircatcarcassBlock]: Internal.BlockItem, [key: Internal.DrainedCyanaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.BasicRootsBlock]: Internal.BlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WildRiceBlock]: Internal.DoubleHighBlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FarmBlock]: Internal.BlockItem, [key: Internal.HangingdrainedendermancarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DecoratedPotBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.MushroomBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.MossySlabBlock]: Internal.BlockItem, [key: Internal.RavagerheadBlock]: Internal.BlockItem, [key: Internal.PersiancatheadBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.DrainedRegularBrownhorsecarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DarkbrownhorseheadmountBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.MuleheadmountBlock]: Internal.BlockItem, [key: Internal.RawsausagesBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.CrackableWallBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SiltyFarmlandBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BrownaxolotlheadBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.RedmooshroomcarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.OcelotskeletonBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.NetherWartBlock]: Internal.ItemNameBlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: com.github.wolfiewaffle.hardcore_torches.block.LanternBlock]: Internal.SoulLanternItem, [key: Internal.GlassBlock]: Internal.BlockItem, [key: Internal.CactusBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SquidcarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.ThickBranchBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.RustableDoorBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CrackableMossableSlabBlock]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.DrainedPiglinbrutecorpseBlock]: Internal.BlockItem, [key: Internal.InfestedRotatedPillarBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.TatamiHalfMatBlock]: Internal.FuelBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PotteryBlock]: Internal.BlockItem, [key: Internal.RiceRollMedleyBlock]: Internal.PlaceableItem, [key: Internal.SquidheadBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.MagmaBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.OrangefrogcarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BasketBlock]: Internal.FuelBlockItem, [key: Internal.RustableBarsBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.ButcherstatueBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.PotteryBlock]: Internal.BlockItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.WhitecatcarcassBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.FieryWideFoodBlock]: Internal.FoodBlockItem, [key: Internal.RavagerHeadMountBlock]: Internal.BlockItem, [key: Internal.CherryLeavesBlock]: Internal.BlockItem, [key: Internal.DioriteBrickSlabBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StoveBlock]: Internal.BlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.DrainedmulecarcassBlock]: Internal.BlockItem, [key: Internal.PiglincorpseBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.MossableStairsBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.StatueBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.VillagerheadBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.StrayheadBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BuddingAmethystBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PieBlock]: Internal.PlaceableItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.DraineddonkeycarcassBlock]: Internal.BlockItem, [key: Internal.ZombiecorpseBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.BlockItem, [key: Internal.MyceliumBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.CoralBlock]: Internal.BlockItem, [key: Internal.AllblackcatheadBlock]: Internal.BlockItem, [key: Internal.JunglebutcherdisplayBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedplayercorpseBlock]: Internal.BlockItem, [key: Internal.CoralBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PhantomheadmountBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.EndermiteheadBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.SnowyDirtBlock]: Internal.BlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SandyWallBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BrownaxolotlheadmountBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.RiceBaleBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.MetalbutcherstableBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.ChickencarcassBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.CrackableMossableWallBlock]: Internal.BlockItem, [key: Internal.DrainedTurtlecarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.Iron_Bridge]: Internal.BlockItemWithInfo, [key: Internal.PestleandmortarBlock]: Internal.BlockItem, [key: Internal.DoublePlantBlock]: Internal.DoubleHighBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.JunglecounterBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.VoidstoneBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SculkBlock]: Internal.BlockItem, [key: Internal.CanopygreenBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.CartographyTableBlock]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.Bridge_Torch]: Internal.LightInfo, [key: Internal.HangingRootsBlock]: Internal.CeilingAndWallBlockItem, [key: Internal.FloorstandingSignBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.TrophyBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CreamyhorseheadmountBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.OverweightAppleBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.SiltBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.Bamboo_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CalicocatheadmountBlock]: Internal.BlockItem, [key: Internal.WhiteLlamaCarcassBlock]: Internal.BlockItem, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.DrainedGoldaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SandyWallBlock]: Internal.BlockItem, [key: Internal.TorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.MushroomColonyBlock]: Internal.MushroomColonyItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FishRollMedley6Block]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CropFullBlock]: Internal.BlockItem, [key: Internal.WitherskeletoncorpseBlock]: Internal.BlockItem, [key: Internal.PieBlock]: Internal.PlaceableItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.RustAffectedDoorBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.DraineddrownedcorpseBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CryingObsidianBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.ZoglinheadBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.TallFlowerBlock]: Internal.DoubleHighBlockItem, [key: Internal.CrackedStairsBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.CompactStairs]: Internal.FuelItemBlock, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CommandBlock]: Internal.GameMasterBlockItem, [key: Internal.DrownedcorpseBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.BeeheadBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.CrimsonbutcherstableBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.AllblackcatcarcassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.GunSmithTableBlockA]: Internal.GunSmithTableItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.ChickenskeletonBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.BasicBranchBlock]: Internal.BlockItem, [key: Internal.RustableTrapdoorBlock]: Internal.BlockItem, [key: Internal.TargetBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.DrainedRegularCreamyhorsecarcassBlock]: Internal.BlockItem, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.TallFlowerBlock]: Internal.DoubleHighBlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.SmallDripleafBlock]: Internal.DoubleHighBlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.PlayercorpseBlock]: Internal.BlockItem, [key: Internal.SaltformationtipBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PiglinHeadMountBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.ExarrackMonsterHeadBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SandyBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.RegularCreamyhorsecarcassBlock]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.GoatskeletonBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.ComparatorBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.CauldronBlock]: Internal.Items$1, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.RabbitHeadMountBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.MossableSlabBlock]: Internal.BlockItem, [key: Internal.DrainedRegularblackhorsecarcassBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.WolfcarcassBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.GrayllamaheadmountBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.ZombifiedPiglinHeadMountBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.MagmacubecarcassBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.AxolotlskeletonBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.ZombiepiglinheadBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.RedstoneTorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.RegularblackhorsecarcassBlock]: Internal.BlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.OnionBlock]: Internal.ItemNameBlockItem, [key: Internal.CoralBlock]: Internal.BlockItem, [key: Internal.JukeboxBlock]: Internal.BlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.MossyBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.DrainedsniffercarcassblockBlock]: Internal.BlockItem, [key: Internal.PiglinbruteheadBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.FishRollMedley1Block]: Internal.BlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.WolfskeletonBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.RootedDirtBlock]: Internal.BlockItem, [key: Internal.SprucecounterBlock]: Internal.BlockItem, [key: Internal.DioritebrickstairsBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.WhitehorseheadmountBlock]: Internal.BlockItem, [key: Internal.LootrShulkerBlock]: Internal.LootrShulkerBlockItem, [key: Internal.Bridge_Block_Rope]: Internal.FuelBlockItemWithInfo, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.LightningRodBlock]: Internal.BlockItem, [key: Internal.CodbarrelBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CrackableMossableWallBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.BlackcatheadmountBlock]: Internal.BlockItem, [key: Internal.DrainedfoxcarcassBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.BrownmooshroomcarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.BeehiveBlock]: Internal.BlockItem, [key: Internal.DrainedocelotcarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.MossableBlock]: Internal.BlockItem, [key: Internal.OverweightPotatoBlock]: Internal.BlockItem, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperStairBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.CrackableWallBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.CoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.OcelotheadBlock]: Internal.BlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.SkinrackBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BaseCoralPlantBlock]: Internal.BlockItem, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PandarugBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.CharredStairsBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.PlayerHeadBlock]: Internal.PlayerHeadItem, [key: Internal.SandyStairsBlock]: Internal.BlockItem, [key: Internal.DrainedcowcarcassBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.HangingTomatoBlock]: Internal.ModItems$1, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.BloodgrateBlock]: Internal.BlockItem, [key: Internal.PinkaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.EnderdragoncarcassBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.FulguriteBlock]: Internal.BlockItem, [key: Internal.RedstoneWallTorchBlock]: Internal.StandingAndWallBlockItem, [key: Internal.BeehiveBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.FrostyGlassPaneBlock]: Internal.BlockItem, [key: Internal.SnowyStairsBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.HangingendermancarcassBlock]: Internal.BlockItem, [key: Internal.SewingTableBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DrainedcreepercarcassBlock]: Internal.BlockItem, [key: Internal.WarpedbutcherdisplayBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.PressurePlateBlock]: Internal.BlockItem, [key: Internal.MossyBlock]: Internal.BlockItem, [key: Internal.AnvilBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.CavespidercarcassBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.CreeperskeletonBlock]: Internal.BlockItem, [key: Internal.CalicocatheadBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.ZoglincarcassBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.RepeaterBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.RustAffectedDoorBlock]: Internal.BlockItem, [key: Internal.RustAffectedDoorBlock]: Internal.BlockItem, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.WebBlock]: Internal.BlockItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.PillagercorpseBlock]: Internal.BlockItem, [key: Internal.DarkbrownhorseheadBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.MulchBlock]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.MossyStairsBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.LayeredCauldronBlock]: Internal.Items$1, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.FrostyGrassBlock]: Internal.BlockItem, [key: Internal.LanternBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SaplingBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.TurtleEggBlock]: Internal.BlockItem, [key: Internal.WallSignBlock]: Internal.SignItem, [key: Internal.CatskeletonBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.DrainedpandacarcassBlock]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.WallHangingSignBlock]: Internal.HangingSignItem, [key: Internal.DrainedWolfcarcassBlock]: Internal.BlockItem, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.RichSoilBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.RustableStairsBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.DrainedevokercorpseBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.HugeMushroomBlock]: Internal.BlockItem, [key: Internal.DrainedBrownaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.RepairedIrongolemBlock]: Internal.BlockItem, [key: Internal.BritishshorthaircatcarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.MossySlabBlock]: Internal.BlockItem, [key: Internal.CyanaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.EndermiteheadmountBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.WitherRoseBlock]: Internal.BlockItem, [key: Internal.BrownaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.WeightedPressurePlateBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FeastBlock]: Internal.PlaceableItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.RedmooshroomheadBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.GrayllamacarcassBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedZombiehorsecarcassBlock]: Internal.BlockItem, [key: Internal.PumpkinBlock]: Internal.BlockItem, [key: Internal.SmallslimecarcassBlock]: Internal.BlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.HoglinheadmountBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.DonkeyheadmountBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.DragonEggBlock]: Internal.BlockItem, [key: Internal.ChestnuthorseheadmountBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.PiglinbrutecorpseBlock]: Internal.BlockItem, [key: Internal.CavespiderheadBlock]: Internal.BlockItem, [key: Internal.DrainedpigcarcassBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemStone, [key: Internal.MuleheadBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.CabbageBlock]: Internal.ItemNameBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.MetalFence]: Internal.StackableTooltip, [key: Internal.DetectorRailBlock]: Internal.BlockItem, [key: Internal.LightBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.HalfTransparentBlock]: Internal.BlockItem, [key: Internal.JunglebutcherstableBlock]: Internal.BlockItem, [key: Internal.TabbycatcarcassBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.TabbycatheadmountBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BaseCoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.BlueaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SandySlabBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CakeBlock]: Internal.BlockItem, [key: Internal.DrainedzoglincarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.MossBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WeatheringCopperStairBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.IrongolemarmsBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SilverfishcarcassBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.BrownMooshroomheadmountBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.CodcarcassBlock]: Internal.BlockItem, [key: Internal.DrainedSiamesecatcarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.MetalFence]: Internal.StackableTooltip, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.MetalFence]: Internal.StackableTooltip, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.ModStairBlock]: Internal.BlockItem, [key: Internal.ObserverBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.RegularGrayhorsecarcassBlock]: Internal.BlockItem, [key: Internal.HookBlock]: Internal.BlockItem, [key: Internal.KelpBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.MooshroomskeletonBlock]: Internal.BlockItem, [key: Internal.DrainedallblackcatcarcassBlock]: Internal.BlockItem, [key: Internal.ConcretePowderBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.BedBlock]: Internal.BedItem, [key: Internal.DrainedwitchcorpseBlock]: Internal.BlockItem, [key: Internal.RopeFenceBlock]: Internal.FuelBlockItem, [key: Internal.IrongolemheadBlock]: Internal.BlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.AnvilBlock]: Internal.BlockItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.TintedGlassBlock]: Internal.BlockItem, [key: Internal.FlattenedBlock]: Internal.FlattenedBlockTooltip, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.CreamyhorseheadBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PowderSnowCauldronBlock]: Internal.Items$1, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.EndermanheadmountBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.DoublePlantBlock]: Internal.BlockItem, [key: Internal.CatcarcassBlock]: Internal.BlockItem, [key: Internal.DolphinheadmountBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.SkeletonhorseheadBlock]: Internal.BlockItem, [key: Internal.NetherrackBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.JarBlock]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.FuelItemBlock, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.EvokercorpseBlock]: Internal.BlockItem, [key: Internal.CoralFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.PhantomheadBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.OcelotcarcassBlock]: Internal.BlockItem, [key: Internal.CharredFenceBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.RustableTrapdoorBlock]: Internal.BlockItem, [key: Internal.SkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.BulkStairs]: Internal.FuelItemBlock, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.WhitecatheadBlock]: Internal.BlockItem, [key: Internal.ComposterBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.CookedbloodsausagesBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.PoweredBlock]: Internal.BlockItem, [key: Internal.DrainedzombievillagerBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SporeBlossomBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.DioritebricksBlock]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.Block]: Internal.BlockItem, [key: Internal.IronBarsBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.ExarrackartdowncenterBlock]: Internal.BlockItem, [key: Internal.MossyStairsBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.StairRailing]: Internal.RailingItemWooden, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.WallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.DarkoakcounterBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.PandaHeadMountBlock]: Internal.BlockItem, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.DrainedbrownmooshroomcarcassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SandyStairsBlock]: Internal.BlockItem, [key: Internal.CampfireBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SiamesecatcarcassBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BrownhorseheadBlock]: Internal.BlockItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.BlackhorseheadmountBlock]: Internal.BlockItem, [key: Internal.StrawBaleBlock]: Internal.FuelBlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.TerraceStairs]: Internal.BlockItem, [key: Internal.WeatheringCopperFullBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.DrainedgreenfrogcarcassBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DoorBlock]: Internal.DoubleHighBlockItem, [key: Internal.PolarbearheadBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.Log_Bridge]: Internal.FuelBlockItemWithInfo, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.CreeperheadmountBlock]: Internal.BlockItem, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.WallBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.DolphinheadBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.ChorusFlowerBlock]: Internal.BlockItem, [key: Internal.RepairedIrongolemarmsBlock]: Internal.BlockItem, [key: Internal.AzaleaBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.LeafPileBlock]: Internal.LeafPileBlockItem, [key: Internal.ChestnuthorseheadBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.BeaconBlock]: Internal.BlockItem, [key: Internal.DrainedWhitehorsecarcassBlock]: Internal.BlockItem, [key: Internal.PufferfishBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.DrainedRagdollcatcarcassBlock]: Internal.BlockItem, [key: Internal.SandyDirtBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.TripWireHookBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.DrownedheadmountBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.ZombiepiglincorpseBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.StackableTooltip, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CoralWallFanBlock]: Internal.StandingAndWallBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.BloodyFoxBlock]: Internal.BlockItem, [key: Internal.MediummagmacubecarcassBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.BasketBlock]: Internal.FuelBlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.FenceHitbox]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.BasicBranchBlock]: Internal.BlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.SpiderheadBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemStone, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.LeavesBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.RustableSlabBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.RedstoneLampBlock]: Internal.BlockItem, [key: Internal.BrownllamaheadBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CrackableMossableSlabBlock]: Internal.BlockItem, [key: Internal.CanopyblueBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CanopylimeBlock]: Internal.BlockItem, [key: Internal.SnowfoxcarcassBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.GreenfrogcarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CamelskeletonBlock]: Internal.BlockItem, [key: Internal.TripWireBlock]: Internal.ItemNameBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.WeedsBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SandyStairsBlock]: Internal.BlockItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.MetalFenceMiddle]: Internal.StackableTooltip, [key: Internal.WildCropBlock]: Internal.BlockItem, [key: Internal.CanopypurpleBlock]: Internal.BlockItem, [key: Internal.BatheadmountBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.BannerBlock]: Internal.BannerItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.BatcarcassBlock]: Internal.BlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.ZombieheadmountBlock]: Internal.BlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.CompactStairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.HoglinskeletonBlock]: Internal.BlockItem, [key: Internal.CabinetBlock]: Internal.FuelBlockItem, [key: Internal.LoomBlock]: Internal.BlockItem, [key: Internal.LooseRockBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.ThickBranchBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.HardcoreStove]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.PointedDripstoneBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.StructureVoidBlock]: Internal.BlockItem, [key: Internal.DrainedguardiancarcassBlock]: Internal.BlockItem, [key: Internal.CharredBlock]: net.mehvahdjukaar.moonlight.api.item.FuelBlockItem, [key: Internal.ElderguardiancarcassBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.MelonBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.StainedGlassPaneBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CandleBlock]: Internal.BlockItem, [key: Internal.WallSkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LargeemptyheadmountBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.BloodpuddleBlock]: Internal.BlockItem, [key: Internal.RepairedIrongolemlegsBlock]: Internal.BlockItem, [key: Internal.BulkStairs]: Internal.BlockItem, [key: Internal.DoubleGate]: Internal.FuelItemBlockStackable, [key: Internal.FlattenedBlock]: Internal.FlattenedBlockTooltip, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.HugeMushroomBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem, [key: Internal.TallFlowerBlock]: Internal.DoubleHighBlockItem, [key: Internal.FacingPathBlock]: Internal.BlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SandBlock]: Internal.BlockItem, [key: Internal.DrinkBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.CyanaxolotlheadmountBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CrimsonbutcherdisplayBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.SculkShriekerBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SootBlock]: Internal.BlockItem, [key: Internal.CrackableStairsBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.CrimsoncounterBlock]: Internal.BlockItem, [key: Internal.ConduitBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemWooden, [key: Internal.PowderSnowBlock]: Internal.SolidBucketItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.FenceHitbox]: Internal.BlockItem, [key: Internal.PolarbearskeletonBlock]: Internal.BlockItem, [key: Internal.Rail_Bridge]: com.mcwbridges.kikoz.util.FuelItemBlock, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.CrackableMossableStairsBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CrackedWallBlock]: Internal.BlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.Bridge_Block]: Internal.BlockItemWithInfo, [key: Internal.FrostBlock]: Internal.FrostItem, [key: Internal.ButtonBlock]: Internal.BlockItem, [key: Internal.StandingCanvasSignBlock]: Internal.SignItem, [key: Internal.OrganicCompostBlock]: Internal.BlockItem, [key: Internal.HardcoreFloorTorchBlock]: Internal.TorchItem, [key: Internal.RustableTrapdoorBlock]: Internal.BlockItem, [key: Internal.PistonBaseBlock]: Internal.BlockItem, [key: Internal.AmethystClusterBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SafetyNetBlock]: Internal.FuelBlockItem, [key: Internal.Bridge_Support]: Internal.BlockItem, [key: Internal.BalconyRailing]: Internal.BalconyItemWooden, [key: Internal.ModPropaguleBlock]: Internal.BlockItem, [key: Internal.SpiderheadmountBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.WiredFence]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.DonkeyheadBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.VineBlock]: Internal.BlockItem, [key: Internal.CeilingHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.EndermanheadBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PoweredRailBlock]: Internal.BlockItem, [key: Internal.CyanaxolotlheadBlock]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallHangingCanvasSignBlock]: Internal.HangingSignItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.MossableBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CanopygrayBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SilverfishheadmountBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.CocoaBlock]: Internal.ItemNameBlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.HeaterBaseBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.FacingPathBlock]: com.mcwpaths.kikoz.util.FuelItemBlock, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.DropExperienceBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.CropFullBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.CreamyllamaheadmountBlock]: Internal.BlockItem, [key: Internal.DioriteBrickwallBlock]: Internal.BlockItem, [key: Internal.DragonscaleblockBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.FuelItemBlock, [key: Internal.WallBannerBlock]: Internal.BannerItem, [key: Internal.FenceGateBlock]: com.mcwfences.kikoz.objects.FuelItemBlock, [key: Internal.DispenserBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.CrackedSlabBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.WoolCarpetBlock]: Internal.BlockItem, [key: Internal.DrainedphantomcarcassBlock]: Internal.BlockItem, [key: Internal.BrewingStandBlock]: Internal.BlockItem, [key: Internal.PieBlock]: Internal.PlaceableItem, [key: Internal.WallCanvasSignBlock]: Internal.SignItem, [key: Internal.MetaltrayBlock]: Internal.BlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.HayBlock]: Internal.BlockItem, [key: Internal.EmptySmallPlateBlock]: Internal.BlockItem, [key: Internal.FieryFoodBlock]: Internal.FoodBlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.BlackhorseheadBlock]: Internal.BlockItem, [key: Internal.DeepslatesulfuroreBlock]: Internal.BlockItem, [key: Internal.Bridge_Stairs]: Internal.BlockItem, [key: Internal.FishRollMedleyBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.CropFullBlock]: Internal.BlockItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.WeatheringCopperStairBlock]: Internal.BlockItem, [key: Internal.SandyShrubBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.SiamesecatheadmountBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.ShulkerBoxBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.WaterlilyBlock]: Internal.PlaceOnWaterBlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.HardcoreWallTorchBlock]: Internal.TorchItem, [key: Internal.CrackedBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.DrainedBlueaxolotlcarcassBlock]: Internal.BlockItem, [key: Internal.RichSoilFarmlandBlock]: Internal.BlockItem, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.TallGrassBlock]: Internal.BlockItem, [key: Internal.RotatedPillarBlock]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StackablePlateFoodBlock]: Internal.FoodBlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.WideFoodBlock]: Internal.FoodBlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.FenceGateBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.InfestedBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.RustAffectedDoorBlock]: Internal.BlockItem, [key: Internal.BloodyPigBlock]: Internal.BlockItem, [key: Internal.RootsBlock]: Internal.BlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.PathBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.CrackableBlock]: Internal.BlockItem, [key: Internal.DrainedPersiancatcarcassBlock]: Internal.BlockItem, [key: Internal.SimplePlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StairPlatform]: Internal.PlatformItemStone, [key: Internal.SmokerBlock]: Internal.BlockItem, [key: Internal.SmallPlatedFoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.PeeledMelonBlock]: Internal.BlockItem, [key: Internal.PhotosBlock]: Internal.BlockItem, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.EngravedBlock]: Internal.EngravedBlockTooltip, [key: Internal.SlabBlock]: Internal.BlockItem, [key: Internal.CrackableMossableBlock]: Internal.BlockItem, [key: Internal.GlazedTerracottaBlock]: Internal.BlockItem, [key: Internal.HotDrinkBlock]: Internal.FoodBlockItem, [key: Internal.RustableBarsBlock]: Internal.BlockItem, [key: Internal.StainedGlassBlock]: Internal.BlockItem, [key: Internal.StairBlock]: Internal.BlockItem, [key: Internal.PandacarcassBlock]: Internal.BlockItem, [key: Internal.GlowLichenBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.Block]: Internal.BlockItem, [key: Internal.CeilingHangingSignBlock]: Internal.HangingSignItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.FlowerBlock]: Internal.BlockItem, [key: Internal.FoodBlock]: Internal.FoodBlockItem, [key: Internal.DrainedorangefrogcarcassBlock]: Internal.BlockItem, [key: Internal.CoralPlantBlock]: Internal.BlockItem, [key: Internal.ModBlocks$1]: Internal.BlockItem, [key: Internal.SkylineStairs]: Internal.FuelItemBlock, [key: Internal.SkullBlock]: Internal.StandingAndWallBlockItem, [key: Internal.Bridge_Stairs]: Internal.FuelBlockItemWithInfo, [key: Internal.Block]: Internal.BlockItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.StandingSignBlock]: Internal.SignItem, [key: Internal.OverweightOnionBlock]: Internal.BlockItem, [key: Internal.CrackableSlabBlock]: Internal.BlockItem, [key: Internal.RustableBlock]: Internal.BlockItem, [key: Internal.DrainedSheepcarcassBlock]: Internal.BlockItem, [key: Internal.EndRodBlock]: Internal.BlockItem, [key: Internal.GravelBlock]: Internal.BlockItem, [key: Internal.FenceBlock]: Internal.BlockItem, [key: Internal.TrapDoorBlock]: Internal.BlockItem, [key: Internal.MushroomBlock]: Internal.BlockItem, [key: Internal.IrongolembodyBlock]: Internal.BlockItem, [key: Internal.LoftStairs]: Internal.BlockItem}) & (Internal.Map<Internal.Block, Internal.Item>);
         static readonly EAT_DURATION: (32) & (number);
         static readonly MAX_STACK_SIZE: (64) & (number);
         static readonly MAX_BAR_WIDTH: (13) & (number);
@@ -7867,6 +7066,11 @@ declare namespace Internal {
         (): Internal.ItemStack_;
     }
     type ItemSupplier_ = ItemSupplier | (()=> Internal.ItemStack_);
+    interface IChunkHolderForge {
+        abstract c2me$getCurrentlyLoading(): Internal.LevelChunk;
+        abstract c2me$setCurrentlyLoading(arg0: Internal.LevelChunk_): void;
+    }
+    type IChunkHolderForge_ = IChunkHolderForge;
     class GameShuttingDownEvent extends net.minecraftforge.eventbus.api.Event {
         constructor()
         getResult(): Internal.Event$Result;
@@ -8008,11 +7212,11 @@ declare namespace Internal {
         stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         /**
          * @deprecated
@@ -8030,8 +7234,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -8101,8 +7305,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -8145,8 +7349,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -8570,13 +7774,13 @@ declare namespace Internal {
         */
         barColor(barColor: Internal.Function_<Internal.ItemStack, dev.latvian.mods.rhino.mod.util.color.Color>): Internal.ItemBuilder;
         /**
-         * Sets the translation key for this object, e.g. `block.minecraft.stone`.
-        */
-        translationKey(key: string): Internal.BuilderBase<Internal.Item>;
-        /**
          * Adds a tag to this object, e.g. `minecraft:stone`.
         */
         tag(tag: ResourceLocation_): Internal.BuilderBase<Internal.Item>;
+        /**
+         * Sets the translation key for this object, e.g. `block.minecraft.stone`.
+        */
+        translationKey(key: string): Internal.BuilderBase<Internal.Item>;
         /**
          * Sets the attack damage bonus of the tool.
         */
@@ -8594,384 +7798,6 @@ declare namespace Internal {
         get class(): typeof any
     }
     type HoeItemBuilder_ = HoeItemBuilder;
-    class BlockLeafcutterAntChamber extends Internal.Block {
-        constructor()
-        /**
-         * @deprecated
-        */
-        getSignal(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): number;
-        isEnabled(arg0: Internal.FeatureFlagSet_): boolean;
-        /**
-         * @deprecated
-        */
-        getVisualShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.CollisionContext_): Internal.VoxelShape;
-        static updateOrDestroy(arg0: Internal.BlockState_, arg1: Internal.BlockState_, arg2: Internal.LevelAccessor_, arg3: BlockPos_, arg4: number, arg5: number): void;
-        static popResource(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.ItemStack_): void;
-        setRandomTickCallback(callback: Internal.Consumer_<any>): void;
-        getBeaconColorMultiplier(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: BlockPos_): number[];
-        stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
-        getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
-        getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
-        /**
-         * @deprecated
-        */
-        getExplosionResistance(): number;
-        shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
-        /**
-         * @deprecated
-        */
-        triggerEvent(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: number, arg4: number): boolean;
-        static dropResources(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.BlockEntity_, arg4: Internal.Entity_, arg5: Internal.ItemStack_, arg6: boolean): void;
-        getTypeData(): Internal.CompoundTag;
-        setFriction(arg0: number): void;
-        rotate(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: Internal.Rotation_): Internal.BlockState;
-        /**
-         * @deprecated
-        */
-        getRenderShape(arg0: Internal.BlockState_): Internal.RenderShape;
-        getSpeedFactor(): number;
-        /**
-         * @deprecated
-        */
-        getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
-        playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
-        isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
-        playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
-        getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
-        getClass(): typeof any;
-        getMaxVerticalOffset(): number;
-        mfix$getDelegate(arg0: Internal.ResourceKey_<any>): Internal.Holder$Reference<any>;
-        getRenderPropertiesInternal(): any;
-        onCaughtFire(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Direction_, arg4: Internal.LivingEntity_): void;
-        /**
-         * @deprecated
-        */
-        getDrops(arg0: Internal.BlockState_, arg1: Internal.LootParams$Builder_): Internal.List<Internal.ItemStack>;
-        getStateDefinition(): Internal.StateDefinition<Internal.Block, Internal.BlockState>;
-        /**
-         * @deprecated
-        */
-        entityInside(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Entity_): void;
-        setBlockBuilder(b: Internal.BlockBuilder_): void;
-        initializeClient(arg0: Internal.Consumer_<Internal.IClientBlockExtensions>): void;
-        isTraversable(): boolean;
-        /**
-         * @deprecated
-        */
-        canBeReplaced(arg0: Internal.BlockState_, arg1: Internal.Fluid_): boolean;
-        getBlockStates(): Internal.List<Internal.BlockState>;
-        setRequiresTool(v: boolean): void;
-        addLandingEffects(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.LivingEntity_, arg5: number): boolean;
-        puzzleslib$setItem(arg0: Internal.Item_): void;
-        /**
-         * @deprecated
-        */
-        builtInRegistryHolder(): Internal.Holder$Reference<Internal.Block>;
-        static popResourceFromFace(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.Direction_, arg3: Internal.ItemStack_): void;
-        handlePrecipitation(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Biome$Precipitation_): void;
-        wait(arg0: number): void;
-        /**
-         * @deprecated
-        */
-        getFluidState(arg0: Internal.BlockState_): Internal.FluidState;
-        getRespawnPosition(arg0: Internal.BlockState_, arg1: Internal.EntityType_<any>, arg2: Internal.LevelReader_, arg3: BlockPos_, arg4: number, arg5: Internal.LivingEntity_): Optional<Vec3d>;
-        /**
-         * @deprecated
-        */
-        tick(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.RandomSource_): void;
-        isFertile(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
-        canBeHydrated(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.FluidState_, arg4: BlockPos_): boolean;
-        getWeakChanges(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_): boolean;
-        static dropResources(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.BlockEntity_, arg4: Internal.Entity_, arg5: Internal.ItemStack_): void;
-        /**
-         * @deprecated
-        */
-        neighborChanged(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Block_, arg4: BlockPos_, arg5: boolean): void;
-        /**
-         * @deprecated
-        */
-        getBlockSupportShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): Internal.VoxelShape;
-        /**
-         * @deprecated
-        */
-        isCollisionShapeFullBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
-        /**
-         * @deprecated
-        */
-        getMenuProvider(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_): Internal.MenuProvider;
-        static byItem(arg0: Internal.Item_): Internal.Block;
-        static updateFromNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_): Internal.BlockState;
-        /**
-         * @deprecated
-        */
-        updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
-        destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
-        getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
-        use(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_, arg4: Internal.InteractionHand_, arg5: Internal.BlockHitResult_): Internal.InteractionResult;
-        setLightEmission(v: number): void;
-        setJumpFactor(arg0: number): void;
-        isSlimeBlock(arg0: Internal.BlockState_): boolean;
-        /**
-         * @deprecated
-        */
-        getShadeBrightness(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
-        /**
-         * @deprecated
-        */
-        getCollisionShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.CollisionContext_): Internal.VoxelShape;
-        defaultBlockState(): Internal.BlockState;
-        getStateForPlacement(arg0: Internal.BlockPlaceContext_): Internal.BlockState;
-        getToolModifiedState(arg0: Internal.BlockState_, arg1: Internal.UseOnContext_, arg2: Internal.ToolAction_, arg3: boolean): Internal.BlockState;
-        wait(): void;
-        getMaxHorizontalOffset(): number;
-        /**
-         * @deprecated
-        */
-        getDestroyProgress(arg0: Internal.BlockState_, arg1: Internal.Player_, arg2: Internal.BlockGetter_, arg3: BlockPos_): number;
-        makesOpenTrapdoorAboveClimbable(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.BlockState_): boolean;
-        /**
-         * @deprecated
-        */
-        updateShape(arg0: Internal.BlockState_, arg1: Internal.Direction_, arg2: Internal.BlockState_, arg3: Internal.LevelAccessor_, arg4: BlockPos_, arg5: BlockPos_): Internal.BlockState;
-        isRandomlyTicking(arg0: Internal.BlockState_): boolean;
-        static isShapeFullBlock(arg0: Internal.VoxelShape_): boolean;
-        withPropertiesOf(arg0: Internal.BlockState_): Internal.BlockState;
-        setIsRandomlyTicking(arg0: boolean): void;
-        hidesNeighborFace(arg0: Internal.BlockGetter_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.BlockState_, arg4: Internal.Direction_): boolean;
-        isScaffolding(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.LivingEntity_): boolean;
-        /**
-         * @deprecated
-        */
-        rotate(arg0: Internal.BlockState_, arg1: Internal.Rotation_): Internal.BlockState;
-        defaultMapColor(): Internal.MapColor;
-        getStateAtViewpoint(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Vec3d_): Internal.BlockState;
-        setNameKey(arg0: string): void;
-        static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
-        getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
-        updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
-        getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
-        arch$registryName(): ResourceLocation;
-        getBlockBuilder(): Internal.BlockBuilder;
-        getIdLocation(): ResourceLocation;
-        canDropFromExplosion(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): boolean;
-        addRunningEffects(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Entity_): boolean;
-        /**
-         * @deprecated
-        */
-        isSignalSource(arg0: Internal.BlockState_): boolean;
-        /**
-         * @deprecated
-        */
-        onProjectileHit(arg0: Internal.Level_, arg1: Internal.BlockState_, arg2: Internal.BlockHitResult_, arg3: Internal.Projectile_): void;
-        static getDrops(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.BlockEntity_, arg4: Internal.Entity_, arg5: Internal.ItemStack_): Internal.List<Internal.ItemStack>;
-        /**
-         * @deprecated
-        */
-        isOcclusionShapeFullBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
-        static getId(arg0: Internal.BlockState_): number;
-        /**
-         * @deprecated
-        */
-        "canBeReplaced(net.minecraft.world.level.block.state.BlockState,net.minecraft.world.level.material.Fluid)"(arg0: Internal.BlockState_, arg1: Internal.Fluid_): boolean;
-        canSustainPlant(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_, arg4: Internal.IPlantable_): boolean;
-        /**
-         * @deprecated
-        */
-        isPathfindable(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.PathComputationType_): boolean;
-        setSoundType(arg0: SoundType_): void;
-        /**
-         * @deprecated
-        */
-        onRemove(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: boolean): void;
-        equals(arg0: any): boolean;
-        /**
-         * @deprecated
-        */
-        getOcclusionShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): Internal.VoxelShape;
-        isFlammable(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
-        collisionExtendsVertically(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Entity_): boolean;
-        /**
-         * @deprecated
-        */
-        getSoundType(arg0: Internal.BlockState_): SoundType;
-        randomTick(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.RandomSource_): void;
-        static dropResources(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: Internal.BlockEntity_): void;
-        static canSupportRigidBlock(arg0: Internal.BlockGetter_, arg1: BlockPos_): boolean;
-        isStickyBlock(arg0: Internal.BlockState_): boolean;
-        getDescriptionId(): string;
-        onBlockExploded(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Explosion_): void;
-        fallOn(arg0: Internal.Level_, arg1: Internal.BlockState_, arg2: BlockPos_, arg3: Internal.Entity_, arg4: number): void;
-        canEntityDestroy(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Entity_): boolean;
-        getJumpFactor(): number;
-        isValidSpawn(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.SpawnPlacements$Type_, arg4: Internal.EntityType_<any>): boolean;
-        getFlammability(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): number;
-        static canSupportCenter(arg0: Internal.LevelReader_, arg1: BlockPos_, arg2: Internal.Direction_): boolean;
-        /**
-         * @deprecated
-        */
-        skipRendering(arg0: Internal.BlockState_, arg1: Internal.BlockState_, arg2: Internal.Direction_): boolean;
-        /**
-         * @deprecated
-        */
-        getDirectSignal(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): number;
-        getProperties(): Internal.BlockBehaviour$Properties;
-        isLadder(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.LivingEntity_): boolean;
-        onDestroyedByPlayer(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_, arg4: boolean, arg5: Internal.FluidState_): boolean;
-        /**
-         * @deprecated
-        */
-        "canBeReplaced(net.minecraft.world.level.block.state.BlockState,net.minecraft.world.item.context.BlockPlaceContext)"(arg0: Internal.BlockState_, arg1: Internal.BlockPlaceContext_): boolean;
-        getMapColor(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.MapColor_): Internal.MapColor;
-        isPortalFrame(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
-        /**
-         * @deprecated
-        */
-        useShapeForLightOcclusion(arg0: Internal.BlockState_): boolean;
-        getBedDirection(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_): Internal.Direction;
-        setSpeedFactor(arg0: number): void;
-        setExplosionResistance(arg0: number): void;
-        getEnchantPowerBonus(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_): number;
-        toString(): string;
-        notifyAll(): void;
-        getId(): string;
-        getLootTable(): ResourceLocation;
-        /**
-         * @deprecated
-        */
-        getInteractionShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): Internal.VoxelShape;
-        propagatesSkylightDown(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
-        setPlacedBy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.LivingEntity_, arg4: Internal.ItemStack_): void;
-        /**
-         * @deprecated
-        */
-        onPlace(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: boolean): void;
-        getFriction(): number;
-        /**
-         * @deprecated
-        */
-        hasAnalogOutputSignal(arg0: Internal.BlockState_): boolean;
-        getSoundType(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): SoundType;
-        /**
-         * @deprecated
-        */
-        getAnalogOutputSignal(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_): number;
-        supportsExternalFaceHiding(arg0: Internal.BlockState_): boolean;
-        notify(): void;
-        onBlockStateChange(arg0: Internal.LevelReader_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.BlockState_): void;
-        static isFaceFull(arg0: Internal.VoxelShape_, arg1: Internal.Direction_): boolean;
-        isFireSource(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
-        /**
-         * @deprecated
-        */
-        canSurvive(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_): boolean;
-        static dropResources(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_): void;
-        getAppearance(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.Direction_, arg4: Internal.BlockState_, arg5: BlockPos_): Internal.BlockState;
-        setDestroySpeed(v: number): void;
-        canHarvestBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Player_): boolean;
-        shouldCheckWeakPower(arg0: Internal.BlockState_, arg1: Internal.SignalGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
-        arch$holder(): Internal.Holder<Internal.Block>;
-        /**
-         * @deprecated
-        */
-        getCloneItemStack(arg0: Internal.BlockGetter_, arg1: BlockPos_, arg2: Internal.BlockState_): Internal.ItemStack;
-        hasDynamicShape(): boolean;
-        /**
-         * @deprecated
-        */
-        getSeed(arg0: Internal.BlockState_, arg1: BlockPos_): number;
-        defaultDestroyTime(): number;
-        getBlockPathType(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Mob_): Internal.BlockPathTypes;
-        /**
-         * @deprecated
-        */
-        dropFromExplosion(arg0: Internal.Explosion_): boolean;
-        onNeighborChange(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: BlockPos_): void;
-        static isExceptionForConnection(arg0: Internal.BlockState_): boolean;
-        onTreeGrow(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.BiConsumer_<BlockPos, Internal.BlockState>, arg3: Internal.RandomSource_, arg4: BlockPos_, arg5: Internal.TreeConfiguration_): boolean;
-        wait(arg0: number, arg1: number): void;
-        appendHoverText(arg0: Internal.ItemStack_, arg1: Internal.BlockGetter_, arg2: Internal.List_<net.minecraft.network.chat.Component>, arg3: Internal.TooltipFlag_): void;
-        /**
-         * @deprecated
-        */
-        mirror(arg0: Internal.BlockState_, arg1: Internal.Mirror_): Internal.BlockState;
-        isBed(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Entity_): boolean;
-        wasExploded(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.Explosion_): void;
-        getName(): Internal.MutableComponent;
-        canStickTo(arg0: Internal.BlockState_, arg1: Internal.BlockState_): boolean;
-        animateTick(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.RandomSource_): void;
-        getFireSpreadSpeed(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): number;
-        getMod(): string;
-        getAdjacentBlockPathType(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Mob_, arg4: Internal.BlockPathTypes_): Internal.BlockPathTypes;
-        /**
-         * @deprecated
-        */
-        canBeReplaced(arg0: Internal.BlockState_, arg1: Internal.BlockPlaceContext_): boolean;
-        isConduitFrame(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: BlockPos_): boolean;
-        static updateOrDestroy(arg0: Internal.BlockState_, arg1: Internal.BlockState_, arg2: Internal.LevelAccessor_, arg3: BlockPos_, arg4: number): void;
-        /**
-         * @deprecated
-        */
-        attack(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_): void;
-        /**
-         * @deprecated
-        */
-        getShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.CollisionContext_): Internal.VoxelShape;
-        static stateById(arg0: number): Internal.BlockState;
-        requiredFeatures(): Internal.FeatureFlagSet;
-        hashCode(): number;
-        popExperience(arg0: Internal.ServerLevel_, arg1: BlockPos_, arg2: number): void;
-        static pushEntitiesUp(arg0: Internal.BlockState_, arg1: Internal.BlockState_, arg2: Internal.LevelAccessor_, arg3: BlockPos_): Internal.BlockState;
-        static getDrops(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.BlockEntity_): Internal.List<Internal.ItemStack>;
-        isBurning(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
-        setHasCollision(arg0: boolean): void;
-        static shouldRenderFace(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_, arg4: BlockPos_): boolean;
-        /**
-         * @deprecated
-        */
-        spawnAfterBreak(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.ItemStack_, arg4: boolean): void;
-        set randomTickCallback(callback: Internal.Consumer_<any>)
-        /**
-         * @deprecated
-        */
-        get explosionResistance(): number
-        get typeData(): Internal.CompoundTag
-        set friction(arg0: number)
-        get speedFactor(): number
-        get class(): typeof any
-        get maxVerticalOffset(): number
-        get renderPropertiesInternal(): any
-        get stateDefinition(): Internal.StateDefinition<Internal.Block, Internal.BlockState>
-        set blockBuilder(b: Internal.BlockBuilder_)
-        get traversable(): boolean
-        get blockStates(): Internal.List<Internal.BlockState>
-        set requiresTool(v: boolean)
-        set lightEmission(v: number)
-        set jumpFactor(arg0: number)
-        get maxHorizontalOffset(): number
-        set isRandomlyTicking(arg0: boolean)
-        set nameKey(arg0: string)
-        get blockBuilder(): Internal.BlockBuilder
-        get idLocation(): ResourceLocation
-        set soundType(arg0: SoundType_)
-        get descriptionId(): string
-        get jumpFactor(): number
-        get properties(): Internal.BlockBehaviour$Properties
-        set speedFactor(arg0: number)
-        set explosionResistance(arg0: number)
-        get id(): string
-        get lootTable(): ResourceLocation
-        get friction(): number
-        set destroySpeed(v: number)
-        get name(): Internal.MutableComponent
-        get mod(): string
-        set hasCollision(arg0: boolean)
-        static readonly FUNGUS: (Internal.IntegerProperty) & (Internal.IntegerProperty);
-    }
-    type BlockLeafcutterAntChamber_ = BlockLeafcutterAntChamber;
     class ZombievillagerheadmountBlock extends Internal.Block {
         constructor()
         /**
@@ -8987,11 +7813,11 @@ declare namespace Internal {
         stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         /**
          * @deprecated
@@ -9009,8 +7835,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -9080,8 +7906,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -9124,8 +7950,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -9480,24 +8306,6 @@ declare namespace Internal {
         get server(): Internal.MinecraftServer
     }
     type SanityTickEventJS_ = SanityTickEventJS;
-    class GoalSelectorDebugRenderer$DebugGoal {
-        constructor(arg0: BlockPos_, arg1: number, arg2: string, arg3: boolean)
-        getClass(): typeof any;
-        hashCode(): number;
-        toString(): string;
-        wait(): void;
-        notifyAll(): void;
-        wait(arg0: number): void;
-        equals(arg0: any): boolean;
-        notify(): void;
-        wait(arg0: number, arg1: number): void;
-        get class(): typeof any
-        readonly name: string;
-        readonly priority: number;
-        readonly isRunning: boolean;
-        readonly pos: BlockPos;
-    }
-    type GoalSelectorDebugRenderer$DebugGoal_ = GoalSelectorDebugRenderer$DebugGoal;
     abstract class HangingEntity extends Internal.Entity implements Internal.DynamicLightSource {
         isInWall(): boolean;
         getAllSlots(): Internal.Iterable<Internal.ItemStack>;
@@ -9518,11 +8326,11 @@ declare namespace Internal {
         getPassengersAndSelf(): Internal.Stream<Internal.Entity>;
         getPositionCodec(): Internal.VecDeltaCodec;
         getPickedResult(arg0: Internal.HitResult_): Internal.ItemStack;
-        setMaxUpStep(arg0: number): void;
         /**
          * @deprecated
         */
         updateFluidHeightAndDoFluidPushing(arg0: Internal.TagKey_<Internal.Fluid>, arg1: number): boolean;
+        setMaxUpStep(arg0: number): void;
         runCommandSilent(command: string): number;
         setPosition(x: number, y: number, z: number): void;
         chunkPosition(): Internal.ChunkPos;
@@ -9535,12 +8343,13 @@ declare namespace Internal {
         setUUID(arg0: Internal.UUID_): void;
         checkBelowWorld(): void;
         isVisuallyCrawling(): boolean;
+        isShouldEntityAppearGlowing(): boolean;
         shouldUpdateFluidWhileBoating(arg0: Internal.FluidState_, arg1: Internal.Boat_): boolean;
         setMotionZ(z: number): void;
         abstract sdl$shouldUpdateDynamicLight(): boolean;
         "deserializeNBT(net.minecraft.nbt.Tag)"(arg0: Internal.Tag_): void;
-        canFreeze(): boolean;
         ignoreExplosion(): boolean;
+        canFreeze(): boolean;
         teleportRelative(arg0: number, arg1: number, arg2: number): void;
         getBlockY(): number;
         transition$setRawPosition(arg0: Vec3d_): void;
@@ -9558,27 +8367,27 @@ declare namespace Internal {
         getItem(): Internal.ItemStack;
         getRandomZ(arg0: number): number;
         causeFallDamage(arg0: number, arg1: number, arg2: DamageSource_): boolean;
-        getPosition(arg0: number): Vec3d;
+        getFusionModel(layerIndex: number): Internal.Triple<any, any, any>;
         setRemoved(arg0: Internal.Entity$RemovalReason_): void;
-        getDistanceSq(arg0: number, arg1: number, arg2: number): number;
+        getPosition(arg0: number): Vec3d;
         isInWaterRainOrBubble(): boolean;
+        getDistanceSq(arg0: number, arg1: number, arg2: number): number;
         getRemovalReason(): Internal.Entity$RemovalReason;
         wait(arg0: number): void;
         isIgnoringBlockTriggers(): boolean;
         isInRain(): boolean;
-        handler$bnj000$Entity_load(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfo_): void;
         getHandHoldingItemAngle(arg0: Internal.Item_): Vec3d;
         etf$getItemsEquipped(): Internal.Iterable<any>;
         etf$getVelocity(): Vec3d;
+        setEc$BoundingBox(ec$BoundingBox: Internal.AABB_): void;
         canUpdate(arg0: boolean): void;
         getIndirectPassengers(): Internal.Iterable<Internal.Entity>;
-        getEyeInFluidType(): Internal.FluidType;
         distanceToSqr(arg0: Vec3d_): number;
+        getEyeInFluidType(): Internal.FluidType;
         resetFallDistance(): void;
         canSprint(): boolean;
         blockPosition(): BlockPos;
         isSteppingCarefully(): boolean;
-        setLevel(arg0: Internal.Level_): void;
         setBoundingBox(arg0: Internal.AABB_): void;
         isAmbientCreature(): boolean;
         getSoundFromFluidType(arg0: Internal.FluidType_, arg1: Internal.SoundAction_): Internal.SoundEvent;
@@ -9621,8 +8430,8 @@ declare namespace Internal {
         setCustomNameVisible(arg0: boolean): void;
         isAlliedTo(arg0: Internal.Team_): boolean;
         setOutOfCamera(value: boolean): void;
-        getControllingPassenger(): Internal.LivingEntity;
         getRemainingFireTicks(): number;
+        getControllingPassenger(): Internal.LivingEntity;
         getScriptType(): Internal.ScriptType;
         onlyOpCanSetNbt(): boolean;
         startRiding(arg0: Internal.Entity_): boolean;
@@ -9653,8 +8462,8 @@ declare namespace Internal {
         getViewYRot(arg0: number): number;
         dismountsUnderwater(): boolean;
         abstract sodiumdynamiclights$updateDynamicLight(arg0: Internal.LevelRenderer_): boolean;
-        playerTouch(arg0: Internal.Player_): void;
         addTag(arg0: string): boolean;
+        playerTouch(arg0: Internal.Player_): void;
         getEyeHeight(arg0: Internal.Pose_): number;
         getAddEntityPacket(): Internal.Packet<Internal.ClientGamePacketListener>;
         syncPacketPositionCodec(arg0: number, arg1: number, arg2: number): void;
@@ -9669,7 +8478,6 @@ declare namespace Internal {
         dismountTo(arg0: number, arg1: number, arg2: number): void;
         setDeltaMovement(arg0: Vec3d_): void;
         getLeashOffset(arg0: number): Vec3d;
-        handler$bnj000$Entity_saveWithoutId(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfoReturnable_<any>): void;
         etf$getPose(): Internal.Pose;
         etf$getEntityKey(): string;
         hasCustomName(): boolean;
@@ -9690,7 +8498,6 @@ declare namespace Internal {
         etf$distanceTo(entity: Internal.Entity_): number;
         setCustomName(arg0: net.minecraft.network.chat.Component_): void;
         getSlot(arg0: number): Internal.SlotAccess;
-        handler$ban000$onRemove(ci: Internal.CallbackInfo_): void;
         "deserializeNBT(net.minecraft.nbt.CompoundTag)"(arg0: Internal.CompoundTag_): void;
         emf$isInLava(): boolean;
         getTeamId(): string;
@@ -9716,7 +8523,6 @@ declare namespace Internal {
         hasPassenger(arg0: Internal.Entity_): boolean;
         hasIndirectPassenger(arg0: Internal.Entity_): boolean;
         getEntityData(): Internal.SynchedEntityData;
-        handler$ban001$onTick(ci: Internal.CallbackInfo_): void;
         abstract sdl$dynamicLightTick(): void;
         setSecondsOnFire(arg0: number): void;
         moveTo(arg0: number, arg1: number, arg2: number): void;
@@ -9729,6 +8535,7 @@ declare namespace Internal {
         updateFluidHeightAndDoFluidPushing(arg0: Internal.Predicate_<Internal.FluidState>): void;
         isOnRails(): boolean;
         restoreFrom(arg0: Internal.Entity_): void;
+        markFusionRecomputeModels(): void;
         entityCulling$getRawPosition(): Vec3d;
         getDimensionChangingDelay(): number;
         isPeacefulCreature(): boolean;
@@ -9747,18 +8554,20 @@ declare namespace Internal {
         emf$isSneaking(): boolean;
         canHydrateInFluidType(arg0: Internal.FluidType_): boolean;
         teleportToWithTicket(arg0: number, arg1: number, arg2: number): void;
-        fillCrashReportCategory(arg0: Internal.CrashReportCategory_): void;
+        setEc$PBlockPos(ec$PBlockPos: BlockPos_): void;
         getRotationVector(): Internal.Vec2;
+        fillCrashReportCategory(arg0: Internal.CrashReportCategory_): void;
         refreshDimensions(): void;
         self(): Internal.Entity;
         abstract sdl$getDynamicLightY(): number;
+        setEc$Position(ec$Position: Vec3d_): void;
         isSprinting(): boolean;
         etf$getBlockY(): number;
         "spawnAtLocation(net.minecraft.world.level.ItemLike)"(arg0: Internal.ItemLike_): Internal.ItemEntity;
         getMotionY(): number;
         canCollideWith(arg0: Internal.Entity_): boolean;
-        setShiftKeyDown(arg0: boolean): void;
         getEyePosition(arg0: number): Vec3d;
+        setShiftKeyDown(arg0: boolean): void;
         getPassengers(): Internal.EntityArrayList;
         getBlockExplosionResistance(arg0: Internal.Explosion_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.FluidState_, arg5: number): number;
         getFluidFallDistanceModifier(arg0: Internal.FluidType_): number;
@@ -9768,8 +8577,8 @@ declare namespace Internal {
         "moveTo(net.minecraft.core.BlockPos,float,float)"(arg0: BlockPos_, arg1: number, arg2: number): void;
         teleportTo(arg0: number, arg1: number, arg2: number): void;
         getServer(): Internal.MinecraftServer;
-        moveRelative(arg0: number, arg1: Vec3d_): void;
         getSelfAndPassengers(): Internal.Stream<Internal.Entity>;
+        moveRelative(arg0: number, arg1: Vec3d_): void;
         isAddedToWorld(): boolean;
         getFirstPassenger(): Internal.Entity;
         saveAsPassenger(arg0: Internal.CompoundTag_): boolean;
@@ -9785,14 +8594,16 @@ declare namespace Internal {
         getLookAngle(): Vec3d;
         setPositionAndRotation(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
         emf$isOnFire(): boolean;
+        setShouldEntityAppearGlowing(shouldEntityAppearGlowing: boolean): void;
         getMotionZ(): number;
         etf$getUuid(): Internal.UUID;
         removeVehicle(): void;
         isInvisible(): boolean;
+        shouldFusionRecomputeModel(layerIndex: number): boolean;
         is(arg0: Internal.Entity_): boolean;
         setZ(z: number): void;
-        getY(): number;
         ejectPassengers(): void;
+        getY(): number;
         hashCode(): number;
         deserializeNBT(arg0: Internal.CompoundTag_): void;
         getProfile(): Internal.GameProfile;
@@ -9822,7 +8633,6 @@ declare namespace Internal {
         onAddedToWorld(): void;
         "hasPassenger(net.minecraft.world.entity.Entity)"(arg0: Internal.Entity_): boolean;
         isCrouching(): boolean;
-        handler$boi000$postTurnHook(arg0: Internal.CallbackInfo_): void;
         etf$canBeBright(): boolean;
         moveTo(arg0: BlockPos_, arg1: number, arg2: number): void;
         isPlayer(): boolean;
@@ -9833,12 +8643,12 @@ declare namespace Internal {
         getMotionDirection(): Internal.Direction;
         setY(y: number): void;
         sdl$isDynamicLightEnabled(): boolean;
-        getFeetBlockState(): Internal.BlockState;
         lavaHurt(): void;
+        getFeetBlockState(): Internal.BlockState;
         handleDamageEvent(arg0: DamageSource_): void;
         getFabricBalmData(): Internal.CompoundTag;
-        canChangeDimensions(): boolean;
         changeDimension(arg0: Internal.ServerLevel_, arg1: Internal.ITeleporter_): Internal.Entity;
+        canChangeDimensions(): boolean;
         getCommandSenderWorld(): Internal.Level;
         positionRider(arg0: Internal.Entity_): void;
         baseTick(): void;
@@ -9852,8 +8662,8 @@ declare namespace Internal {
         getEyeHeightAccess(arg0: Internal.Pose_, arg1: Internal.EntityDimensions_): number;
         getCustomName(): net.minecraft.network.chat.Component;
         getClass(): typeof any;
-        isVisuallySwimming(): boolean;
         getMaxAirSupply(): number;
+        isVisuallySwimming(): boolean;
         canTrample(arg0: Internal.BlockState_, arg1: BlockPos_, arg2: number): boolean;
         attack(hp: number): void;
         canSwimInFluidType(arg0: Internal.FluidType_): boolean;
@@ -9877,18 +8687,21 @@ declare namespace Internal {
         isInLava(): boolean;
         getPortalWaitTime(): number;
         isInWater(): boolean;
-        awardKillScore(arg0: Internal.Entity_, arg1: number, arg2: DamageSource_): void;
         getBlockStateOn(): Internal.BlockState;
+        awardKillScore(arg0: Internal.Entity_, arg1: number, arg2: DamageSource_): void;
         getFluidJumpThreshold(): number;
         emf$getVariableMap(): Internal.Map<any, any>;
         "setPositionAndRotation(double,double,double,float,float)"(x: number, y: number, z: number, yaw: number, pitch: number): void;
         isInvisibleTo(arg0: Internal.Player_): boolean;
+        setFusionModel(layerIndex: number, model: Internal.Triple_<any, any, any>): void;
         setAirSupply(arg0: number): void;
         getOnPos(): BlockPos;
         getRootVehicle(): Internal.Entity;
         save(arg0: Internal.CompoundTag_): boolean;
         etf$getWorld(): Internal.Level;
         getBlockPosBelowThatAffectsMyMovement(): BlockPos;
+        getEc$Position(): Vec3d;
+        getNextStepDistance(): number;
         abstract sdl$getLuminance(): number;
         isNoGravity(): boolean;
         getStepHeight(): number;
@@ -9920,8 +8733,8 @@ declare namespace Internal {
         teleportTo(arg0: Internal.ServerLevel_, arg1: number, arg2: number, arg3: number, arg4: Internal.Set_<Internal.RelativeMovement>, arg5: number, arg6: number): boolean;
         etf$getCustomName(): net.minecraft.network.chat.Component;
         shouldShowName(): boolean;
-        getArmorSlots(): Internal.Iterable<Internal.ItemStack>;
         setSilent(arg0: boolean): void;
+        getArmorSlots(): Internal.Iterable<Internal.ItemStack>;
         captureDrops(): Internal.Collection<Internal.ItemEntity>;
         hasExactlyOnePlayerPassenger(): boolean;
         kill(): void;
@@ -9936,22 +8749,25 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         getDimensionsForge(arg0: Internal.Pose_): Internal.EntityDimensions;
+        getEc$PBlockPos(): BlockPos;
         getParts(): Internal.PartEntity<any>[];
         setExtension(key: any, value: any): void;
         isAlwaysTicking(): boolean;
         interactAt(arg0: Internal.Player_, arg1: Vec3d_, arg2: Internal.InteractionHand_): Internal.InteractionResult;
         emf$getX(): number;
+        handler$bnm000$Entity_saveWithoutId(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfoReturnable_<any>): void;
         deserializeNBT(arg0: Internal.Tag_): void;
         lerpTo(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number, arg6: boolean): void;
         onPassengerTurned(arg0: Internal.Entity_): void;
         collective_setStored(arg0: Internal.CompoundTag_): void;
-        revive(): void;
         spawnAtLocation(arg0: Internal.ItemLike_): Internal.ItemEntity;
+        revive(): void;
         emf$hasPassengers(): boolean;
         getBbWidth(): number;
         isEyeInFluidType(arg0: Internal.FluidType_): boolean;
         getForgePersistentData(): Internal.CompoundTag;
         addDeltaMovement(arg0: Vec3d_): void;
+        handler$bol000$postTurnHook(arg0: Internal.CallbackInfo_): void;
         "spawnAtLocation(net.minecraft.world.level.ItemLike,int)"(arg0: Internal.ItemLike_, arg1: number): Internal.ItemEntity;
         setInvulnerable(arg0: boolean): void;
         "getName()"(): net.minecraft.network.chat.Component;
@@ -9973,8 +8789,8 @@ declare namespace Internal {
         getUsername(): string;
         transition$getRawPosition(): Vec3d;
         move(arg0: Internal.MoverType_, arg1: Vec3d_): void;
-        getViewVector(arg0: number): Vec3d;
         getTags(): Internal.Set<string>;
+        getViewVector(arg0: number): Vec3d;
         onRemovedFromWorld(): void;
         getCapability<T>(arg0: Internal.Capability_<T>): Internal.LazyOptional<T>;
         isPickable(): boolean;
@@ -9984,16 +8800,17 @@ declare namespace Internal {
         absMoveTo(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
         getPercentFrozen(): number;
         getPickResult(): Internal.ItemStack;
-        getRandomY(): number;
         setPortalCooldown(arg0: number): void;
+        getRandomY(): number;
         getDisplayName(): net.minecraft.network.chat.Component;
+        setNextStepDistance(arg0: number): void;
         hasGlowingTag(): boolean;
         shouldBlockExplode(arg0: Internal.Explosion_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: number): boolean;
         emf$isInvisible(): boolean;
         setPosition(block: Internal.BlockContainerJS_): void;
         emf$isSprinting(): boolean;
-        shouldBeSaved(): boolean;
         getFluidTypeHeight(arg0: Internal.FluidType_): number;
+        shouldBeSaved(): boolean;
         getViewXRot(arg0: number): number;
         canRiderInteract(): boolean;
         "areCapsCompatible(net.minecraftforge.common.capabilities.CapabilityProvider)"(arg0: Internal.CapabilityProvider_<Internal.Entity>): boolean;
@@ -10012,6 +8829,7 @@ declare namespace Internal {
         etf$getScoreboardTeam(): Internal.Team;
         "isInFluidType(java.util.function.BiPredicate)"(arg0: Internal.BiPredicate_<Internal.FluidType, number>): boolean;
         distanceToEntitySqr(arg0: Internal.Entity_): number;
+        handler$bnm000$Entity_load(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfo_): void;
         "getServer()"(): Internal.MinecraftServer;
         isFrame(): boolean;
         isPushable(): boolean;
@@ -10028,7 +8846,6 @@ declare namespace Internal {
         setRotation(yaw: number, pitch: number): void;
         createCommandSourceStack(): Internal.CommandSourceStack;
         isControlledByLocalInstance(): boolean;
-        handler$boi000$preTurnHook(arg0: Internal.CallbackInfo_): void;
         isMonster(): boolean;
         abstract sdl$resetDynamicLight(): void;
         getHorizontalFacing(): Internal.Direction;
@@ -10039,7 +8856,7 @@ declare namespace Internal {
         abstract sodiumdynamiclights$scheduleTrackedChunksRebuild(arg0: Internal.LevelRenderer_): void;
         onAboveBubbleCol(arg0: boolean): void;
         emf$prevX(): number;
-        "playSound(net.minecraft.sounds.SoundEvent,float,float)"(id: Internal.SoundEvent_, volume: number, pitch: number): void;
+        "playSound(net.minecraft.sounds.SoundEvent,float,float)"(arg0: Internal.SoundEvent_, arg1: number, arg2: number): void;
         isPassenger(): boolean;
         hasPose(arg0: Internal.Pose_): boolean;
         checkDespawn(): void;
@@ -10054,6 +8871,9 @@ declare namespace Internal {
         shouldRender(arg0: number, arg1: number, arg2: number): boolean;
         onSyncedDataUpdated(arg0: Internal.EntityDataAccessor_<any>): void;
         lerpHeadTo(arg0: number, arg1: number): void;
+        handler$bbe001$onTick(ci: Internal.CallbackInfo_): void;
+        getEc$BoundingBox(): Internal.AABB;
+        handler$bbe000$onRemove(ci: Internal.CallbackInfo_): void;
         static getViewScale(): number;
         setMotionX(x: number): void;
         getHandSlots(): Internal.Iterable<Internal.ItemStack>;
@@ -10061,13 +8881,14 @@ declare namespace Internal {
         getVisualRotationYInDegrees(): number;
         abstract playPlacementSound(): void;
         wait(arg0: number, arg1: number): void;
-        isDiscrete(): boolean;
         getTeamColor(): number;
+        isDiscrete(): boolean;
         setNbt(nbt: Internal.CompoundTag_): void;
         unRide(): void;
         getLevel(): Internal.Level;
         "spawnAtLocation(net.minecraft.world.item.ItemStack)"(arg0: Internal.ItemStack_): Internal.ItemEntity;
         "isInFluidType(net.minecraftforge.fluids.FluidType)"(arg0: Internal.FluidType_): boolean;
+        handler$bol000$preTurnHook(arg0: Internal.CallbackInfo_): void;
         extinguish(): void;
         updateDynamicGameEventListener(arg0: Internal.BiConsumer_<Internal.DynamicGameEventListener<any>, Internal.ServerLevel>): void;
         moveTo(arg0: Vec3d_): void;
@@ -10107,6 +8928,7 @@ declare namespace Internal {
         get shiftKeyDown(): boolean
         set UUID(arg0: Internal.UUID_)
         get visuallyCrawling(): boolean
+        get shouldEntityAppearGlowing(): boolean
         set motionZ(z: number)
         get blockY(): number
         get spectator(): boolean
@@ -10119,10 +8941,10 @@ declare namespace Internal {
         get removalReason(): Internal.Entity$RemovalReason
         get ignoringBlockTriggers(): boolean
         get inRain(): boolean
+        set ec$BoundingBox(ec$BoundingBox: Internal.AABB_)
         get indirectPassengers(): Internal.Iterable<Internal.Entity>
         get eyeInFluidType(): Internal.FluidType
         get steppingCarefully(): boolean
-        set level(arg0: Internal.Level_)
         set boundingBox(arg0: Internal.AABB_)
         get ambientCreature(): boolean
         get pos(): BlockPos
@@ -10142,8 +8964,8 @@ declare namespace Internal {
         get yaw(): number
         set customNameVisible(arg0: boolean)
         set outOfCamera(value: boolean)
-        get controllingPassenger(): Internal.LivingEntity
         get remainingFireTicks(): number
+        get controllingPassenger(): Internal.LivingEntity
         get scriptType(): Internal.ScriptType
         get forward(): Vec3d
         get maxFallDistance(): number
@@ -10191,7 +9013,9 @@ declare namespace Internal {
         get stringUuid(): string
         get removed(): boolean
         set swimming(arg0: boolean)
+        set ec$PBlockPos(ec$PBlockPos: BlockPos_)
         get rotationVector(): Internal.Vec2
+        set ec$Position(ec$Position: Vec3d_)
         get sprinting(): boolean
         get motionY(): number
         set shiftKeyDown(arg0: boolean)
@@ -10206,6 +9030,7 @@ declare namespace Internal {
         set fabricBalmData(arg0: Internal.CompoundTag_)
         get pose(): Internal.Pose
         get lookAngle(): Vec3d
+        set shouldEntityAppearGlowing(shouldEntityAppearGlowing: boolean)
         get motionZ(): number
         get invisible(): boolean
         set z(z: number)
@@ -10229,8 +9054,8 @@ declare namespace Internal {
         get commandSenderWorld(): Internal.Level
         get customName(): net.minecraft.network.chat.Component
         get class(): typeof any
-        get visuallySwimming(): boolean
         get maxAirSupply(): number
+        get visuallySwimming(): boolean
         get facing(): Internal.Direction
         get height(): number
         get swimming(): boolean
@@ -10248,6 +9073,8 @@ declare namespace Internal {
         get onPos(): BlockPos
         get rootVehicle(): Internal.Entity
         get blockPosBelowThatAffectsMyMovement(): BlockPos
+        get ec$Position(): Vec3d
+        get nextStepDistance(): number
         get noGravity(): boolean
         get stepHeight(): number
         set remainingFireTicks(arg0: number)
@@ -10257,11 +9084,12 @@ declare namespace Internal {
         get onPosLegacy(): BlockPos
         set pos(arg0: Vec3d_)
         get uuid(): Internal.UUID
-        get armorSlots(): Internal.Iterable<Internal.ItemStack>
         set silent(arg0: boolean)
+        get armorSlots(): Internal.Iterable<Internal.ItemStack>
         get onPortalCooldown(): boolean
         set pitch(arg0: number)
         get multipartEntity(): boolean
+        get ec$PBlockPos(): BlockPos
         get parts(): Internal.PartEntity<any>[]
         get alwaysTicking(): boolean
         get bbWidth(): number
@@ -10279,9 +9107,10 @@ declare namespace Internal {
         set YHeadRot(arg0: number)
         get percentFrozen(): number
         get pickResult(): Internal.ItemStack
-        get randomY(): number
         set portalCooldown(arg0: number)
+        get randomY(): number
         get displayName(): net.minecraft.network.chat.Component
+        set nextStepDistance(arg0: number)
         set position(block: Internal.BlockContainerJS_)
         set pose(arg0: Internal.Pose_)
         get entityType(): Internal.EntityType<any>
@@ -10299,12 +9128,13 @@ declare namespace Internal {
         set id(arg0: number)
         get type(): string
         get passenger(): boolean
+        get ec$BoundingBox(): Internal.AABB
         get viewScale(): number
         set motionX(x: number)
         get handSlots(): Internal.Iterable<Internal.ItemStack>
         get visualRotationYInDegrees(): number
-        get discrete(): boolean
         get teamColor(): number
+        get discrete(): boolean
         set nbt(nbt: Internal.CompoundTag_)
         get level(): Internal.Level
         get forcedVisible(): boolean
@@ -10313,6 +9143,24 @@ declare namespace Internal {
         set sharedFlagOnFire(arg0: boolean)
     }
     type HangingEntity_ = HangingEntity;
+    class GoalSelectorDebugRenderer$DebugGoal {
+        constructor(arg0: BlockPos_, arg1: number, arg2: string, arg3: boolean)
+        getClass(): typeof any;
+        hashCode(): number;
+        toString(): string;
+        wait(): void;
+        notifyAll(): void;
+        wait(arg0: number): void;
+        equals(arg0: any): boolean;
+        notify(): void;
+        wait(arg0: number, arg1: number): void;
+        get class(): typeof any
+        readonly name: string;
+        readonly priority: number;
+        readonly isRunning: boolean;
+        readonly pos: BlockPos;
+    }
+    type GoalSelectorDebugRenderer$DebugGoal_ = GoalSelectorDebugRenderer$DebugGoal;
     class BundleDelimiterPacket <T extends Internal.PacketListener> implements Internal.Packet<T> {
         constructor()
         getClass(): typeof any;
@@ -10332,16 +9180,16 @@ declare namespace Internal {
     }
     type BundleDelimiterPacket_<T extends Internal.PacketListener> = BundleDelimiterPacket<T>;
     interface TimelessForgeEventWrappers$EntityHurtByGunPreWrapper extends Internal.TimelessForgeEventWrappers$EntityHurtByGunWrapper<Internal.EntityHurtByGunEvent$Pre> {
-        isHeadShot(): boolean;
         getLogicalSide(): Internal.LogicalSide;
+        isHeadShot(): boolean;
         setGunId(arg0: ResourceLocation_): void;
         getGunId(): ResourceLocation;
         getDamageSource(arg0: Internal.GunDamageSourcePart_): DamageSource;
         setAttacker(arg0: Internal.LivingEntity_): void;
         setDamageSource(arg0: Internal.GunDamageSourcePart_, arg1: DamageSource_): void;
         setHurtEntity(arg0: Internal.Entity_): void;
-        getBaseAmount(): number;
         getBullet(): Internal.Entity;
+        getBaseAmount(): number;
         setBaseAmount(arg0: number): void;
         setHeadshotMultiplier(arg0: number): void;
         getAttacker(): Internal.LivingEntity;
@@ -10349,14 +9197,14 @@ declare namespace Internal {
         setHeadshot(arg0: boolean): void;
         getHurtEntity(): Internal.Entity;
         abstract getForgeEvent(): Internal.EntityHurtByGunEvent$Pre;
-        get headShot(): boolean
         get logicalSide(): Internal.LogicalSide
+        get headShot(): boolean
         set gunId(arg0: ResourceLocation_)
         get gunId(): ResourceLocation
         set attacker(arg0: Internal.LivingEntity_)
         set hurtEntity(arg0: Internal.Entity_)
-        get baseAmount(): number
         get bullet(): Internal.Entity
+        get baseAmount(): number
         set baseAmount(arg0: number)
         set headshotMultiplier(arg0: number)
         get attacker(): Internal.LivingEntity
@@ -10408,16 +9256,6 @@ declare namespace Internal {
         get rodDamage(): number
     }
     type ItemFishedEvent_ = ItemFishedEvent;
-    interface XplatModContainer {
-        abstract getPath(arg0: string): Internal.Path;
-        abstract getName(): string;
-        abstract getRootPaths(): Internal.List<Internal.Path>;
-        abstract getId(): string;
-        get name(): string
-        get rootPaths(): Internal.List<Internal.Path>
-        get id(): string
-    }
-    type XplatModContainer_ = XplatModContainer;
     class GiftLootEventJS extends Internal.LootEventJS {
         constructor(c: Internal.Map_<ResourceLocation, Internal.JsonElement>)
         removeAll(): void;
@@ -10476,28 +9314,6 @@ declare namespace Internal {
         get directory(): string
     }
     type GiftLootEventJS_ = GiftLootEventJS;
-    class Family$TreeActivationContext {
-        constructor(arg0: Internal.Level_, arg1: BlockPos_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.Player_, arg5: Internal.InteractionHand_, arg6: Internal.ItemStack_, arg7: Internal.BlockHitResult_)
-        getClass(): typeof any;
-        hashCode(): number;
-        toString(): string;
-        wait(): void;
-        notifyAll(): void;
-        wait(arg0: number): void;
-        equals(arg0: any): boolean;
-        notify(): void;
-        wait(arg0: number, arg1: number): void;
-        get class(): typeof any
-        readonly player: Internal.Player;
-        readonly hand: Internal.InteractionHand;
-        readonly heldItem: Internal.ItemStack;
-        readonly level: Internal.Level;
-        readonly hitPos: BlockPos;
-        readonly hitResult: Internal.BlockHitResult;
-        readonly hitState: Internal.BlockState;
-        readonly rootPos: BlockPos;
-    }
-    type Family$TreeActivationContext_ = Family$TreeActivationContext;
     class MapAtlasCreateRecipe$Serializer implements Internal.RecipeSerializer<Internal.MapAtlasCreateRecipe> {
         constructor()
         getClass(): typeof any;
@@ -10526,13 +9342,28 @@ declare namespace Internal {
         get class(): typeof any
     }
     type MapAtlasCreateRecipe$Serializer_ = MapAtlasCreateRecipe$Serializer;
-    interface SignedMessageChain$Decoder {
-        unsigned(arg0: Internal.UUID_): this;
-        abstract unpack(arg0: Internal.MessageSignature_, arg1: Internal.SignedMessageBody_): Internal.PlayerChatMessage;
-        (arg0: Internal.MessageSignature, arg1: Internal.SignedMessageBody): Internal.PlayerChatMessage_;
-        readonly REJECT_ALL: Internal.SignedMessageChain$Decoder;
+    class Family$TreeActivationContext {
+        constructor(arg0: Internal.Level_, arg1: BlockPos_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.Player_, arg5: Internal.InteractionHand_, arg6: Internal.ItemStack_, arg7: Internal.BlockHitResult_)
+        getClass(): typeof any;
+        hashCode(): number;
+        toString(): string;
+        wait(): void;
+        notifyAll(): void;
+        wait(arg0: number): void;
+        equals(arg0: any): boolean;
+        notify(): void;
+        wait(arg0: number, arg1: number): void;
+        get class(): typeof any
+        readonly player: Internal.Player;
+        readonly hand: Internal.InteractionHand;
+        readonly heldItem: Internal.ItemStack;
+        readonly level: Internal.Level;
+        readonly hitPos: BlockPos;
+        readonly hitResult: Internal.BlockHitResult;
+        readonly hitState: Internal.BlockState;
+        readonly rootPos: BlockPos;
     }
-    type SignedMessageChain$Decoder_ = ((arg0: Internal.MessageSignature, arg1: Internal.SignedMessageBody)=> Internal.PlayerChatMessage_) | SignedMessageChain$Decoder;
+    type Family$TreeActivationContext_ = Family$TreeActivationContext;
     class NeptuniumArmor extends Internal.ArmorItem {
         constructor(arg0: Internal.ArmorMaterial_, arg1: Internal.ArmorItem$Type_)
         getDrinkingSound(): Internal.SoundEvent;
@@ -10619,9 +9450,10 @@ declare namespace Internal {
         getCraftingRemainingItem(arg0: Internal.ItemStack_): Internal.ItemStack;
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
         useOn(arg0: Internal.UseOnContext_): Internal.InteractionResult;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -10668,7 +9500,6 @@ declare namespace Internal {
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         getEquipSound(): Internal.SoundEvent;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -10800,6 +9631,13 @@ declare namespace Internal {
         set craftingRemainder(arg0: Internal.Item_)
     }
     type NeptuniumArmor_ = NeptuniumArmor;
+    interface SignedMessageChain$Decoder {
+        unsigned(arg0: Internal.UUID_): this;
+        abstract unpack(arg0: Internal.MessageSignature_, arg1: Internal.SignedMessageBody_): Internal.PlayerChatMessage;
+        (arg0: Internal.MessageSignature, arg1: Internal.SignedMessageBody): Internal.PlayerChatMessage_;
+        readonly REJECT_ALL: Internal.SignedMessageChain$Decoder;
+    }
+    type SignedMessageChain$Decoder_ = ((arg0: Internal.MessageSignature, arg1: Internal.SignedMessageBody)=> Internal.PlayerChatMessage_) | SignedMessageChain$Decoder;
     class ServerEventJS extends Internal.EventJS {
         constructor(s: Internal.MinecraftServer_)
         getClass(): typeof any;
@@ -10853,6 +9691,865 @@ declare namespace Internal {
         readonly server: Internal.MinecraftServer;
     }
     type ServerEventJS_ = ServerEventJS;
+    class FishingHook extends Internal.Projectile implements Internal.FishingHookAccessor {
+        constructor(arg0: Internal.Player_, arg1: Internal.Level_, arg2: number, arg3: number)
+        constructor(arg0: Internal.EntityType_<Internal.FishingHook>, arg1: Internal.Level_)
+        isInWall(): boolean;
+        getAllSlots(): Internal.Iterable<Internal.ItemStack>;
+        etf$getType(): Internal.EntityType<any>;
+        getUpVector(arg0: number): Vec3d;
+        gameEvent(arg0: Internal.GameEvent_, arg1: Internal.Entity_): void;
+        remove(arg0: Internal.Entity$RemovalReason_): void;
+        getBlockZ(): number;
+        isSuppressingBounce(): boolean;
+        dampensVibrations(): boolean;
+        isSilent(): boolean;
+        etf$getOptifineVehicleId(): number;
+        "playSound(net.minecraft.sounds.SoundEvent)"(id: Internal.SoundEvent_): void;
+        getPitch(): number;
+        setCulled(value: boolean): void;
+        isOnFire(): boolean;
+        rotate(arg0: Internal.Rotation_): number;
+        getPassengersAndSelf(): Internal.Stream<Internal.Entity>;
+        getPositionCodec(): Internal.VecDeltaCodec;
+        getPickedResult(arg0: Internal.HitResult_): Internal.ItemStack;
+        /**
+         * @deprecated
+        */
+        updateFluidHeightAndDoFluidPushing(arg0: Internal.TagKey_<Internal.Fluid>, arg1: number): boolean;
+        setMaxUpStep(arg0: number): void;
+        runCommandSilent(command: string): number;
+        setPosition(x: number, y: number, z: number): void;
+        chunkPosition(): Internal.ChunkPos;
+        rayTrace(distance: number, fluids: boolean): Internal.RayTraceResultJS;
+        emf$isOnGround(): boolean;
+        gameEvent(arg0: Internal.GameEvent_): void;
+        alwaysAccepts(): boolean;
+        isShiftKeyDown(): boolean;
+        isInFluidType(arg0: Internal.FluidState_): boolean;
+        setUUID(arg0: Internal.UUID_): void;
+        checkBelowWorld(): void;
+        isVisuallyCrawling(): boolean;
+        isShouldEntityAppearGlowing(): boolean;
+        shouldUpdateFluidWhileBoating(arg0: Internal.FluidState_, arg1: Internal.Boat_): boolean;
+        setMotionZ(z: number): void;
+        sdl$shouldUpdateDynamicLight(): boolean;
+        "deserializeNBT(net.minecraft.nbt.Tag)"(arg0: Internal.Tag_): void;
+        ignoreExplosion(): boolean;
+        canFreeze(): boolean;
+        teleportRelative(arg0: number, arg1: number, arg2: number): void;
+        getBlockY(): number;
+        transition$setRawPosition(arg0: Vec3d_): void;
+        isSpectator(): boolean;
+        isInWaterOrBubble(): boolean;
+        /**
+         * @deprecated
+         * This method is marked to be removed in future!
+        */
+        updateFluidHeightAndDoFluidPushing(): void;
+        spawnAtLocation(arg0: Internal.ItemLike_, arg1: number): Internal.ItemEntity;
+        getPersistentData(): Internal.CompoundTag;
+        getPortalCooldown(): number;
+        emf$isGlowing(): boolean;
+        getItem(): Internal.ItemStack;
+        getRandomZ(arg0: number): number;
+        causeFallDamage(arg0: number, arg1: number, arg2: DamageSource_): boolean;
+        getFusionModel(layerIndex: number): Internal.Triple<any, any, any>;
+        setRemoved(arg0: Internal.Entity$RemovalReason_): void;
+        getPosition(arg0: number): Vec3d;
+        isInWaterRainOrBubble(): boolean;
+        getDistanceSq(arg0: number, arg1: number, arg2: number): number;
+        getRemovalReason(): Internal.Entity$RemovalReason;
+        wait(arg0: number): void;
+        isOpenWaterFishing(): boolean;
+        isIgnoringBlockTriggers(): boolean;
+        isInRain(): boolean;
+        getHandHoldingItemAngle(arg0: Internal.Item_): Vec3d;
+        etf$getItemsEquipped(): Internal.Iterable<any>;
+        etf$getVelocity(): Vec3d;
+        setEc$BoundingBox(ec$BoundingBox: Internal.AABB_): void;
+        canUpdate(arg0: boolean): void;
+        getIndirectPassengers(): Internal.Iterable<Internal.Entity>;
+        distanceToSqr(arg0: Vec3d_): number;
+        getEyeInFluidType(): Internal.FluidType;
+        resetFallDistance(): void;
+        canSprint(): boolean;
+        blockPosition(): BlockPos;
+        isSteppingCarefully(): boolean;
+        setBoundingBox(arg0: Internal.AABB_): void;
+        isAmbientCreature(): boolean;
+        getSoundFromFluidType(arg0: Internal.FluidType_, arg1: Internal.SoundAction_): Internal.SoundEvent;
+        "spawnAtLocation(net.minecraft.world.item.ItemStack,float)"(arg0: Internal.ItemStack_, arg1: number): Internal.ItemEntity;
+        addAdditionalSaveData(arg0: Internal.CompoundTag_): void;
+        getBlockX(): number;
+        /**
+         * @deprecated
+        */
+        getLightLevelDependentMagicValue(): number;
+        getEncodeId(): string;
+        getY(arg0: number): number;
+        emf$prevPitch(): number;
+        getBlock(): Internal.BlockContainerJS;
+        getNbt(): Internal.CompoundTag;
+        setInvisible(arg0: boolean): void;
+        etf$getHandItems(): Internal.Iterable<any>;
+        etf$getArmorItems(): Internal.Iterable<any>;
+        invalidateCaps(): void;
+        getName(): net.minecraft.network.chat.Component;
+        onGround(): boolean;
+        getControlledVehicle(): Internal.Entity;
+        isOnSameTeam(arg0: Internal.Entity_): boolean;
+        attack(arg0: DamageSource_, arg1: number): boolean;
+        onInsideBubbleColumn(arg0: boolean): void;
+        isInFluidType(arg0: Internal.BiPredicate_<Internal.FluidType, number>): boolean;
+        tick(): void;
+        handler$zok000$retrieve(arg0: Internal.ItemStack_, arg1: Internal.CallbackInfoReturnable_<any>, arg2: Internal.List_<any>): void;
+        getEyePosition(): Vec3d;
+        getEyeHeight(): number;
+        hasPassenger(arg0: Internal.Predicate_<Internal.Entity>): boolean;
+        etf$getETFRenderState(): Internal.ETFEntityRenderState;
+        getYaw(): number;
+        emf$isTouchingWater(): boolean;
+        isPushedByFluid(arg0: Internal.FluidType_): boolean;
+        hasPermissions(arg0: number): boolean;
+        getCapability<T>(arg0: Internal.Capability_<T>, arg1: Internal.Direction_): Internal.LazyOptional<T>;
+        teleportTo(dimension: ResourceLocation_, x: number, y: number, z: number, yaw: number, pitch: number): void;
+        setCustomNameVisible(arg0: boolean): void;
+        isAlliedTo(arg0: Internal.Team_): boolean;
+        setOutOfCamera(value: boolean): void;
+        getRemainingFireTicks(): number;
+        getControllingPassenger(): Internal.LivingEntity;
+        getScriptType(): Internal.ScriptType;
+        onlyOpCanSetNbt(): boolean;
+        startRiding(arg0: Internal.Entity_): boolean;
+        saveWithoutId(arg0: Internal.CompoundTag_): Internal.CompoundTag;
+        getForward(): Vec3d;
+        serializeNBT(): Internal.Tag;
+        fireImmune(): boolean;
+        addMotion(arg0: number, arg1: number, arg2: number): void;
+        getMaxFallDistance(): number;
+        getZ(arg0: number): number;
+        hasCustomOutlineRendering(arg0: Internal.Player_): boolean;
+        getId(): number;
+        canBeHitByProjectile(): boolean;
+        getTicksFrozen(): number;
+        getRandomX(arg0: number): number;
+        getWasEyeInWater(): boolean;
+        getEyeY(): number;
+        spawnAtLocation(arg0: Internal.ItemStack_, arg1: number): Internal.ItemEntity;
+        pick(arg0: number, arg1: number, arg2: boolean): Internal.HitResult;
+        setStatusMessage(message: net.minecraft.network.chat.Component_): void;
+        getBoundingBox(): Internal.AABB;
+        isInWaterOrRain(): boolean;
+        isDescending(): boolean;
+        emf$getPitch(): number;
+        setItemSlot(arg0: Internal.EquipmentSlot_, arg1: Internal.ItemStack_): void;
+        getYHeadRot(): number;
+        equals(arg0: any): boolean;
+        getViewYRot(arg0: number): number;
+        dismountsUnderwater(): boolean;
+        getTimeUntilHooked(): number;
+        sodiumdynamiclights$updateDynamicLight(renderer: Internal.LevelRenderer_): boolean;
+        addTag(arg0: string): boolean;
+        playerTouch(arg0: Internal.Player_): void;
+        getAddEntityPacket(): Internal.Packet<Internal.ClientGamePacketListener>;
+        getEyeHeight(arg0: Internal.Pose_): number;
+        syncPacketPositionCodec(arg0: number, arg1: number, arg2: number): void;
+        setOwner(arg0: Internal.Entity_): void;
+        getTeam(): Internal.Team;
+        shouldRenderAtSqrDistance(arg0: number): boolean;
+        damageSources(): Internal.DamageSources;
+        setTicksFrozen(arg0: number): void;
+        recreateFromPacket(arg0: Internal.ClientboundAddEntityPacket_): void;
+        getMyRidingOffset(): number;
+        canStartSwimming(): boolean;
+        dismountTo(arg0: number, arg1: number, arg2: number): void;
+        setDeltaMovement(arg0: Vec3d_): void;
+        getLeashOffset(arg0: number): Vec3d;
+        etf$getPose(): Internal.Pose;
+        etf$getEntityKey(): string;
+        hasCustomName(): boolean;
+        isCulled(): boolean;
+        isLiving(): boolean;
+        isGlowing(): boolean;
+        getX(): number;
+        "isInFluidType(net.minecraft.world.level.material.FluidState)"(arg0: Internal.FluidState_): boolean;
+        isVehicle(): boolean;
+        etf$getOptifineId(): number;
+        getLeashOffset(): Vec3d;
+        isAttackable(): boolean;
+        spawnAtLocation(arg0: Internal.ItemStack_): Internal.ItemEntity;
+        mergeNbt(tag: Internal.CompoundTag_): Internal.Entity;
+        thunderHit(arg0: Internal.ServerLevel_, arg1: Internal.LightningBolt_): void;
+        setIsInPowderSnow(arg0: boolean): void;
+        doEnchantDamageEffects(arg0: Internal.LivingEntity_, arg1: Internal.Entity_): void;
+        etf$distanceTo(entity: Internal.Entity_): number;
+        setCustomName(arg0: net.minecraft.network.chat.Component_): void;
+        getSlot(arg0: number): Internal.SlotAccess;
+        "deserializeNBT(net.minecraft.nbt.CompoundTag)"(arg0: Internal.CompoundTag_): void;
+        emf$isInLava(): boolean;
+        getTeamId(): string;
+        stopSeenByPlayer(arg0: Internal.ServerPlayer_): void;
+        canBeRiddenUnderFluidType(arg0: Internal.FluidType_, arg1: Internal.Entity_): boolean;
+        isUnderWater(): boolean;
+        stopRiding(): void;
+        isCustomNameVisible(): boolean;
+        isSupportedBy(arg0: BlockPos_): boolean;
+        getPistonPushReaction(): Internal.PushReaction;
+        getX(arg0: number): number;
+        shouldRiderSit(): boolean;
+        lookAt(arg0: Internal.EntityAnchorArgument$Anchor_, arg1: Vec3d_): void;
+        captureDrops(arg0: Internal.Collection_<Internal.ItemEntity>): Internal.Collection<Internal.ItemEntity>;
+        rayTrace(distance: number): Internal.RayTraceResultJS;
+        getDeltaMovement(): Vec3d;
+        isInFluidType(arg0: Internal.FluidType_): boolean;
+        collide(arg0: Vec3d_): Vec3d;
+        getFluidMotionScale(arg0: Internal.FluidType_): number;
+        getMotionX(): number;
+        "onSyncedDataUpdated(java.util.List)"(arg0: Internal.List_<Internal.SynchedEntityData$DataValue<any>>): void;
+        shoot(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
+        collective_getStored(): Internal.CompoundTag;
+        hasPassenger(arg0: Internal.Entity_): boolean;
+        hasIndirectPassenger(arg0: Internal.Entity_): boolean;
+        getEntityData(): Internal.SynchedEntityData;
+        setSecondsOnFire(arg0: number): void;
+        sdl$dynamicLightTick(): void;
+        moveTo(arg0: number, arg1: number, arg2: number): void;
+        emf$getZ(): number;
+        "getDisplayName()"(): net.minecraft.network.chat.Component;
+        handleInsidePortal(arg0: BlockPos_): void;
+        setMotion(arg0: number, arg1: number, arg2: number): void;
+        getLureSpeed(): number;
+        playSound(arg0: Internal.SoundEvent_): void;
+        absMoveTo(arg0: number, arg1: number, arg2: number): void;
+        updateFluidHeightAndDoFluidPushing(arg0: Internal.Predicate_<Internal.FluidState>): void;
+        isOnRails(): boolean;
+        restoreFrom(arg0: Internal.Entity_): void;
+        markFusionRecomputeModels(): void;
+        entityCulling$getRawPosition(): Vec3d;
+        getDimensionChangingDelay(): number;
+        isPeacefulCreature(): boolean;
+        setOnGround(arg0: boolean): void;
+        emf$getYaw(): number;
+        setYaw(arg0: number): void;
+        setPos(arg0: number, arg1: number, arg2: number): void;
+        getHookedIn(): Internal.Entity;
+        getPickRadius(): number;
+        notify(): void;
+        getVehicle(): Internal.Entity;
+        isEffectiveAi(): boolean;
+        startRiding(arg0: Internal.Entity_, arg1: boolean): boolean;
+        getStringUuid(): string;
+        isRemoved(): boolean;
+        setSwimming(arg0: boolean): void;
+        emf$isSneaking(): boolean;
+        canHydrateInFluidType(arg0: Internal.FluidType_): boolean;
+        teleportToWithTicket(arg0: number, arg1: number, arg2: number): void;
+        setEc$PBlockPos(ec$PBlockPos: BlockPos_): void;
+        getRotationVector(): Internal.Vec2;
+        fillCrashReportCategory(arg0: Internal.CrashReportCategory_): void;
+        refreshDimensions(): void;
+        self(): Internal.Entity;
+        sdl$getDynamicLightY(): number;
+        setEc$Position(ec$Position: Vec3d_): void;
+        isSprinting(): boolean;
+        etf$getBlockY(): number;
+        "spawnAtLocation(net.minecraft.world.level.ItemLike)"(arg0: Internal.ItemLike_): Internal.ItemEntity;
+        getMotionY(): number;
+        canCollideWith(arg0: Internal.Entity_): boolean;
+        getEyePosition(arg0: number): Vec3d;
+        setShiftKeyDown(arg0: boolean): void;
+        getPassengers(): Internal.EntityArrayList;
+        getBlockExplosionResistance(arg0: Internal.Explosion_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.FluidState_, arg5: number): number;
+        getFluidFallDistanceModifier(arg0: Internal.FluidType_): number;
+        getMaxHeightFluidType(): Internal.FluidType;
+        getZ(): number;
+        canSpawnSprintParticle(): boolean;
+        "moveTo(net.minecraft.core.BlockPos,float,float)"(arg0: BlockPos_, arg1: number, arg2: number): void;
+        teleportTo(arg0: number, arg1: number, arg2: number): void;
+        shootFromRotation(arg0: Internal.Entity_, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): void;
+        getServer(): Internal.MinecraftServer;
+        getSelfAndPassengers(): Internal.Stream<Internal.Entity>;
+        moveRelative(arg0: number, arg1: Vec3d_): void;
+        isAddedToWorld(): boolean;
+        getFirstPassenger(): Internal.Entity;
+        saveAsPassenger(arg0: Internal.CompoundTag_): boolean;
+        interact(arg0: Internal.Player_, arg1: Internal.InteractionHand_): Internal.InteractionResult;
+        sdl$getDynamicLightLevel(): Internal.Level;
+        getDismountLocationForPassenger(arg0: Internal.LivingEntity_): Vec3d;
+        checkLeftOwner(): boolean;
+        checkSlowFallDistance(): void;
+        getSoundSource(): Internal.SoundSource;
+        setFabricBalmData(arg0: Internal.CompoundTag_): void;
+        getPose(): Internal.Pose;
+        touchingUnloadedChunk(): boolean;
+        sdl$getDynamicLightZ(): number;
+        getLookAngle(): Vec3d;
+        setPositionAndRotation(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
+        emf$isOnFire(): boolean;
+        setShouldEntityAppearGlowing(shouldEntityAppearGlowing: boolean): void;
+        getMotionZ(): number;
+        etf$getUuid(): Internal.UUID;
+        removeVehicle(): void;
+        isInvisible(): boolean;
+        shouldFusionRecomputeModel(layerIndex: number): boolean;
+        is(arg0: Internal.Entity_): boolean;
+        setZ(z: number): void;
+        ejectPassengers(): void;
+        getY(): number;
+        hashCode(): number;
+        deserializeNBT(arg0: Internal.CompoundTag_): void;
+        getProfile(): Internal.GameProfile;
+        static setViewScale(arg0: number): void;
+        emf$isAlive(): boolean;
+        setLevelCallback(arg0: Internal.EntityInLevelCallback_): void;
+        showVehicleHealth(): boolean;
+        getDistance(pos: BlockPos_): number;
+        playSound(arg0: Internal.SoundEvent_, arg1: number, arg2: number): void;
+        emf$getVelocity(): Vec3d;
+        "areCapsCompatible(net.minecraftforge.common.capabilities.CapabilityDispatcher)"(arg0: Internal.CapabilityDispatcher_): boolean;
+        etf$isBlockEntity(): boolean;
+        startSeenByPlayer(arg0: Internal.ServerPlayer_): void;
+        isOnScoreboardTeam(teamId: string): boolean;
+        /**
+         * @deprecated
+        */
+        isPushedByFluid(): boolean;
+        setTimeout(): void;
+        position(): Vec3d;
+        displayFireAnimation(): boolean;
+        turn(arg0: number, arg1: number): void;
+        isOutOfCamera(): boolean;
+        getAirSupply(): number;
+        getRopeHoldPosition(arg0: number): Vec3d;
+        copyPosition(arg0: Internal.Entity_): void;
+        onAddedToWorld(): void;
+        "hasPassenger(net.minecraft.world.entity.Entity)"(arg0: Internal.Entity_): boolean;
+        isCrouching(): boolean;
+        etf$canBeBright(): boolean;
+        moveTo(arg0: BlockPos_, arg1: number, arg2: number): void;
+        isPlayer(): boolean;
+        isAnimal(): boolean;
+        readAdditionalSaveData(arg0: Internal.CompoundTag_): void;
+        canBeCollidedWith(): boolean;
+        getMotionDirection(): Internal.Direction;
+        setY(y: number): void;
+        sdl$isDynamicLightEnabled(): boolean;
+        lavaHurt(): void;
+        getFeetBlockState(): Internal.BlockState;
+        handleDamageEvent(arg0: DamageSource_): void;
+        getFabricBalmData(): Internal.CompoundTag;
+        canChangeDimensions(): boolean;
+        changeDimension(arg0: Internal.ServerLevel_, arg1: Internal.ITeleporter_): Internal.Entity;
+        getCommandSenderWorld(): Internal.Level;
+        positionRider(arg0: Internal.Entity_): void;
+        baseTick(): void;
+        broadcastToPlayer(arg0: Internal.ServerPlayer_): boolean;
+        changeDimension(arg0: Internal.ServerLevel_): Internal.Entity;
+        setSharedFlag(arg0: number, arg1: boolean): void;
+        getOwner(): Internal.Entity;
+        /**
+         * @deprecated
+         * This method is marked to be removed in future!
+        */
+        getEyeHeightAccess(arg0: Internal.Pose_, arg1: Internal.EntityDimensions_): number;
+        getCustomName(): net.minecraft.network.chat.Component;
+        getClass(): typeof any;
+        getMaxAirSupply(): number;
+        isVisuallySwimming(): boolean;
+        canTrample(arg0: Internal.BlockState_, arg1: BlockPos_, arg2: number): boolean;
+        attack(hp: number): void;
+        canSwimInFluidType(arg0: Internal.FluidType_): boolean;
+        getFacing(): Internal.Direction;
+        emf$isWet(): boolean;
+        isInFluidType(arg0: Internal.BiPredicate_<Internal.FluidType, number>, arg1: boolean): boolean;
+        "hasPassenger(java.util.function.Predicate)"(arg0: Internal.Predicate_<Internal.Entity>): boolean;
+        getDimensions(arg0: Internal.Pose_): Internal.EntityDimensions;
+        sdl$getDynamicLightX(): number;
+        isPassengerOfSameVehicle(arg0: Internal.Entity_): boolean;
+        isSwimming(): boolean;
+        getBoundingBoxForCulling(): Internal.AABB;
+        mayInteract(arg0: Internal.Level_, arg1: BlockPos_): boolean;
+        setSprinting(arg0: boolean): void;
+        setPortalCooldown(): void;
+        setX(x: number): void;
+        trackingPosition(): Vec3d;
+        getNameTagOffsetY(): number;
+        isInvulnerable(): boolean;
+        isInLava(): boolean;
+        getPortalWaitTime(): number;
+        isInWater(): boolean;
+        getBlockStateOn(): Internal.BlockState;
+        awardKillScore(arg0: Internal.Entity_, arg1: number, arg2: DamageSource_): void;
+        getFluidJumpThreshold(): number;
+        emf$getVariableMap(): Internal.Map<any, any>;
+        "setPositionAndRotation(double,double,double,float,float)"(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
+        isInvisibleTo(arg0: Internal.Player_): boolean;
+        setFusionModel(layerIndex: number, model: Internal.Triple_<any, any, any>): void;
+        setAirSupply(arg0: number): void;
+        getOnPos(): BlockPos;
+        getRootVehicle(): Internal.Entity;
+        save(arg0: Internal.CompoundTag_): boolean;
+        etf$getWorld(): Internal.Level;
+        getBlockPosBelowThatAffectsMyMovement(): BlockPos;
+        getEc$Position(): Vec3d;
+        getNextStepDistance(): number;
+        isNoGravity(): boolean;
+        sdl$getLuminance(): number;
+        getStepHeight(): number;
+        etf$getNbt(): Internal.CompoundTag;
+        acceptsFailure(): boolean;
+        etf$getBlockPos(): BlockPos;
+        setOnGroundWithKnownMovement(arg0: boolean, arg1: Vec3d_): void;
+        setOldPosAndRot(): void;
+        emf$getY(): number;
+        isFree(arg0: number, arg1: number, arg2: number): boolean;
+        getPlayerOwner(): Internal.Player;
+        updateSwimming(): void;
+        "moveTo(double,double,double)"(arg0: number, arg1: number, arg2: number): void;
+        setRemainingFireTicks(arg0: number): void;
+        shouldInformAdmins(): boolean;
+        canFluidExtinguish(arg0: Internal.FluidType_): boolean;
+        rideTick(): void;
+        emf$age(): number;
+        entityCulling$setRawPosition(arg0: Vec3d_): void;
+        etf$hasCustomName(): boolean;
+        /**
+         * @deprecated
+        */
+        getOnPosLegacy(): BlockPos;
+        setPos(arg0: Vec3d_): void;
+        wait(): void;
+        getUuid(): Internal.UUID;
+        spawn(): void;
+        areCapsCompatible(arg0: Internal.CapabilityDispatcher_): boolean;
+        teleportTo(arg0: Internal.ServerLevel_, arg1: number, arg2: number, arg3: number, arg4: Internal.Set_<Internal.RelativeMovement>, arg5: number, arg6: number): boolean;
+        etf$getCustomName(): net.minecraft.network.chat.Component;
+        shouldShowName(): boolean;
+        setSilent(arg0: boolean): void;
+        getArmorSlots(): Internal.Iterable<Internal.ItemStack>;
+        captureDrops(): Internal.Collection<Internal.ItemEntity>;
+        hasExactlyOnePlayerPassenger(): boolean;
+        kill(): void;
+        isOnPortalCooldown(): boolean;
+        retrieve(arg0: Internal.ItemStack_): number;
+        animateHurt(arg0: number): void;
+        setPitch(arg0: number): void;
+        isMultipartEntity(): boolean;
+        setPosRaw(arg0: number, arg1: number, arg2: number): void;
+        handleEntityEvent(arg0: number): void;
+        /**
+         * @deprecated
+         * This method is marked to be removed in future!
+        */
+        getDimensionsForge(arg0: Internal.Pose_): Internal.EntityDimensions;
+        getEc$PBlockPos(): BlockPos;
+        getParts(): Internal.PartEntity<any>[];
+        setExtension(key: any, value: any): void;
+        isAlwaysTicking(): boolean;
+        interactAt(arg0: Internal.Player_, arg1: Vec3d_, arg2: Internal.InteractionHand_): Internal.InteractionResult;
+        emf$getX(): number;
+        handler$bnm000$Entity_saveWithoutId(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfoReturnable_<any>): void;
+        deserializeNBT(arg0: Internal.Tag_): void;
+        lerpTo(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number, arg6: boolean): void;
+        onPassengerTurned(arg0: Internal.Entity_): void;
+        collective_setStored(arg0: Internal.CompoundTag_): void;
+        spawnAtLocation(arg0: Internal.ItemLike_): Internal.ItemEntity;
+        revive(): void;
+        emf$hasPassengers(): boolean;
+        getBbWidth(): number;
+        isEyeInFluidType(arg0: Internal.FluidType_): boolean;
+        getForgePersistentData(): Internal.CompoundTag;
+        addDeltaMovement(arg0: Vec3d_): void;
+        handler$bol000$postTurnHook(arg0: Internal.CallbackInfo_): void;
+        "spawnAtLocation(net.minecraft.world.level.ItemLike,int)"(arg0: Internal.ItemLike_, arg1: number): Internal.ItemEntity;
+        setInvulnerable(arg0: boolean): void;
+        "getName()"(): net.minecraft.network.chat.Component;
+        push(arg0: Internal.Entity_): void;
+        isInFluidType(): boolean;
+        emf$hasVehicle(): boolean;
+        mirror(arg0: Internal.Mirror_): number;
+        canUpdate(): boolean;
+        getTicksRequiredToFreeze(): number;
+        /**
+         * @deprecated
+        */
+        maxUpStep(): number;
+        setGlowing(arg0: boolean): void;
+        load(arg0: Internal.CompoundTag_): void;
+        isAlive(): boolean;
+        emf$prevZ(): number;
+        getBbHeight(): number;
+        getUsername(): string;
+        transition$getRawPosition(): Vec3d;
+        getNibble(): number;
+        move(arg0: Internal.MoverType_, arg1: Vec3d_): void;
+        getTags(): Internal.Set<string>;
+        getViewVector(arg0: number): Vec3d;
+        onRemovedFromWorld(): void;
+        getCapability<T>(arg0: Internal.Capability_<T>): Internal.LazyOptional<T>;
+        isPickable(): boolean;
+        setYHeadRot(arg0: number): void;
+        hasControllingPassenger(): boolean;
+        closerThan(arg0: Internal.Entity_, arg1: number, arg2: number): boolean;
+        absMoveTo(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
+        getPercentFrozen(): number;
+        getPickResult(): Internal.ItemStack;
+        setPortalCooldown(arg0: number): void;
+        getRandomY(): number;
+        getDisplayName(): net.minecraft.network.chat.Component;
+        setNextStepDistance(arg0: number): void;
+        hasGlowingTag(): boolean;
+        shouldBlockExplode(arg0: Internal.Explosion_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: number): boolean;
+        emf$isInvisible(): boolean;
+        setPosition(block: Internal.BlockContainerJS_): void;
+        emf$isSprinting(): boolean;
+        getFluidTypeHeight(arg0: Internal.FluidType_): number;
+        shouldBeSaved(): boolean;
+        getViewXRot(arg0: number): number;
+        canRiderInteract(): boolean;
+        "areCapsCompatible(net.minecraftforge.common.capabilities.CapabilityProvider)"(arg0: Internal.CapabilityProvider_<Internal.Entity>): boolean;
+        removeTag(arg0: string): boolean;
+        setPose(arg0: Internal.Pose_): void;
+        /**
+         * @deprecated
+        */
+        getFluidHeight(arg0: Internal.TagKey_<Internal.Fluid>): number;
+        static collideBoundingBox(arg0: Internal.Entity_, arg1: Vec3d_, arg2: Internal.AABB_, arg3: Internal.Level_, arg4: Internal.List_<Internal.VoxelShape>): Vec3d;
+        getEntityType(): Internal.EntityType<any>;
+        isWaterCreature(): boolean;
+        toString(): string;
+        notifyAll(): void;
+        getPassengersRidingOffset(): number;
+        etf$getScoreboardTeam(): Internal.Team;
+        "isInFluidType(java.util.function.BiPredicate)"(arg0: Internal.BiPredicate_<Internal.FluidType, number>): boolean;
+        distanceToEntitySqr(arg0: Internal.Entity_): number;
+        handler$bnm000$Entity_load(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfo_): void;
+        "getServer()"(): Internal.MinecraftServer;
+        isFrame(): boolean;
+        isPushable(): boolean;
+        setYBodyRot(arg0: number): void;
+        discard(): void;
+        onClientRemoval(): void;
+        sendSystemMessage(arg0: net.minecraft.network.chat.Component_): void;
+        acceptsSuccess(): boolean;
+        reviveCaps(): void;
+        getDistance(x: number, y: number, z: number): number;
+        setMotionY(y: number): void;
+        setNoGravity(arg0: boolean): void;
+        getEffectSource(): Internal.Entity;
+        sdl$setDynamicLightEnabled(enabled: boolean): void;
+        setRotation(yaw: number, pitch: number): void;
+        createCommandSourceStack(): Internal.CommandSourceStack;
+        isControlledByLocalInstance(): boolean;
+        isMonster(): boolean;
+        sdl$resetDynamicLight(): void;
+        setId(arg0: number): void;
+        onSyncedDataUpdated(arg0: Internal.List_<Internal.SynchedEntityData$DataValue<any>>): void;
+        getHorizontalFacing(): Internal.Direction;
+        getType(): string;
+        getLightProbePosition(arg0: number): Vec3d;
+        sodiumdynamiclights$scheduleTrackedChunksRebuild(renderer: Internal.LevelRenderer_): void;
+        onAboveBubbleCol(arg0: boolean): void;
+        emf$prevX(): number;
+        "playSound(net.minecraft.sounds.SoundEvent,float,float)"(id: Internal.SoundEvent_, volume: number, pitch: number): void;
+        isPassenger(): boolean;
+        hasPose(arg0: Internal.Pose_): boolean;
+        checkDespawn(): void;
+        /**
+         * @deprecated
+        */
+        isEyeInFluid(arg0: Internal.TagKey_<Internal.Fluid>): boolean;
+        isInvulnerableTo(arg0: DamageSource_): boolean;
+        makeStuckInBlock(arg0: Internal.BlockState_, arg1: Vec3d_): void;
+        skipAttackInteraction(arg0: Internal.Entity_): boolean;
+        lerpMotion(arg0: number, arg1: number, arg2: number): void;
+        shouldRender(arg0: number, arg1: number, arg2: number): boolean;
+        onSyncedDataUpdated(arg0: Internal.EntityDataAccessor_<any>): void;
+        lerpHeadTo(arg0: number, arg1: number): void;
+        handler$bbe001$onTick(ci: Internal.CallbackInfo_): void;
+        getTimeUntilLured(): number;
+        getEc$BoundingBox(): Internal.AABB;
+        handler$bbe000$onRemove(ci: Internal.CallbackInfo_): void;
+        static getViewScale(): number;
+        setMotionX(x: number): void;
+        getHandSlots(): Internal.Iterable<Internal.ItemStack>;
+        distanceToEntity(arg0: Internal.Entity_): number;
+        getVisualRotationYInDegrees(): number;
+        wait(arg0: number, arg1: number): void;
+        getTeamColor(): number;
+        isDiscrete(): boolean;
+        setNbt(nbt: Internal.CompoundTag_): void;
+        unRide(): void;
+        getLevel(): Internal.Level;
+        "spawnAtLocation(net.minecraft.world.item.ItemStack)"(arg0: Internal.ItemStack_): Internal.ItemEntity;
+        "isInFluidType(net.minecraftforge.fluids.FluidType)"(arg0: Internal.FluidType_): boolean;
+        handler$bol000$preTurnHook(arg0: Internal.CallbackInfo_): void;
+        extinguish(): void;
+        setTimeUntilLured(arg0: number): void;
+        updateDynamicGameEventListener(arg0: Internal.BiConsumer_<Internal.DynamicGameEventListener<any>, Internal.ServerLevel>): void;
+        moveTo(arg0: Vec3d_): void;
+        getExtension(key: any, type: typeof any): any;
+        isColliding(arg0: BlockPos_, arg1: Internal.BlockState_): boolean;
+        "onSyncedDataUpdated(net.minecraft.network.syncher.EntityDataAccessor)"(arg0: Internal.EntityDataAccessor_<any>): void;
+        emf$prevY(): number;
+        areCapsCompatible(arg0: Internal.CapabilityProvider_<Internal.Entity>): boolean;
+        extinguishFire(): void;
+        /**
+         * @deprecated
+         * This method is marked to be removed in future!
+        */
+        getEyeHeightForge(arg0: Internal.Pose_, arg1: Internal.EntityDimensions_): number;
+        tell(message: net.minecraft.network.chat.Component_): void;
+        isForcedVisible(): boolean;
+        closerThan(arg0: Internal.Entity_, arg1: number): boolean;
+        getDistanceSq(pos: BlockPos_): number;
+        killedEntity(arg0: Internal.ServerLevel_, arg1: Internal.LivingEntity_): boolean;
+        emf$getTypeString(): string;
+        getClassification(arg0: boolean): Internal.MobCategory;
+        isFreezing(): boolean;
+        isFullyFrozen(): boolean;
+        runCommand(command: string): number;
+        setSharedFlagOnFire(arg0: boolean): void;
+        get inWall(): boolean
+        get allSlots(): Internal.Iterable<Internal.ItemStack>
+        get blockZ(): number
+        get suppressingBounce(): boolean
+        get silent(): boolean
+        get pitch(): number
+        set culled(value: boolean)
+        get onFire(): boolean
+        get passengersAndSelf(): Internal.Stream<Internal.Entity>
+        get positionCodec(): Internal.VecDeltaCodec
+        set maxUpStep(arg0: number)
+        get shiftKeyDown(): boolean
+        set UUID(arg0: Internal.UUID_)
+        get visuallyCrawling(): boolean
+        get shouldEntityAppearGlowing(): boolean
+        set motionZ(z: number)
+        get blockY(): number
+        get spectator(): boolean
+        get inWaterOrBubble(): boolean
+        get persistentData(): Internal.CompoundTag
+        get portalCooldown(): number
+        get item(): Internal.ItemStack
+        set removed(arg0: Internal.Entity$RemovalReason_)
+        get inWaterRainOrBubble(): boolean
+        get removalReason(): Internal.Entity$RemovalReason
+        get openWaterFishing(): boolean
+        get ignoringBlockTriggers(): boolean
+        get inRain(): boolean
+        set ec$BoundingBox(ec$BoundingBox: Internal.AABB_)
+        get indirectPassengers(): Internal.Iterable<Internal.Entity>
+        get eyeInFluidType(): Internal.FluidType
+        get steppingCarefully(): boolean
+        set boundingBox(arg0: Internal.AABB_)
+        get ambientCreature(): boolean
+        get blockX(): number
+        /**
+         * @deprecated
+        */
+        get lightLevelDependentMagicValue(): number
+        get encodeId(): string
+        get block(): Internal.BlockContainerJS
+        get nbt(): Internal.CompoundTag
+        set invisible(arg0: boolean)
+        get name(): net.minecraft.network.chat.Component
+        get controlledVehicle(): Internal.Entity
+        get eyePosition(): Vec3d
+        get eyeHeight(): number
+        get yaw(): number
+        set customNameVisible(arg0: boolean)
+        set outOfCamera(value: boolean)
+        get remainingFireTicks(): number
+        get controllingPassenger(): Internal.LivingEntity
+        get scriptType(): Internal.ScriptType
+        get forward(): Vec3d
+        get maxFallDistance(): number
+        get id(): number
+        get ticksFrozen(): number
+        get wasEyeInWater(): boolean
+        get eyeY(): number
+        set statusMessage(message: net.minecraft.network.chat.Component_)
+        get boundingBox(): Internal.AABB
+        get inWaterOrRain(): boolean
+        get descending(): boolean
+        get YHeadRot(): number
+        get timeUntilHooked(): number
+        get addEntityPacket(): Internal.Packet<Internal.ClientGamePacketListener>
+        set owner(arg0: Internal.Entity_)
+        get team(): Internal.Team
+        set ticksFrozen(arg0: number)
+        get myRidingOffset(): number
+        set deltaMovement(arg0: Vec3d_)
+        get culled(): boolean
+        get living(): boolean
+        get glowing(): boolean
+        get x(): number
+        get vehicle(): boolean
+        get leashOffset(): Vec3d
+        get attackable(): boolean
+        set isInPowderSnow(arg0: boolean)
+        set customName(arg0: net.minecraft.network.chat.Component_)
+        get teamId(): string
+        get underWater(): boolean
+        get customNameVisible(): boolean
+        get pistonPushReaction(): Internal.PushReaction
+        get deltaMovement(): Vec3d
+        get motionX(): number
+        get entityData(): Internal.SynchedEntityData
+        set secondsOnFire(arg0: number)
+        get "displayName()"(): net.minecraft.network.chat.Component
+        get lureSpeed(): number
+        get onRails(): boolean
+        get dimensionChangingDelay(): number
+        get peacefulCreature(): boolean
+        set onGround(arg0: boolean)
+        set yaw(arg0: number)
+        get hookedIn(): Internal.Entity
+        get pickRadius(): number
+        get vehicle(): Internal.Entity
+        get effectiveAi(): boolean
+        get stringUuid(): string
+        get removed(): boolean
+        set swimming(arg0: boolean)
+        set ec$PBlockPos(ec$PBlockPos: BlockPos_)
+        get rotationVector(): Internal.Vec2
+        set ec$Position(ec$Position: Vec3d_)
+        get sprinting(): boolean
+        get motionY(): number
+        set shiftKeyDown(arg0: boolean)
+        get passengers(): Internal.EntityArrayList
+        get maxHeightFluidType(): Internal.FluidType
+        get z(): number
+        get server(): Internal.MinecraftServer
+        get selfAndPassengers(): Internal.Stream<Internal.Entity>
+        get addedToWorld(): boolean
+        get firstPassenger(): Internal.Entity
+        get soundSource(): Internal.SoundSource
+        set fabricBalmData(arg0: Internal.CompoundTag_)
+        get pose(): Internal.Pose
+        get lookAngle(): Vec3d
+        set shouldEntityAppearGlowing(shouldEntityAppearGlowing: boolean)
+        get motionZ(): number
+        get invisible(): boolean
+        set z(z: number)
+        get y(): number
+        get profile(): Internal.GameProfile
+        set viewScale(arg0: number)
+        set levelCallback(arg0: Internal.EntityInLevelCallback_)
+        /**
+         * @deprecated
+        */
+        get pushedByFluid(): boolean
+        get outOfCamera(): boolean
+        get airSupply(): number
+        get crouching(): boolean
+        get player(): boolean
+        get animal(): boolean
+        get motionDirection(): Internal.Direction
+        set y(y: number)
+        get feetBlockState(): Internal.BlockState
+        get fabricBalmData(): Internal.CompoundTag
+        get commandSenderWorld(): Internal.Level
+        get owner(): Internal.Entity
+        get customName(): net.minecraft.network.chat.Component
+        get class(): typeof any
+        get maxAirSupply(): number
+        get visuallySwimming(): boolean
+        get facing(): Internal.Direction
+        get swimming(): boolean
+        get boundingBoxForCulling(): Internal.AABB
+        set sprinting(arg0: boolean)
+        set x(x: number)
+        get nameTagOffsetY(): number
+        get invulnerable(): boolean
+        get inLava(): boolean
+        get portalWaitTime(): number
+        get inWater(): boolean
+        get blockStateOn(): Internal.BlockState
+        get fluidJumpThreshold(): number
+        set airSupply(arg0: number)
+        get onPos(): BlockPos
+        get rootVehicle(): Internal.Entity
+        get blockPosBelowThatAffectsMyMovement(): BlockPos
+        get ec$Position(): Vec3d
+        get nextStepDistance(): number
+        get noGravity(): boolean
+        get stepHeight(): number
+        get playerOwner(): Internal.Player
+        set remainingFireTicks(arg0: number)
+        /**
+         * @deprecated
+        */
+        get onPosLegacy(): BlockPos
+        set pos(arg0: Vec3d_)
+        get uuid(): Internal.UUID
+        set silent(arg0: boolean)
+        get armorSlots(): Internal.Iterable<Internal.ItemStack>
+        get onPortalCooldown(): boolean
+        set pitch(arg0: number)
+        get multipartEntity(): boolean
+        get ec$PBlockPos(): BlockPos
+        get parts(): Internal.PartEntity<any>[]
+        get alwaysTicking(): boolean
+        get bbWidth(): number
+        get forgePersistentData(): Internal.CompoundTag
+        set invulnerable(arg0: boolean)
+        get "name()"(): net.minecraft.network.chat.Component
+        get inFluidType(): boolean
+        get ticksRequiredToFreeze(): number
+        set glowing(arg0: boolean)
+        get alive(): boolean
+        get bbHeight(): number
+        get username(): string
+        get nibble(): number
+        get tags(): Internal.Set<string>
+        get pickable(): boolean
+        set YHeadRot(arg0: number)
+        get percentFrozen(): number
+        get pickResult(): Internal.ItemStack
+        set portalCooldown(arg0: number)
+        get randomY(): number
+        get displayName(): net.minecraft.network.chat.Component
+        set nextStepDistance(arg0: number)
+        set position(block: Internal.BlockContainerJS_)
+        set pose(arg0: Internal.Pose_)
+        get entityType(): Internal.EntityType<any>
+        get waterCreature(): boolean
+        get passengersRidingOffset(): number
+        get "server()"(): Internal.MinecraftServer
+        get frame(): boolean
+        get pushable(): boolean
+        set YBodyRot(arg0: number)
+        set motionY(y: number)
+        set noGravity(arg0: boolean)
+        get effectSource(): Internal.Entity
+        get controlledByLocalInstance(): boolean
+        get monster(): boolean
+        set id(arg0: number)
+        get horizontalFacing(): Internal.Direction
+        get type(): string
+        get passenger(): boolean
+        get timeUntilLured(): number
+        get ec$BoundingBox(): Internal.AABB
+        get viewScale(): number
+        set motionX(x: number)
+        get handSlots(): Internal.Iterable<Internal.ItemStack>
+        get visualRotationYInDegrees(): number
+        get teamColor(): number
+        get discrete(): boolean
+        set nbt(nbt: Internal.CompoundTag_)
+        get level(): Internal.Level
+        set timeUntilLured(arg0: number)
+        get forcedVisible(): boolean
+        get freezing(): boolean
+        get fullyFrozen(): boolean
+        set sharedFlagOnFire(arg0: boolean)
+        readonly luck: number;
+        biting: boolean;
+    }
+    type FishingHook_ = FishingHook;
     class ShulkercarcassBlock extends Internal.Block {
         constructor()
         /**
@@ -10868,11 +10565,11 @@ declare namespace Internal {
         stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         /**
          * @deprecated
@@ -10890,8 +10587,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -10961,8 +10658,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -11005,8 +10702,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -11223,843 +10920,6 @@ declare namespace Internal {
         static readonly BLOCKSTATE: (Internal.IntegerProperty) & (Internal.IntegerProperty);
     }
     type ShulkercarcassBlock_ = ShulkercarcassBlock;
-    class FishingHook extends Internal.Projectile implements Internal.FishingHookAccessor {
-        constructor(arg0: Internal.Player_, arg1: Internal.Level_, arg2: number, arg3: number)
-        constructor(arg0: Internal.EntityType_<Internal.FishingHook>, arg1: Internal.Level_)
-        isInWall(): boolean;
-        getAllSlots(): Internal.Iterable<Internal.ItemStack>;
-        etf$getType(): Internal.EntityType<any>;
-        getUpVector(arg0: number): Vec3d;
-        gameEvent(arg0: Internal.GameEvent_, arg1: Internal.Entity_): void;
-        remove(arg0: Internal.Entity$RemovalReason_): void;
-        getBlockZ(): number;
-        isSuppressingBounce(): boolean;
-        dampensVibrations(): boolean;
-        isSilent(): boolean;
-        etf$getOptifineVehicleId(): number;
-        "playSound(net.minecraft.sounds.SoundEvent)"(arg0: Internal.SoundEvent_): void;
-        getPitch(): number;
-        setCulled(value: boolean): void;
-        isOnFire(): boolean;
-        rotate(arg0: Internal.Rotation_): number;
-        getPassengersAndSelf(): Internal.Stream<Internal.Entity>;
-        getPositionCodec(): Internal.VecDeltaCodec;
-        getPickedResult(arg0: Internal.HitResult_): Internal.ItemStack;
-        setMaxUpStep(arg0: number): void;
-        /**
-         * @deprecated
-        */
-        updateFluidHeightAndDoFluidPushing(arg0: Internal.TagKey_<Internal.Fluid>, arg1: number): boolean;
-        runCommandSilent(command: string): number;
-        setPosition(x: number, y: number, z: number): void;
-        chunkPosition(): Internal.ChunkPos;
-        rayTrace(distance: number, fluids: boolean): Internal.RayTraceResultJS;
-        emf$isOnGround(): boolean;
-        gameEvent(arg0: Internal.GameEvent_): void;
-        alwaysAccepts(): boolean;
-        isShiftKeyDown(): boolean;
-        isInFluidType(arg0: Internal.FluidState_): boolean;
-        setUUID(arg0: Internal.UUID_): void;
-        checkBelowWorld(): void;
-        isVisuallyCrawling(): boolean;
-        shouldUpdateFluidWhileBoating(arg0: Internal.FluidState_, arg1: Internal.Boat_): boolean;
-        setMotionZ(z: number): void;
-        sdl$shouldUpdateDynamicLight(): boolean;
-        "deserializeNBT(net.minecraft.nbt.Tag)"(arg0: Internal.Tag_): void;
-        canFreeze(): boolean;
-        ignoreExplosion(): boolean;
-        teleportRelative(arg0: number, arg1: number, arg2: number): void;
-        getBlockY(): number;
-        transition$setRawPosition(arg0: Vec3d_): void;
-        isSpectator(): boolean;
-        isInWaterOrBubble(): boolean;
-        /**
-         * @deprecated
-         * This method is marked to be removed in future!
-        */
-        updateFluidHeightAndDoFluidPushing(): void;
-        spawnAtLocation(arg0: Internal.ItemLike_, arg1: number): Internal.ItemEntity;
-        getPersistentData(): Internal.CompoundTag;
-        getPortalCooldown(): number;
-        emf$isGlowing(): boolean;
-        getItem(): Internal.ItemStack;
-        getRandomZ(arg0: number): number;
-        causeFallDamage(arg0: number, arg1: number, arg2: DamageSource_): boolean;
-        getPosition(arg0: number): Vec3d;
-        setRemoved(arg0: Internal.Entity$RemovalReason_): void;
-        getDistanceSq(arg0: number, arg1: number, arg2: number): number;
-        isInWaterRainOrBubble(): boolean;
-        getRemovalReason(): Internal.Entity$RemovalReason;
-        wait(arg0: number): void;
-        isOpenWaterFishing(): boolean;
-        isIgnoringBlockTriggers(): boolean;
-        isInRain(): boolean;
-        handler$bnj000$Entity_load(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfo_): void;
-        getHandHoldingItemAngle(arg0: Internal.Item_): Vec3d;
-        etf$getItemsEquipped(): Internal.Iterable<any>;
-        etf$getVelocity(): Vec3d;
-        canUpdate(arg0: boolean): void;
-        getIndirectPassengers(): Internal.Iterable<Internal.Entity>;
-        getEyeInFluidType(): Internal.FluidType;
-        distanceToSqr(arg0: Vec3d_): number;
-        resetFallDistance(): void;
-        canSprint(): boolean;
-        blockPosition(): BlockPos;
-        isSteppingCarefully(): boolean;
-        setLevel(arg0: Internal.Level_): void;
-        setBoundingBox(arg0: Internal.AABB_): void;
-        isAmbientCreature(): boolean;
-        getSoundFromFluidType(arg0: Internal.FluidType_, arg1: Internal.SoundAction_): Internal.SoundEvent;
-        "spawnAtLocation(net.minecraft.world.item.ItemStack,float)"(arg0: Internal.ItemStack_, arg1: number): Internal.ItemEntity;
-        addAdditionalSaveData(arg0: Internal.CompoundTag_): void;
-        getBlockX(): number;
-        /**
-         * @deprecated
-        */
-        getLightLevelDependentMagicValue(): number;
-        getEncodeId(): string;
-        getY(arg0: number): number;
-        emf$prevPitch(): number;
-        getBlock(): Internal.BlockContainerJS;
-        getNbt(): Internal.CompoundTag;
-        setInvisible(arg0: boolean): void;
-        etf$getHandItems(): Internal.Iterable<any>;
-        etf$getArmorItems(): Internal.Iterable<any>;
-        invalidateCaps(): void;
-        getName(): net.minecraft.network.chat.Component;
-        onGround(): boolean;
-        getControlledVehicle(): Internal.Entity;
-        isOnSameTeam(arg0: Internal.Entity_): boolean;
-        attack(arg0: DamageSource_, arg1: number): boolean;
-        onInsideBubbleColumn(arg0: boolean): void;
-        isInFluidType(arg0: Internal.BiPredicate_<Internal.FluidType, number>): boolean;
-        tick(): void;
-        getEyePosition(): Vec3d;
-        getEyeHeight(): number;
-        hasPassenger(arg0: Internal.Predicate_<Internal.Entity>): boolean;
-        etf$getETFRenderState(): Internal.ETFEntityRenderState;
-        getYaw(): number;
-        emf$isTouchingWater(): boolean;
-        isPushedByFluid(arg0: Internal.FluidType_): boolean;
-        hasPermissions(arg0: number): boolean;
-        getCapability<T>(arg0: Internal.Capability_<T>, arg1: Internal.Direction_): Internal.LazyOptional<T>;
-        teleportTo(dimension: ResourceLocation_, x: number, y: number, z: number, yaw: number, pitch: number): void;
-        setCustomNameVisible(arg0: boolean): void;
-        isAlliedTo(arg0: Internal.Team_): boolean;
-        setOutOfCamera(value: boolean): void;
-        getControllingPassenger(): Internal.LivingEntity;
-        getRemainingFireTicks(): number;
-        getScriptType(): Internal.ScriptType;
-        onlyOpCanSetNbt(): boolean;
-        startRiding(arg0: Internal.Entity_): boolean;
-        saveWithoutId(arg0: Internal.CompoundTag_): Internal.CompoundTag;
-        getForward(): Vec3d;
-        serializeNBT(): Internal.Tag;
-        addMotion(arg0: number, arg1: number, arg2: number): void;
-        fireImmune(): boolean;
-        getMaxFallDistance(): number;
-        getZ(arg0: number): number;
-        hasCustomOutlineRendering(arg0: Internal.Player_): boolean;
-        getId(): number;
-        canBeHitByProjectile(): boolean;
-        getTicksFrozen(): number;
-        getRandomX(arg0: number): number;
-        getWasEyeInWater(): boolean;
-        getEyeY(): number;
-        spawnAtLocation(arg0: Internal.ItemStack_, arg1: number): Internal.ItemEntity;
-        pick(arg0: number, arg1: number, arg2: boolean): Internal.HitResult;
-        setStatusMessage(message: net.minecraft.network.chat.Component_): void;
-        getBoundingBox(): Internal.AABB;
-        isInWaterOrRain(): boolean;
-        isDescending(): boolean;
-        emf$getPitch(): number;
-        setItemSlot(arg0: Internal.EquipmentSlot_, arg1: Internal.ItemStack_): void;
-        getYHeadRot(): number;
-        equals(arg0: any): boolean;
-        getViewYRot(arg0: number): number;
-        dismountsUnderwater(): boolean;
-        getTimeUntilHooked(): number;
-        sodiumdynamiclights$updateDynamicLight(renderer: Internal.LevelRenderer_): boolean;
-        playerTouch(arg0: Internal.Player_): void;
-        addTag(arg0: string): boolean;
-        getAddEntityPacket(): Internal.Packet<Internal.ClientGamePacketListener>;
-        getEyeHeight(arg0: Internal.Pose_): number;
-        syncPacketPositionCodec(arg0: number, arg1: number, arg2: number): void;
-        setOwner(arg0: Internal.Entity_): void;
-        getTeam(): Internal.Team;
-        shouldRenderAtSqrDistance(arg0: number): boolean;
-        damageSources(): Internal.DamageSources;
-        setTicksFrozen(arg0: number): void;
-        recreateFromPacket(arg0: Internal.ClientboundAddEntityPacket_): void;
-        getMyRidingOffset(): number;
-        canStartSwimming(): boolean;
-        dismountTo(arg0: number, arg1: number, arg2: number): void;
-        setDeltaMovement(arg0: Vec3d_): void;
-        getLeashOffset(arg0: number): Vec3d;
-        handler$bnj000$Entity_saveWithoutId(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfoReturnable_<any>): void;
-        etf$getPose(): Internal.Pose;
-        etf$getEntityKey(): string;
-        hasCustomName(): boolean;
-        isCulled(): boolean;
-        isLiving(): boolean;
-        isGlowing(): boolean;
-        getX(): number;
-        "isInFluidType(net.minecraft.world.level.material.FluidState)"(arg0: Internal.FluidState_): boolean;
-        isVehicle(): boolean;
-        etf$getOptifineId(): number;
-        getLeashOffset(): Vec3d;
-        isAttackable(): boolean;
-        spawnAtLocation(arg0: Internal.ItemStack_): Internal.ItemEntity;
-        mergeNbt(tag: Internal.CompoundTag_): Internal.Entity;
-        thunderHit(arg0: Internal.ServerLevel_, arg1: Internal.LightningBolt_): void;
-        setIsInPowderSnow(arg0: boolean): void;
-        doEnchantDamageEffects(arg0: Internal.LivingEntity_, arg1: Internal.Entity_): void;
-        etf$distanceTo(entity: Internal.Entity_): number;
-        setCustomName(arg0: net.minecraft.network.chat.Component_): void;
-        getSlot(arg0: number): Internal.SlotAccess;
-        handler$ban000$onRemove(ci: Internal.CallbackInfo_): void;
-        "deserializeNBT(net.minecraft.nbt.CompoundTag)"(arg0: Internal.CompoundTag_): void;
-        emf$isInLava(): boolean;
-        getTeamId(): string;
-        stopSeenByPlayer(arg0: Internal.ServerPlayer_): void;
-        canBeRiddenUnderFluidType(arg0: Internal.FluidType_, arg1: Internal.Entity_): boolean;
-        isUnderWater(): boolean;
-        stopRiding(): void;
-        isCustomNameVisible(): boolean;
-        isSupportedBy(arg0: BlockPos_): boolean;
-        getPistonPushReaction(): Internal.PushReaction;
-        getX(arg0: number): number;
-        shouldRiderSit(): boolean;
-        lookAt(arg0: Internal.EntityAnchorArgument$Anchor_, arg1: Vec3d_): void;
-        captureDrops(arg0: Internal.Collection_<Internal.ItemEntity>): Internal.Collection<Internal.ItemEntity>;
-        rayTrace(distance: number): Internal.RayTraceResultJS;
-        getDeltaMovement(): Vec3d;
-        isInFluidType(arg0: Internal.FluidType_): boolean;
-        collide(arg0: Vec3d_): Vec3d;
-        getFluidMotionScale(arg0: Internal.FluidType_): number;
-        getMotionX(): number;
-        "onSyncedDataUpdated(java.util.List)"(arg0: Internal.List_<Internal.SynchedEntityData$DataValue<any>>): void;
-        shoot(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
-        collective_getStored(): Internal.CompoundTag;
-        hasPassenger(arg0: Internal.Entity_): boolean;
-        hasIndirectPassenger(arg0: Internal.Entity_): boolean;
-        getEntityData(): Internal.SynchedEntityData;
-        handler$ban001$onTick(ci: Internal.CallbackInfo_): void;
-        setSecondsOnFire(arg0: number): void;
-        sdl$dynamicLightTick(): void;
-        moveTo(arg0: number, arg1: number, arg2: number): void;
-        emf$getZ(): number;
-        "getDisplayName()"(): net.minecraft.network.chat.Component;
-        handleInsidePortal(arg0: BlockPos_): void;
-        setMotion(arg0: number, arg1: number, arg2: number): void;
-        getLureSpeed(): number;
-        playSound(arg0: Internal.SoundEvent_): void;
-        absMoveTo(arg0: number, arg1: number, arg2: number): void;
-        updateFluidHeightAndDoFluidPushing(arg0: Internal.Predicate_<Internal.FluidState>): void;
-        isOnRails(): boolean;
-        restoreFrom(arg0: Internal.Entity_): void;
-        entityCulling$getRawPosition(): Vec3d;
-        getDimensionChangingDelay(): number;
-        isPeacefulCreature(): boolean;
-        setOnGround(arg0: boolean): void;
-        emf$getYaw(): number;
-        setYaw(arg0: number): void;
-        setPos(arg0: number, arg1: number, arg2: number): void;
-        getHookedIn(): Internal.Entity;
-        getPickRadius(): number;
-        notify(): void;
-        getVehicle(): Internal.Entity;
-        isEffectiveAi(): boolean;
-        startRiding(arg0: Internal.Entity_, arg1: boolean): boolean;
-        getStringUuid(): string;
-        isRemoved(): boolean;
-        setSwimming(arg0: boolean): void;
-        emf$isSneaking(): boolean;
-        canHydrateInFluidType(arg0: Internal.FluidType_): boolean;
-        teleportToWithTicket(arg0: number, arg1: number, arg2: number): void;
-        fillCrashReportCategory(arg0: Internal.CrashReportCategory_): void;
-        getRotationVector(): Internal.Vec2;
-        refreshDimensions(): void;
-        self(): Internal.Entity;
-        sdl$getDynamicLightY(): number;
-        isSprinting(): boolean;
-        etf$getBlockY(): number;
-        "spawnAtLocation(net.minecraft.world.level.ItemLike)"(arg0: Internal.ItemLike_): Internal.ItemEntity;
-        getMotionY(): number;
-        canCollideWith(arg0: Internal.Entity_): boolean;
-        setShiftKeyDown(arg0: boolean): void;
-        getEyePosition(arg0: number): Vec3d;
-        getPassengers(): Internal.EntityArrayList;
-        getBlockExplosionResistance(arg0: Internal.Explosion_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.FluidState_, arg5: number): number;
-        getFluidFallDistanceModifier(arg0: Internal.FluidType_): number;
-        getMaxHeightFluidType(): Internal.FluidType;
-        getZ(): number;
-        canSpawnSprintParticle(): boolean;
-        "moveTo(net.minecraft.core.BlockPos,float,float)"(arg0: BlockPos_, arg1: number, arg2: number): void;
-        teleportTo(arg0: number, arg1: number, arg2: number): void;
-        shootFromRotation(arg0: Internal.Entity_, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): void;
-        getServer(): Internal.MinecraftServer;
-        moveRelative(arg0: number, arg1: Vec3d_): void;
-        getSelfAndPassengers(): Internal.Stream<Internal.Entity>;
-        isAddedToWorld(): boolean;
-        getFirstPassenger(): Internal.Entity;
-        saveAsPassenger(arg0: Internal.CompoundTag_): boolean;
-        interact(arg0: Internal.Player_, arg1: Internal.InteractionHand_): Internal.InteractionResult;
-        sdl$getDynamicLightLevel(): Internal.Level;
-        getDismountLocationForPassenger(arg0: Internal.LivingEntity_): Vec3d;
-        checkLeftOwner(): boolean;
-        checkSlowFallDistance(): void;
-        getSoundSource(): Internal.SoundSource;
-        setFabricBalmData(arg0: Internal.CompoundTag_): void;
-        getPose(): Internal.Pose;
-        touchingUnloadedChunk(): boolean;
-        sdl$getDynamicLightZ(): number;
-        getLookAngle(): Vec3d;
-        setPositionAndRotation(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
-        emf$isOnFire(): boolean;
-        handler$zod000$retrieve(arg0: Internal.ItemStack_, arg1: Internal.CallbackInfoReturnable_<any>, arg2: Internal.List_<any>): void;
-        getMotionZ(): number;
-        etf$getUuid(): Internal.UUID;
-        removeVehicle(): void;
-        isInvisible(): boolean;
-        is(arg0: Internal.Entity_): boolean;
-        setZ(z: number): void;
-        getY(): number;
-        ejectPassengers(): void;
-        hashCode(): number;
-        deserializeNBT(arg0: Internal.CompoundTag_): void;
-        getProfile(): Internal.GameProfile;
-        static setViewScale(arg0: number): void;
-        emf$isAlive(): boolean;
-        setLevelCallback(arg0: Internal.EntityInLevelCallback_): void;
-        showVehicleHealth(): boolean;
-        getDistance(pos: BlockPos_): number;
-        playSound(arg0: Internal.SoundEvent_, arg1: number, arg2: number): void;
-        emf$getVelocity(): Vec3d;
-        "areCapsCompatible(net.minecraftforge.common.capabilities.CapabilityDispatcher)"(arg0: Internal.CapabilityDispatcher_): boolean;
-        etf$isBlockEntity(): boolean;
-        startSeenByPlayer(arg0: Internal.ServerPlayer_): void;
-        isOnScoreboardTeam(teamId: string): boolean;
-        /**
-         * @deprecated
-        */
-        isPushedByFluid(): boolean;
-        setTimeout(): void;
-        position(): Vec3d;
-        displayFireAnimation(): boolean;
-        turn(arg0: number, arg1: number): void;
-        isOutOfCamera(): boolean;
-        getAirSupply(): number;
-        getRopeHoldPosition(arg0: number): Vec3d;
-        copyPosition(arg0: Internal.Entity_): void;
-        onAddedToWorld(): void;
-        "hasPassenger(net.minecraft.world.entity.Entity)"(arg0: Internal.Entity_): boolean;
-        isCrouching(): boolean;
-        handler$boi000$postTurnHook(arg0: Internal.CallbackInfo_): void;
-        etf$canBeBright(): boolean;
-        moveTo(arg0: BlockPos_, arg1: number, arg2: number): void;
-        isPlayer(): boolean;
-        isAnimal(): boolean;
-        readAdditionalSaveData(arg0: Internal.CompoundTag_): void;
-        canBeCollidedWith(): boolean;
-        getMotionDirection(): Internal.Direction;
-        setY(y: number): void;
-        sdl$isDynamicLightEnabled(): boolean;
-        getFeetBlockState(): Internal.BlockState;
-        lavaHurt(): void;
-        handleDamageEvent(arg0: DamageSource_): void;
-        getFabricBalmData(): Internal.CompoundTag;
-        canChangeDimensions(): boolean;
-        changeDimension(arg0: Internal.ServerLevel_, arg1: Internal.ITeleporter_): Internal.Entity;
-        getCommandSenderWorld(): Internal.Level;
-        positionRider(arg0: Internal.Entity_): void;
-        baseTick(): void;
-        broadcastToPlayer(arg0: Internal.ServerPlayer_): boolean;
-        changeDimension(arg0: Internal.ServerLevel_): Internal.Entity;
-        setSharedFlag(arg0: number, arg1: boolean): void;
-        getOwner(): Internal.Entity;
-        /**
-         * @deprecated
-         * This method is marked to be removed in future!
-        */
-        getEyeHeightAccess(arg0: Internal.Pose_, arg1: Internal.EntityDimensions_): number;
-        getCustomName(): net.minecraft.network.chat.Component;
-        getClass(): typeof any;
-        isVisuallySwimming(): boolean;
-        getMaxAirSupply(): number;
-        canTrample(arg0: Internal.BlockState_, arg1: BlockPos_, arg2: number): boolean;
-        attack(hp: number): void;
-        canSwimInFluidType(arg0: Internal.FluidType_): boolean;
-        getFacing(): Internal.Direction;
-        emf$isWet(): boolean;
-        isInFluidType(arg0: Internal.BiPredicate_<Internal.FluidType, number>, arg1: boolean): boolean;
-        "hasPassenger(java.util.function.Predicate)"(arg0: Internal.Predicate_<Internal.Entity>): boolean;
-        getDimensions(arg0: Internal.Pose_): Internal.EntityDimensions;
-        sdl$getDynamicLightX(): number;
-        isPassengerOfSameVehicle(arg0: Internal.Entity_): boolean;
-        isSwimming(): boolean;
-        getBoundingBoxForCulling(): Internal.AABB;
-        mayInteract(arg0: Internal.Level_, arg1: BlockPos_): boolean;
-        setSprinting(arg0: boolean): void;
-        setPortalCooldown(): void;
-        setX(x: number): void;
-        trackingPosition(): Vec3d;
-        getNameTagOffsetY(): number;
-        isInvulnerable(): boolean;
-        isInLava(): boolean;
-        getPortalWaitTime(): number;
-        isInWater(): boolean;
-        awardKillScore(arg0: Internal.Entity_, arg1: number, arg2: DamageSource_): void;
-        getBlockStateOn(): Internal.BlockState;
-        getFluidJumpThreshold(): number;
-        emf$getVariableMap(): Internal.Map<any, any>;
-        "setPositionAndRotation(double,double,double,float,float)"(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
-        isInvisibleTo(arg0: Internal.Player_): boolean;
-        setAirSupply(arg0: number): void;
-        getOnPos(): BlockPos;
-        getRootVehicle(): Internal.Entity;
-        save(arg0: Internal.CompoundTag_): boolean;
-        etf$getWorld(): Internal.Level;
-        getBlockPosBelowThatAffectsMyMovement(): BlockPos;
-        sdl$getLuminance(): number;
-        isNoGravity(): boolean;
-        getStepHeight(): number;
-        etf$getNbt(): Internal.CompoundTag;
-        acceptsFailure(): boolean;
-        etf$getBlockPos(): BlockPos;
-        setOnGroundWithKnownMovement(arg0: boolean, arg1: Vec3d_): void;
-        setOldPosAndRot(): void;
-        emf$getY(): number;
-        isFree(arg0: number, arg1: number, arg2: number): boolean;
-        getPlayerOwner(): Internal.Player;
-        updateSwimming(): void;
-        "moveTo(double,double,double)"(arg0: number, arg1: number, arg2: number): void;
-        setRemainingFireTicks(arg0: number): void;
-        shouldInformAdmins(): boolean;
-        canFluidExtinguish(arg0: Internal.FluidType_): boolean;
-        rideTick(): void;
-        emf$age(): number;
-        entityCulling$setRawPosition(arg0: Vec3d_): void;
-        etf$hasCustomName(): boolean;
-        /**
-         * @deprecated
-        */
-        getOnPosLegacy(): BlockPos;
-        setPos(arg0: Vec3d_): void;
-        wait(): void;
-        getUuid(): Internal.UUID;
-        spawn(): void;
-        areCapsCompatible(arg0: Internal.CapabilityDispatcher_): boolean;
-        teleportTo(arg0: Internal.ServerLevel_, arg1: number, arg2: number, arg3: number, arg4: Internal.Set_<Internal.RelativeMovement>, arg5: number, arg6: number): boolean;
-        etf$getCustomName(): net.minecraft.network.chat.Component;
-        shouldShowName(): boolean;
-        getArmorSlots(): Internal.Iterable<Internal.ItemStack>;
-        setSilent(arg0: boolean): void;
-        captureDrops(): Internal.Collection<Internal.ItemEntity>;
-        hasExactlyOnePlayerPassenger(): boolean;
-        kill(): void;
-        isOnPortalCooldown(): boolean;
-        retrieve(arg0: Internal.ItemStack_): number;
-        animateHurt(arg0: number): void;
-        setPitch(arg0: number): void;
-        isMultipartEntity(): boolean;
-        setPosRaw(arg0: number, arg1: number, arg2: number): void;
-        handleEntityEvent(arg0: number): void;
-        /**
-         * @deprecated
-         * This method is marked to be removed in future!
-        */
-        getDimensionsForge(arg0: Internal.Pose_): Internal.EntityDimensions;
-        getParts(): Internal.PartEntity<any>[];
-        setExtension(key: any, value: any): void;
-        isAlwaysTicking(): boolean;
-        interactAt(arg0: Internal.Player_, arg1: Vec3d_, arg2: Internal.InteractionHand_): Internal.InteractionResult;
-        emf$getX(): number;
-        deserializeNBT(arg0: Internal.Tag_): void;
-        lerpTo(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number, arg6: boolean): void;
-        onPassengerTurned(arg0: Internal.Entity_): void;
-        collective_setStored(arg0: Internal.CompoundTag_): void;
-        revive(): void;
-        spawnAtLocation(arg0: Internal.ItemLike_): Internal.ItemEntity;
-        emf$hasPassengers(): boolean;
-        getBbWidth(): number;
-        isEyeInFluidType(arg0: Internal.FluidType_): boolean;
-        getForgePersistentData(): Internal.CompoundTag;
-        addDeltaMovement(arg0: Vec3d_): void;
-        "spawnAtLocation(net.minecraft.world.level.ItemLike,int)"(arg0: Internal.ItemLike_, arg1: number): Internal.ItemEntity;
-        setInvulnerable(arg0: boolean): void;
-        "getName()"(): net.minecraft.network.chat.Component;
-        push(arg0: Internal.Entity_): void;
-        isInFluidType(): boolean;
-        emf$hasVehicle(): boolean;
-        mirror(arg0: Internal.Mirror_): number;
-        canUpdate(): boolean;
-        getTicksRequiredToFreeze(): number;
-        /**
-         * @deprecated
-        */
-        maxUpStep(): number;
-        setGlowing(arg0: boolean): void;
-        load(arg0: Internal.CompoundTag_): void;
-        isAlive(): boolean;
-        emf$prevZ(): number;
-        getBbHeight(): number;
-        getUsername(): string;
-        transition$getRawPosition(): Vec3d;
-        getNibble(): number;
-        move(arg0: Internal.MoverType_, arg1: Vec3d_): void;
-        getViewVector(arg0: number): Vec3d;
-        getTags(): Internal.Set<string>;
-        onRemovedFromWorld(): void;
-        getCapability<T>(arg0: Internal.Capability_<T>): Internal.LazyOptional<T>;
-        isPickable(): boolean;
-        setYHeadRot(arg0: number): void;
-        hasControllingPassenger(): boolean;
-        closerThan(arg0: Internal.Entity_, arg1: number, arg2: number): boolean;
-        absMoveTo(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
-        getPercentFrozen(): number;
-        getPickResult(): Internal.ItemStack;
-        getRandomY(): number;
-        setPortalCooldown(arg0: number): void;
-        getDisplayName(): net.minecraft.network.chat.Component;
-        hasGlowingTag(): boolean;
-        shouldBlockExplode(arg0: Internal.Explosion_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: number): boolean;
-        emf$isInvisible(): boolean;
-        setPosition(block: Internal.BlockContainerJS_): void;
-        emf$isSprinting(): boolean;
-        shouldBeSaved(): boolean;
-        getFluidTypeHeight(arg0: Internal.FluidType_): number;
-        getViewXRot(arg0: number): number;
-        canRiderInteract(): boolean;
-        "areCapsCompatible(net.minecraftforge.common.capabilities.CapabilityProvider)"(arg0: Internal.CapabilityProvider_<Internal.Entity>): boolean;
-        removeTag(arg0: string): boolean;
-        setPose(arg0: Internal.Pose_): void;
-        /**
-         * @deprecated
-        */
-        getFluidHeight(arg0: Internal.TagKey_<Internal.Fluid>): number;
-        static collideBoundingBox(arg0: Internal.Entity_, arg1: Vec3d_, arg2: Internal.AABB_, arg3: Internal.Level_, arg4: Internal.List_<Internal.VoxelShape>): Vec3d;
-        getEntityType(): Internal.EntityType<any>;
-        isWaterCreature(): boolean;
-        toString(): string;
-        notifyAll(): void;
-        getPassengersRidingOffset(): number;
-        etf$getScoreboardTeam(): Internal.Team;
-        "isInFluidType(java.util.function.BiPredicate)"(arg0: Internal.BiPredicate_<Internal.FluidType, number>): boolean;
-        distanceToEntitySqr(arg0: Internal.Entity_): number;
-        "getServer()"(): Internal.MinecraftServer;
-        isFrame(): boolean;
-        isPushable(): boolean;
-        setYBodyRot(arg0: number): void;
-        discard(): void;
-        onClientRemoval(): void;
-        sendSystemMessage(arg0: net.minecraft.network.chat.Component_): void;
-        acceptsSuccess(): boolean;
-        reviveCaps(): void;
-        getDistance(x: number, y: number, z: number): number;
-        setMotionY(y: number): void;
-        setNoGravity(arg0: boolean): void;
-        getEffectSource(): Internal.Entity;
-        sdl$setDynamicLightEnabled(enabled: boolean): void;
-        setRotation(yaw: number, pitch: number): void;
-        createCommandSourceStack(): Internal.CommandSourceStack;
-        isControlledByLocalInstance(): boolean;
-        handler$boi000$preTurnHook(arg0: Internal.CallbackInfo_): void;
-        isMonster(): boolean;
-        sdl$resetDynamicLight(): void;
-        getHorizontalFacing(): Internal.Direction;
-        setId(arg0: number): void;
-        onSyncedDataUpdated(arg0: Internal.List_<Internal.SynchedEntityData$DataValue<any>>): void;
-        getType(): string;
-        getLightProbePosition(arg0: number): Vec3d;
-        sodiumdynamiclights$scheduleTrackedChunksRebuild(renderer: Internal.LevelRenderer_): void;
-        onAboveBubbleCol(arg0: boolean): void;
-        emf$prevX(): number;
-        "playSound(net.minecraft.sounds.SoundEvent,float,float)"(arg0: Internal.SoundEvent_, arg1: number, arg2: number): void;
-        isPassenger(): boolean;
-        hasPose(arg0: Internal.Pose_): boolean;
-        checkDespawn(): void;
-        /**
-         * @deprecated
-        */
-        isEyeInFluid(arg0: Internal.TagKey_<Internal.Fluid>): boolean;
-        isInvulnerableTo(arg0: DamageSource_): boolean;
-        makeStuckInBlock(arg0: Internal.BlockState_, arg1: Vec3d_): void;
-        skipAttackInteraction(arg0: Internal.Entity_): boolean;
-        lerpMotion(arg0: number, arg1: number, arg2: number): void;
-        shouldRender(arg0: number, arg1: number, arg2: number): boolean;
-        onSyncedDataUpdated(arg0: Internal.EntityDataAccessor_<any>): void;
-        lerpHeadTo(arg0: number, arg1: number): void;
-        getTimeUntilLured(): number;
-        static getViewScale(): number;
-        setMotionX(x: number): void;
-        getHandSlots(): Internal.Iterable<Internal.ItemStack>;
-        distanceToEntity(arg0: Internal.Entity_): number;
-        getVisualRotationYInDegrees(): number;
-        wait(arg0: number, arg1: number): void;
-        isDiscrete(): boolean;
-        getTeamColor(): number;
-        setNbt(nbt: Internal.CompoundTag_): void;
-        unRide(): void;
-        getLevel(): Internal.Level;
-        "spawnAtLocation(net.minecraft.world.item.ItemStack)"(arg0: Internal.ItemStack_): Internal.ItemEntity;
-        "isInFluidType(net.minecraftforge.fluids.FluidType)"(arg0: Internal.FluidType_): boolean;
-        extinguish(): void;
-        setTimeUntilLured(arg0: number): void;
-        updateDynamicGameEventListener(arg0: Internal.BiConsumer_<Internal.DynamicGameEventListener<any>, Internal.ServerLevel>): void;
-        moveTo(arg0: Vec3d_): void;
-        getExtension(key: any, type: typeof any): any;
-        isColliding(arg0: BlockPos_, arg1: Internal.BlockState_): boolean;
-        "onSyncedDataUpdated(net.minecraft.network.syncher.EntityDataAccessor)"(arg0: Internal.EntityDataAccessor_<any>): void;
-        emf$prevY(): number;
-        areCapsCompatible(arg0: Internal.CapabilityProvider_<Internal.Entity>): boolean;
-        extinguishFire(): void;
-        /**
-         * @deprecated
-         * This method is marked to be removed in future!
-        */
-        getEyeHeightForge(arg0: Internal.Pose_, arg1: Internal.EntityDimensions_): number;
-        tell(message: net.minecraft.network.chat.Component_): void;
-        isForcedVisible(): boolean;
-        closerThan(arg0: Internal.Entity_, arg1: number): boolean;
-        getDistanceSq(pos: BlockPos_): number;
-        killedEntity(arg0: Internal.ServerLevel_, arg1: Internal.LivingEntity_): boolean;
-        emf$getTypeString(): string;
-        getClassification(arg0: boolean): Internal.MobCategory;
-        isFreezing(): boolean;
-        isFullyFrozen(): boolean;
-        runCommand(command: string): number;
-        setSharedFlagOnFire(arg0: boolean): void;
-        get inWall(): boolean
-        get allSlots(): Internal.Iterable<Internal.ItemStack>
-        get blockZ(): number
-        get suppressingBounce(): boolean
-        get silent(): boolean
-        get pitch(): number
-        set culled(value: boolean)
-        get onFire(): boolean
-        get passengersAndSelf(): Internal.Stream<Internal.Entity>
-        get positionCodec(): Internal.VecDeltaCodec
-        set maxUpStep(arg0: number)
-        get shiftKeyDown(): boolean
-        set UUID(arg0: Internal.UUID_)
-        get visuallyCrawling(): boolean
-        set motionZ(z: number)
-        get blockY(): number
-        get spectator(): boolean
-        get inWaterOrBubble(): boolean
-        get persistentData(): Internal.CompoundTag
-        get portalCooldown(): number
-        get item(): Internal.ItemStack
-        set removed(arg0: Internal.Entity$RemovalReason_)
-        get inWaterRainOrBubble(): boolean
-        get removalReason(): Internal.Entity$RemovalReason
-        get openWaterFishing(): boolean
-        get ignoringBlockTriggers(): boolean
-        get inRain(): boolean
-        get indirectPassengers(): Internal.Iterable<Internal.Entity>
-        get eyeInFluidType(): Internal.FluidType
-        get steppingCarefully(): boolean
-        set level(arg0: Internal.Level_)
-        set boundingBox(arg0: Internal.AABB_)
-        get ambientCreature(): boolean
-        get blockX(): number
-        /**
-         * @deprecated
-        */
-        get lightLevelDependentMagicValue(): number
-        get encodeId(): string
-        get block(): Internal.BlockContainerJS
-        get nbt(): Internal.CompoundTag
-        set invisible(arg0: boolean)
-        get name(): net.minecraft.network.chat.Component
-        get controlledVehicle(): Internal.Entity
-        get eyePosition(): Vec3d
-        get eyeHeight(): number
-        get yaw(): number
-        set customNameVisible(arg0: boolean)
-        set outOfCamera(value: boolean)
-        get controllingPassenger(): Internal.LivingEntity
-        get remainingFireTicks(): number
-        get scriptType(): Internal.ScriptType
-        get forward(): Vec3d
-        get maxFallDistance(): number
-        get id(): number
-        get ticksFrozen(): number
-        get wasEyeInWater(): boolean
-        get eyeY(): number
-        set statusMessage(message: net.minecraft.network.chat.Component_)
-        get boundingBox(): Internal.AABB
-        get inWaterOrRain(): boolean
-        get descending(): boolean
-        get YHeadRot(): number
-        get timeUntilHooked(): number
-        get addEntityPacket(): Internal.Packet<Internal.ClientGamePacketListener>
-        set owner(arg0: Internal.Entity_)
-        get team(): Internal.Team
-        set ticksFrozen(arg0: number)
-        get myRidingOffset(): number
-        set deltaMovement(arg0: Vec3d_)
-        get culled(): boolean
-        get living(): boolean
-        get glowing(): boolean
-        get x(): number
-        get vehicle(): boolean
-        get leashOffset(): Vec3d
-        get attackable(): boolean
-        set isInPowderSnow(arg0: boolean)
-        set customName(arg0: net.minecraft.network.chat.Component_)
-        get teamId(): string
-        get underWater(): boolean
-        get customNameVisible(): boolean
-        get pistonPushReaction(): Internal.PushReaction
-        get deltaMovement(): Vec3d
-        get motionX(): number
-        get entityData(): Internal.SynchedEntityData
-        set secondsOnFire(arg0: number)
-        get "displayName()"(): net.minecraft.network.chat.Component
-        get lureSpeed(): number
-        get onRails(): boolean
-        get dimensionChangingDelay(): number
-        get peacefulCreature(): boolean
-        set onGround(arg0: boolean)
-        set yaw(arg0: number)
-        get hookedIn(): Internal.Entity
-        get pickRadius(): number
-        get vehicle(): Internal.Entity
-        get effectiveAi(): boolean
-        get stringUuid(): string
-        get removed(): boolean
-        set swimming(arg0: boolean)
-        get rotationVector(): Internal.Vec2
-        get sprinting(): boolean
-        get motionY(): number
-        set shiftKeyDown(arg0: boolean)
-        get passengers(): Internal.EntityArrayList
-        get maxHeightFluidType(): Internal.FluidType
-        get z(): number
-        get server(): Internal.MinecraftServer
-        get selfAndPassengers(): Internal.Stream<Internal.Entity>
-        get addedToWorld(): boolean
-        get firstPassenger(): Internal.Entity
-        get soundSource(): Internal.SoundSource
-        set fabricBalmData(arg0: Internal.CompoundTag_)
-        get pose(): Internal.Pose
-        get lookAngle(): Vec3d
-        get motionZ(): number
-        get invisible(): boolean
-        set z(z: number)
-        get y(): number
-        get profile(): Internal.GameProfile
-        set viewScale(arg0: number)
-        set levelCallback(arg0: Internal.EntityInLevelCallback_)
-        /**
-         * @deprecated
-        */
-        get pushedByFluid(): boolean
-        get outOfCamera(): boolean
-        get airSupply(): number
-        get crouching(): boolean
-        get player(): boolean
-        get animal(): boolean
-        get motionDirection(): Internal.Direction
-        set y(y: number)
-        get feetBlockState(): Internal.BlockState
-        get fabricBalmData(): Internal.CompoundTag
-        get commandSenderWorld(): Internal.Level
-        get owner(): Internal.Entity
-        get customName(): net.minecraft.network.chat.Component
-        get class(): typeof any
-        get visuallySwimming(): boolean
-        get maxAirSupply(): number
-        get facing(): Internal.Direction
-        get swimming(): boolean
-        get boundingBoxForCulling(): Internal.AABB
-        set sprinting(arg0: boolean)
-        set x(x: number)
-        get nameTagOffsetY(): number
-        get invulnerable(): boolean
-        get inLava(): boolean
-        get portalWaitTime(): number
-        get inWater(): boolean
-        get blockStateOn(): Internal.BlockState
-        get fluidJumpThreshold(): number
-        set airSupply(arg0: number)
-        get onPos(): BlockPos
-        get rootVehicle(): Internal.Entity
-        get blockPosBelowThatAffectsMyMovement(): BlockPos
-        get noGravity(): boolean
-        get stepHeight(): number
-        get playerOwner(): Internal.Player
-        set remainingFireTicks(arg0: number)
-        /**
-         * @deprecated
-        */
-        get onPosLegacy(): BlockPos
-        set pos(arg0: Vec3d_)
-        get uuid(): Internal.UUID
-        get armorSlots(): Internal.Iterable<Internal.ItemStack>
-        set silent(arg0: boolean)
-        get onPortalCooldown(): boolean
-        set pitch(arg0: number)
-        get multipartEntity(): boolean
-        get parts(): Internal.PartEntity<any>[]
-        get alwaysTicking(): boolean
-        get bbWidth(): number
-        get forgePersistentData(): Internal.CompoundTag
-        set invulnerable(arg0: boolean)
-        get "name()"(): net.minecraft.network.chat.Component
-        get inFluidType(): boolean
-        get ticksRequiredToFreeze(): number
-        set glowing(arg0: boolean)
-        get alive(): boolean
-        get bbHeight(): number
-        get username(): string
-        get nibble(): number
-        get tags(): Internal.Set<string>
-        get pickable(): boolean
-        set YHeadRot(arg0: number)
-        get percentFrozen(): number
-        get pickResult(): Internal.ItemStack
-        get randomY(): number
-        set portalCooldown(arg0: number)
-        get displayName(): net.minecraft.network.chat.Component
-        set position(block: Internal.BlockContainerJS_)
-        set pose(arg0: Internal.Pose_)
-        get entityType(): Internal.EntityType<any>
-        get waterCreature(): boolean
-        get passengersRidingOffset(): number
-        get "server()"(): Internal.MinecraftServer
-        get frame(): boolean
-        get pushable(): boolean
-        set YBodyRot(arg0: number)
-        set motionY(y: number)
-        set noGravity(arg0: boolean)
-        get effectSource(): Internal.Entity
-        get controlledByLocalInstance(): boolean
-        get monster(): boolean
-        get horizontalFacing(): Internal.Direction
-        set id(arg0: number)
-        get type(): string
-        get passenger(): boolean
-        get timeUntilLured(): number
-        get viewScale(): number
-        set motionX(x: number)
-        get handSlots(): Internal.Iterable<Internal.ItemStack>
-        get visualRotationYInDegrees(): number
-        get discrete(): boolean
-        get teamColor(): number
-        set nbt(nbt: Internal.CompoundTag_)
-        get level(): Internal.Level
-        set timeUntilLured(arg0: number)
-        get forcedVisible(): boolean
-        get freezing(): boolean
-        get fullyFrozen(): boolean
-        set sharedFlagOnFire(arg0: boolean)
-        readonly luck: number;
-        biting: boolean;
-    }
-    type FishingHook_ = FishingHook;
     class CamelheadmountBlock extends Internal.Block {
         constructor()
         /**
@@ -12075,11 +10935,11 @@ declare namespace Internal {
         stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         /**
          * @deprecated
@@ -12097,8 +10957,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -12168,8 +11028,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -12212,8 +11072,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -12429,6 +11289,58 @@ declare namespace Internal {
         static readonly FACING: (Internal.DirectionProperty) & (Internal.DirectionProperty);
     }
     type CamelheadmountBlock_ = CamelheadmountBlock;
+    interface Object2ByteSortedMap$FastSortedEntrySet <K> extends Internal.ObjectSortedSet<Internal.Object2ByteMap$Entry<K>>, Internal.Object2ByteMap$FastEntrySet<K> {
+        abstract fastIterator(): Internal.ObjectBidirectionalIterator<Internal.Object2ByteMap$Entry<K>>;
+        removeIf(arg0: Internal.Predicate_<Internal.Object2ByteMap$Entry<K>>): boolean;
+        subSet(arg0: any, arg1: any): Internal.SortedSet<any>;
+        tailSet(arg0: any): Internal.SortedSet<any>;
+        "of(java.lang.Object)"<K>(arg0: K): Internal.ObjectSet<K>;
+        of<K>(arg0: K, arg1: K, arg2: K): Internal.ObjectSet<K>;
+        abstract isEmpty(): boolean;
+        of<K>(arg0: K, arg1: K): Internal.ObjectSet<K>;
+        of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): Internal.Set<E>;
+        abstract iterator(arg0: Internal.Object2ByteMap$Entry_<K>): Internal.ObjectBidirectionalIterator<Internal.Object2ByteMap$Entry<K>>;
+        abstract addAll(arg0: Internal.Collection_<Internal.Object2ByteMap$Entry<K>>): boolean;
+        abstract retainAll(arg0: Internal.Collection_<any>): boolean;
+        abstract containsAll(arg0: Internal.Collection_<any>): boolean;
+        toArray<T>(arg0: Internal.IntFunction_<T[]>): T[];
+        headSet(arg0: any): Internal.SortedSet<any>;
+        of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): Internal.Set<E>;
+        of<E>(arg0: E, arg1: E, arg2: E, arg3: E): Internal.Set<E>;
+        of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): Internal.Set<E>;
+        abstract contains(arg0: any): boolean;
+        fastForEach(arg0: Internal.Consumer_<Internal.Object2ByteMap$Entry<K>>): void;
+        abstract first(): Internal.Object2ByteMap$Entry<K>;
+        abstract comparator(): Comparator<Internal.Object2ByteMap$Entry<K>>;
+        of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): Internal.Set<E>;
+        parallelStream(): Internal.Stream<Internal.Object2ByteMap$Entry<K>>;
+        of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): Internal.Set<E>;
+        iterator(): Internal.Iterator<any>;
+        abstract fastIterator(arg0: Internal.Object2ByteMap$Entry_<K>): Internal.ObjectBidirectionalIterator<Internal.Object2ByteMap$Entry<K>>;
+        abstract toArray<T>(arg0: T[]): T[];
+        abstract "toArray(java.lang.Object[])"<T>(arg0: T[]): T[];
+        abstract remove(arg0: any): boolean;
+        "toArray(java.util.function.IntFunction)"<T>(arg0: Internal.IntFunction_<T[]>): T[];
+        "of(java.lang.Object[])"<K>(...arg0: K[]): Internal.ObjectSet<K>;
+        abstract toArray(): any[];
+        of<K>(): Internal.ObjectSet<K>;
+        abstract last(): Internal.Object2ByteMap$Entry<K>;
+        abstract hashCode(): number;
+        abstract size(): number;
+        of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): Internal.Set<E>;
+        spliterator(): Internal.Spliterator<any>;
+        abstract removeAll(arg0: Internal.Collection_<any>): boolean;
+        of<K>(...arg0: K[]): Internal.ObjectSet<K>;
+        abstract add(arg0: Internal.Object2ByteMap$Entry_<K>): boolean;
+        abstract clear(): void;
+        stream(): Internal.Stream<Internal.Object2ByteMap$Entry<K>>;
+        of<K>(arg0: K): Internal.ObjectSet<K>;
+        forEach(arg0: Internal.Consumer_<Internal.Object2ByteMap$Entry<K>>): void;
+        abstract equals(arg0: any): boolean;
+        copyOf<E>(arg0: Internal.Collection_<E>): Internal.Set<E>;
+        get empty(): boolean
+    }
+    type Object2ByteSortedMap$FastSortedEntrySet_<K> = Object2ByteSortedMap$FastSortedEntrySet<K>;
     class CopperhacksawItem extends Internal.AxeItem {
         constructor()
         getDrinkingSound(): Internal.SoundEvent;
@@ -12516,9 +11428,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -12562,7 +11475,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -12706,8 +11618,8 @@ declare namespace Internal {
         isExpandableY(): boolean;
         notify(): void;
         wait(arg0: number, arg1: number): void;
-        setHeight(arg0: number, arg1: number): number;
         flowY(): void;
+        setHeight(arg0: number, arg1: number): number;
         getMaxWidth(arg0: number): number;
         getMaxHeight(arg0: number): number;
         setY(arg0: number): void;
@@ -12746,267 +11658,6 @@ declare namespace Internal {
         rect: Internal.Rect;
     }
     type GuiChildControl_ = GuiChildControl;
-    class EmptyMapItem extends Internal.ComplexItem {
-        constructor(arg0: Internal.Item$Properties_)
-        getDrinkingSound(): Internal.SoundEvent;
-        getShareTag(arg0: Internal.ItemStack_): Internal.CompoundTag;
-        setRarity(arg0: Internal.Rarity_): void;
-        isEnderMask(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.EnderMan_): boolean;
-        isEnabled(arg0: Internal.FeatureFlagSet_): boolean;
-        getDestroySpeed(arg0: Internal.ItemStack_, arg1: Internal.BlockState_): number;
-        getBurnTime(arg0: Internal.ItemStack_, arg1: Internal.RecipeType_<any>): number;
-        moonlight$addAdditionalBehavior(placementOverride: Internal.AdditionalItemPlacement_): void;
-        /**
-         * @deprecated
-        */
-        onDestroyed(arg0: Internal.ItemEntity_): void;
-        isFireResistant(): boolean;
-        onItemUseFirst(arg0: Internal.ItemStack_, arg1: Internal.UseOnContext_): Internal.InteractionResult;
-        isComplex(): boolean;
-        onCraftedBy(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        isCorrectToolForDrops(arg0: Internal.ItemStack_, arg1: Internal.BlockState_): boolean;
-        isPiglinCurrency(arg0: Internal.ItemStack_): boolean;
-        getEnchantmentValue(arg0: Internal.ItemStack_): number;
-        canDisableShield(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: Internal.LivingEntity_, arg3: Internal.LivingEntity_): boolean;
-        onUseTick(arg0: Internal.Level_, arg1: Internal.LivingEntity_, arg2: Internal.ItemStack_, arg3: number): void;
-        appendHoverText(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.List_<net.minecraft.network.chat.Component>, arg3: Internal.TooltipFlag_): void;
-        canBeHurtBy(arg0: DamageSource_): boolean;
-        /**
-         * @deprecated
-        */
-        getFoodProperties(): Internal.FoodProperties;
-        canApplyAtEnchantingTable(arg0: Internal.ItemStack_, arg1: Internal.Enchantment_): boolean;
-        getDescriptionId(): string;
-        getUseAnimation(arg0: Internal.ItemStack_): Internal.UseAnim;
-        isValidRepairItem(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
-        moonlight$getClientAnimationExtension(): any;
-        getXpRepairRatio(arg0: Internal.ItemStack_): number;
-        isBookEnchantable(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
-        getCreativeTab(): string;
-        initCapabilities(arg0: Internal.ItemStack_, arg1: Internal.CompoundTag_): Internal.ICapabilityProvider;
-        asItem(): Internal.Item;
-        onDroppedByPlayer(arg0: Internal.ItemStack_, arg1: Internal.Player_): boolean;
-        getDefaultInstance(): Internal.ItemStack;
-        getTypeData(): Internal.CompoundTag;
-        getDefaultTooltipHideFlags(arg0: Internal.ItemStack_): number;
-        getCreatorModId(arg0: Internal.ItemStack_): string;
-        canContinueUsing(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
-        setBurnTime(i: number): void;
-        setMaxStackSize(arg0: number): void;
-        getFoodProperties(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): Internal.FoodProperties;
-        getBarWidth(arg0: Internal.ItemStack_): number;
-        setMaxDamage(arg0: number): void;
-        getItem(): Internal.Item;
-        getBarColor(arg0: Internal.ItemStack_): number;
-        onDestroyed(arg0: Internal.ItemEntity_, arg1: DamageSource_): void;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
-        onLeftClickEntity(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.Entity_): boolean;
-        getItemBuilder(): Internal.ItemBuilder;
-        makesPiglinsNeutral(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
-        /**
-         * @deprecated
-        */
-        getMaxDamage(): number;
-        removeAttribute(attribute: Internal.Attribute_, uuid: Internal.UUID_): void;
-        asIngredient(): Internal.Ingredient;
-        getDescription(): net.minecraft.network.chat.Component;
-        /**
-         * @deprecated
-        */
-        hasCraftingRemainingItem(): boolean;
-        canPerformAction(arg0: Internal.ItemStack_, arg1: Internal.ToolAction_): boolean;
-        getClass(): typeof any;
-        mfix$getDelegate(arg0: Internal.ResourceKey_<any>): Internal.Holder$Reference<any>;
-        static byId(arg0: number): Internal.Item;
-        getRenderPropertiesInternal(): any;
-        onEntityItemUpdate(arg0: Internal.ItemStack_, arg1: Internal.ItemEntity_): boolean;
-        interactLivingEntity(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.LivingEntity_, arg3: Internal.InteractionHand_): Internal.InteractionResult;
-        moonlight$getAdditionalBehavior(): Internal.AdditionalItemPlacement;
-        moonlight$setClientAnimationExtension(obj: any): void;
-        getCraftingRemainingItem(arg0: Internal.ItemStack_): Internal.ItemStack;
-        useOn(arg0: Internal.UseOnContext_): Internal.InteractionResult;
-        /**
-         * @deprecated
-         * This method is marked to be removed in future!
-        */
-        onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
-        getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
-        shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
-        damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
-        setAttackDamage(attackDamage: number): void;
-        isEdible(): boolean;
-        getTooltipImage(arg0: Internal.ItemStack_): Optional<Internal.TooltipComponent>;
-        arch$holder(): Internal.Holder<Internal.Item>;
-        getArmorTexture(arg0: Internal.ItemStack_, arg1: Internal.Entity_, arg2: Internal.EquipmentSlot_, arg3: string): string;
-        getAttributes(attribute: Internal.Attribute_): Internal.List<Internal.AttributeModifier>;
-        use(arg0: Internal.Level_, arg1: Internal.Player_, arg2: Internal.InteractionHand_): Internal.InteractionResultHolder<Internal.ItemStack>;
-        toString(): string;
-        /**
-         * @deprecated
-        */
-        getEnchantmentValue(): number;
-        setArmorToughness(armorToughness: number): void;
-        notifyAll(): void;
-        getId(): string;
-        isEnchantable(arg0: Internal.ItemStack_): boolean;
-        getSweepHitBox(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.Entity_): Internal.AABB;
-        getEnchantmentLevel(arg0: Internal.ItemStack_, arg1: Internal.Enchantment_): number;
-        getAllEnchantments(arg0: Internal.ItemStack_): Internal.Map<Internal.Enchantment, number>;
-        wait(arg0: number): void;
-        getDigSpeed(): number;
-        setTier(c: Internal.Consumer_<Internal.MutableToolTier>): void;
-        overrideStackedOnOther(arg0: Internal.ItemStack_, arg1: Internal.Slot_, arg2: Internal.ClickAction_, arg3: Internal.Player_): boolean;
-        setFoodProperties(consumer: Internal.Consumer_<Internal.FoodBuilder>): void;
-        onBlockStartBreak(arg0: Internal.ItemStack_, arg1: BlockPos_, arg2: Internal.Player_): boolean;
-        elytraFlightTick(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): boolean;
-        getMaxDamage(arg0: Internal.ItemStack_): number;
-        isFoil(arg0: Internal.ItemStack_): boolean;
-        isRepairable(arg0: Internal.ItemStack_): boolean;
-        isDamageable(arg0: Internal.ItemStack_): boolean;
-        puzzleslib$setRenderProperties(arg0: any): void;
-        useOnRelease(arg0: Internal.ItemStack_): boolean;
-        canAttackBlock(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_): boolean;
-        canGrindstoneRepair(arg0: Internal.ItemStack_): boolean;
-        notify(): void;
-        setDigSpeed(speed: number): void;
-        getDescriptionId(arg0: Internal.ItemStack_): string;
-        releaseUsing(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.LivingEntity_, arg3: number): void;
-        setAttackSpeed(attackSpeed: number): void;
-        isBarVisible(arg0: Internal.ItemStack_): boolean;
-        canWalkOnPowderedSnow(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
-        getUseDuration(arg0: Internal.ItemStack_): number;
-        onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
-        isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
-        /**
-         * @deprecated
-        */
-        getMaxStackSize(): number;
-        /**
-         * @deprecated
-        */
-        static byBlock(arg0: Internal.Block_): Internal.Item;
-        isDamaged(arg0: Internal.ItemStack_): boolean;
-        overrideFood(arg0: Internal.FoodProperties_): void;
-        canFitInsideContainerItems(): boolean;
-        wait(): void;
-        getHighlightTip(arg0: Internal.ItemStack_, arg1: net.minecraft.network.chat.Component_): net.minecraft.network.chat.Component;
-        isCorrectToolForDrops(arg0: Internal.BlockState_): boolean;
-        verifyTagAfterLoad(arg0: Internal.CompoundTag_): void;
-        canEquip(arg0: Internal.ItemStack_, arg1: Internal.EquipmentSlot_, arg2: Internal.Entity_): boolean;
-        finishUsingItem(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.LivingEntity_): Internal.ItemStack;
-        setArmorKnockbackResistance(knockbackResistance: number): void;
-        setFireResistant(arg0: boolean): void;
-        onInventoryTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_, arg3: number, arg4: number): void;
-        getEatingSound(): Internal.SoundEvent;
-        hasCustomEntity(arg0: Internal.ItemStack_): boolean;
-        puzzleslib$getRenderProperties(): any;
-        canBeDepleted(): boolean;
-        initializeClient(arg0: Internal.Consumer_<Internal.IClientItemExtensions>): void;
-        getDamage(arg0: Internal.ItemStack_): number;
-        mineBlock(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.BlockState_, arg3: BlockPos_, arg4: Internal.LivingEntity_): boolean;
-        wait(arg0: number, arg1: number): void;
-        setNameKey(arg0: string): void;
-        readShareTag(arg0: Internal.ItemStack_, arg1: Internal.CompoundTag_): void;
-        getEquipmentSlot(arg0: Internal.ItemStack_): Internal.EquipmentSlot;
-        getUpdatePacket(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): Internal.Packet<any>;
-        getName(arg0: Internal.ItemStack_): net.minecraft.network.chat.Component;
-        /**
-         * @deprecated
-        */
-        getDefaultAttributeModifiers(arg0: Internal.EquipmentSlot_): Internal.Multimap<Internal.Attribute, Internal.AttributeModifier>;
-        arch$registryName(): ResourceLocation;
-        getIdLocation(): ResourceLocation;
-        getAttributeModifiers(arg0: Internal.EquipmentSlot_, arg1: Internal.ItemStack_): Internal.Multimap<Internal.Attribute, Internal.AttributeModifier>;
-        getMod(): string;
-        canElytraFly(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
-        /**
-         * @deprecated
-        */
-        builtInRegistryHolder(): Internal.Holder$Reference<Internal.Item>;
-        createEntity(arg0: Internal.Level_, arg1: Internal.Entity_, arg2: Internal.ItemStack_): Internal.Entity;
-        setArmorProtection(armorProtection: number): void;
-        getEntityLifespan(arg0: Internal.ItemStack_, arg1: Internal.Level_): number;
-        onEntitySwing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
-        inventoryTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Entity_, arg3: number, arg4: boolean): void;
-        hurtEnemy(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: Internal.LivingEntity_): boolean;
-        setDamage(arg0: Internal.ItemStack_, arg1: number): void;
-        /**
-         * @deprecated
-        */
-        getCraftingRemainingItem(): Internal.Item;
-        getTypeItemStackKey(): Internal.ItemStackKey;
-        hasCraftingRemainingItem(arg0: Internal.ItemStack_): boolean;
-        shouldOverrideMultiplayerNbt(): boolean;
-        getMaxStackSize(arg0: Internal.ItemStack_): number;
-        requiredFeatures(): Internal.FeatureFlagSet;
-        hashCode(): number;
-        static getId(arg0: Internal.Item_): number;
-        overrideOtherStackedOnMe(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: Internal.Slot_, arg3: Internal.ClickAction_, arg4: Internal.Player_, arg5: Internal.SlotAccess_): boolean;
-        setCraftingRemainder(arg0: Internal.Item_): void;
-        doesSneakBypassUse(arg0: Internal.ItemStack_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Player_): boolean;
-        shouldCauseReequipAnimation(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: boolean): boolean;
-        onHorseArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Mob_): void;
-        addAttribute(attribute: Internal.Attribute_, uuid: Internal.UUID_, name: string, d: number, operation: Internal.AttributeModifier$Operation_): void;
-        equals(arg0: any): boolean;
-        get drinkingSound(): Internal.SoundEvent
-        set rarity(arg0: Internal.Rarity_)
-        get fireResistant(): boolean
-        get complex(): boolean
-        /**
-         * @deprecated
-        */
-        get foodProperties(): Internal.FoodProperties
-        get descriptionId(): string
-        get creativeTab(): string
-        get defaultInstance(): Internal.ItemStack
-        get typeData(): Internal.CompoundTag
-        set burnTime(i: number)
-        set maxStackSize(arg0: number)
-        set maxDamage(arg0: number)
-        get item(): Internal.Item
-        get itemBuilder(): Internal.ItemBuilder
-        /**
-         * @deprecated
-        */
-        get maxDamage(): number
-        get description(): net.minecraft.network.chat.Component
-        get class(): typeof any
-        get renderPropertiesInternal(): any
-        set itemBuilder(b: Internal.ItemBuilder_)
-        set attackDamage(attackDamage: number)
-        get edible(): boolean
-        /**
-         * @deprecated
-        */
-        get enchantmentValue(): number
-        set armorToughness(armorToughness: number)
-        get id(): string
-        get digSpeed(): number
-        set tier(c: Internal.Consumer_<Internal.MutableToolTier>)
-        set foodProperties(consumer: Internal.Consumer_<Internal.FoodBuilder>)
-        set digSpeed(speed: number)
-        set attackSpeed(attackSpeed: number)
-        /**
-         * @deprecated
-        */
-        get maxStackSize(): number
-        set armorKnockbackResistance(knockbackResistance: number)
-        set fireResistant(arg0: boolean)
-        get eatingSound(): Internal.SoundEvent
-        set nameKey(arg0: string)
-        get idLocation(): ResourceLocation
-        get mod(): string
-        set armorProtection(armorProtection: number)
-        /**
-         * @deprecated
-        */
-        get craftingRemainingItem(): Internal.Item
-        get typeItemStackKey(): Internal.ItemStackKey
-        set craftingRemainder(arg0: Internal.Item_)
-    }
-    type EmptyMapItem_ = EmptyMapItem;
     class FishRollMedley6Block extends Internal.Block {
         constructor()
         /**
@@ -13022,11 +11673,11 @@ declare namespace Internal {
         stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         /**
          * @deprecated
@@ -13044,8 +11695,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -13115,8 +11766,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         use(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_, arg4: Internal.InteractionHand_, arg5: Internal.BlockHitResult_): Internal.InteractionResult;
         setLightEmission(v: number): void;
         setJumpFactor(arg0: number): void;
@@ -13156,8 +11807,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -13373,6 +12024,267 @@ declare namespace Internal {
         static readonly FACING: (Internal.DirectionProperty) & (Internal.DirectionProperty);
     }
     type FishRollMedley6Block_ = FishRollMedley6Block;
+    class EmptyMapItem extends Internal.ComplexItem {
+        constructor(arg0: Internal.Item$Properties_)
+        getDrinkingSound(): Internal.SoundEvent;
+        getShareTag(arg0: Internal.ItemStack_): Internal.CompoundTag;
+        setRarity(arg0: Internal.Rarity_): void;
+        isEnderMask(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.EnderMan_): boolean;
+        isEnabled(arg0: Internal.FeatureFlagSet_): boolean;
+        getDestroySpeed(arg0: Internal.ItemStack_, arg1: Internal.BlockState_): number;
+        getBurnTime(arg0: Internal.ItemStack_, arg1: Internal.RecipeType_<any>): number;
+        moonlight$addAdditionalBehavior(placementOverride: Internal.AdditionalItemPlacement_): void;
+        /**
+         * @deprecated
+        */
+        onDestroyed(arg0: Internal.ItemEntity_): void;
+        isFireResistant(): boolean;
+        onItemUseFirst(arg0: Internal.ItemStack_, arg1: Internal.UseOnContext_): Internal.InteractionResult;
+        isComplex(): boolean;
+        onCraftedBy(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
+        isCorrectToolForDrops(arg0: Internal.ItemStack_, arg1: Internal.BlockState_): boolean;
+        isPiglinCurrency(arg0: Internal.ItemStack_): boolean;
+        getEnchantmentValue(arg0: Internal.ItemStack_): number;
+        canDisableShield(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: Internal.LivingEntity_, arg3: Internal.LivingEntity_): boolean;
+        onUseTick(arg0: Internal.Level_, arg1: Internal.LivingEntity_, arg2: Internal.ItemStack_, arg3: number): void;
+        appendHoverText(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.List_<net.minecraft.network.chat.Component>, arg3: Internal.TooltipFlag_): void;
+        canBeHurtBy(arg0: DamageSource_): boolean;
+        /**
+         * @deprecated
+        */
+        getFoodProperties(): Internal.FoodProperties;
+        canApplyAtEnchantingTable(arg0: Internal.ItemStack_, arg1: Internal.Enchantment_): boolean;
+        getDescriptionId(): string;
+        getUseAnimation(arg0: Internal.ItemStack_): Internal.UseAnim;
+        isValidRepairItem(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        moonlight$getClientAnimationExtension(): any;
+        getXpRepairRatio(arg0: Internal.ItemStack_): number;
+        isBookEnchantable(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        getCreativeTab(): string;
+        initCapabilities(arg0: Internal.ItemStack_, arg1: Internal.CompoundTag_): Internal.ICapabilityProvider;
+        asItem(): Internal.Item;
+        onDroppedByPlayer(arg0: Internal.ItemStack_, arg1: Internal.Player_): boolean;
+        getDefaultInstance(): Internal.ItemStack;
+        getTypeData(): Internal.CompoundTag;
+        getDefaultTooltipHideFlags(arg0: Internal.ItemStack_): number;
+        getCreatorModId(arg0: Internal.ItemStack_): string;
+        canContinueUsing(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        setBurnTime(i: number): void;
+        setMaxStackSize(arg0: number): void;
+        getFoodProperties(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): Internal.FoodProperties;
+        getBarWidth(arg0: Internal.ItemStack_): number;
+        setMaxDamage(arg0: number): void;
+        getItem(): Internal.Item;
+        getBarColor(arg0: Internal.ItemStack_): number;
+        onDestroyed(arg0: Internal.ItemEntity_, arg1: DamageSource_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
+        onLeftClickEntity(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.Entity_): boolean;
+        getItemBuilder(): Internal.ItemBuilder;
+        makesPiglinsNeutral(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
+        /**
+         * @deprecated
+        */
+        getMaxDamage(): number;
+        removeAttribute(attribute: Internal.Attribute_, uuid: Internal.UUID_): void;
+        asIngredient(): Internal.Ingredient;
+        getDescription(): net.minecraft.network.chat.Component;
+        /**
+         * @deprecated
+        */
+        hasCraftingRemainingItem(): boolean;
+        canPerformAction(arg0: Internal.ItemStack_, arg1: Internal.ToolAction_): boolean;
+        getClass(): typeof any;
+        mfix$getDelegate(arg0: Internal.ResourceKey_<any>): Internal.Holder$Reference<any>;
+        static byId(arg0: number): Internal.Item;
+        getRenderPropertiesInternal(): any;
+        onEntityItemUpdate(arg0: Internal.ItemStack_, arg1: Internal.ItemEntity_): boolean;
+        interactLivingEntity(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.LivingEntity_, arg3: Internal.InteractionHand_): Internal.InteractionResult;
+        moonlight$getAdditionalBehavior(): Internal.AdditionalItemPlacement;
+        moonlight$setClientAnimationExtension(obj: any): void;
+        getCraftingRemainingItem(arg0: Internal.ItemStack_): Internal.ItemStack;
+        useOn(arg0: Internal.UseOnContext_): Internal.InteractionResult;
+        /**
+         * @deprecated
+         * This method is marked to be removed in future!
+        */
+        onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
+        getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
+        shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
+        damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
+        setAttackDamage(attackDamage: number): void;
+        isEdible(): boolean;
+        getTooltipImage(arg0: Internal.ItemStack_): Optional<Internal.TooltipComponent>;
+        arch$holder(): Internal.Holder<Internal.Item>;
+        getArmorTexture(arg0: Internal.ItemStack_, arg1: Internal.Entity_, arg2: Internal.EquipmentSlot_, arg3: string): string;
+        getAttributes(attribute: Internal.Attribute_): Internal.List<Internal.AttributeModifier>;
+        use(arg0: Internal.Level_, arg1: Internal.Player_, arg2: Internal.InteractionHand_): Internal.InteractionResultHolder<Internal.ItemStack>;
+        toString(): string;
+        /**
+         * @deprecated
+        */
+        getEnchantmentValue(): number;
+        setArmorToughness(armorToughness: number): void;
+        notifyAll(): void;
+        getId(): string;
+        isEnchantable(arg0: Internal.ItemStack_): boolean;
+        getSweepHitBox(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.Entity_): Internal.AABB;
+        getEnchantmentLevel(arg0: Internal.ItemStack_, arg1: Internal.Enchantment_): number;
+        getAllEnchantments(arg0: Internal.ItemStack_): Internal.Map<Internal.Enchantment, number>;
+        wait(arg0: number): void;
+        getDigSpeed(): number;
+        setTier(c: Internal.Consumer_<Internal.MutableToolTier>): void;
+        overrideStackedOnOther(arg0: Internal.ItemStack_, arg1: Internal.Slot_, arg2: Internal.ClickAction_, arg3: Internal.Player_): boolean;
+        setFoodProperties(consumer: Internal.Consumer_<Internal.FoodBuilder>): void;
+        onBlockStartBreak(arg0: Internal.ItemStack_, arg1: BlockPos_, arg2: Internal.Player_): boolean;
+        elytraFlightTick(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): boolean;
+        getMaxDamage(arg0: Internal.ItemStack_): number;
+        isFoil(arg0: Internal.ItemStack_): boolean;
+        isRepairable(arg0: Internal.ItemStack_): boolean;
+        isDamageable(arg0: Internal.ItemStack_): boolean;
+        puzzleslib$setRenderProperties(arg0: any): void;
+        useOnRelease(arg0: Internal.ItemStack_): boolean;
+        canAttackBlock(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_): boolean;
+        canGrindstoneRepair(arg0: Internal.ItemStack_): boolean;
+        notify(): void;
+        setDigSpeed(speed: number): void;
+        getDescriptionId(arg0: Internal.ItemStack_): string;
+        releaseUsing(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.LivingEntity_, arg3: number): void;
+        setAttackSpeed(attackSpeed: number): void;
+        isBarVisible(arg0: Internal.ItemStack_): boolean;
+        canWalkOnPowderedSnow(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
+        getUseDuration(arg0: Internal.ItemStack_): number;
+        onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
+        isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
+        /**
+         * @deprecated
+        */
+        getMaxStackSize(): number;
+        /**
+         * @deprecated
+        */
+        static byBlock(arg0: Internal.Block_): Internal.Item;
+        isDamaged(arg0: Internal.ItemStack_): boolean;
+        overrideFood(arg0: Internal.FoodProperties_): void;
+        canFitInsideContainerItems(): boolean;
+        wait(): void;
+        getHighlightTip(arg0: Internal.ItemStack_, arg1: net.minecraft.network.chat.Component_): net.minecraft.network.chat.Component;
+        isCorrectToolForDrops(arg0: Internal.BlockState_): boolean;
+        verifyTagAfterLoad(arg0: Internal.CompoundTag_): void;
+        canEquip(arg0: Internal.ItemStack_, arg1: Internal.EquipmentSlot_, arg2: Internal.Entity_): boolean;
+        finishUsingItem(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.LivingEntity_): Internal.ItemStack;
+        setArmorKnockbackResistance(knockbackResistance: number): void;
+        setFireResistant(arg0: boolean): void;
+        onInventoryTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_, arg3: number, arg4: number): void;
+        getEatingSound(): Internal.SoundEvent;
+        hasCustomEntity(arg0: Internal.ItemStack_): boolean;
+        puzzleslib$getRenderProperties(): any;
+        canBeDepleted(): boolean;
+        initializeClient(arg0: Internal.Consumer_<Internal.IClientItemExtensions>): void;
+        getDamage(arg0: Internal.ItemStack_): number;
+        mineBlock(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.BlockState_, arg3: BlockPos_, arg4: Internal.LivingEntity_): boolean;
+        wait(arg0: number, arg1: number): void;
+        setNameKey(arg0: string): void;
+        readShareTag(arg0: Internal.ItemStack_, arg1: Internal.CompoundTag_): void;
+        getEquipmentSlot(arg0: Internal.ItemStack_): Internal.EquipmentSlot;
+        getUpdatePacket(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): Internal.Packet<any>;
+        getName(arg0: Internal.ItemStack_): net.minecraft.network.chat.Component;
+        /**
+         * @deprecated
+        */
+        getDefaultAttributeModifiers(arg0: Internal.EquipmentSlot_): Internal.Multimap<Internal.Attribute, Internal.AttributeModifier>;
+        arch$registryName(): ResourceLocation;
+        getIdLocation(): ResourceLocation;
+        getAttributeModifiers(arg0: Internal.EquipmentSlot_, arg1: Internal.ItemStack_): Internal.Multimap<Internal.Attribute, Internal.AttributeModifier>;
+        getMod(): string;
+        canElytraFly(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
+        /**
+         * @deprecated
+        */
+        builtInRegistryHolder(): Internal.Holder$Reference<Internal.Item>;
+        createEntity(arg0: Internal.Level_, arg1: Internal.Entity_, arg2: Internal.ItemStack_): Internal.Entity;
+        setArmorProtection(armorProtection: number): void;
+        getEntityLifespan(arg0: Internal.ItemStack_, arg1: Internal.Level_): number;
+        onEntitySwing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
+        inventoryTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Entity_, arg3: number, arg4: boolean): void;
+        hurtEnemy(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: Internal.LivingEntity_): boolean;
+        setDamage(arg0: Internal.ItemStack_, arg1: number): void;
+        /**
+         * @deprecated
+        */
+        getCraftingRemainingItem(): Internal.Item;
+        getTypeItemStackKey(): Internal.ItemStackKey;
+        hasCraftingRemainingItem(arg0: Internal.ItemStack_): boolean;
+        shouldOverrideMultiplayerNbt(): boolean;
+        getMaxStackSize(arg0: Internal.ItemStack_): number;
+        requiredFeatures(): Internal.FeatureFlagSet;
+        hashCode(): number;
+        static getId(arg0: Internal.Item_): number;
+        overrideOtherStackedOnMe(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: Internal.Slot_, arg3: Internal.ClickAction_, arg4: Internal.Player_, arg5: Internal.SlotAccess_): boolean;
+        setCraftingRemainder(arg0: Internal.Item_): void;
+        doesSneakBypassUse(arg0: Internal.ItemStack_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Player_): boolean;
+        shouldCauseReequipAnimation(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: boolean): boolean;
+        onHorseArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Mob_): void;
+        addAttribute(attribute: Internal.Attribute_, uuid: Internal.UUID_, name: string, d: number, operation: Internal.AttributeModifier$Operation_): void;
+        equals(arg0: any): boolean;
+        get drinkingSound(): Internal.SoundEvent
+        set rarity(arg0: Internal.Rarity_)
+        get fireResistant(): boolean
+        get complex(): boolean
+        /**
+         * @deprecated
+        */
+        get foodProperties(): Internal.FoodProperties
+        get descriptionId(): string
+        get creativeTab(): string
+        get defaultInstance(): Internal.ItemStack
+        get typeData(): Internal.CompoundTag
+        set burnTime(i: number)
+        set maxStackSize(arg0: number)
+        set maxDamage(arg0: number)
+        get item(): Internal.Item
+        get itemBuilder(): Internal.ItemBuilder
+        /**
+         * @deprecated
+        */
+        get maxDamage(): number
+        get description(): net.minecraft.network.chat.Component
+        get class(): typeof any
+        get renderPropertiesInternal(): any
+        set itemBuilder(b: Internal.ItemBuilder_)
+        set attackDamage(attackDamage: number)
+        get edible(): boolean
+        /**
+         * @deprecated
+        */
+        get enchantmentValue(): number
+        set armorToughness(armorToughness: number)
+        get id(): string
+        get digSpeed(): number
+        set tier(c: Internal.Consumer_<Internal.MutableToolTier>)
+        set foodProperties(consumer: Internal.Consumer_<Internal.FoodBuilder>)
+        set digSpeed(speed: number)
+        set attackSpeed(attackSpeed: number)
+        /**
+         * @deprecated
+        */
+        get maxStackSize(): number
+        set armorKnockbackResistance(knockbackResistance: number)
+        set fireResistant(arg0: boolean)
+        get eatingSound(): Internal.SoundEvent
+        set nameKey(arg0: string)
+        get idLocation(): ResourceLocation
+        get mod(): string
+        set armorProtection(armorProtection: number)
+        /**
+         * @deprecated
+        */
+        get craftingRemainingItem(): Internal.Item
+        get typeItemStackKey(): Internal.ItemStackKey
+        set craftingRemainder(arg0: Internal.Item_)
+    }
+    type EmptyMapItem_ = EmptyMapItem;
     class AlignedBox {
         constructor()
         constructor(arg0: Internal.AABB_)
@@ -13448,11 +12360,11 @@ declare namespace Internal {
         stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         /**
          * @deprecated
@@ -13470,8 +12382,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -13541,8 +12453,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -13585,8 +12497,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -13954,9 +12866,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -14002,7 +12915,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -14130,6 +13042,57 @@ declare namespace Internal {
         set craftingRemainder(arg0: Internal.Item_)
     }
     type HeartContainerItem_ = HeartContainerItem;
+    class AggrobaitingEnchantment extends Internal.Enchantment {
+        constructor(...arg0: Internal.EquipmentSlot_[])
+        getClass(): typeof any;
+        getDamageProtection(arg0: number, arg1: DamageSource_): number;
+        getFullname(arg0: number): net.minecraft.network.chat.Component;
+        getRarity(): Internal.Enchantment$Rarity;
+        isCompatibleWith(arg0: Internal.Enchantment_): boolean;
+        isTradeable(): boolean;
+        isTreasureOnly(): boolean;
+        notify(): void;
+        wait(arg0: number, arg1: number): void;
+        getId(): ResourceLocation;
+        getMaxCost(arg0: number): number;
+        isDiscoverable(): boolean;
+        getMinCost(arg0: number): number;
+        static byId(arg0: number): Internal.Enchantment;
+        getDescriptionId(): string;
+        doPostHurt(arg0: Internal.LivingEntity_, arg1: Internal.Entity_, arg2: number): void;
+        toString(): string;
+        getMaxLevel(): number;
+        doPostAttack(arg0: Internal.LivingEntity_, arg1: Internal.Entity_, arg2: number): void;
+        notifyAll(): void;
+        getSlotItems(arg0: Internal.LivingEntity_): Internal.Map<Internal.EquipmentSlot, Internal.ItemStack>;
+        getMinLevel(): number;
+        /**
+         * @deprecated
+        */
+        getDamageBonus(arg0: number, arg1: Internal.MobType_): number;
+        hashCode(): number;
+        isCurse(): boolean;
+        allowedInCreativeTab(arg0: Internal.Item_, arg1: Internal.Set_<Internal.EnchantmentCategory>): boolean;
+        wait(): void;
+        getDamageBonus(arg0: number, arg1: Internal.MobType_, arg2: Internal.ItemStack_): number;
+        wait(arg0: number): void;
+        canApplyAtEnchantingTable(arg0: Internal.ItemStack_): boolean;
+        equals(arg0: any): boolean;
+        canEnchant(arg0: Internal.ItemStack_): boolean;
+        isAllowedOnBooks(): boolean;
+        get class(): typeof any
+        get rarity(): Internal.Enchantment$Rarity
+        get tradeable(): boolean
+        get treasureOnly(): boolean
+        get id(): ResourceLocation
+        get discoverable(): boolean
+        get descriptionId(): string
+        get maxLevel(): number
+        get minLevel(): number
+        get curse(): boolean
+        get allowedOnBooks(): boolean
+    }
+    type AggrobaitingEnchantment_ = AggrobaitingEnchantment;
     interface IMixinGui {
         abstract get_subtitle_FancyMenu(): net.minecraft.network.chat.Component;
         abstract get_overlayMessageString_FancyMenu(): net.minecraft.network.chat.Component;
@@ -14159,11 +13122,11 @@ declare namespace Internal {
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
         triggerEvent(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: number, arg4: number): boolean;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         static dropResources(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.BlockEntity_, arg4: Internal.Entity_, arg5: Internal.ItemStack_, arg6: boolean): void;
         getTypeData(): Internal.CompoundTag;
@@ -14177,8 +13140,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -14247,8 +13210,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -14291,8 +13254,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -14515,15 +13478,14 @@ declare namespace Internal {
         static popResource(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.ItemStack_): void;
         setRandomTickCallback(callback: Internal.Consumer_<any>): void;
         getBeaconColorMultiplier(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: BlockPos_): number[];
-        handler$cnl000$onRemoved(blockState: Internal.BlockState_, serverLevel: Internal.ServerLevel_, blockPos: BlockPos_, random: Internal.RandomSource_, ci: Internal.CallbackInfo_): void;
         stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         /**
          * @deprecated
@@ -14541,8 +13503,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -14587,8 +13549,8 @@ declare namespace Internal {
          * @deprecated
         */
         neighborChanged(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Block_, arg4: BlockPos_, arg5: boolean): void;
-        isBonemealSuccess(level: Internal.Level_, random: Internal.RandomSource_, pos: BlockPos_, state: Internal.BlockState_): boolean;
         getBlockSupportShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): Internal.VoxelShape;
+        isBonemealSuccess(level: Internal.Level_, random: Internal.RandomSource_, pos: BlockPos_, state: Internal.BlockState_): boolean;
         /**
          * @deprecated
         */
@@ -14604,8 +13566,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -14650,8 +13612,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -14711,6 +13673,7 @@ declare namespace Internal {
         static canSupportCenter(arg0: Internal.LevelReader_, arg1: BlockPos_, arg2: Internal.Direction_): boolean;
         skipRendering(arg0: Internal.BlockState_, arg1: Internal.BlockState_, arg2: Internal.Direction_): boolean;
         onSheared(arg0: Internal.Player_, arg1: Internal.ItemStack_, arg2: Internal.Level_, arg3: BlockPos_, arg4: number): Internal.List<Internal.ItemStack>;
+        handler$daa000$onRemoved(blockState: Internal.BlockState_, serverLevel: Internal.ServerLevel_, blockPos: BlockPos_, random: Internal.RandomSource_, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -14873,6 +13836,14 @@ declare namespace Internal {
         set hasCollision(arg0: boolean)
     }
     type CherryLeavesBlock_ = CherryLeavesBlock;
+    interface LootItemCondition$Builder {
+        and(arg0: Internal.LootItemCondition$Builder_): Internal.AllOfCondition$Builder;
+        abstract build(): Internal.LootItemCondition;
+        invert(): this;
+        or(arg0: Internal.LootItemCondition$Builder_): Internal.AnyOfCondition$Builder;
+        (): Internal.LootItemCondition_;
+    }
+    type LootItemCondition$Builder_ = LootItemCondition$Builder | (()=> Internal.LootItemCondition_);
     class UpdateAbstractVillagerOffersEventJS extends Internal.LivingEntityEventJS {
         constructor(arg0: Internal.AbstractVillager_, arg1: Internal.MerchantOffers_, arg2: Internal.VillagerTrades$ItemListing_[], arg3: Internal.List_<Internal.MerchantOffer>)
         getVillagerTrades(arg0: Internal.VillagerProfession_, arg1: number): Internal.List<Internal.VillagerTrades$ItemListing>;
@@ -14952,14 +13923,6 @@ declare namespace Internal {
         get server(): Internal.MinecraftServer
     }
     type UpdateAbstractVillagerOffersEventJS_ = UpdateAbstractVillagerOffersEventJS;
-    interface LootItemCondition$Builder {
-        and(arg0: Internal.LootItemCondition$Builder_): Internal.AllOfCondition$Builder;
-        abstract build(): Internal.LootItemCondition;
-        invert(): this;
-        or(arg0: Internal.LootItemCondition$Builder_): Internal.AnyOfCondition$Builder;
-        (): Internal.LootItemCondition_;
-    }
-    type LootItemCondition$Builder_ = LootItemCondition$Builder | (()=> Internal.LootItemCondition_);
     class VineBlock extends Internal.Block implements Internal.IForgeShearable {
         constructor(arg0: Internal.BlockBehaviour$Properties_)
         isShearable(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: BlockPos_): boolean;
@@ -14979,11 +13942,11 @@ declare namespace Internal {
         stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         /**
          * @deprecated
@@ -15004,8 +13967,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -15075,8 +14038,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -15117,8 +14080,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -15341,8 +14304,8 @@ declare namespace Internal {
         getClass(): typeof any;
         isInFront(arg0: team.creative.creativecore.common.util.math.vec.Vec3f_, arg1: number): boolean;
         intersect(arg0: team.creative.creativecore.common.util.math.vec.Vec3f_, arg1: team.creative.creativecore.common.util.math.vec.Vec3f_): team.creative.creativecore.common.util.math.vec.Vec3f;
-        toString(): string;
         intersect(arg0: Internal.Ray3f_): team.creative.creativecore.common.util.math.vec.Vec3f;
+        toString(): string;
         isInvalid(): boolean;
         cuts(arg0: Internal.VectorFan_): boolean;
         notifyAll(): void;
@@ -15362,8 +14325,8 @@ declare namespace Internal {
     }
     type NormalPlaneF_ = NormalPlaneF;
     class NormalPlaneD {
-        constructor(arg0: team.creative.creativecore.common.util.math.vec.Vec3f_, arg1: team.creative.creativecore.common.util.math.vec.Vec3f_)
         constructor(arg0: team.creative.creativecore.common.util.math.vec.Vec3d_, arg1: team.creative.creativecore.common.util.math.vec.Vec3d_)
+        constructor(arg0: team.creative.creativecore.common.util.math.vec.Vec3f_, arg1: team.creative.creativecore.common.util.math.vec.Vec3f_)
         constructor(arg0: Internal.Facing_)
         constructor(arg0: Internal.Axis_, arg1: number, arg2: Internal.Facing_)
         getClass(): typeof any;
@@ -15371,8 +14334,8 @@ declare namespace Internal {
         project(arg0: Internal.Axis_, arg1: Internal.Axis_, arg2: Internal.Axis_, arg3: number, arg4: number): number;
         isInFront(arg0: team.creative.creativecore.common.util.math.vec.Vec3f_, arg1: number): boolean;
         "isInFront(team.creative.creativecore.common.util.math.vec.Vec3f)"(arg0: team.creative.creativecore.common.util.math.vec.Vec3f_): boolean;
-        toString(): string;
         intersect(arg0: Internal.Ray3d_): team.creative.creativecore.common.util.math.vec.Vec3d;
+        toString(): string;
         isInvalid(): boolean;
         "isInFront(team.creative.creativecore.common.util.math.vec.Vec3d)"(arg0: team.creative.creativecore.common.util.math.vec.Vec3d_): boolean;
         cuts(arg0: Internal.VectorFan_): boolean;
@@ -15512,6 +14475,12 @@ declare namespace Internal {
         andThenShort(arg0: Internal.Char2ShortFunction_): Internal.Byte2ShortFunction;
     }
     type Byte2CharFunction_ = Byte2CharFunction;
+    interface ILivingEntity {
+        abstract isJumping(): boolean;
+        get jumping(): boolean
+        (): boolean;
+    }
+    type ILivingEntity_ = (()=> boolean) | ILivingEntity;
     class LootrTrappedChestBlock extends Internal.ChestBlock {
         constructor(arg0: Internal.BlockBehaviour$Properties_)
         getSignal(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): number;
@@ -15544,8 +14513,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -15599,8 +14568,8 @@ declare namespace Internal {
          * @deprecated
         */
         isCollisionShapeFullBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
-        getMenuProvider(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_): Internal.MenuProvider;
         getTicker<T extends Internal.BlockEntity>(arg0: Internal.Level_, arg1: Internal.BlockState_, arg2: Internal.BlockEntityType_<T>): Internal.BlockEntityTicker<T>;
+        getMenuProvider(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_): Internal.MenuProvider;
         static byItem(arg0: Internal.Item_): Internal.Block;
         static updateFromNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_): Internal.BlockState;
         /**
@@ -15608,8 +14577,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         use(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_, arg4: Internal.InteractionHand_, arg5: Internal.BlockHitResult_): Internal.InteractionResult;
         setLightEmission(v: number): void;
         setJumpFactor(arg0: number): void;
@@ -15646,8 +14615,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -15867,11 +14836,11 @@ declare namespace Internal {
         getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
         getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
         triggerEvent(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: number, arg4: number): boolean;
-        asItem(): Internal.Item;
         /**
          * @deprecated
         */
         getExplosionResistance(): number;
+        asItem(): Internal.Item;
         shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
         static dropResources(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.BlockEntity_, arg4: Internal.Entity_, arg5: Internal.ItemStack_, arg6: boolean): void;
         getTypeData(): Internal.CompoundTag;
@@ -15885,8 +14854,8 @@ declare namespace Internal {
         getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
         playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
         isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
-        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
         getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
         getClass(): typeof any;
         getMaxVerticalOffset(): number;
@@ -15955,8 +14924,8 @@ declare namespace Internal {
         */
         updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
         destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
-        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
         /**
          * @deprecated
         */
@@ -15999,8 +14968,8 @@ declare namespace Internal {
         static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
         getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
         updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
-        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
         arch$registryName(): ResourceLocation;
         getBlockBuilder(): Internal.BlockBuilder;
         getIdLocation(): ResourceLocation;
@@ -16293,9 +15262,10 @@ declare namespace Internal {
          * This method is marked to be removed in future!
         */
         onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
-        setItemBuilder(b: Internal.ItemBuilder_): void;
         getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
         shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
         setAttackDamage(attackDamage: number): void;
         isEdible(): boolean;
@@ -16341,7 +15311,6 @@ declare namespace Internal {
         getUseDuration(arg0: Internal.ItemStack_): number;
         onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
         isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
-        handler$dbj000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
         /**
          * @deprecated
         */
@@ -16510,6 +15479,2040 @@ declare namespace Internal {
         static readonly SIDE_W: (Internal.Bridge_Block$ConnectionStatus) & (Internal.Bridge_Block$ConnectionStatus);
     }
     type Bridge_Block$ConnectionStatus_ = "side_w" | "corner_ne" | "side_e" | "corner_nw" | "corner_sw" | "side_s" | "middle_ns" | "base" | "corner_se" | "middle_ew" | "side_n" | Bridge_Block$ConnectionStatus;
+    class LevelStem extends Internal.Record {
+        constructor(arg0: Internal.Holder_<Internal.DimensionType>, arg1: Internal.ChunkGenerator_)
+        generator(): Internal.ChunkGenerator;
+        getClass(): typeof any;
+        hashCode(): number;
+        toString(): string;
+        wait(): void;
+        notifyAll(): void;
+        wait(arg0: number): void;
+        equals(arg0: any): boolean;
+        notify(): void;
+        wait(arg0: number, arg1: number): void;
+        type(): Internal.Holder<Internal.DimensionType>;
+        get class(): typeof any
+        static readonly OVERWORLD: Internal.ResourceKey<Internal.LevelStem>;
+        static readonly END: Internal.ResourceKey<Internal.LevelStem>;
+        static readonly CODEC: Internal.Codec<Internal.LevelStem>;
+        static readonly NETHER: Internal.ResourceKey<Internal.LevelStem>;
+    }
+    type LevelStem_ = Special.Dimension | LevelStem;
+    class MagmaGrenadeItem extends Internal.Item {
+        constructor()
+        getDrinkingSound(): Internal.SoundEvent;
+        getShareTag(arg0: Internal.ItemStack_): Internal.CompoundTag;
+        setRarity(arg0: Internal.Rarity_): void;
+        isEnderMask(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.EnderMan_): boolean;
+        isEnabled(arg0: Internal.FeatureFlagSet_): boolean;
+        getDestroySpeed(arg0: Internal.ItemStack_, arg1: Internal.BlockState_): number;
+        getBurnTime(arg0: Internal.ItemStack_, arg1: Internal.RecipeType_<any>): number;
+        moonlight$addAdditionalBehavior(placementOverride: Internal.AdditionalItemPlacement_): void;
+        /**
+         * @deprecated
+        */
+        onDestroyed(arg0: Internal.ItemEntity_): void;
+        isFireResistant(): boolean;
+        onItemUseFirst(arg0: Internal.ItemStack_, arg1: Internal.UseOnContext_): Internal.InteractionResult;
+        onCraftedBy(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
+        isComplex(): boolean;
+        isCorrectToolForDrops(arg0: Internal.ItemStack_, arg1: Internal.BlockState_): boolean;
+        isPiglinCurrency(arg0: Internal.ItemStack_): boolean;
+        getEnchantmentValue(arg0: Internal.ItemStack_): number;
+        canDisableShield(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: Internal.LivingEntity_, arg3: Internal.LivingEntity_): boolean;
+        onUseTick(arg0: Internal.Level_, arg1: Internal.LivingEntity_, arg2: Internal.ItemStack_, arg3: number): void;
+        appendHoverText(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.List_<net.minecraft.network.chat.Component>, arg3: Internal.TooltipFlag_): void;
+        canBeHurtBy(arg0: DamageSource_): boolean;
+        /**
+         * @deprecated
+        */
+        getFoodProperties(): Internal.FoodProperties;
+        canApplyAtEnchantingTable(arg0: Internal.ItemStack_, arg1: Internal.Enchantment_): boolean;
+        getUseAnimation(arg0: Internal.ItemStack_): Internal.UseAnim;
+        getDescriptionId(): string;
+        isValidRepairItem(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        moonlight$getClientAnimationExtension(): any;
+        getXpRepairRatio(arg0: Internal.ItemStack_): number;
+        isBookEnchantable(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        getCreativeTab(): string;
+        initCapabilities(arg0: Internal.ItemStack_, arg1: Internal.CompoundTag_): Internal.ICapabilityProvider;
+        asItem(): Internal.Item;
+        onDroppedByPlayer(arg0: Internal.ItemStack_, arg1: Internal.Player_): boolean;
+        getDefaultInstance(): Internal.ItemStack;
+        getTypeData(): Internal.CompoundTag;
+        getDefaultTooltipHideFlags(arg0: Internal.ItemStack_): number;
+        getCreatorModId(arg0: Internal.ItemStack_): string;
+        canContinueUsing(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        setBurnTime(i: number): void;
+        setMaxStackSize(arg0: number): void;
+        getFoodProperties(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): Internal.FoodProperties;
+        getBarWidth(arg0: Internal.ItemStack_): number;
+        setMaxDamage(arg0: number): void;
+        getItem(): Internal.Item;
+        getBarColor(arg0: Internal.ItemStack_): number;
+        onDestroyed(arg0: Internal.ItemEntity_, arg1: DamageSource_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
+        onLeftClickEntity(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.Entity_): boolean;
+        getItemBuilder(): Internal.ItemBuilder;
+        makesPiglinsNeutral(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
+        /**
+         * @deprecated
+        */
+        getMaxDamage(): number;
+        removeAttribute(attribute: Internal.Attribute_, uuid: Internal.UUID_): void;
+        asIngredient(): Internal.Ingredient;
+        getDescription(): net.minecraft.network.chat.Component;
+        /**
+         * @deprecated
+        */
+        hasCraftingRemainingItem(): boolean;
+        canPerformAction(arg0: Internal.ItemStack_, arg1: Internal.ToolAction_): boolean;
+        getClass(): typeof any;
+        mfix$getDelegate(arg0: Internal.ResourceKey_<any>): Internal.Holder$Reference<any>;
+        static byId(arg0: number): Internal.Item;
+        getRenderPropertiesInternal(): any;
+        onEntityItemUpdate(arg0: Internal.ItemStack_, arg1: Internal.ItemEntity_): boolean;
+        interactLivingEntity(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.LivingEntity_, arg3: Internal.InteractionHand_): Internal.InteractionResult;
+        moonlight$getAdditionalBehavior(): Internal.AdditionalItemPlacement;
+        moonlight$setClientAnimationExtension(obj: any): void;
+        getCraftingRemainingItem(arg0: Internal.ItemStack_): Internal.ItemStack;
+        useOn(arg0: Internal.UseOnContext_): Internal.InteractionResult;
+        /**
+         * @deprecated
+         * This method is marked to be removed in future!
+        */
+        onArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_): void;
+        getRarity(arg0: Internal.ItemStack_): Internal.Rarity;
+        setItemBuilder(b: Internal.ItemBuilder_): void;
+        shouldCauseBlockBreakReset(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        handler$dga000$initializeClient(consumer: Internal.Consumer_<any>, ci: Internal.CallbackInfo_): void;
+        damageItem<T extends Internal.LivingEntity>(arg0: Internal.ItemStack_, arg1: number, arg2: T, arg3: Internal.Consumer_<T>): number;
+        setAttackDamage(attackDamage: number): void;
+        isEdible(): boolean;
+        getTooltipImage(arg0: Internal.ItemStack_): Optional<Internal.TooltipComponent>;
+        arch$holder(): Internal.Holder<Internal.Item>;
+        getArmorTexture(arg0: Internal.ItemStack_, arg1: Internal.Entity_, arg2: Internal.EquipmentSlot_, arg3: string): string;
+        getAttributes(attribute: Internal.Attribute_): Internal.List<Internal.AttributeModifier>;
+        use(arg0: Internal.Level_, arg1: Internal.Player_, arg2: Internal.InteractionHand_): Internal.InteractionResultHolder<Internal.ItemStack>;
+        toString(): string;
+        /**
+         * @deprecated
+        */
+        getEnchantmentValue(): number;
+        setArmorToughness(armorToughness: number): void;
+        notifyAll(): void;
+        getId(): string;
+        isEnchantable(arg0: Internal.ItemStack_): boolean;
+        getSweepHitBox(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: Internal.Entity_): Internal.AABB;
+        getEnchantmentLevel(arg0: Internal.ItemStack_, arg1: Internal.Enchantment_): number;
+        getAllEnchantments(arg0: Internal.ItemStack_): Internal.Map<Internal.Enchantment, number>;
+        wait(arg0: number): void;
+        getDigSpeed(): number;
+        setTier(c: Internal.Consumer_<Internal.MutableToolTier>): void;
+        overrideStackedOnOther(arg0: Internal.ItemStack_, arg1: Internal.Slot_, arg2: Internal.ClickAction_, arg3: Internal.Player_): boolean;
+        setFoodProperties(consumer: Internal.Consumer_<Internal.FoodBuilder>): void;
+        onBlockStartBreak(arg0: Internal.ItemStack_, arg1: BlockPos_, arg2: Internal.Player_): boolean;
+        elytraFlightTick(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): boolean;
+        getMaxDamage(arg0: Internal.ItemStack_): number;
+        isFoil(arg0: Internal.ItemStack_): boolean;
+        isRepairable(arg0: Internal.ItemStack_): boolean;
+        isDamageable(arg0: Internal.ItemStack_): boolean;
+        puzzleslib$setRenderProperties(arg0: any): void;
+        useOnRelease(arg0: Internal.ItemStack_): boolean;
+        canAttackBlock(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_): boolean;
+        canGrindstoneRepair(arg0: Internal.ItemStack_): boolean;
+        notify(): void;
+        setDigSpeed(speed: number): void;
+        getDescriptionId(arg0: Internal.ItemStack_): string;
+        releaseUsing(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.LivingEntity_, arg3: number): void;
+        setAttackSpeed(attackSpeed: number): void;
+        isBarVisible(arg0: Internal.ItemStack_): boolean;
+        canWalkOnPowderedSnow(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
+        getUseDuration(arg0: Internal.ItemStack_): number;
+        onStopUsing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: number): void;
+        isNotReplaceableByPickAction(arg0: Internal.ItemStack_, arg1: Internal.Player_, arg2: number): boolean;
+        /**
+         * @deprecated
+        */
+        getMaxStackSize(): number;
+        /**
+         * @deprecated
+        */
+        static byBlock(arg0: Internal.Block_): Internal.Item;
+        isDamaged(arg0: Internal.ItemStack_): boolean;
+        overrideFood(arg0: Internal.FoodProperties_): void;
+        canFitInsideContainerItems(): boolean;
+        wait(): void;
+        getHighlightTip(arg0: Internal.ItemStack_, arg1: net.minecraft.network.chat.Component_): net.minecraft.network.chat.Component;
+        isCorrectToolForDrops(arg0: Internal.BlockState_): boolean;
+        verifyTagAfterLoad(arg0: Internal.CompoundTag_): void;
+        canEquip(arg0: Internal.ItemStack_, arg1: Internal.EquipmentSlot_, arg2: Internal.Entity_): boolean;
+        finishUsingItem(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.LivingEntity_): Internal.ItemStack;
+        setArmorKnockbackResistance(knockbackResistance: number): void;
+        setFireResistant(arg0: boolean): void;
+        onInventoryTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Player_, arg3: number, arg4: number): void;
+        getEatingSound(): Internal.SoundEvent;
+        hasCustomEntity(arg0: Internal.ItemStack_): boolean;
+        puzzleslib$getRenderProperties(): any;
+        canBeDepleted(): boolean;
+        initializeClient(arg0: Internal.Consumer_<Internal.IClientItemExtensions>): void;
+        getDamage(arg0: Internal.ItemStack_): number;
+        mineBlock(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.BlockState_, arg3: BlockPos_, arg4: Internal.LivingEntity_): boolean;
+        wait(arg0: number, arg1: number): void;
+        setNameKey(arg0: string): void;
+        readShareTag(arg0: Internal.ItemStack_, arg1: Internal.CompoundTag_): void;
+        getEquipmentSlot(arg0: Internal.ItemStack_): Internal.EquipmentSlot;
+        getName(arg0: Internal.ItemStack_): net.minecraft.network.chat.Component;
+        /**
+         * @deprecated
+        */
+        getDefaultAttributeModifiers(arg0: Internal.EquipmentSlot_): Internal.Multimap<Internal.Attribute, Internal.AttributeModifier>;
+        arch$registryName(): ResourceLocation;
+        getIdLocation(): ResourceLocation;
+        getAttributeModifiers(arg0: Internal.EquipmentSlot_, arg1: Internal.ItemStack_): Internal.Multimap<Internal.Attribute, Internal.AttributeModifier>;
+        getMod(): string;
+        canElytraFly(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
+        /**
+         * @deprecated
+        */
+        builtInRegistryHolder(): Internal.Holder$Reference<Internal.Item>;
+        createEntity(arg0: Internal.Level_, arg1: Internal.Entity_, arg2: Internal.ItemStack_): Internal.Entity;
+        setArmorProtection(armorProtection: number): void;
+        getEntityLifespan(arg0: Internal.ItemStack_, arg1: Internal.Level_): number;
+        onEntitySwing(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_): boolean;
+        inventoryTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Entity_, arg3: number, arg4: boolean): void;
+        hurtEnemy(arg0: Internal.ItemStack_, arg1: Internal.LivingEntity_, arg2: Internal.LivingEntity_): boolean;
+        setDamage(arg0: Internal.ItemStack_, arg1: number): void;
+        /**
+         * @deprecated
+        */
+        getCraftingRemainingItem(): Internal.Item;
+        getTypeItemStackKey(): Internal.ItemStackKey;
+        hasCraftingRemainingItem(arg0: Internal.ItemStack_): boolean;
+        shouldOverrideMultiplayerNbt(): boolean;
+        getMaxStackSize(arg0: Internal.ItemStack_): number;
+        requiredFeatures(): Internal.FeatureFlagSet;
+        hashCode(): number;
+        static getId(arg0: Internal.Item_): number;
+        overrideOtherStackedOnMe(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: Internal.Slot_, arg3: Internal.ClickAction_, arg4: Internal.Player_, arg5: Internal.SlotAccess_): boolean;
+        setCraftingRemainder(arg0: Internal.Item_): void;
+        doesSneakBypassUse(arg0: Internal.ItemStack_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Player_): boolean;
+        shouldCauseReequipAnimation(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_, arg2: boolean): boolean;
+        onHorseArmorTick(arg0: Internal.ItemStack_, arg1: Internal.Level_, arg2: Internal.Mob_): void;
+        addAttribute(attribute: Internal.Attribute_, uuid: Internal.UUID_, name: string, d: number, operation: Internal.AttributeModifier$Operation_): void;
+        equals(arg0: any): boolean;
+        get drinkingSound(): Internal.SoundEvent
+        set rarity(arg0: Internal.Rarity_)
+        get fireResistant(): boolean
+        get complex(): boolean
+        /**
+         * @deprecated
+        */
+        get foodProperties(): Internal.FoodProperties
+        get descriptionId(): string
+        get creativeTab(): string
+        get defaultInstance(): Internal.ItemStack
+        get typeData(): Internal.CompoundTag
+        set burnTime(i: number)
+        set maxStackSize(arg0: number)
+        set maxDamage(arg0: number)
+        get item(): Internal.Item
+        get itemBuilder(): Internal.ItemBuilder
+        /**
+         * @deprecated
+        */
+        get maxDamage(): number
+        get description(): net.minecraft.network.chat.Component
+        get class(): typeof any
+        get renderPropertiesInternal(): any
+        set itemBuilder(b: Internal.ItemBuilder_)
+        set attackDamage(attackDamage: number)
+        get edible(): boolean
+        /**
+         * @deprecated
+        */
+        get enchantmentValue(): number
+        set armorToughness(armorToughness: number)
+        get id(): string
+        get digSpeed(): number
+        set tier(c: Internal.Consumer_<Internal.MutableToolTier>)
+        set foodProperties(consumer: Internal.Consumer_<Internal.FoodBuilder>)
+        set digSpeed(speed: number)
+        set attackSpeed(attackSpeed: number)
+        /**
+         * @deprecated
+        */
+        get maxStackSize(): number
+        set armorKnockbackResistance(knockbackResistance: number)
+        set fireResistant(arg0: boolean)
+        get eatingSound(): Internal.SoundEvent
+        set nameKey(arg0: string)
+        get idLocation(): ResourceLocation
+        get mod(): string
+        set armorProtection(armorProtection: number)
+        /**
+         * @deprecated
+        */
+        get craftingRemainingItem(): Internal.Item
+        get typeItemStackKey(): Internal.ItemStackKey
+        set craftingRemainder(arg0: Internal.Item_)
+    }
+    type MagmaGrenadeItem_ = MagmaGrenadeItem;
+    class AcaciabutcherdisplayBlock extends Internal.Block implements Internal.EntityBlock {
+        constructor()
+        /**
+         * @deprecated
+        */
+        getSignal(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): number;
+        isEnabled(arg0: Internal.FeatureFlagSet_): boolean;
+        getVisualShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.CollisionContext_): Internal.VoxelShape;
+        static updateOrDestroy(arg0: Internal.BlockState_, arg1: Internal.BlockState_, arg2: Internal.LevelAccessor_, arg3: BlockPos_, arg4: number, arg5: number): void;
+        static popResource(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.ItemStack_): void;
+        setRandomTickCallback(callback: Internal.Consumer_<any>): void;
+        getBeaconColorMultiplier(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: BlockPos_): number[];
+        stepOn(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Entity_): void;
+        getPistonPushReaction(arg0: Internal.BlockState_): Internal.PushReaction;
+        getExpDrop(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.RandomSource_, arg3: BlockPos_, arg4: number, arg5: number): number;
+        triggerEvent(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: number, arg4: number): boolean;
+        /**
+         * @deprecated
+        */
+        getExplosionResistance(): number;
+        asItem(): Internal.Item;
+        shouldDisplayFluidOverlay(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.FluidState_): boolean;
+        static dropResources(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.BlockEntity_, arg4: Internal.Entity_, arg5: Internal.ItemStack_, arg6: boolean): void;
+        getTypeData(): Internal.CompoundTag;
+        setFriction(arg0: number): void;
+        rotate(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: Internal.Rotation_): Internal.BlockState;
+        /**
+         * @deprecated
+        */
+        getRenderShape(arg0: Internal.BlockState_): Internal.RenderShape;
+        getSpeedFactor(): number;
+        getLightBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        playerDestroy(arg0: Internal.Level_, arg1: Internal.Player_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.BlockEntity_, arg5: Internal.ItemStack_): void;
+        isPossibleToRespawnInThis(arg0: Internal.BlockState_): boolean;
+        playerWillDestroy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.Player_): void;
+        mfix$setDelegate(arg0: Internal.ResourceKey_<any>, arg1: Internal.Holder$Reference_<any>): void;
+        getCloneItemStack(arg0: Internal.BlockState_, arg1: Internal.HitResult_, arg2: Internal.BlockGetter_, arg3: BlockPos_, arg4: Internal.Player_): Internal.ItemStack;
+        getClass(): typeof any;
+        getMaxVerticalOffset(): number;
+        newBlockEntity(arg0: BlockPos_, arg1: Internal.BlockState_): Internal.BlockEntity;
+        mfix$getDelegate(arg0: Internal.ResourceKey_<any>): Internal.Holder$Reference<any>;
+        getRenderPropertiesInternal(): any;
+        onCaughtFire(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Direction_, arg4: Internal.LivingEntity_): void;
+        /**
+         * @deprecated
+        */
+        getDrops(arg0: Internal.BlockState_, arg1: Internal.LootParams$Builder_): Internal.List<Internal.ItemStack>;
+        getStateDefinition(): Internal.StateDefinition<Internal.Block, Internal.BlockState>;
+        /**
+         * @deprecated
+        */
+        entityInside(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Entity_): void;
+        setBlockBuilder(b: Internal.BlockBuilder_): void;
+        initializeClient(arg0: Internal.Consumer_<Internal.IClientBlockExtensions>): void;
+        isTraversable(): boolean;
+        /**
+         * @deprecated
+        */
+        canBeReplaced(arg0: Internal.BlockState_, arg1: Internal.Fluid_): boolean;
+        getBlockStates(): Internal.List<Internal.BlockState>;
+        setRequiresTool(v: boolean): void;
+        addLandingEffects(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.LivingEntity_, arg5: number): boolean;
+        puzzleslib$setItem(arg0: Internal.Item_): void;
+        /**
+         * @deprecated
+        */
+        builtInRegistryHolder(): Internal.Holder$Reference<Internal.Block>;
+        static popResourceFromFace(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.Direction_, arg3: Internal.ItemStack_): void;
+        handlePrecipitation(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Biome$Precipitation_): void;
+        wait(arg0: number): void;
+        /**
+         * @deprecated
+        */
+        getFluidState(arg0: Internal.BlockState_): Internal.FluidState;
+        getRespawnPosition(arg0: Internal.BlockState_, arg1: Internal.EntityType_<any>, arg2: Internal.LevelReader_, arg3: BlockPos_, arg4: number, arg5: Internal.LivingEntity_): Optional<Vec3d>;
+        /**
+         * @deprecated
+        */
+        tick(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.RandomSource_): void;
+        isFertile(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
+        canBeHydrated(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.FluidState_, arg4: BlockPos_): boolean;
+        getWeakChanges(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_): boolean;
+        static dropResources(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.BlockEntity_, arg4: Internal.Entity_, arg5: Internal.ItemStack_): void;
+        /**
+         * @deprecated
+        */
+        neighborChanged(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Block_, arg4: BlockPos_, arg5: boolean): void;
+        /**
+         * @deprecated
+        */
+        getBlockSupportShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): Internal.VoxelShape;
+        /**
+         * @deprecated
+        */
+        isCollisionShapeFullBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
+        getMenuProvider(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_): Internal.MenuProvider;
+        getTicker<T extends Internal.BlockEntity>(arg0: Internal.Level_, arg1: Internal.BlockState_, arg2: Internal.BlockEntityType_<T>): Internal.BlockEntityTicker<T>;
+        static byItem(arg0: Internal.Item_): Internal.Block;
+        static updateFromNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_): Internal.BlockState;
+        /**
+         * @deprecated
+        */
+        updateIndirectNeighbourShapes(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: number, arg4: number): void;
+        destroy(arg0: Internal.LevelAccessor_, arg1: BlockPos_, arg2: Internal.BlockState_): void;
+        getFriction(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): number;
+        canConnectRedstone(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
+        /**
+         * @deprecated
+        */
+        use(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_, arg4: Internal.InteractionHand_, arg5: Internal.BlockHitResult_): Internal.InteractionResult;
+        setLightEmission(v: number): void;
+        setJumpFactor(arg0: number): void;
+        isSlimeBlock(arg0: Internal.BlockState_): boolean;
+        /**
+         * @deprecated
+        */
+        getShadeBrightness(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        /**
+         * @deprecated
+        */
+        getCollisionShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.CollisionContext_): Internal.VoxelShape;
+        defaultBlockState(): Internal.BlockState;
+        getStateForPlacement(arg0: Internal.BlockPlaceContext_): Internal.BlockState;
+        getToolModifiedState(arg0: Internal.BlockState_, arg1: Internal.UseOnContext_, arg2: Internal.ToolAction_, arg3: boolean): Internal.BlockState;
+        wait(): void;
+        getMaxHorizontalOffset(): number;
+        /**
+         * @deprecated
+        */
+        getDestroyProgress(arg0: Internal.BlockState_, arg1: Internal.Player_, arg2: Internal.BlockGetter_, arg3: BlockPos_): number;
+        makesOpenTrapdoorAboveClimbable(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.BlockState_): boolean;
+        /**
+         * @deprecated
+        */
+        updateShape(arg0: Internal.BlockState_, arg1: Internal.Direction_, arg2: Internal.BlockState_, arg3: Internal.LevelAccessor_, arg4: BlockPos_, arg5: BlockPos_): Internal.BlockState;
+        isRandomlyTicking(arg0: Internal.BlockState_): boolean;
+        static isShapeFullBlock(arg0: Internal.VoxelShape_): boolean;
+        withPropertiesOf(arg0: Internal.BlockState_): Internal.BlockState;
+        setIsRandomlyTicking(arg0: boolean): void;
+        rotate(arg0: Internal.BlockState_, arg1: Internal.Rotation_): Internal.BlockState;
+        hidesNeighborFace(arg0: Internal.BlockGetter_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.BlockState_, arg4: Internal.Direction_): boolean;
+        isScaffolding(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.LivingEntity_): boolean;
+        defaultMapColor(): Internal.MapColor;
+        getStateAtViewpoint(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Vec3d_): Internal.BlockState;
+        setNameKey(arg0: string): void;
+        static box(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number): Internal.VoxelShape;
+        getExplosionResistance(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): number;
+        updateEntityAfterFallOn(arg0: Internal.BlockGetter_, arg1: Internal.Entity_): void;
+        getLightEmission(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): number;
+        setBedOccupied(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.LivingEntity_, arg4: boolean): void;
+        arch$registryName(): ResourceLocation;
+        getBlockBuilder(): Internal.BlockBuilder;
+        getIdLocation(): ResourceLocation;
+        canDropFromExplosion(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Explosion_): boolean;
+        addRunningEffects(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Entity_): boolean;
+        /**
+         * @deprecated
+        */
+        isSignalSource(arg0: Internal.BlockState_): boolean;
+        /**
+         * @deprecated
+        */
+        onProjectileHit(arg0: Internal.Level_, arg1: Internal.BlockState_, arg2: Internal.BlockHitResult_, arg3: Internal.Projectile_): void;
+        static getDrops(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.BlockEntity_, arg4: Internal.Entity_, arg5: Internal.ItemStack_): Internal.List<Internal.ItemStack>;
+        /**
+         * @deprecated
+        */
+        isOcclusionShapeFullBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
+        static getId(arg0: Internal.BlockState_): number;
+        /**
+         * @deprecated
+        */
+        "canBeReplaced(net.minecraft.world.level.block.state.BlockState,net.minecraft.world.level.material.Fluid)"(arg0: Internal.BlockState_, arg1: Internal.Fluid_): boolean;
+        canSustainPlant(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_, arg4: Internal.IPlantable_): boolean;
+        /**
+         * @deprecated
+        */
+        isPathfindable(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.PathComputationType_): boolean;
+        setSoundType(arg0: SoundType_): void;
+        onRemove(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: boolean): void;
+        equals(arg0: any): boolean;
+        /**
+         * @deprecated
+        */
+        getOcclusionShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): Internal.VoxelShape;
+        isFlammable(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
+        collisionExtendsVertically(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Entity_): boolean;
+        /**
+         * @deprecated
+        */
+        getSoundType(arg0: Internal.BlockState_): SoundType;
+        /**
+         * @deprecated
+        */
+        randomTick(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.RandomSource_): void;
+        static dropResources(arg0: Internal.BlockState_, arg1: Internal.LevelAccessor_, arg2: BlockPos_, arg3: Internal.BlockEntity_): void;
+        static canSupportRigidBlock(arg0: Internal.BlockGetter_, arg1: BlockPos_): boolean;
+        isStickyBlock(arg0: Internal.BlockState_): boolean;
+        getDescriptionId(): string;
+        onBlockExploded(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Explosion_): void;
+        fallOn(arg0: Internal.Level_, arg1: Internal.BlockState_, arg2: BlockPos_, arg3: Internal.Entity_, arg4: number): void;
+        canEntityDestroy(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Entity_): boolean;
+        getJumpFactor(): number;
+        isValidSpawn(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.SpawnPlacements$Type_, arg4: Internal.EntityType_<any>): boolean;
+        getFlammability(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): number;
+        static canSupportCenter(arg0: Internal.LevelReader_, arg1: BlockPos_, arg2: Internal.Direction_): boolean;
+        /**
+         * @deprecated
+        */
+        skipRendering(arg0: Internal.BlockState_, arg1: Internal.BlockState_, arg2: Internal.Direction_): boolean;
+        /**
+         * @deprecated
+        */
+        getDirectSignal(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): number;
+        getProperties(): Internal.BlockBehaviour$Properties;
+        isLadder(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.LivingEntity_): boolean;
+        onDestroyedByPlayer(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_, arg4: boolean, arg5: Internal.FluidState_): boolean;
+        /**
+         * @deprecated
+        */
+        "canBeReplaced(net.minecraft.world.level.block.state.BlockState,net.minecraft.world.item.context.BlockPlaceContext)"(arg0: Internal.BlockState_, arg1: Internal.BlockPlaceContext_): boolean;
+        getMapColor(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.MapColor_): Internal.MapColor;
+        isPortalFrame(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
+        /**
+         * @deprecated
+        */
+        useShapeForLightOcclusion(arg0: Internal.BlockState_): boolean;
+        getBedDirection(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_): Internal.Direction;
+        setSpeedFactor(arg0: number): void;
+        setExplosionResistance(arg0: number): void;
+        getEnchantPowerBonus(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_): number;
+        toString(): string;
+        notifyAll(): void;
+        getId(): string;
+        getLootTable(): ResourceLocation;
+        /**
+         * @deprecated
+        */
+        getInteractionShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): Internal.VoxelShape;
+        propagatesSkylightDown(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
+        setPlacedBy(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.LivingEntity_, arg4: Internal.ItemStack_): void;
+        /**
+         * @deprecated
+        */
+        onPlace(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: boolean): void;
+        getFriction(): number;
+        hasAnalogOutputSignal(arg0: Internal.BlockState_): boolean;
+        getSoundType(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Entity_): SoundType;
+        getAnalogOutputSignal(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_): number;
+        supportsExternalFaceHiding(arg0: Internal.BlockState_): boolean;
+        notify(): void;
+        onBlockStateChange(arg0: Internal.LevelReader_, arg1: BlockPos_, arg2: Internal.BlockState_, arg3: Internal.BlockState_): void;
+        static isFaceFull(arg0: Internal.VoxelShape_, arg1: Internal.Direction_): boolean;
+        isFireSource(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
+        /**
+         * @deprecated
+        */
+        canSurvive(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_): boolean;
+        static dropResources(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_): void;
+        getAppearance(arg0: Internal.BlockState_, arg1: Internal.BlockAndTintGetter_, arg2: BlockPos_, arg3: Internal.Direction_, arg4: Internal.BlockState_, arg5: BlockPos_): Internal.BlockState;
+        setDestroySpeed(v: number): void;
+        canHarvestBlock(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Player_): boolean;
+        shouldCheckWeakPower(arg0: Internal.BlockState_, arg1: Internal.SignalGetter_, arg2: BlockPos_, arg3: Internal.Direction_): boolean;
+        getListener<T extends Internal.BlockEntity>(arg0: Internal.ServerLevel_, arg1: T): Internal.GameEventListener;
+        arch$holder(): Internal.Holder<Internal.Block>;
+        /**
+         * @deprecated
+        */
+        getCloneItemStack(arg0: Internal.BlockGetter_, arg1: BlockPos_, arg2: Internal.BlockState_): Internal.ItemStack;
+        hasDynamicShape(): boolean;
+        /**
+         * @deprecated
+        */
+        getSeed(arg0: Internal.BlockState_, arg1: BlockPos_): number;
+        defaultDestroyTime(): number;
+        getBlockPathType(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Mob_): Internal.BlockPathTypes;
+        /**
+         * @deprecated
+        */
+        dropFromExplosion(arg0: Internal.Explosion_): boolean;
+        onNeighborChange(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: BlockPos_): void;
+        static isExceptionForConnection(arg0: Internal.BlockState_): boolean;
+        onTreeGrow(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: Internal.BiConsumer_<BlockPos, Internal.BlockState>, arg3: Internal.RandomSource_, arg4: BlockPos_, arg5: Internal.TreeConfiguration_): boolean;
+        wait(arg0: number, arg1: number): void;
+        appendHoverText(arg0: Internal.ItemStack_, arg1: Internal.BlockGetter_, arg2: Internal.List_<net.minecraft.network.chat.Component>, arg3: Internal.TooltipFlag_): void;
+        mirror(arg0: Internal.BlockState_, arg1: Internal.Mirror_): Internal.BlockState;
+        isBed(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Entity_): boolean;
+        wasExploded(arg0: Internal.Level_, arg1: BlockPos_, arg2: Internal.Explosion_): void;
+        getName(): Internal.MutableComponent;
+        canStickTo(arg0: Internal.BlockState_, arg1: Internal.BlockState_): boolean;
+        animateTick(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.RandomSource_): void;
+        getFireSpreadSpeed(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_): number;
+        getMod(): string;
+        getAdjacentBlockPathType(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Mob_, arg4: Internal.BlockPathTypes_): Internal.BlockPathTypes;
+        /**
+         * @deprecated
+        */
+        canBeReplaced(arg0: Internal.BlockState_, arg1: Internal.BlockPlaceContext_): boolean;
+        isConduitFrame(arg0: Internal.BlockState_, arg1: Internal.LevelReader_, arg2: BlockPos_, arg3: BlockPos_): boolean;
+        static updateOrDestroy(arg0: Internal.BlockState_, arg1: Internal.BlockState_, arg2: Internal.LevelAccessor_, arg3: BlockPos_, arg4: number): void;
+        /**
+         * @deprecated
+        */
+        attack(arg0: Internal.BlockState_, arg1: Internal.Level_, arg2: BlockPos_, arg3: Internal.Player_): void;
+        getShape(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.CollisionContext_): Internal.VoxelShape;
+        static stateById(arg0: number): Internal.BlockState;
+        requiredFeatures(): Internal.FeatureFlagSet;
+        hashCode(): number;
+        popExperience(arg0: Internal.ServerLevel_, arg1: BlockPos_, arg2: number): void;
+        static pushEntitiesUp(arg0: Internal.BlockState_, arg1: Internal.BlockState_, arg2: Internal.LevelAccessor_, arg3: BlockPos_): Internal.BlockState;
+        static getDrops(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.BlockEntity_): Internal.List<Internal.ItemStack>;
+        isBurning(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_): boolean;
+        setHasCollision(arg0: boolean): void;
+        static shouldRenderFace(arg0: Internal.BlockState_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.Direction_, arg4: BlockPos_): boolean;
+        /**
+         * @deprecated
+        */
+        spawnAfterBreak(arg0: Internal.BlockState_, arg1: Internal.ServerLevel_, arg2: BlockPos_, arg3: Internal.ItemStack_, arg4: boolean): void;
+        set randomTickCallback(callback: Internal.Consumer_<any>)
+        /**
+         * @deprecated
+        */
+        get explosionResistance(): number
+        get typeData(): Internal.CompoundTag
+        set friction(arg0: number)
+        get speedFactor(): number
+        get class(): typeof any
+        get maxVerticalOffset(): number
+        get renderPropertiesInternal(): any
+        get stateDefinition(): Internal.StateDefinition<Internal.Block, Internal.BlockState>
+        set blockBuilder(b: Internal.BlockBuilder_)
+        get traversable(): boolean
+        get blockStates(): Internal.List<Internal.BlockState>
+        set requiresTool(v: boolean)
+        set lightEmission(v: number)
+        set jumpFactor(arg0: number)
+        get maxHorizontalOffset(): number
+        set isRandomlyTicking(arg0: boolean)
+        set nameKey(arg0: string)
+        get blockBuilder(): Internal.BlockBuilder
+        get idLocation(): ResourceLocation
+        set soundType(arg0: SoundType_)
+        get descriptionId(): string
+        get jumpFactor(): number
+        get properties(): Internal.BlockBehaviour$Properties
+        set speedFactor(arg0: number)
+        set explosionResistance(arg0: number)
+        get id(): string
+        get lootTable(): ResourceLocation
+        get friction(): number
+        set destroySpeed(v: number)
+        get name(): Internal.MutableComponent
+        get mod(): string
+        set hasCollision(arg0: boolean)
+        static readonly FACING: (Internal.DirectionProperty) & (Internal.DirectionProperty);
+        static readonly BLOCKSTATE: (Internal.IntegerProperty) & (Internal.IntegerProperty);
+    }
+    type AcaciabutcherdisplayBlock_ = AcaciabutcherdisplayBlock;
+    class ListTag extends Internal.CollectionTag<Internal.Tag> {
+        constructor()
+        constructor(arg0: Internal.List_<Internal.Tag>, arg1: number)
+        static of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E): Internal.List<E>;
+        "set(int,java.lang.Object)"(arg0: number, arg1: any): any;
+        getDouble(arg0: number): number;
+        static copyOf<E>(arg0: Internal.Collection_<E>): Internal.List<E>;
+        "add(int,java.lang.Object)"(arg0: number, arg1: any): void;
+        addAll(arg0: number, arg1: Internal.Collection_<Internal.Tag>): boolean;
+        static of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E): Internal.List<E>;
+        abstract addAll(arg0: Internal.Collection_<Internal.Tag>): boolean;
+        "accept(net.minecraft.nbt.StreamTagVisitor)"(arg0: Internal.StreamTagVisitor_): Internal.StreamTagVisitor$ValueResult;
+        notify(): void;
+        "remove(int)"(arg0: number): any;
+        add(arg0: number, arg1: any): void;
+        sizeInBytes(): number;
+        static of<E>(arg0: E): Internal.List<E>;
+        static of<E>(): Internal.List<E>;
+        setTag(arg0: number, arg1: Internal.Tag_): boolean;
+        abstract retainAll(arg0: Internal.Collection_<any>): boolean;
+        getFloat(arg0: number): number;
+        iterator(): Internal.Iterator<Internal.Tag>;
+        toArray<T>(arg0: Internal.IntFunction_<T[]>): T[];
+        getIntArray(arg0: number): number[];
+        getLongArray(arg0: number): number[];
+        write(arg0: Internal.DataOutput_): void;
+        sort(arg0: Comparator_<Internal.Tag>): void;
+        stream(): Internal.Stream<Internal.Tag>;
+        getString(arg0: number): string;
+        spliterator(): Internal.Spliterator<Internal.Tag>;
+        subList(arg0: number, arg1: number): Internal.List<Internal.Tag>;
+        replaceAll(arg0: Internal.UnaryOperator_<Internal.Tag>): void;
+        static of<E>(arg0: E, arg1: E, arg2: E): Internal.List<E>;
+        indexOf(arg0: any): number;
+        forEach(arg0: Internal.Consumer_<Internal.Tag>): void;
+        abstract toArray<T>(arg0: T[]): T[];
+        abstract remove(arg0: any): boolean;
+        abstract "remove(java.lang.Object)"(arg0: any): boolean;
+        add(arg0: number, arg1: Internal.Tag_): void;
+        accept(arg0: Internal.TagVisitor_): void;
+        add(arg0: any): boolean;
+        parallelStream(): Internal.Stream<Internal.Tag>;
+        static of<E>(arg0: E, arg1: E): Internal.List<E>;
+        abstract removeAll(arg0: Internal.Collection_<any>): boolean;
+        removeIf(arg0: Internal.Predicate_<Internal.Tag>): boolean;
+        copy(): Internal.Tag;
+        wait(): void;
+        static of<E>(arg0: E, arg1: E, arg2: E, arg3: E): Internal.List<E>;
+        accept(arg0: Internal.StreamTagVisitor_): Internal.StreamTagVisitor$ValueResult;
+        listIterator(): Internal.ListIterator<Internal.Tag>;
+        static "of(java.lang.Object[])"<E>(...arg0: E[]): Internal.List<E>;
+        set(arg0: number, arg1: any): any;
+        getElementType(): number;
+        lastIndexOf(arg0: any): number;
+        getClass(): typeof any;
+        add(arg0: Internal.Tag_): boolean;
+        remove(arg0: number): any;
+        get(arg0: number): Internal.Tag;
+        set(arg0: number, arg1: Internal.Tag_): Internal.Tag;
+        static of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E): Internal.List<E>;
+        addTag(arg0: number, arg1: Internal.Tag_): boolean;
+        isEmpty(): boolean;
+        getCompound(arg0: number): Internal.CompoundTag;
+        "add(java.lang.Object)"(arg0: any): boolean;
+        wait(arg0: number, arg1: number): void;
+        "accept(net.minecraft.nbt.TagVisitor)"(arg0: Internal.TagVisitor_): void;
+        getShort(arg0: number): number;
+        static of<E>(...arg0: E[]): Internal.List<E>;
+        abstract containsAll(arg0: Internal.Collection_<any>): boolean;
+        acceptAsRoot(arg0: Internal.StreamTagVisitor_): void;
+        getList(arg0: number): this;
+        getInt(arg0: number): number;
+        getId(): number;
+        "set(int,net.minecraft.nbt.Tag)"(arg0: number, arg1: Internal.Tag_): Internal.Tag;
+        abstract contains(arg0: any): boolean;
+        static of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E): Internal.List<E>;
+        static "of(java.lang.Object)"<E>(arg0: E): Internal.List<E>;
+        getType(): Internal.TagType<Internal.ListTag>;
+        toString(): string;
+        listIterator(arg0: number): Internal.ListIterator<Internal.Tag>;
+        notifyAll(): void;
+        "add(net.minecraft.nbt.Tag)"(arg0: Internal.Tag_): boolean;
+        abstract "toArray(java.lang.Object[])"<T>(arg0: T[]): T[];
+        static of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E): Internal.List<E>;
+        "toArray(java.util.function.IntFunction)"<T>(arg0: Internal.IntFunction_<T[]>): T[];
+        static of<E>(arg0: E, arg1: E, arg2: E, arg3: E, arg4: E, arg5: E, arg6: E, arg7: E, arg8: E, arg9: E): Internal.List<E>;
+        abstract toArray(): any[];
+        "add(int,net.minecraft.nbt.Tag)"(arg0: number, arg1: Internal.Tag_): void;
+        hashCode(): number;
+        size(): number;
+        getAsString(): string;
+        clear(): void;
+        wait(arg0: number): void;
+        equals(arg0: any): boolean;
+        get elementType(): number
+        get class(): typeof any
+        get empty(): boolean
+        get id(): number
+        get type(): Internal.TagType<Internal.ListTag>
+        get asString(): string
+        static readonly TYPE: Internal.TagType<Internal.ListTag>;
+    }
+    type ListTag_ = ListTag;
+    class GlowSquid extends Internal.Squid {
+        constructor(arg0: Internal.EntityType_<Internal.GlowSquid>, arg1: Internal.Level_)
+        getKnockBackStrength(): number;
+        etf$getType(): Internal.EntityType<any>;
+        getUpVector(arg0: number): Vec3d;
+        gameEvent(arg0: Internal.GameEvent_, arg1: Internal.Entity_): void;
+        static checkMobSpawnRules(arg0: Internal.EntityType_<Internal.Mob>, arg1: Internal.LevelAccessor_, arg2: Internal.MobSpawnType_, arg3: BlockPos_, arg4: Internal.RandomSource_): boolean;
+        setDefaultMovementSpeedMultiplier(speed: number): void;
+        isSuppressingBounce(): boolean;
+        setTarget(arg0: Internal.LivingEntity_): void;
+        etf$getOptifineVehicleId(): number;
+        setCulled(value: boolean): void;
+        isOnFire(): boolean;
+        getPositionCodec(): Internal.VecDeltaCodec;
+        getPickedResult(arg0: Internal.HitResult_): Internal.ItemStack;
+        /**
+         * @deprecated
+        */
+        updateFluidHeightAndDoFluidPushing(arg0: Internal.TagKey_<Internal.Fluid>, arg1: number): boolean;
+        setMaxUpStep(arg0: number): void;
+        convertTo<T extends Internal.Mob>(arg0: Internal.EntityType_<T>, arg1: boolean): T;
+        getFallFlyingTicks(): number;
+        runCommandSilent(command: string): number;
+        setPosition(x: number, y: number, z: number): void;
+        chunkPosition(): Internal.ChunkPos;
+        emf$isOnGround(): boolean;
+        dropLeash(arg0: boolean, arg1: boolean): void;
+        gameEvent(arg0: Internal.GameEvent_): void;
+        setXxa(arg0: number): void;
+        setDelayedLeashHolderId(arg0: number): void;
+        isShiftKeyDown(): boolean;
+        isInFluidType(arg0: Internal.FluidState_): boolean;
+        setUUID(arg0: Internal.UUID_): void;
+        checkBelowWorld(): void;
+        setMotionZ(z: number): void;
+        "deserializeNBT(net.minecraft.nbt.Tag)"(arg0: Internal.Tag_): void;
+        canFreeze(): boolean;
+        ignoreExplosion(): boolean;
+        getBlockY(): number;
+        transition$setRawPosition(arg0: Vec3d_): void;
+        isSpectator(): boolean;
+        setMainHandItem(item: Internal.ItemStack_): void;
+        removeEffectNoUpdate(arg0: Internal.MobEffect_): Internal.MobEffectInstance;
+        spawnAtLocation(arg0: Internal.ItemLike_, arg1: number): Internal.ItemEntity;
+        getPersistentData(): Internal.CompoundTag;
+        getHealth(): number;
+        getMaxHealth(): number;
+        emf$isGlowing(): boolean;
+        setPathfindingMalus(arg0: Internal.BlockPathTypes_, arg1: number): void;
+        getRandomZ(arg0: number): number;
+        setAggressive(arg0: boolean): void;
+        getFusionModel(layerIndex: number): Internal.Triple<any, any, any>;
+        setRemoved(arg0: Internal.Entity$RemovalReason_): void;
+        isInWaterRainOrBubble(): boolean;
+        getDistanceSq(arg0: number, arg1: number, arg2: number): number;
+        getRemovalReason(): Internal.Entity$RemovalReason;
+        etf$getVelocity(): Vec3d;
+        setEc$BoundingBox(ec$BoundingBox: Internal.AABB_): void;
+        getIndirectPassengers(): Internal.Iterable<Internal.Entity>;
+        resetFallDistance(): void;
+        canSprint(): boolean;
+        blockPosition(): BlockPos;
+        setBoundingBox(arg0: Internal.AABB_): void;
+        isAmbientCreature(): boolean;
+        setZza(arg0: number): void;
+        getBlock(): Internal.BlockContainerJS;
+        setEquipment(slot: Internal.EquipmentSlot_, item: Internal.ItemStack_): void;
+        etf$getHandItems(): Internal.Iterable<any>;
+        invalidateCaps(): void;
+        randomTeleport(arg0: number, arg1: number, arg2: number, arg3: boolean): boolean;
+        getName(): net.minecraft.network.chat.Component;
+        playAmbientSound(): void;
+        onGround(): boolean;
+        getControlledVehicle(): Internal.Entity;
+        isOnSameTeam(arg0: Internal.Entity_): boolean;
+        getArmorValue(): number;
+        isInFluidType(arg0: Internal.BiPredicate_<Internal.FluidType, number>): boolean;
+        tick(): void;
+        getKillCredit(): Internal.LivingEntity;
+        etf$getETFRenderState(): Internal.ETFEntityRenderState;
+        emf$isTouchingWater(): boolean;
+        isPushedByFluid(arg0: Internal.FluidType_): boolean;
+        sinkInFluid(arg0: Internal.FluidType_): void;
+        hasPermissions(arg0: number): boolean;
+        teleportTo(dimension: ResourceLocation_, x: number, y: number, z: number, yaw: number, pitch: number): void;
+        setOutOfCamera(value: boolean): void;
+        static createMobAttributes(): Internal.AttributeSupplier$Builder;
+        isAutoSpinAttack(): boolean;
+        getRemainingFireTicks(): number;
+        onlyOpCanSetNbt(): boolean;
+        fireImmune(): boolean;
+        addMotion(arg0: number, arg1: number, arg2: number): void;
+        hasMovementVector(): boolean;
+        getMaxFallDistance(): number;
+        isHolding(arg0: Internal.Item_): boolean;
+        getZ(arg0: number): number;
+        hasCustomOutlineRendering(arg0: Internal.Player_): boolean;
+        static areAllEffectsAmbient(arg0: Internal.Collection_<Internal.MobEffectInstance>): boolean;
+        doHurtTarget(arg0: Internal.Entity_): boolean;
+        getTicksFrozen(): number;
+        getRandomX(arg0: number): number;
+        getWasEyeInWater(): boolean;
+        spawnAtLocation(arg0: Internal.ItemStack_, arg1: number): Internal.ItemEntity;
+        pick(arg0: number, arg1: number, arg2: boolean): Internal.HitResult;
+        getVoicePitch(): number;
+        setStatusMessage(message: net.minecraft.network.chat.Component_): void;
+        setSleepingPos(arg0: BlockPos_): void;
+        isDescending(): boolean;
+        getAttributeBaseValue(arg0: Internal.Attribute_): number;
+        emf$getPitch(): number;
+        sendEffectToPassengers(arg0: Internal.MobEffectInstance_): void;
+        getHeadRotSpeed(): number;
+        getYHeadRot(): number;
+        getProjectile(arg0: Internal.ItemStack_): Internal.ItemStack;
+        getCacheProperty(): Internal.AttachmentCacheProperty;
+        damageEquipment(slot: Internal.EquipmentSlot_, amount: number, onBroken: Internal.Consumer_<Internal.ItemStack>): void;
+        syncPacketPositionCodec(arg0: number, arg1: number, arg2: number): void;
+        setAbsorptionAmount(arg0: number): void;
+        shouldRenderAtSqrDistance(arg0: number): boolean;
+        damageSources(): Internal.DamageSources;
+        removeAllGoals(arg0: Internal.Predicate_<Internal.Goal>): void;
+        swing(): void;
+        recreateFromPacket(arg0: Internal.ClientboundAddEntityPacket_): void;
+        canStartSwimming(): boolean;
+        setDeltaMovement(arg0: Vec3d_): void;
+        getLeashOffset(arg0: number): Vec3d;
+        isBaby(): boolean;
+        isCulled(): boolean;
+        damageEquipment(slot: Internal.EquipmentSlot_): void;
+        isGlowing(): boolean;
+        "isInFluidType(net.minecraft.world.level.material.FluidState)"(arg0: Internal.FluidState_): boolean;
+        canBreatheUnderwater(): boolean;
+        getWalkTargetValue(arg0: BlockPos_): number;
+        die(arg0: DamageSource_): void;
+        etf$getOptifineId(): number;
+        removeAllEffects(): boolean;
+        getLeashOffset(): Vec3d;
+        hasLineOfSight(arg0: Internal.Entity_): boolean;
+        onClimbable(): boolean;
+        isAttackable(): boolean;
+        getStepGenerator(engine: eu.ha3.presencefootsteps.sound.SoundEngine_): Optional<any>;
+        getSlot(arg0: number): Internal.SlotAccess;
+        "deserializeNBT(net.minecraft.nbt.CompoundTag)"(arg0: Internal.CompoundTag_): void;
+        emf$isInLava(): boolean;
+        stopSeenByPlayer(arg0: Internal.ServerPlayer_): void;
+        isUnderWater(): boolean;
+        stopRiding(): void;
+        getLeashHolder(): Internal.Entity;
+        getX(arg0: number): number;
+        getSensing(): Internal.Sensing;
+        getLegsArmorItem(): Internal.ItemStack;
+        captureDrops(arg0: Internal.Collection_<Internal.ItemEntity>): Internal.Collection<Internal.ItemEntity>;
+        rayTrace(distance: number): Internal.RayTraceResultJS;
+        getDeltaMovement(): Vec3d;
+        canTakeItem(arg0: Internal.ItemStack_): boolean;
+        shouldDropExperience(): boolean;
+        hasPassenger(arg0: Internal.Entity_): boolean;
+        setSecondsOnFire(arg0: number): void;
+        setMovementVector(arg0: number, arg1: number, arg2: number): void;
+        moveTo(arg0: number, arg1: number, arg2: number): void;
+        emf$getZ(): number;
+        "getDisplayName()"(): net.minecraft.network.chat.Component;
+        getLootTable(): ResourceLocation;
+        getTicksUsingItem(): number;
+        getArrowCount(): number;
+        getMoveControl(): Internal.MoveControl;
+        setMotion(arg0: number, arg1: number, arg2: number): void;
+        playSound(arg0: Internal.SoundEvent_): void;
+        getDefaultMovementSpeed(): number;
+        restoreFrom(arg0: Internal.Entity_): void;
+        entityCulling$getRawPosition(): Vec3d;
+        isPeacefulCreature(): boolean;
+        setOnGround(arg0: boolean): void;
+        addEffect(arg0: Internal.MobEffectInstance_, arg1: Internal.Entity_): boolean;
+        emf$getYaw(): number;
+        ate(): void;
+        setPos(arg0: number, arg1: number, arg2: number): void;
+        notify(): void;
+        setPersistenceRequired(): void;
+        getLastHurtByMobTimestamp(): number;
+        getVehicle(): Internal.Entity;
+        isEffectiveAi(): boolean;
+        startRiding(arg0: Internal.Entity_, arg1: boolean): boolean;
+        setSpawnCancelled(arg0: boolean): void;
+        getStringUuid(): string;
+        setSwimming(arg0: boolean): void;
+        canHydrateInFluidType(arg0: Internal.FluidType_): boolean;
+        getMainArm(): Internal.HumanoidArm;
+        setEc$PBlockPos(ec$PBlockPos: BlockPos_): void;
+        checkSpawnRules(arg0: Internal.LevelAccessor_, arg1: Internal.MobSpawnType_): boolean;
+        getRotationVector(): Internal.Vec2;
+        abstract sdl$getDynamicLightY(): number;
+        getHurtDir(): number;
+        isSprinting(): boolean;
+        etf$getBlockY(): number;
+        isMaxGroupSizeReached(arg0: number): boolean;
+        getMotionY(): number;
+        resetKnockBackStrength(): void;
+        getOffhandItem(): Internal.ItemStack;
+        canCollideWith(arg0: Internal.Entity_): boolean;
+        getBlockExplosionResistance(arg0: Internal.Explosion_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: Internal.FluidState_, arg5: number): number;
+        getFluidFallDistanceModifier(arg0: Internal.FluidType_): number;
+        clearSleepingPos(): void;
+        canSpawnSprintParticle(): boolean;
+        "moveTo(net.minecraft.core.BlockPos,float,float)"(arg0: BlockPos_, arg1: number, arg2: number): void;
+        getLastHurtMob(): Internal.LivingEntity;
+        getSelfAndPassengers(): Internal.Stream<Internal.Entity>;
+        moveRelative(arg0: number, arg1: Vec3d_): void;
+        isAddedToWorld(): boolean;
+        saveAsPassenger(arg0: Internal.CompoundTag_): boolean;
+        getLastDamageSource(): DamageSource;
+        getSoundSource(): Internal.SoundSource;
+        isJumping(): boolean;
+        setNoActionTime(arg0: number): void;
+        setMovementSpeedAddition(speed: number): void;
+        equipmentHasChanged(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        getPose(): Internal.Pose;
+        getAttribute(arg0: Internal.Attribute_): Internal.AttributeInstance;
+        setPositionAndRotation(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
+        canBeAffected(arg0: Internal.MobEffectInstance_): boolean;
+        getRestrictCenter(): BlockPos;
+        isLeftHanded(): boolean;
+        etf$getUuid(): Internal.UUID;
+        removeVehicle(): void;
+        shouldFusionRecomputeModel(layerIndex: number): boolean;
+        setZ(z: number): void;
+        getY(): number;
+        hashCode(): number;
+        deserializeNBT(arg0: Internal.CompoundTag_): void;
+        eat(arg0: Internal.Level_, arg1: Internal.ItemStack_): Internal.ItemStack;
+        isWithinMeleeAttackRange(arg0: Internal.LivingEntity_): boolean;
+        broadcastBreakEvent(arg0: Internal.EquipmentSlot_): void;
+        showVehicleHealth(): boolean;
+        getDistance(pos: BlockPos_): number;
+        isBlocking(): boolean;
+        damageHeldItem(hand: Internal.InteractionHand_, amount: number): void;
+        removeAttribute(attribute: Internal.Attribute_, identifier: string): void;
+        emf$getVelocity(): Vec3d;
+        etf$isBlockEntity(): boolean;
+        isPushedByFluid(): boolean;
+        getArmorCoverPercentage(): number;
+        handleRelativeFrictionAndCalculateMovement(arg0: Vec3d_, arg1: number): Vec3d;
+        turn(arg0: number, arg1: number): void;
+        getAirSupply(): number;
+        moveTo(arg0: BlockPos_, arg1: number, arg2: number): void;
+        isPlayer(): boolean;
+        isAnimal(): boolean;
+        readAdditionalSaveData(arg0: Internal.CompoundTag_): void;
+        canBeCollidedWith(): boolean;
+        getMotionDirection(): Internal.Direction;
+        sdl$isDynamicLightEnabled(): boolean;
+        lavaHurt(): void;
+        handleDamageEvent(arg0: DamageSource_): void;
+        getFabricBalmData(): Internal.CompoundTag;
+        canChangeDimensions(): boolean;
+        jumpInFluid(arg0: Internal.FluidType_): void;
+        getCommandSenderWorld(): Internal.Level;
+        getTotalMovementSpeed(): number;
+        changeDimension(arg0: Internal.ServerLevel_): Internal.Entity;
+        moveInFluid(arg0: Internal.FluidState_, arg1: Vec3d_, arg2: number): boolean;
+        updatingUsingItem(): void;
+        bolt(): void;
+        attack(hp: number): void;
+        canSwimInFluidType(arg0: Internal.FluidType_): boolean;
+        getAttributes(): Internal.AttributeMap;
+        isSpawnCancelled(): boolean;
+        "hasPassenger(java.util.function.Predicate)"(arg0: Internal.Predicate_<Internal.Entity>): boolean;
+        getDimensions(arg0: Internal.Pose_): Internal.EntityDimensions;
+        abstract sdl$getDynamicLightX(): number;
+        isSwimming(): boolean;
+        setSprinting(arg0: boolean): void;
+        mayInteract(arg0: Internal.Level_, arg1: BlockPos_): boolean;
+        reload(): void;
+        setPortalCooldown(): void;
+        getAttackAnim(arg0: number): number;
+        setX(x: number): void;
+        getPortalWaitTime(): number;
+        getBlockStateOn(): Internal.BlockState;
+        getItemBySlot(arg0: Internal.EquipmentSlot_): Internal.ItemStack;
+        wantsToPickUp(arg0: Internal.ItemStack_): boolean;
+        setStuckInLeaves(arg0: boolean): void;
+        getFluidJumpThreshold(): number;
+        emf$getVariableMap(): Internal.Map<any, any>;
+        "setPositionAndRotation(double,double,double,float,float)"(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
+        isInvisibleTo(arg0: Internal.Player_): boolean;
+        stopSleeping(): void;
+        setAirSupply(arg0: number): void;
+        getOnPos(): BlockPos;
+        etf$getWorld(): Internal.Level;
+        redirect$ddl000$fixSpawnAnimX(instance: Internal.Mob_, v: number): number;
+        isUndead(): boolean;
+        static createLivingAttributes(): Internal.AttributeSupplier$Builder;
+        getBlockPosBelowThatAffectsMyMovement(): BlockPos;
+        getNextStepDistance(): number;
+        getStepHeight(): number;
+        isSleeping(): boolean;
+        stopUsingItem(): void;
+        etf$getNbt(): Internal.CompoundTag;
+        acceptsFailure(): boolean;
+        etf$getBlockPos(): BlockPos;
+        setOnGroundWithKnownMovement(arg0: boolean, arg1: Vec3d_): void;
+        getFluidFallingAdjustedMovement(arg0: number, arg1: boolean, arg2: Vec3d_): Vec3d;
+        setOldPosAndRot(): void;
+        getArmorBonus(): number;
+        isFree(arg0: number, arg1: number, arg2: number): boolean;
+        getDismountPoses(): Internal.ImmutableList<Internal.Pose>;
+        getLastHurtMobTimestamp(): number;
+        "moveTo(double,double,double)"(arg0: number, arg1: number, arg2: number): void;
+        setRemainingFireTicks(arg0: number): void;
+        emf$age(): number;
+        etf$hasCustomName(): boolean;
+        /**
+         * @deprecated
+        */
+        getOnPosLegacy(): BlockPos;
+        setPos(arg0: Vec3d_): void;
+        damageHeldItem(hand: Internal.InteractionHand_, amount: number, onBroken: Internal.Consumer_<Internal.ItemStack>): void;
+        setCanPickUpLoot(arg0: boolean): void;
+        getMainHandItem(): Internal.ItemStack;
+        areCapsCompatible(arg0: Internal.CapabilityDispatcher_): boolean;
+        setSilent(arg0: boolean): void;
+        captureDrops(): Internal.Collection<Internal.ItemEntity>;
+        hasExactlyOnePlayerPassenger(): boolean;
+        canBeSeenAsEnemy(): boolean;
+        setLeftHanded(arg0: boolean): void;
+        getActiveEffects(): Internal.Collection<Internal.MobEffectInstance>;
+        isOnPortalCooldown(): boolean;
+        canAttack(arg0: Internal.LivingEntity_, arg1: Internal.TargetingConditions_): boolean;
+        getAttributeValue(arg0: Internal.Holder_<Internal.Attribute>): number;
+        setPitch(arg0: number): void;
+        isMultipartEntity(): boolean;
+        setPosRaw(arg0: number, arg1: number, arg2: number): void;
+        handleEntityEvent(arg0: number): void;
+        getParts(): Internal.PartEntity<any>[];
+        isUsingItem(): boolean;
+        isAlwaysTicking(): boolean;
+        interactAt(arg0: Internal.Player_, arg1: Vec3d_, arg2: Internal.InteractionHand_): Internal.InteractionResult;
+        emf$getX(): number;
+        lerpTo(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number, arg6: boolean): void;
+        onPassengerTurned(arg0: Internal.Entity_): void;
+        spawnAtLocation(arg0: Internal.ItemLike_): Internal.ItemEntity;
+        emf$hasPassengers(): boolean;
+        cancelReload(): void;
+        getSynAimingProgress(): number;
+        getForgePersistentData(): Internal.CompoundTag;
+        "spawnAtLocation(net.minecraft.world.level.ItemLike,int)"(arg0: Internal.ItemLike_, arg1: number): Internal.ItemEntity;
+        setInvulnerable(arg0: boolean): void;
+        push(arg0: Internal.Entity_): void;
+        isInFluidType(): boolean;
+        emf$hasVehicle(): boolean;
+        maxUpStep(): number;
+        setGlowing(arg0: boolean): void;
+        load(arg0: Internal.CompoundTag_): void;
+        "broadcastBreakEvent(net.minecraft.world.entity.EquipmentSlot)"(arg0: Internal.EquipmentSlot_): void;
+        setLeashedTo(arg0: Internal.Entity_, arg1: boolean): void;
+        isAlive(): boolean;
+        startSleeping(arg0: BlockPos_): void;
+        getBbHeight(): number;
+        getMeleeAttackRangeSqr(arg0: Internal.LivingEntity_): number;
+        getTags(): Internal.Set<string>;
+        getViewVector(arg0: number): Vec3d;
+        getLastAttacker(): Internal.LivingEntity;
+        hasControllingPassenger(): boolean;
+        closerThan(arg0: Internal.Entity_, arg1: number, arg2: number): boolean;
+        absMoveTo(arg0: number, arg1: number, arg2: number, arg3: number, arg4: number): void;
+        onPathfindingStart(): void;
+        getPercentFrozen(): number;
+        setPortalCooldown(arg0: number): void;
+        hasGlowingTag(): boolean;
+        shouldBlockExplode(arg0: Internal.Explosion_, arg1: Internal.BlockGetter_, arg2: BlockPos_, arg3: Internal.BlockState_, arg4: number): boolean;
+        emf$isInvisible(): boolean;
+        setPosition(block: Internal.BlockContainerJS_): void;
+        isLeashed(): boolean;
+        addEffect(arg0: Internal.MobEffectInstance_): boolean;
+        emf$isSprinting(): boolean;
+        getSynIsBolting(): boolean;
+        getViewXRot(arg0: number): number;
+        canRiderInteract(): boolean;
+        setPose(arg0: Internal.Pose_): void;
+        aim(arg0: boolean): void;
+        getReachDistance(): number;
+        static collideBoundingBox(arg0: Internal.Entity_, arg1: Vec3d_, arg2: Internal.AABB_, arg3: Internal.Level_, arg4: Internal.List_<Internal.VoxelShape>): Vec3d;
+        getEntityType(): Internal.EntityType<any>;
+        isWaterCreature(): boolean;
+        toString(): string;
+        etf$getScoreboardTeam(): Internal.Team;
+        handler$bnm000$Entity_load(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfo_): void;
+        setLastHurtByPlayer(arg0: Internal.Player_): void;
+        "getServer()"(): Internal.MinecraftServer;
+        wasExperienceConsumed(): boolean;
+        isPushable(): boolean;
+        setYBodyRot(arg0: number): void;
+        foodEaten(is: Internal.ItemStack_): void;
+        onClientRemoval(): void;
+        self(): Internal.LivingEntity;
+        reviveCaps(): void;
+        getDistance(x: number, y: number, z: number): number;
+        setMotionY(y: number): void;
+        static createAttributes(): Internal.AttributeSupplier$Builder;
+        setRotation(yaw: number, pitch: number): void;
+        static checkSurfaceWaterAnimalSpawnRules(arg0: Internal.EntityType_<Internal.WaterAnimal>, arg1: Internal.LevelAccessor_, arg2: Internal.MobSpawnType_, arg3: BlockPos_, arg4: Internal.RandomSource_): boolean;
+        abstract sdl$resetDynamicLight(): void;
+        calculateEntityAnimation(arg0: boolean): void;
+        forceAddEffect(arg0: Internal.MobEffectInstance_, arg1: Internal.Entity_): void;
+        setChestArmorItem(item: Internal.ItemStack_): void;
+        abstract sodiumdynamiclights$scheduleTrackedChunksRebuild(arg0: Internal.LevelRenderer_): void;
+        onAboveBubbleCol(arg0: boolean): void;
+        "playSound(net.minecraft.sounds.SoundEvent,float,float)"(arg0: Internal.SoundEvent_, arg1: number, arg2: number): void;
+        isPassenger(): boolean;
+        hasPose(arg0: Internal.Pose_): boolean;
+        /**
+         * @deprecated
+        */
+        isEyeInFluid(arg0: Internal.TagKey_<Internal.Fluid>): boolean;
+        isInvulnerableTo(arg0: DamageSource_): boolean;
+        makeStuckInBlock(arg0: Internal.BlockState_, arg1: Vec3d_): void;
+        isSensitiveToWater(): boolean;
+        skipAttackInteraction(arg0: Internal.Entity_): boolean;
+        lerpMotion(arg0: number, arg1: number, arg2: number): void;
+        "getAttributeValue(net.minecraft.core.Holder)"(arg0: Internal.Holder_<Internal.Attribute>): number;
+        shouldRender(arg0: number, arg1: number, arg2: number): boolean;
+        getJumpControl(): Internal.JumpControl;
+        handler$bbe001$onTick(ci: Internal.CallbackInfo_): void;
+        getFeetArmorItem(): Internal.ItemStack;
+        getEc$BoundingBox(): Internal.AABB;
+        static getViewScale(): number;
+        getVisualRotationYInDegrees(): number;
+        setSpeed(arg0: number): void;
+        requiresCustomPersistence(): boolean;
+        isDiscrete(): boolean;
+        unRide(): void;
+        getLevel(): Internal.Level;
+        "spawnAtLocation(net.minecraft.world.item.ItemStack)"(arg0: Internal.ItemStack_): Internal.ItemEntity;
+        getCombatTracker(): Internal.CombatTracker;
+        updateDynamicGameEventListener(arg0: Internal.BiConsumer_<Internal.DynamicGameEventListener<any>, Internal.ServerLevel>): void;
+        "onSyncedDataUpdated(net.minecraft.network.syncher.EntityDataAccessor)"(arg0: Internal.EntityDataAccessor_<any>): void;
+        emf$prevY(): number;
+        isNoAi(): boolean;
+        areCapsCompatible(arg0: Internal.CapabilityProvider_<Internal.Entity>): boolean;
+        extinguishFire(): void;
+        /**
+         * @deprecated
+         * This method is marked to be removed in future!
+        */
+        getEyeHeightForge(arg0: Internal.Pose_, arg1: Internal.EntityDimensions_): number;
+        getChestArmorItem(): Internal.ItemStack;
+        damageEquipment(slot: Internal.EquipmentSlot_, amount: number): void;
+        tell(message: net.minecraft.network.chat.Component_): void;
+        shoot(arg0: Internal.Supplier_<any>, arg1: Internal.Supplier_<any>): Internal.ShootResult;
+        closerThan(arg0: Internal.Entity_, arg1: number): boolean;
+        getDistanceSq(pos: BlockPos_): number;
+        indicateDamage(arg0: number, arg1: number): void;
+        canBeSeenByAnyone(): boolean;
+        emf$getTypeString(): string;
+        isFullyFrozen(): boolean;
+        isInWall(): boolean;
+        getAllSlots(): Internal.Iterable<Internal.ItemStack>;
+        remove(arg0: Internal.Entity$RemovalReason_): void;
+        getScale(): number;
+        isSuppressingSlidingDownLadder(): boolean;
+        getBlockZ(): number;
+        dampensVibrations(): boolean;
+        isSilent(): boolean;
+        "playSound(net.minecraft.sounds.SoundEvent)"(id: Internal.SoundEvent_): void;
+        getPitch(): number;
+        getPathfindingMalus(arg0: Internal.BlockPathTypes_): number;
+        getRandom(): Internal.RandomSource;
+        canReplaceEqualItem(arg0: Internal.ItemStack_, arg1: Internal.ItemStack_): boolean;
+        rotate(arg0: Internal.Rotation_): number;
+        getPassengersAndSelf(): Internal.Stream<Internal.Entity>;
+        shouldRiderFaceForward(arg0: Internal.Player_): boolean;
+        rayTrace(distance: number, fluids: boolean): Internal.RayTraceResultJS;
+        "getAttributeBaseValue(net.minecraft.core.Holder)"(arg0: Internal.Holder_<Internal.Attribute>): number;
+        clearRestriction(): void;
+        "self()"(): Internal.LivingEntity;
+        rayTrace(): Internal.RayTraceResultJS;
+        alwaysAccepts(): boolean;
+        "isHolding(java.util.function.Predicate)"(arg0: Internal.Predicate_<Internal.ItemStack>): boolean;
+        getNoActionTime(): number;
+        isVisuallyCrawling(): boolean;
+        isShouldEntityAppearGlowing(): boolean;
+        getDataHolder(): Internal.ShooterDataHolder;
+        isAggressive(): boolean;
+        setYya(arg0: number): void;
+        shouldUpdateFluidWhileBoating(arg0: Internal.FluidState_, arg1: Internal.Boat_): boolean;
+        getSynSprintTime(): number;
+        abstract sdl$shouldUpdateDynamicLight(): boolean;
+        setDropChance(arg0: Internal.EquipmentSlot_, arg1: number): void;
+        "broadcastBreakEvent(net.minecraft.world.InteractionHand)"(arg0: Internal.InteractionHand_): void;
+        teleportRelative(arg0: number, arg1: number, arg2: number): void;
+        setBaby(arg0: boolean): void;
+        getLastHurtByMob(): Internal.LivingEntity;
+        isInWaterOrBubble(): boolean;
+        /**
+         * @deprecated
+         * This method is marked to be removed in future!
+        */
+        updateFluidHeightAndDoFluidPushing(): void;
+        getPortalCooldown(): number;
+        getItem(): Internal.ItemStack;
+        causeFallDamage(arg0: number, arg1: number, arg2: DamageSource_): boolean;
+        releaseUsingItem(): void;
+        getPosition(arg0: number): Vec3d;
+        removeFreeWill(): void;
+        removeWhenFarAway(arg0: number): boolean;
+        wait(arg0: number): void;
+        isIgnoringBlockTriggers(): boolean;
+        consumesAmmoOrNot(): boolean;
+        setRecordPlayingNearby(arg0: BlockPos_, arg1: boolean): void;
+        isInRain(): boolean;
+        getHandHoldingItemAngle(arg0: Internal.Item_): Vec3d;
+        etf$getItemsEquipped(): Internal.Iterable<any>;
+        hasItemInSlot(arg0: Internal.EquipmentSlot_): boolean;
+        crawl(arg0: boolean): void;
+        canUpdate(arg0: boolean): void;
+        distanceToSqr(arg0: Vec3d_): number;
+        getEyeInFluidType(): Internal.FluidType;
+        isSteppingCarefully(): boolean;
+        getSoundFromFluidType(arg0: Internal.FluidType_, arg1: Internal.SoundAction_): Internal.SoundEvent;
+        "spawnAtLocation(net.minecraft.world.item.ItemStack,float)"(arg0: Internal.ItemStack_, arg1: number): Internal.ItemEntity;
+        addAdditionalSaveData(arg0: Internal.CompoundTag_): void;
+        getBlockX(): number;
+        /**
+         * @deprecated
+        */
+        getLightLevelDependentMagicValue(): number;
+        isFallFlying(): boolean;
+        getEncodeId(): string;
+        getY(arg0: number): number;
+        emf$prevPitch(): number;
+        getMaxHeadXRot(): number;
+        shoot(arg0: Internal.Supplier_<any>, arg1: Internal.Supplier_<any>, arg2: number, arg3: number): Internal.ShootResult;
+        getNbt(): Internal.CompoundTag;
+        setInvisible(arg0: boolean): void;
+        etf$getArmorItems(): Internal.Iterable<any>;
+        getEffect(arg0: Internal.MobEffect_): Internal.MobEffectInstance;
+        setTotalMovementSpeedMultiplier(speed: number): void;
+        setHealth(arg0: number): void;
+        attack(arg0: DamageSource_, arg1: number): boolean;
+        onInsideBubbleColumn(arg0: boolean): void;
+        getEyePosition(): Vec3d;
+        getEyeHeight(): number;
+        setDiscardFriction(arg0: boolean): void;
+        hasPassenger(arg0: Internal.Predicate_<Internal.Entity>): boolean;
+        getYaw(): number;
+        swing(arg0: Internal.InteractionHand_, arg1: boolean): void;
+        getUsedItemHand(): Internal.InteractionHand;
+        setDefaultMovementSpeed(speed: number): void;
+        canAttackType(arg0: Internal.EntityType_<any>): boolean;
+        getCapability<T>(arg0: Internal.Capability_<T>, arg1: Internal.Direction_): Internal.LazyOptional<T>;
+        canEntityBeSeen(entity: Internal.LivingEntity_): boolean;
+        getBrain(): Internal.Brain<any>;
+        setCustomNameVisible(arg0: boolean): void;
+        isAlliedTo(arg0: Internal.Team_): boolean;
+        getControllingPassenger(): Internal.LivingEntity;
+        canFireProjectileWeapon(arg0: Internal.ProjectileWeaponItem_): boolean;
+        getScriptType(): Internal.ScriptType;
+        shouldDiscardFriction(): boolean;
+        startRiding(arg0: Internal.Entity_): boolean;
+        saveWithoutId(arg0: Internal.CompoundTag_): Internal.CompoundTag;
+        getForward(): Vec3d;
+        serializeNBT(): Internal.Tag;
+        setFeetArmorItem(item: Internal.ItemStack_): void;
+        getId(): number;
+        canBeHitByProjectile(): boolean;
+        getEyeY(): number;
+        setKnockBackStrength(arg0: number): void;
+        skipDropExperience(): void;
+        getBoundingBox(): Internal.AABB;
+        isInWaterOrRain(): boolean;
+        setItemSlot(arg0: Internal.EquipmentSlot_, arg1: Internal.ItemStack_): void;
+        equals(arg0: any): boolean;
+        getViewYRot(arg0: number): number;
+        dismountsUnderwater(): boolean;
+        abstract sodiumdynamiclights$updateDynamicLight(arg0: Internal.LevelRenderer_): boolean;
+        isAffectedByPotions(): boolean;
+        addTag(arg0: string): boolean;
+        playerTouch(arg0: Internal.Player_): void;
+        getCitadelEntityData(): Internal.CompoundTag;
+        getEyeHeight(arg0: Internal.Pose_): number;
+        getAddEntityPacket(): Internal.Packet<Internal.ClientGamePacketListener>;
+        static getEquipmentForSlot(arg0: Internal.EquipmentSlot_, arg1: number): Internal.Item;
+        isWithinRestriction(arg0: BlockPos_): boolean;
+        getTeam(): Internal.Team;
+        needCheckAmmo(): boolean;
+        setTicksFrozen(arg0: number): void;
+        getUseItem(): Internal.ItemStack;
+        getMyRidingOffset(): number;
+        dismountTo(arg0: number, arg1: number, arg2: number): void;
+        etf$getPose(): Internal.Pose;
+        etf$getEntityKey(): string;
+        static canTraverse(arg0: Internal.Entity_): boolean;
+        hasCustomName(): boolean;
+        getSwimAmount(arg0: number): number;
+        isLiving(): boolean;
+        getX(): number;
+        isVehicle(): boolean;
+        spawnAtLocation(arg0: Internal.ItemStack_): Internal.ItemEntity;
+        mergeNbt(tag: Internal.CompoundTag_): Internal.Entity;
+        thunderHit(arg0: Internal.ServerLevel_, arg1: Internal.LightningBolt_): void;
+        setIsInPowderSnow(arg0: boolean): void;
+        doEnchantDamageEffects(arg0: Internal.LivingEntity_, arg1: Internal.Entity_): void;
+        etf$distanceTo(entity: Internal.Entity_): number;
+        setCustomName(arg0: net.minecraft.network.chat.Component_): void;
+        getTeamId(): string;
+        canBeRiddenUnderFluidType(arg0: Internal.FluidType_, arg1: Internal.Entity_): boolean;
+        setStingerCount(arg0: number): void;
+        getMaxHeadYRot(): number;
+        isCustomNameVisible(): boolean;
+        isSupportedBy(arg0: BlockPos_): boolean;
+        getPistonPushReaction(): Internal.PushReaction;
+        shouldRiderSit(): boolean;
+        lookAt(arg0: Internal.EntityAnchorArgument$Anchor_, arg1: Vec3d_): void;
+        getLootTableSeed(): number;
+        isInFluidType(arg0: Internal.FluidType_): boolean;
+        collide(arg0: Vec3d_): Vec3d;
+        getFluidMotionScale(arg0: Internal.FluidType_): number;
+        getMotionX(): number;
+        "onSyncedDataUpdated(java.util.List)"(arg0: Internal.List_<Internal.SynchedEntityData$DataValue<any>>): void;
+        collective_getStored(): Internal.CompoundTag;
+        canBeLeashed(arg0: Internal.Player_): boolean;
+        hasIndirectPassenger(arg0: Internal.Entity_): boolean;
+        getEntityData(): Internal.SynchedEntityData;
+        sdl$dynamicLightTick(): void;
+        handleInsidePortal(arg0: BlockPos_): void;
+        getPotionEffects(): Internal.EntityPotionEffectsJS;
+        absMoveTo(arg0: number, arg1: number, arg2: number): void;
+        updateFluidHeightAndDoFluidPushing(arg0: Internal.Predicate_<Internal.FluidState>): void;
+        isOnRails(): boolean;
+        getStingerCount(): number;
+        markFusionRecomputeModels(): void;
+        getFallSounds(): Internal.LivingEntity$Fallsounds;
+        getAttributeTotalValue(attribute: Internal.Attribute_): number;
+        getDimensionChangingDelay(): number;
+        setYaw(arg0: number): void;
+        getPickRadius(): number;
+        isPathFinding(): boolean;
+        static fromLivingEntity(arg0: Internal.LivingEntity_): Internal.KnockBackModifier;
+        isRemoved(): boolean;
+        emf$isSneaking(): boolean;
+        teleportToWithTicket(arg0: number, arg1: number, arg2: number): void;
+        spawnAnim(): void;
+        getJumpBoostPower(): number;
+        fillCrashReportCategory(arg0: Internal.CrashReportCategory_): void;
+        self(): Internal.Entity;
+        refreshDimensions(): void;
+        setEc$Position(ec$Position: Vec3d_): void;
+        "isHolding(net.minecraft.world.item.Item)"(arg0: Internal.Item_): boolean;
+        "getAttributeValue(net.minecraft.world.entity.ai.attributes.Attribute)"(arg0: Internal.Attribute_): number;
+        "spawnAtLocation(net.minecraft.world.level.ItemLike)"(arg0: Internal.ItemLike_): Internal.ItemEntity;
+        getEyePosition(arg0: number): Vec3d;
+        setShiftKeyDown(arg0: boolean): void;
+        getPassengers(): Internal.EntityArrayList;
+        getSynMeleeCoolDown(): number;
+        getMaxHeightFluidType(): Internal.FluidType;
+        getZ(): number;
+        teleportTo(arg0: number, arg1: number, arg2: number): void;
+        getAttributeBaseValue(arg0: Internal.Holder_<Internal.Attribute>): number;
+        getServer(): Internal.MinecraftServer;
+        getExperienceReward(): number;
+        getFirstPassenger(): Internal.Entity;
+        heal(arg0: number): void;
+        getSpawnType(): Internal.MobSpawnType;
+        setLastHurtMob(arg0: Internal.Entity_): void;
+        setLastHurtByMob(arg0: Internal.LivingEntity_): void;
+        interact(arg0: Internal.Player_, arg1: Internal.InteractionHand_): Internal.InteractionResult;
+        abstract sdl$getDynamicLightLevel(): Internal.Level;
+        getDismountLocationForPassenger(arg0: Internal.LivingEntity_): Vec3d;
+        checkSlowFallDistance(): void;
+        canStandOnFluid(arg0: Internal.FluidState_): boolean;
+        setFabricBalmData(arg0: Internal.CompoundTag_): void;
+        touchingUnloadedChunk(): boolean;
+        modifyAttribute(attribute: Internal.Attribute_, identifier: string, d: number, operation: Internal.AttributeModifier$Operation_): void;
+        abstract sdl$getDynamicLightZ(): number;
+        getLookAngle(): Vec3d;
+        fireSelect(): void;
+        getAmbientSoundInterval(): number;
+        emf$isOnFire(): boolean;
+        setShouldEntityAppearGlowing(shouldEntityAppearGlowing: boolean): void;
+        setArrowCount(arg0: number): void;
+        getMotionZ(): number;
+        isPersistenceRequired(): boolean;
+        isInvisible(): boolean;
+        is(arg0: Internal.Entity_): boolean;
+        getBedOrientation(): Internal.Direction;
+        ejectPassengers(): void;
+        removeEffect(arg0: Internal.MobEffect_): boolean;
+        getProfile(): Internal.GameProfile;
+        isDeadOrDying(): boolean;
+        setHeadArmorItem(item: Internal.ItemStack_): void;
+        static setViewScale(arg0: number): void;
+        emf$isAlive(): boolean;
+        take(arg0: Internal.Entity_, arg1: number): void;
+        setLevelCallback(arg0: Internal.EntityInLevelCallback_): void;
+        getLookControl(): Internal.LookControl;
+        playSound(arg0: Internal.SoundEvent_, arg1: number, arg2: number): void;
+        "areCapsCompatible(net.minecraftforge.common.capabilities.CapabilityDispatcher)"(arg0: Internal.CapabilityDispatcher_): boolean;
+        canAttack(arg0: Internal.LivingEntity_): boolean;
+        getOffHandItem(): Internal.ItemStack;
+        startSeenByPlayer(arg0: Internal.ServerPlayer_): void;
+        isOnScoreboardTeam(teamId: string): boolean;
+        startUsingItem(arg0: Internal.InteractionHand_): void;
+        setTimeout(): void;
+        position(): Vec3d;
+        melee(): void;
+        static getEquipmentSlotForItem(arg0: Internal.ItemStack_): Internal.EquipmentSlot;
+        getEquipment(slot: Internal.EquipmentSlot_): Internal.ItemStack;
+        displayFireAnimation(): boolean;
+        isOutOfCamera(): boolean;
+        getRopeHoldPosition(arg0: number): Vec3d;
+        copyPosition(arg0: Internal.Entity_): void;
+        getSynReloadState(): Internal.ReloadState;
+        onAddedToWorld(): void;
+        "hasPassenger(net.minecraft.world.entity.Entity)"(arg0: Internal.Entity_): boolean;
+        isCrouching(): boolean;
+        etf$canBeBright(): boolean;
+        "getAttributeBaseValue(net.minecraft.world.entity.ai.attributes.Attribute)"(attribute: Internal.Attribute_): number;
+        onLeaveCombat(): void;
+        setY(y: number): void;
+        getAttributeValue(arg0: Internal.Attribute_): number;
+        getFeetBlockState(): Internal.BlockState;
+        isWithinRestriction(): boolean;
+        changeDimension(arg0: Internal.ServerLevel_, arg1: Internal.ITeleporter_): Internal.Entity;
+        positionRider(arg0: Internal.Entity_): void;
+        baseTick(): void;
+        broadcastToPlayer(arg0: Internal.ServerPlayer_): boolean;
+        getProcessedSprintStatus(arg0: boolean): boolean;
+        setSharedFlag(arg0: number, arg1: boolean): void;
+        getSleepingPos(): Optional<BlockPos>;
+        /**
+         * @deprecated
+         * This method is marked to be removed in future!
+        */
+        getEyeHeightAccess(arg0: Internal.Pose_, arg1: Internal.EntityDimensions_): number;
+        damageHeldItem(): void;
+        getCustomName(): net.minecraft.network.chat.Component;
+        getClass(): typeof any;
+        "self()"(): Internal.Entity;
+        isVisuallySwimming(): boolean;
+        getMaxAirSupply(): number;
+        canTrample(arg0: Internal.BlockState_, arg1: BlockPos_, arg2: number): boolean;
+        setItemInHand(arg0: Internal.InteractionHand_, arg1: Internal.ItemStack_): void;
+        setMaxHealth(hp: number): void;
+        getFacing(): Internal.Direction;
+        emf$isWet(): boolean;
+        isInFluidType(arg0: Internal.BiPredicate_<Internal.FluidType, number>, arg1: boolean): boolean;
+        isPassengerOfSameVehicle(arg0: Internal.Entity_): boolean;
+        getBoundingBoxForCulling(): Internal.AABB;
+        getTarget(): Internal.LivingEntity;
+        draw(arg0: Internal.Supplier_<any>): void;
+        restrictTo(arg0: BlockPos_, arg1: number): void;
+        trackingPosition(): Vec3d;
+        getNameTagOffsetY(): number;
+        isInvulnerable(): boolean;
+        isInLava(): boolean;
+        isInWater(): boolean;
+        awardKillScore(arg0: Internal.Entity_, arg1: number, arg2: DamageSource_): void;
+        /**
+         * @deprecated
+        */
+        finalizeSpawn(arg0: Internal.ServerLevelAccessor_, arg1: Internal.DifficultyInstance_, arg2: Internal.MobSpawnType_, arg3: Internal.SpawnGroupData_, arg4: Internal.CompoundTag_): Internal.SpawnGroupData;
+        swing(arg0: Internal.InteractionHand_): void;
+        hasEffect(arg0: Internal.MobEffect_): boolean;
+        getHeldItem(hand: Internal.InteractionHand_): Internal.ItemStack;
+        setFusionModel(layerIndex: number, model: Internal.Triple_<any, any, any>): void;
+        getRootVehicle(): Internal.Entity;
+        onPathfindingDone(): void;
+        save(arg0: Internal.CompoundTag_): boolean;
+        getEc$Position(): Vec3d;
+        sdl$getLuminance(): number;
+        getLocalBoundsForPose(arg0: Internal.Pose_): Internal.AABB;
+        isNoGravity(): boolean;
+        curePotionEffects(arg0: Internal.ItemStack_): boolean;
+        onItemPickup(arg0: Internal.ItemEntity_): void;
+        setCitadelEntityData(arg0: Internal.CompoundTag_): void;
+        emf$getY(): number;
+        updateSwimming(): void;
+        isHolding(arg0: Internal.Predicate_<Internal.ItemStack>): boolean;
+        getSynDrawCoolDown(): number;
+        getSpeed(): number;
+        shouldInformAdmins(): boolean;
+        canFluidExtinguish(arg0: Internal.FluidType_): boolean;
+        rideTick(): void;
+        entityCulling$setRawPosition(arg0: Vec3d_): void;
+        wait(): void;
+        getSynShootCoolDown(): number;
+        getUuid(): Internal.UUID;
+        setOffHandItem(item: Internal.ItemStack_): void;
+        spawn(): void;
+        setNoAi(arg0: boolean): void;
+        teleportTo(arg0: Internal.ServerLevel_, arg1: number, arg2: number, arg3: number, arg4: Internal.Set_<Internal.RelativeMovement>, arg5: number, arg6: number): boolean;
+        etf$getCustomName(): net.minecraft.network.chat.Component;
+        isStuckInLeaves(): boolean;
+        shouldShowName(): boolean;
+        getArmorSlots(): Internal.Iterable<Internal.ItemStack>;
+        canPickUpLoot(): boolean;
+        kill(): void;
+        onEnterCombat(): void;
+        animateHurt(arg0: number): void;
+        static resetForwardDirectionOfRelativePortalPosition(arg0: Vec3d_): Vec3d;
+        hasRestriction(): boolean;
+        getHeadArmorItem(): Internal.ItemStack;
+        /**
+         * @deprecated
+         * This method is marked to be removed in future!
+        */
+        getDimensionsForge(arg0: Internal.Pose_): Internal.EntityDimensions;
+        getEc$PBlockPos(): BlockPos;
+        setExtension(key: any, value: any): void;
+        handler$bnm000$Entity_saveWithoutId(arg0: Internal.CompoundTag_, arg1: Internal.CallbackInfoReturnable_<any>): void;
+        deserializeNBT(arg0: Internal.Tag_): void;
+        collective_setStored(arg0: Internal.CompoundTag_): void;
+        revive(): void;
+        getBbWidth(): number;
+        isEyeInFluidType(arg0: Internal.FluidType_): boolean;
+        addDeltaMovement(arg0: Vec3d_): void;
+        handler$bol000$postTurnHook(arg0: Internal.CallbackInfo_): void;
+        canDrownInFluidType(arg0: Internal.FluidType_): boolean;
+        "getName()"(): net.minecraft.network.chat.Component;
+        static checkGlowSquideSpawnRules(arg0: Internal.EntityType_<Internal.LivingEntity>, arg1: Internal.ServerLevelAccessor_, arg2: Internal.MobSpawnType_, arg3: BlockPos_, arg4: Internal.RandomSource_): boolean;
+        mirror(arg0: Internal.Mirror_): number;
+        canUpdate(): boolean;
+        knockback(arg0: number, arg1: number, arg2: number): void;
+        getTicksRequiredToFreeze(): number;
+        getVisibilityPercent(arg0: Internal.Entity_): number;
+        getMaxSpawnClusterSize(): number;
+        emf$prevZ(): number;
+        getUsername(): string;
+        transition$getRawPosition(): Vec3d;
+        shoot(arg0: Internal.Supplier_<any>, arg1: Internal.Supplier_<any>, arg2: number): Internal.ShootResult;
+        move(arg0: Internal.MoverType_, arg1: Vec3d_): void;
+        onRemovedFromWorld(): void;
+        getCapability<T>(arg0: Internal.Capability_<T>): Internal.LazyOptional<T>;
+        isPickable(): boolean;
+        setYHeadRot(arg0: number): void;
+        getDarkTicksRemaining(): number;
+        setJumping(arg0: boolean): void;
+        getPickResult(): Internal.ItemStack;
+        "getMainHandItem()"(): Internal.ItemStack;
+        getAbsorptionAmount(): number;
+        getRandomY(): number;
+        getDisplayName(): net.minecraft.network.chat.Component;
+        setNextStepDistance(arg0: number): void;
+        getMobType(): Internal.MobType;
+        travel(arg0: Vec3d_): void;
+        getItemInHand(arg0: Internal.InteractionHand_): Internal.ItemStack;
+        getFluidTypeHeight(arg0: Internal.FluidType_): number;
+        shouldBeSaved(): boolean;
+        "areCapsCompatible(net.minecraftforge.common.capabilities.CapabilityProvider)"(arg0: Internal.CapabilityProvider_<Internal.Entity>): boolean;
+        removeTag(arg0: string): boolean;
+        isHoldingInAnyHand(i: Internal.Ingredient_): boolean;
+        /**
+         * @deprecated
+        */
+        getFluidHeight(arg0: Internal.TagKey_<Internal.Fluid>): number;
+        canSpawnSoulSpeedParticle(): boolean;
+        notifyAll(): void;
+        aiStep(): void;
+        getPassengersRidingOffset(): number;
+        setAttributeBaseValue(attribute: Internal.Attribute_, value: number): void;
+        "isInFluidType(java.util.function.BiPredicate)"(arg0: Internal.BiPredicate_<Internal.FluidType, number>): boolean;
+        distanceToEntitySqr(arg0: Internal.Entity_): number;
+        isFrame(): boolean;
+        broadcastBreakEvent(arg0: Internal.InteractionHand_): void;
+        setLegsArmorItem(item: Internal.ItemStack_): void;
+        discard(): void;
+        sendSystemMessage(arg0: net.minecraft.network.chat.Component_): void;
+        acceptsSuccess(): boolean;
+        setNoGravity(arg0: boolean): void;
+        getUseItemRemainingTicks(): number;
+        sdl$setDynamicLightEnabled(enabled: boolean): void;
+        attackable(): boolean;
+        createCommandSourceStack(): Internal.CommandSourceStack;
+        getNavigation(): Internal.PathNavigation;
+        isControlledByLocalInstance(): boolean;
+        isMonster(): boolean;
+        getLastClimbablePos(): Optional<BlockPos>;
+        getEatingSound(arg0: Internal.ItemStack_): Internal.SoundEvent;
+        getPerceivedTargetDistanceSquareForMeleeAttack(arg0: Internal.LivingEntity_): number;
+        setId(arg0: number): void;
+        onSyncedDataUpdated(arg0: Internal.List_<Internal.SynchedEntityData$DataValue<any>>): void;
+        getHorizontalFacing(): Internal.Direction;
+        getType(): string;
+        isDamageSourceBlocked(arg0: DamageSource_): boolean;
+        getLightProbePosition(arg0: number): Vec3d;
+        getActiveEffectsMap(): Internal.Map<Internal.MobEffect, Internal.MobEffectInstance>;
+        emf$prevX(): number;
+        onEquipItem(arg0: Internal.EquipmentSlot_, arg1: Internal.ItemStack_, arg2: Internal.ItemStack_): void;
+        isTLJumping(): boolean;
+        checkDespawn(): void;
+        getWalkTargetValue(arg0: BlockPos_, arg1: Internal.LevelReader_): number;
+        lookAt(arg0: Internal.Entity_, arg1: number, arg2: number): void;
+        setHeldItem(hand: Internal.InteractionHand_, item: Internal.ItemStack_): void;
+        equipItemIfPossible(arg0: Internal.ItemStack_): Internal.ItemStack;
+        onSyncedDataUpdated(arg0: Internal.EntityDataAccessor_<any>): void;
+        lerpHeadTo(arg0: number, arg1: number): void;
+        canDisableShield(): boolean;
+        nextBulletIsTracer(arg0: number): boolean;
+        handler$bbe000$onRemove(ci: Internal.CallbackInfo_): void;
+        setMotionX(x: number): void;
+        getHandSlots(): Internal.Iterable<Internal.ItemStack>;
+        distanceToEntity(arg0: Internal.Entity_): number;
+        initialData(): void;
+        wait(arg0: number, arg1: number): void;
+        getTeamColor(): number;
+        setNbt(nbt: Internal.CompoundTag_): void;
+        "isInFluidType(net.minecraftforge.fluids.FluidType)"(arg0: Internal.FluidType_): boolean;
+        handler$bol000$preTurnHook(arg0: Internal.CallbackInfo_): void;
+        checkSpawnObstruction(arg0: Internal.LevelReader_): boolean;
+        extinguish(): void;
+        getRestrictRadius(): number;
+        moveTo(arg0: Vec3d_): void;
+        getExtension(key: any, type: typeof any): any;
+        isColliding(arg0: BlockPos_, arg1: Internal.BlockState_): boolean;
+        "swing(net.minecraft.world.InteractionHand)"(arg0: Internal.InteractionHand_): void;
+        getSynIsAiming(): boolean;
+        isForcedVisible(): boolean;
+        isInvertedHealAndHarm(): boolean;
+        canHoldItem(arg0: Internal.ItemStack_): boolean;
+        updateCacheProperty(arg0: Internal.AttachmentCacheProperty_): void;
+        zoom(): void;
+        killedEntity(arg0: Internal.ServerLevel_, arg1: Internal.LivingEntity_): boolean;
+        getClassification(arg0: boolean): Internal.MobCategory;
+        isFreezing(): boolean;
+        runCommand(command: string): number;
+        setGuaranteedDrop(arg0: Internal.EquipmentSlot_): void;
+        setSharedFlagOnFire(arg0: boolean): void;
+        get knockBackStrength(): number
+        set defaultMovementSpeedMultiplier(speed: number)
+        get suppressingBounce(): boolean
+        set target(arg0: Internal.LivingEntity_)
+        set culled(value: boolean)
+        get onFire(): boolean
+        get positionCodec(): Internal.VecDeltaCodec
+        set maxUpStep(arg0: number)
+        get fallFlyingTicks(): number
+        set xxa(arg0: number)
+        set delayedLeashHolderId(arg0: number)
+        get shiftKeyDown(): boolean
+        set UUID(arg0: Internal.UUID_)
+        set motionZ(z: number)
+        get blockY(): number
+        get spectator(): boolean
+        set mainHandItem(item: Internal.ItemStack_)
+        get persistentData(): Internal.CompoundTag
+        get health(): number
+        get maxHealth(): number
+        set aggressive(arg0: boolean)
+        set removed(arg0: Internal.Entity$RemovalReason_)
+        get inWaterRainOrBubble(): boolean
+        get removalReason(): Internal.Entity$RemovalReason
+        set ec$BoundingBox(ec$BoundingBox: Internal.AABB_)
+        get indirectPassengers(): Internal.Iterable<Internal.Entity>
+        set boundingBox(arg0: Internal.AABB_)
+        get ambientCreature(): boolean
+        set zza(arg0: number)
+        get block(): Internal.BlockContainerJS
+        get name(): net.minecraft.network.chat.Component
+        get controlledVehicle(): Internal.Entity
+        get armorValue(): number
+        get killCredit(): Internal.LivingEntity
+        set outOfCamera(value: boolean)
+        get autoSpinAttack(): boolean
+        get remainingFireTicks(): number
+        get maxFallDistance(): number
+        get ticksFrozen(): number
+        get wasEyeInWater(): boolean
+        get voicePitch(): number
+        set statusMessage(message: net.minecraft.network.chat.Component_)
+        set sleepingPos(arg0: BlockPos_)
+        get descending(): boolean
+        get headRotSpeed(): number
+        get YHeadRot(): number
+        get cacheProperty(): Internal.AttachmentCacheProperty
+        set absorptionAmount(arg0: number)
+        set deltaMovement(arg0: Vec3d_)
+        get baby(): boolean
+        get culled(): boolean
+        get glowing(): boolean
+        get leashOffset(): Vec3d
+        get attackable(): boolean
+        get underWater(): boolean
+        get leashHolder(): Internal.Entity
+        get sensing(): Internal.Sensing
+        get legsArmorItem(): Internal.ItemStack
+        get deltaMovement(): Vec3d
+        set secondsOnFire(arg0: number)
+        get "displayName()"(): net.minecraft.network.chat.Component
+        get lootTable(): ResourceLocation
+        get ticksUsingItem(): number
+        get arrowCount(): number
+        get moveControl(): Internal.MoveControl
+        get defaultMovementSpeed(): number
+        get peacefulCreature(): boolean
+        set onGround(arg0: boolean)
+        get lastHurtByMobTimestamp(): number
+        get vehicle(): Internal.Entity
+        get effectiveAi(): boolean
+        set spawnCancelled(arg0: boolean)
+        get stringUuid(): string
+        set swimming(arg0: boolean)
+        get mainArm(): Internal.HumanoidArm
+        set ec$PBlockPos(ec$PBlockPos: BlockPos_)
+        get rotationVector(): Internal.Vec2
+        get hurtDir(): number
+        get sprinting(): boolean
+        get motionY(): number
+        get offhandItem(): Internal.ItemStack
+        get lastHurtMob(): Internal.LivingEntity
+        get selfAndPassengers(): Internal.Stream<Internal.Entity>
+        get addedToWorld(): boolean
+        get lastDamageSource(): DamageSource
+        get soundSource(): Internal.SoundSource
+        get jumping(): boolean
+        set noActionTime(arg0: number)
+        set movementSpeedAddition(speed: number)
+        get pose(): Internal.Pose
+        get restrictCenter(): BlockPos
+        get leftHanded(): boolean
+        set z(z: number)
+        get y(): number
+        get blocking(): boolean
+        get pushedByFluid(): boolean
+        get armorCoverPercentage(): number
+        get airSupply(): number
+        get player(): boolean
+        get animal(): boolean
+        get motionDirection(): Internal.Direction
+        get fabricBalmData(): Internal.CompoundTag
+        get commandSenderWorld(): Internal.Level
+        get totalMovementSpeed(): number
+        get attributes(): Internal.AttributeMap
+        get spawnCancelled(): boolean
+        get swimming(): boolean
+        set sprinting(arg0: boolean)
+        set x(x: number)
+        get portalWaitTime(): number
+        get blockStateOn(): Internal.BlockState
+        set stuckInLeaves(arg0: boolean)
+        get fluidJumpThreshold(): number
+        set airSupply(arg0: number)
+        get onPos(): BlockPos
+        get undead(): boolean
+        get blockPosBelowThatAffectsMyMovement(): BlockPos
+        get nextStepDistance(): number
+        get stepHeight(): number
+        get sleeping(): boolean
+        get armorBonus(): number
+        get dismountPoses(): Internal.ImmutableList<Internal.Pose>
+        get lastHurtMobTimestamp(): number
+        set remainingFireTicks(arg0: number)
+        /**
+         * @deprecated
+        */
+        get onPosLegacy(): BlockPos
+        set pos(arg0: Vec3d_)
+        set canPickUpLoot(arg0: boolean)
+        get mainHandItem(): Internal.ItemStack
+        set silent(arg0: boolean)
+        set leftHanded(arg0: boolean)
+        get activeEffects(): Internal.Collection<Internal.MobEffectInstance>
+        get onPortalCooldown(): boolean
+        set pitch(arg0: number)
+        get multipartEntity(): boolean
+        get parts(): Internal.PartEntity<any>[]
+        get usingItem(): boolean
+        get alwaysTicking(): boolean
+        get synAimingProgress(): number
+        get forgePersistentData(): Internal.CompoundTag
+        set invulnerable(arg0: boolean)
+        get inFluidType(): boolean
+        set glowing(arg0: boolean)
+        get alive(): boolean
+        get bbHeight(): number
+        get tags(): Internal.Set<string>
+        get lastAttacker(): Internal.LivingEntity
+        get percentFrozen(): number
+        set portalCooldown(arg0: number)
+        set position(block: Internal.BlockContainerJS_)
+        get leashed(): boolean
+        get synIsBolting(): boolean
+        set pose(arg0: Internal.Pose_)
+        get reachDistance(): number
+        get entityType(): Internal.EntityType<any>
+        get waterCreature(): boolean
+        set lastHurtByPlayer(arg0: Internal.Player_)
+        get "server()"(): Internal.MinecraftServer
+        get pushable(): boolean
+        set YBodyRot(arg0: number)
+        set motionY(y: number)
+        set chestArmorItem(item: Internal.ItemStack_)
+        get passenger(): boolean
+        get sensitiveToWater(): boolean
+        get jumpControl(): Internal.JumpControl
+        get feetArmorItem(): Internal.ItemStack
+        get ec$BoundingBox(): Internal.AABB
+        get viewScale(): number
+        get visualRotationYInDegrees(): number
+        set speed(arg0: number)
+        get discrete(): boolean
+        get level(): Internal.Level
+        get combatTracker(): Internal.CombatTracker
+        get noAi(): boolean
+        get chestArmorItem(): Internal.ItemStack
+        get fullyFrozen(): boolean
+        get inWall(): boolean
+        get allSlots(): Internal.Iterable<Internal.ItemStack>
+        get scale(): number
+        get suppressingSlidingDownLadder(): boolean
+        get blockZ(): number
+        get silent(): boolean
+        get pitch(): number
+        get random(): Internal.RandomSource
+        get passengersAndSelf(): Internal.Stream<Internal.Entity>
+        get noActionTime(): number
+        get visuallyCrawling(): boolean
+        get shouldEntityAppearGlowing(): boolean
+        get dataHolder(): Internal.ShooterDataHolder
+        get aggressive(): boolean
+        set yya(arg0: number)
+        get synSprintTime(): number
+        set baby(arg0: boolean)
+        get lastHurtByMob(): Internal.LivingEntity
+        get inWaterOrBubble(): boolean
+        get portalCooldown(): number
+        get item(): Internal.ItemStack
+        get ignoringBlockTriggers(): boolean
+        get inRain(): boolean
+        get eyeInFluidType(): Internal.FluidType
+        get steppingCarefully(): boolean
+        get blockX(): number
+        /**
+         * @deprecated
+        */
+        get lightLevelDependentMagicValue(): number
+        get fallFlying(): boolean
+        get encodeId(): string
+        get maxHeadXRot(): number
+        get nbt(): Internal.CompoundTag
+        set invisible(arg0: boolean)
+        set totalMovementSpeedMultiplier(speed: number)
+        set health(arg0: number)
+        get eyePosition(): Vec3d
+        get eyeHeight(): number
+        set discardFriction(arg0: boolean)
+        get yaw(): number
+        get usedItemHand(): Internal.InteractionHand
+        set defaultMovementSpeed(speed: number)
+        get brain(): Internal.Brain<any>
+        set customNameVisible(arg0: boolean)
+        get controllingPassenger(): Internal.LivingEntity
+        get scriptType(): Internal.ScriptType
+        get forward(): Vec3d
+        set feetArmorItem(item: Internal.ItemStack_)
+        get id(): number
+        get eyeY(): number
+        set knockBackStrength(arg0: number)
+        get boundingBox(): Internal.AABB
+        get inWaterOrRain(): boolean
+        get affectedByPotions(): boolean
+        get citadelEntityData(): Internal.CompoundTag
+        get addEntityPacket(): Internal.Packet<Internal.ClientGamePacketListener>
+        get team(): Internal.Team
+        set ticksFrozen(arg0: number)
+        get useItem(): Internal.ItemStack
+        get myRidingOffset(): number
+        get living(): boolean
+        get x(): number
+        get vehicle(): boolean
+        set isInPowderSnow(arg0: boolean)
+        set customName(arg0: net.minecraft.network.chat.Component_)
+        get teamId(): string
+        set stingerCount(arg0: number)
+        get maxHeadYRot(): number
+        get customNameVisible(): boolean
+        get pistonPushReaction(): Internal.PushReaction
+        get lootTableSeed(): number
+        get motionX(): number
+        get entityData(): Internal.SynchedEntityData
+        get potionEffects(): Internal.EntityPotionEffectsJS
+        get onRails(): boolean
+        get stingerCount(): number
+        get fallSounds(): Internal.LivingEntity$Fallsounds
+        get dimensionChangingDelay(): number
+        set yaw(arg0: number)
+        get pickRadius(): number
+        get pathFinding(): boolean
+        get removed(): boolean
+        get jumpBoostPower(): number
+        set ec$Position(ec$Position: Vec3d_)
+        set shiftKeyDown(arg0: boolean)
+        get passengers(): Internal.EntityArrayList
+        get synMeleeCoolDown(): number
+        get maxHeightFluidType(): Internal.FluidType
+        get z(): number
+        get server(): Internal.MinecraftServer
+        get experienceReward(): number
+        get firstPassenger(): Internal.Entity
+        get spawnType(): Internal.MobSpawnType
+        set lastHurtMob(arg0: Internal.Entity_)
+        set lastHurtByMob(arg0: Internal.LivingEntity_)
+        set fabricBalmData(arg0: Internal.CompoundTag_)
+        get lookAngle(): Vec3d
+        get ambientSoundInterval(): number
+        set shouldEntityAppearGlowing(shouldEntityAppearGlowing: boolean)
+        set arrowCount(arg0: number)
+        get motionZ(): number
+        get persistenceRequired(): boolean
+        get invisible(): boolean
+        get bedOrientation(): Internal.Direction
+        get profile(): Internal.GameProfile
+        get deadOrDying(): boolean
+        set headArmorItem(item: Internal.ItemStack_)
+        set viewScale(arg0: number)
+        set levelCallback(arg0: Internal.EntityInLevelCallback_)
+        get lookControl(): Internal.LookControl
+        get offHandItem(): Internal.ItemStack
+        get outOfCamera(): boolean
+        get synReloadState(): Internal.ReloadState
+        get crouching(): boolean
+        set y(y: number)
+        get feetBlockState(): Internal.BlockState
+        get withinRestriction(): boolean
+        get sleepingPos(): Optional<BlockPos>
+        get customName(): net.minecraft.network.chat.Component
+        get class(): typeof any
+        get visuallySwimming(): boolean
+        get maxAirSupply(): number
+        set maxHealth(hp: number)
+        get facing(): Internal.Direction
+        get boundingBoxForCulling(): Internal.AABB
+        get target(): Internal.LivingEntity
+        get nameTagOffsetY(): number
+        get invulnerable(): boolean
+        get inLava(): boolean
+        get inWater(): boolean
+        get rootVehicle(): Internal.Entity
+        get ec$Position(): Vec3d
+        get noGravity(): boolean
+        set citadelEntityData(arg0: Internal.CompoundTag_)
+        get synDrawCoolDown(): number
+        get speed(): number
+        get synShootCoolDown(): number
+        get uuid(): Internal.UUID
+        set offHandItem(item: Internal.ItemStack_)
+        set noAi(arg0: boolean)
+        get stuckInLeaves(): boolean
+        get armorSlots(): Internal.Iterable<Internal.ItemStack>
+        get headArmorItem(): Internal.ItemStack
+        get ec$PBlockPos(): BlockPos
+        get bbWidth(): number
+        get "name()"(): net.minecraft.network.chat.Component
+        get ticksRequiredToFreeze(): number
+        get maxSpawnClusterSize(): number
+        get username(): string
+        get pickable(): boolean
+        set YHeadRot(arg0: number)
+        get darkTicksRemaining(): number
+        set jumping(arg0: boolean)
+        get pickResult(): Internal.ItemStack
+        get "mainHandItem()"(): Internal.ItemStack
+        get absorptionAmount(): number
+        get randomY(): number
+        get displayName(): net.minecraft.network.chat.Component
+        set nextStepDistance(arg0: number)
+        get mobType(): Internal.MobType
+        get passengersRidingOffset(): number
+        get frame(): boolean
+        set legsArmorItem(item: Internal.ItemStack_)
+        set noGravity(arg0: boolean)
+        get useItemRemainingTicks(): number
+        get navigation(): Internal.PathNavigation
+        get controlledByLocalInstance(): boolean
+        get monster(): boolean
+        get lastClimbablePos(): Optional<BlockPos>
+        set id(arg0: number)
+        get horizontalFacing(): Internal.Direction
+        get type(): string
+        get activeEffectsMap(): Internal.Map<Internal.MobEffect, Internal.MobEffectInstance>
+        get TLJumping(): boolean
+        set motionX(x: number)
+        get handSlots(): Internal.Iterable<Internal.ItemStack>
+        get teamColor(): number
+        set nbt(nbt: Internal.CompoundTag_)
+        get restrictRadius(): number
+        get synIsAiming(): boolean
+        get forcedVisible(): boolean
+        get invertedHealAndHarm(): boolean
+        get freezing(): boolean
+        set guaranteedDrop(arg0: Internal.EquipmentSlot_)
+        set sharedFlagOnFire(arg0: boolean)
+    }
+    type GlowSquid_ = GlowSquid;
 }
 declare namespace com.yungnickyoung.minecraft.yungsapi.mixin.accessor {
     interface SinglePoolElementAccessor {
@@ -16517,4 +17520,11 @@ declare namespace com.yungnickyoung.minecraft.yungsapi.mixin.accessor {
         (arg0: Internal.StructureTemplateManager): Internal.StructureTemplate_;
     }
     type SinglePoolElementAccessor_ = SinglePoolElementAccessor | ((arg0: Internal.StructureTemplateManager)=> Internal.StructureTemplate_);
+}
+declare namespace vectorwing.farmersdelight.common.mixin.accessor {
+    interface RecipeManagerAccessor {
+        abstract getRecipeMap<C extends net.minecraft.world.Container, T extends Internal.Recipe<C>>(arg0: Internal.RecipeType_<T>): Internal.Map<ResourceLocation, Internal.Recipe<C>>;
+        (arg0: Internal.RecipeType<T>): Internal.Map_<ResourceLocation, Internal.Recipe<C>>;
+    }
+    type RecipeManagerAccessor_ = RecipeManagerAccessor | ((arg0: Internal.RecipeType<T>)=> Internal.Map_<ResourceLocation, Internal.Recipe<C>>);
 }

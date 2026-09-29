@@ -1,0 +1,31 @@
+# Ignore massive ProbeJS dumps
+.probejs/
+probe/
+**/*probejs*
+
+# Ignore heavy binary and asset data
+mods/
+config/
+defaultconfigs/
+saves/
+logs/
+crash-reports/
+patchouli_books/
+
+# Ignore web or build artifacts if any
+.git/
+node_modules/
+.vscode/
+
+# Ignore generated/runtime data and per-machine cruft
+local/
+modernfix/
+fancymenu_data/
+resourcepacks/
+minecraftinstance.json
+usercache.json
+usernamecache.json
+options.txt
+.curseclient
+rhino.local.properties
+emi.json
