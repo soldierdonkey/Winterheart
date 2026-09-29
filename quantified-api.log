@@ -4650,3 +4650,18 @@
 [Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
 [Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
 [Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [Vulkan] Background probe pending
+[Quantified] [Vulkan] Vulkan probe scheduler armed (maxAttempts=3, initialDelayMs=0, retryDelayMs=60000)
+[Quantified] [Vulkan] Probe scheduled - attempt 1 (initial) in 0 ms
+[Quantified] [Vulkan] Probe queued (server-start)
+[Quantified] [Vulkan] Probe scheduled - attempt 2 (server-start) in 0 ms
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 2 (server-start) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 1 (initial) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Probe scheduled - attempt 3 (retry:unavailable) in 60000 ms
+[Quantified] [Vulkan] Probe unavailable - attempt 2 (server-start) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
+[Quantified] [OpenCL] Probe skipped - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [OpenCL] Probe unavailable - attempt 1 (initial) - OpenCL runtime unavailable: No Java OpenCL binding found (org.lwjgl.opencl) (binding: NONE)
+[Quantified] [Vulkan] Probe unavailable - attempt 3 (retry:unavailable) - NoClassDefFoundError: Could not initialize class org.lwjgl.system.Library
+[Quantified] [Vulkan] Vulkan probe attempts exhausted; giving up after 3 tries
