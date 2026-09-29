@@ -16,6 +16,7 @@
     "minecraft:iron_ingot": "minecraft:furnace|minecraft:iron_ingot_from_smelting_raw_iron",
     "minecraft:spruce_planks": "minecraft:crafting|minecraft:spruce_planks",
     "tacz:ammo:tacz:12g": "tacz:gun_smith_table/tacz_ammo_workbench|kubejs:tacz_workbench/tacz_12g",
+    "tacz:ammo:tacz:45_70": "tacz:gun_smith_table/tacz_ammo_workbench|kubejs:tacz_workbench/tacz_45_70",
     "winterheart:copper_plate": "minecraft:crafting|winterheart:crafting/copper_plate_from_hammer",
     "winterheart:copper_ring": "minecraft:crafting|winterheart:crafting/copper_ring_from_rod",
     "winterheart:copper_rod": "minecraft:crafting|winterheart:crafting/copper_rods_from_plate",
