@@ -2,7 +2,7 @@
 #Vanilla Trees Settings
 [vanilla]
 	#Right clicking with a vanilla sapling places a dynamic sapling instead.
-	replaceVanillaSapling = false
+	replaceVanillaSapling = true
 	#Crimson Fungus and Warped Fungus that sprout from nylium will be dynamic instead.
 	replaceNyliumFungi = true
 	#If enabled, cancels the non-dynamic trees that spawn with vanilla villages.
@@ -13,7 +13,7 @@
 	#If enabled, dirt bucket recipes will be automatically generated.
 	generateDirtBucketRecipes = true
 	#If enabled, seeds for mega species can be crafted with four regular seeds.
-	generateMegaSeedRecipe = false
+	generateMegaSeedRecipe = true
 	#The base potion the Biochar Base is brewed from. Minecraft potions use 'awkward'. If you change this, don't forget to update the patchouli manual page too.
 	biocharBrewingBase = "thick"
 

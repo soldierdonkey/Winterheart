@@ -17,6 +17,9 @@
     "minecraft:spruce_planks": "minecraft:crafting|minecraft:spruce_planks",
     "tacz:ammo:tacz:12g": "tacz:gun_smith_table/tacz_ammo_workbench|kubejs:tacz_workbench/tacz_12g",
     "tacz:ammo:tacz:45_70": "tacz:gun_smith_table/tacz_ammo_workbench|kubejs:tacz_workbench/tacz_45_70",
+    "tacz:ammo:tacz:792x57": "tacz:gun_smith_table/tacz_ammo_workbench|kubejs:tacz_workbench/tacz_792x57",
+    "tacz:modern_kinetic_gun:tacz:kar98": "tacz:gun_smith_table/tacz_gun_smith_table|kubejs:tacz_workbench/tacz_kar98",
+    "tacz:modern_kinetic_gun:tacz:uzi": "tacz:gun_smith_table/tacz_gun_smith_table|kubejs:tacz_workbench/tacz_uzi",
     "winterheart:copper_plate": "minecraft:crafting|winterheart:crafting/copper_plate_from_hammer",
     "winterheart:copper_ring": "minecraft:crafting|winterheart:crafting/copper_ring_from_rod",
     "winterheart:copper_rod": "minecraft:crafting|winterheart:crafting/copper_rods_from_plate",
@@ -24,7 +27,8 @@
     "winterheart:iron_gear": "minecraft:crafting|winterheart:crafting/iron_gear_from_plates_and_ring",
     "winterheart:iron_plate": "minecraft:crafting|winterheart:crafting/iron_plate_from_hammer",
     "winterheart:iron_ring": "minecraft:crafting|winterheart:crafting/iron_ring_from_rod",
-    "winterheart:iron_rod": "minecraft:crafting|winterheart:crafting/iron_rods_from_plate"
+    "winterheart:iron_rod": "minecraft:crafting|winterheart:crafting/iron_rods_from_plate",
+    "winterheart:iron_screw": "minecraft:crafting|winterheart:crafting/iron_screw_from_bolt"
   },
   "disabled": []
 }

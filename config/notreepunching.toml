@@ -21,7 +21,7 @@
     doBlocksDropWithoutCorrectTool = false
 
     # If blocks that break instantly are mineable without the correct tool.
-    doInstantBreakBlocksDropWithoutCorrectTool = false
+    doInstantBreakBlocksDropWithoutCorrectTool = true
 
     # If blocks that break instantly drop their items without the correct tool.
     doInstantBreakBlocksMineWithoutCorrectTool = true
