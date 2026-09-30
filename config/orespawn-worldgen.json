@@ -5,7 +5,7 @@
   "ore_defaults_revision": 10,
   "geology_mode": "geome",
   "place_fluid_deposits": true,
-  "manage_vanilla_ores": false,
+  "manage_vanilla_ores": true,
   "suppress_all_ore_features": false,
   "default_template": "",
   "geome_scale": 384.0,
@@ -107,54 +107,19 @@
     }
   },
   "biomes": {
-    "minecraft:ocean": {
-      "coastal_shelf": 4.0
-    },
-    "minecraft:deep_ocean": {
-      "coastal_shelf": 4.0,
-      "sedimentary_basin": 1.5
-    },
-    "minecraft:warm_ocean": {
-      "coastal_shelf": 4.0,
-      "sedimentary_basin": 1.0
-    },
-    "minecraft:lukewarm_ocean": {
-      "coastal_shelf": 4.0,
-      "sedimentary_basin": 1.0
-    },
-    "minecraft:deep_lukewarm_ocean": {
-      "coastal_shelf": 4.0,
-      "sedimentary_basin": 1.5
-    },
-    "minecraft:cold_ocean": {
-      "coastal_shelf": 4.0,
-      "glacial_highland": 0.8
-    },
-    "minecraft:deep_cold_ocean": {
-      "coastal_shelf": 4.0,
-      "sedimentary_basin": 1.5,
-      "glacial_highland": 0.8
-    },
-    "minecraft:frozen_ocean": {
-      "coastal_shelf": 4.0,
-      "glacial_highland": 1.5
-    },
     "minecraft:deep_frozen_ocean": {
       "coastal_shelf": 4.0,
       "sedimentary_basin": 1.5,
       "glacial_highland": 1.5
     },
-    "minecraft:river": {
-      "coastal_shelf": 2.0,
-      "sedimentary_basin": 2.0
+    "minecraft:frozen_ocean": {
+      "coastal_shelf": 4.0,
+      "glacial_highland": 1.5
     },
     "minecraft:frozen_river": {
       "coastal_shelf": 2.0,
       "sedimentary_basin": 2.0,
       "glacial_highland": 1.5
-    },
-    "minecraft:beach": {
-      "coastal_shelf": 4.0
     },
     "minecraft:snowy_beach": {
       "coastal_shelf": 3.5,
@@ -164,13 +129,25 @@
       "coastal_shelf": 2.5,
       "mountain_belt": 1.5
     },
-    "minecraft:plains": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 1.0
+    "minecraft:jagged_peaks": {
+      "mountain_belt": 4.8,
+      "glacial_highland": 2.0
     },
-    "minecraft:sunflower_plains": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 1.0
+    "minecraft:frozen_peaks": {
+      "glacial_highland": 3.6,
+      "mountain_belt": 3.0
+    },
+    "minecraft:snowy_slopes": {
+      "glacial_highland": 3.0,
+      "mountain_belt": 2.4
+    },
+    "minecraft:grove": {
+      "glacial_highland": 1.8,
+      "mountain_belt": 1.4
+    },
+    "minecraft:snowy_taiga": {
+      "glacial_highland": 2.5,
+      "stable_craton": 1.0
     },
     "minecraft:snowy_plains": {
       "glacial_highland": 3.5,
@@ -180,608 +157,10 @@
       "glacial_highland": 4.0,
       "mountain_belt": 1.2
     },
-    "minecraft:forest": {
-      "stable_craton": 2.0
-    },
-    "minecraft:flower_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "minecraft:birch_forest": {
-      "stable_craton": 2.0
-    },
-    "minecraft:old_growth_birch_forest": {
-      "stable_craton": 2.3
-    },
-    "minecraft:dark_forest": {
-      "stable_craton": 2.0,
-      "wetland_basin": 0.5
-    },
-    "minecraft:taiga": {
-      "stable_craton": 1.5,
-      "glacial_highland": 0.75
-    },
-    "minecraft:snowy_taiga": {
-      "glacial_highland": 2.5,
-      "stable_craton": 1.0
-    },
-    "minecraft:old_growth_pine_taiga": {
-      "stable_craton": 2.0,
-      "glacial_highland": 0.8
-    },
-    "minecraft:old_growth_spruce_taiga": {
-      "stable_craton": 2.0,
-      "glacial_highland": 1.0
-    },
-    "minecraft:desert": {
-      "arid_basin": 4.0,
-      "sedimentary_basin": 1.5
-    },
-    "minecraft:savanna": {
-      "arid_basin": 2.5,
-      "stable_craton": 0.75
-    },
-    "minecraft:savanna_plateau": {
-      "arid_basin": 2.5,
-      "mountain_belt": 2.5
-    },
-    "minecraft:windswept_savanna": {
-      "mountain_belt": 5.0,
-      "arid_basin": 1.5
-    },
-    "minecraft:badlands": {
-      "arid_basin": 3.5,
-      "sedimentary_basin": 3.0
-    },
-    "minecraft:wooded_badlands": {
-      "arid_basin": 3.0,
-      "sedimentary_basin": 2.5,
-      "mountain_belt": 0.8
-    },
-    "minecraft:eroded_badlands": {
-      "arid_basin": 3.0,
-      "sedimentary_basin": 3.0,
-      "mountain_belt": 1.2
-    },
-    "minecraft:windswept_hills": {
-      "mountain_belt": 4.0,
-      "stable_craton": 1.0
-    },
-    "minecraft:windswept_forest": {
-      "mountain_belt": 3.0,
-      "stable_craton": 1.3
-    },
-    "minecraft:windswept_gravelly_hills": {
-      "mountain_belt": 4.0,
-      "glacial_highland": 0.8
-    },
-    "minecraft:meadow": {
-      "stable_craton": 1.7,
-      "mountain_belt": 1.2
-    },
-    "minecraft:grove": {
-      "glacial_highland": 1.8,
-      "mountain_belt": 1.4
-    },
-    "minecraft:snowy_slopes": {
-      "glacial_highland": 3.0,
-      "mountain_belt": 2.4
-    },
-    "minecraft:jagged_peaks": {
-      "mountain_belt": 4.8,
-      "glacial_highland": 2.0
-    },
-    "minecraft:frozen_peaks": {
-      "glacial_highland": 3.6,
-      "mountain_belt": 3.0
-    },
-    "minecraft:stony_peaks": {
-      "mountain_belt": 4.5,
-      "volcanic_arc": 0.8
-    },
-    "minecraft:dripstone_caves": {
-      "sedimentary_basin": 2.8,
-      "coastal_shelf": 1.0
-    },
-    "minecraft:lush_caves": {
-      "wetland_basin": 2.5,
-      "sedimentary_basin": 1.2
-    },
-    "minecraft:swamp": {
-      "wetland_basin": 4.0,
-      "sedimentary_basin": 1.5
-    },
-    "minecraft:jungle": {
-      "wetland_basin": 1.5,
-      "stable_craton": 1.5
-    },
-    "minecraft:sparse_jungle": {
-      "stable_craton": 1.5,
-      "wetland_basin": 1.0
-    },
-    "minecraft:bamboo_jungle": {
-      "wetland_basin": 2.0,
-      "stable_craton": 1.2
-    },
-    "minecraft:mushroom_fields": {
-      "coastal_shelf": 2.0,
-      "volcanic_arc": 1.5,
-      "stable_craton": 1.0
-    },
-    "biomesoplenty:cherry_blossom_grove": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:clover_patch": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:dead_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:field": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:forested_field": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:lavender_field": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:lavender_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:maple_woods": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:old_growth_dead_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:old_growth_woodland": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:ominous_woods": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:orchard": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:origin_valley": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:pasture": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:pumpkin_patch": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:redwood_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:seasonal_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:woodland": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "biomesoplenty:bamboo_grove": {
-      "wetland_basin": 3.0,
-      "stable_craton": 1.5
-    },
-    "biomesoplenty:grassland": {
-      "stable_craton": 1.5,
-      "arid_basin": 1.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:prairie": {
-      "stable_craton": 1.5,
-      "arid_basin": 1.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:crag": {
-      "mountain_belt": 3.8,
-      "stable_craton": 0.8
-    },
-    "biomesoplenty:highland": {
-      "mountain_belt": 3.8,
-      "stable_craton": 0.8
-    },
-    "biomesoplenty:jade_cliffs": {
-      "mountain_belt": 3.8,
-      "stable_craton": 0.8
-    },
-    "biomesoplenty:rainbow_hills": {
-      "mountain_belt": 3.8,
-      "stable_craton": 0.8
-    },
-    "biomesoplenty:highland_moor": {
-      "mountain_belt": 2.5,
-      "wetland_basin": 1.5
-    },
-    "biomesoplenty:rocky_rainforest": {
-      "mountain_belt": 2.0,
-      "wetland_basin": 3.0
-    },
-    "biomesoplenty:rocky_shrubland": {
-      "mountain_belt": 2.0,
-      "arid_basin": 2.5
-    },
-    "biomesoplenty:volcano": {
-      "volcanic_arc": 6.0,
-      "mountain_belt": 1.0
-    },
-    "biomesoplenty:volcanic_plains": {
-      "volcanic_arc": 4.0,
-      "arid_basin": 0.8
-    },
-    "biomesoplenty:dryland": {
-      "arid_basin": 3.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:lush_desert": {
-      "arid_basin": 3.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:lush_savanna": {
-      "arid_basin": 3.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:mediterranean_forest": {
-      "arid_basin": 3.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:scrubland": {
-      "arid_basin": 3.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:shrubland": {
-      "arid_basin": 3.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:wasteland": {
-      "arid_basin": 3.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:wooded_scrubland": {
-      "arid_basin": 3.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:wooded_wasteland": {
-      "arid_basin": 3.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:cold_desert": {
-      "arid_basin": 3.0,
-      "glacial_highland": 2.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:dune_beach": {
-      "coastal_shelf": 4.0,
-      "arid_basin": 2.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:bayou": {
-      "wetland_basin": 3.5,
-      "sedimentary_basin": 1.5
-    },
-    "biomesoplenty:bog": {
-      "wetland_basin": 3.5,
-      "sedimentary_basin": 1.5
-    },
-    "biomesoplenty:floodplain": {
-      "wetland_basin": 3.5,
-      "sedimentary_basin": 1.5
-    },
-    "biomesoplenty:fungal_jungle": {
-      "wetland_basin": 3.5,
-      "sedimentary_basin": 1.5
-    },
-    "biomesoplenty:marsh": {
-      "wetland_basin": 3.5,
-      "sedimentary_basin": 1.5
-    },
-    "biomesoplenty:mystic_grove": {
-      "wetland_basin": 3.5,
-      "sedimentary_basin": 1.5
-    },
-    "biomesoplenty:rainforest": {
-      "wetland_basin": 3.5,
-      "sedimentary_basin": 1.5
-    },
-    "biomesoplenty:wetland": {
-      "wetland_basin": 3.5,
-      "sedimentary_basin": 1.5
-    },
-    "biomesoplenty:muskeg": {
-      "wetland_basin": 2.5,
-      "glacial_highland": 2.0,
-      "sedimentary_basin": 1.0
-    },
-    "biomesoplenty:glowing_grotto": {
-      "wetland_basin": 2.0,
-      "sedimentary_basin": 2.0
-    },
-    "biomesoplenty:tropics": {
-      "coastal_shelf": 2.0,
-      "wetland_basin": 2.0,
-      "stable_craton": 0.5
-    },
-    "biomesoplenty:boreal_forest": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "biomesoplenty:coniferous_forest": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "biomesoplenty:fir_clearing": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "biomesoplenty:snowy_coniferous_forest": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "biomesoplenty:snowy_fir_clearing": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "biomesoplenty:snowy_maple_woods": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "biomesoplenty:tundra": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "byg:allium_fields": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:amaranth_fields": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:autumnal_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:autumnal_valley": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:cherry_blossom_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:coconino_meadow": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:ebony_woods": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:firecracker_shrubland": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:forgotten_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:fragment_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:jacaranda_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:orchard": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:prairie": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:red_oak_forest": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:redwood_thicket": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:rose_fields": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:temperate_grove": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:twilight_meadow": {
-      "stable_craton": 2.0,
-      "sedimentary_basin": 0.5
-    },
-    "byg:aspen_forest": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "byg:autumnal_taiga": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "byg:borealis_grove": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "byg:cika_woods": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "byg:coniferous_forest": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "byg:frosted_coniferous_forest": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "byg:frosted_taiga": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "byg:maple_taiga": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "byg:weeping_witch_forest": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "byg:zelkova_forest": {
-      "glacial_highland": 2.0,
-      "stable_craton": 1.0
-    },
-    "byg:araucaria_savanna": {
-      "arid_basin": 2.5,
-      "stable_craton": 0.8
-    },
-    "byg:baobab_savanna": {
-      "arid_basin": 2.5,
-      "stable_craton": 0.8
-    },
-    "byg:atacama_desert": {
-      "arid_basin": 4.0,
-      "sedimentary_basin": 1.5
-    },
-    "byg:mojave_desert": {
-      "arid_basin": 4.0,
-      "sedimentary_basin": 1.5
-    },
-    "byg:windswept_desert": {
-      "arid_basin": 4.0,
-      "sedimentary_basin": 1.5
-    },
-    "byg:red_rock_valley": {
-      "arid_basin": 3.5,
-      "sedimentary_basin": 3.0
-    },
-    "byg:sierra_badlands": {
-      "arid_basin": 3.5,
-      "sedimentary_basin": 3.0
-    },
-    "byg:windswept_dunes": {
-      "arid_basin": 3.5,
-      "sedimentary_basin": 3.0
-    },
-    "byg:bayou": {
-      "wetland_basin": 4.0,
-      "sedimentary_basin": 1.5
-    },
-    "byg:cypress_swamplands": {
-      "wetland_basin": 4.0,
-      "sedimentary_basin": 1.5
-    },
-    "byg:white_mangrove_marshes": {
-      "wetland_basin": 4.0,
-      "sedimentary_basin": 1.5
-    },
-    "byg:temperate_rainforest": {
-      "wetland_basin": 3.5,
-      "stable_craton": 1.0,
-      "sedimentary_basin": 0.8
-    },
-    "byg:tropical_rainforest": {
-      "wetland_basin": 3.5,
-      "stable_craton": 1.0,
-      "sedimentary_basin": 0.8
-    },
-    "byg:lush_stacks": {
-      "coastal_shelf": 4.0,
-      "wetland_basin": 1.2,
-      "sedimentary_basin": 1.0
-    },
-    "byg:dead_sea": {
-      "coastal_shelf": 4.0,
-      "sedimentary_basin": 1.8,
-      "arid_basin": 1.2
-    },
-    "byg:windswept_beach": {
-      "coastal_shelf": 4.0,
-      "mountain_belt": 1.0
-    },
-    "byg:rainbow_beach": {
-      "coastal_shelf": 4.0,
-      "stable_craton": 0.5
-    },
-    "byg:black_forest": {
-      "mountain_belt": 2.5,
-      "stable_craton": 1.5
-    },
-    "byg:canadian_shield": {
-      "mountain_belt": 3.5,
-      "glacial_highland": 1.5,
-      "stable_craton": 0.5
-    },
-    "byg:crag_gardens": {
-      "mountain_belt": 3.5,
-      "wetland_basin": 1.5
-    },
-    "byg:dacite_ridges": {
-      "mountain_belt": 4.0,
-      "volcanic_arc": 2.0,
-      "glacial_highland": 1.0
-    },
-    "byg:guiana_shield": {
-      "mountain_belt": 3.5,
-      "wetland_basin": 2.0
-    },
-    "byg:howling_peaks": {
-      "mountain_belt": 5.0,
-      "glacial_highland": 1.0
-    },
-    "byg:skyris_vale": {
-      "mountain_belt": 3.0,
-      "glacial_highland": 1.0,
-      "stable_craton": 1.0
-    },
-    "byg:cardinal_tundra": {
-      "glacial_highland": 3.5,
-      "sedimentary_basin": 1.0
-    },
-    "byg:shattered_glacier": {
-      "glacial_highland": 5.0,
-      "mountain_belt": 2.0
-    },
-    "byg:basalt_barrera": {
-      "volcanic_arc": 6.0,
-      "coastal_shelf": 2.0,
-      "mountain_belt": 1.0
-    },
-    "byg:dacite_shore": {
-      "volcanic_arc": 4.0,
-      "coastal_shelf": 3.0,
-      "mountain_belt": 1.0
+    "streamsreflowing:stream": {
+      "sedimentary_basin": 2.0,
+      "coastal_shelf": 1.5,
+      "glacial_highland": 1.5
     }
   },
   "biome_dictionary": {
@@ -920,8 +299,8 @@
         "minecraft:overworld": {
           "enabled": true,
           "min_y": 0,
-          "max_y": 96,
-          "frequency": 6.27,
+          "max_y": 128,
+          "frequency": 18.8,
           "quantity": 17,
           "pattern": "clusters",
           "height_distribution": "triangle",
@@ -943,7 +322,10 @@
             "sedimentary_basin": 1.8,
             "coastal_shelf": 1.5,
             "wetland_basin": 1.4,
-            "volcanic_arc": 0.45
+            "volcanic_arc": 0.45,
+            "glacial_highland": 1.25,
+            "mountain_belt": 1.15,
+            "stable_craton": 1.1
           }
         }
       },
@@ -959,7 +341,7 @@
           "enabled": true,
           "min_y": -64,
           "max_y": 256,
-          "frequency": 25.5,
+          "frequency": 51.0,
           "quantity": 9,
           "pattern": "vein",
           "height_distribution": "triangle",
@@ -996,7 +378,7 @@
           "enabled": true,
           "min_y": -16,
           "max_y": 112,
-          "frequency": 12.65,
+          "frequency": 25.3,
           "quantity": 10,
           "pattern": "normal_cloud",
           "height_distribution": "triangle",
@@ -1032,7 +414,7 @@
           "enabled": true,
           "min_y": -64,
           "max_y": 32,
-          "frequency": 2.95,
+          "frequency": 5.9,
           "quantity": 9,
           "pattern": "vein",
           "height_distribution": "triangle",
@@ -1069,7 +451,7 @@
           "enabled": true,
           "min_y": -64,
           "max_y": 15,
-          "frequency": 4.68,
+          "frequency": 9.36,
           "quantity": 8,
           "pattern": "vein",
           "height_distribution": "uniform_bottom_triangle",
@@ -1101,7 +483,7 @@
           "enabled": true,
           "min_y": -64,
           "max_y": 16,
-          "frequency": 1.83,
+          "frequency": 3.66,
           "quantity": 8,
           "pattern": "clusters",
           "height_distribution": "bottom_triangle",
@@ -1137,7 +519,7 @@
           "enabled": true,
           "min_y": -64,
           "max_y": 64,
-          "frequency": 3.38,
+          "frequency": 6.76,
           "quantity": 7,
           "pattern": "normal_cloud",
           "height_distribution": "triangle",
@@ -1173,7 +555,7 @@
           "enabled": true,
           "min_y": -16,
           "max_y": 128,
-          "frequency": 0.33,
+          "frequency": 0.66,
           "quantity": 3,
           "pattern": "clusters",
           "height_distribution": "triangle",
@@ -1200,7 +582,13 @@
             "arid_basin": 0.15,
             "wetland_basin": 0.05,
             "volcanic_arc": 0.35
-          }
+          },
+          "biome_ids": [
+            "minecraft:jagged_peaks",
+            "minecraft:frozen_peaks",
+            "minecraft:snowy_slopes",
+            "minecraft:grove"
+          ]
         }
       },
       "deep_output": "minecraft:deepslate_emerald_ore",
@@ -1215,7 +603,7 @@
           "enabled": true,
           "min_y": 0,
           "max_y": 127,
-          "frequency": 5.2,
+          "frequency": 10.4,
           "quantity": 10,
           "pattern": "clusters",
           "height_distribution": "uniform",
@@ -1237,7 +625,7 @@
           "enabled": true,
           "min_y": 0,
           "max_y": 127,
-          "frequency": 11.2,
+          "frequency": 22.4,
           "quantity": 14,
           "pattern": "vein",
           "height_distribution": "uniform",
@@ -1259,7 +647,7 @@
           "enabled": true,
           "min_y": 8,
           "max_y": 120,
-          "frequency": 1.25,
+          "frequency": 2.5,
           "quantity": 3,
           "pattern": "clusters",
           "height_distribution": "uniform",
@@ -1271,6 +659,57 @@
           ]
         }
       }
+    },
+    "butchery:sulfur_ore": {
+      "enabled": true,
+      "source_mod": "butchery",
+      "native_generation": false,
+      "retrogen": false,
+      "dimensions": {
+        "minecraft:overworld": {
+          "enabled": true,
+          "min_y": -64,
+          "max_y": 80,
+          "frequency": 11.5,
+          "quantity": 16,
+          "pattern": "clusters",
+          "height_distribution": "triangle",
+          "spread": 10,
+          "vertical_spread": 4,
+          "node_size": 5,
+          "host_families": [
+            "sedimentary",
+            "metamorphic",
+            "igneous_intrusive",
+            "igneous_volcanic"
+          ],
+          "host_tags": [
+            "minecraft:stone_ore_replaceables",
+            "minecraft:deepslate_ore_replaceables"
+          ],
+          "discard_chance_on_air_exposure": 0.87,
+          "geomes": {
+            "coastal_shelf": 0.0
+          },
+          "excluded_biome_ids": [
+            "minecraft:frozen_ocean",
+            "minecraft:deep_frozen_ocean",
+            "minecraft:cold_ocean",
+            "minecraft:deep_cold_ocean",
+            "minecraft:ocean",
+            "minecraft:deep_ocean",
+            "minecraft:beach",
+            "minecraft:snowy_beach",
+            "minecraft:stony_shore"
+          ],
+          "excluded_biome_dictionary": [
+            "OCEAN",
+            "BEACH"
+          ]
+        }
+      },
+      "deep_output": "butchery:deepslate_sulfur_ore",
+      "deep_output_max_y": -1
     }
   },
   "ore_providers": {},
