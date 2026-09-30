@@ -1,0 +1,14 @@
+
+#Bootstrap fallbacks. Detailed settings live in orespawn-worldgen.json.
+[worldgen]
+	#Master switch for configured terrain replacement.
+	place_terrain = true
+	#Allowed Values: GEOME, LEGACY
+	fallback_geology_mode = "GEOME"
+	#Range: 4 ~ 32767
+	cyano_region_size = 256
+	#Range: 1.0 ~ 32767.0
+	cyano_layer_reach = 32.0
+	#Range: 1 ~ 255
+	cyano_layer_thickness = 8
+
