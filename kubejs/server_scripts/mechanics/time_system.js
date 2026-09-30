@@ -8,6 +8,30 @@ const TIME_CONFIG = {
     // Core Settings
     ETERNAL_NIGHT_DAY: 50,
     SLEEP_COOLDOWN: 200, // Ticks before sleep can trigger a day pass again (200 = 10s)
+
+    // Effects granted to every player who wakes up (all sleeping players waking = new day)
+    WAKE_UP: {
+        ENABLED: true,
+        // Recovery (also pauses limb poising, see limb_poisoning.js)
+        RECOVERY_EFFECT: 'legendarysurvivaloverhaul:recovery',
+        RECOVERY_DURATION: 35 * 20, // ticks
+        RECOVERY_AMPLIFIER: 0,
+        // Regeneration I heals 1 HP every 50 ticks; duration is derived so it heals
+        // REGEN_HEAL_FRACTION of the player's max health
+        REGEN_EFFECT: 'minecraft:regeneration',
+        REGEN_AMPLIFIER: 0,
+        REGEN_HEAL_FRACTION: 0.5,
+        REGEN_TICKS_PER_HP: 50
+    },
+
+    // Midnight sanity drain: once time reaches midnight, sanity drains at an exponentially growing rate.
+    // rate(t) = BASE_RATE * 2^(t / DOUBLING_MINUTES), t = real minutes spent past midnight
+    MIDNIGHT_DRAIN: {
+        ENABLED: true,
+        BASE_RATE: 7.5,         // Sanity % lost per minute at the moment midnight starts
+        DOUBLING_MINUTES: 2,    // Minutes past midnight for the drain rate to double
+        MAX_RATE: 50             // Cap on sanity % per minute (0 = no cap)
+    },
     
     // [Start_Speed (Day 1), End_Speed (Day 50)]
     // Higher speed = phase passes faster. Lower speed = phase lasts longer.
@@ -58,6 +82,38 @@ function everyTenSeconds(event) {
 function getDayScaledSpeed(day, interval) {
     let factor = Math.min(1.0, Math.max(0.0, (day - 1) / (TIME_CONFIG.ETERNAL_NIGHT_DAY - 1)))
     return interval[0] + factor * (interval[1] - interval[0])
+}
+
+// Grants Recovery + Regeneration after waking up (see TIME_CONFIG.WAKE_UP)
+function applyWakeUpEffects(player) {
+    const cfg = TIME_CONFIG.WAKE_UP
+    if (!cfg.ENABLED) return
+
+    let regenDuration = Math.ceil(player.maxHealth * cfg.REGEN_HEAL_FRACTION * cfg.REGEN_TICKS_PER_HP)
+
+    player.potionEffects.add(cfg.RECOVERY_EFFECT, cfg.RECOVERY_DURATION, cfg.RECOVERY_AMPLIFIER, false, true)
+    player.potionEffects.add(cfg.REGEN_EFFECT, regenDuration, cfg.REGEN_AMPLIFIER, false, true)
+}
+
+// Drains sanity from every player while it is past midnight (called every tick from the time engine)
+function applyMidnightDrain(level, data) {
+    const cfg = TIME_CONFIG.MIDNIGHT_DRAIN
+    if (!cfg.ENABLED) return
+
+    let ticks = data.getDouble('midnight_ticks') + 1
+    data.putDouble('midnight_ticks', ticks)
+
+    if (ticks % 20 !== 0) return
+
+    let minutes = ticks / 1200
+    let rate = cfg.BASE_RATE * Math.pow(2, minutes / cfg.DOUBLING_MINUTES)
+    if (cfg.MAX_RATE > 0) rate = Math.min(rate, cfg.MAX_RATE)
+    let drain = rate / 60 // per second
+
+    level.players.forEach(p => {
+        if (p.isSpectator() || p.isCreative()) return
+        set_sanity(p, level.server, get_sanity(p) - drain)
+    })
 }
 
 // ==========================================
@@ -142,6 +198,7 @@ LevelEvents.tick(event => {
             currentPhase = 'ETERNAL_NIGHT'
         }
         triggerTimeHook(level, currentDay, 'ETERNAL_NIGHT', isPhaseChange)
+        applyMidnightDrain(level, data)
         return
     }
 
@@ -169,6 +226,7 @@ LevelEvents.tick(event => {
                     saveState(p, level.server)
 
                     p.stopSleeping()
+                    applyWakeUpEffects(p)
                 })
             }
         })
@@ -216,11 +274,15 @@ LevelEvents.tick(event => {
 
         // Runs continuously every tick
         triggerTimeHook(level, currentDay, currentPhase, isPhaseChange)
+
+        // Not past midnight yet (new day, sleep, death rewind): reset the drain timer
+        if (exactTime < TIME_CONFIG.PHASES.MIDNIGHT) data.putDouble('midnight_ticks', 0.0)
     } else {
         if (global.currentTick % 10 === 0) {
             level.server.runCommandSilent(`time set ${TIME_CONFIG.PHASES.MIDNIGHT}`)
         }
         triggerTimeHook(level, currentDay, 'MIDNIGHT', false)
+        applyMidnightDrain(level, data)
     }
 
     // ----------------------------------------------------
@@ -350,7 +412,7 @@ PlayerEvents.tick(event => {
 
     let effect = player.hasEffect('minecraft:unluck')
     if (effect) {
-        player.removeEffect('minecraft:unluck')
+        player.Effect('minecraft:unluck')
         handleDeathLoopReset(player.server, player)
     }
 })
@@ -360,6 +422,8 @@ PlayerEvents.tick(event => {
 // ==========================================
 // Called continuously every tick with phase change awareness
 function triggerTimeHook(level, day, phase, isPhaseChange) {
+    if (isPhaseChange) triggerPhaseChangeHook(level, day, phase)
+
     switch(phase) {
         case 'DAWN':
             if (everyTenSeconds()) {
@@ -389,6 +453,42 @@ function triggerTimeHook(level, day, phase, isPhaseChange) {
             if (everyTenSeconds()) {
                 level.server.runCommandSilent('weather thunder')
             }
+            break
+    }
+}
+
+// Called once, at the moment a phase begins
+function triggerPhaseChangeHook(level, day, phase) {
+    const server = level.server
+
+    function showTitle(title, subtitle, color) {
+        server.runCommandSilent('title @a times 20 80 40')
+        server.runCommandSilent(`title @a subtitle {"text":"${subtitle}","color":"${color}","italic":true}`)
+        server.runCommandSilent(`title @a title {"text":"${title}","color":"${color}","bold":true}`)
+    }
+
+    switch(phase) {
+        case 'DAWN':
+            break
+
+        case 'NOON':
+            break
+
+        case 'AFTERNOON':
+            break
+
+        case 'DUSK':
+            break
+
+        case 'NIGHT':
+            showTitle('NIGHT', 'It\'s getting late...', 'gray')
+            break
+
+        case 'MIDNIGHT':
+            showTitle('MIDNIGHT', 'You should go to sleep...', '#8A0303')
+            break
+
+        case 'ETERNAL_NIGHT':
             break
     }
 }

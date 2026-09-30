@@ -47,17 +47,25 @@ const LIMB_POISE_CONFIG = {
 
     // Above this health percent, the walk gets a mild upward (healing) bias
     HIGH_HEALTH_THRESHOLD: 0.8,
-    HIGH_HEALTH_HEAL_BIAS: 2.5,
+    HIGH_HEALTH_HEAL_BIAS: 5.5,
 
     // Status effect applied while at least one limb is poised
     EFFECT_ID: 'winterheart:limb_poising',
     EFFECT_REFRESH_DURATION: 60, // ticks; effect is re-applied every second while active
     MAX_EFFECT_AMPLIFIER: 3,
 
+    // While a player has this effect, limb poising is paused (no decay/heal steps)
+    RECOVERY_EFFECT_ID: 'legendarysurvivaloverhaul:recovery',
+
     // Limbs only surface in the sidebar / effect count / notifications once their
     // health % drops below this. Minor scratches above this threshold still decay
     // and heal in the background, they just aren't shown until they get serious.
     VISIBLE_HEALTH_THRESHOLD: 0.8,
+
+    // Main health regenerates while every limb (dead ones count as 0%) is above this percent
+    BODY_REGEN_THRESHOLD: 0.8,
+    // Main health restored per poise tick (TICK_INTERVAL ticks). 0.025 per 5 ticks = 0.1 HP/s
+    BODY_REGEN_PER_TICK: 0.025,
 
     NOTIFY_ACTIONBAR: true,
     SIDEBAR_ENABLED: true,
@@ -329,6 +337,27 @@ function getLimbPoiseSidebarLines(player) {
     return lines
 }
 
+/**
+ * Slowly restores the player's main health while every limb is above
+ * BODY_REGEN_THRESHOLD. Re-reads the cap so it sees this tick's writes.
+ */
+function tickBodyRegen(player) {
+    if (!player.isAlive() || player.health >= player.maxHealth) return
+
+    let capData = getForgeCap(player, LIMB_POISE_CONFIG.CAP_ID)
+    if (!capData) return
+
+    for (let limb of LIMB_POISE_LIMBS) {
+        let maxHealth = capData[`${limb.key}_maxHealth`] || 0
+        if (maxHealth <= 0) continue
+        let damage = capData[`${limb.key}_damage`] || 0
+        let healthPercent = 1 - (damage / maxHealth)
+        if (isLimbDead(player, limb.key) || !(healthPercent > LIMB_POISE_CONFIG.BODY_REGEN_THRESHOLD)) return
+    }
+
+    player.heal(LIMB_POISE_CONFIG.BODY_REGEN_PER_TICK)
+}
+
 // ==========================================
 // TICK HOOK
 // ==========================================
@@ -344,6 +373,14 @@ PlayerEvents.tick(event => {
     let capData = getForgeCap(player, LIMB_POISE_CONFIG.CAP_ID)
     if (!capData) return
 
+    // While LSO's Recovery effect is active, poising is suspended: no decay/heal steps
+    // and the poising effect is dropped. Tracked limb state is kept, so it resumes after.
+    if (player.hasEffect(LIMB_POISE_CONFIG.RECOVERY_EFFECT_ID)) {
+        applyLimbPoiseEffect(player, 0)
+        tickBodyRegen(player)
+        return
+    }
+
     let visibleCount = 0
     LIMB_POISE_LIMBS.forEach(limb => {
         let healthPercent = tickLimbPoise(player, capData, limb)
@@ -352,6 +389,7 @@ PlayerEvents.tick(event => {
         }
     })
     applyLimbPoiseEffect(player, visibleCount)
+    tickBodyRegen(player)
 })
 
 /**
