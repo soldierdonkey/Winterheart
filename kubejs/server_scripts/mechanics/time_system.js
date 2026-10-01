@@ -461,6 +461,9 @@ function triggerTimeHook(level, day, phase, isPhaseChange) {
 function triggerPhaseChangeHook(level, day, phase) {
     const server = level.server
 
+    // guide system: 'time_phase' events (see questing/guides/guides_engine.js)
+    if (global.Guides) global.Guides.firePhase(server, day, phase)
+
     function showTitle(title, subtitle, color) {
         server.runCommandSilent('title @a times 20 80 40')
         server.runCommandSilent(`title @a subtitle {"text":"${subtitle}","color":"${color}","italic":true}`)

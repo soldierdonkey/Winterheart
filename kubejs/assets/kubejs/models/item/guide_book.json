@@ -1,0 +1,21 @@
+{
+  "_generated_by": "guide_editor",
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "minecraft:item/writable_book"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "kubejs:item/guide_book_journal"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "kubejs:item/guide_book_field_notebook"
+    }
+  ]
+}

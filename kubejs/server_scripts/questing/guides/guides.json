@@ -1,0 +1,288 @@
+{
+  "books": [
+    {
+      "id": "journal",
+      "name": "Kaamos's Journal",
+      "author": "Lieutenant Kaamos",
+      "tooltip": "Scribbled on the cover reads: 'September 10th, 1932'",
+      "texture": "minecraft:item/writable_book",
+      "model": 1
+    },
+    {
+      "id": "field_notebook",
+      "name": "Surviving the Northernmost North",
+      "author": "Kaamos",
+      "tooltip": "Nearly comprehensive!",
+      "titleColor": "#007700",
+      "texture": "minecraft:item/knowledge_book",
+      "model": 2
+    }
+  ],
+  "guides": [
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "book": "journal",
+      "content": "§lWelcome.§r \n\nMy youthful vigilance has escaped me. I have left this home's stewardship to whoever may need its shelter.§r\n\nFind me down south,\n    §4- Lt. Kaamos,\nNorthern Watch Corps§r",
+      "unlock": [
+        {
+          "event": "block_used",
+          "match": "minecraft:spruce_door"
+        }
+      ]
+    },
+    {
+      "id": "the_boiler",
+      "title": "The Boiler",
+      "book": "field_notebook",
+      "content": "§6Heat§r is essential to surivival.\n\nOne must use a §lboiler§r to warm themselves during the colder seasons. Requires both §2fuel§r and §4redstone§r.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": "legendarysurvivaloverhaul:heater",
+          "distance": 6.0
+        }
+      ]
+    },
+    {
+      "id": "cooking",
+      "title": "Cooking",
+      "book": "field_notebook",
+      "content": "Cooking both calms the nerves and aids in helps in keeping a §nbalanced diet§r. One must fuel and light their stove.\n\nElectricity might as well not exist this far north.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": [
+            "hardcore_torches:stove",
+            "farmersdelight:skillet",
+            "farmersdelight:cooking_pot"
+          ],
+          "distance": 6.0
+        }
+      ]
+    },
+    {
+      "id": "some_horrible_smell",
+      "title": "Some Horrible Smell",
+      "book": "journal",
+      "content": "I feel a wind of death so strong it is nearly driving me mad.\n\nSome §4rotten carcass§r...",
+      "unlock": [
+        {
+          "sweep": "standing_on",
+          "match": "minecraft:spruce_trapdoor"
+        }
+      ]
+    },
+    {
+      "id": "double_dreams",
+      "title": "Double Dreams",
+      "book": "journal",
+      "content": "Sometimes I have double dreams.\n\nI will have lived a whole day, only to wake up from it.\n\nI feel as if I  have written this entry a thousand times and more.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": "#minecraft:beds",
+          "distance": 6.0
+        }
+      ]
+    },
+    {
+      "id": "butchering",
+      "title": "Butchering",
+      "book": "field_notebook",
+      "content": "To butcher a carcass, hang it on a hook. Use a §ncleaver§r to drain it of blood, then skin it with a §nskinning knife§r. Finally, carve it with a cleaver.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": [
+            "#butchery:carcass",
+            "#butchery:skeletons"
+          ],
+          "distance": 6.0
+        }
+      ]
+    },
+    {
+      "id": "maps",
+      "title": "Maps",
+      "book": "field_notebook",
+      "content": "Maps are mandatory for an adventure. This far north, terrain is repetitive.\n\n§nDo not§r get lost.",
+      "unlock": [
+        {
+          "sweep": "holding",
+          "item": "map_atlases:atlas"
+        }
+      ]
+    },
+    {
+      "id": "tanning",
+      "title": "Tanning",
+      "book": "field_notebook",
+      "content": "To tan skins into leather, §e§3salt§r§r them. With a §1wet§r rag or sponge, clean the salted skin. Last, leave the skin out to dry\n\nIt is reccomended to process skins in parallel.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": "butchery:skin_rack",
+          "distance": 6.0
+        }
+      ]
+    },
+    {
+      "id": "the_livestock",
+      "title": "The Livestock",
+      "book": "journal",
+      "content": "When I first arrived here, the herds were plentiful. Now, most seem to have disappeared. There seems to be §osomething§r happening in the woods.\n\nTomorrow, I will investigate.",
+      "unlock": [
+        {
+          "event": "time_phase",
+          "match": "DAWN",
+          "minDay": 15
+        }
+      ]
+    },
+    {
+      "id": "salt",
+      "title": "Salt",
+      "book": "field_notebook",
+      "content": "Salt is obtained by evaporating §9water§r in a §8basin§r.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": [
+            "butchery:salt_block",
+            "butchery:salt_formation_base",
+            "butchery:salt_formation_frustum",
+            "butchery:salt_formation_middle",
+            "butchery:salt_formation_tip",
+            "butchery:basin"
+          ],
+          "distance": 6.0
+        },
+        {
+          "sweep": "inventory",
+          "item": [
+            "butchery:salt",
+            "butchery:salt_block",
+            "butchery:salt_formation_tip",
+            "butchery:salt_formation_base",
+            "butchery:salt_formation_frustum",
+            "butchery:salt_formation_middle",
+            "butchery:basin"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trees",
+      "title": "Trees",
+      "book": "field_notebook",
+      "content": "Do §lnot§r get crushed by a falling §2tree§r.\n\nThis should be self-explanatory.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": "dynamictrees:spruce_branch",
+          "distance": 2.0
+        }
+      ]
+    },
+    {
+      "id": "guns",
+      "title": "Guns",
+      "book": "field_notebook",
+      "content": "§8Guns§r are a necessity this far north. Tehy are they great for hunting and help fend off other...\n      ...§4threats§r...\n...\n\nGuns require §9ammunition§r. ",
+      "unlock": [
+        {
+          "sweep": "holding",
+          "item": "tacz:modern_kinetic_gun"
+        }
+      ]
+    },
+    {
+      "id": "ammunition",
+      "title": "Ammunition",
+      "book": "field_notebook",
+      "content": "§9Ammunition§r is a precious resource. It is made with §8gunpowder§r and metal.\n\nDo not it use frivolously.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": "tacz:workbench_a"
+        }
+      ]
+    },
+    {
+      "id": "gunpowder",
+      "title": "Gunpowder",
+      "book": "field_notebook",
+      "content": "§8Gunpowder§r is the basis of all explosives. It is produced with §lsaltpeter§r, §lsulfur§r, and §lcoal§r.\n\nSometimes explosion craters are found in the forest. Thus, there may be an alternative source.",
+      "unlock": [
+        {
+          "sweep": "looking_at_entity",
+          "match": "minecraft:creeper",
+          "distance": 18.0
+        },
+        {
+          "sweep": "inventory",
+          "item": [
+            "butchery:sulfur",
+            "kubejs:saltpeter",
+            "#minecraft:coals"
+          ],
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "sulfur",
+      "title": "Sulfur",
+      "book": "field_notebook",
+      "content": "Sulfur is a naturally generating ore.\n\nIt can be brewed into corrosive acids and mixed with §4fuel§r and an §1oxidizer§r to yield §8gunpowder§r.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": [
+            "butchery:sulfur_ore",
+            "butchery:deepslate_sulfur_ore"
+          ],
+          "distance": 6.0
+        },
+        {
+          "sweep": "inventory",
+          "item": "butchery:sulfur"
+        }
+      ]
+    },
+    {
+      "id": "saltpeter",
+      "title": "Saltpeter",
+      "book": "field_notebook",
+      "content": "Saltpeter (KNO₃) is a strong oxidizer derived from fermented organic matter. It must be brewed and filtered in order to be used. Mix with sulfur and §4fuel§r to yield §8gunpowder§r.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": [
+            "farmersdelight:rich_soil",
+            "farmersdelight:rich_soil_farmland",
+            "farmersdelight:organic_compost"
+          ],
+          "distance": 6.0
+        },
+        {
+          "sweep": "inventory",
+          "item": [
+            "farmersdelight:rich_soil",
+            "farmersdelight:organic_compost",
+            "farmersdelight:straw",
+            "minecraft:rotten_flesh",
+            "minecraft:bone_meal",
+            "farmersdelight:tree_bark",
+            "overweight_farming:vegetable_compost",
+            "overweight_farming:vegetable_peels",
+            "kubejs:crude_nitrate_bottle",
+            "kubejs:potassium_nitrate_bottle",
+            "kubejs:saltpeter"
+          ]
+        }
+      ]
+    }
+  ]
+}
