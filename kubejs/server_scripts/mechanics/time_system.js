@@ -222,11 +222,12 @@ LevelEvents.tick(event => {
                     level.server.runCommandSilent('time set 0')
                     
                     triggerTimeHook(level, currentDay, 'DAWN', true)
-
+                    
+                    applyWakeUpEffects(p)
+                    
                     saveState(p, level.server)
 
                     p.stopSleeping()
-                    applyWakeUpEffects(p)
                 })
             }
         })
@@ -412,7 +413,6 @@ PlayerEvents.tick(event => {
 
     let effect = player.hasEffect('minecraft:unluck')
     if (effect) {
-        player.Effect('minecraft:unluck')
         handleDeathLoopReset(player.server, player)
     }
 })
