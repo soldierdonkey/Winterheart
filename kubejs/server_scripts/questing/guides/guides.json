@@ -2,7 +2,7 @@
   "books": [
     {
       "id": "journal",
-      "name": "Kaamos's Journal",
+      "name": "Lt. Kaamos's Journal",
       "author": "Lieutenant Kaamos",
       "tooltip": "Scribbled on the cover reads: 'September 10th, 1932'",
       "texture": "minecraft:item/writable_book",
@@ -77,7 +77,7 @@
       "id": "double_dreams",
       "title": "Double Dreams",
       "book": "journal",
-      "content": "Sometimes I have double dreams.\n\nI will have lived a whole day, only to wake up from it.\n\nI feel as if I  have written this entry a thousand times and more.",
+      "content": "I had another double dream last night...\n    ...As if I had lived an entire day...\n\n\n\n\nI feel as if I have written this entry a thousand times and more.",
       "unlock": [
         {
           "sweep": "looking_at_block",
