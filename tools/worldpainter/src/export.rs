@@ -20,8 +20,15 @@ pub fn load_project(path: &str) -> Result<Project, String> {
     serde_json::from_str(&s).map_err(|e| e.to_string())
 }
 
+/// macroquad's `export_png` writes rows bottom-up (it expects GPU readback order), which would flip north and
+/// south. Pre-flip the rows so the file on disk has row 0 = north (min z), matching the in-memory buffers.
 pub fn save_png(path: &Path, bytes: Vec<u8>, w: usize, h: usize) {
-    Image { bytes, width: w as u16, height: h as u16 }.export_png(&path.to_string_lossy());
+    let row = w * 4;
+    let mut flipped = Vec::with_capacity(bytes.len());
+    for y in (0..h).rev() {
+        flipped.extend_from_slice(&bytes[y * row..(y + 1) * row]);
+    }
+    Image { bytes: flipped, width: w as u16, height: h as u16 }.export_png(&path.to_string_lossy());
 }
 
 /// Writes preview PNGs and a structure manifest. Returns a one-line summary.
@@ -62,6 +69,5 @@ pub fn export_all(p: &Project, w: &World, dir: &str) -> Result<String, String> {
         "structures": structures,
     });
     fs::write(dir.join("structures.json"), serde_json::to_string_pretty(&manifest).map_err(|e| e.to_string())?).map_err(|e| e.to_string())?;
-    save_project(p, &dir.join("project.json").to_string_lossy())?;
-    Ok(format!("Exported biome_map.png, height_map.png, structures.json, project.json to {}/", dir.display()))
+    Ok(format!("Exported biome_map.png, height_map.png, structures.json to {}/", dir.display()))
 }

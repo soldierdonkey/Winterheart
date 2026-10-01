@@ -1,0 +1,14 @@
+{
+  "generator": {
+    "biome_source": {
+      "default_biome": "minecraft:the_void",
+      "map_info": "winterheart:world",
+      "type": "novoatlas:color_map"
+    },
+    "map_info": "winterheart:world",
+    "settings": "minecraft:overworld",
+    "type": "novoatlas:image_map",
+    "underground_density_function": "novoatlas:caves"
+  },
+  "type": "minecraft:overworld"
+}

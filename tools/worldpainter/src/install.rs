@@ -74,6 +74,42 @@ pub fn install(pack: &Path, root: &Path, disable_kubejs: bool, backup_dir: &Path
     Ok(notes.join("; "))
 }
 
+/// Write the spawn point into Starter Structure's config (`config/starterstructure.json5`), in place,
+/// leaving comments and every other setting untouched.
+pub fn sync_spawn(root: &Path, x: i32, y: i32, z: i32) -> Result<String, String> {
+    let path = root.join("config/starterstructure.json5");
+    let text = fs::read_to_string(&path).map_err(|e| format!("can't read {}: {e}", path.display()))?;
+    let set = |line: &str, key: &str, val: &str| -> Option<String> {
+        let t = line.trim_start();
+        t.strip_prefix(&format!("\"{key}\":")).map(|_| format!("{}\"{key}\": {val},", &line[..line.len() - t.len()]))
+    };
+    let wanted = [("shouldUseSpawnCoordinates", "true".to_string()), ("spawnXCoordinate", x.to_string()), ("spawnYCoordinate", y.to_string()), ("spawnZCoordinate", z.to_string())];
+    let mut found = 0;
+    let out: Vec<String> = text
+        .lines()
+        .map(|l| {
+            for (k, v) in &wanted {
+                if let Some(n) = set(l, k, v) {
+                    found += 1;
+                    return n;
+                }
+            }
+            l.to_string()
+        })
+        .collect();
+    if found != wanted.len() {
+        return Err("starterstructure.json5 is missing spawn coordinate keys".into());
+    }
+    let mut joined = out.join("\n");
+    if text.ends_with('\n') {
+        joined.push('\n');
+    }
+    if joined != text {
+        fs::write(&path, joined).map_err(|e| e.to_string())?;
+    }
+    Ok(format!("spawn set to ({x}, {y}, {z})"))
+}
+
 /// Remove the installed pack and restore the most recent KubeJS overworld backup, if any.
 pub fn uninstall(root: &Path, backup_dir: &Path) -> Result<String, String> {
     let dest = root.join("config/paxi/datapacks").join(PACK_NAME);
@@ -107,6 +143,18 @@ pub fn uninstall(root: &Path, backup_dir: &Path) -> Result<String, String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn spawn_sync_edits_only_spawn_keys() {
+        let base = std::env::current_dir().unwrap().join("target").join("fake_spawn");
+        let _ = fs::remove_dir_all(&base);
+        fs::create_dir_all(base.join("config")).unwrap();
+        let orig = "{\n\t// c\n\t\"forceExactSpawn\": true,\n\t\"shouldUseSpawnCoordinates\": false,\n\t\"spawnXCoordinate\": 5,\n\t\"spawnYCoordinate\": 0,\n\t\"spawnZCoordinate\": 9\n}\n";
+        fs::write(base.join("config/starterstructure.json5"), orig).unwrap();
+        sync_spawn(&base, 0, 72, 0).unwrap();
+        let now = fs::read_to_string(base.join("config/starterstructure.json5")).unwrap();
+        assert_eq!(now, "{\n\t// c\n\t\"forceExactSpawn\": true,\n\t\"shouldUseSpawnCoordinates\": true,\n\t\"spawnXCoordinate\": 0,\n\t\"spawnYCoordinate\": 72,\n\t\"spawnZCoordinate\": 0,\n}\n");
+    }
 
     #[test]
     fn install_and_uninstall_round_trip() {

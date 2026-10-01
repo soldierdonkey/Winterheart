@@ -1,0 +1,61 @@
+{
+  "height_map": "winterheart:world",
+  "starting_y": 0,
+  "surface_biomes": {
+    "biomes": [
+      {
+        "biome": "minecraft:deep_frozen_ocean",
+        "color": "#1400FF"
+      },
+      {
+        "biome": "minecraft:frozen_ocean",
+        "color": "#24D4F3"
+      },
+      {
+        "biome": "minecraft:snowy_beach",
+        "color": "#4047DE"
+      },
+      {
+        "biome": "minecraft:stony_shore",
+        "color": "#447CDB"
+      },
+      {
+        "biome": "minecraft:frozen_river",
+        "color": "#4CE6D5"
+      },
+      {
+        "biome": "minecraft:snowy_plains",
+        "color": "#5885CC"
+      },
+      {
+        "biome": "minecraft:ice_spikes",
+        "color": "#5CBAC9"
+      },
+      {
+        "biome": "minecraft:snowy_taiga",
+        "color": "#782DB4"
+      },
+      {
+        "biome": "minecraft:grove",
+        "color": "#B44887"
+      },
+      {
+        "biome": "minecraft:snowy_slopes",
+        "color": "#B87D84"
+      },
+      {
+        "biome": "minecraft:jagged_peaks",
+        "color": "#BCB281"
+      },
+      {
+        "biome": "minecraft:frozen_peaks",
+        "color": "#C0E77E"
+      },
+      {
+        "biome": "minecraft:stony_peaks",
+        "color": "#C41C7B"
+      }
+    ],
+    "map": "winterheart:world"
+  }
+}

@@ -35,16 +35,41 @@ pub struct Maps {
     pub biomes: Vec<u8>,
 }
 
+/// Noise generators for the export-only terrain detail.
+pub struct Detail {
+    fine: Perlin,
+    mid: Perlin,
+}
+
+impl Detail {
+    pub fn new(seed: u32) -> Self {
+        Detail { fine: Perlin::new(seed as u64 ^ 0xDE7A_11ED), mid: Perlin::new(seed as u64 ^ 0x31D_BEEF) }
+    }
+}
+
 /// Evaluate the final terrain height and biome at a block position (what the exported pixel will hold).
-pub fn pixel_fields(p: &Project, w: &World, detail: &Perlin, x: f32, z: f32) -> (f32, u8) {
+pub fn pixel_fields(p: &Project, w: &World, d: &Detail, x: f32, z: f32) -> (f32, u8) {
     let (v, bias) = w.sample_smooth(&p.region, x, z);
     let [c, e, t, h, wei] = v;
     let pv = biomes::peaks_valleys(wei);
     let mut y = terrain_height(c, e, pv, bias, p.sea_level);
-    if p.detail_amp > 0.0 {
-        let land = ((c + 0.1) / 0.2).clamp(0.0, 1.0);
-        let s = p.detail_scale.max(1.0) as f64;
-        y += detail.fbm(x as f64 / s, z as f64 / s, 3, 0.5, 2.0) as f32 * 2.0 * p.detail_amp * land;
+    let land = ((c + 0.1) / 0.2).clamp(0.0, 1.0);
+    if land > 0.0 {
+        // rugged (low erosion) terrain gets rougher detail, flat terrain stays calmer
+        let rugged = 1.0 - ((e + 1.0) * 0.5).clamp(0.0, 1.0);
+        let rough = 1.0 + p.rough_by_erosion * (rugged * 2.0 - 1.0) * 0.8;
+        let (xd, zd) = (x as f64, z as f64);
+        if p.mid_amp > 0.0 {
+            let s = p.mid_scale.max(1.0) as f64;
+            y += d.mid.fbm(xd / s, zd / s, 2, 0.5, 2.0) as f32 * 2.0 * p.mid_amp * land * rough;
+        }
+        if p.detail_amp > 0.0 {
+            let s = p.detail_scale.max(1.0) as f64;
+            let n = d.fine.fbm(xd / s, zd / s, p.detail_octaves, p.detail_persistence as f64, 2.0) as f32 * 2.0;
+            let r = p.detail_ridged.clamp(0.0, 1.0);
+            let ridged = (1.0 - n.abs() * 1.6) * 1.2 - 0.4; // creases rise to sharp ridges
+            y += (n * (1.0 - r) + ridged * r) * p.detail_amp * land * rough;
+        }
     }
     (y, p.pick_biome(t, h, c, e, wei))
 }
@@ -52,7 +77,7 @@ pub fn pixel_fields(p: &Project, w: &World, detail: &Perlin, x: f32, z: f32) -> 
 pub fn build_maps(p: &Project, w: &World) -> Maps {
     let r = &p.region;
     let (width, height) = (r.nx * r.cell as usize, r.nz * r.cell as usize);
-    let detail = Perlin::new(p.seed as u64 ^ 0xDE7A_11ED);
+    let detail = Detail::new(p.seed);
     let mut heights = vec![0u8; width * height];
     let mut bio = vec![0u8; width * height];
     for pz in 0..height {
@@ -73,7 +98,7 @@ fn write_png(path: &Path, rgba: Vec<u8>, w: usize, h: usize) -> Result<(), Strin
     if let Some(dir) = path.parent() {
         fs::create_dir_all(dir).map_err(|e| e.to_string())?;
     }
-    macroquad::texture::Image { bytes: rgba, width: w as u16, height: h as u16 }.export_png(&path.to_string_lossy());
+    crate::export::save_png(path, rgba, w, h);
     Ok(())
 }
 
@@ -152,7 +177,7 @@ mod tests {
         let mut p = Project::new();
         p.resize(1536);
         let w = World::new(&p);
-        let detail = Perlin::new(p.seed as u64 ^ 0xDE7A_11ED);
+        let detail = Detail::new(p.seed);
         for z in (0..=520).step_by(4) {
             for x in (-40..=40).step_by(4) {
                 let (y, biome) = pixel_fields(&p, &w, &detail, x as f32, z as f32);
@@ -166,7 +191,7 @@ mod tests {
     fn edges_are_ocean() {
         let p = small_project();
         let w = World::new(&p);
-        let detail = Perlin::new(1);
+        let detail = Detail::new(1);
         let (y, biome) = pixel_fields(&p, &w, &detail, p.region.min_x as f32 + 1.0, 0.0);
         assert!(biomes::is_ocean(biome) && y < p.sea_level, "edge not ocean: {y}");
     }
@@ -189,6 +214,20 @@ mod tests {
             let img = macroquad::texture::Image::from_file_with_format(&bytes, Some(macroquad::prelude::ImageFormat::Png)).unwrap();
             assert_eq!((img.width(), img.height()), (512, 512));
         }
+        // orientation: row 0 of the file is north (min z); compare the file to the model at asymmetric points
+        let hbytes = fs::read(root.join("data/winterheart/novoatlas/heightmap/world.png")).unwrap();
+        let himg = macroquad::texture::Image::from_file_with_format(&hbytes, Some(macroquad::prelude::ImageFormat::Png)).unwrap();
+        let detail = Detail::new(p.seed);
+        let mut mismatches = 0;
+        for (x, z) in [(0, 200), (0, -200), (150, 90), (-120, -100), (100, -180), (-60, 220)] {
+            let (px, pz) = ((x + 256) as usize, (z + 256) as usize);
+            let file_h = himg.bytes[(pz * 512 + px) * 4] as f32;
+            let (model_h, _) = pixel_fields(&p, &w, &detail, x as f32 + 0.5, z as f32 + 0.5);
+            if (file_h - model_h).abs() > 1.5 {
+                mismatches += 1;
+            }
+        }
+        assert_eq!(mismatches, 0, "exported heightmap is flipped relative to the model");
         // every colour in the biome map must be declared in map_info
         let bytes = fs::read(root.join("data/winterheart/novoatlas/biome_map/world.png")).unwrap();
         let img = macroquad::texture::Image::from_file_with_format(&bytes, Some(macroquad::prelude::ImageFormat::Png)).unwrap();
