@@ -31,6 +31,7 @@ enum Tool {
     Biome,
     Channel,
     Erase,
+    Naturalize,
     Structure,
 }
 
@@ -75,6 +76,7 @@ struct App {
     reprs: Vec<Option<[f32; 5]>>,
     status: String,
     status_time: f64,
+    nat: Natural,
     pending: Option<Pending>,
     disable_kubejs: bool,
     instance_root: Option<std::path::PathBuf>,
@@ -82,7 +84,7 @@ struct App {
 
 #[derive(Clone, Copy, PartialEq)]
 enum Pending {
-    ExportPack,
+    SaveAll,
     Install,
     Uninstall,
 }
@@ -143,6 +145,7 @@ impl App {
             reprs: (0..biomes::BIOMES.len() as u8).map(biomes::representative).collect(),
             status: "Ready. Right-drag or Space+drag to pan, wheel to zoom.".into(),
             status_time: get_time(),
+            nat: Natural { blur: 0.6, noise: 0.12, scale: 60.0, seed: 7 },
             pending: None,
             disable_kubejs: true,
             instance_root: install::detect_root(),
@@ -151,18 +154,33 @@ impl App {
         app
     }
 
+    /// Save everything at once: project file, preview maps + structures manifest, and (when the instance is
+    /// known) the Starter Structure spawn config.
+    fn save_all(&self) -> Result<String, String> {
+        export::save_project(&self.proj, export::PROJECT_FILE)?;
+        export::export_all(&self.proj, &self.world, export::EXPORT_DIR)?;
+        let mut parts = vec![format!("Saved {} + {}/", export::PROJECT_FILE, export::EXPORT_DIR)];
+        if let Some(root) = &self.instance_root {
+            let [sx, sz] = self.proj.spawn;
+            let detail = novoatlas::Detail::new(self.proj.seed);
+            let (h, _) = novoatlas::pixel_fields(&self.proj, &self.world, &detail, sx as f32, sz as f32);
+            parts.push(install::sync_spawn(root, sx, h.round() as i32 + 1, sz)?);
+        }
+        Ok(parts.join("; "))
+    }
+
     /// Runs a queued slow action; called at the top of a frame so the "working" status gets drawn first.
     fn run_pending(&mut self) {
         let Some(action) = self.pending.take() else { return };
         let export_dir = std::path::Path::new(export::EXPORT_DIR);
         let backup = std::path::Path::new(install::BACKUP_DIR);
         let result = match action {
-            Pending::ExportPack => novoatlas::export_pack(&self.proj, &self.world, export_dir),
-            Pending::Install => novoatlas::export_pack(&self.proj, &self.world, export_dir).and_then(|exported| {
+            Pending::SaveAll => self.save_all(),
+            Pending::Install => self.save_all().and_then(|saved| {
+                let exported = novoatlas::export_pack(&self.proj, &self.world, export_dir)?;
                 let root = self.instance_root.clone().ok_or("instance root not found")?;
                 let installed = install::install(&export_dir.join(install::PACK_NAME), &root, self.disable_kubejs, backup)?;
-                let _ = export::save_project(&self.proj, export::PROJECT_FILE);
-                Ok(format!("{exported}. {installed}"))
+                Ok(format!("{saved}. {exported}. {installed}"))
             }),
             Pending::Uninstall => {
                 let root = self.instance_root.clone().ok_or("instance root not found".to_string());
@@ -226,8 +244,8 @@ impl App {
                 self.undo_paint();
             }
             if cmd && is_key_pressed(KeyCode::S) {
-                let r = export::save_project(&self.proj, export::PROJECT_FILE);
-                self.set_status(&r.map(|_| format!("Saved {}", export::PROJECT_FILE)).unwrap_or_else(|e| e));
+                self.pending = Some(Pending::SaveAll);
+                self.set_status("Saving...");
             }
             if is_key_pressed(KeyCode::LeftBracket) {
                 self.brush_r = (self.brush_r * 0.85).max(8.0);
@@ -258,6 +276,12 @@ impl App {
     }
 
     fn apply_stroke(&mut self, a: Vec2, b: Vec2) {
+        if self.tool == Tool::Naturalize {
+            let rect = self.proj.paint.naturalize(&self.proj.region, (a.x, a.y), (b.x, b.y), self.brush_r, self.hardness, self.strength * 0.5, self.nat);
+            self.world.recompute_rect(&self.proj, rect);
+            self.img_dirty = true;
+            return;
+        }
         let (targets, erase) = self.paint_op();
         let op = if erase {
             Op::Erase(if self.erase_only_channel { Some(self.sel_channel) } else { None })
@@ -542,15 +566,16 @@ impl App {
 
     fn paint_tab(&mut self) {
         self.ui.heading("Paint");
-        let tools = ["Biome", "Channel", "Erase"];
+        let tools = ["Biome", "Chan", "Erase", "Natur"];
         let cur = match self.tool {
             Tool::Biome => Some(0),
             Tool::Channel => Some(1),
             Tool::Erase => Some(2),
+            Tool::Naturalize => Some(3),
             Tool::Structure => None,
         };
         if let Some(i) = self.ui.row(&tools, cur) {
-            self.tool = [Tool::Biome, Tool::Channel, Tool::Erase][i];
+            self.tool = [Tool::Biome, Tool::Channel, Tool::Erase, Tool::Naturalize][i];
         }
         self.ui.slider("Brush radius (blocks)", &mut self.brush_r, 8.0, 500.0);
         self.ui.slider("Hardness", &mut self.hardness, 0.0, 1.0);
@@ -601,6 +626,28 @@ impl App {
                 }
                 self.ui.label("Erasing restores the generated noise.");
             }
+            Tool::Naturalize => {
+                self.ui.slider("Blur", &mut self.nat.blur, 0.0, 1.0);
+                self.ui.slider("Noise", &mut self.nat.noise, 0.0, 0.5);
+                self.ui.slider("Noise scale (blocks)", &mut self.nat.scale, 10.0, 400.0);
+                let mut seed = self.nat.seed as i32;
+                if self.ui.slider_i("Noise seed", &mut seed, 0, 99) {
+                    self.nat.seed = seed as u32;
+                }
+                if self.ui.button("Naturalize ALL painted area", false) {
+                    self.undo.push(self.proj.paint.clone());
+                    let r = &self.proj.region;
+                    let c = ((r.min_x + r.max_x()) as f32 * 0.5, (r.min_z + r.max_z()) as f32 * 0.5);
+                    let big = (r.max_x() - r.min_x) as f32;
+                    let rect = self.proj.paint.naturalize(r, c, c, big, 1.0, 1.0, self.nat);
+                    self.world.recompute_rect(&self.proj, rect);
+                    self.img_dirty = true;
+                    self.set_status("Naturalized all paint.");
+                }
+                self.ui.label("Brush: blurs paint, adds noise,");
+                self.ui.label("roughens edges. Paint over a corridor");
+                self.ui.label("a few times; Cmd+Z undoes a stroke.");
+            }
             Tool::Structure => {}
         }
         self.ui.gap(6.0);
@@ -631,7 +678,20 @@ impl App {
             self.world.recompute_cells(&self.proj);
             self.img_dirty = true;
         }
-        self.ui.slider("Export detail (blocks)", &mut self.proj.detail_amp, 0.0, 12.0);
+        self.ui.gap(4.0);
+        self.ui.label("Terrain detail (added at export):");
+        self.ui.slider("Fine amplitude (blocks)", &mut self.proj.detail_amp, 0.0, 20.0);
+        self.ui.slider("Fine wavelength", &mut self.proj.detail_scale, 8.0, 120.0);
+        let mut oct = self.proj.detail_octaves as i32;
+        if self.ui.slider_i("Fine octaves", &mut oct, 1, 8) {
+            self.proj.detail_octaves = oct as u32;
+        }
+        self.ui.slider("Fine persistence", &mut self.proj.detail_persistence, 0.2, 0.85);
+        self.ui.slider("Ridged blend", &mut self.proj.detail_ridged, 0.0, 1.0);
+        self.ui.slider("Mid undulation (blocks)", &mut self.proj.mid_amp, 0.0, 30.0);
+        self.ui.slider("Mid wavelength", &mut self.proj.mid_scale, 40.0, 300.0);
+        self.ui.slider("Rougher where rugged", &mut self.proj.rough_by_erosion, 0.0, 1.0);
+        self.ui.gap(4.0);
         all |= self.ui.slider("Domain warp (blocks)", &mut self.proj.warp_strength, 0.0, 400.0);
         all |= self.ui.slider("Warp scale", &mut self.proj.warp_scale, 50.0, 1500.0);
         self.ui.gap(4.0);
@@ -760,29 +820,25 @@ impl App {
 
     fn file_tab(&mut self) {
         self.ui.heading("File");
-        if self.ui.button("Save project", false) {
-            let r = export::save_project(&self.proj, export::PROJECT_FILE);
-            self.set_status(&r.map(|_| format!("Saved {}", export::PROJECT_FILE)).unwrap_or_else(|e| e));
+        if self.ui.button("Save all  (Cmd+S)", false) {
+            self.pending = Some(Pending::SaveAll);
+            self.set_status("Saving...");
         }
         if self.ui.button("Load project", false) {
             match export::load_project(export::PROJECT_FILE) {
                 Ok(p) => {
                     self.proj = p;
                     self.world = World::new(&self.proj);
+                    self.undo.clear();
+                    self.sel_struct = None;
                     self.img_dirty = true;
                     self.set_status("Loaded project.");
                 }
                 Err(e) => self.set_status(&format!("Load failed: {e}")),
             }
         }
-        if self.ui.button("Export maps + structures.json", false) {
-            let r = export::export_all(&self.proj, &self.world, export::EXPORT_DIR);
-            self.set_status(&r.unwrap_or_else(|e| format!("Export failed: {e}")));
-        }
-        if self.ui.button("Export NovoAtlas datapack", false) {
-            self.pending = Some(Pending::ExportPack);
-            self.set_status("Exporting (can take a few seconds)...");
-        }
+        self.ui.label("Save all = project, preview maps,");
+        self.ui.label("structures.json, spawn config.");
         self.ui.gap(6.0);
         self.ui.heading("Modpack");
         match &self.instance_root {
@@ -790,9 +846,9 @@ impl App {
             None => self.ui.label("Instance not found (run from the pack)"),
         }
         self.ui.toggle("Move KubeJS overworld.json aside", &mut self.disable_kubejs);
-        if self.ui.button("Export to modpack (install)", false) && self.instance_root.is_some() {
+        if self.ui.button("Save all + install to modpack", false) && self.instance_root.is_some() {
             self.pending = Some(Pending::Install);
-            self.set_status("Exporting and installing (can take a few seconds)...");
+            self.set_status("Saving and installing (can take a few seconds)...");
         }
         if self.ui.button("Uninstall from modpack", false) && self.instance_root.is_some() {
             self.pending = Some(Pending::Uninstall);

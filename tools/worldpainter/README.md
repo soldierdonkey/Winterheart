@@ -17,8 +17,9 @@ Spawn is (0, 0); the target ring is 400 blocks south, radius 100.
   amplitude/bias for continentalness, erosion, temperature, humidity, weirdness.
 - **Struct**: structure types (name, resource id, footprint) and instances (click to place, drag to move).
 - **View**: biome / height / each noise channel, hillshade, tree pixels, grid, painted-area highlight.
-- **File**: save/load `worldpainter_project.json`; export `export/biome_map.png`, `height_map.png`,
-  `structures.json`, `project.json`.
+- **Naturalize** (Paint tab): brush that blurs paint, adds noise to painted values and roughens edges; a button applies it to all paint.
+- **File**: **Save all** (Cmd+S) writes `worldpainter_project.json`, `export/biome_map.png`, `height_map.png`, `structures.json`,
+  and syncs the spawn into `config/starterstructure.json5` (spawn coords, Y = surface + 1). Load reloads the project.
 
 ## NovoAtlas export (File > Export NovoAtlas datapack)
 

@@ -68,3 +68,4 @@ minecraft:snowy_taiga,
 !minecraft:windswept_savanna,
 !minecraft:wooded_badlands,
 !minecraft:badlands
+!novoatlas:surface_biome,
