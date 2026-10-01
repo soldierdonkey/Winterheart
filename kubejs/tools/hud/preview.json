@@ -1,0 +1,15 @@
+{
+  "title": "SURVIVAL",
+  "lines": [
+    "section|-- Forecast --",
+    "normal|Day: 50",
+    "critical|Time: ETERNAL_NIGHT",
+    "critical|Weather: Blizzard",
+    "spacer|",
+    "critical|Ambient: 7.00°",
+    "spacer|",
+    "section|-- Limb Status --",
+    "warning|Left Arm: poisoned",
+    "c:muted|centred muted line"
+  ]
+}
