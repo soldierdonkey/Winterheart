@@ -11,7 +11,7 @@
 5 : '{Count:1b,id:"kubejs:guide_book",tag:{CustomModelData:2.0d,display:{Lore:[‵{"text":"Nearly comprehensive!","italic":false,"color":"gray"}‵],Name:‵{"text":"Surviving the Northernmost North","italic":false}‵},guidebook:"field_notebook"}}',
 6 : '{Count:4b,id:"farmersdelight:cooked_mutton_chops"}',
 7 : '{Count:1b,id:"kubejs:guide_book",tag:{CustomModelData:1.0d,display:{Lore:[‵{"text":"Scribbled on the cover reads: \‵September 10th, 1932\‵","italic":false,"color":"gray"}‵],Name:‵{"text":"Lt. Kaamos\‵s Journal","italic":false}‵},guidebook:"journal"}}',
-8 : '{Count:1b,ForgeCaps:{Parent:{maps:[I;0,16,1,17,2,18,3,4,5,6,7,8]}},id:"map_atlases:atlas",tag:{empty:9}}',
+8 : '{Count:1b,ForgeCaps:{Parent:{maps:[I;0,1,2,3,4,5,6,7,8]}},id:"map_atlases:atlas",tag:{empty:9}}',
 9 : '',
 10 : '',
 11 : '',

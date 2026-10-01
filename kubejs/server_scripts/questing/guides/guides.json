@@ -32,19 +32,6 @@
       ]
     },
     {
-      "id": "the_boiler",
-      "title": "The Boiler",
-      "book": "field_notebook",
-      "content": "§6Heat§r is essential to surivival.\n\nOne must use a §lboiler§r to warm themselves during the colder seasons. Requires both §2fuel§r and §4redstone§r.",
-      "unlock": [
-        {
-          "sweep": "looking_at_block",
-          "match": "legendarysurvivaloverhaul:heater",
-          "distance": 6.0
-        }
-      ]
-    },
-    {
       "id": "cooking",
       "title": "Cooking",
       "book": "field_notebook",
@@ -58,6 +45,21 @@
             "farmersdelight:cooking_pot"
           ],
           "distance": 6.0
+        }
+      ]
+    },
+    {
+      "id": "permafrost",
+      "title": "Permafrost",
+      "book": "field_notebook",
+      "content": "Riches may be contained within the §9permafrost§r. So far, I have ovserved flint, bones, and small nuggets of iron.\n\nThere may be §6more§r.",
+      "unlock": [
+        {
+          "event": "block_broken",
+          "match": [
+            "immersive_weathering:permafrost",
+            "immersive_weathering:grassy_permafrost"
+          ]
         }
       ]
     },
@@ -87,17 +89,14 @@
       ]
     },
     {
-      "id": "butchering",
-      "title": "Butchering",
+      "id": "the_boiler",
+      "title": "The Boiler",
       "book": "field_notebook",
-      "content": "To butcher a carcass, hang it on a hook. Use a §ncleaver§r to drain it of blood, then skin it with a §nskinning knife§r. Finally, carve it with a cleaver.",
+      "content": "§6Heat§r is essential to surivival.\n\nOne must use a §lboiler§r to warm themselves during the colder seasons. Requires both §2fuel§r and §4redstone§r.",
       "unlock": [
         {
           "sweep": "looking_at_block",
-          "match": [
-            "#butchery:carcass",
-            "#butchery:skeletons"
-          ],
+          "match": "legendarysurvivaloverhaul:heater",
           "distance": 6.0
         }
       ]
@@ -115,14 +114,17 @@
       ]
     },
     {
-      "id": "tanning",
-      "title": "Tanning",
+      "id": "butchering",
+      "title": "Butchering",
       "book": "field_notebook",
-      "content": "To tan skins into leather, §e§3salt§r§r them. With a §1wet§r rag or sponge, clean the salted skin. Last, leave the skin out to dry\n\nIt is reccomended to process skins in parallel.",
+      "content": "To butcher a carcass, hang it on a hook. Use a §ncleaver§r to drain it of blood, then skin it with a §nskinning knife§r. Finally, carve it with a cleaver.",
       "unlock": [
         {
           "sweep": "looking_at_block",
-          "match": "butchery:skin_rack",
+          "match": [
+            "#butchery:carcass",
+            "#butchery:skeletons"
+          ],
           "distance": 6.0
         }
       ]
@@ -137,6 +139,19 @@
           "event": "time_phase",
           "match": "DAWN",
           "minDay": 15
+        }
+      ]
+    },
+    {
+      "id": "tanning",
+      "title": "Tanning",
+      "book": "field_notebook",
+      "content": "To tan skins into leather, §e§3salt§r§r them. With a §1wet§r rag or sponge, clean the salted skin. Last, leave the skin out to dry\n\nIt is reccomended to process skins in parallel.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": "butchery:skin_rack",
+          "distance": 6.0
         }
       ]
     },
@@ -281,6 +296,47 @@
             "kubejs:potassium_nitrate_bottle",
             "kubejs:saltpeter"
           ]
+        }
+      ]
+    },
+    {
+      "id": "flowers",
+      "title": "Flowers",
+      "book": "field_notebook",
+      "content": "§dFlowers§r are not just a symbol of love this far north. They are a lifeline. At temperatures this low, the human body §ocannot§r heal itself naturally.\n\nFlowers are used to create medicine.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": [
+            "#minecraft:flowers",
+            "#minecraft:flower_pots"
+          ],
+          "distance": 6.0
+        }
+      ]
+    },
+    {
+      "id": "farming",
+      "title": "Farming",
+      "book": "field_notebook",
+      "content": "§2Crops§r will cease to grow when the temperatures begin to drop. One must cultivate them before the §1long winter §rsets in.\n\nA paste of animal bones can be used to §oaccelerate§r their growth.",
+      "unlock": [
+        {
+          "sweep": "looking_at_block",
+          "match": "#minecraft:crops"
+        }
+      ]
+    },
+    {
+      "id": "unnatural_sounds",
+      "title": "Unnatural Sounds",
+      "book": "journal",
+      "content": "I heard sounds in the forest. Growls.\n\n         These sounds\n         cannot natural.\n\nI will send a §4warning§r down south.\n",
+      "unlock": [
+        {
+          "sweep": "time",
+          "match": "DUSK",
+          "minDay": 29
         }
       ]
     }

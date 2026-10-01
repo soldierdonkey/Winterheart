@@ -14,7 +14,9 @@ const MOB_TEMPLATES = {
     'cordyceps_zombie':      { id: 'gore_edition:cordyceps_zombie',  name: 'Cordyceps Zombie',  width: 1, height: 2 },
     'creeper':               { id: 'minecraft:creeper',              name: 'Creeper',           width: 1, height: 2 },
     'baby_zombie':           { id: 'minecraft:zombie',               name: 'Baby Zombie',       width: 1, height: 1, isBaby: true },
-    'baby_spider':           { id: 'gore_edition:baby_spider',       name: 'Baby Spider',       width: 1, height: 1 }
+    'baby_spider':           { id: 'gore_edition:baby_spider',       name: 'Baby Spider',       width: 1, height: 1 },
+    // Scripted-only (not in any pool): see section 9
+    'wendigo':               { id: 'antlers:wendigo',                name: 'Wendigo',           width: 1, height: 3 }
 }
 
 const LIVESTOCK_TEMPLATES = {
@@ -30,6 +32,7 @@ const SPAWNER_CONFIG = {
     DEBUG_VERBOSE: true,
     SURFACE_Y: 60,
     DESPAWN_RADIUS: 80,
+    MAX_SPAWN_LIGHT: 7, // hostiles only spawn where light level is at or below this
     
     HOSTILE_CAPS: {
         DAYS_1_10: 0,
@@ -259,6 +262,15 @@ function selectFittingMobAt(level, targetX, checkY, targetZ, poolKeyList, templa
     return null
 }
 
+function isDarkEnough(level, pos) {
+    let block = getBlock(level, pos.x, pos.y, pos.z)
+    if (!block) return false
+    // Block.light = max(block light, sky light after time-of-day/weather reduction)
+    let light = Number(block.light)
+    if (!isFinite(light)) return true
+    return light <= SPAWNER_CONFIG.MAX_SPAWN_LIGHT
+}
+
 function findCaveSpawnPos(level, pCoords, minR, maxR, pool) {
     let px = pCoords.x
     let py = pCoords.y
@@ -387,6 +399,11 @@ LevelEvents.tick(event => {
 
         let spawnPos = result.pos
         let template = result.template
+
+        if (!isDarkEnough(level, spawnPos)) {
+            logTrace('Hostile:Light', player, `Spawn rejected: too bright at (${spawnPos.x.toFixed(1)}, ${spawnPos.y.toFixed(1)}, ${spawnPos.z.toFixed(1)})`)
+            return
+        }
 
         let entity = level.createEntity(template.id)
         if (!entity) return
@@ -518,6 +535,67 @@ EntityEvents.spawned(event => {
 
 ServerEvents.loaded(event => {
     event.server.runCommandSilent('gamerule doMobSpawning false')
+    event.server.runCommandSilent('gamerule wendigoSpawns false')
     event.server.runCommandSilent('gamerule naturalRegeneration false')
     console.log('[Spawner Engine] Gamerule doMobSpawning locked to false.')
+})
+
+// ==========================================
+// 9. SCRIPTED WENDIGO (DAYS 30 / 40 / 50)
+// ==========================================
+const WENDIGO_DAYS = [30, 40, 50]
+const WENDIGO_TYPES = ['antlers:wendigo', 'antlers:wendigomad', 'antlers:wendigo_flute']
+const WENDIGO_NATURAL_SPAWN_TYPES = ['natural', 'chunk_generation', 'structure', 'spawner', 'patrol', 'reinforcement']
+
+// Filter: block every natural wendigo spawn (biome modifier / flute-guy procedure).
+// Scripted spawns and the mod's own wendigo -> mad transformation use other spawn types and pass through.
+EntityEvents.checkSpawn(event => {
+    if (!WENDIGO_TYPES.includes(String(event.entity.type))) return
+    if (WENDIGO_NATURAL_SPAWN_TYPES.includes(String(event.type).toLowerCase())) {
+        event.cancel()
+    }
+})
+
+// Never despawn: any wendigo form (including the mad/flute swaps) is persistent.
+EntityEvents.spawned(event => {
+    let entity = event.entity
+    if (entity.level.isClientSide()) return
+    if (!WENDIGO_TYPES.includes(String(entity.type))) return
+    entity.mergeNbt({ PersistenceRequired: true })
+})
+
+LevelEvents.tick(event => {
+    let level = event.level
+    if (level.dimension.toString() !== 'minecraft:overworld' || level.isClientSide()) return
+    if (global.currentTick % 20 !== 0) return
+
+    let data = level.persistentData
+    let day = data.getInt('custom_day') || 1
+    if (!WENDIGO_DAYS.includes(day)) return
+
+    // Only after dusk
+    let phase = data.getString('current_phase') || 'DAWN'
+    if (phase !== 'DUSK' && phase !== 'NIGHT' && phase !== 'MIDNIGHT' && phase !== 'ETERNAL_NIGHT') return
+
+    let flag = 'wendigo_spawned_day_' + day
+    if (data.getBoolean(flag)) return
+    if (level.players.length === 0) return
+
+    let player = level.players[Math.floor(Math.random() * level.players.length)]
+    let pCoords = getPlayerCoords(player)
+    let result = findSurfaceSpawnPos(level, pCoords, 40, 60, ['wendigo'], MOB_TEMPLATES)
+    if (!result.pos || !result.template) {
+        logTrace('Wendigo:Spatial', player, `Day ${day} spawn failed, retrying: ${result.reason}`)
+        return
+    }
+
+    let entity = level.createEntity(result.template.id)
+    if (!entity) return
+    entity.setPos(result.pos.x, result.pos.y, result.pos.z)
+    entity.tags.add('scripted_wendigo')
+    entity.mergeNbt({ PersistenceRequired: true })
+    entity.spawn()
+
+    data.putBoolean(flag, true)
+    logTrace('Wendigo:Success', player, `Day ${day}: spawned wendigo at (${result.pos.x.toFixed(1)}, ${result.pos.y.toFixed(1)}, ${result.pos.z.toFixed(1)})`)
 })
