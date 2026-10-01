@@ -1,0 +1,13 @@
+[package]
+name = "guide_editor"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+macroquad = "0.4"
+egui-macroquad = "0.17"
+serde_json = { version = "1", features = ["preserve_order"] }
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+[profile.dev]
+opt-level = 2

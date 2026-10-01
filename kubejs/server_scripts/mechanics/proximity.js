@@ -340,6 +340,9 @@ PlayerEvents.tick(event => {
                 // Confirmed in both consecutive sweeps (10s threshold reached)
                 logProximityDebug(player, `Rule §e${ruleId}§7 reached 10s threshold!`);
 
+                // guide system: 'proximity' events (see questing/guides/guides_engine.js)
+                if (global.Guides) global.Guides.fireProximity(player, ruleId);
+
                 // 1. One-time trigger
                 if (typeof rule.onOnce === 'function') {
                     if (!triggeredOnce.includes(ruleId)) {

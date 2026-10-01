@@ -1,0 +1,7 @@
+{
+  "_generated_by": "guide_editor",
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "minecraft:item/knowledge_book"
+  }
+}
