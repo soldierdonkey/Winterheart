@@ -37,7 +37,7 @@
 	"generatedStructureXOffset": 0,
 	// The y offset for the generated structure. Can for example be set to -1 if you notice a building always spawns one block too high. Used when shouldUseStructureOffset is enabled.
 	// min: -1000, max: 1000
-	"generatedStructureYOffset": -1,
+	"generatedStructureYOffset": 0,
 	// The z offset for the generated structure. Used when shouldUseStructureOffset is enabled.
 	// min: -1000, max: 1000
 	"generatedStructureZOffset": 0,

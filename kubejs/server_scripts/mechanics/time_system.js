@@ -397,6 +397,8 @@ function handleDeathLoopReset(server, player) {
     server.runCommandSilent('title @a times 10 60 20')
     server.runCommandSilent(`title @a title {"text":"${chosenSplash}","color":"dark_red","bold":true}`)
     server.runCommandSilent(`title @a subtitle {"text":"${chosenMsg}","color":"gray","italic":true}`)
+
+    player.removeEffect('minecraft:unluck')
 }
 
 // ==========================================
@@ -432,11 +434,22 @@ function triggerTimeHook(level, day, phase, isPhaseChange) {
             break
             
         case 'NOON':
+            if (day > 30 && everyTenSeconds()) {
+                level.server.runCommandSilent('weather rain')
+            } else {
+                level.server.runCommandSilent('weather clear')
+            }
             break
             
         case 'AFTERNOON':
-            if (day > 20 && everyTenSeconds()) {
+            if (everyTenSeconds()) {
+                if (day > 40 && everyTenSeconds()) {
                 level.server.runCommandSilent('weather rain')
+                } else if (day > 20 && everyTenSeconds()) {
+                    level.server.runCommandSilent('weather rain')
+                } else {
+                    level.server.runCommandSilent('weather clear')
+                }
             }
             break
             
