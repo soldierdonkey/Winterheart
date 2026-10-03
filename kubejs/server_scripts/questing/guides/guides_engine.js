@@ -65,6 +65,15 @@ function guideBooks() {
     return Array.isArray(global.GUIDE_BOOKS) && global.GUIDE_BOOKS.length > 0 ? global.GUIDE_BOOKS : [{ id: 'guide', name: 'Guide Book' }]
 }
 
+// Lost pages: dummy items (kubejs:lost_page) tagged with `lostpage: "<id>"`, defined by the "pages" list in guides.json.
+function guideLostPages() {
+    return Array.isArray(global.GUIDE_LOST_PAGES) ? global.GUIDE_LOST_PAGES : []
+}
+
+function guideFindLostPage(id) {
+    return guideLostPages().find(p => p.id === id) || null
+}
+
 function guideFindBook(id) {
     let books = guideBooks()
     for (let i = 0; i < books.length; i++) {
@@ -104,10 +113,21 @@ function guideValidColor(c) {
 }
 
 // Returns problem strings; ones starting with 'warning: ' do not stop a load.
-function guideValidate(list, books) {
+function guideValidate(list, books, pages) {
     list = list || guideList()
     books = books || guideBooks()
+    pages = pages || guideLostPages()
     let problems = []
+    let seenPages = {}
+    pages.forEach((p, i) => {
+        if (!p || typeof p.id !== 'string' || !/^[a-z0-9_]+$/.test(p.id)) {
+            problems.push(`pages[${i}]: id must be a string of a-z, 0-9 and _`)
+            return
+        }
+        if (seenPages[p.id]) problems.push(`lost page '${p.id}': duplicate id`)
+        seenPages[p.id] = true
+        if (typeof p.name !== 'string' || p.name.length === 0) problems.push(`lost page '${p.id}': missing name`)
+    })
     let seen = {}
     let seenBooks = {}
     books.forEach((b, i) => {
@@ -168,7 +188,7 @@ function guideNormMatch(spec) {
 
 function guideNormalize(raw) {
     let src = Array.isArray(raw) ? raw : (raw && Array.isArray(raw.guides) ? raw.guides : null)
-    if (!src) return { guides: [], books: [], problems: ['guides.json needs a "guides" array'] }
+    if (!src) return { guides: [], books: [], pages: [], problems: ['guides.json needs a "guides" array'] }
     let problems = []
     let books = raw && Array.isArray(raw.books) && raw.books.length > 0 ? raw.books.map(b => Object.assign({}, b)) : [{ id: 'guide', name: 'Guide Book' }]
     let guides = src.map(g => {
@@ -193,7 +213,8 @@ function guideNormalize(raw) {
         })
         return out
     })
-    return { guides: guides, books: books, problems: problems }
+    let pages = raw && Array.isArray(raw.pages) ? raw.pages.map(p => Object.assign({}, p)) : []
+    return { guides: guides, books: books, pages: pages, problems: problems }
 }
 
 // Tries a few ways to read the file, since the path coercion differs between KubeJS builds.
@@ -238,7 +259,7 @@ function guideApplyData(text) {
         return false
     }
     let result = guideNormalize(parsed)
-    let problems = result.problems.concat(guideValidate(result.guides, result.books))
+    let problems = result.problems.concat(guideValidate(result.guides, result.books, result.pages))
     guideRT.dataProblems = problems
     let errors = problems.filter(p => p.indexOf('warning: ') !== 0)
     problems.forEach(p => {
@@ -251,6 +272,7 @@ function guideApplyData(text) {
     }
     global.GUIDES = result.guides
     global.GUIDE_BOOKS = result.books
+    global.GUIDE_LOST_PAGES = result.pages
     guideInvalidate()
     console.info(`[Guides] Loaded ${result.guides.length} guide(s) in ${result.books.length} book(s) from guides.json`)
     return true
@@ -280,9 +302,11 @@ guideCheckDataFile(null, true)
 // ==========================================
 
 // spec: undefined/'*' (anything), 'ns:id', '#ns:tag', regex, function(id), or an array of those
-function guideMatch(spec, id, hasTag) {
+function guideMatch(spec, id, hasTag, stack) {
     if (spec === undefined || spec === null || spec === '*') return true
-    if (Array.isArray(spec)) return spec.some(s => guideMatch(s, id, hasTag))
+    if (Array.isArray(spec)) return spec.some(s => guideMatch(s, id, hasTag, stack))
+    // { page: 'id' } matches a kubejs:lost_page stack carrying that page id in its NBT
+    if (typeof spec === 'object' && !(spec instanceof RegExp) && typeof spec.page === 'string') return guideIsLostPage(stack, spec.page)
     if (typeof spec === 'function') return !!spec(id)
     if (spec instanceof RegExp) return spec.test(id)
     let s = String(spec)
@@ -290,6 +314,15 @@ function guideMatch(spec, id, hasTag) {
         try { return hasTag ? !!hasTag(s.substring(1)) : false } catch (e) { return false }
     }
     return s === id
+}
+
+function guideIsLostPage(stack, pageId) {
+    try {
+        if (!stack || String(stack.id) !== 'kubejs:lost_page' || !stack.nbt) return false
+        return String(stack.nbt.getString('lostpage')) === pageId
+    } catch (e) {
+        return false
+    }
 }
 
 function guideEntityHasTag(entity, tag) {
@@ -308,7 +341,7 @@ function guideMatchBlock(spec, block) {
 }
 
 function guideMatchItem(spec, stack) {
-    return guideMatch(spec, String(stack.id), t => stack.hasTag(t))
+    return guideMatch(spec, String(stack.id), t => stack.hasTag(t), stack)
 }
 
 function guideMatchEntity(spec, entity) {
@@ -572,7 +605,7 @@ function guideDispatchCore(kind, player, server, makePayload) {
         let t = entry.trigger
         if (guideIsUnlocked(server, entry.guide.id)) return
         try {
-            if (!(p.ids || [p.id]).some(id => guideMatch(t.match, id, p.hasTag))) return
+            if (!(p.ids || [p.id]).some(id => guideMatch(t.match, id, p.hasTag, p.stack))) return
             if (t.minDamage !== undefined && !(p.damage >= t.minDamage)) return
             if (p.day !== undefined && !guideDayInRange(t, p.day)) return
             if (t.by !== undefined && !(p.attacker && guideMatchEntity(t.by, p.attacker))) return
@@ -591,7 +624,7 @@ function guideBlockPayload(block) {
 }
 
 function guideItemPayload(stack) {
-    return { id: String(stack.id), hasTag: t => stack.hasTag(t) }
+    return { id: String(stack.id), hasTag: t => stack.hasTag(t), stack: stack }
 }
 
 function guideEntityPayload(entity) {
@@ -769,6 +802,13 @@ function guideMakeBookItem(book) {
     return Item.of('kubejs:guide_book', nbt)
 }
 
+// A lost page item: one shared item id, tagged with the page id, named from the JSON.
+function guideMakeLostPageItem(page) {
+    let display = { Name: JSON.stringify({ text: page.name, italic: false }) }
+    if (page.tooltip) display.Lore = [JSON.stringify({ text: page.tooltip, italic: false, color: 'gray' })]
+    return Item.of('kubejs:lost_page', { lostpage: page.id, display: display })
+}
+
 // ==========================================
 // 7. PAUSE (Multiplayer Server Pause)
 // ==========================================
@@ -900,6 +940,9 @@ global.Guides = {
     findBook: guideFindBook,
     bookIds: () => guideBooks().map(b => b.id),
     makeBookItem: guideMakeBookItem,
+    lostPages: guideLostPages,
+    findLostPage: guideFindLostPage,
+    makeLostPageItem: guideMakeLostPageItem,
     find: guideFind,
     ids: () => guideList().map(g => g.id),
     validate: guideValidate,

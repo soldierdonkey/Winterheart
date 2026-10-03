@@ -138,7 +138,7 @@
         {
           "event": "time_phase",
           "match": "DAWN",
-          "minDay": 15
+          "minDay": 16
         }
       ]
     },
@@ -328,10 +328,28 @@
       ]
     },
     {
+      "id": "abominations",
+      "title": "Abominations",
+      "book": "journal",
+      "content": "And there I saw...\n\n     ...§lMonsters§r...\n\nThis must have been what Colonel W. was talking about.\n\nI must report to the §4watchtower§r at dawn.",
+      "unlock": [
+        {
+          "sweep": "looking_at_entity",
+          "match": [
+            "#forge:zombie",
+            "#forge:spider",
+            "#forge:skeleton",
+            "#forge:enderman",
+            "#forge:creeper"
+          ]
+        }
+      ]
+    },
+    {
       "id": "unnatural_sounds",
       "title": "Unnatural Sounds",
       "book": "journal",
-      "content": "I heard sounds in the forest. Growls.\n\n         These sounds\n         cannot natural.\n\nI will send a §4warning§r down south.\n",
+      "content": "I heard sounds in the forest.\n        Growls.\n               §lScreams§r.\n\n         These sounds\n         cannot natural.\n\nI will send a §4warning§r to the capitol.\n",
       "unlock": [
         {
           "sweep": "time",

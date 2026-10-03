@@ -13,7 +13,7 @@ use assets::Resources;
 use egui_macroquad::egui::{self, Color32, RichText};
 use font::{Font, Span, Style, PALETTE};
 use macroquad::prelude::*;
-use model::{Book, Domain, Guide, MKind, Matcher, Problem, Trigger, KINDS};
+use model::{Book, Domain, Guide, MKind, Matcher, Page, Problem, Trigger, KINDS};
 use registry::Registry;
 use std::path::{Path, PathBuf};
 
@@ -212,6 +212,7 @@ struct App {
     book_tex: Option<Texture2D>,
     registry: Registry,
     books: Vec<Book>,
+    pages: Vec<Page>,
     guides: Vec<Guide>,
     cur_book: usize,
     /// index into `guides`; usize::MAX when the current book has no guides
@@ -272,6 +273,7 @@ impl App {
             book_tex,
             registry: load_registry(&root, &registry_path),
             books: vec![],
+            pages: vec![],
             guides: vec![],
             cur_book: 0,
             sel: 0,
@@ -298,11 +300,12 @@ impl App {
     fn load_from_disk(&mut self, first: bool) {
         match std::fs::read_to_string(&self.guides_path) {
             Ok(text) => match model::parse(&text) {
-                Ok((books, guides)) => {
+                Ok((books, pages, guides)) => {
                     self.books = books;
+                    self.pages = pages;
                     self.guides = guides;
                     self.fix_selection();
-                    self.saved_text = model::serialize(&self.books, &self.guides);
+                    self.saved_text = model::serialize(&self.books, &self.pages, &self.guides);
                     self.autosave = true;
                     self.status = if first { "Loaded guides.json".into() } else { "Reloaded guides.json (changed on disk)".into() };
                     self.status_error = false;
@@ -350,7 +353,7 @@ impl App {
     }
 
     fn refresh_problems(&mut self) {
-        let mut problems = model::validate(&self.books, &self.guides, &self.registry, self.allow_unknown);
+        let mut problems = model::validate(&self.books, &self.pages, &self.guides, &self.registry, self.allow_unknown);
         for (i, g) in self.guides.iter().enumerate() {
             let lines = self.page_line_count(g);
             if lines > MAX_LINES {
@@ -368,7 +371,7 @@ impl App {
     fn autosave_tick(&mut self) {
         let now = get_time();
         self.refresh_problems();
-        let text = model::serialize(&self.books, &self.guides);
+        let text = model::serialize(&self.books, &self.pages, &self.guides);
 
         if text == self.saved_text {
             self.pending = None;
@@ -376,7 +379,7 @@ impl App {
             if now - self.last_disk_check > 1.0 {
                 self.last_disk_check = now;
                 if let Ok(disk) = std::fs::read_to_string(&self.guides_path) {
-                    if disk != self.saved_text && model::parse(&disk).is_ok_and(|(b, g)| model::serialize(&b, &g) != self.saved_text) {
+                    if disk != self.saved_text && model::parse(&disk).is_ok_and(|(b, p, g)| model::serialize(&b, &p, &g) != self.saved_text) {
                         self.load_from_disk(false);
                     }
                 }
@@ -577,6 +580,42 @@ impl App {
             }
             ui.separator();
 
+            ui.collapsing("Lost pages", |ui| {
+                ui.small("Items (kubejs:lost_page) a trigger can match with 'lost page'. Get one with /guides page <id>.");
+                let mut remove = None;
+                for (i, p) in self.pages.iter_mut().enumerate() {
+                    ui.push_id(("lost_page", i), |ui| {
+                        egui::Grid::new("page_grid").num_columns(2).show(ui, |ui| {
+                            ui.label("id");
+                            let r = ui.add(egui::TextEdit::singleline(&mut p.id).desired_width(150.0));
+                            if r.changed() {
+                                p.id = p.id.to_lowercase().replace([' ', '-'], "_");
+                            }
+                            r.on_hover_text("Items already given out keep the old id, and triggers using it must be updated.");
+                            ui.end_row();
+                            ui.label("name");
+                            ui.add(egui::TextEdit::singleline(&mut p.name).desired_width(150.0));
+                            ui.end_row();
+                            ui.label("tooltip");
+                            ui.add(egui::TextEdit::singleline(&mut p.tooltip).desired_width(150.0).hint_text("(none)"));
+                            ui.end_row();
+                        });
+                        if ui.small_button("Delete page").clicked() {
+                            remove = Some(i);
+                        }
+                        ui.separator();
+                    });
+                }
+                if let Some(i) = remove {
+                    self.pages.remove(i);
+                }
+                if ui.small_button("+ Lost page").clicked() {
+                    let p = Page::blank(&self.pages);
+                    self.pages.push(p);
+                }
+            });
+            ui.separator();
+
             ui.heading("Guides");
             ui.small("The list order is the page order in this book.");
             ui.horizontal(|ui| {
@@ -754,12 +793,13 @@ impl App {
             let allow_unknown = self.allow_unknown;
             let Some(g) = self.guides.get_mut(self.sel) else { return };
             let registry = &self.registry;
+            let pages = &self.pages;
 
             egui::ScrollArea::vertical().id_salt("unlock_scroll").show(ui, |ui| {
                 let mut remove = None;
                 for (i, t) in g.unlock.iter_mut().enumerate() {
                     ui.push_id(i, |ui| {
-                        if trigger_ui(ui, t, registry, allow_unknown) {
+                        if trigger_ui(ui, t, registry, pages, allow_unknown) {
                             remove = Some(i);
                         }
                     });
@@ -947,6 +987,7 @@ fn matcher_kind_name(k: MKind) -> &'static str {
         MKind::Id => "id",
         MKind::Tag => "#tag",
         MKind::Regex => "regex",
+        MKind::Page => "page",
     }
 }
 
@@ -990,7 +1031,7 @@ fn autocomplete(ui: &mut egui::Ui, resp: &egui::Response, text: &mut String, key
     }
 }
 
-fn matcher_list(ui: &mut egui::Ui, ms: &mut Vec<Matcher>, domain: Domain, label: &str, registry: &Registry, allow_unknown: bool) {
+fn matcher_list(ui: &mut egui::Ui, ms: &mut Vec<Matcher>, domain: Domain, label: &str, registry: &Registry, pages: &[Page], allow_unknown: bool) {
     ui.label(RichText::new(label).strong());
     let (id_key, tag_key) = domain.keys();
     let mut remove = None;
@@ -1005,11 +1046,27 @@ fn matcher_list(ui: &mut egui::Ui, ms: &mut Vec<Matcher>, domain: Domain, label:
                     if domain != Domain::Free {
                         ui.selectable_value(&mut m.kind, MKind::Regex, "regex");
                     }
+                    if domain == Domain::Item {
+                        ui.selectable_value(&mut m.kind, MKind::Page, "page");
+                    }
                 });
+                if m.kind == MKind::Page {
+                    let known = pages.iter().any(|p| p.id == m.text);
+                    let shown = if m.text.is_empty() { "(pick a lost page)".to_string() } else { m.text.clone() };
+                    egui::ComboBox::from_id_salt("mpage").width(250.0).selected_text(RichText::new(shown).color(if known || m.text.is_empty() { Color32::PLACEHOLDER } else { RED })).show_ui(ui, |ui| {
+                        for p in pages {
+                            ui.selectable_value(&mut m.text, p.id.clone(), format!("{} ({})", p.name, p.id));
+                        }
+                    });
+                    if ui.small_button("x").clicked() {
+                        remove = Some(i);
+                    }
+                    return;
+                }
                 let key = match m.kind {
                     MKind::Id => id_key,
                     MKind::Tag => tag_key,
-                    MKind::Regex => None,
+                    MKind::Regex | MKind::Page => None,
                 }
                 .filter(|k| registry.has_list(k));
                 let valid = key.is_none_or(|k| allow_unknown || m.text.is_empty() || registry.contains(k, &m.text));
@@ -1042,6 +1099,9 @@ fn matcher_list(ui: &mut egui::Ui, ms: &mut Vec<Matcher>, domain: Domain, label:
         if domain != Domain::Free && ui.small_button("+ regex").clicked() {
             ms.push(Matcher::new(MKind::Regex));
         }
+        if domain == Domain::Item && ui.small_button("+ lost page").clicked() {
+            ms.push(Matcher::new(MKind::Page));
+        }
         if ms.is_empty() {
             ui.weak("(none = anything)");
         }
@@ -1060,7 +1120,7 @@ fn hand_picker(ui: &mut egui::Ui, hand: &mut String) {
 }
 
 /// One trigger card. Returns true if it should be removed.
-fn trigger_ui(ui: &mut egui::Ui, t: &mut Trigger, registry: &Registry, allow_unknown: bool) -> bool {
+fn trigger_ui(ui: &mut egui::Ui, t: &mut Trigger, registry: &Registry, pages: &[Page], allow_unknown: bool) -> bool {
     let mut remove = false;
     egui::Frame::group(ui.style()).show(ui, |ui| {
         ui.set_width(ui.available_width());
@@ -1098,17 +1158,17 @@ fn trigger_ui(ui: &mut egui::Ui, t: &mut Trigger, registry: &Registry, allow_unk
         ui.small(format!("{}: {}", if t.sweep { "while" } else { "when" }, spec.help));
 
         if !spec.field.is_empty() {
-            matcher_list(ui, &mut t.matchers, spec.domain, spec.label, registry, allow_unknown);
+            matcher_list(ui, &mut t.matchers, spec.domain, spec.label, registry, pages, allow_unknown);
         }
         if spec.by {
-            matcher_list(ui, &mut t.by, Domain::Entity, "Attacker", registry, allow_unknown);
+            matcher_list(ui, &mut t.by, Domain::Entity, "Attacker", registry, pages, allow_unknown);
         }
         if spec.hand {
             hand_picker(ui, &mut t.hand);
         } else {
             // any trigger can additionally require a held item
             ui.separator();
-            matcher_list(ui, &mut t.holding, Domain::Item, "Also holding (optional)", registry, allow_unknown);
+            matcher_list(ui, &mut t.holding, Domain::Item, "Also holding (optional)", registry, pages, allow_unknown);
             if !t.holding.is_empty() {
                 hand_picker(ui, &mut t.hand);
             }

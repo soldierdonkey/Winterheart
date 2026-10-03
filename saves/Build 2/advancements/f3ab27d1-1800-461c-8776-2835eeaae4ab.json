@@ -1,0 +1,714 @@
+{
+  "legendarysurvivaloverhaul:main/root": {
+    "criteria": {
+      "main": "2026-10-01 17:06:19 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2026-10-01 17:06:19 -0700"
+    },
+    "done": true
+  },
+  "lootr:root": {
+    "criteria": {
+      "always_true": "2026-10-01 17:06:19 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/stone": {
+    "criteria": {
+      "has_stone": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/end": {
+    "criteria": {
+      "has_end_brick": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/dark_oak": {
+    "criteria": {
+      "has_dark_oak": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "notreepunching:leather_from_chestplate_with_knife": {
+    "criteria": {
+      "has_item": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/crimson": {
+    "criteria": {
+      "has_crimson": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/prismarine": {
+    "criteria": {
+      "has_qq": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/quartz": {
+    "criteria": {
+      "has_qq": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/sandstone": {
+    "criteria": {
+      "has_sand": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/acacia": {
+    "criteria": {
+      "has_acacia": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/jungle": {
+    "criteria": {
+      "has_jungle": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/oak": {
+    "criteria": {
+      "has_oak": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/mud_brick": {
+    "criteria": {
+      "has_qq": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/mangrove": {
+    "criteria": {
+      "has_mangrove": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/warped": {
+    "criteria": {
+      "has_warped": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/metal": {
+    "criteria": {
+      "has_deepslate": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/blackstone": {
+    "criteria": {
+      "has_blackstone": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "notreepunching:leather_from_boots_with_knife": {
+    "criteria": {
+      "has_item": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/hedge": {
+    "criteria": {
+      "has_birch": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/nether": {
+    "criteria": {
+      "has_nether_brick": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/bamboo": {
+    "criteria": {
+      "has_bamboo": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/deepslate": {
+    "criteria": {
+      "has_deepslate": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/spruce": {
+    "criteria": {
+      "has_spruce": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:main/root": {
+    "criteria": {
+      "seeds": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "notreepunching:leather_from_leggings_with_knife": {
+    "criteria": {
+      "has_item": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "mcwfences:recipes/birch": {
+    "criteria": {
+      "has_birch": "2026-10-02 08:49:37 -0700"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:frozen_river": "2026-10-02 11:04:32 -0700",
+      "minecraft:snowy_plains": "2026-10-02 08:50:22 -0700",
+      "minecraft:snowy_taiga": "2026-10-02 08:49:38 -0700",
+      "minecraft:ice_spikes": "2026-10-02 17:00:32 -0700"
+    },
+    "done": false
+  },
+  "notreepunching:sticks_from_logs_with_saw": {
+    "criteria": {
+      "has_item": "2026-10-02 08:51:19 -0700"
+    },
+    "done": true
+  },
+  "mcwbridges:recipes/spruce_bridge_pier": {
+    "criteria": {
+      "has_planks": "2026-10-02 08:51:19 -0700"
+    },
+    "done": true
+  },
+  "mcwstairs:recipes/spruce": {
+    "criteria": {
+      "has_planks": "2026-10-02 08:51:19 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/spruce_wood": {
+    "criteria": {
+      "has_log": "2026-10-02 08:51:19 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/spruce_planks": {
+    "criteria": {
+      "has_logs": "2026-10-02 08:51:19 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/charcoal": {
+    "criteria": {
+      "has_log": "2026-10-02 08:51:19 -0700"
+    },
+    "done": true
+  },
+  "notreepunching:sticks_from_logs_with_flint_axe": {
+    "criteria": {
+      "has_item": "2026-10-02 08:51:19 -0700"
+    },
+    "done": true
+  },
+  "mcwbridges:recipes/iron_bridge_stair": {
+    "criteria": {
+      "has_planks": "2026-10-02 08:51:28 -0700"
+    },
+    "done": true
+  },
+  "immersive_weathering:recipes/waxed_plate_iron": {
+    "criteria": {
+      "has_copper_block": "2026-10-02 08:51:30 -0700"
+    },
+    "done": true
+  },
+  "immersive_weathering:immersive_weathering/dirts": {
+    "criteria": {
+      "grass": "2026-10-02 08:52:24 -0700"
+    },
+    "done": false
+  },
+  "minecraft:recipes/decorations/composter": {
+    "criteria": {
+      "has_wood_slab": "2026-10-02 10:16:31 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/barrel": {
+    "criteria": {
+      "has_wood_slab": "2026-10-02 10:16:31 -0700"
+    },
+    "done": true
+  },
+  "mcwbridges:recipes/spruce_rail_bridge": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "mcwbridges:recipes/rope_spruce_bridge": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "notreepunching:sticks_from_planks_with_saw": {
+    "criteria": {
+      "has_item": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/spruce_sign": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/stick": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/spruce_fence": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/spruce_slab": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/spruce_button": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "mcwpaths:recipes/spruce": {
+    "criteria": {
+      "has_wood": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "legendarysurvivaloverhaul:recipes/decorations/sewing_table": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/spruce_pressure_plate": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "mcwbridges:recipes/spruce_log_bridge_middle": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/spruce_trapdoor": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/spruce_door": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/spruce_fence_gate": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "notreepunching:sticks_from_planks_with_flint_axe": {
+    "criteria": {
+      "has_item": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/spruce_stairs": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:16:33 -0700"
+    },
+    "done": true
+  },
+  "mcwbridges:recipes/spruce_log_bridge_stair": {
+    "criteria": {
+      "has_planks": "2026-10-02 10:47:17 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/decorations/safety_net": {
+    "criteria": {
+      "has_rope": "2026-10-02 11:02:26 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/decorations/rope_fence_gate": {
+    "criteria": {
+      "has_rope": "2026-10-02 11:02:26 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/decorations/rope_fence": {
+    "criteria": {
+      "has_rope": "2026-10-02 11:02:26 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/lime_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/purple_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/blue_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/light_gray_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/orange_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/light_blue_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/green_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/pink_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/white_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/gray_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/black_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/yellow_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/brown_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/red_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/magenta_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/cyan_stained_glass_pane_from_glass_pane": {
+    "criteria": {
+      "has_glass_pane": "2026-10-02 13:48:58 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/spruce_hanging_sign": {
+    "criteria": {
+      "has_stripped_logs": "2026-10-02 13:55:27 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/stripped_spruce_wood": {
+    "criteria": {
+      "has_log": "2026-10-02 13:55:27 -0700"
+    },
+    "done": true
+  },
+  "butchery:heads_up": {
+    "criteria": {
+      "heads_up_0": "2026-10-02 13:55:52 -0700"
+    },
+    "done": true
+  },
+  "notreepunching:clay_tool": {
+    "criteria": {
+      "has_item": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/ladder": {
+    "criteria": {
+      "has_stick": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/combat/flint_knife": {
+    "criteria": {
+      "has_stick": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_axe": {
+    "criteria": {
+      "has_stick": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "notreepunching:story/root": {
+    "criteria": {
+      "has_sticks": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/campfire": {
+    "criteria": {
+      "has_stick": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "aquaculture:recipes/tools/wooden_fillet_knife": {
+    "criteria": {
+      "has_items": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_hoe": {
+    "criteria": {
+      "has_stick": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_pickaxe": {
+    "criteria": {
+      "has_stick": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_shovel": {
+    "criteria": {
+      "has_stick": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/combat/wooden_sword": {
+    "criteria": {
+      "has_stick": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/decorations/cutting_board": {
+    "criteria": {
+      "has_stick": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "notreepunching:story/find_sticks": {
+    "criteria": {
+      "has_stick": "2026-10-02 14:08:32 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/cauldron": {
+    "criteria": {
+      "has_water_bucket": "2026-10-02 14:31:17 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/decorations/spruce_cabinet": {
+    "criteria": {
+      "has_spruce_trapdoor": "2026-10-02 14:31:31 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/cherry_boat": {
+    "criteria": {
+      "in_water": "2026-10-02 14:32:36 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/bamboo_raft": {
+    "criteria": {
+      "in_water": "2026-10-02 14:32:36 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "in_water": "2026-10-02 14:32:36 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "in_water": "2026-10-02 14:32:36 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/oak_boat": {
+    "criteria": {
+      "in_water": "2026-10-02 14:32:36 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/mangrove_boat": {
+    "criteria": {
+      "in_water": "2026-10-02 14:32:36 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "in_water": "2026-10-02 14:32:36 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "in_water": "2026-10-02 14:32:36 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "in_water": "2026-10-02 14:32:36 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/cooking/dog_food": {
+    "criteria": {
+      "has_any_ingredient": "2026-10-02 16:49:22 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/white_dye": {
+    "criteria": {
+      "has_bone_meal": "2026-10-02 16:49:22 -0700"
+    },
+    "done": true
+  },
+  "overweight_farming:recipes/apply_fullmetal_directly_to_compost": {
+    "criteria": {
+      "has_bone_meal": "2026-10-02 16:49:22 -0700"
+    },
+    "done": true
+  },
+  "overweight_farming:recipes/apply_violent_fullmetal_directly_to_compost": {
+    "criteria": {
+      "has_bone_meal": "2026-10-02 16:49:22 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bone_block": {
+    "criteria": {
+      "has_bone_meal": "2026-10-02 16:49:22 -0700"
+    },
+    "done": true
+  },
+  "gore_edition:the_geart_in_a_beast": {
+    "criteria": {
+      "the_geart_in_a_beast_0": "2026-10-02 16:58:46 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/food/fried_egg_from_smoking": {
+    "criteria": {
+      "fried_egg": "2026-10-02 16:59:21 -0700"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cake": {
+    "criteria": {
+      "has_egg": "2026-10-02 16:59:21 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/food/fried_egg_from_campfire_cooking": {
+    "criteria": {
+      "fried_egg": "2026-10-02 16:59:21 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/cooking/baked_cod_stew": {
+    "criteria": {
+      "has_any_ingredient": "2026-10-02 16:59:21 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/cooking/fried_rice": {
+    "criteria": {
+      "has_any_ingredient": "2026-10-02 16:59:21 -0700"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/food/fried_egg": {
+    "criteria": {
+      "fried_egg": "2026-10-02 16:59:21 -0700"
+    },
+    "done": true
+  },
+  "DataVersion": 3465
+}

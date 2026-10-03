@@ -30,6 +30,7 @@ saves/*
 
 # 2. But do not ignore this specific file
 !saves/New World (1)/
+!saves/Build 2/
 
 visual_keybinder/
 xaero/

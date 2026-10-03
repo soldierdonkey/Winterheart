@@ -12,9 +12,10 @@ everything they have unlocked with a guide book item.
 | `guides/guides_engine.js` | Loads the JSON, evaluates triggers, opens books, handles the pause. |
 | `guides/guides_commands.js` | `/guides ...` debug and admin commands. |
 | `startup_scripts/items/guide_book.js` | Registers the item `kubejs:guide_book`. |
+| `startup_scripts/items/lost_page.js` | Registers the item `kubejs:lost_page`. |
 | `client_scripts/guide_book_watcher.js` | Tells the server when the popup book is closed. |
 | `client_scripts/guide_book_jei.js` | Lists each book in JEI. |
-| `guide_editor/` (instance root) | Rust/macroquad editor for `guides.json`. |
+| `tools/guide_editor/` | Rust/macroquad editor for `guides.json`. |
 
 Small hooks live in `mechanics/time_system.js` (`triggerPhaseChangeHook`) and `mechanics/proximity.js` (the
 "reached 10s threshold" branch). Each is one guarded call into `global.Guides`.
@@ -82,6 +83,20 @@ lore come from the JSON when it is created, so adding a book needs no restart.
 - JEI lists one entry per book, read from the local `guides.json`. Rejoin the world after editing books.
   JEI++'s `nbtGroupingEnabled` must be off, or it folds the books into one stack.
 
+## Lost pages
+
+`kubejs:lost_page` is a dummy item (empty map texture) that carries `lostpage: "<id>"` in its NBT. Pages are defined
+by a top-level `"pages"` list in `guides.json` (also editable in the editor under "Lost pages"):
+
+```json
+"pages": [ { "id": "torn_page", "name": "Torn Page", "tooltip": "Water-stained." } ]
+```
+
+- Match one in any item matcher (`item`, `match` on item triggers, `holding`) with `{ "page": "torn_page" }`;
+  the editor offers it as `page` / `+ lost page`. Plain `"kubejs:lost_page"` matches every lost page.
+- Get one with `/guides page <id> [player]`; `/guides pages` lists them. JEI lists one entry per page.
+- Adding the item needs a game restart once; adding pages afterwards does not.
+
 ## What happens on unlock
 
 1. `guideUnlock` stores the id and queues a popup. Popups are shown one at a time.
@@ -114,6 +129,7 @@ forces a re-read. Changes to the engine scripts themselves need `/kjs reload ser
 | `/guides show <id>` | Preview one page on your own screen only. |
 | `/guides book [<book>]`, `bookall <book>` | Open a book; `bookall` includes locked pages, marked `[locked]`. |
 | `/guides give <book> [player]` | Give a guide book item. |
+| `/guides pages`, `page <id> [player]` | List lost pages; give a lost page item. |
 | `/guides probe` | Show what the sweeps see for you and whether each sweep trigger passes. |
 | `/guides trace` | Toggle live output: sweep state on the action bar, every event in chat and the log. |
 | `/guides fire <name>` | Fire a custom event as yourself. |
@@ -122,16 +138,16 @@ forces a re-read. Changes to the engine scripts themselves need `/kjs reload ser
 ## Editor
 
 ```
-cd guide_editor && cargo run --release
+cd tools/guide_editor && cargo run --release
 ```
 
 It finds the instance root by walking up to the folder with `options.txt` and `kubejs/` (override with
 `WINTERHEART_DIR`). It renders pages with the book texture and font from your enabled resource packs, takes valid
 ids from ProbeJS (`kubejs/probe/generated/globals.d.ts`; re-run `/probejs dump` after adding mods), and reads time
 phases and proximity rule ids from the two mechanics scripts. Edits are validated and written about 0.4 s after
-you stop typing; invalid data is never written. See `guide_editor/README.md` for more.
+you stop typing; invalid data is never written. See `tools/guide_editor/README.md` for more.
 
-The trigger kinds are a table in `guide_editor/src/model.rs` mirroring the engine, so a new kind added to the
+The trigger kinds are a table in `tools/guide_editor/src/model.rs` mirroring the engine, so a new kind added to the
 engine needs a matching row there.
 
 ## Extending

@@ -11,6 +11,8 @@
 //   /guides show <id>            preview one page on your own screen only (no pause)
 //   /guides books                list the books and how many pages each has
 //   /guides give <book> [player] give a guide book item for that book (default: yourself)
+//   /guides pages                list the lost pages
+//   /guides page <page> [player] give a lost page item (default: yourself)
 //   /guides book [<book>]        open a book on your screen (default: the first book)
 //   /guides bookall <book>       same, but with locked pages too, marked [locked]
 //   /guides probe                what the sweeps see for you right now, and whether each locked sweep trigger passes
@@ -52,6 +54,13 @@ ServerEvents.commandRegistry(event => {
         let book = G().findBook(id)
         if (!book) feedback(ctx.source, Text.red(`[Guides] Unknown book '${id}' (try /guides books)`))
         return book
+    }
+
+    function pageFrom(ctx) {
+        let id = Arguments.WORD.getResult(ctx, 'page')
+        let page = G().findLostPage(id)
+        if (!page) feedback(ctx.source, Text.red(`[Guides] Unknown lost page '${id}' (try /guides pages)`))
+        return page
     }
 
     // Runs fn(guide) for one id, or for every guide when withAll and id is 'all'. Returns the command result.
@@ -199,6 +208,41 @@ ServerEvents.commandRegistry(event => {
                             let target = Arguments.PLAYER.getResult(ctx, 'player')
                             target.give(G().makeBookItem(book))
                             feedback(ctx.source, Text.green(`[Guides] Gave ${book.name} to ${target.username}`))
+                            return 1
+                        })
+                    )
+                )
+            )
+
+            .then(Commands.literal('pages')
+                .executes(ctx => {
+                    feedback(ctx.source, Text.gray('--- [ Lost pages ] ---'))
+                    G().lostPages().forEach(p => feedback(ctx.source, Text.white(`${p.id} `).append(Text.gray(`"${p.name}"`))))
+                    return 1
+                })
+            )
+
+            .then(Commands.literal('page')
+                .then(Commands.argument('page', Arguments.WORD.create(event))
+                    .suggests((ctx, builder) => {
+                        G().lostPages().forEach(p => builder.suggest(p.id))
+                        return builder.buildFuture()
+                    })
+                    .executes(ctx => {
+                        let player = needPlayer(ctx)
+                        let page = player && pageFrom(ctx)
+                        if (!page) return 0
+                        player.give(G().makeLostPageItem(page))
+                        feedback(ctx.source, Text.green(`[Guides] Gave ${page.name}`))
+                        return 1
+                    })
+                    .then(Commands.argument('player', Arguments.PLAYER.create(event))
+                        .executes(ctx => {
+                            let page = pageFrom(ctx)
+                            if (!page) return 0
+                            let target = Arguments.PLAYER.getResult(ctx, 'player')
+                            target.give(G().makeLostPageItem(page))
+                            feedback(ctx.source, Text.green(`[Guides] Gave ${page.name} to ${target.username}`))
                             return 1
                         })
                     )
