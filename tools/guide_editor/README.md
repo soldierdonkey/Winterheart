@@ -2,7 +2,7 @@
 
 Edits `kubejs/server_scripts/questing/guides/guides.json`, the guide definitions read by the KubeJS guide engine.
 
-    cd guide_editor
+    cd tools/guide_editor
     cargo run --release
 
 It finds the instance root by walking up to the folder containing `options.txt` and `kubejs/` (override with `WINTERHEART_DIR`).

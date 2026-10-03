@@ -1,1 +1,1 @@
-{"useServerCUI":false,"wandItem":"minecraft:wooden_axe","wandItemDefault":true,"navWandItem":"minecraft:compass","navWandItemDefault":true}
+{"useServerCUI":false,"wandItem":"worldedit_items:wand_axe","wandItemDefault":false,"navWandItem":"minecraft:compass","navWandItemDefault":true}

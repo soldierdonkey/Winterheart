@@ -96,6 +96,8 @@ pub enum MKind {
     Id,
     Tag,
     Regex,
+    /// a lost page item carrying this page id in its NBT: { "page": "id" }
+    Page,
 }
 
 #[derive(Clone, PartialEq, Debug)]
@@ -114,6 +116,7 @@ impl Matcher {
             MKind::Id => json!(self.text),
             MKind::Tag => json!(format!("#{}", self.text)),
             MKind::Regex => json!({ "regex": self.text }),
+            MKind::Page => json!({ "page": self.text }),
         }
     }
 
@@ -126,6 +129,9 @@ impl Matcher {
             }),
             Value::Object(o) if o.get("regex").is_some_and(Value::is_string) => {
                 Some(Matcher { kind: MKind::Regex, text: o["regex"].as_str().unwrap().to_string() })
+            }
+            Value::Object(o) if o.get("page").is_some_and(Value::is_string) => {
+                Some(Matcher { kind: MKind::Page, text: o["page"].as_str().unwrap().to_string() })
             }
             other => Some(Matcher { kind: MKind::Id, text: other.to_string() }),
         }
@@ -470,6 +476,47 @@ pub fn assign_models(books: &mut [Book]) {
     }
 }
 
+// ---------------------------------------------------------------- lost pages
+
+/// A lost page is an item (kubejs:lost_page) tagged with its id; triggers can match it by `{ "page": id }`.
+#[derive(Clone)]
+pub struct Page {
+    pub id: String,
+    pub name: String,
+    pub tooltip: String,
+    pub extra: Map<String, Value>,
+}
+
+impl Page {
+    pub fn blank(existing: &[Page]) -> Page {
+        let mut n = existing.len() + 1;
+        while existing.iter().any(|p| p.id == format!("lost_page_{n}")) {
+            n += 1;
+        }
+        Page { id: format!("lost_page_{n}"), name: format!("Lost Page {n}"), tooltip: String::new(), extra: Map::new() }
+    }
+
+    fn from_value(v: &Value) -> Page {
+        let obj = v.as_object().cloned().unwrap_or_default();
+        let text = |k: &str| obj.get(k).and_then(Value::as_str).unwrap_or("").to_string();
+        let extra = obj.iter().filter(|(k, _)| !["id", "name", "tooltip"].contains(&k.as_str())).map(|(k, v)| (k.clone(), v.clone())).collect();
+        Page { id: text("id"), name: text("name"), tooltip: text("tooltip"), extra }
+    }
+
+    fn to_value(&self) -> Value {
+        let mut o = Map::new();
+        o.insert("id".into(), json!(self.id));
+        o.insert("name".into(), json!(self.name));
+        if !self.tooltip.is_empty() {
+            o.insert("tooltip".into(), json!(self.tooltip));
+        }
+        for (k, v) in &self.extra {
+            o.insert(k.clone(), v.clone());
+        }
+        Value::Object(o)
+    }
+}
+
 /// Item model JSON for the guide book item: the default texture plus one override per textured book.
 /// Returns (file name, contents) pairs for kubejs/assets/kubejs/models/item/. Files carry a marker key so
 /// the editor only ever deletes files it generated itself.
@@ -500,12 +547,16 @@ pub fn model_files(books: &[Book]) -> Vec<(String, String)> {
 pub const MODEL_MARKER: &str = "guide_editor";
 
 /// Files without a `books` list (older ones) get one default book, and guides without a `book` join the first.
-pub fn parse(text: &str) -> Result<(Vec<Book>, Vec<Guide>), String> {
+pub fn parse(text: &str) -> Result<(Vec<Book>, Vec<Page>, Vec<Guide>), String> {
     let root: Value = serde_json::from_str(text).map_err(|e| e.to_string())?;
     let (books_v, guides_v) = match &root {
         Value::Array(a) => (None, a),
         Value::Object(o) => (o.get("books").and_then(Value::as_array), o.get("guides").and_then(Value::as_array).ok_or("missing \"guides\" array")?),
         _ => return Err("expected an object with a \"guides\" array".into()),
+    };
+    let pages: Vec<Page> = match &root {
+        Value::Object(o) => o.get("pages").and_then(Value::as_array).map(|a| a.iter().map(Page::from_value).collect()).unwrap_or_default(),
+        _ => vec![],
     };
     let mut books: Vec<Book> = books_v.map(|a| a.iter().map(Book::from_value).collect()).unwrap_or_default();
     if books.is_empty() {
@@ -517,14 +568,17 @@ pub fn parse(text: &str) -> Result<(Vec<Book>, Vec<Guide>), String> {
             g.book = books[0].id.clone();
         }
     }
-    Ok((books, guides))
+    Ok((books, pages, guides))
 }
 
-pub fn serialize(books: &[Book], guides: &[Guide]) -> String {
-    let root = json!({
+pub fn serialize(books: &[Book], pages: &[Page], guides: &[Guide]) -> String {
+    let mut root = json!({
         "books": books.iter().map(Book::to_value).collect::<Vec<_>>(),
         "guides": guides.iter().map(Guide::to_value).collect::<Vec<_>>(),
     });
+    if !pages.is_empty() {
+        root["pages"] = Value::Array(pages.iter().map(Page::to_value).collect());
+    }
     let mut s = serde_json::to_string_pretty(&root).unwrap_or_default();
     s.push('\n');
     s
@@ -538,7 +592,7 @@ pub struct Problem {
     pub msg: String,
 }
 
-fn check_matchers(ms: &[Matcher], domain: Domain, reg: &Registry, allow_unknown: bool, what: &str, out: &mut Vec<String>) {
+fn check_matchers(ms: &[Matcher], pages: &[Page], domain: Domain, reg: &Registry, allow_unknown: bool, what: &str, out: &mut Vec<String>) {
     let (ids, tags) = domain.keys();
     for m in ms {
         if m.text.trim().is_empty() {
@@ -568,12 +622,30 @@ fn check_matchers(ms: &[Matcher], domain: Domain, reg: &Registry, allow_unknown:
                 None => {}
             },
             MKind::Regex => {}
+            MKind::Page => {
+                if !pages.iter().any(|p| p.id == m.text) {
+                    out.push(format!("{what}: lost page '{}' does not exist", m.text));
+                }
+            }
         }
     }
 }
 
-pub fn validate(books: &[Book], guides: &[Guide], reg: &Registry, allow_unknown: bool) -> Vec<Problem> {
+pub fn validate(books: &[Book], pages: &[Page], guides: &[Guide], reg: &Registry, allow_unknown: bool) -> Vec<Problem> {
     let mut out = Vec::new();
+    let mut seen_pages = HashSet::new();
+    for (i, p) in pages.iter().enumerate() {
+        let name = if p.id.is_empty() { format!("lost page #{}", i + 1) } else { format!("lost page {}", p.id) };
+        let mut err = |msg: String| out.push(Problem { guide: None, error: true, msg });
+        if p.id.is_empty() || !p.id.chars().all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '_') {
+            err(format!("{name}: id must be made of a-z, 0-9 and _"));
+        } else if !seen_pages.insert(p.id.clone()) {
+            err(format!("{name}: duplicate id"));
+        }
+        if p.name.trim().is_empty() {
+            err(format!("{name}: name is empty"));
+        }
+    }
     let mut seen_books = HashSet::new();
     for (i, b) in books.iter().enumerate() {
         let name = if b.id.is_empty() { format!("book #{}", i + 1) } else { format!("book {}", b.id) };
@@ -633,18 +705,18 @@ pub fn validate(books: &[Book], guides: &[Guide], reg: &Registry, allow_unknown:
             };
             let mut problems = Vec::new();
             if !spec.field.is_empty() {
-                check_matchers(&t.matchers, spec.domain, reg, allow_unknown, &format!("{what} ({})", spec.label.to_lowercase()), &mut problems);
+                check_matchers(&t.matchers, pages, spec.domain, reg, allow_unknown, &format!("{what} ({})", spec.label.to_lowercase()), &mut problems);
                 if (spec.name == "inventory" || (spec.domain == Domain::Free)) && t.matchers.is_empty() {
                     problems.push(format!("{what}: needs at least one {}", spec.label.to_lowercase()));
                 }
             }
             if spec.by {
-                check_matchers(&t.by, Domain::Entity, reg, allow_unknown, &format!("{what} (attacker)"), &mut problems);
+                check_matchers(&t.by, pages, Domain::Entity, reg, allow_unknown, &format!("{what} (attacker)"), &mut problems);
             }
             if spec.test && t.test.trim().is_empty() {
                 problems.push(format!("{what}: needs a function name"));
             }
-            check_matchers(&t.holding, Domain::Item, reg, allow_unknown, &format!("{what} (also holding)"), &mut problems);
+            check_matchers(&t.holding, pages, Domain::Item, reg, allow_unknown, &format!("{what} (also holding)"), &mut problems);
             if spec.name == "holding" && spec.sweep && t.matchers.is_empty() {
                 problems.push(format!("{what}: needs at least one item"));
             }
@@ -684,10 +756,10 @@ mod tests {
 
     #[test]
     fn round_trip_preserves_everything() {
-        let (books, guides) = parse(SAMPLE).unwrap();
-        let once = serialize(&books, &guides);
-        let (b2, g2) = parse(&once).unwrap();
-        let again = serialize(&b2, &g2);
+        let (books, pages, guides) = parse(SAMPLE).unwrap();
+        let once = serialize(&books, &pages, &guides);
+        let (b2, p2, g2) = parse(&once).unwrap();
+        let again = serialize(&b2, &p2, &g2);
         assert_eq!(once, again);
 
         let original: Value = serde_json::from_str(SAMPLE).unwrap();
@@ -698,14 +770,14 @@ mod tests {
     #[test]
     fn validation_flags_bad_data() {
         let reg = Registry::default(); // no ProbeJS data: ids are not checked
-        let (books, mut guides) = parse(SAMPLE).unwrap();
-        assert!(validate(&books, &guides, &reg, false).iter().all(|p| !p.error));
+        let (books, pages, mut guides) = parse(SAMPLE).unwrap();
+        assert!(validate(&books, &pages, &guides, &reg, false).iter().all(|p| !p.error));
 
         guides[0].id = "Bad Id".into();
         guides[0].unlock[1].matchers.clear();
         guides.push(guides[0].clone());
         guides[1].book = "nope".into();
-        let errors: Vec<_> = validate(&books, &guides, &reg, false).into_iter().filter(|p| p.error).map(|p| p.msg).collect();
+        let errors: Vec<_> = validate(&books, &pages, &guides, &reg, false).into_iter().filter(|p| p.error).map(|p| p.msg).collect();
         assert!(errors.iter().any(|m| m.contains("id must be")), "{errors:?}");
         assert!(errors.iter().any(|m| m.contains("needs at least one item")), "{errors:?}");
         assert!(errors.iter().any(|m| m.contains("book 'nope' does not exist")), "{errors:?}");
@@ -713,7 +785,7 @@ mod tests {
 
     #[test]
     fn models_are_assigned_and_generated() {
-        let (mut books, _) = parse(SAMPLE).unwrap();
+        let (mut books, _, _) = parse(SAMPLE).unwrap();
         books.push(Book { id: "b2".into(), name: "B2".into(), texture: "minecraft:item/enchanted_book".into(), ..Book::default_book() });
         assign_models(&mut books);
         assert_eq!(books[0].model, Some(3));
@@ -730,9 +802,9 @@ mod tests {
             {"sweep":"time","match":["DUSK","NIGHT"],"minDay":2,"maxDay":9},
             {"event":"time_phase","match":"MIDNIGHT","minDay":3},
             {"event":"proximity","match":"gore"}]}]}"#;
-        let (b, g) = parse(text).unwrap();
-        let again = parse(&serialize(&b, &g)).unwrap();
-        assert_eq!(serialize(&b, &g), serialize(&again.0, &again.1));
+        let (b, pages, g) = parse(text).unwrap();
+        let again = parse(&serialize(&b, &pages, &g)).unwrap();
+        assert_eq!(serialize(&b, &pages, &g), serialize(&again.0, &again.1, &again.2));
         assert_eq!(g[0].unlock[0].min_day, Some(2));
         assert_eq!(g[0].unlock[1].max_day, None);
         assert_eq!(spec_of(false, "proximity").unwrap().domain, Domain::Proximity);
@@ -743,13 +815,13 @@ mod tests {
         let text = r##"{"guides":[{"id":"a","title":"A","book":"guide","content":"x","unlock":[
             {"sweep":"holding","item":["minecraft:stick","#minecraft:axes"],"hand":"off"},
             {"event":"block_broken","match":"minecraft:stone","holding":"#minecraft:pickaxes"}]}]}"##;
-        let (b, g) = parse(text).unwrap();
+        let (b, pages, g) = parse(text).unwrap();
         assert_eq!(g[0].unlock[0].hand, "off");
         assert_eq!(g[0].unlock[1].holding.len(), 1);
-        let again = parse(&serialize(&b, &g)).unwrap();
-        assert_eq!(serialize(&b, &g), serialize(&again.0, &again.1));
+        let again = parse(&serialize(&b, &pages, &g)).unwrap();
+        assert_eq!(serialize(&b, &pages, &g), serialize(&again.0, &again.1, &again.2));
         let reg = Registry::default();
-        assert!(validate(&b, &g, &reg, false).iter().all(|p| !p.error));
+        assert!(validate(&b, &pages, &g, &reg, false).iter().all(|p| !p.error));
     }
 
     #[test]
@@ -761,19 +833,34 @@ mod tests {
         assert_eq!(color_to_string([0xAA, 0, 0]), "dark_red");
         assert_eq!(color_to_string([1, 2, 3]), "#010203");
 
-        let (mut books, guides) = parse(SAMPLE).unwrap();
+        let (mut books, pages, guides) = parse(SAMPLE).unwrap();
         books[0].title_color = "bogus".into();
         let reg = Registry::default();
-        assert!(validate(&books, &guides, &reg, false).iter().any(|p| p.error && p.msg.contains("title color")));
+        assert!(validate(&books, &pages, &guides, &reg, false).iter().any(|p| p.error && p.msg.contains("title color")));
         books[0].title_color = "#2a6f97".into();
-        assert!(validate(&books, &guides, &reg, false).iter().all(|p| !p.error));
-        let (b2, _) = parse(&serialize(&books, &guides)).unwrap();
+        assert!(validate(&books, &pages, &guides, &reg, false).iter().all(|p| !p.error));
+        let (b2, _, _) = parse(&serialize(&books, &pages, &guides)).unwrap();
         assert_eq!(b2[0].title_color, "#2a6f97");
     }
 
     #[test]
+    fn lost_pages_round_trip_and_match() {
+        let text = r#"{"pages":[{"id":"torn","name":"Torn Page","tooltip":"t"}],"guides":[{"id":"a","title":"A","book":"guide","content":"x","unlock":[
+            {"sweep":"inventory","item":{"page":"torn"}},
+            {"event":"item_picked_up","match":[{"page":"torn"},"minecraft:stick"]}]}]}"#;
+        let (b, pages, g) = parse(text).unwrap();
+        assert_eq!(pages.len(), 1);
+        assert_eq!(g[0].unlock[0].matchers[0].kind, MKind::Page);
+        let again = parse(&serialize(&b, &pages, &g)).unwrap();
+        assert_eq!(serialize(&b, &pages, &g), serialize(&again.0, &again.1, &again.2));
+        let reg = Registry::default();
+        assert!(validate(&b, &pages, &g, &reg, false).iter().all(|p| !p.error));
+        assert!(validate(&b, &[], &g, &reg, false).iter().any(|p| p.error && p.msg.contains("does not exist")));
+    }
+
+    #[test]
     fn old_files_get_a_default_book() {
-        let (books, guides) = parse(r#"{"guides":[{"id":"a","title":"A","content":"x"}]}"#).unwrap();
+        let (books, _, guides) = parse(r#"{"guides":[{"id":"a","title":"A","content":"x"}]}"#).unwrap();
         assert_eq!(books.len(), 1);
         assert_eq!(guides[0].book, books[0].id);
     }
