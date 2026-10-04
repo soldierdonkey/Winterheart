@@ -17,7 +17,9 @@ pub fn save_project(p: &Project, path: &str) -> Result<(), String> {
 
 pub fn load_project(path: &str) -> Result<Project, String> {
     let s = fs::read_to_string(path).map_err(|e| e.to_string())?;
-    serde_json::from_str(&s).map_err(|e| e.to_string())
+    let mut p: Project = serde_json::from_str(&s).map_err(|e| e.to_string())?;
+    p.migrate();
+    Ok(p)
 }
 
 /// macroquad's `export_png` writes rows bottom-up (it expects GPU readback order), which would flip north and
@@ -42,6 +44,7 @@ pub fn export_all(p: &Project, w: &World, dir: &str) -> Result<String, String> {
     }
 
     let [sx, sz] = p.spawn;
+    let target = p.path.target(p.spawn);
     let structures: Vec<_> = p
         .structures
         .iter()
@@ -65,7 +68,13 @@ pub fn export_all(p: &Project, w: &World, dir: &str) -> Result<String, String> {
     let manifest = json!({
         "note": "Planner output. Axes follow Minecraft: +X east, +Z south. Heights are estimates from the planner's terrain model, not the game's.",
         "spawn": { "x": sx, "z": sz },
-        "guide": { "offset": p.guide_offset, "radius": p.guide_radius },
+        "guide": {
+            "offset": [target[0] - sx, target[1] - sz],
+            "radius": p.path.target_radius,
+            "target": { "x": target[0], "z": target[1] },
+            "waypoints": p.path.points,
+            "length_blocks": p.path.length(p.spawn).round() as i32,
+        },
         "structures": structures,
     });
     fs::write(dir.join("structures.json"), serde_json::to_string_pretty(&manifest).map_err(|e| e.to_string())?).map_err(|e| e.to_string())?;

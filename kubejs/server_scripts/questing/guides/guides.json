@@ -346,6 +346,20 @@
       ]
     },
     {
+      "id": "a_tragedy",
+      "title": "A Tragedy",
+      "book": "journal",
+      "content": "Colonel Connors hangs off the lower deck.\n\n      As I understand\n      it now, §nI am alone.§r\n\nIf I remember correctly, there is a small ship anchored to the §1east§r.",
+      "unlock": [
+        {
+          "sweep": "inventory",
+          "item": {
+            "page": "suicide_note"
+          }
+        }
+      ]
+    },
+    {
       "id": "unnatural_sounds",
       "title": "Unnatural Sounds",
       "book": "journal",
@@ -357,6 +371,13 @@
           "minDay": 29
         }
       ]
+    }
+  ],
+  "pages": [
+    {
+      "id": "suicide_note",
+      "name": "Colonel Connor's Suicide Note",
+      "tooltip": "Barely legible - what a shame."
     }
   ]
 }

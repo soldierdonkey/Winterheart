@@ -9,13 +9,19 @@ and see the resulting biomes and heights.
     cargo test
 
 Axes follow Minecraft: +X east, +Z south. Default region is 2048 x 2048 blocks at 8 blocks per cell.
-Spawn is (0, 0); the target ring is 400 blocks south, radius 100.
+Spawn is (0, 0); a new project's escape path runs 400 blocks south to a target ring of radius 100.
 
 - **Paint**: Biome (sets all five climate channels to a point that yields that biome), Channel (set one
   channel, incl. height bias), Erase. Line mode drags a capsule corridor. `[` `]` resize, Cmd+Z undo, Cmd+S save.
 - **Noise**: seed, sea level, domain warp, and per-channel scale/octaves/persistence/lacunarity/contrast/
   amplitude/bias for continentalness, erosion, temperature, humidity, weirdness.
 - **Struct**: structure types (name, resource id, footprint) and instances (click to place, drag to move).
+- **Path**: the escape route from spawn. Click on the line to add a bend, click elsewhere to extend the path to a
+  new target, drag points to move them, Del removes the selected one. Sliders set the target ring radius, corridor
+  half-width, edge hardness, spawn/target clearing radii, and the terrain the corridor is painted with
+  (continentalness, erosion, weirdness, lift in blocks). The orange band previews what **Paint corridor** covers.
+  To reshape a painted corridor: **Erase corridor**, move points, paint again (Cmd+Z undoes either).
+  The path is saved in the project; `structures.json` gets the target, radius, waypoints and length under `guide`.
 - **View**: biome / height / each noise channel, hillshade, tree pixels, grid, painted-area highlight.
 - **Naturalize** (Paint tab): brush that blurs paint, adds noise to painted values and roughens edges; a button applies it to all paint.
 - **File**: **Save all** (Cmd+S) writes `worldpainter_project.json`, `export/biome_map.png`, `height_map.png`, `structures.json`,
