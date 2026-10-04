@@ -1,0 +1,319 @@
+{
+  "match": [
+    "mcwbridges:"
+  ],
+  "blocks": [
+    {
+      "pos": [
+        11,
+        5,
+        13
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=south]"
+    },
+    {
+      "pos": [
+        12,
+        6,
+        13
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=south]"
+    },
+    {
+      "pos": [
+        13,
+        7,
+        12
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=east]"
+    },
+    {
+      "pos": [
+        13,
+        7,
+        13
+      ],
+      "state": "mcwbridges:spruce_log_bridge_middle[connection=corner_nw]"
+    },
+    {
+      "pos": [
+        13,
+        8,
+        11
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=east]"
+    },
+    {
+      "pos": [
+        13,
+        9,
+        10
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=east]"
+    },
+    {
+      "pos": [
+        13,
+        10,
+        9
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=east]"
+    },
+    {
+      "pos": [
+        13,
+        11,
+        8
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=east]"
+    },
+    {
+      "pos": [
+        12,
+        12,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=north]"
+    },
+    {
+      "pos": [
+        13,
+        12,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_middle[connection=corner_sw]"
+    },
+    {
+      "pos": [
+        11,
+        13,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=north]"
+    },
+    {
+      "pos": [
+        10,
+        14,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=north]"
+    },
+    {
+      "pos": [
+        9,
+        15,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=north]"
+    },
+    {
+      "pos": [
+        8,
+        16,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=north]"
+    },
+    {
+      "pos": [
+        7,
+        17,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_middle[connection=corner_se]"
+    },
+    {
+      "pos": [
+        7,
+        17,
+        8
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=west]"
+    },
+    {
+      "pos": [
+        7,
+        18,
+        9
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=west]"
+    },
+    {
+      "pos": [
+        7,
+        19,
+        10
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=west]"
+    },
+    {
+      "pos": [
+        7,
+        20,
+        11
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=west]"
+    },
+    {
+      "pos": [
+        7,
+        21,
+        12
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=west]"
+    },
+    {
+      "pos": [
+        7,
+        22,
+        13
+      ],
+      "state": "mcwbridges:spruce_log_bridge_middle[connection=corner_ne]"
+    },
+    {
+      "pos": [
+        8,
+        22,
+        13
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=south]"
+    },
+    {
+      "pos": [
+        9,
+        23,
+        13
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=south]"
+    },
+    {
+      "pos": [
+        10,
+        24,
+        13
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=south]"
+    },
+    {
+      "pos": [
+        11,
+        25,
+        13
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=south]"
+    },
+    {
+      "pos": [
+        12,
+        26,
+        13
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=south]"
+    },
+    {
+      "pos": [
+        13,
+        27,
+        12
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=east]"
+    },
+    {
+      "pos": [
+        13,
+        27,
+        13
+      ],
+      "state": "mcwbridges:spruce_log_bridge_middle[connection=corner_nw]"
+    },
+    {
+      "pos": [
+        13,
+        28,
+        11
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=east]"
+    },
+    {
+      "pos": [
+        13,
+        29,
+        10
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=east]"
+    },
+    {
+      "pos": [
+        13,
+        30,
+        9
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=east]"
+    },
+    {
+      "pos": [
+        13,
+        31,
+        8
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=east]"
+    },
+    {
+      "pos": [
+        12,
+        32,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=north]"
+    },
+    {
+      "pos": [
+        13,
+        32,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_middle[connection=corner_sw]"
+    },
+    {
+      "pos": [
+        11,
+        33,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=north]"
+    },
+    {
+      "pos": [
+        10,
+        34,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=north]"
+    },
+    {
+      "pos": [
+        9,
+        35,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=north]"
+    },
+    {
+      "pos": [
+        8,
+        36,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=north]"
+    },
+    {
+      "pos": [
+        7,
+        37,
+        7
+      ],
+      "state": "mcwbridges:spruce_log_bridge_stair[connection=base,facing=north]"
+    }
+  ]
+}
