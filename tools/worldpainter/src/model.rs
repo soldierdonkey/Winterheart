@@ -337,9 +337,14 @@ pub struct Project {
     pub types: Vec<StructType>,
     pub structures: Vec<StructInst>,
     pub spawn: [i32; 2],
-    /// Offset from spawn the escape structure should land at, and the accepted radius.
-    pub guide_offset: [i32; 2],
-    pub guide_radius: i32,
+    /// The escape route from spawn to the target, and how its corridor is painted.
+    #[serde(default)]
+    pub path: PathGuide,
+    /// Pre-`path` projects stored only an offset from spawn and a radius; read once, then dropped.
+    #[serde(default, skip_serializing)]
+    guide_offset: Option<[i32; 2]>,
+    #[serde(default, skip_serializing)]
+    guide_radius: Option<i32>,
     /// Terrain ramps down to deep ocean over this many blocks at the map edge.
     #[serde(default = "default_edge")]
     pub edge_width: f32,
@@ -426,8 +431,9 @@ impl Project {
             ],
             structures: vec![],
             spawn: [0, 0],
-            guide_offset: [0, 400],
-            guide_radius: 100,
+            path: PathGuide::default(),
+            guide_offset: None,
+            guide_radius: None,
             edge_width: default_edge(),
             detail_amp: 6.0,
             detail_scale: default_detail_scale(),
@@ -473,16 +479,113 @@ impl Project {
         self.paint = paint;
     }
 
-    /// Placeholder traversable corridor south (+Z) of spawn, ending in a clearing at the escape site.
+    /// Convert a pre-`path` project's single guide offset into a one-point path.
+    pub fn migrate(&mut self) {
+        // files that still have `guide_offset` were saved before `path` existed, so `path` is only a default
+        if let Some([ox, oz]) = self.guide_offset.take() {
+            self.path.points = vec![[self.spawn[0] + ox, self.spawn[1] + oz]];
+        }
+        if let Some(r) = self.guide_radius.take() {
+            self.path.target_radius = r;
+        }
+        if self.path.points.is_empty() {
+            self.path.points = PathGuide::default().points;
+        }
+    }
+
+    /// Spawn followed by every waypoint; the last entry is the escape target.
+    pub fn path_points(&self) -> Vec<(f32, f32)> {
+        std::iter::once(self.spawn).chain(self.path.points.iter().copied()).map(|[x, z]| (x as f32, z as f32)).collect()
+    }
+
+    /// Paint (or erase) the path's corridor: a capsule along each segment plus clearings at spawn and the target.
+    /// Returns the touched cell rectangle.
+    pub fn paint_path(&mut self, erase: bool) -> (usize, usize, usize, usize) {
+        let g = self.path.clone();
+        let land = g.land();
+        let op = if erase { Op::Erase(None) } else { Op::Set(&land) };
+        // erase with a hard edge over the same radius, so the faded fringe is removed too
+        let hardness = if erase { 1.0 } else { g.hardness };
+        let pts = self.path_points();
+        let mut rect = (usize::MAX, usize::MAX, 0, 0);
+        let mut grow = |r: (usize, usize, usize, usize)| rect = (rect.0.min(r.0), rect.1.min(r.1), rect.2.max(r.2), rect.3.max(r.3));
+        for w in pts.windows(2) {
+            grow(self.paint.stamp(&self.region, w[0], w[1], g.width, hardness, 1.0, &op));
+        }
+        let (spawn, target) = (pts[0], pts[pts.len() - 1]);
+        if g.spawn_clearing > 0.0 {
+            grow(self.paint.stamp(&self.region, spawn, spawn, g.spawn_clearing, hardness, 1.0, &op));
+        }
+        if g.target_clearing > 0.0 {
+            grow(self.paint.stamp(&self.region, target, target, g.target_clearing, hardness, 1.0, &op));
+        }
+        rect
+    }
+
+    /// Default corridor: paint the path with its current settings.
     pub fn apply_corridor_preset(&mut self) {
-        let land = [(CH_C, 0.12), (CH_E, 0.25), (CH_W, 0.3), (CH_HB, 8.0)]; // +8 blocks keeps detail noise above sea level
-        let [sx, sz] = self.spawn;
-        let [ox, oz] = self.guide_offset;
-        let (a, b) = ((sx as f32, sz as f32 - 40.0), ((sx + ox) as f32, (sz + oz) as f32 + 120.0));
-        self.paint.stamp(&self.region, a, b, 70.0, 0.55, 1.0, &Op::Set(&land));
-        let site = ((sx + ox) as f32, (sz + oz) as f32);
-        self.paint.stamp(&self.region, site, site, 120.0, 0.6, 1.0, &Op::Set(&land));
-        self.paint.stamp(&self.region, (sx as f32, sz as f32), (sx as f32, sz as f32), 90.0, 0.6, 1.0, &Op::Set(&land));
+        self.paint_path(false);
+    }
+}
+
+/// The planned escape route. Points are absolute block coordinates; spawn is the implicit first point.
+#[derive(Clone, Serialize, Deserialize)]
+#[serde(default)]
+pub struct PathGuide {
+    /// Waypoints after spawn; the last one is the escape target.
+    pub points: Vec<[i32; 2]>,
+    /// Accepted distance from the target (the ring drawn on the map and written to structures.json).
+    pub target_radius: i32,
+    /// Corridor half-width in blocks.
+    pub width: f32,
+    /// 0..1: fraction of the width painted at full strength before the edge fades.
+    pub hardness: f32,
+    /// Radius of the round clearing painted at spawn / the target (0 = none).
+    pub spawn_clearing: f32,
+    pub target_clearing: f32,
+    /// Climate the corridor is painted with: gentle, flat land by default.
+    pub continentalness: f32,
+    pub erosion: f32,
+    pub weirdness: f32,
+    /// Blocks added to the height; +8 keeps the export's detail noise above sea level.
+    pub lift: f32,
+}
+
+impl Default for PathGuide {
+    fn default() -> Self {
+        PathGuide {
+            points: vec![[0, 400]],
+            target_radius: 100,
+            width: 70.0,
+            hardness: 0.55,
+            spawn_clearing: 90.0,
+            target_clearing: 120.0,
+            continentalness: 0.12,
+            erosion: 0.25,
+            weirdness: 0.3,
+            lift: 8.0,
+        }
+    }
+}
+
+impl PathGuide {
+    pub fn land(&self) -> [(usize, f32); 4] {
+        [(CH_C, self.continentalness), (CH_E, self.erosion), (CH_W, self.weirdness), (CH_HB, self.lift)]
+    }
+
+    pub fn target(&self, spawn: [i32; 2]) -> [i32; 2] {
+        self.points.last().copied().unwrap_or(spawn)
+    }
+
+    /// Total length in blocks from spawn through every waypoint.
+    pub fn length(&self, spawn: [i32; 2]) -> f32 {
+        let mut prev = spawn;
+        let mut len = 0.0;
+        for &p in &self.points {
+            len += (((p[0] - prev[0]).pow(2) + (p[1] - prev[1]).pow(2)) as f32).sqrt();
+            prev = p;
+        }
+        len
     }
 }
 
@@ -494,8 +597,10 @@ mod tests {
     fn naturalize_blurs_edges_and_stays_in_range() {
         let mut p = Project::new();
         p.resize(1024);
-        let before = p.paint.clone();
         let r = p.region.clone();
+        // a hard-edged dab, so blur has a sharp edge to spread past
+        p.paint.stamp(&r, (200.0, -200.0), (200.0, -200.0), 60.0, 1.0, 1.0, &Op::Set(&[(CH_C, 0.6), (CH_HB, 20.0)]));
+        let before = p.paint.clone();
         let nat = Natural { blur: 0.8, noise: 0.15, scale: 50.0, seed: 3 };
         p.paint.naturalize(&r, (0.0, 0.0), (0.0, 0.0), 2000.0, 1.0, 1.0, nat);
         let (mut changed, mut spread) = (0, 0);
@@ -513,5 +618,46 @@ mod tests {
             }
         }
         assert!(changed > 0 && spread > 0, "changed {changed}, spread {spread}");
+    }
+}
+
+#[cfg(test)]
+mod path_tests {
+    use super::*;
+
+    #[test]
+    fn old_guide_offset_migrates_to_a_one_point_path() {
+        let mut v = serde_json::to_value(Project::new()).unwrap();
+        let o = v.as_object_mut().unwrap();
+        o.remove("path");
+        o.insert("guide_offset".into(), serde_json::json!([30, 600]));
+        o.insert("guide_radius".into(), serde_json::json!(75));
+        let mut p: Project = serde_json::from_value(v).unwrap();
+        p.migrate();
+        assert_eq!(p.path.points, vec![[30, 600]]);
+        assert_eq!(p.path.target_radius, 75);
+        let saved = serde_json::to_value(&p).unwrap();
+        assert!(saved.get("guide_offset").is_none() && saved.get("path").is_some());
+    }
+
+    #[test]
+    fn corridor_follows_bends_and_erases_cleanly() {
+        let mut p = Project::new();
+        p.paint.clear();
+        p.path.points = vec![[300, 0], [300, 300]];
+        p.path.spawn_clearing = 0.0;
+        p.path.target_clearing = 0.0;
+        p.paint_path(false);
+        let idx = |x: f32, z: f32| {
+            let (i, j) = p.region.cell_at(x, z).unwrap();
+            j * p.region.nx + i
+        };
+        let (on_bend, off_path) = (idx(300.0, 150.0), idx(0.0, 300.0));
+        assert!(p.paint.mask[CH_C][on_bend] > 0.9);
+        assert!((p.paint.value[CH_HB][on_bend] - p.path.lift).abs() < 1e-3);
+        assert_eq!(p.paint.mask[CH_C][off_path], 0.0, "a straight spawn-target line would have painted here");
+        assert!((p.path.length(p.spawn) - 600.0).abs() < 1e-3);
+        p.paint_path(true);
+        assert!(p.paint.mask.iter().all(|m| m.iter().all(|v| *v == 0.0)));
     }
 }

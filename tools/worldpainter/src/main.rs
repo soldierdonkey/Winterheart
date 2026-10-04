@@ -22,6 +22,7 @@ enum Tab {
     Paint,
     Noise,
     Structures,
+    Path,
     View,
     File,
 }
@@ -33,6 +34,7 @@ enum Tool {
     Erase,
     Naturalize,
     Structure,
+    Path,
 }
 
 struct View {
@@ -72,6 +74,9 @@ struct App {
     sel_type: usize,
     sel_struct: Option<usize>,
     drag_struct: Option<Vec2>,
+    /// Selected waypoint (index into `proj.path.points`) and the grab offset while dragging it.
+    sel_point: Option<usize>,
+    drag_point: Option<Vec2>,
     noise_ch: usize,
     reprs: Vec<Option<[f32; 5]>>,
     status: String,
@@ -141,6 +146,8 @@ impl App {
             sel_type: 0,
             sel_struct: None,
             drag_struct: None,
+            sel_point: None,
+            drag_point: None,
             noise_ch: 0,
             reprs: (0..biomes::BIOMES.len() as u8).map(biomes::representative).collect(),
             status: "Ready. Right-drag or Space+drag to pan, wheel to zoom.".into(),
@@ -253,13 +260,18 @@ impl App {
             if is_key_pressed(KeyCode::RightBracket) {
                 self.brush_r = (self.brush_r / 0.85).min(500.0);
             }
-            if (is_key_pressed(KeyCode::Delete) || is_key_pressed(KeyCode::Backspace)) && self.tool == Tool::Structure {
-                self.delete_selected();
+            if is_key_pressed(KeyCode::Delete) || is_key_pressed(KeyCode::Backspace) {
+                match self.tool {
+                    Tool::Structure => self.delete_selected(),
+                    Tool::Path => self.delete_point(),
+                    _ => {}
+                }
             }
         }
 
         match self.tool {
             Tool::Structure => self.handle_structure_input(on_map, wpos),
+            Tool::Path => self.handle_path_input(on_map, wpos),
             _ => self.handle_paint_input(on_map, wpos),
         }
     }
@@ -371,6 +383,113 @@ impl App {
         }
     }
 
+    /// Waypoint handle under the cursor (spawn is fixed and has no handle).
+    fn point_at(&self, w: Vec2) -> Option<usize> {
+        let pick = 9.0 / self.view.zoom;
+        self.proj.path.points.iter().enumerate().rev().find_map(|(i, p)| (vec2(p[0] as f32, p[1] as f32).distance(w) <= pick).then_some(i))
+    }
+
+    /// Segment whose corridor contains `w`, as the index the new waypoint would be inserted at.
+    fn segment_at(&self, w: Vec2) -> Option<usize> {
+        let reach = self.proj.path.width.max(10.0 / self.view.zoom);
+        let pts = self.proj.path_points();
+        pts.windows(2).enumerate().find_map(|(k, s)| {
+            let (a, b) = (vec2(s[0].0, s[0].1), vec2(s[1].0, s[1].1));
+            let ab = b - a;
+            let t = if ab.length_squared() > 0.0 { ((w - a).dot(ab) / ab.length_squared()).clamp(0.0, 1.0) } else { 0.0 };
+            ((a + ab * t).distance(w) <= reach).then_some(k)
+        })
+    }
+
+    fn handle_path_input(&mut self, on_map: bool, wpos: Vec2) {
+        let snap = |v: f32| (v / 4.0).round() as i32 * 4;
+        if self.ui.pressed && on_map {
+            let i = match self.point_at(wpos) {
+                Some(i) => i,
+                None => {
+                    // on the line: bend that segment; elsewhere: extend the path to a new target
+                    let at = self.segment_at(wpos).unwrap_or(self.proj.path.points.len());
+                    self.proj.path.points.insert(at, [snap(wpos.x), snap(wpos.y)]);
+                    at
+                }
+            };
+            self.sel_point = Some(i);
+            let p = self.proj.path.points[i];
+            self.drag_point = Some(vec2(p[0] as f32, p[1] as f32) - wpos);
+        }
+        if let (Some(off), Some(i)) = (self.drag_point, self.sel_point) {
+            if self.ui.down {
+                let target = wpos + off;
+                self.proj.path.points[i] = [snap(target.x), snap(target.y)];
+            } else {
+                self.drag_point = None;
+            }
+        }
+    }
+
+    fn delete_point(&mut self) {
+        if let Some(i) = self.sel_point.take() {
+            if i < self.proj.path.points.len() && self.proj.path.points.len() > 1 {
+                self.proj.path.points.remove(i);
+            }
+        }
+    }
+
+    fn paint_path(&mut self, erase: bool) {
+        if self.undo.len() >= UNDO_LIMIT {
+            self.undo.remove(0);
+        }
+        self.undo.push(self.proj.paint.clone());
+        let rect = self.proj.paint_path(erase);
+        self.world.recompute_rect(&self.proj, rect);
+        self.img_dirty = true;
+        self.set_status(if erase { "Erased the path corridor (Cmd+Z undoes)." } else { "Painted the path corridor (Cmd+Z undoes)." });
+    }
+
+    fn draw_path(&self) {
+        let g = &self.proj.path;
+        let z = self.view.zoom;
+        let orange = Color::new(1.0, 0.6, 0.1, 0.9);
+        let pts: Vec<Vec2> = self.proj.path_points().iter().map(|&(x, y)| self.w2s(vec2(x, y))).collect();
+        let editing = self.tab == Tab::Path;
+        if editing {
+            // what "Paint corridor" will cover: full-strength core and the faded edge
+            let band = Color::new(1.0, 0.6, 0.1, 0.13);
+            for s in pts.windows(2) {
+                draw_line(s[0].x, s[0].y, s[1].x, s[1].y, g.width * 2.0 * z, band);
+            }
+            for p in &pts[1..pts.len() - 1] {
+                draw_circle(p.x, p.y, g.width * z, band);
+            }
+            let (sp, tp) = (pts[0], pts[pts.len() - 1]);
+            for (p, r) in [(sp, g.spawn_clearing), (tp, g.target_clearing)] {
+                if r > 0.0 {
+                    draw_circle_lines(p.x, p.y, r * z, 1.0, Color::new(1.0, 0.85, 0.5, 0.6));
+                }
+            }
+        }
+        for s in pts.windows(2) {
+            draw_line(s[0].x, s[0].y, s[1].x, s[1].y, 2.0, orange);
+        }
+        let tp = pts[pts.len() - 1];
+        draw_circle_lines(tp.x, tp.y, g.target_radius as f32 * z, 2.0, Color::new(1.0, 0.6, 0.1, 0.95));
+        let t = g.target(self.proj.spawn);
+        let (dx, dz) = (t[0] - self.proj.spawn[0], t[1] - self.proj.spawn[1]);
+        let label = format!(
+            "target: {} {} {} {} +-{}  (path {:.0})",
+            dz.abs(), if dz >= 0 { "S" } else { "N" }, dx.abs(), if dx >= 0 { "E" } else { "W" }, g.target_radius, g.length(self.proj.spawn)
+        );
+        shadow_text(&label, tp.x + 8.0, tp.y - g.target_radius as f32 * z - 6.0, 18.0, Color::new(1.0, 0.75, 0.25, 1.0));
+        if editing {
+            for (i, p) in pts[1..].iter().enumerate() {
+                let sel = self.sel_point == Some(i);
+                draw_circle(p.x, p.y, 6.0, if sel { WHITE } else { orange });
+                draw_circle_lines(p.x, p.y, 6.0, 2.0, BLACK);
+                shadow_text(&format!("{}", i + 1), p.x + 8.0, p.y + 16.0, 16.0, WHITE);
+            }
+        }
+    }
+
     // ---- drawing the map ----
 
     fn draw_map(&mut self) {
@@ -390,13 +509,8 @@ impl App {
         if self.show_grid {
             self.draw_grid();
         }
-        if self.show_guide {
-            let g = vec2((self.proj.spawn[0] + self.proj.guide_offset[0]) as f32, (self.proj.spawn[1] + self.proj.guide_offset[1]) as f32);
-            let sp = self.w2s(vec2(self.proj.spawn[0] as f32, self.proj.spawn[1] as f32));
-            let gp = self.w2s(g);
-            draw_line(sp.x, sp.y, gp.x, gp.y, 1.5, Color::new(1.0, 0.6, 0.1, 0.8));
-            draw_circle_lines(gp.x, gp.y, self.proj.guide_radius as f32 * self.view.zoom, 2.0, Color::new(1.0, 0.6, 0.1, 0.95));
-            shadow_text(&format!("target: {} S +-{}", self.proj.guide_offset[1], self.proj.guide_radius), gp.x + 8.0, gp.y - self.proj.guide_radius as f32 * self.view.zoom - 6.0, 18.0, Color::new(1.0, 0.75, 0.25, 1.0));
+        if self.show_guide || self.tab == Tab::Path {
+            self.draw_path();
         }
         if self.show_structs {
             self.draw_structures();
@@ -494,7 +608,7 @@ impl App {
     }
 
     fn draw_brush_preview(&self) {
-        if self.ui.over_panel() || self.tool == Tool::Structure {
+        if self.ui.over_panel() || matches!(self.tool, Tool::Structure | Tool::Path) {
             return;
         }
         let m = self.ui.mouse;
@@ -540,21 +654,24 @@ impl App {
 
     fn draw_panel(&mut self) {
         self.ui.begin_panel(Rect::new(0.0, 0.0, PANEL_W, screen_height()));
-        let tab_labels = ["Paint", "Noise", "Struct", "View", "File"];
-        let cur = [Tab::Paint, Tab::Noise, Tab::Structures, Tab::View, Tab::File].iter().position(|t| *t == self.tab);
+        let tab_labels = ["Paint", "Noise", "Struct", "Path", "View", "File"];
+        let tabs = [Tab::Paint, Tab::Noise, Tab::Structures, Tab::Path, Tab::View, Tab::File];
+        let cur = tabs.iter().position(|t| *t == self.tab);
         if let Some(i) = self.ui.row(&tab_labels, cur) {
-            self.tab = [Tab::Paint, Tab::Noise, Tab::Structures, Tab::View, Tab::File][i];
-            if self.tab == Tab::Structures {
-                self.tool = Tool::Structure;
-            } else if self.tool == Tool::Structure {
-                self.tool = Tool::Biome;
-            }
+            self.tab = tabs[i];
+            self.tool = match self.tab {
+                Tab::Structures => Tool::Structure,
+                Tab::Path => Tool::Path,
+                _ if matches!(self.tool, Tool::Structure | Tool::Path) => Tool::Biome,
+                _ => self.tool,
+            };
         }
         self.ui.gap(6.0);
         match self.tab {
             Tab::Paint => self.paint_tab(),
             Tab::Noise => self.noise_tab(),
             Tab::Structures => self.structures_tab(),
+            Tab::Path => self.path_tab(),
             Tab::View => self.view_tab(),
             Tab::File => self.file_tab(),
         }
@@ -572,7 +689,7 @@ impl App {
             Tool::Channel => Some(1),
             Tool::Erase => Some(2),
             Tool::Naturalize => Some(3),
-            Tool::Structure => None,
+            Tool::Structure | Tool::Path => None,
         };
         if let Some(i) = self.ui.row(&tools, cur) {
             self.tool = [Tool::Biome, Tool::Channel, Tool::Erase, Tool::Naturalize][i];
@@ -648,7 +765,7 @@ impl App {
                 self.ui.label("roughens edges. Paint over a corridor");
                 self.ui.label("a few times; Cmd+Z undoes a stroke.");
             }
-            Tool::Structure => {}
+            Tool::Structure | Tool::Path => {}
         }
         self.ui.gap(6.0);
         self.ui.label("[ ] brush size  Cmd+Z undo  Cmd+S save");
@@ -785,9 +902,58 @@ impl App {
                 self.delete_selected();
             }
         }
+    }
+
+    fn path_tab(&mut self) {
+        self.ui.heading("Escape path");
+        self.ui.label("Click on the line: add a bend.");
+        self.ui.label("Click elsewhere: extend to a new target.");
+        self.ui.label("Drag a point to move it. Del removes it.");
         self.ui.gap(4.0);
-        self.ui.slider_i("Guide: blocks south of spawn", &mut self.proj.guide_offset[1], 100, 1000);
-        self.ui.slider_i("Guide radius", &mut self.proj.guide_radius, 20, 300);
+        let n = self.proj.path.points.len();
+        if let Some(i) = self.sel_point.filter(|i| *i < n) {
+            let r = &self.proj.region;
+            let (lo_x, hi_x, lo_z, hi_z) = (r.min_x, r.max_x(), r.min_z, r.max_z());
+            self.ui.label(&format!("Point {} of {}{}", i + 1, n, if i + 1 == n { " (target)" } else { "" }));
+            let p = &mut self.proj.path.points[i];
+            self.ui.slider_i("X", &mut p[0], lo_x, hi_x);
+            self.ui.slider_i("Z", &mut p[1], lo_z, hi_z);
+            if self.ui.button("Delete point (or Del key)", false) {
+                self.delete_point();
+            }
+        } else {
+            self.ui.label("(no point selected)");
+        }
+        if self.ui.button("Straighten (keep only the target)", false) {
+            let t = self.proj.path.target(self.proj.spawn);
+            self.proj.path.points = vec![t];
+            self.sel_point = None;
+        }
+        self.ui.gap(4.0);
+        let g = &mut self.proj.path;
+        self.ui.slider_i("Target radius", &mut g.target_radius, 10, 400);
+        self.ui.slider("Corridor half-width", &mut g.width, 8.0, 300.0);
+        self.ui.slider("Edge hardness", &mut g.hardness, 0.0, 1.0);
+        self.ui.slider("Spawn clearing radius", &mut g.spawn_clearing, 0.0, 400.0);
+        self.ui.slider("Target clearing radius", &mut g.target_clearing, 0.0, 400.0);
+        self.ui.label("Corridor terrain:");
+        self.ui.slider("Continentalness", &mut g.continentalness, CH_RANGE[CH_C].0, CH_RANGE[CH_C].1);
+        self.ui.slider("Erosion (high = flat)", &mut g.erosion, CH_RANGE[CH_E].0, CH_RANGE[CH_E].1);
+        self.ui.slider("Weirdness", &mut g.weirdness, CH_RANGE[CH_W].0, CH_RANGE[CH_W].1);
+        self.ui.slider("Lift (blocks)", &mut g.lift, CH_RANGE[CH_HB].0, CH_RANGE[CH_HB].1);
+        if self.ui.button("Reset settings (keeps points)", false) {
+            let points = std::mem::take(&mut g.points);
+            *g = PathGuide { points, ..PathGuide::default() };
+        }
+        self.ui.gap(4.0);
+        if self.ui.button("Paint corridor along path", false) {
+            self.paint_path(false);
+        }
+        if self.ui.button("Erase corridor along path", false) {
+            self.paint_path(true);
+        }
+        self.ui.label("To reshape a painted corridor: erase,");
+        self.ui.label("move points, paint again. Cmd+Z undoes.");
     }
 
     fn view_tab(&mut self) {
@@ -809,7 +975,7 @@ impl App {
         self.ui.toggle("Grid (256 blocks)", &mut self.show_grid);
         self.img_dirty |= self.ui.toggle("Highlight painted areas", &mut self.show_overlay);
         self.ui.toggle("Structures", &mut self.show_structs);
-        self.ui.toggle("Escape target ring", &mut self.show_guide);
+        self.ui.toggle("Escape path + target ring", &mut self.show_guide);
         self.ui.gap(8.0);
         self.ui.label("Colours: blue = negative, red = positive");
         self.ui.label("(Contin./Erosion/PV/Temp/Humid modes)");
@@ -831,6 +997,7 @@ impl App {
                     self.world = World::new(&self.proj);
                     self.undo.clear();
                     self.sel_struct = None;
+                    self.sel_point = None;
                     self.img_dirty = true;
                     self.set_status("Loaded project.");
                 }
@@ -864,12 +1031,6 @@ impl App {
             self.set_status(&format!("Resized to {} blocks.", sizes[i]));
         }
         self.ui.gap(8.0);
-        if self.ui.button("Re-apply corridor preset", false) {
-            self.undo.push(self.proj.paint.clone());
-            self.proj.apply_corridor_preset();
-            self.world.recompute_cells(&self.proj);
-            self.img_dirty = true;
-        }
         if self.ui.button("Clear all paint", false) {
             self.undo.push(self.proj.paint.clone());
             self.proj.paint.clear();
@@ -881,6 +1042,7 @@ impl App {
             self.world = World::new(&self.proj);
             self.undo.clear();
             self.sel_struct = None;
+            self.sel_point = None;
             self.img_dirty = true;
         }
         self.ui.gap(8.0);

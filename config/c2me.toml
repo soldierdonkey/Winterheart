@@ -26,13 +26,10 @@ globalExecutorParallelism = "default"
 		maxViewDistance = "default"
 
 [ioSystem]
-	# (Default: false) EXPERIMENTAL FEATURE
-	# This replaces the way your chunks are saved.
-	# Please keep regular backups of your world if you are using this feature,
-	# and report any world issues you encounter with this feature to our GitHub.
-	# 
-	# Whether to use the fast reduced allocation chunk serializer
-	# (may cause incompatibility with other mods)
+	# (Default: false) EXPERIMENTAL FEATURE - DISABLED since forge.9.8, this setting is ignored.
+	# The fast chunk serializer writes half-generated chunks incorrectly: a chunk that is still
+	# being generated when you leave the world comes back with different terrain, which shows as
+	# hard seams and ridges at the edge of the area you had explored. It stays off until fixed.
 	# 
 	# Set to false for the following reasons: 
 	# Incompatible with architectury@9.2.14 (*) (defined in c2me) 
@@ -65,6 +62,7 @@ globalExecutorParallelism = "default"
 
 [noTickViewDistance]
 	# (Default: true) Whether to enable no-tick view distance
+	# (switched off automatically with Valkyrien Skies, whose ship physics needs ticking-ready chunks)
 	enabled = "default"
 	# (Default: 6) No-tick view distance max concurrent chunk loads 
 	#  Lower this for a better latency and higher this for a faster loading
