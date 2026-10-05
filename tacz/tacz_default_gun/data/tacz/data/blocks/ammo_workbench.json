@@ -30,7 +30,7 @@
       "icon": {
         "item": "tacz:ammo",
         "nbt": {
-          "AmmoId": "tacz:556x45"
+          "AmmoId": "tacz:308"
         }
       }
     },
@@ -40,17 +40,7 @@
       "icon": {
         "item": "tacz:ammo",
         "nbt": {
-          "AmmoId": "tacz:50bmg"
-        }
-      }
-    },
-    {
-      "id": "tacz:explosives",
-      "name": "tacz.type.explosives.name",
-      "icon": {
-        "item": "tacz:ammo",
-        "nbt": {
-          "AmmoId": "tacz:rpg_rocket"
+          "AmmoId": "tacz:45_70"
         }
       }
     },

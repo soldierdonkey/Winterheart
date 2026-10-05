@@ -5,7 +5,7 @@
 	#True if you want to hold the crawl button to crawl
 	HoldToCrawl = true
 	#Try to reload automatically when the gun is empty
-	AutoReload = false
+	AutoReload = true
 
 [render]
 	#Whether or not apply fadeout effect on the laser beam. Close this may improve laser performance under some shaders.

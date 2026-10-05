@@ -18,7 +18,7 @@ ALLOWED_GUNS = {
 
 # Directories mapped directly from the TACZ file structure
 TARGET_DIRECTORIES = [
-    Path("data/tacz/index/guns"),
+    Path("tacz/tacz_default_gun/data/tacz/data/guns"),
     Path("data/tacz/recipes/gun"),
 ]
 

@@ -60,16 +60,6 @@
       }
     },
     {
-      "id": "tacz:rpg",
-      "name": "tacz.type.rpg.name",
-      "icon": {
-        "item": "tacz:modern_kinetic_gun",
-        "nbt": {
-          "GunId": "tacz:rpg7"
-        }
-      }
-    },
-    {
       "id": "tacz:mg",
       "name": "tacz.type.mg.name",
       "icon": {

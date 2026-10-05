@@ -16,6 +16,20 @@ const FIXED_STRUCTURES = [
         groundLayers: 2,
         // Dirt is filled this deep under the footprint so it never floats on a slope.
         foundationDepth: 6
+    },
+    {
+        template: 'winterheart:shipwreck',
+        offsetX: 1000,
+        offsetZ: 0,
+        size: [24, 42, 33],
+        rotation: 'none',
+        // Height from sea level instead of the ground: template layer 13 is the waterline of the sea it was
+        // built in, so it goes one below sea level (the top water block). Converted with --keep-world-below 13
+        // (water and seabed blocks), so the ocean's own water and floor stay around it.
+        waterlineLayer: 13,
+        // The template carries its own air, so no clearing or foundation.
+        clearAbove: false,
+        foundationDepth: 0
     }
 ]
 
@@ -71,7 +85,12 @@ function fixedStructureSurface(level, box) {
 function applyFixedStructureFixups(level, s, origin) {
     const id = s.template.split(':')
     const file = `kubejs/data/${id[0]}/structures/${id[1]}.fixups.json`
-    const json = JsonIO.read(file)
+    let json = null
+    try {
+        json = JsonIO.read(file)
+    } catch (e) {
+        // no fixups file for this template
+    }
     if (!json) return 0
     if (s.rotation !== 'none') {
         console.warn(`[FixedStructures] ${file} skipped: fixups only support rotation none`)
@@ -95,13 +114,19 @@ function fixedStructureLoaded(level, box) {
 function placeFixedStructure(level, s) {
     const server = level.server
     const box = fixedStructureBox(level, s)
-    const y0 = fixedStructureSurface(level, box) - s.groundLayers
+    const y0 = s.waterlineLayer !== undefined
+        ? level.getSeaLevel() - 1 - s.waterlineLayer
+        : fixedStructureSurface(level, box) - s.groundLayers
     const top = y0 + s.size[1] - 1
     const run = cmd => server.runCommandSilent('execute in minecraft:overworld run ' + cmd)
 
     // clear trees/snow inside the volume above the template's ground, then fill gaps under it
-    run(`fill ${box.x1} ${y0 + s.groundLayers} ${box.z1} ${box.x2} ${top} ${box.z2} minecraft:air`)
-    run(`fill ${box.x1} ${y0 - s.foundationDepth} ${box.z1} ${box.x2} ${y0 - 1} ${box.z2} minecraft:dirt replace #minecraft:replaceable`)
+    if (s.clearAbove !== false) {
+        run(`fill ${box.x1} ${y0 + (s.groundLayers || 0)} ${box.z1} ${box.x2} ${top} ${box.z2} minecraft:air`)
+    }
+    if (s.foundationDepth > 0) {
+        run(`fill ${box.x1} ${y0 - s.foundationDepth} ${box.z1} ${box.x2} ${y0 - 1} ${box.z2} minecraft:dirt replace #minecraft:replaceable`)
+    }
     const o = fixedStructureOrigin(box, s)
     const ok = run(`place template ${s.template} ${o.x} ${y0} ${o.z} ${s.rotation} none`)
     if (!ok) {
