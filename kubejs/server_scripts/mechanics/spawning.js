@@ -541,9 +541,9 @@ ServerEvents.loaded(event => {
 })
 
 // ==========================================
-// 9. SCRIPTED WENDIGO (DAYS 30 / 40 / 50)
+// 9. SCRIPTED WENDIGO (DAYS 20+)
 // ==========================================
-const WENDIGO_DAYS = [30, 40, 50]
+const WENDIGO_DAYS = [20, 30, 35, 40, 43, 46, 50]
 const WENDIGO_TYPES = ['antlers:wendigo', 'antlers:wendigomad', 'antlers:wendigo_flute']
 const WENDIGO_NATURAL_SPAWN_TYPES = ['natural', 'chunk_generation', 'structure', 'spawner', 'patrol', 'reinforcement']
 

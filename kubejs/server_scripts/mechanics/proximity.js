@@ -163,7 +163,7 @@ const RULES = [
         },
         onRepeat: (player, level) => {
             randomDelay(level.server, 0, 50, () => {
-                randomChance(50, _ => {set_sanity(player, level.server, get_sanity(player)-1)})();
+                randomChance(50, _ => {set_sanity(player, level.server, get_sanity(player)-2)})();
                 randomChance(5, _ => {player.potionEffects.add('minecraft:blindness', rollrandom([10, 40, 80, 100, 600]), 0)})();
                 randomChance(4, _ => {
                     showCustomTitle(level.server, player, `§0What is that?`, true, true)

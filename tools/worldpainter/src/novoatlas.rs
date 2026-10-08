@@ -16,6 +16,8 @@ use std::path::Path;
 pub const NAMESPACE: &str = "winterheart";
 pub const MAP_NAME: &str = "world";
 pub const STARTING_Y: i32 = 0;
+/// Highest placeable block in the vanilla overworld (build limit 320).
+pub const MAX_Y: f32 = 319.0;
 
 /// Unique, well separated RGB colour for a biome index.
 pub fn biome_color(idx: u8) -> [u8; 3] {
@@ -29,8 +31,12 @@ fn hex(c: [u8; 3]) -> String {
 pub struct Maps {
     pub width: usize,
     pub height: usize,
-    /// One byte per pixel: terrain height above STARTING_Y.
+    /// One byte per pixel: terrain height above STARTING_Y, divided by `vertical_scale`.
     pub heights: Vec<u8>,
+    /// Blocks per heightmap step; above 1 only when the terrain rises past STARTING_Y + 255.
+    pub vertical_scale: f32,
+    /// Pixels that rose above MAX_Y and were cut off.
+    pub clipped: usize,
     /// One biome index per pixel.
     pub biomes: Vec<u8>,
 }
@@ -78,17 +84,22 @@ pub fn build_maps(p: &Project, w: &World) -> Maps {
     let r = &p.region;
     let (width, height) = (r.nx * r.cell as usize, r.nz * r.cell as usize);
     let detail = Detail::new(p.seed);
-    let mut heights = vec![0u8; width * height];
+    let mut ys = vec![0f32; width * height];
     let mut bio = vec![0u8; width * height];
     for pz in 0..height {
         for px in 0..width {
             let (x, z) = (r.min_x as f32 + px as f32 + 0.5, r.min_z as f32 + pz as f32 + 0.5);
             let (y, biome) = pixel_fields(p, w, &detail, x, z);
-            heights[pz * width + px] = (y - STARTING_Y as f32).round().clamp(0.0, 255.0) as u8;
+            ys[pz * width + px] = y;
             bio[pz * width + px] = biome;
         }
     }
-    Maps { width, height, heights, biomes: bio }
+    let clipped = ys.iter().filter(|&&y| y > MAX_Y).count();
+    let top = ys.iter().fold(0.0f32, |m, &y| m.max(y.min(MAX_Y))) - STARTING_Y as f32;
+    // one byte only reaches 255 blocks; stretch the steps just enough to fit taller terrain
+    let vertical_scale = (top / 255.0).max(1.0);
+    let heights = ys.iter().map(|&y| ((y.min(MAX_Y) - STARTING_Y as f32) / vertical_scale).round().clamp(0.0, 255.0) as u8).collect();
+    Maps { width, height, heights, biomes: bio, vertical_scale, clipped }
 }
 
 fn write_png(path: &Path, rgba: Vec<u8>, w: usize, h: usize) -> Result<(), String> {
@@ -128,11 +139,14 @@ pub fn export_pack(p: &Project, w: &World, dir: &Path) -> Result<String, String>
 
     let key = format!("{NAMESPACE}:{MAP_NAME}");
     let biome_entries: Vec<_> = used.iter().map(|&i| json!({ "biome": biomes::biome(i).id, "color": hex(biome_color(i)) })).collect();
-    let map_info = json!({
+    let mut map_info = json!({
         "height_map": key,
         "starting_y": STARTING_Y,
         "surface_biomes": { "map": key, "biomes": biome_entries },
     });
+    if maps.vertical_scale > 1.0 {
+        map_info["scaling"] = json!({ "vertical_scale": maps.vertical_scale });
+    }
     let dimension = json!({
         "type": "minecraft:overworld",
         "generator": {
@@ -151,7 +165,14 @@ pub fn export_pack(p: &Project, w: &World, dir: &Path) -> Result<String, String>
     put(data.join("minecraft").join("dimension").join("overworld.json"), &dimension)?;
     put(root.join("pack.mcmeta"), &json!({ "pack": { "description": "Winterheart painted world (NovoAtlas)", "pack_format": 15 } }))?;
 
-    Ok(format!("NovoAtlas pack: {}x{} blocks, {} biomes -> {}", wd, ht, used.len(), root.display()))
+    let mut msg = format!("NovoAtlas pack: {}x{} blocks, {} biomes", wd, ht, used.len());
+    if maps.vertical_scale > 1.0 {
+        msg += &format!(", vertical scale {:.2}", maps.vertical_scale);
+    }
+    if maps.clipped > 0 {
+        msg += &format!(", {} px cut off at y={}", maps.clipped, MAX_Y);
+    }
+    Ok(format!("{msg} -> {}", root.display()))
 }
 
 #[cfg(test)]
@@ -185,6 +206,18 @@ mod tests {
                 assert!(y > p.sea_level + 0.5, "below sea at {x},{z}: {y}");
             }
         }
+    }
+
+    #[test]
+    fn tall_plateau_is_scaled_not_clipped() {
+        let mut p = small_project();
+        p.paint.stamp(&p.region.clone(), (0.0, 0.0), (0.0, 0.0), 120.0, 1.0, 1.0, &Op::Set(&[(CH_C, 0.8), (CH_HB, 256.0)]));
+        let w = World::new(&p);
+        let maps = build_maps(&p, &w);
+        assert!(maps.vertical_scale > 1.0, "scale {}", maps.vertical_scale);
+        let centre = (maps.height / 2) * maps.width + maps.width / 2;
+        let game_y = (maps.vertical_scale * maps.heights[centre] as f32 + STARTING_Y as f32).floor();
+        assert!(game_y > 280.0 && game_y <= MAX_Y, "plateau top {game_y}");
     }
 
     #[test]

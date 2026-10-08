@@ -130,15 +130,20 @@
       ]
     },
     {
-      "id": "the_livestock",
-      "title": "The Livestock",
+      "id": "abominations",
+      "title": "Abominations",
       "book": "journal",
-      "content": "When I first arrived here, the herds were plentiful. Now, most seem to have disappeared. There seems to be §osomething§r happening in the woods.\n\nTomorrow, I will investigate.",
+      "content": "And there I saw...\n\n     ...§lMonsters§r...\n\nThis must have been what Colonel C. was talking about.\n\nI must report to the §4watchtower§r at dawn.",
       "unlock": [
         {
-          "event": "time_phase",
-          "match": "DAWN",
-          "minDay": 16
+          "sweep": "looking_at_entity",
+          "match": [
+            "#forge:zombie",
+            "#forge:spider",
+            "#forge:skeleton",
+            "#forge:enderman",
+            "#forge:creeper"
+          ]
         }
       ]
     },
@@ -328,20 +333,15 @@
       ]
     },
     {
-      "id": "abominations",
-      "title": "Abominations",
+      "id": "the_livestock",
+      "title": "The Livestock",
       "book": "journal",
-      "content": "And there I saw...\n\n     ...§lMonsters§r...\n\nThis must have been what Colonel W. was talking about.\n\nI must report to the §4watchtower§r at dawn.",
+      "content": "When I first arrived here, the herds were plentiful. Now, most seem to have disappeared. There seems to be §osomething§r happening in the woods.\n\nTomorrow, I will investigate.",
       "unlock": [
         {
-          "sweep": "looking_at_entity",
-          "match": [
-            "#forge:zombie",
-            "#forge:spider",
-            "#forge:skeleton",
-            "#forge:enderman",
-            "#forge:creeper"
-          ]
+          "event": "time_phase",
+          "match": "DAWN",
+          "minDay": 16
         }
       ]
     },
@@ -363,7 +363,7 @@
       "id": "the_ferry",
       "title": "The Ferry",
       "book": "journal",
-      "content": "The ferry appears to have crashed ages ago. The captain's log said something about [tbd]",
+      "content": "The crew must have tried to live inside the wreck. Of the log, I could only make out:\n\n   §1\"If someone ever\n    reads this, please\n    light the beacon.\"\n\n§rUntil I understand what's going on, I find no reason to light it.",
       "unlock": [
         {
           "sweep": "inventory",
@@ -377,12 +377,28 @@
       "id": "unnatural_sounds",
       "title": "Unnatural Sounds",
       "book": "journal",
-      "content": "I heard sounds in the forest.\n        Growls.\n               §lScreams§r.\n\n         These sounds\n         cannot natural.\n\nI will send a §4warning§r to the capitol.\n",
+      "content": "I heard sounds in the forest.\n        Growls.\n               §lScreams§r.\n\n     These sounds\n   cannot be natural.\n\nThis must have been why the sailors never left the §1wreck§r.",
       "unlock": [
         {
           "sweep": "time",
           "match": "DUSK",
-          "minDay": 29
+          "minDay": 19
+        }
+      ]
+    },
+    {
+      "id": "vile_beast",
+      "title": "Vile Beast",
+      "book": "journal",
+      "content": "Before me stood the beast himself. It reaked of iron, and its eyes glowed like the moon.\n\nI must light the beacon.\n\nI must warn the capitol.\n                   §4I must...",
+      "unlock": [
+        {
+          "sweep": "looking_at_entity",
+          "match": [
+            "antlers:wendigo",
+            "antlers:wendigo_flute",
+            "antlers:wendigomad"
+          ]
         }
       ]
     }

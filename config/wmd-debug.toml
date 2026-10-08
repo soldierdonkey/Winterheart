@@ -1,0 +1,6 @@
+
+#WMD Debug Settings
+[debug]
+	#Enable debug logging. When false only errors are shown.
+	debugLogging = false
+

@@ -1,0 +1,38 @@
+
+#WMD Explosion Base Values for 1kt
+[explosion_base_values]
+	#How fast the shockwave is when the shockwave has traveled its distance in ticks (In blocks per second).
+	#Range: 1.0 ~ 100.0
+	baseShockwaveSpeed = 10.0
+	#How fast the shockwave moves at the start of the explosion (In blocks per second).
+	#Range: 10.0 ~ 800.0
+	baseInitialShockwaveSpeed = 160.0
+	#How far the thermal effects reach (In blocks).
+	#Range: 10.0 ~ 2000.0
+	baseThermalRadius = 200.0
+	#How many extra seconds the mushroom cloud lingers after the explosion finishes.
+	#Range: 0.0 ~ 900.0
+	baseAftermathSeconds = 100.0
+
+#WMD Shockwave Effects
+[shockwave]
+	#How far the shockwave can reach and deal damage (In blocks).
+	#Range: 50.0 ~ 5000.0
+	baseShockwaveDamageRadius = 600.0
+	#How much damage the shockwave deals at point-blank range (In half hearts).
+	#Range: 1.0 ~ 1000.0
+	baseShockwaveDamage = 50.0
+	#The maximum distance any entity can be knocked back (in blocks per tick).
+	#Range: 1.0 ~ 50.0
+	maxShockwaveKnockback = 10.0
+	#This controls how much the shockwave speed affects knockback strength.
+	#Range: 0.001 ~ 0.1
+	shockwaveKnockbackSpeedFactor = 0.015
+
+#WMD Gameplay
+[gameplay]
+	#Dictates if a fallout zone are created when a nuke explodes.
+	enableFallout = true
+	#Dictates if terrain destruction should be applied when a nuke explodes.
+	enableDestruction = true
+

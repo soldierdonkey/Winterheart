@@ -10,7 +10,7 @@ pub const CH_H: usize = 3;
 pub const CH_W: usize = 4;
 pub const CH_HB: usize = 5;
 pub const CH_NAMES: [&str; NCH] = ["Continentalness", "Erosion", "Temperature", "Humidity", "Weirdness", "Height bias"];
-pub const CH_RANGE: [(f32, f32); NCH] = [(-1.2, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-64.0, 64.0)];
+pub const CH_RANGE: [(f32, f32); NCH] = [(-1.2, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-64.0, 256.0)];
 
 #[derive(Clone, Serialize, Deserialize)]
 pub struct Region {
@@ -162,7 +162,8 @@ impl Paint {
 
         for ch in 0..NCH {
             let perlin = crate::noise::Perlin::new(nat.seed as u64 * 31 + ch as u64 * 977);
-            let range = CH_RANGE[ch].1 - CH_RANGE[ch].0;
+            // height bias keeps its original ±64 noise span so the taller ceiling doesn't make naturalize wilder
+            let range = if ch == CH_HB { 128.0 } else { CH_RANGE[ch].1 - CH_RANGE[ch].0 };
             // snapshot rows i0-1..=i1+1, j0-1..=j1+1 (clamped through `at`)
             let (w, h) = (i1 - i0 + 3, j1 - j0 + 3);
             let (mut sm, mut sv) = (vec![0.0f32; w * h], vec![0.0f32; w * h]);

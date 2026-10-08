@@ -1,0 +1,64 @@
+
+#WMD Particles
+[particles]
+	#Maximum number of nuke particles at once. Every 1,000,000 uses about 100 MB of GPU memory (Requires restart)
+	#Range: 100000 ~ 4000000
+	maxParticles = 2000000
+	#Multiplier on the render distance for particle fading.
+	#Range: 0.25 ~ 2.0
+	particleRenderDistanceScale = 1.0
+	#Visual size of every particle. Higher values cause performance loss.
+	#Range: 0.1 ~ 4.0
+	particleSizeMultiplier = 1.0
+	#Texture used for nuke particles. Square = none, Nuke Particle = nuke texture, Multi Texture = random nuke textures.
+	#Allowed Values: SQUARE, NUKE_PARTICLE, MULTI_TEXTURE
+	particleTextureMode = "NUKE_PARTICLE"
+
+#WMD Bloom
+[bloom]
+	#Enable the bloom around explosions (urning this off may improves performance).
+	bloomEnabled = true
+	#How far the bloom spreads.
+	#Range: 4 ~ 7
+	bloomMipLevels = 4
+	#How wide and soft the glow is.
+	#Range: 0.5 ~ 8.0
+	bloomStepScale = 4.0
+	#Overall brightness of the bloom.
+	#Range: 0.1 ~ 5.0
+	bloomCompositeStrength = 1.5
+
+#WMD Flash Overlay
+[flash]
+	#Enable the fullscreen flash on detonation of nukes.
+	flashEnabled = true
+	#How bright the initial flash is (Percentage as a decimal).
+	#Range: 0.0 ~ 1.0
+	flashPeakOpacity = 0.95
+	#How long the flash takes to fade out for a 1kt nuke (20 ticks = 1 second).
+	#Range: 20 ~ 400
+	flashDurationTicks = 100
+
+#WMD Screen Effects
+[screen_effects]
+	#Enable camera shake when a nearby nuke detonates.
+	screenShakeEnabled = true
+	#How strong the camera shake is.
+	#Range: 0.0 ~ 2.0
+	screenShakeIntensityScale = 1.0
+
+#WMD GPU Performance
+[performance]
+	#Whether to use GPU particle sort (Will use cpu sort if disabled which is slower in most cases).
+	gpuSortEnabled = true
+
+#WMD Experimental Features
+[experimental]
+	#Render nukes as a volumetric cloud that's derived from the point cloud simulation (reduces FPS and disables bloom).
+	volumetricEnabled = false
+
+#WMD Debug
+[debug]
+	#Whether to enable the in-game overlay showing active nuke count, particle count, and FPS when nukes are active
+	showDebugOverlay = false
+
