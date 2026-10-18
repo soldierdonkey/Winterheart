@@ -178,7 +178,9 @@
       "minecraft:frozen_river": "2026-10-02 11:04:32 -0700",
       "minecraft:snowy_plains": "2026-10-02 08:50:22 -0700",
       "minecraft:snowy_taiga": "2026-10-02 08:49:38 -0700",
-      "minecraft:ice_spikes": "2026-10-02 17:00:32 -0700"
+      "minecraft:ice_spikes": "2026-10-02 17:00:32 -0700",
+      "minecraft:frozen_ocean": "2026-10-17 16:12:19 -0700",
+      "minecraft:snowy_beach": "2026-10-17 16:13:18 -0700"
     },
     "done": false
   },
@@ -707,6 +709,24 @@
   "farmersdelight:recipes/food/fried_egg": {
     "criteria": {
       "fried_egg": "2026-10-02 16:59:21 -0700"
+    },
+    "done": true
+  },
+  "lootr:1chest": {
+    "criteria": {
+      "opened_chest": "2026-10-17 16:24:38 -0700"
+    },
+    "done": true
+  },
+  "lootr:social": {
+    "criteria": {
+      "opened_chest": "2026-10-17 16:24:38 -0700"
+    },
+    "done": false
+  },
+  "mcwbridges:recipes/bridge_torch": {
+    "criteria": {
+      "has_planks": "2026-10-17 16:25:12 -0700"
     },
     "done": true
   },

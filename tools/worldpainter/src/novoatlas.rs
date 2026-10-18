@@ -4,10 +4,11 @@
 //! - Images are centred on world (0, 0), 1 pixel = 1 block, +X right, +Z down.
 //! - Height = floor(vertical_scale * red_channel + starting_y).
 //! - Outside the image the terrain is void and the biome is `default_biome`.
+//! - The image covers the painted region plus `padding` blocks on every side, where the border is extended.
 use crate::biomes;
 use crate::model::*;
 use crate::noise::Perlin;
-use crate::sim::{terrain_height, World};
+use crate::sim::{edge_factor, on_spawn_pad, spawn_pad, terrain_height, with_absolute, World, EDGE_C};
 use serde_json::json;
 use std::collections::BTreeSet;
 use std::fs;
@@ -49,11 +50,15 @@ impl Detail {
 
 /// Evaluate the final terrain height and biome at a block position (what the exported pixel will hold).
 pub fn pixel_fields(p: &Project, w: &World, d: &Detail, x: f32, z: f32) -> (f32, u8) {
-    let (v, bias) = w.sample_smooth(&p.region, x, z);
+    let s = w.sample_smooth(&p.region, x, z);
+    let mut v = s.clim;
+    v[CH_C] += (EDGE_C - v[CH_C]) * edge_factor(&p.region, p.padding as f32, x, z, p.edge_width);
     let [c, e, t, h, wei] = v;
     let pv = biomes::peaks_valleys(wei);
-    let mut y = terrain_height(c, e, pv, bias, p.sea_level);
-    let land = ((c + 0.1) / 0.2).clamp(0.0, 1.0);
+    let terrain = terrain_height(c, e, pv, s.bias, p.sea_level);
+    let mut y = 0.0;
+    // painted absolute heights stay exact unless the project keeps detail on them
+    let land = ((c + 0.1) / 0.2).clamp(0.0, 1.0) * s.detail * if p.abs_detail { 1.0 } else { 1.0 - s.abs_m };
     if land > 0.0 {
         // rugged (low erosion) terrain gets rougher detail, flat terrain stays calmer
         let rugged = 1.0 - ((e + 1.0) * 0.5).clamp(0.0, 1.0);
@@ -71,18 +76,21 @@ pub fn pixel_fields(p: &Project, w: &World, d: &Detail, x: f32, z: f32) -> (f32,
             y += (n * (1.0 - r) + ridged * r) * p.detail_amp * land * rough;
         }
     }
-    (y, p.pick_biome(t, h, c, e, wei))
+    let biome = if on_spawn_pad(p, x, z) { biomes::b::SPAWN_CLEARING } else { p.pick_biome(t, h, c, e, wei) };
+    (spawn_pad(p, x, z, with_absolute(terrain, s.abs_m, s.abs_mv) + y), biome)
 }
 
 pub fn build_maps(p: &Project, w: &World) -> Maps {
     let r = &p.region;
-    let (width, height) = (r.nx * r.cell as usize, r.nz * r.cell as usize);
+    let pad = p.padding.max(0);
+    let (width, height) = (r.nx * r.cell as usize + 2 * pad as usize, r.nz * r.cell as usize + 2 * pad as usize);
+    let (x0, z0) = ((r.min_x - pad) as f32, (r.min_z - pad) as f32);
     let detail = Detail::new(p.seed);
     let mut heights = vec![0u8; width * height];
     let mut bio = vec![0u8; width * height];
     for pz in 0..height {
         for px in 0..width {
-            let (x, z) = (r.min_x as f32 + px as f32 + 0.5, r.min_z as f32 + pz as f32 + 0.5);
+            let (x, z) = (x0 + px as f32 + 0.5, z0 + pz as f32 + 0.5);
             let (y, biome) = pixel_fields(p, w, &detail, x, z);
             heights[pz * width + px] = (y - STARTING_Y as f32).round().clamp(0.0, 255.0) as u8;
             bio[pz * width + px] = biome;
@@ -161,6 +169,8 @@ mod tests {
     fn small_project() -> Project {
         let mut p = Project::new();
         p.resize(512);
+        p.padding = 0;
+        p.spawn_pad = 0.0;
         p
     }
 
@@ -194,6 +204,80 @@ mod tests {
         let detail = Detail::new(1);
         let (y, biome) = pixel_fields(&p, &w, &detail, p.region.min_x as f32 + 1.0, 0.0);
         assert!(biomes::is_ocean(biome) && y < p.sea_level, "edge not ocean: {y}");
+        // with padding the ocean moves to the outside of the padding
+        let mut p = small_project();
+        p.padding = 256;
+        let w = World::new(&p);
+        let (y, biome) = pixel_fields(&p, &w, &detail, p.region.min_x as f32 - 255.0, 0.0);
+        assert!(biomes::is_ocean(biome) && y < p.sea_level, "padded edge not ocean: {y}");
+        let (_, biome) = pixel_fields(&p, &w, &detail, p.region.min_x as f32 + 1.0, 0.0);
+        assert!(!biomes::is_ocean(biome), "region edge still ocean under padding");
+    }
+
+    #[test]
+    fn padding_extends_border_biomes() {
+        let mut p = small_project();
+        p.padding = 300;
+        p.edge_width = 0.0;
+        p.paint.clear();
+        let r = p.region.clone();
+        // a strip of different climate touching the east border
+        p.paint.stamp(&r, (200.0, 0.0), (300.0, 0.0), 40.0, 1.0, 1.0, &Op::Set(&[(CH_T, 0.9), (CH_H, 0.7)]));
+        let w = World::new(&p);
+        let detail = Detail::new(1);
+        let edge = r.max_x() as f32 - 0.5;
+        for z in [-200.0, 0.0, 30.0, 200.0] {
+            let (_, inside) = pixel_fields(&p, &w, &detail, edge, z);
+            for dx in [10.0, 150.0, 299.0] {
+                let (_, out) = pixel_fields(&p, &w, &detail, edge + dx, z);
+                assert_eq!(out, inside, "padding at +{dx}, z {z}");
+            }
+        }
+        assert_eq!(build_maps(&p, &w).width, 512 + 600);
+    }
+
+    #[test]
+    fn detail_paint_smooths_the_export() {
+        let mut p = small_project();
+        p.paint.clear();
+        p.edge_width = 0.0;
+        let r = p.region.clone();
+        let w = World::new(&p);
+        let d = Detail::new(p.seed);
+        let flat = |p: &Project, w: &World| (0..40).map(|k| pixel_fields(p, w, &d, k as f32 * 3.0 - 60.0, 5.0).0).fold((f32::MAX, f32::MIN), |a, y| (a.0.min(y), a.1.max(y)));
+        let (lo, hi) = flat(&p, &w);
+        assert!(hi - lo > 1.0, "detail should be visible by default: {lo}..{hi}");
+        p.paint.stamp(&r, (0.0, 0.0), (0.0, 0.0), 120.0, 1.0, 1.0, &Op::Set(&[(CH_DT, 0.0)]));
+        let w = World::new(&p);
+        let (lo, hi) = flat(&p, &w);
+        assert!(hi - lo < 1e-3, "detail 0 should be smooth: {lo}..{hi}");
+    }
+
+    #[test]
+    fn spawn_pad_is_flat_at_spawn_y_minus_one() {
+        let mut p = small_project();
+        p.spawn_pad = 40.0;
+        let w = World::new(&p);
+        let d = Detail::new(p.seed);
+        for (x, z) in [(0.5, 0.5), (20.5, -15.5), (-30.5, 25.5), (0.5, 39.5)] {
+            let (y, _) = pixel_fields(&p, &w, &d, x, z);
+            assert!((y - (p.spawn_y - 1) as f32).abs() < 1e-3, "{x},{z}: {y}");
+            assert_eq!(((y - STARTING_Y as f32).round()) as i32, 65);
+        }
+        assert_eq!(pixel_fields(&p, &w, &d, 0.5, 0.5).1, biomes::b::SPAWN_CLEARING);
+        let (_, outside) = pixel_fields(&p, &w, &d, 0.5, p.spawn_pad + p.spawn_pad_blend + 8.0);
+        assert_ne!(outside, biomes::b::SPAWN_CLEARING);
+    }
+
+    #[test]
+    fn absolute_height_exports_exactly() {
+        let mut p = small_project();
+        p.paint.clear();
+        let r = p.region.clone();
+        p.paint.stamp(&r, (0.0, 0.0), (0.0, 0.0), 80.0, 1.0, 1.0, &Op::Set(&[(CH_AY, 173.0)]));
+        let w = World::new(&p);
+        let (y, _) = pixel_fields(&p, &w, &Detail::new(p.seed), 3.5, -7.5);
+        assert!((y - 173.0).abs() < 1e-3, "{y}");
     }
 
     #[test]

@@ -86,6 +86,8 @@ biomes! {
     WINDSWEPT_GRAVELLY_HILLS, "minecraft:windswept_gravelly_hills", "Windswept Gravelly Hills", [135, 135, 130], None;
     WINDSWEPT_FOREST, "minecraft:windswept_forest", "Windswept Forest", [95, 130, 95], Some((Conifer, 0.55));
     WINDSWEPT_SAVANNA, "minecraft:windswept_savanna", "Windswept Savanna", [170, 165, 95], Some((Acacia, 0.1));
+    // the pack's own biome (kubejs/data/winterheart/worldgen/biome): only placed on the spawn pad, never picked
+    SPAWN_CLEARING, "winterheart:spawn_clearing", "Spawn Clearing (spawn pad only)", [255, 214, 150], None;
 }
 
 pub fn biome(i: u8) -> &'static Biome {
@@ -369,6 +371,6 @@ mod tests {
     fn constants_match_table() {
         assert_eq!(BIOMES[b::PLAINS as usize].id, "minecraft:plains");
         assert_eq!(BIOMES[b::WINDSWEPT_SAVANNA as usize].id, "minecraft:windswept_savanna");
-        assert_eq!(BIOMES.len(), b::WINDSWEPT_SAVANNA as usize + 1);
+        assert_eq!(BIOMES.len(), b::SPAWN_CLEARING as usize + 1);
     }
 }
