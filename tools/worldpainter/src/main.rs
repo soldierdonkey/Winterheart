@@ -20,7 +20,7 @@ const UNDO_LIMIT: usize = 25;
 #[derive(Clone, Copy, PartialEq)]
 enum Tab {
     Paint,
-    Noise,
+    World,
     Structures,
     Path,
     View,
@@ -35,6 +35,17 @@ enum Tool {
     Naturalize,
     Structure,
     Path,
+}
+
+/// What the Channel tool does to the selected channel.
+#[derive(Clone, Copy, PartialEq)]
+enum ChanMode {
+    /// Approach a value.
+    Set,
+    /// Raise or lower by an amount, once per stroke.
+    Change,
+    /// Add noise, once per stroke.
+    Noise,
 }
 
 struct View {
@@ -56,6 +67,18 @@ struct App {
     sel_biome: u8,
     sel_channel: usize,
     chan_value: f32,
+    chan_mode: ChanMode,
+    /// Height + Set: paint an absolute Y instead of a bias.
+    abs_mode: bool,
+    abs_y: f32,
+    /// Per channel (climate five, then height): relative change per stroke, and injected noise amplitude.
+    rel_amount: [f32; NCH],
+    inj_amp: [f32; NCH],
+    inj_scale: f32,
+    inj_octaves: u32,
+    inj_seed: u32,
+    /// Snapshot for strokes that apply once (relative change, noise, naturalize).
+    stroke: Option<Stroke>,
     erase_only_channel: bool,
     line_mode: bool,
     stroking: bool,
@@ -77,7 +100,6 @@ struct App {
     /// Selected waypoint (index into `proj.path.points`) and the grab offset while dragging it.
     sel_point: Option<usize>,
     drag_point: Option<Vec2>,
-    noise_ch: usize,
     reprs: Vec<Option<[f32; 5]>>,
     status: String,
     status_time: f64,
@@ -128,6 +150,15 @@ impl App {
             sel_biome: biomes::b::PLAINS,
             sel_channel: CH_C,
             chan_value: 0.1,
+            chan_mode: ChanMode::Set,
+            abs_mode: false,
+            abs_y: 80.0,
+            rel_amount: [0.1, 0.1, 0.1, 0.1, 0.1, 8.0, 0.0, -0.25],
+            inj_amp: [0.15, 0.15, 0.15, 0.15, 0.15, 6.0, 0.0, 0.3],
+            inj_scale: 80.0,
+            inj_octaves: 3,
+            inj_seed: 1,
+            stroke: None,
             erase_only_channel: false,
             line_mode: false,
             stroking: false,
@@ -148,11 +179,10 @@ impl App {
             drag_struct: None,
             sel_point: None,
             drag_point: None,
-            noise_ch: 0,
             reprs: (0..biomes::BIOMES.len() as u8).map(biomes::representative).collect(),
             status: "Ready. Right-drag or Space+drag to pan, wheel to zoom.".into(),
             status_time: get_time(),
-            nat: Natural { blur: 0.6, noise: 0.12, scale: 60.0, seed: 7 },
+            nat: Natural { blur: 0.6, radius: 24.0, noise: 0.12, scale: 60.0, warp: 24.0, seed: 7, channels: [true; 6] },
             pending: None,
             disable_kubejs: true,
             instance_root: install::detect_root(),
@@ -169,9 +199,8 @@ impl App {
         let mut parts = vec![format!("Saved {} + {}/", export::PROJECT_FILE, export::EXPORT_DIR)];
         if let Some(root) = &self.instance_root {
             let [sx, sz] = self.proj.spawn;
-            let detail = novoatlas::Detail::new(self.proj.seed);
-            let (h, _) = novoatlas::pixel_fields(&self.proj, &self.world, &detail, sx as f32, sz as f32);
-            parts.push(install::sync_spawn(root, sx, h.round() as i32 + 1, sz)?);
+            parts.push(install::sync_spawn(root, sx, self.proj.spawn_y, sz)?);
+            parts.push(install::sync_fixed_structures(root, &self.proj)?);
         }
         Ok(parts.join("; "))
     }
@@ -254,6 +283,22 @@ impl App {
                 self.pending = Some(Pending::SaveAll);
                 self.set_status("Saving...");
             }
+            // keyboard navigation: arrows pan (Shift = faster), + / - zoom about the map centre
+            let dt = get_frame_time().min(0.1);
+            let speed = if is_key_down(KeyCode::LeftShift) || is_key_down(KeyCode::RightShift) { 1800.0 } else { 600.0 };
+            let mut dir = Vec2::ZERO;
+            for (key, d) in [(KeyCode::Left, vec2(-1.0, 0.0)), (KeyCode::Right, vec2(1.0, 0.0)), (KeyCode::Up, vec2(0.0, -1.0)), (KeyCode::Down, vec2(0.0, 1.0))] {
+                if is_key_down(key) {
+                    dir += d;
+                }
+            }
+            self.view.center += dir * speed * dt / self.view.zoom;
+            let zoom_in = is_key_down(KeyCode::Equal) || is_key_down(KeyCode::KpAdd);
+            let zoom_out = is_key_down(KeyCode::Minus) || is_key_down(KeyCode::KpSubtract);
+            if zoom_in != zoom_out {
+                let k = 2.5f32.powf(if zoom_in { dt } else { -dt });
+                self.view.zoom = (self.view.zoom * k).clamp(0.12, 12.0);
+            }
             if is_key_pressed(KeyCode::LeftBracket) {
                 self.brush_r = (self.brush_r * 0.85).max(8.0);
             }
@@ -282,14 +327,35 @@ impl App {
                 Some(r) => (vec![(CH_C, r[2]), (CH_E, r[3]), (CH_T, r[0]), (CH_H, r[1]), (CH_W, r[4])], false),
                 None => (vec![], false),
             },
+            Tool::Channel if self.sel_channel == CH_HB && self.abs_mode => (vec![(CH_AY, self.abs_y)], false),
             Tool::Channel => (vec![(self.sel_channel, self.chan_value)], false),
             _ => (vec![], true),
         }
     }
 
+    /// Tools whose stroke applies once from a snapshot instead of blending in.
+    fn snapshot_tool(&self) -> bool {
+        self.tool == Tool::Naturalize || (self.tool == Tool::Channel && self.chan_mode != ChanMode::Set)
+    }
+
+    fn rel_op(&self) -> Rel {
+        let k = self.sel_channel;
+        match self.chan_mode {
+            ChanMode::Noise => Rel::Noise { amp: self.inj_amp[k], scale: self.inj_scale, octaves: self.inj_octaves, seed: self.inj_seed },
+            _ => Rel::Add(self.rel_amount[k]),
+        }
+    }
+
     fn apply_stroke(&mut self, a: Vec2, b: Vec2) {
-        if self.tool == Tool::Naturalize {
-            let rect = self.proj.paint.naturalize(&self.proj.region, (a.x, a.y), (b.x, b.y), self.brush_r, self.hardness, self.strength * 0.5, self.nat);
+        let rel = self.rel_op();
+        if let Some(s) = &mut self.stroke {
+            let p = &mut self.proj;
+            let rect = s.cover(&p.region, (a.x, a.y), (b.x, b.y), self.brush_r, self.hardness, self.strength);
+            if self.tool == Tool::Naturalize {
+                p.paint.naturalize(&p.region, &p.canvas, s, rect, &self.nat);
+            } else {
+                p.paint.apply_relative(&p.region, &p.canvas, s, rect, self.sel_channel, rel);
+            }
             self.world.recompute_rect(&self.proj, rect);
             self.img_dirty = true;
             return;
@@ -311,6 +377,7 @@ impl App {
                 self.undo.remove(0);
             }
             self.undo.push(self.proj.paint.clone());
+            self.stroke = self.snapshot_tool().then(|| Stroke::new(&self.proj.paint));
             self.stroking = true;
             self.last_pos = wpos;
             self.line_start = wpos;
@@ -329,6 +396,7 @@ impl App {
                     self.apply_stroke(self.line_start, wpos);
                 }
                 self.stroking = false;
+                self.stroke = None;
             }
         }
     }
@@ -501,6 +569,7 @@ impl App {
         let tl = self.w2s(vec2(r.min_x as f32, r.min_z as f32));
         let size = vec2((r.max_x() - r.min_x) as f32, (r.max_z() - r.min_z) as f32) * self.view.zoom;
         draw_texture_ex(&self.tex, tl.x, tl.y, WHITE, DrawTextureParams { dest_size: Some(size), ..Default::default() });
+        self.draw_padding(tl, size);
 
         let s = r.cell as f32 * self.view.zoom;
         if self.show_trees && s >= 2.0 && self.mode == ViewMode::Biome {
@@ -520,6 +589,38 @@ impl App {
         draw_circle(sp.x, sp.y, 6.0, RED);
         draw_circle_lines(sp.x, sp.y, 6.0, 2.0, WHITE);
         shadow_text("Spawn", sp.x + 10.0, sp.y - 6.0, 18.0, WHITE);
+    }
+
+    /// Preview of the export padding: the border pixels stretched outward (dimmed), its outline, and where the
+    /// edge ocean ramp starts.
+    fn draw_padding(&self, tl: Vec2, size: Vec2) {
+        let pad = self.proj.padding.max(0) as f32 * self.view.zoom;
+        if pad > 0.0 {
+            let (w, h) = (self.proj.region.nx as f32, self.proj.region.nz as f32);
+            let (l, t, r, b) = (tl.x - pad, tl.y - pad, tl.x + size.x, tl.y + size.y);
+            let tint = Color::new(0.72, 0.72, 0.72, 1.0);
+            // (source rect in texture pixels, dest x, dest y, dest w, dest h)
+            let parts = [
+                (Rect::new(0.0, 0.0, 1.0, h), l, tl.y, pad, size.y),
+                (Rect::new(w - 1.0, 0.0, 1.0, h), r, tl.y, pad, size.y),
+                (Rect::new(0.0, 0.0, w, 1.0), tl.x, t, size.x, pad),
+                (Rect::new(0.0, h - 1.0, w, 1.0), tl.x, b, size.x, pad),
+                (Rect::new(0.0, 0.0, 1.0, 1.0), l, t, pad, pad),
+                (Rect::new(w - 1.0, 0.0, 1.0, 1.0), r, t, pad, pad),
+                (Rect::new(0.0, h - 1.0, 1.0, 1.0), l, b, pad, pad),
+                (Rect::new(w - 1.0, h - 1.0, 1.0, 1.0), r, b, pad, pad),
+            ];
+            for (src, x, y, dw, dh) in parts {
+                draw_texture_ex(&self.tex, x, y, tint, DrawTextureParams { dest_size: Some(vec2(dw, dh)), source: Some(src), ..Default::default() });
+            }
+            draw_rectangle_lines(tl.x, tl.y, size.x, size.y, 1.0, Color::new(1.0, 1.0, 1.0, 0.35));
+        }
+        let full = size + Vec2::splat(pad * 2.0);
+        draw_rectangle_lines(tl.x - pad, tl.y - pad, full.x, full.y, 2.0, Color::new(1.0, 1.0, 1.0, 0.55));
+        let ew = self.proj.edge_width * self.view.zoom;
+        if ew > 0.0 && ew * 2.0 < full.x {
+            draw_rectangle_lines(tl.x - pad + ew, tl.y - pad + ew, full.x - ew * 2.0, full.y - ew * 2.0, 1.0, Color::new(0.4, 0.6, 1.0, 0.5));
+        }
     }
 
     fn visible_cells(&self) -> (usize, usize, usize, usize) {
@@ -629,14 +730,19 @@ impl App {
         let w = self.s2w(self.ui.mouse);
         let mut lines = vec![format!("x {:.0}  z {:.0}   (from spawn: {:+.0}, {:+.0})", w.x, w.y, w.x - self.proj.spawn[0] as f32, w.y - self.proj.spawn[1] as f32)];
         if let Some(c) = self.world.at_block(&self.proj, w.x, w.y) {
-            lines.push(format!("{}   height ~{:.0}", biomes::biome(c.biome).id, c.height));
+            let detail = novoatlas::Detail::new(self.proj.seed);
+            let (y, _) = novoatlas::pixel_fields(&self.proj, &self.world, &detail, w.x, w.y);
+            lines.push(format!("{}   height ~{:.0}   in game ~{:.0}   detail x{:.2}", biomes::biome(c.biome).id, c.height, y, c.detail));
             lines.push(format!("cont {:+.2}  eros {:+.2}  pv {:+.2}  (w {:+.2})", c.p[CH_C], c.p[CH_E], c.pv, c.p[CH_W]));
             lines.push(format!("temp {:+.2}  humid {:+.2}", c.p[CH_T], c.p[CH_H]));
         } else {
-            lines.push("outside the planned region".into());
+            let r = &self.proj.region;
+            let pad = self.proj.padding as f32;
+            let inside_pad = w.x >= r.min_x as f32 - pad && w.x < r.max_x() as f32 + pad && w.y >= r.min_z as f32 - pad && w.y < r.max_z() as f32 + pad;
+            lines.push(if inside_pad { "padding (copies the nearest border pixel)".into() } else { "outside the exported map".into() });
         }
         let (x, y) = (PANEL_W + 10.0, screen_height() - 12.0 - lines.len() as f32 * 20.0);
-        draw_rectangle(x - 6.0, y - 4.0, 480.0, lines.len() as f32 * 20.0 + 10.0, Color::new(0.0, 0.0, 0.0, 0.7));
+        draw_rectangle(x - 6.0, y - 4.0, 600.0, lines.len() as f32 * 20.0 + 10.0, Color::new(0.0, 0.0, 0.0, 0.7));
         for (k, l) in lines.iter().enumerate() {
             draw_text(l, x, y + 14.0 + k as f32 * 20.0, 18.0, WHITE);
         }
@@ -654,8 +760,8 @@ impl App {
 
     fn draw_panel(&mut self) {
         self.ui.begin_panel(Rect::new(0.0, 0.0, PANEL_W, screen_height()));
-        let tab_labels = ["Paint", "Noise", "Struct", "Path", "View", "File"];
-        let tabs = [Tab::Paint, Tab::Noise, Tab::Structures, Tab::Path, Tab::View, Tab::File];
+        let tab_labels = ["Paint", "World", "Struct", "Path", "View", "File"];
+        let tabs = [Tab::Paint, Tab::World, Tab::Structures, Tab::Path, Tab::View, Tab::File];
         let cur = tabs.iter().position(|t| *t == self.tab);
         if let Some(i) = self.ui.row(&tab_labels, cur) {
             self.tab = tabs[i];
@@ -669,7 +775,7 @@ impl App {
         self.ui.gap(6.0);
         match self.tab {
             Tab::Paint => self.paint_tab(),
-            Tab::Noise => self.noise_tab(),
+            Tab::World => self.world_tab(),
             Tab::Structures => self.structures_tab(),
             Tab::Path => self.path_tab(),
             Tab::View => self.view_tab(),
@@ -719,84 +825,151 @@ impl App {
                 self.ui.label("into neighbours. Hardness 1 = sharp.");
             }
             Tool::Channel => {
-                let names: Vec<&str> = CH_NAMES.to_vec();
-                if let Some(i) = self.ui.row(&["Cont", "Eros", "Temp"], Some(self.sel_channel).filter(|c| *c < 3)) {
-                    self.sel_channel = i;
+                self.channel_picker();
+                if let Some(i) = self.ui.row(&["Set", "Raise/Lower", "Noise"], Some(self.chan_mode as usize)) {
+                    self.chan_mode = [ChanMode::Set, ChanMode::Change, ChanMode::Noise][i];
                 }
-                if let Some(i) = self.ui.row(&["Humid", "Weird", "Height"], Some(self.sel_channel).filter(|c| *c >= 3).map(|c| c - 3)) {
-                    self.sel_channel = i + 3;
+                let ch = self.sel_channel;
+                let height = ch == CH_HB;
+                let unit = |v: f32| if height { format!("{v:+.0} blocks") } else { format!("{v:+.2}") };
+                match self.chan_mode {
+                    ChanMode::Set => {
+                        if height {
+                            self.ui.toggle("Absolute Y (from y=0, not sea level)", &mut self.abs_mode);
+                        }
+                        if height && self.abs_mode {
+                            self.ui.slider("Y", &mut self.abs_y, CH_RANGE[CH_AY].0, CH_RANGE[CH_AY].1);
+                            self.ui.label(&format!("Sea level is y={:.0}. Exact unless", self.proj.sea_level));
+                            self.ui.label("World > \"Detail on absolute Y\" is on.");
+                        } else {
+                            let (lo, hi) = CH_RANGE[ch];
+                            self.chan_value = self.chan_value.clamp(lo, hi);
+                            self.ui.slider(&format!("{} value", CH_NAMES[ch]), &mut self.chan_value, lo, hi);
+                            if height {
+                                self.ui.label("Bias in blocks, added on top.");
+                            }
+                            if ch == CH_DT {
+                                self.ui.label("x World-tab detail. 0 = smooth ground.");
+                            }
+                        }
+                    }
+                    ChanMode::Change => {
+                        let (lim, label) = if height { (64.0, "Change per stroke (blocks)") } else { (1.0, "Change per stroke") };
+                        self.ui.slider(label, &mut self.rel_amount[ch], -lim, lim);
+                        if let Some(i) = self.ui.row(&["-", "flip sign", "+"], None) {
+                            let v = &mut self.rel_amount[ch];
+                            *v = match i {
+                                0 => -v.abs(),
+                                1 => -*v,
+                                _ => v.abs(),
+                            };
+                        }
+                        self.ui.label(&format!("Each stroke: {} at full strength.", unit(self.rel_amount[ch])));
+                        if height {
+                            self.ui.label("Moves bias and absolute Y alike.");
+                        }
+                    }
+                    ChanMode::Noise => {
+                        let (lim, label) = if height { (48.0, "Amplitude (blocks)") } else { (1.0, "Amplitude") };
+                        self.ui.slider(label, &mut self.inj_amp[ch], 0.0, lim);
+                        self.ui.slider("Wavelength (blocks)", &mut self.inj_scale, 16.0, 800.0);
+                        let mut oct = self.inj_octaves as i32;
+                        if self.ui.slider_i("Octaves", &mut oct, 1, 6) {
+                            self.inj_octaves = oct as u32;
+                        }
+                        let mut seed = self.inj_seed as i32;
+                        if self.ui.slider_i("Noise seed", &mut seed, 0, 99) {
+                            self.inj_seed = seed as u32;
+                        }
+                        self.ui.label(&format!("Adds noise to {} only,", CH_NAMES[ch]));
+                        self.ui.label("once per stroke.");
+                    }
                 }
-                let (lo, hi) = CH_RANGE[self.sel_channel];
-                self.chan_value = self.chan_value.clamp(lo, hi);
-                self.ui.slider(&format!("{} value", names[self.sel_channel]), &mut self.chan_value, lo, hi);
-                self.ui.label("Height bias is in blocks, added on top.");
             }
             Tool::Erase => {
                 self.ui.toggle("Only the selected channel", &mut self.erase_only_channel);
                 if self.erase_only_channel {
-                    if let Some(i) = self.ui.row(&["Cont", "Eros", "Temp"], Some(self.sel_channel).filter(|c| *c < 3)) {
-                        self.sel_channel = i;
-                    }
-                    if let Some(i) = self.ui.row(&["Humid", "Weird", "Height"], Some(self.sel_channel).filter(|c| *c >= 3).map(|c| c - 3)) {
-                        self.sel_channel = i + 3;
-                    }
+                    self.channel_picker();
                 }
-                self.ui.label("Erasing restores the generated noise.");
+                self.ui.label("Erasing restores the flat canvas");
+                self.ui.label("(World tab).");
             }
             Tool::Naturalize => {
+                self.ui.row_multi(&["Cont", "Eros", "Temp", "Hum", "Weird", "Height"], &mut self.nat.channels);
                 self.ui.slider("Blur", &mut self.nat.blur, 0.0, 1.0);
+                self.ui.slider("Blur radius (blocks)", &mut self.nat.radius, 8.0, 256.0);
+                self.ui.slider("Edge roughness (blocks)", &mut self.nat.warp, 0.0, 160.0);
                 self.ui.slider("Noise", &mut self.nat.noise, 0.0, 0.5);
-                self.ui.slider("Noise scale (blocks)", &mut self.nat.scale, 10.0, 400.0);
+                self.ui.slider("Noise scale (blocks)", &mut self.nat.scale, 10.0, 600.0);
                 let mut seed = self.nat.seed as i32;
                 if self.ui.slider_i("Noise seed", &mut seed, 0, 99) {
                     self.nat.seed = seed as u32;
                 }
-                if self.ui.button("Naturalize ALL painted area", false) {
-                    self.undo.push(self.proj.paint.clone());
-                    let r = &self.proj.region;
-                    let c = ((r.min_x + r.max_x()) as f32 * 0.5, (r.min_z + r.max_z()) as f32 * 0.5);
-                    let big = (r.max_x() - r.min_x) as f32;
-                    let rect = self.proj.paint.naturalize(r, c, c, big, 1.0, 1.0, self.nat);
-                    self.world.recompute_rect(&self.proj, rect);
-                    self.img_dirty = true;
-                    self.set_status("Naturalized all paint.");
+                if self.ui.button("Naturalize whole map", false) {
+                    self.naturalize_all();
                 }
-                self.ui.label("Brush: blurs paint, adds noise,");
-                self.ui.label("roughens edges. Paint over a corridor");
-                self.ui.label("a few times; Cmd+Z undoes a stroke.");
+                self.ui.label("Blurs, roughens edges and adds noise,");
+                self.ui.label("painted or not; once per stroke.");
             }
             Tool::Structure | Tool::Path => {}
         }
         self.ui.gap(6.0);
         self.ui.label("[ ] brush size  Cmd+Z undo  Cmd+S save");
+        self.ui.label("Arrows pan (Shift = fast)  + - zoom");
     }
 
-    fn noise_tab(&mut self) {
-        self.ui.heading("Noise");
-        let mut all = false;
-        let mut seed = self.proj.seed as i32;
-        if self.ui.slider_i("Seed", &mut seed, 0, 99999) {
-            self.proj.seed = seed as u32;
-            all = true;
+    /// Channel rows shared by the Channel and Erase tools.
+    fn channel_picker(&mut self) {
+        if let Some(i) = self.ui.row(&["Cont", "Eros", "Temp"], Some(self.sel_channel).filter(|c| *c < 3)) {
+            self.sel_channel = i;
         }
-        if self.ui.button("Randomize seed", false) {
-            self.proj.seed = macroquad::rand::gen_range(0, 99999u32);
-            all = true;
+        if let Some(i) = self.ui.row(&["Humid", "Weird", "Height"], Some(self.sel_channel).filter(|c| (3..6).contains(c)).map(|c| c - 3)) {
+            self.sel_channel = i + 3;
         }
-        if self.ui.slider("Sea level", &mut self.proj.sea_level, 40.0, 90.0) {
-            self.world.recompute_cells(&self.proj);
-            self.img_dirty = true;
+        if self.ui.row(&["Detail (export bumps; 0 = smooth)"], (self.sel_channel == CH_DT).then_some(0)).is_some() {
+            self.sel_channel = CH_DT;
         }
-        if self.ui.slider("Edge ocean width", &mut self.proj.edge_width, 32.0, 800.0) {
-            self.world.recompute_cells(&self.proj);
-            self.img_dirty = true;
+    }
+
+    fn naturalize_all(&mut self) {
+        if self.undo.len() >= UNDO_LIMIT {
+            self.undo.remove(0);
         }
-        if self.ui.toggle("Winter palette (snowy biomes only)", &mut self.proj.winter_palette) {
-            self.world.recompute_cells(&self.proj);
-            self.img_dirty = true;
+        self.undo.push(self.proj.paint.clone());
+        let s = Stroke::full(&self.proj.paint, self.strength);
+        let p = &mut self.proj;
+        p.paint.naturalize(&p.region, &p.canvas, &s, p.region.all(), &self.nat);
+        self.world.recompute_cells(&self.proj);
+        self.img_dirty = true;
+        self.set_status("Naturalized the whole map (Cmd+Z undoes).");
+    }
+
+    fn world_tab(&mut self) {
+        self.ui.heading("World");
+        let mut dirty = false;
+        self.ui.label("Canvas (unpainted ground):");
+        let short = ["Continentalness", "Erosion", "Temperature", "Humidity", "Weirdness"];
+        for ch in 0..5 {
+            dirty |= self.ui.slider(short[ch], &mut self.proj.canvas[ch], CH_RANGE[ch].0, CH_RANGE[ch].1);
         }
         self.ui.gap(4.0);
+        dirty |= self.ui.slider("Sea level", &mut self.proj.sea_level, 40.0, 90.0);
+        dirty |= self.ui.slider("Edge ocean width (0 = off)", &mut self.proj.edge_width, 0.0, 800.0);
+        let mut pad = self.proj.padding;
+        if self.ui.slider_i("Border padding (blocks)", &mut pad, 0, 1024) {
+            self.proj.padding = pad;
+            dirty = true;
+        }
+        self.ui.label("Padding extends the border pixels");
+        self.ui.label("outward in the export; the ocean ramp");
+        self.ui.label("sits at its outside edge.");
+        dirty |= self.ui.toggle("Winter palette (snowy biomes only)", &mut self.proj.winter_palette);
+        self.ui.gap(4.0);
         self.ui.label("Terrain detail (added at export):");
+        let mut seed = self.proj.seed as i32;
+        if self.ui.slider_i("Detail seed", &mut seed, 0, 99999) {
+            self.proj.seed = seed as u32;
+        }
         self.ui.slider("Fine amplitude (blocks)", &mut self.proj.detail_amp, 0.0, 20.0);
         self.ui.slider("Fine wavelength", &mut self.proj.detail_scale, 8.0, 120.0);
         let mut oct = self.proj.detail_octaves as i32;
@@ -808,46 +981,8 @@ impl App {
         self.ui.slider("Mid undulation (blocks)", &mut self.proj.mid_amp, 0.0, 30.0);
         self.ui.slider("Mid wavelength", &mut self.proj.mid_scale, 40.0, 300.0);
         self.ui.slider("Rougher where rugged", &mut self.proj.rough_by_erosion, 0.0, 1.0);
-        self.ui.gap(4.0);
-        all |= self.ui.slider("Domain warp (blocks)", &mut self.proj.warp_strength, 0.0, 400.0);
-        all |= self.ui.slider("Warp scale", &mut self.proj.warp_scale, 50.0, 1500.0);
-        self.ui.gap(4.0);
-        let labels = ["Cont", "Eros", "Temp", "Humid", "Weird"];
-        if let Some(i) = self.ui.row(&labels, Some(self.noise_ch)) {
-            self.noise_ch = i;
-        }
-        self.ui.label(&format!("{} noise", CH_NAMES[self.noise_ch]));
-        let ch = self.noise_ch;
-        let cfg = &mut self.proj.noise[ch];
-        let mut dirty = false;
-        dirty |= self.ui.slider("Scale (blocks)", &mut cfg.scale, 60.0, 4000.0);
-        let mut oct = cfg.octaves as i32;
-        if self.ui.slider_i("Octaves", &mut oct, 1, 8) {
-            cfg.octaves = oct as u32;
-            dirty = true;
-        }
-        dirty |= self.ui.slider("Persistence", &mut cfg.persistence, 0.1, 0.9);
-        dirty |= self.ui.slider("Lacunarity", &mut cfg.lacunarity, 1.5, 3.5);
-        dirty |= self.ui.slider("Contrast", &mut cfg.contrast, 0.2, 5.0);
-        dirty |= self.ui.slider("Amplitude", &mut cfg.amplitude, 0.0, 2.0);
-        dirty |= self.ui.slider("Bias", &mut cfg.bias, -1.0, 1.0);
-        let mut so = cfg.seed_offset as i32;
-        if self.ui.slider_i("Seed offset", &mut so, 0, 99) {
-            cfg.seed_offset = so as u32;
-            dirty = true;
-        }
-        if self.ui.button("Reset this channel", false) {
-            self.proj.noise[ch] = Project::new().noise[ch].clone();
-            dirty = true;
-        }
-        self.ui.gap(4.0);
-        self.ui.label("value = bias + amplitude * contrast * fbm");
-        self.ui.label("Clamped to vanilla climate ranges.");
-        if all {
-            self.world.recompute_all(&self.proj);
-            self.img_dirty = true;
-        } else if dirty {
-            self.world.recompute_raw(&self.proj, ch);
+        self.ui.toggle("Detail on absolute Y paint", &mut self.proj.abs_detail);
+        if dirty {
             self.world.recompute_cells(&self.proj);
             self.img_dirty = true;
         }
@@ -864,7 +999,7 @@ impl App {
             }
         }
         if self.ui.button("+ New type", false) {
-            self.proj.types.push(StructType { name: format!("Structure {}", self.proj.types.len() + 1), id: "winterheart:new_structure".into(), w: 32, d: 32, color: [120, 220, 255] });
+            self.proj.types.push(StructType { name: format!("Structure {}", self.proj.types.len() + 1), id: "winterheart:new_structure".into(), w: 32, d: 32, color: [120, 220, 255], place_in_game: false });
             self.sel_type = self.proj.types.len() - 1;
         }
         self.ui.gap(4.0);
@@ -877,6 +1012,11 @@ impl App {
         }
         if self.ui.slider_i("Footprint Z", &mut d, 4, 256) {
             t.d = d;
+        }
+        self.ui.toggle("Place in game (template)", &mut t.place_in_game);
+        if t.place_in_game {
+            self.ui.label("Save all writes these spots to");
+            self.ui.label("fixed_structures.json (pasted once/world).");
         }
         self.ui.gap(4.0);
         if let Some(i) = self.sel_struct.filter(|i| *i < self.proj.structures.len()) {
@@ -936,6 +1076,15 @@ impl App {
         self.ui.slider("Edge hardness", &mut g.hardness, 0.0, 1.0);
         self.ui.slider("Spawn clearing radius", &mut g.spawn_clearing, 0.0, 400.0);
         self.ui.slider("Target clearing radius", &mut g.target_clearing, 0.0, 400.0);
+        let mut pad = false;
+        pad |= self.ui.slider_i("Spawn Y (player + house)", &mut self.proj.spawn_y, 40, 200);
+        pad |= self.ui.slider("Flat spawn pad radius (0 = off)", &mut self.proj.spawn_pad, 0.0, 200.0);
+        pad |= self.ui.slider("Spawn pad blend", &mut self.proj.spawn_pad_blend, 0.0, 200.0);
+        if pad {
+            self.world.recompute_cells(&self.proj);
+            self.img_dirty = true;
+        }
+        let g = &mut self.proj.path;
         self.ui.label("Corridor terrain:");
         self.ui.slider("Continentalness", &mut g.continentalness, CH_RANGE[CH_C].0, CH_RANGE[CH_C].1);
         self.ui.slider("Erosion (high = flat)", &mut g.erosion, CH_RANGE[CH_E].0, CH_RANGE[CH_E].1);
@@ -1005,7 +1154,8 @@ impl App {
             }
         }
         self.ui.label("Save all = project, preview maps,");
-        self.ui.label("structures.json, spawn config.");
+        self.ui.label("structures.json, spawn config,");
+        self.ui.label("in-game structure spots.");
         self.ui.gap(6.0);
         self.ui.heading("Modpack");
         match &self.instance_root {
@@ -1021,7 +1171,9 @@ impl App {
             self.pending = Some(Pending::Uninstall);
         }
         self.ui.gap(8.0);
-        self.ui.label(&format!("Map size: {} blocks (1 px = 1 block)", self.proj.region.nx as i32 * self.proj.region.cell));
+        let size = self.proj.region.nx as i32 * self.proj.region.cell;
+        self.ui.label(&format!("Map size: {} blocks (1 px = 1 block)", size));
+        self.ui.label(&format!("Exported with padding: {} blocks", size + 2 * self.proj.padding.max(0)));
         let sizes = [2048, 3072, 4096, 6144];
         if let Some(i) = self.ui.row(&["2048", "3072", "4096", "6144"], None) {
             self.undo.clear();

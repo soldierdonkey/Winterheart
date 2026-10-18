@@ -1,39 +1,77 @@
 use crate::biomes::peaks_valleys;
 use crate::model::*;
-use crate::noise::Perlin;
 
 #[derive(Clone, Copy, Default)]
 pub struct Cell {
-    /// Final climate after paint: continentalness, erosion, temperature, humidity, weirdness.
+    /// Climate after paint, before the edge-ocean ramp.
+    pub clim: [f32; 5],
+    /// Final climate: continentalness, erosion, temperature, humidity, weirdness.
     pub p: [f32; 5],
     pub pv: f32,
     pub biome: u8,
     pub height: f32,
     /// Painted height bias in blocks.
     pub bias: f32,
+    /// Absolute-height paint: strength, and strength times Y.
+    pub abs_m: f32,
+    pub abs_mv: f32,
+    /// Multiplier on the export's terrain detail (1 = as set in the World tab, 0 = smooth).
+    pub detail: f32,
     /// Hillshade multiplier around 1.0.
     pub shade: f32,
 }
 
 pub struct World {
-    /// Noise before paint, per climate channel.
-    pub raw: [Vec<f32>; 5],
-    warp: Vec<(f32, f32)>,
     pub cells: Vec<Cell>,
+}
+
+/// Bilinear blend of a cell's painted inputs at a block position.
+pub struct Sample {
+    pub clim: [f32; 5],
+    pub bias: f32,
+    pub abs_m: f32,
+    pub abs_mv: f32,
+    pub detail: f32,
+}
+
+/// Continentalness the map edge ramps toward (deep ocean).
+pub const EDGE_C: f32 = -0.85;
+
+/// 0 in the interior, rising smoothly to 1 at the outside of the padding (`pad` blocks past the region) over
+/// `width` blocks. A width of 0 turns the ramp off.
+pub fn edge_factor(r: &Region, pad: f32, x: f32, z: f32, width: f32) -> f32 {
+    if width <= 0.0 {
+        return 0.0;
+    }
+    let d = (x - (r.min_x as f32 - pad)).min(r.max_x() as f32 + pad - x).min(z - (r.min_z as f32 - pad)).min(r.max_z() as f32 + pad - z);
+    let t = (1.0 - d / width).clamp(0.0, 1.0);
+    t * t * (3.0 - 2.0 * t)
+}
+
+/// Blend the climate-driven height toward painted absolute heights.
+pub fn with_absolute(terrain: f32, abs_m: f32, abs_mv: f32) -> f32 {
+    terrain * (1.0 - abs_m) + abs_mv
+}
+
+/// Flatten the ground around spawn to `spawn_y - 1`, fading back to `h` over the pad's blend width.
+pub fn spawn_pad(p: &Project, x: f32, z: f32, h: f32) -> f32 {
+    if p.spawn_pad <= 0.0 {
+        return h;
+    }
+    let d = ((x - p.spawn[0] as f32).powi(2) + (z - p.spawn[1] as f32).powi(2)).sqrt();
+    let t = 1.0 - ((d - p.spawn_pad) / p.spawn_pad_blend.max(1.0)).clamp(0.0, 1.0);
+    let t = t * t * (3.0 - 2.0 * t);
+    h + ((p.spawn_y - 1) as f32 - h) * t
+}
+
+/// Whether a block position is on the spawn pad (flat core plus blend), which gets the stream-free
+/// `winterheart:spawn_clearing` biome.
+pub fn on_spawn_pad(p: &Project, x: f32, z: f32) -> bool {
+    p.spawn_pad > 0.0 && (x - p.spawn[0] as f32).powi(2) + (z - p.spawn[1] as f32).powi(2) <= (p.spawn_pad + p.spawn_pad_blend.max(0.0)).powi(2)
 }
 
 /// Terrain height from climate: continentalness sets the base, erosion damps relief, and peaks-and-valleys
 /// adds ridges and cuts valleys, mirroring how vanilla's terrain splines are driven.
-/// Continentalness the map edge ramps toward (deep ocean).
-pub const EDGE_C: f32 = -0.85;
-
-/// 0 in the interior, rising smoothly to 1 at the region boundary over `width` blocks.
-pub fn edge_factor(r: &Region, x: f32, z: f32, width: f32) -> f32 {
-    let d = (x - r.min_x as f32).min(r.max_x() as f32 - x).min(z - r.min_z as f32).min(r.max_z() as f32 - z);
-    let t = (1.0 - d / width.max(1.0)).clamp(0.0, 1.0);
-    t * t * (3.0 - 2.0 * t)
-}
-
 pub fn terrain_height(c: f32, e: f32, pv: f32, bias: f32, sea: f32) -> f32 {
     const BASE: [(f32, f32); 8] = [
         (-1.2, 18.0),
@@ -61,48 +99,9 @@ pub fn terrain_height(c: f32, e: f32, pv: f32, bias: f32, sea: f32) -> f32 {
 
 impl World {
     pub fn new(p: &Project) -> Self {
-        let n = p.region.len();
-        let mut w = World { raw: std::array::from_fn(|_| vec![0.0; n]), warp: vec![(0.0, 0.0); n], cells: vec![Cell::default(); n] };
-        w.recompute_all(p);
+        let mut w = World { cells: vec![Cell::default(); p.region.len()] };
+        w.recompute_cells(p);
         w
-    }
-
-    pub fn recompute_all(&mut self, p: &Project) {
-        self.recompute_warp(p);
-        for ch in 0..5 {
-            self.recompute_raw(p, ch);
-        }
-        self.recompute_cells(p);
-    }
-
-    fn recompute_warp(&mut self, p: &Project) {
-        let r = &p.region;
-        let (wx, wz) = (Perlin::new(p.seed as u64 ^ 0xABCD), Perlin::new(p.seed as u64 ^ 0x5151));
-        let s = p.warp_scale.max(1.0) as f64;
-        for j in 0..r.nz {
-            for i in 0..r.nx {
-                let (x, z) = r.center(i, j);
-                let (x, z) = (x as f64 / s, z as f64 / s);
-                self.warp[j * r.nx + i] = (
-                    (wx.fbm(x, z, 3, 0.5, 2.0) * 2.0) as f32 * p.warp_strength,
-                    (wz.fbm(x, z, 3, 0.5, 2.0) * 2.0) as f32 * p.warp_strength,
-                );
-            }
-        }
-    }
-
-    /// Rebuild the raw noise for one channel (after editing its settings).
-    pub fn recompute_raw(&mut self, p: &Project, ch: usize) {
-        let r = &p.region;
-        let cfg = &p.noise[ch];
-        let perlin = cfg.perlin(p.seed, ch);
-        for j in 0..r.nz {
-            for i in 0..r.nx {
-                let (x, z) = r.center(i, j);
-                let (wx, wz) = self.warp[j * r.nx + i];
-                self.raw[ch][j * r.nx + i] = cfg.sample(&perlin, (x + wx) as f64, (z + wz) as f64).clamp(CH_RANGE[ch].0, CH_RANGE[ch].1);
-            }
-        }
     }
 
     pub fn recompute_cells(&mut self, p: &Project) {
@@ -114,7 +113,7 @@ impl World {
     }
 
     /// Recompute cells inside an inclusive rectangle (after painting).
-    pub fn recompute_rect(&mut self, p: &Project, rect: (usize, usize, usize, usize)) {
+    pub fn recompute_rect(&mut self, p: &Project, rect: CellRect) {
         let nx = p.region.nx;
         for j in rect.1..=rect.3 {
             for i in rect.0..=rect.2 {
@@ -125,24 +124,26 @@ impl World {
     }
 
     fn compute_cell(&mut self, p: &Project, idx: usize) {
-        let mut v = [0.0f32; 5];
-        for ch in 0..5 {
-            let m = p.paint.mask[ch][idx];
-            v[ch] = self.raw[ch][idx] + (p.paint.value[ch][idx] - self.raw[ch][idx]) * m;
-        }
+        let clim: [f32; 5] = std::array::from_fn(|ch| p.paint.effective(ch, idx, p.canvas[ch]));
+        let mut v = clim;
         let (i, j) = (idx % p.region.nx, idx / p.region.nx);
         let (x, z) = p.region.center(i, j);
-        let edge = edge_factor(&p.region, x, z, p.edge_width);
+        let edge = edge_factor(&p.region, p.padding as f32, x, z, p.edge_width);
         v[CH_C] += (EDGE_C - v[CH_C]) * edge;
         let [c, e, t, h, w] = v;
         let pv = peaks_valleys(w);
-        let bias = p.paint.mask[CH_HB][idx] * p.paint.value[CH_HB][idx];
+        let bias = p.paint.effective(CH_HB, idx, 0.0);
+        let abs_m = p.paint.mask[CH_AY][idx];
         let cell = &mut self.cells[idx];
+        cell.clim = clim;
         cell.bias = bias;
+        cell.abs_m = abs_m;
+        cell.abs_mv = abs_m * p.paint.value[CH_AY][idx];
+        cell.detail = p.paint.effective(CH_DT, idx, 1.0);
         cell.p = v;
         cell.pv = pv;
-        cell.biome = p.pick_biome(t, h, c, e, w);
-        cell.height = terrain_height(c, e, pv, bias, p.sea_level);
+        cell.biome = if on_spawn_pad(p, x, z) { crate::biomes::b::SPAWN_CLEARING } else { p.pick_biome(t, h, c, e, w) };
+        cell.height = spawn_pad(p, x, z, with_absolute(terrain_height(c, e, pv, bias, p.sea_level), cell.abs_m, cell.abs_mv));
     }
 
     fn shade_pass(&mut self, p: &Project) {
@@ -157,8 +158,9 @@ impl World {
         }
     }
 
-    /// Bilinear blend of the climate parameters (and painted bias) at an arbitrary block position.
-    pub fn sample_smooth(&self, r: &Region, x: f32, z: f32) -> ([f32; 5], f32) {
+    /// Bilinear blend of the painted inputs (climate before the edge ramp, bias, absolute height) at a block
+    /// position. Positions outside the region clamp to the border cells, which is what extends the border outward.
+    pub fn sample_smooth(&self, r: &Region, x: f32, z: f32) -> Sample {
         let fx = ((x - r.min_x as f32) / r.cell as f32 - 0.5).clamp(0.0, (r.nx - 1) as f32);
         let fz = ((z - r.min_z as f32) / r.cell as f32 - 0.5).clamp(0.0, (r.nz - 1) as f32);
         let (i0, j0) = (fx.floor() as usize, fz.floor() as usize);
@@ -170,15 +172,17 @@ impl World {
             (&self.cells[j1 * r.nx + i0], (1.0 - tx) * tz),
             (&self.cells[j1 * r.nx + i1], tx * tz),
         ];
-        let mut p = [0.0f32; 5];
-        let mut bias = 0.0;
+        let mut s = Sample { clim: [0.0; 5], bias: 0.0, abs_m: 0.0, abs_mv: 0.0, detail: 0.0 };
         for (c, wgt) in corners {
             for k in 0..5 {
-                p[k] += c.p[k] * wgt;
+                s.clim[k] += c.clim[k] * wgt;
             }
-            bias += c.bias * wgt;
+            s.bias += c.bias * wgt;
+            s.abs_m += c.abs_m * wgt;
+            s.abs_mv += c.abs_mv * wgt;
+            s.detail += c.detail * wgt;
         }
-        (p, bias)
+        s
     }
 
     pub fn at_block(&self, p: &Project, x: f32, z: f32) -> Option<&Cell> {
@@ -202,5 +206,25 @@ mod tests {
                 assert!(c.height > p.sea_level, "below sea at {x},{z}: {}", c.height);
             }
         }
+    }
+
+    #[test]
+    fn absolute_height_is_exact_and_raise_moves_it() {
+        let mut p = Project::new();
+        p.resize(512);
+        p.spawn_pad = 0.0;
+        p.paint.clear();
+        let r = p.region.clone();
+        p.paint.stamp(&r, (0.0, 0.0), (0.0, 0.0), 60.0, 1.0, 1.0, &Op::Set(&[(CH_AY, 140.0)]));
+        let w = World::new(&p);
+        assert!((w.at_block(&p, 0.0, 0.0).unwrap().height - 140.0).abs() < 1e-3);
+        // a relative raise on height lifts both painted Y and the climate-driven ground around it
+        let before_out = w.at_block(&p, 150.0, 0.0).unwrap().height;
+        let mut s = Stroke::new(&p.paint);
+        let rect = s.cover(&r, (0.0, 0.0), (0.0, 0.0), 200.0, 1.0, 1.0);
+        p.paint.apply_relative(&r, &p.canvas, &s, rect, CH_HB, Rel::Add(12.0));
+        let w = World::new(&p);
+        assert!((w.at_block(&p, 0.0, 0.0).unwrap().height - 152.0).abs() < 1e-3);
+        assert!((w.at_block(&p, 150.0, 0.0).unwrap().height - before_out - 12.0).abs() < 1e-3);
     }
 }

@@ -54,6 +54,10 @@
       {
         "biome": "minecraft:stony_peaks",
         "color": "#C41C7B"
+      },
+      {
+        "biome": "winterheart:spawn_clearing",
+        "color": "#D8256C"
       }
     ],
     "map": "winterheart:world"

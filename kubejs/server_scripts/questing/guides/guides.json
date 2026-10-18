@@ -378,6 +378,11 @@
       "id": "suicide_note",
       "name": "Colonel Connor's Suicide Note",
       "tooltip": "Barely legible - what a shame."
+    },
+    {
+      "id": "captains_log",
+      "name": "Captain's Log",
+      "tooltip": "It's both soaked and frozen."
     }
   ]
 }

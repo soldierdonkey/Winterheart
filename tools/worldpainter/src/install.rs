@@ -74,8 +74,8 @@ pub fn install(pack: &Path, root: &Path, disable_kubejs: bool, backup_dir: &Path
     Ok(notes.join("; "))
 }
 
-/// Write the spawn point into Starter Structure's config (`config/starterstructure.json5`), in place,
-/// leaving comments and every other setting untouched.
+/// Write the spawn point into Starter Structure's config (`config/starterstructure.json5`), in place, and pin the
+/// structure to the same spot, leaving comments and every other setting untouched.
 pub fn sync_spawn(root: &Path, x: i32, y: i32, z: i32) -> Result<String, String> {
     let path = root.join("config/starterstructure.json5");
     let text = fs::read_to_string(&path).map_err(|e| format!("can't read {}: {e}", path.display()))?;
@@ -83,7 +83,16 @@ pub fn sync_spawn(root: &Path, x: i32, y: i32, z: i32) -> Result<String, String>
         let t = line.trim_start();
         t.strip_prefix(&format!("\"{key}\":")).map(|_| format!("{}\"{key}\": {val},", &line[..line.len() - t.len()]))
     };
-    let wanted = [("shouldUseSpawnCoordinates", "true".to_string()), ("spawnXCoordinate", x.to_string()), ("spawnYCoordinate", y.to_string()), ("spawnZCoordinate", z.to_string())];
+    let wanted = [
+        ("shouldUseSpawnCoordinates", "true".to_string()),
+        ("spawnXCoordinate", x.to_string()),
+        ("spawnYCoordinate", y.to_string()),
+        ("spawnZCoordinate", z.to_string()),
+        ("shouldUseStructurePosition", "true".to_string()),
+        ("generatedStructureXPosition", x.to_string()),
+        ("generatedStructureYPosition", y.to_string()),
+        ("generatedStructureZPosition", z.to_string()),
+    ];
     let mut found = 0;
     let out: Vec<String> = text
         .lines()
@@ -98,7 +107,7 @@ pub fn sync_spawn(root: &Path, x: i32, y: i32, z: i32) -> Result<String, String>
         })
         .collect();
     if found != wanted.len() {
-        return Err("starterstructure.json5 is missing spawn coordinate keys".into());
+        return Err("starterstructure.json5 is missing spawn or structure position keys".into());
     }
     let mut joined = out.join("\n");
     if text.ends_with('\n') {
@@ -107,7 +116,29 @@ pub fn sync_spawn(root: &Path, x: i32, y: i32, z: i32) -> Result<String, String>
     if joined != text {
         fs::write(&path, joined).map_err(|e| e.to_string())?;
     }
-    Ok(format!("spawn set to ({x}, {y}, {z})"))
+    Ok(format!("spawn and starter structure set to ({x}, {y}, {z})"))
+}
+
+/// Where KubeJS's fixed_structures.js reads the in-game structure spots from.
+pub const FIXED_STRUCTURES_FILE: &str = "kubejs/server_scripts/worldgen/fixed_structures.json";
+
+/// Write every "place in game" structure instance to the pack's fixed_structures.json (absolute footprint centre,
+/// rotation as /place template names it).
+pub fn sync_fixed_structures(root: &Path, p: &crate::model::Project) -> Result<String, String> {
+    const ROT: [&str; 4] = ["none", "clockwise_90", "180", "counterclockwise_90"];
+    let list: Vec<_> = p
+        .in_game_structures()
+        .map(|(t, s)| serde_json::json!({ "name": t.name, "template": t.id, "x": s.x, "z": s.z, "rotation": ROT[(s.rot % 4) as usize] }))
+        .collect();
+    let n = list.len();
+    let doc = serde_json::json!({
+        "note": "Written by tools/worldpainter (Save all). x/z = absolute block coords of the footprint centre.",
+        "structures": list,
+    });
+    let path = root.join(FIXED_STRUCTURES_FILE);
+    fs::create_dir_all(path.parent().unwrap()).map_err(|e| e.to_string())?;
+    fs::write(&path, serde_json::to_string_pretty(&doc).map_err(|e| e.to_string())? + "\n").map_err(|e| e.to_string())?;
+    Ok(format!("{n} in-game structure spots"))
 }
 
 /// Remove the installed pack and restore the most recent KubeJS overworld backup, if any.
@@ -149,11 +180,34 @@ mod tests {
         let base = std::env::current_dir().unwrap().join("target").join("fake_spawn");
         let _ = fs::remove_dir_all(&base);
         fs::create_dir_all(base.join("config")).unwrap();
-        let orig = "{\n\t// c\n\t\"forceExactSpawn\": true,\n\t\"shouldUseSpawnCoordinates\": false,\n\t\"spawnXCoordinate\": 5,\n\t\"spawnYCoordinate\": 0,\n\t\"spawnZCoordinate\": 9\n}\n";
+        let structure = "\t\"shouldUseStructurePosition\": false,\n\t\"generatedStructureXPosition\": 0,\n\t\"generatedStructureYPosition\": 0,\n\t\"generatedStructureZPosition\": 0,\n";
+        let orig = format!("{{\n\t// c\n\t\"forceExactSpawn\": true,\n{structure}\t\"shouldUseSpawnCoordinates\": false,\n\t\"spawnXCoordinate\": 5,\n\t\"spawnYCoordinate\": 0,\n\t\"spawnZCoordinate\": 9\n}}\n");
         fs::write(base.join("config/starterstructure.json5"), orig).unwrap();
         sync_spawn(&base, 0, 72, 0).unwrap();
         let now = fs::read_to_string(base.join("config/starterstructure.json5")).unwrap();
-        assert_eq!(now, "{\n\t// c\n\t\"forceExactSpawn\": true,\n\t\"shouldUseSpawnCoordinates\": true,\n\t\"spawnXCoordinate\": 0,\n\t\"spawnYCoordinate\": 72,\n\t\"spawnZCoordinate\": 0,\n}\n");
+        let pinned = "\t\"shouldUseStructurePosition\": true,\n\t\"generatedStructureXPosition\": 0,\n\t\"generatedStructureYPosition\": 72,\n\t\"generatedStructureZPosition\": 0,\n";
+        assert_eq!(now, "{\n\t// c\n\t\"forceExactSpawn\": true,\n".to_string() + pinned + "\t\"shouldUseSpawnCoordinates\": true,\n\t\"spawnXCoordinate\": 0,\n\t\"spawnYCoordinate\": 72,\n\t\"spawnZCoordinate\": 0,\n}\n");
+    }
+
+    #[test]
+    fn fixed_structures_written_for_in_game_types_only() {
+        let base = std::env::current_dir().unwrap().join("target").join("fake_fixed");
+        let _ = fs::remove_dir_all(&base);
+        fs::create_dir_all(&base).unwrap();
+        let mut p = crate::model::Project::new();
+        let ship = p.types.iter().position(|t| t.id == "winterheart:shipwreck").unwrap();
+        p.structures.push(crate::model::StructInst { ty: 0, x: 5, z: 5, rot: 0 }); // escape camp: not in game
+        p.structures.push(crate::model::StructInst { ty: ship, x: -100, z: 20, rot: 1 });
+        sync_fixed_structures(&base, &p).unwrap();
+        let v: serde_json::Value = serde_json::from_str(&fs::read_to_string(base.join(FIXED_STRUCTURES_FILE)).unwrap()).unwrap();
+        let list = v["structures"].as_array().unwrap();
+        assert_eq!(list.len(), 3); // default watchtower + shipwreck, plus the extra shipwreck
+        assert!(list.iter().all(|e| e["template"] != "winterheart:escape_camp"));
+        let extra = list.iter().find(|e| e["x"] == -100).unwrap();
+        assert_eq!(extra["template"], "winterheart:shipwreck");
+        assert_eq!(extra["rotation"], "clockwise_90");
+        assert!(list.iter().any(|e| e["template"] == "winterheart:watchtower" && e["x"] == 0 && e["z"] == 400));
+        assert!(list.iter().any(|e| e["template"] == "winterheart:shipwreck" && e["x"] == 950 && e["z"] == 0));
     }
 
     #[test]

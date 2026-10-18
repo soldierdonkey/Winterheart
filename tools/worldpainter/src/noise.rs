@@ -1,5 +1,3 @@
-use serde::{Deserialize, Serialize};
-
 /// Classic improved-Perlin 2D noise with a seeded permutation table.
 pub struct Perlin {
     p: [u8; 512],
@@ -77,46 +75,5 @@ impl Perlin {
             freq *= lacunarity;
         }
         sum / norm
-    }
-}
-
-/// Everything the user can tune for one noise channel.
-#[derive(Clone, Serialize, Deserialize, PartialEq)]
-pub struct NoiseCfg {
-    /// Wavelength of the lowest octave, in blocks.
-    pub scale: f32,
-    pub octaves: u32,
-    pub persistence: f32,
-    pub lacunarity: f32,
-    /// Multiplier applied before bias; fbm output is clustered near 0 so this stretches it.
-    pub contrast: f32,
-    pub amplitude: f32,
-    pub bias: f32,
-    pub seed_offset: u32,
-}
-
-impl NoiseCfg {
-    pub fn new(scale: f32, octaves: u32, contrast: f32, bias: f32) -> Self {
-        Self {
-            scale,
-            octaves,
-            persistence: 0.5,
-            lacunarity: 2.0,
-            contrast,
-            amplitude: 1.0,
-            bias,
-            seed_offset: 0,
-        }
-    }
-
-    pub fn perlin(&self, project_seed: u32, channel: usize) -> Perlin {
-        Perlin::new(project_seed as u64 * 1_000_003 + channel as u64 * 7919 + self.seed_offset as u64 * 104_729)
-    }
-
-    /// Unclamped channel value at a block position.
-    pub fn sample(&self, p: &Perlin, x: f64, z: f64) -> f32 {
-        let s = self.scale.max(1.0) as f64;
-        let n = p.fbm(x / s, z / s, self.octaves, self.persistence as f64, self.lacunarity as f64);
-        self.bias + self.amplitude * self.contrast * n as f32
     }
 }

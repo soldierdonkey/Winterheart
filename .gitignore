@@ -41,7 +41,6 @@ libEffekseerNativeForJava.dylib
 options.txt
 usercache.json
 usernamecache.json
-minecraftinstance.json
 .curseclient
 .DS_Store
 rhino.local.properties
@@ -72,3 +71,4 @@ config/asyncparticles/asyncparticles-mixin.properties
 config/asyncparticles/asyncparticles-mixin.properties
 config/flywheel-client.toml
 nutritionalbalance.data
+streamsreflowing-stall*

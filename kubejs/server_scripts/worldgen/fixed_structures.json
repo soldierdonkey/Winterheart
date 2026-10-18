@@ -1,0 +1,19 @@
+{
+  "note": "Written by tools/worldpainter (Save all). x/z = absolute block coords of the footprint centre.",
+  "structures": [
+    {
+      "name": "Watchtower",
+      "rotation": "none",
+      "template": "winterheart:watchtower",
+      "x": 0,
+      "z": 400
+    },
+    {
+      "name": "Shipwreck",
+      "rotation": "none",
+      "template": "winterheart:shipwreck",
+      "x": 950,
+      "z": 0
+    }
+  ]
+}

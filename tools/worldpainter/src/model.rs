@@ -1,16 +1,33 @@
-use crate::noise::NoiseCfg;
+use crate::noise::Perlin;
 use serde::{Deserialize, Serialize};
 
-pub const NCH: usize = 6;
-/// Channel order: the five vanilla climate noises, then a height bias in blocks.
+pub const NCH: usize = 8;
+/// Channel order: the five vanilla climate noises, a height bias in blocks, an absolute height (Y above 0), then a
+/// multiplier on the export-only terrain detail.
 pub const CH_C: usize = 0;
 pub const CH_E: usize = 1;
 pub const CH_T: usize = 2;
 pub const CH_H: usize = 3;
 pub const CH_W: usize = 4;
 pub const CH_HB: usize = 5;
-pub const CH_NAMES: [&str; NCH] = ["Continentalness", "Erosion", "Temperature", "Humidity", "Weirdness", "Height bias"];
-pub const CH_RANGE: [(f32, f32); NCH] = [(-1.2, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-64.0, 64.0)];
+pub const CH_AY: usize = 6;
+pub const CH_DT: usize = 7;
+pub const CH_NAMES: [&str; NCH] = ["Continentalness", "Erosion", "Temperature", "Humidity", "Weirdness", "Height bias", "Absolute Y", "Detail"];
+pub const CH_RANGE: [(f32, f32); NCH] = [(-1.2, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-1.0, 1.0), (-128.0, 128.0), (0.0, 255.0), (0.0, 2.0)];
+/// Blocks that a naturalize noise of 1.0 moves the height by.
+const HEIGHT_NOISE_SPAN: f32 = 48.0;
+
+/// What an unpainted cell holds: the canvas for climate, no bias, full detail.
+pub fn channel_base(canvas: &[f32; 5], ch: usize) -> f32 {
+    match ch {
+        0..=4 => canvas[ch],
+        CH_DT => 1.0,
+        _ => 0.0,
+    }
+}
+
+/// Inclusive cell rectangle `(i0, j0, i1, j1)`.
+pub type CellRect = (usize, usize, usize, usize);
 
 #[derive(Clone, Serialize, Deserialize)]
 pub struct Region {
@@ -55,19 +72,56 @@ impl Region {
     pub fn max_z(&self) -> i32 {
         self.min_z + self.nz as i32 * self.cell
     }
+    pub fn all(&self) -> CellRect {
+        (0, 0, self.nx - 1, self.nz - 1)
+    }
 }
 
-/// Hand-painted overrides: per channel a strength mask (0 = pure noise, 1 = fully painted) and a value.
+/// Soft capsule from `a` to `b` (a dab when `a == b`): calls `f(idx, falloff)` for every cell it reaches and
+/// returns the touched cell rectangle.
+pub fn capsule(region: &Region, a: (f32, f32), b: (f32, f32), radius: f32, hardness: f32, mut f: impl FnMut(usize, f32)) -> CellRect {
+    let cell = region.cell as f32;
+    let clampi = |v: f32, hi: usize| (v.floor().max(0.0) as usize).min(hi - 1);
+    let i0 = clampi((a.0.min(b.0) - radius - region.min_x as f32) / cell, region.nx);
+    let i1 = clampi((a.0.max(b.0) + radius - region.min_x as f32) / cell, region.nx);
+    let j0 = clampi((a.1.min(b.1) - radius - region.min_z as f32) / cell, region.nz);
+    let j1 = clampi((a.1.max(b.1) + radius - region.min_z as f32) / cell, region.nz);
+    let (dx, dz) = (b.0 - a.0, b.1 - a.1);
+    let len2 = dx * dx + dz * dz;
+    let solid = radius * hardness.clamp(0.0, 1.0);
+    for j in j0..=j1 {
+        for i in i0..=i1 {
+            let (x, z) = region.center(i, j);
+            let t = if len2 > 0.0 { (((x - a.0) * dx + (z - a.1) * dz) / len2).clamp(0.0, 1.0) } else { 0.0 };
+            let d = ((x - (a.0 + t * dx)).powi(2) + (z - (a.1 + t * dz)).powi(2)).sqrt();
+            let fall = if d <= solid {
+                1.0
+            } else if d >= radius {
+                0.0
+            } else {
+                let u = 1.0 - (d - solid) / (radius - solid).max(0.001);
+                u * u * (3.0 - 2.0 * u)
+            };
+            if fall > 0.0 {
+                f(j * region.nx + i, fall);
+            }
+        }
+    }
+    (i0, j0, i1, j1)
+}
+
+/// Hand-painted values: per channel a strength mask (0 = the flat canvas, 1 = fully painted) and a value.
 #[derive(Clone)]
 pub struct Paint {
     pub mask: [Vec<f32>; NCH],
     pub value: [Vec<f32>; NCH],
 }
 
+/// Cells store channel lists rather than fixed arrays, so files from before a channel was added still load.
 #[derive(Serialize, Deserialize)]
 struct PaintSparse {
     n: usize,
-    cells: Vec<(u32, [f32; NCH], [f32; NCH])>,
+    cells: Vec<(u32, Vec<f32>, Vec<f32>)>,
 }
 
 impl From<Paint> for PaintSparse {
@@ -76,11 +130,7 @@ impl From<Paint> for PaintSparse {
         let mut cells = Vec::new();
         for i in 0..n {
             if (0..NCH).any(|c| p.mask[c][i] > 0.0) {
-                cells.push((
-                    i as u32,
-                    std::array::from_fn(|c| p.value[c][i]),
-                    std::array::from_fn(|c| p.mask[c][i]),
-                ));
+                cells.push((i as u32, (0..NCH).map(|c| p.value[c][i]).collect(), (0..NCH).map(|c| p.mask[c][i]).collect()));
             }
         }
         PaintSparse { n, cells }
@@ -91,7 +141,7 @@ impl From<PaintSparse> for Paint {
     fn from(s: PaintSparse) -> Self {
         let mut p = Paint::new(s.n);
         for (i, v, m) in s.cells {
-            for c in 0..NCH {
+            for c in 0..NCH.min(v.len()).min(m.len()) {
                 p.value[c][i as usize] = v[c];
                 p.mask[c][i as usize] = m[c];
             }
@@ -112,23 +162,101 @@ impl<'de> Deserialize<'de> for Paint {
     }
 }
 
-/// Settings for the naturalize brush.
+/// Settings for naturalize (brush and whole map).
 #[derive(Clone, Copy)]
 pub struct Natural {
-    /// 0..1 how strongly painted values/edges are smoothed toward their neighbours.
+    /// 0..1 how far values move toward their blurred neighbourhood.
     pub blur: f32,
-    /// 0..1 of each channel's range added as noise to painted values; also roughens painted edges.
+    /// Blur radius in blocks.
+    pub radius: f32,
+    /// 0..1 of each channel's half-range added as noise (height: up to 48 blocks).
     pub noise: f32,
-    /// Noise wavelength in blocks.
+    /// Noise and warp wavelength in blocks.
     pub scale: f32,
+    /// How far (blocks) shapes are pushed around, which roughens coastlines and biome edges.
+    pub warp: f32,
     pub seed: u32,
+    /// Channels it touches: the five climate channels, then height (bias and absolute together).
+    pub channels: [bool; 6],
+}
+
+/// A relative change, applied once per stroke.
+#[derive(Clone, Copy)]
+pub enum Rel {
+    /// Raise (or lower, when negative) by this much: channel units, or blocks for height.
+    Add(f32),
+    /// Add fbm noise of this amplitude.
+    Noise { amp: f32, scale: f32, octaves: u32, seed: u32 },
+}
+
+/// A stroke that rewrites paint from its starting snapshot, so one stroke applies its change exactly once
+/// (at the strongest brush weight each cell saw), however long the brush lingers.
+pub struct Stroke {
+    pub base: Paint,
+    pub w: Vec<f32>,
+}
+
+impl Stroke {
+    pub fn new(p: &Paint) -> Self {
+        Stroke { base: p.clone(), w: vec![0.0; p.mask[0].len()] }
+    }
+
+    /// The whole map at one weight.
+    pub fn full(p: &Paint, w: f32) -> Self {
+        Stroke { base: p.clone(), w: vec![w; p.mask[0].len()] }
+    }
+
+    pub fn cover(&mut self, region: &Region, a: (f32, f32), b: (f32, f32), radius: f32, hardness: f32, strength: f32) -> CellRect {
+        let w = &mut self.w;
+        capsule(region, a, b, radius, hardness, |idx, f| w[idx] = w[idx].max(f * strength))
+    }
 }
 
 pub enum Op<'a> {
     /// Paint these `(channel, value)` pairs.
     Set(&'a [(usize, f32)]),
-    /// Remove paint, optionally only on one channel.
+    /// Remove paint, optionally only on one channel (height bias also clears absolute height).
     Erase(Option<usize>),
+}
+
+/// Bilinear sample of a `w`-wide field at fractional cell coordinates, clamped to its edges.
+fn bilinear(f: &[f32], w: usize, h: usize, fi: f32, fj: f32) -> f32 {
+    let fi = fi.clamp(0.0, (w - 1) as f32);
+    let fj = fj.clamp(0.0, (h - 1) as f32);
+    let (i0, j0) = (fi.floor() as usize, fj.floor() as usize);
+    let (i1, j1) = ((i0 + 1).min(w - 1), (j0 + 1).min(h - 1));
+    let (tx, tz) = (fi - i0 as f32, fj - j0 as f32);
+    let top = f[j0 * w + i0] * (1.0 - tx) + f[j0 * w + i1] * tx;
+    let bottom = f[j1 * w + i0] * (1.0 - tx) + f[j1 * w + i1] * tx;
+    top * (1.0 - tz) + bottom * tz
+}
+
+/// `f` moved toward its box blur (radius `r` cells) by `mix`.
+fn blurred(f: &[f32], w: usize, h: usize, r: usize, mix: f32) -> Vec<f32> {
+    if r == 0 || mix <= 0.0 {
+        return f.to_vec();
+    }
+    let sw = w + 1;
+    let mut sat = vec![0.0f64; sw * (h + 1)];
+    for j in 0..h {
+        let mut row = 0.0f64;
+        for i in 0..w {
+            row += f[j * w + i] as f64;
+            sat[(j + 1) * sw + i + 1] = sat[j * sw + i + 1] + row;
+        }
+    }
+    let mut out = vec![0.0f32; w * h];
+    for j in 0..h {
+        let (a, b) = (j.saturating_sub(r), (j + r + 1).min(h));
+        for i in 0..w {
+            let (c, d) = (i.saturating_sub(r), (i + r + 1).min(w));
+            let sum = sat[b * sw + d] - sat[a * sw + d] - sat[b * sw + c] + sat[a * sw + c];
+            let mean = (sum / ((b - a) * (d - c)) as f64) as f32;
+            let v = f[j * w + i];
+            out[j * w + i] = v + (mean - v) * mix;
+        }
+    }
+    out
 }
 
 impl Paint {
@@ -145,152 +273,149 @@ impl Paint {
         }
     }
 
-    /// Blur painted values/masks and add noise inside a soft capsule. Returns the touched cell rectangle.
-    #[allow(clippy::too_many_arguments)]
-    pub fn naturalize(&mut self, region: &Region, a: (f32, f32), b: (f32, f32), radius: f32, hardness: f32, strength: f32, nat: Natural) -> (usize, usize, usize, usize) {
-        let cell = region.cell as f32;
-        let clampi = |v: f32, hi: usize| (v.floor().max(0.0) as usize).min(hi - 1);
-        let i0 = clampi((a.0.min(b.0) - radius - region.min_x as f32) / cell, region.nx);
-        let i1 = clampi((a.0.max(b.0) + radius - region.min_x as f32) / cell, region.nx);
-        let j0 = clampi((a.1.min(b.1) - radius - region.min_z as f32) / cell, region.nz);
-        let j1 = clampi((a.1.max(b.1) + radius - region.min_z as f32) / cell, region.nz);
-        let (dx, dz) = (b.0 - a.0, b.1 - a.1);
-        let len2 = dx * dx + dz * dz;
-        let solid = radius * hardness.clamp(0.0, 1.0);
-        let at = |i: isize, j: isize| (j.clamp(0, region.nz as isize - 1) as usize) * region.nx + i.clamp(0, region.nx as isize - 1) as usize;
-        let scale = nat.scale.max(8.0) as f64;
-
-        for ch in 0..NCH {
-            let perlin = crate::noise::Perlin::new(nat.seed as u64 * 31 + ch as u64 * 977);
-            let range = CH_RANGE[ch].1 - CH_RANGE[ch].0;
-            // snapshot rows i0-1..=i1+1, j0-1..=j1+1 (clamped through `at`)
-            let (w, h) = (i1 - i0 + 3, j1 - j0 + 3);
-            let (mut sm, mut sv) = (vec![0.0f32; w * h], vec![0.0f32; w * h]);
-            for jj in 0..h {
-                for ii in 0..w {
-                    let k = at(i0 as isize + ii as isize - 1, j0 as isize + jj as isize - 1);
-                    sm[jj * w + ii] = self.mask[ch][k];
-                    sv[jj * w + ii] = self.value[ch][k];
-                }
-            }
-            for j in j0..=j1 {
-                for i in i0..=i1 {
-                    let (x, z) = region.center(i, j);
-                    let t = if len2 > 0.0 { (((x - a.0) * dx + (z - a.1) * dz) / len2).clamp(0.0, 1.0) } else { 0.0 };
-                    let d = ((x - (a.0 + t * dx)).powi(2) + (z - (a.1 + t * dz)).powi(2)).sqrt();
-                    let f = if d <= solid { 1.0 } else if d >= radius { 0.0 } else {
-                        let u = 1.0 - (d - solid) / (radius - solid).max(0.001);
-                        u * u * (3.0 - 2.0 * u)
-                    };
-                    let wgt = f * strength;
-                    if wgt <= 0.0 {
-                        continue;
-                    }
-                    let (li, lj) = (i - i0 + 1, j - j0 + 1);
-                    let (mut msum, mut vsum, mut wsum) = (0.0f32, 0.0f32, 0.0f32);
-                    for (oj, row) in [[1.0f32, 2.0, 1.0], [2.0, 4.0, 2.0], [1.0, 2.0, 1.0]].iter().enumerate() {
-                        for (oi, k) in row.iter().enumerate() {
-                            let q = (lj + oj - 1) * w + (li + oi - 1);
-                            msum += sm[q] * k;
-                            vsum += sv[q] * sm[q] * k;
-                            wsum += k;
-                        }
-                    }
-                    let bm = msum / wsum;
-                    let idx = j * region.nx + i;
-                    let (m, v) = (self.mask[ch][idx], self.value[ch][idx]);
-                    let mix = (wgt * nat.blur).clamp(0.0, 1.0);
-                    let mut nm = m + (bm - m) * mix;
-                    let mut nv = if msum > 1e-4 {
-                        let bv = vsum / msum;
-                        if m < 0.02 { bv } else { v + (bv - v) * mix }
-                    } else {
-                        v
-                    };
-                    if nm > 0.0 && nat.noise > 0.0 {
-                        let n = perlin.fbm(x as f64 / scale, z as f64 / scale, 3, 0.5, 2.0) as f32 * 2.0;
-                        nv += n * nat.noise * range * 0.5 * wgt;
-                        // roughen the fringe: noise modulates partially covered cells
-                        if nm < 0.98 {
-                            nm *= 1.0 + n * nat.noise * 2.5 * wgt;
-                        }
-                        nv = nv.clamp(CH_RANGE[ch].0, CH_RANGE[ch].1);
-                    }
-                    nm = nm.clamp(0.0, 1.0);
-                    self.mask[ch][idx] = if nm < 0.02 { 0.0 } else { nm };
-                    self.value[ch][idx] = nv;
-                }
-            }
-        }
-        (i0, j0, i1, j1)
+    /// The value the world sees for a climate channel or the height bias (`base` = canvas value, 0 for bias).
+    pub fn effective(&self, ch: usize, idx: usize, base: f32) -> f32 {
+        base + (self.value[ch][idx] - base) * self.mask[ch][idx]
     }
 
     pub fn any_at(&self, i: usize) -> bool {
         (0..NCH).any(|c| self.mask[c][i] > 0.05)
     }
 
-    /// Stamp a soft capsule from `a` to `b` (a dab when `a == b`). Returns the touched cell rectangle
-    /// `(i0, j0, i1, j1)`, inclusive.
-    #[allow(clippy::too_many_arguments)]
-    pub fn stamp(
-        &mut self,
-        region: &Region,
-        a: (f32, f32),
-        b: (f32, f32),
-        radius: f32,
-        hardness: f32,
-        strength: f32,
-        op: &Op,
-    ) -> (usize, usize, usize, usize) {
-        let cell = region.cell as f32;
-        let clampi = |v: f32, hi: usize| (v.floor().max(0.0) as usize).min(hi - 1);
-        let i0 = clampi((a.0.min(b.0) - radius - region.min_x as f32) / cell, region.nx);
-        let i1 = clampi((a.0.max(b.0) + radius - region.min_x as f32) / cell, region.nx);
-        let j0 = clampi((a.1.min(b.1) - radius - region.min_z as f32) / cell, region.nz);
-        let j1 = clampi((a.1.max(b.1) + radius - region.min_z as f32) / cell, region.nz);
-        let (dx, dz) = (b.0 - a.0, b.1 - a.1);
-        let len2 = dx * dx + dz * dz;
-        let solid = radius * hardness.clamp(0.0, 1.0);
+    /// Set cell `idx` of `ch` to its snapshot value (as the world saw it) plus `d`. Height bias also moves any
+    /// absolute-height paint, so the final height changes by `d` either way.
+    fn shift(&mut self, s: &Stroke, canvas: &[f32; 5], ch: usize, idx: usize, d: f32) {
+        let e = s.base.effective(ch, idx, channel_base(canvas, ch));
+        self.mask[ch][idx] = 1.0;
+        self.value[ch][idx] = (e + d).clamp(CH_RANGE[ch].0, CH_RANGE[ch].1);
+        if ch == CH_HB && s.base.mask[CH_AY][idx] > 0.0 {
+            self.value[CH_AY][idx] = (s.base.value[CH_AY][idx] + d).clamp(CH_RANGE[CH_AY].0, CH_RANGE[CH_AY].1);
+        }
+    }
 
-        for j in j0..=j1 {
-            for i in i0..=i1 {
-                let (x, z) = region.center(i, j);
-                let t = if len2 > 0.0 { (((x - a.0) * dx + (z - a.1) * dz) / len2).clamp(0.0, 1.0) } else { 0.0 };
-                let d = ((x - (a.0 + t * dx)).powi(2) + (z - (a.1 + t * dz)).powi(2)).sqrt();
-                let f = if d <= solid {
-                    1.0
-                } else if d >= radius {
-                    0.0
-                } else {
-                    let u = 1.0 - (d - solid) / (radius - solid).max(0.001);
-                    u * u * (3.0 - 2.0 * u)
-                };
-                let w = f * strength;
+    /// Rewrite `rect` from the stroke snapshot with channel `ch` changed by `rel` times the stroke weight.
+    pub fn apply_relative(&mut self, region: &Region, canvas: &[f32; 5], s: &Stroke, rect: CellRect, ch: usize, rel: Rel) {
+        let perlin = Perlin::new(match rel {
+            Rel::Noise { seed, .. } => seed as u64 * 7_919 + ch as u64 * 104_729 + 11,
+            Rel::Add(_) => 0,
+        });
+        for j in rect.1..=rect.3 {
+            for i in rect.0..=rect.2 {
+                let idx = j * region.nx + i;
+                let w = s.w[idx];
                 if w <= 0.0 {
                     continue;
                 }
-                let idx = j * region.nx + i;
-                match op {
-                    Op::Set(targets) => {
-                        for &(ch, val) in targets.iter() {
-                            let m = self.mask[ch][idx];
-                            let nm = w + m * (1.0 - w);
-                            self.value[ch][idx] = (val * w + self.value[ch][idx] * m * (1.0 - w)) / nm;
-                            self.mask[ch][idx] = nm;
-                        }
+                let d = match rel {
+                    Rel::Add(a) => a * w,
+                    Rel::Noise { amp, scale, octaves, .. } => {
+                        let (x, z) = region.center(i, j);
+                        let sc = scale.max(4.0) as f64;
+                        perlin.fbm(x as f64 / sc, z as f64 / sc, octaves, 0.5, 2.0) as f32 * 2.0 * amp * w
                     }
-                    Op::Erase(only) => {
-                        for ch in 0..NCH {
-                            if only.map_or(true, |o| o == ch) {
-                                let m = self.mask[ch][idx] * (1.0 - w);
-                                self.mask[ch][idx] = if m < 0.02 { 0.0 } else { m };
-                            }
+                };
+                self.shift(s, canvas, ch, idx, d);
+            }
+        }
+    }
+
+    /// Rewrite `rect` from the stroke snapshot, naturalized by the stroke weight: values move toward their blurred
+    /// neighbourhood, shapes are warped (rough edges) and noise is added. Works on the whole world, painted or not.
+    pub fn naturalize(&mut self, region: &Region, canvas: &[f32; 5], s: &Stroke, rect: CellRect, nat: &Natural) {
+        let cell = region.cell as f32;
+        let r = (nat.radius.max(0.0) / cell).round() as usize;
+        let margin = r + (nat.warp.max(0.0) / cell).ceil() as usize + 2;
+        let (wi0, wj0) = (rect.0.saturating_sub(margin), rect.1.saturating_sub(margin));
+        let (wi1, wj1) = ((rect.2 + margin).min(region.nx - 1), (rect.3 + margin).min(region.nz - 1));
+        let (ww, wh) = (wi1 - wi0 + 1, wj1 - wj0 + 1);
+        let window = |f: &dyn Fn(usize) -> f32| -> Vec<f32> {
+            let mut out = Vec::with_capacity(ww * wh);
+            for j in wj0..=wj1 {
+                for i in wi0..=wi1 {
+                    out.push(f(j * region.nx + i));
+                }
+            }
+            out
+        };
+        let scale = nat.scale.max(8.0) as f64;
+        let (warp_x, warp_z) = (Perlin::new(nat.seed as u64 * 31 + 5_003), Perlin::new(nat.seed as u64 * 31 + 9_001));
+        // cells to rewrite: (idx, window index, warped window coords, weight, world pos)
+        let mut todo = Vec::new();
+        for j in rect.1..=rect.3 {
+            for i in rect.0..=rect.2 {
+                let idx = j * region.nx + i;
+                let w = s.w[idx];
+                if w <= 0.0 {
+                    continue;
+                }
+                let (x, z) = region.center(i, j);
+                let (xs, zs) = (x as f64 / scale, z as f64 / scale);
+                let dx = warp_x.fbm(xs, zs, 3, 0.5, 2.0) as f32 * 2.0 * nat.warp / cell;
+                let dz = warp_z.fbm(xs, zs, 3, 0.5, 2.0) as f32 * 2.0 * nat.warp / cell;
+                let (li, lj) = (i - wi0, j - wj0);
+                todo.push((idx, lj * ww + li, li as f32 + dx, lj as f32 + dz, w, xs, zs));
+            }
+        }
+        for g in 0..6 {
+            if !nat.channels[g] {
+                continue;
+            }
+            let ch = if g < 5 { g } else { CH_HB };
+            let base = if g < 5 { canvas[g] } else { 0.0 };
+            let span = if g < 5 { (CH_RANGE[g].1 - CH_RANGE[g].0) * 0.5 } else { HEIGHT_NOISE_SPAN };
+            let perlin = Perlin::new(nat.seed as u64 * 31 + g as u64 * 977);
+            let raw = window(&|k| s.base.effective(ch, k, base));
+            let field = blurred(&raw, ww, wh, r, nat.blur);
+            // absolute height has no canvas value: blur its strength and strength-weighted value instead
+            let abs = (g == 5 && (wj0..=wj1).any(|j| (wi0..=wi1).any(|i| s.base.mask[CH_AY][j * region.nx + i] > 0.0))).then(|| {
+                let m = window(&|k| s.base.mask[CH_AY][k]);
+                let mv = window(&|k| s.base.mask[CH_AY][k] * s.base.value[CH_AY][k]);
+                (blurred(&m, ww, wh, r, nat.blur), blurred(&mv, ww, wh, r, nat.blur))
+            });
+            for &(idx, k, fi, fj, w, xs, zs) in &todo {
+                let n = if nat.noise > 0.0 { perlin.fbm(xs, zs, 3, 0.5, 2.0) as f32 * 2.0 * nat.noise * span } else { 0.0 };
+                let e = raw[k];
+                let target = bilinear(&field, ww, wh, fi, fj) + n;
+                self.mask[ch][idx] = 1.0;
+                self.value[ch][idx] = (e + (target - e) * w).clamp(CH_RANGE[ch].0, CH_RANGE[ch].1);
+                if let Some((fm, fmv)) = &abs {
+                    let (m0, v0) = (s.base.mask[CH_AY][idx], s.base.value[CH_AY][idx]);
+                    let (tm, tmv) = (bilinear(fm, ww, wh, fi, fj), bilinear(fmv, ww, wh, fi, fj));
+                    let tv = if tm > 1e-4 { tmv / tm } else { v0 };
+                    let nm = (m0 + (tm - m0) * w).clamp(0.0, 1.0);
+                    let mut nv = if m0 < 0.02 { tv } else { v0 + (tv - v0) * w };
+                    nv += n * w;
+                    self.mask[CH_AY][idx] = if nm < 0.02 { 0.0 } else { nm };
+                    self.value[CH_AY][idx] = nv.clamp(CH_RANGE[CH_AY].0, CH_RANGE[CH_AY].1);
+                }
+            }
+        }
+    }
+
+    /// Stamp a soft capsule from `a` to `b` (a dab when `a == b`). Returns the touched cell rectangle.
+    #[allow(clippy::too_many_arguments)]
+    pub fn stamp(&mut self, region: &Region, a: (f32, f32), b: (f32, f32), radius: f32, hardness: f32, strength: f32, op: &Op) -> CellRect {
+        capsule(region, a, b, radius, hardness, |idx, f| {
+            let w = f * strength;
+            match op {
+                Op::Set(targets) => {
+                    for &(ch, val) in targets.iter() {
+                        let m = self.mask[ch][idx];
+                        let nm = w + m * (1.0 - w);
+                        self.value[ch][idx] = (val * w + self.value[ch][idx] * m * (1.0 - w)) / nm;
+                        self.mask[ch][idx] = nm;
+                    }
+                }
+                Op::Erase(only) => {
+                    for ch in 0..NCH {
+                        if only.map_or(true, |o| o == ch || (o == CH_HB && ch == CH_AY)) {
+                            let m = self.mask[ch][idx] * (1.0 - w);
+                            self.mask[ch][idx] = if m < 0.02 { 0.0 } else { m };
                         }
                     }
                 }
             }
-        }
-        (i0, j0, i1, j1)
+        })
     }
 }
 
@@ -302,6 +427,19 @@ pub struct StructType {
     pub w: i32,
     pub d: i32,
     pub color: [u8; 3],
+    /// Instances of this type are written to the pack's fixed_structures.json and pasted in game
+    /// (the id must be a structure template).
+    #[serde(default)]
+    pub place_in_game: bool,
+}
+
+/// Template-backed types the pack places in game, with their default spots (absolute block x/z).
+/// Footprints match the templates' x/z size.
+pub fn fixed_types() -> Vec<(StructType, [i32; 2])> {
+    vec![
+        (StructType { name: "Watchtower".into(), id: "winterheart:watchtower".into(), w: 21, d: 21, color: [120, 255, 140], place_in_game: true }, [0, 400]),
+        (StructType { name: "Shipwreck".into(), id: "winterheart:shipwreck".into(), w: 64, d: 32, color: [120, 200, 255], place_in_game: true }, [950, 0]),
+    ]
 }
 
 #[derive(Clone, Serialize, Deserialize)]
@@ -329,14 +467,23 @@ pub struct Project {
     pub seed: u32,
     pub sea_level: f32,
     pub region: Region,
-    /// Continentalness, erosion, temperature, humidity, weirdness.
-    pub noise: [NoiseCfg; 5],
-    pub warp_strength: f32,
-    pub warp_scale: f32,
+    /// Climate of unpainted ground (continentalness, erosion, temperature, humidity, weirdness). There is no
+    /// generated noise: everything else is painted.
+    #[serde(default = "default_canvas")]
+    pub canvas: [f32; 5],
     pub paint: Paint,
     pub types: Vec<StructType>,
     pub structures: Vec<StructInst>,
     pub spawn: [i32; 2],
+    /// Y the player and the Starter Structure are placed at; the spawn pad's ground is one block below.
+    #[serde(default = "default_spawn_y")]
+    pub spawn_y: i32,
+    /// Radius (blocks) of the flat pad flattened to `spawn_y - 1` at spawn in the export (0 = off), and the
+    /// width it blends back into the terrain over.
+    #[serde(default = "default_spawn_pad")]
+    pub spawn_pad: f32,
+    #[serde(default = "default_spawn_pad_blend")]
+    pub spawn_pad_blend: f32,
     /// The escape route from spawn to the target, and how its corridor is painted.
     #[serde(default)]
     pub path: PathGuide,
@@ -348,6 +495,13 @@ pub struct Project {
     /// Terrain ramps down to deep ocean over this many blocks at the map edge.
     #[serde(default = "default_edge")]
     pub edge_width: f32,
+    /// Blocks the border pixels' climate (and so their biomes) is extended outward in the export; the edge ocean
+    /// ramp sits at the outside of this padding.
+    #[serde(default = "default_padding")]
+    pub padding: i32,
+    /// Keep the export's detail bumps on absolute-height paint (off = painted Y is exact).
+    #[serde(default)]
+    pub abs_detail: bool,
     /// Fine-scale bumpiness added only in the exported heightmap (blocks, wavelength in blocks).
     #[serde(default = "default_detail_amp")]
     pub detail_amp: f32,
@@ -372,8 +526,27 @@ pub struct Project {
     /// Remap warm biomes to snowy ones (the pack's overworld is snowy-only).
     #[serde(default = "default_true")]
     pub winter_palette: bool,
+    /// Set once the in-game template types (`fixed_types`) and their default instances have been added,
+    /// so deleting one later sticks.
+    #[serde(default)]
+    pub fixed_seeded: bool,
 }
 
+fn default_spawn_y() -> i32 {
+    66
+}
+fn default_spawn_pad() -> f32 {
+    40.0
+}
+fn default_spawn_pad_blend() -> f32 {
+    32.0
+}
+fn default_canvas() -> [f32; 5] {
+    [0.3, 0.25, -0.3, 0.0, 0.3]
+}
+fn default_padding() -> i32 {
+    512
+}
 fn default_detail_octaves() -> u32 {
     5
 }
@@ -414,27 +587,24 @@ impl Project {
             seed: 1337,
             sea_level: 63.0,
             region,
-            noise: [
-                NoiseCfg::new(900.0, 4, 2.4, 0.0),   // continentalness
-                NoiseCfg::new(520.0, 4, 2.2, 0.0),   // erosion
-                NoiseCfg::new(1100.0, 3, 2.4, -0.3), // temperature (cold bias for Winterheart)
-                NoiseCfg::new(800.0, 3, 2.4, 0.0),   // humidity
-                NoiseCfg::new(480.0, 4, 2.2, 0.0),   // weirdness
-            ],
-            warp_strength: 140.0,
-            warp_scale: 350.0,
+            canvas: default_canvas(),
             paint: Paint::new(n),
             types: vec![
-                StructType { name: "Escape Camp".into(), id: "winterheart:escape_camp".into(), w: 48, d: 48, color: [255, 120, 40] },
-                StructType { name: "Outpost".into(), id: "winterheart:outpost".into(), w: 24, d: 24, color: [255, 220, 60] },
-                StructType { name: "Ruin".into(), id: "winterheart:ruin".into(), w: 16, d: 16, color: [190, 190, 255] },
+                StructType { name: "Escape Camp".into(), id: "winterheart:escape_camp".into(), w: 48, d: 48, color: [255, 120, 40], place_in_game: false },
+                StructType { name: "Outpost".into(), id: "winterheart:outpost".into(), w: 24, d: 24, color: [255, 220, 60], place_in_game: false },
+                StructType { name: "Ruin".into(), id: "winterheart:ruin".into(), w: 16, d: 16, color: [190, 190, 255], place_in_game: false },
             ],
             structures: vec![],
             spawn: [0, 0],
+            spawn_y: default_spawn_y(),
+            spawn_pad: default_spawn_pad(),
+            spawn_pad_blend: default_spawn_pad_blend(),
             path: PathGuide::default(),
             guide_offset: None,
             guide_radius: None,
             edge_width: default_edge(),
+            padding: default_padding(),
+            abs_detail: false,
             detail_amp: 6.0,
             detail_scale: default_detail_scale(),
             detail_octaves: default_detail_octaves(),
@@ -444,9 +614,10 @@ impl Project {
             mid_scale: default_mid_scale(),
             rough_by_erosion: default_rough_by_erosion(),
             winter_palette: true,
+            fixed_seeded: false,
         };
         p.apply_corridor_preset();
-        p.structures.push(StructInst { ty: 0, x: 0, z: 400, rot: 0 });
+        p.seed_fixed_structures();
         p
     }
 
@@ -479,8 +650,31 @@ impl Project {
         self.paint = paint;
     }
 
+    /// Add the in-game template types if missing, and (once per project) an instance of each at its default spot.
+    pub fn seed_fixed_structures(&mut self) {
+        for (t, [x, z]) in fixed_types() {
+            let ty = match self.types.iter().position(|e| e.id == t.id) {
+                Some(i) => i,
+                None => {
+                    self.types.push(t);
+                    self.types.len() - 1
+                }
+            };
+            if !self.fixed_seeded && !self.structures.iter().any(|s| s.ty == ty) {
+                self.structures.push(StructInst { ty, x, z, rot: 0 });
+            }
+        }
+        self.fixed_seeded = true;
+    }
+
+    /// Instances whose type is placed in game: (type, instance).
+    pub fn in_game_structures(&self) -> impl Iterator<Item = (&StructType, &StructInst)> {
+        self.structures.iter().map(|s| (&self.types[s.ty.min(self.types.len() - 1)], s)).filter(|(t, _)| t.place_in_game)
+    }
+
     /// Convert a pre-`path` project's single guide offset into a one-point path.
     pub fn migrate(&mut self) {
+        self.seed_fixed_structures();
         // files that still have `guide_offset` were saved before `path` existed, so `path` is only a default
         if let Some([ox, oz]) = self.guide_offset.take() {
             self.path.points = vec![[self.spawn[0] + ox, self.spawn[1] + oz]];
@@ -593,31 +787,77 @@ impl PathGuide {
 mod tests {
     use super::*;
 
+    fn nat() -> Natural {
+        Natural { blur: 0.8, radius: 32.0, noise: 0.15, scale: 50.0, warp: 24.0, seed: 3, channels: [true; 6] }
+    }
+
     #[test]
-    fn naturalize_blurs_edges_and_stays_in_range() {
+    fn global_naturalize_softens_edges_and_reaches_unpainted_ground() {
         let mut p = Project::new();
         p.resize(1024);
+        p.paint.clear();
         let r = p.region.clone();
         // a hard-edged dab, so blur has a sharp edge to spread past
-        p.paint.stamp(&r, (200.0, -200.0), (200.0, -200.0), 60.0, 1.0, 1.0, &Op::Set(&[(CH_C, 0.6), (CH_HB, 20.0)]));
-        let before = p.paint.clone();
-        let nat = Natural { blur: 0.8, noise: 0.15, scale: 50.0, seed: 3 };
-        p.paint.naturalize(&r, (0.0, 0.0), (0.0, 0.0), 2000.0, 1.0, 1.0, nat);
-        let (mut changed, mut spread) = (0, 0);
+        p.paint.stamp(&r, (200.0, -200.0), (200.0, -200.0), 60.0, 1.0, 1.0, &Op::Set(&[(CH_C, 0.6), (CH_AY, 150.0)]));
+        let s = Stroke::full(&p.paint, 1.0);
+        p.paint.naturalize(&r, &p.canvas, &s, r.all(), &nat());
+        let idx = |x: f32, z: f32| {
+            let (i, j) = r.cell_at(x, z).unwrap();
+            j * r.nx + i
+        };
         for ch in 0..NCH {
             for i in 0..r.len() {
                 let (m, v) = (p.paint.mask[ch][i], p.paint.value[ch][i]);
                 assert!((0.0..=1.0).contains(&m), "mask {m}");
                 assert!(v >= CH_RANGE[ch].0 - 1e-3 && v <= CH_RANGE[ch].1 + 1e-3, "value {v}");
-                if (m - before.mask[ch][i]).abs() > 1e-4 {
-                    changed += 1;
-                }
-                if before.mask[ch][i] == 0.0 && m > 0.0 {
-                    spread += 1;
-                }
             }
         }
-        assert!(changed > 0 && spread > 0, "changed {changed}, spread {spread}");
+        // far from any paint: the flat canvas got noise
+        let far = idx(-400.0, 400.0);
+        assert!((p.paint.effective(CH_T, far, p.canvas[CH_T]) - p.canvas[CH_T]).abs() > 1e-4);
+        // just outside the dab, continentalness was pulled up by the blur
+        let out = idx(270.0, -200.0);
+        assert!(p.paint.effective(CH_C, out, p.canvas[CH_C]) > p.canvas[CH_C] + 0.02);
+        // the absolute-height edge became soft
+        assert!(p.paint.mask[CH_AY][out] > 0.0 && p.paint.mask[CH_AY][out] < 1.0);
+    }
+
+    #[test]
+    fn relative_change_applies_once_per_stroke() {
+        let mut p = Project::new();
+        p.resize(512);
+        p.paint.clear();
+        let r = p.region.clone();
+        let mut s = Stroke::new(&p.paint);
+        // the brush lingers: ten dabs on the same spot still raise by exactly the amount
+        for _ in 0..10 {
+            let rect = s.cover(&r, (0.0, 0.0), (0.0, 0.0), 40.0, 1.0, 1.0);
+            p.paint.apply_relative(&r, &p.canvas, &s, rect, CH_C, Rel::Add(-0.3));
+        }
+        let (i, j) = r.cell_at(0.0, 0.0).unwrap();
+        let k = j * r.nx + i;
+        assert!((p.paint.effective(CH_C, k, p.canvas[CH_C]) - (p.canvas[CH_C] - 0.3)).abs() < 1e-5);
+        // a second stroke adds again
+        let mut s = Stroke::new(&p.paint);
+        let rect = s.cover(&r, (0.0, 0.0), (0.0, 0.0), 40.0, 1.0, 1.0);
+        p.paint.apply_relative(&r, &p.canvas, &s, rect, CH_C, Rel::Add(-0.3));
+        assert!((p.paint.effective(CH_C, k, p.canvas[CH_C]) - (p.canvas[CH_C] - 0.6)).abs() < 1e-5);
+    }
+
+    #[test]
+    fn noise_injection_touches_only_its_channel() {
+        let mut p = Project::new();
+        p.resize(512);
+        p.paint.clear();
+        let r = p.region.clone();
+        let mut s = Stroke::new(&p.paint);
+        let rect = s.cover(&r, (0.0, 0.0), (0.0, 0.0), 200.0, 0.5, 1.0);
+        p.paint.apply_relative(&r, &p.canvas, &s, rect, CH_C, Rel::Noise { amp: 0.4, scale: 60.0, octaves: 3, seed: 1 });
+        let changed = (0..r.len()).filter(|&k| (p.paint.effective(CH_C, k, p.canvas[CH_C]) - p.canvas[CH_C]).abs() > 1e-3).count();
+        assert!(changed > 50, "changed {changed}");
+        for ch in (0..NCH).filter(|c| *c != CH_C) {
+            assert!(p.paint.mask[ch].iter().all(|m| *m == 0.0), "channel {ch} touched");
+        }
     }
 }
 
@@ -638,6 +878,25 @@ mod path_tests {
         assert_eq!(p.path.target_radius, 75);
         let saved = serde_json::to_value(&p).unwrap();
         assert!(saved.get("guide_offset").is_none() && saved.get("path").is_some());
+    }
+
+    #[test]
+    fn old_projects_gain_in_game_types_once() {
+        let mut v = serde_json::to_value(Project::new()).unwrap();
+        let o = v.as_object_mut().unwrap();
+        o.remove("fixed_seeded");
+        o.insert("types".into(), serde_json::json!([{ "name": "Escape Camp", "id": "winterheart:escape_camp", "w": 48, "d": 48, "color": [255, 120, 40] }]));
+        o.insert("structures".into(), serde_json::json!([{ "ty": 0, "x": 0, "z": 400, "rot": 0 }]));
+        let mut p: Project = serde_json::from_value(v).unwrap();
+        p.migrate();
+        let spots: Vec<_> = p.in_game_structures().map(|(t, s)| (t.id.clone(), s.x, s.z)).collect();
+        assert_eq!(spots, vec![("winterheart:watchtower".into(), 0, 400), ("winterheart:shipwreck".into(), 950, 0)]);
+        // deleting one after seeding sticks across save/load
+        p.structures.retain(|s| p.types[s.ty].id != "winterheart:shipwreck");
+        let mut q: Project = serde_json::from_value(serde_json::to_value(&p).unwrap()).unwrap();
+        q.migrate();
+        assert_eq!(q.in_game_structures().count(), 1);
+        assert_eq!(q.types.len(), 3);
     }
 
     #[test]
