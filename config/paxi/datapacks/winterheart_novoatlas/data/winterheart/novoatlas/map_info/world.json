@@ -8,8 +8,16 @@
         "color": "#1400FF"
       },
       {
+        "biome": "minecraft:deep_cold_ocean",
+        "color": "#1835FC"
+      },
+      {
         "biome": "minecraft:frozen_ocean",
         "color": "#24D4F3"
+      },
+      {
+        "biome": "minecraft:cold_ocean",
+        "color": "#2809F0"
       },
       {
         "biome": "minecraft:snowy_beach",

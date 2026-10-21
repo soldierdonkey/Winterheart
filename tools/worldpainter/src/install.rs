@@ -201,7 +201,7 @@ mod tests {
         sync_fixed_structures(&base, &p).unwrap();
         let v: serde_json::Value = serde_json::from_str(&fs::read_to_string(base.join(FIXED_STRUCTURES_FILE)).unwrap()).unwrap();
         let list = v["structures"].as_array().unwrap();
-        assert_eq!(list.len(), 3); // default watchtower + shipwreck, plus the extra shipwreck
+        assert_eq!(list.len(), 4); // default watchtower, shipwreck, beacon, plus the extra shipwreck
         assert!(list.iter().all(|e| e["template"] != "winterheart:escape_camp"));
         let extra = list.iter().find(|e| e["x"] == -100).unwrap();
         assert_eq!(extra["template"], "winterheart:shipwreck");

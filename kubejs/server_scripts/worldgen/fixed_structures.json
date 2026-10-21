@@ -14,6 +14,13 @@
       "template": "winterheart:shipwreck",
       "x": 950,
       "z": 0
+    },
+    {
+      "name": "Beacon",
+      "rotation": "none",
+      "template": "winterheart:beacon",
+      "x": -1100,
+      "z": 0
     }
   ]
 }

@@ -439,6 +439,7 @@ pub fn fixed_types() -> Vec<(StructType, [i32; 2])> {
     vec![
         (StructType { name: "Watchtower".into(), id: "winterheart:watchtower".into(), w: 21, d: 21, color: [120, 255, 140], place_in_game: true }, [0, 400]),
         (StructType { name: "Shipwreck".into(), id: "winterheart:shipwreck".into(), w: 64, d: 32, color: [120, 200, 255], place_in_game: true }, [950, 0]),
+        (StructType { name: "Beacon".into(), id: "winterheart:beacon".into(), w: 29, d: 25, color: [255, 240, 120], place_in_game: true }, [-1100, 0]),
     ]
 }
 
@@ -530,6 +531,10 @@ pub struct Project {
     /// so deleting one later sticks.
     #[serde(default)]
     pub fixed_seeded: bool,
+    /// Template ids from `fixed_types` whose default instance has been added (so a new built-in type still gets
+    /// one in an existing project, and deleting it later sticks).
+    #[serde(default)]
+    pub seeded_ids: Vec<String>,
 }
 
 fn default_spawn_y() -> i32 {
@@ -615,6 +620,7 @@ impl Project {
             rough_by_erosion: default_rough_by_erosion(),
             winter_palette: true,
             fixed_seeded: false,
+            seeded_ids: vec![],
         };
         p.apply_corridor_preset();
         p.seed_fixed_structures();
@@ -652,7 +658,12 @@ impl Project {
 
     /// Add the in-game template types if missing, and (once per project) an instance of each at its default spot.
     pub fn seed_fixed_structures(&mut self) {
+        // projects seeded before `seeded_ids` existed had exactly these two
+        if self.fixed_seeded && self.seeded_ids.is_empty() {
+            self.seeded_ids = vec!["winterheart:watchtower".into(), "winterheart:shipwreck".into()];
+        }
         for (t, [x, z]) in fixed_types() {
+            let id = t.id.clone();
             let ty = match self.types.iter().position(|e| e.id == t.id) {
                 Some(i) => i,
                 None => {
@@ -660,8 +671,11 @@ impl Project {
                     self.types.len() - 1
                 }
             };
-            if !self.fixed_seeded && !self.structures.iter().any(|s| s.ty == ty) {
-                self.structures.push(StructInst { ty, x, z, rot: 0 });
+            if !self.seeded_ids.contains(&id) {
+                if !self.structures.iter().any(|s| s.ty == ty) {
+                    self.structures.push(StructInst { ty, x, z, rot: 0 });
+                }
+                self.seeded_ids.push(id);
             }
         }
         self.fixed_seeded = true;
@@ -885,18 +899,41 @@ mod path_tests {
         let mut v = serde_json::to_value(Project::new()).unwrap();
         let o = v.as_object_mut().unwrap();
         o.remove("fixed_seeded");
+        o.remove("seeded_ids");
         o.insert("types".into(), serde_json::json!([{ "name": "Escape Camp", "id": "winterheart:escape_camp", "w": 48, "d": 48, "color": [255, 120, 40] }]));
         o.insert("structures".into(), serde_json::json!([{ "ty": 0, "x": 0, "z": 400, "rot": 0 }]));
         let mut p: Project = serde_json::from_value(v).unwrap();
         p.migrate();
         let spots: Vec<_> = p.in_game_structures().map(|(t, s)| (t.id.clone(), s.x, s.z)).collect();
-        assert_eq!(spots, vec![("winterheart:watchtower".into(), 0, 400), ("winterheart:shipwreck".into(), 950, 0)]);
+        assert_eq!(
+            spots,
+            vec![("winterheart:watchtower".into(), 0, 400), ("winterheart:shipwreck".into(), 950, 0), ("winterheart:beacon".into(), -1100, 0)]
+        );
         // deleting one after seeding sticks across save/load
         p.structures.retain(|s| p.types[s.ty].id != "winterheart:shipwreck");
         let mut q: Project = serde_json::from_value(serde_json::to_value(&p).unwrap()).unwrap();
         q.migrate();
-        assert_eq!(q.in_game_structures().count(), 1);
-        assert_eq!(q.types.len(), 3);
+        assert_eq!(q.in_game_structures().count(), 2);
+        assert_eq!(q.types.len(), 4);
+    }
+
+    #[test]
+    fn new_built_in_type_seeds_into_an_already_seeded_project() {
+        // saved before the beacon existed: seeded flag set, no per-id list, watchtower moved by hand
+        let mut p = Project::new();
+        let tower = p.types.iter().position(|t| t.id == "winterheart:beacon").unwrap();
+        p.structures.retain(|s| s.ty != tower);
+        p.types.remove(tower);
+        p.structures.iter_mut().filter(|s| p.types[s.ty].id == "winterheart:watchtower").for_each(|s| s.x = 64);
+        let mut v = serde_json::to_value(&p).unwrap();
+        v.as_object_mut().unwrap().remove("seeded_ids");
+        let mut q: Project = serde_json::from_value(v).unwrap();
+        q.migrate();
+        let spots: Vec<_> = q.in_game_structures().map(|(t, s)| (t.id.clone(), s.x, s.z)).collect();
+        assert_eq!(
+            spots,
+            vec![("winterheart:watchtower".into(), 64, 400), ("winterheart:shipwreck".into(), 950, 0), ("winterheart:beacon".into(), -1100, 0)]
+        );
     }
 
     #[test]

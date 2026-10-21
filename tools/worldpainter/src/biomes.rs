@@ -303,11 +303,12 @@ pub fn pick(t: f32, h: f32, c: f32, e: f32, w: f32) -> u8 {
 }
 
 /// Remap warm biomes to snowy equivalents, matching the pack's snowy-only overworld
-/// (frozen oceans, snowy plains/taiga, slopes, groves, peaks).
+/// (frozen and cold oceans, snowy plains/taiga, slopes, groves, peaks).
 pub fn winterize(i: u8) -> u8 {
     match i {
-        b::DEEP_FROZEN_OCEAN | b::DEEP_COLD_OCEAN | b::DEEP_OCEAN | b::DEEP_LUKEWARM_OCEAN => b::DEEP_FROZEN_OCEAN,
-        b::FROZEN_OCEAN | b::COLD_OCEAN | b::OCEAN | b::LUKEWARM_OCEAN | b::WARM_OCEAN | b::MUSHROOM_FIELDS => b::FROZEN_OCEAN,
+        b::DEEP_OCEAN | b::DEEP_LUKEWARM_OCEAN => b::DEEP_COLD_OCEAN,
+        b::OCEAN | b::LUKEWARM_OCEAN | b::WARM_OCEAN => b::COLD_OCEAN,
+        b::MUSHROOM_FIELDS => b::FROZEN_OCEAN,
         b::BEACH => b::SNOWY_BEACH,
         b::RIVER => b::FROZEN_RIVER,
         b::PLAINS | b::SUNFLOWER_PLAINS | b::MEADOW | b::SAVANNA | b::SAVANNA_PLATEAU | b::DESERT | b::BADLANDS | b::WOODED_BADLANDS | b::SWAMP | b::MANGROVE_SWAMP | b::JUNGLE | b::SPARSE_JUNGLE | b::BAMBOO_JUNGLE | b::WINDSWEPT_SAVANNA => b::SNOWY_PLAINS,

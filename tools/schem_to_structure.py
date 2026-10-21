@@ -4,12 +4,25 @@
     python3 tools/schem_to_structure.py config/worldedit/schematics/shipwreck.schem \
         kubejs/data/winterheart/structures/shipwreck.nbt --iceberg
 
+    python3 tools/schem_to_structure.py config/worldedit/schematics/watchtower.schem \
+        kubejs/data/winterheart/structures/beacon.nbt --drop minecraft:stone \
+        --drop notreepunching:stone_loose_rock --drop minecraft:snow@2 --drop aquaculture:neptunium_block \
+        --replace minecraft:iron_block=minecraft:obsidian --keep-inner-air
+
 - Air and water are left out, so placing the template keeps whatever the world has there (air/ocean),
   while every other block overwrites the world.
 - waterlogged=true is cleared: /place template re-waterlogs blocks that land in water and doesn't
   leave stray water sources where they land in air.
 - The template is cropped to its blocks. The waterline (top layer of water, if any) is printed as a
   template-local Y for fixed_structures.js's `waterline`.
+
+--drop ID[@MAXY] (repeatable) leaves out blocks of that id, optionally only at schematic Y <= MAXY: terrain
+the copy caught, e.g. `--drop minecraft:stone --drop minecraft:snow@2`.
+
+--replace FROM=TO (repeatable) swaps one block id for another, keeping block states that still apply.
+
+--keep-inner-air keeps the air enclosed by the build (per layer) and up to 3 blocks of headroom above every
+block, so placing it clears terrain/snow inside and on top of it without cutting a box into the hillside.
 
 --iceberg (for the iceberg shipwreck): drops the ocean's flat surface ice sheet and stray floating ice
 that the copy caught, and re-sculpts the berg below the waterline into a rounded keel (no flat
@@ -153,6 +166,27 @@ def reshape_iceberg(size, blocks, wl):
     return len(berg)
 
 
+def inner_air(blocks, keep, lo, hi):
+    """Air enclosed by the build in each layer (not reachable from the layer's edge), plus headroom air
+    within 3 blocks above any kept block."""
+    out = set()
+    for y in range(lo[1], hi[1] + 1):
+        cells = {(x, z) for x in range(lo[0], hi[0] + 1) for z in range(lo[2], hi[2] + 1) if (x, y, z) not in keep}
+        outside = {c for c in cells if c[0] in (lo[0], hi[0]) or c[1] in (lo[2], hi[2])}
+        stack = list(outside)
+        while stack:
+            cx, cz = stack.pop()
+            for q in ((cx + 1, cz), (cx - 1, cz), (cx, cz + 1), (cx, cz - 1)):
+                if q in cells and q not in outside:
+                    outside.add(q)
+                    stack.append(q)
+        for x, z in cells:
+            if (x, z) not in outside or any((x, y - k, z) in keep for k in (1, 2, 3)):
+                if blocks.get((x, y, z), 'minecraft:air') == 'minecraft:air':
+                    out.add((x, y, z))
+    return out
+
+
 def parse_state(s):
     if '[' not in s:
         return s, {}
@@ -165,6 +199,9 @@ def main():
     ap.add_argument('schem')
     ap.add_argument('out')
     ap.add_argument('--iceberg', action='store_true', help='strip sea ice and re-sculpt the underwater berg')
+    ap.add_argument('--drop', action='append', default=[], metavar='ID[@MAXY]', help='leave out these blocks (terrain)')
+    ap.add_argument('--replace', action='append', default=[], metavar='FROM=TO', help='swap block ids')
+    ap.add_argument('--keep-inner-air', action='store_true', help='keep enclosed air and headroom air')
     args = ap.parse_args()
 
     size, blocks, bes, dv = read_schem(args.schem)
@@ -175,9 +212,33 @@ def main():
         n = reshape_iceberg(size, blocks, wl)
         print(f'reshaped underwater berg: {n} blocks')
 
+    drops = []
+    for d in args.drop:
+        bid, _, maxy = d.partition('@')
+        drops.append((bid, int(maxy) if maxy else None))
+    dropped = 0
+    for p, b in blocks.items():
+        if any(b.split('[')[0] == bid and (maxy is None or p[1] <= maxy) for bid, maxy in drops):
+            blocks[p] = 'minecraft:air'
+            dropped += 1
+    if drops:
+        print(f'dropped {dropped} blocks')
+    for r in args.replace:
+        src, _, dst = r.partition('=')
+        n = 0
+        for p, b in blocks.items():
+            if b.split('[')[0] == src:
+                blocks[p] = dst + b[len(src):]
+                n += 1
+        print(f'replaced {n} {src} -> {dst}')
+
     keep = {p: b for p, b in blocks.items() if b != 'minecraft:air' and not is_water(b)}
     lo = [min(p[i] for p in keep) for i in range(3)]
     hi = [max(p[i] for p in keep) for i in range(3)]
+    if args.keep_inner_air:
+        air = inner_air(blocks, keep, lo, hi)
+        keep.update((p, 'minecraft:air') for p in air)
+        print(f'kept {len(air)} inner/headroom air blocks')
 
     palette, index, plain, with_nbt = [], {}, [], []
     for p, b in keep.items():
@@ -209,6 +270,7 @@ def main():
     }
     nbt.save(args.out, (10, root))
     print(f'{args.out}: size {tsize}, {len(plain) + len(with_nbt)} blocks ({len(with_nbt)} with NBT), palette {len(palette)}')
+    print(f'schematic y {lo[1]} is template y 0')
     if wl is not None:
         print(f'waterline (top water layer): template y = {wl - lo[1]}')
 
