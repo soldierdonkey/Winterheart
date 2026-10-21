@@ -343,6 +343,7 @@ LevelEvents.tick(event => {
     if (level.dimension.toString() !== 'minecraft:overworld' || level.isClientSide()) return
 
     if (global.currentTick % 20 !== 0) return
+    if (global.testMode) return
 
     let data = level.persistentData
     let day = data.getInt('custom_day') || 1
@@ -434,6 +435,7 @@ LevelEvents.tick(event => {
     if (level.dimension.toString() !== 'minecraft:overworld' || level.isClientSide()) return
 
     if (global.currentTick % 80 !== 0) return
+    if (global.testMode) return
 
     let data = level.persistentData
     let day = data.getInt('custom_day') || 1
@@ -568,6 +570,7 @@ LevelEvents.tick(event => {
     let level = event.level
     if (level.dimension.toString() !== 'minecraft:overworld' || level.isClientSide()) return
     if (global.currentTick % 20 !== 0) return
+    if (global.testMode) return
 
     let data = level.persistentData
     let day = data.getInt('custom_day') || 1

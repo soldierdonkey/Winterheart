@@ -160,6 +160,7 @@ LevelEvents.tick(event => {
     if (level.dimension.toString() !== 'minecraft:overworld' || level.isClientSide()) return
 
     global.currentTick++
+    if (global.testMode) return // /toggle_test (utils/test_mode.js)
 
     let data = level.persistentData
     

@@ -11,16 +11,29 @@ const FIXED_STRUCTURES_FILE = 'kubejs/server_scripts/worldgen/fixed_structures.j
 // How each template sits in the world. Templates not listed use DEFAULT_PROFILE.
 //   anchor 'surface': template layer `groundLayers` goes at the ground surface; the volume above is cleared
 //                     and dirt is filled `foundationDepth` deep under it.
+//                     clear: false        don't clear the box (the template carries its own air where needed,
+//                                         see schem_to_structure.py --keep-inner-air), so slopes aren't notched.
+//                     foundation 'columns': instead of a dirt slab under the whole box, every column whose bottom
+//                                         template layer is solid continues down in `foundationBlock` until it
+//                                         meets ground (at most `foundationDepth`), so nothing floats on a slope.
+//   center: [x, z]    template-local point that goes on the target X/Z (default: footprint centre; rotation none).
 //   anchor 'sea':     template layer `waterline` goes at the top water layer (sea level - 1). Nothing is
 //                     cleared: the template leaves out air and water, so the ocean/air stays and its blocks
 //                     overwrite everything else. Ice in the keel (bottom layers) is extended down to the
 //                     sea floor when the floor is at most `groundDepth` blocks below it.
-const DEFAULT_PROFILE = { anchor: 'surface', groundLayers: 0, foundationDepth: 4 }
+const DEFAULT_PROFILE = { anchor: 'surface', groundLayers: 0, foundationDepth: 4, clear: true, foundation: 'fill' }
 const FIXED_STRUCTURE_PROFILES = {
     // the bottom two layers are its dirt/grass ground
     'winterheart:watchtower': { anchor: 'surface', groundLayers: 2, foundationDepth: 6 },
     // built by tools/schem_to_structure.py --iceberg, which prints the waterline
-    'winterheart:shipwreck': { anchor: 'sea', waterline: 14, groundDepth: 10, groundBlock: 'minecraft:packed_ice' }
+    'winterheart:shipwreck': { anchor: 'sea', waterline: 14, groundDepth: 10, groundBlock: 'minecraft:packed_ice' },
+    // summit signal tower, from config/worldedit/schematics/watchtower.schem (see tools/schem_to_structure.py's
+    // docstring for the conversion command); the beacon axis is the target X/Z. The obsidian under the beacon is
+    // swapped for a real base by script later.
+    'winterheart:beacon': {
+        anchor: 'surface', groundLayers: 1, clear: false, foundation: 'columns',
+        foundationDepth: 24, foundationBlock: 'minecraft:cobblestone', center: [15, 11]
+    }
 }
 
 // Worlds made before positions came from the World Painter stored one flag per template.
@@ -94,13 +107,17 @@ function fixedStructureSize(server, s) {
     return s.size
 }
 
-// Rotated footprint (x/z swap on quarter turns) and the world box it covers, centred on the target.
+// Rotated footprint (x/z swap on quarter turns) and the world box it covers, centred on the target
+// (or with the profile's `center` point on it).
 function fixedStructureBox(s, size) {
     const quarter = s.rotation === 'clockwise_90' || s.rotation === 'counterclockwise_90'
     const w = quarter ? size[2] : size[0]
     const d = quarter ? size[0] : size[2]
-    const x1 = s.x - Math.floor(w / 2)
-    const z1 = s.z - Math.floor(d / 2)
+    const c = s.profile.center
+    if (c && s.rotation !== 'none') console.warn(`[FixedStructures] ${s.template}: center ignored for rotation ${s.rotation}`)
+    const useCenter = c && s.rotation === 'none'
+    const x1 = s.x - (useCenter ? c[0] : Math.floor(w / 2))
+    const z1 = s.z - (useCenter ? c[1] : Math.floor(d / 2))
     return { x1: x1, z1: z1, x2: x1 + w - 1, z2: z1 + d - 1 }
 }
 
@@ -180,6 +197,23 @@ function groundFixedStructure(level, box, y0, p) {
     return filled
 }
 
+// Surface anchor, foundation 'columns': continue each solid bottom-layer column down to the ground.
+function columnFoundation(level, box, y0, p) {
+    let filled = 0
+    for (let x = box.x1; x <= box.x2; x++) {
+        for (let z = box.z1; z <= box.z2; z++) {
+            if (level.getBlock(x, y0, z).blockState.canBeReplaced()) continue
+            for (let y = y0 - 1; y >= y0 - p.foundationDepth; y--) {
+                const b = level.getBlock(x, y, z)
+                if (!b.blockState.canBeReplaced()) break
+                b.set(p.foundationBlock)
+                filled++
+            }
+        }
+    }
+    return filled
+}
+
 function fixedStructureLoaded(level, box) {
     return [[box.x1, box.z1], [box.x2, box.z1], [box.x1, box.z2], [box.x2, box.z2]]
         .every(p => level.isLoaded(new BlockPosClass(p[0], 0, p[1])))
@@ -195,8 +229,12 @@ function placeFixedStructure(level, s, size, box) {
     } else {
         y0 = fixedStructureSurface(level, box) - p.groundLayers
         // clear trees/snow inside the volume above the template's ground, then fill gaps under it
-        run(`fill ${box.x1} ${y0 + p.groundLayers} ${box.z1} ${box.x2} ${y0 + size[1] - 1} ${box.z2} minecraft:air`)
-        run(`fill ${box.x1} ${y0 - p.foundationDepth} ${box.z1} ${box.x2} ${y0 - 1} ${box.z2} minecraft:dirt replace #minecraft:replaceable`)
+        if (p.clear) {
+            run(`fill ${box.x1} ${y0 + p.groundLayers} ${box.z1} ${box.x2} ${y0 + size[1] - 1} ${box.z2} minecraft:air`)
+        }
+        if (p.foundation === 'fill') {
+            run(`fill ${box.x1} ${y0 - p.foundationDepth} ${box.z1} ${box.x2} ${y0 - 1} ${box.z2} minecraft:dirt replace #minecraft:replaceable`)
+        }
     }
     const o = fixedStructureOrigin(box, s)
     const ok = run(`place template ${s.template} ${o.x} ${y0} ${o.z} ${s.rotation} none`)
@@ -206,7 +244,9 @@ function placeFixedStructure(level, s, size, box) {
         return
     }
     const fixed = applyFixedStructureFixups(level, s, { x: o.x, y: y0, z: o.z })
-    const grounded = p.anchor === 'sea' && p.groundDepth > 0 ? groundFixedStructure(level, box, y0, p) : 0
+    let grounded = 0
+    if (p.anchor === 'sea' && p.groundDepth > 0) grounded = groundFixedStructure(level, box, y0, p)
+    else if (p.anchor === 'surface' && p.foundation === 'columns') grounded = columnFoundation(level, box, y0, p)
     run(`forceload remove ${box.x1} ${box.z1} ${box.x2} ${box.z2}`)
     level.persistentData.putBoolean(fixedStructureKey(s), true)
     console.log(`[FixedStructures] Placed ${s.template} at ${box.x1} ${y0} ${box.z1} .. ${box.x2} ${y0 + size[1] - 1} ${box.z2} ` +
