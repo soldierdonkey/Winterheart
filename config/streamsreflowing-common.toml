@@ -375,7 +375,7 @@ welcomeMessage = false
 	#that running water would spoil. Clear it to carve everywhere.
 	#Perf: none (it only skips work).
 	#World: safe on an existing world -- applies to chunks generated from now on, no restart needed. Land already generated keeps its current look.
-	streamBiomeBlacklist = "terralith:yellowstone,terrestria:caldera,biomeswevegone:crag_gardens"
+	streamBiomeBlacklist = "terralith:yellowstone,terrestria:caldera,biomeswevegone:crag_gardens,winterheart:spawn_clearing"
 	#
 	#Mobs that must HOLD position in a stream current, whatever the automatic rules decide: a
 	#comma-separated list of entity ids (minecraft:cow, alexsmobs:crocodile). Use it for a modded

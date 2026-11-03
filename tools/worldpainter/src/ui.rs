@@ -129,6 +129,25 @@ impl Ui {
         clicked
     }
 
+    /// A row of on/off buttons; returns true when one was flipped.
+    pub fn row_multi(&mut self, labels: &[&str], on: &mut [bool]) -> bool {
+        let gap = 4.0;
+        let bw = (self.w - gap * (labels.len() as f32 - 1.0)) / labels.len() as f32;
+        let mut changed = false;
+        for (i, l) in labels.iter().enumerate() {
+            let r = Rect::new(self.x + i as f32 * (bw + gap), self.y, bw, 24.0);
+            draw_rectangle(r.x, r.y, r.w, r.h, self.widget_bg(r, on[i]));
+            let tw = measure_text(l, None, 15, 1.0).width;
+            draw_text(l, r.x + (r.w - tw) * 0.5, r.y + 17.0, 15.0, WHITE);
+            if self.pressed && r.contains(self.mouse) {
+                on[i] = !on[i];
+                changed = true;
+            }
+        }
+        self.y += 28.0;
+        changed
+    }
+
     pub fn toggle(&mut self, label: &str, v: &mut bool) -> bool {
         let r = Rect::new(self.x, self.y, self.w, 22.0);
         let b = Rect::new(r.x, r.y + 2.0, 18.0, 18.0);

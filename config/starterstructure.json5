@@ -20,13 +20,13 @@
 	// If entities from (structure block) schematic files should be spawned when found. These are entities not created with signs.
 	"spawnNonSignEntitiesFromSupportedSchematics": true,
 	// If the generatedStructurePosition config options should be used.
-	"shouldUseStructurePosition": false,
+	"shouldUseStructurePosition": true,
 	// The exact x position for the generated structure. Used when shouldUseStructurePosition is enabled.
 	// min: -1E7, max: 1E7
 	"generatedStructureXPosition": 0,
 	// The exact y position for the generated structure. Used when shouldUseStructurePosition is enabled.
 	// min: -1000, max: 1000
-	"generatedStructureYPosition": 0,
+	"generatedStructureYPosition": 67,
 	// The exact z position for the generated structure. Used when shouldUseStructurePosition is enabled.
 	// min: -1E7, max: 1E7
 	"generatedStructureZPosition": 0,
@@ -48,7 +48,7 @@
 	"spawnXCoordinate": 0,
 	// The new Y coordinate of the spawn when shouldUseSpawnCoordinates is enabled.
 	// min: -1000, max: 1000
-	"spawnYCoordinate": 73,
+	"spawnYCoordinate": 67,
 	// The new Z coordinate of the spawn when shouldUseSpawnCoordinates is enabled.
 	// min: -1E7, max: 1E7
 	"spawnZCoordinate": 0,

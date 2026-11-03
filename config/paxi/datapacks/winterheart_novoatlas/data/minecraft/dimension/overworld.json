@@ -1,7 +1,7 @@
 {
   "generator": {
     "biome_source": {
-      "default_biome": "minecraft:deep_frozen_ocean",
+      "default_biome": "minecraft:the_void",
       "map_info": "winterheart:world",
       "type": "novoatlas:color_map"
     },

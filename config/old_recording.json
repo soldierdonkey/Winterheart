@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "baseStrength": 1.3,
+  "baseStrength": 0.3,
   "boostStrength": 2.6,
   "colorGradeStrength": 1.0,
   "sepiaStrength": 0.8,

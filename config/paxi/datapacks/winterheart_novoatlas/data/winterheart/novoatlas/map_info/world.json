@@ -8,8 +8,16 @@
         "color": "#1400FF"
       },
       {
+        "biome": "minecraft:deep_cold_ocean",
+        "color": "#1835FC"
+      },
+      {
         "biome": "minecraft:frozen_ocean",
         "color": "#24D4F3"
+      },
+      {
+        "biome": "minecraft:cold_ocean",
+        "color": "#2809F0"
       },
       {
         "biome": "minecraft:snowy_beach",
@@ -54,6 +62,10 @@
       {
         "biome": "minecraft:stony_peaks",
         "color": "#C41C7B"
+      },
+      {
+        "biome": "winterheart:spawn_clearing",
+        "color": "#D8256C"
       }
     ],
     "map": "winterheart:world"
