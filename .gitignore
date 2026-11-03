@@ -25,12 +25,8 @@ mods/dumpeverything-1.0-SNAPSHOT.jar
 moonlight-global-datapacks/
 patchouli-books/
 
-# 1. Ignore everything inside the folder
-saves/*
-
-# 2. But do not ignore this specific file
-!saves/New World (1)/
-!saves/Build 2/
+# World saves (never tracked)
+saves/
 
 visual_keybinder/
 xaero/
@@ -72,3 +68,37 @@ config/asyncparticles/asyncparticles-mixin.properties
 config/flywheel-client.toml
 nutritionalbalance.data
 streamsreflowing-stall*
+
+# --- Logs, crash dumps, debug output ---
+*.log
+*.log.gz
+hs_err_pid*.log
+replay_pid*.log
+quantified-api.log
+wmd_debug/
+__pycache__/
+*.pyc
+
+# --- Screenshots ---
+screenshots/
+
+# --- Backups (git history covers these) ---
+tacz_backup/
+backups/
+*.bak
+*.backup
+*backup*.zip
+
+# --- Schematics not loaded into a datapack ---
+# Only the templates under kubejs/data/*/structures are used by the game.
+schematics/
+*.litematic
+# Keep only the WorldEdit sources that tools/export_structures.sh needs
+config/worldedit/schematics/*
+!config/worldedit/schematics/watchtower.nbt
+!config/worldedit/schematics/shipwreck.schem
+!config/worldedit/schematics/shipwreck_chest.snbt
+
+# --- Runtime caches ---
+config/QuantifiedAPI/cache/
+config/worldedit/.archive-unpack/
