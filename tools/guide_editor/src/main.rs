@@ -1119,6 +1119,45 @@ fn hand_picker(ui: &mut egui::Ui, hand: &mut String) {
     });
 }
 
+/// Y range, horizontal radius and dimension of the position sweep; every part is optional.
+fn position_fields(ui: &mut egui::Ui, t: &mut Trigger) {
+    ui.horizontal(|ui| {
+        let mut on = t.min_y.is_some();
+        if ui.checkbox(&mut on, "above Y").changed() {
+            t.min_y = on.then_some(64.0);
+        }
+        if let Some(y) = &mut t.min_y {
+            ui.add(egui::DragValue::new(y).range(-64.0..=320.0));
+        }
+        let mut on = t.max_y.is_some();
+        if ui.checkbox(&mut on, "below Y").changed() {
+            t.max_y = on.then_some(t.min_y.unwrap_or(64.0));
+        }
+        if let Some(y) = &mut t.max_y {
+            ui.add(egui::DragValue::new(y).range(-64.0..=320.0));
+        }
+    });
+    ui.horizontal(|ui| {
+        let mut on = t.center.is_some();
+        if ui.checkbox(&mut on, "within").changed() {
+            t.center = on.then_some((0.0, 0.0));
+            t.radius = on.then_some(16.0);
+        }
+        if let Some((x, z)) = &mut t.center {
+            let r = t.radius.get_or_insert(16.0);
+            ui.add(egui::DragValue::new(r).speed(0.5).range(0.5..=100_000.0).suffix(" blocks"));
+            ui.label("of x");
+            ui.add(egui::DragValue::new(x));
+            ui.label("z");
+            ui.add(egui::DragValue::new(z));
+        }
+    });
+    ui.horizontal(|ui| {
+        ui.label("dimension");
+        ui.add(egui::TextEdit::singleline(&mut t.dimension).hint_text("any (e.g. minecraft:the_nether)").desired_width(250.0));
+    });
+}
+
 /// One trigger card. Returns true if it should be removed.
 fn trigger_ui(ui: &mut egui::Ui, t: &mut Trigger, registry: &Registry, pages: &[Page], allow_unknown: bool) -> bool {
     let mut remove = false;
@@ -1225,6 +1264,9 @@ fn trigger_ui(ui: &mut egui::Ui, t: &mut Trigger, registry: &Registry, pages: &[
                     ui.add(egui::DragValue::new(d).speed(0.1).range(0.0..=1000.0).suffix(" damage"));
                 }
             });
+        }
+        if spec.position {
+            position_fields(ui, t);
         }
         if spec.test {
             ui.horizontal(|ui| {

@@ -29,7 +29,7 @@ const GUIDE_CONFIG = {
     CHANNEL_CLOSED: 'winterheart_guide_closed'    // client -> server: the book was closed
 }
 
-const GUIDE_SWEEP_KINDS = ['standing_on', 'standing_in', 'looking_at_block', 'looking_at_entity', 'inventory', 'holding', 'time', 'custom']
+const GUIDE_SWEEP_KINDS = ['standing_on', 'standing_in', 'looking_at_block', 'looking_at_entity', 'inventory', 'holding', 'time', 'position', 'custom']
 const GUIDE_EVENT_KINDS = [
     'block_broken', 'block_placed', 'block_used', 'item_used', 'item_crafted', 'item_smelted',
     'item_picked_up', 'item_eaten', 'entity_killed', 'entity_hurt', 'player_hurt', 'player_died',
@@ -160,6 +160,10 @@ function guideValidate(list, books, pages) {
                 if (t.sweep === 'custom' && typeof t.test !== 'function') problems.push(`${where}: custom sweep needs test`)
                 if (t.sweep === 'inventory' && t.item === undefined) problems.push(`${where}: inventory sweep needs item`)
                 if (t.sweep === 'holding' && t.item === undefined) problems.push(`${where}: holding sweep needs item`)
+                if (t.sweep === 'position' && t.minY === undefined && t.maxY === undefined && t.x === undefined && t.dimension === undefined) {
+                    problems.push(`${where}: position sweep needs minY, maxY, x/z/radius or dimension`)
+                }
+                if (t.sweep === 'position' && (t.x === undefined) !== (t.z === undefined)) problems.push(`${where}: position sweep needs both x and z`)
             } else if (t && t.event) {
                 if (GUIDE_EVENT_KINDS.indexOf(t.event) < 0) problems.push(`${where}: unknown event '${t.event}'`)
             } else {
@@ -431,6 +435,19 @@ function guideRequirementOk(t, player, server) {
     return ok
 }
 
+// position sweep: feet Y within [minY, maxY], horizontally within `radius` of (x, z), in `dimension`; each part optional
+function guideInArea(t, player) {
+    if (t.dimension !== undefined && String(player.level.dimension) !== t.dimension) return false
+    if (t.minY !== undefined && player.y < t.minY) return false
+    if (t.maxY !== undefined && player.y > t.maxY) return false
+    if (t.x !== undefined && t.z !== undefined) {
+        let dx = player.x - t.x, dz = player.z - t.z
+        let r = t.radius === undefined ? 16 : t.radius
+        if (dx * dx + dz * dz > r * r) return false
+    }
+    return true
+}
+
 function guideCountItems(ctx, spec) {
     let total = 0
     ;(ctx.stacks() || []).forEach(s => {
@@ -472,6 +489,9 @@ function guideEvalSweep(t, ctx) {
             result = !!tm && guideMatch(t.match, tm.phase) && guideDayInRange(t, tm.day)
             break
         }
+        case 'position':
+            result = guideInArea(t, ctx.player)
+            break
         case 'inventory':
             result = guideCountItems(ctx, t.item) >= (t.count === undefined ? 1 : t.count)
             break
@@ -489,6 +509,7 @@ function guideSweepSnapshot(ctx) {
     return {
         standingOn: on ? String(on.id) : '-',
         standingIn: inn ? String(inn.id) : '-',
+        position: `${Math.floor(ctx.player.x)} ${Math.floor(ctx.player.y)} ${Math.floor(ctx.player.z)} in ${ctx.level.dimension}`,
         block: r && r.block ? String(r.block.id) : '-',
         entity: r && r.entity ? String(r.entity.type) : '-',
         time: (() => { let tm = ctx.time(); return tm ? `${tm.phase} day ${tm.day}` : '-' })(),

@@ -52,10 +52,12 @@ pub struct KindSpec {
     pub days: bool,
     /// shows the hand picker as a main field (the holding sweep)
     pub hand: bool,
+    /// Y range / horizontal radius / dimension fields (the position sweep)
+    pub position: bool,
 }
 
 const fn spec(name: &'static str, sweep: bool, domain: Domain, field: &'static str, label: &'static str, help: &'static str) -> KindSpec {
-    KindSpec { name, sweep, domain, field, label, help, distance: false, count: false, min_damage: false, by: false, test: false, days: false, hand: false }
+    KindSpec { name, sweep, domain, field, label, help, distance: false, count: false, min_damage: false, by: false, test: false, days: false, hand: false, position: false }
 }
 
 pub static KINDS: &[KindSpec] = &[
@@ -65,6 +67,7 @@ pub static KINDS: &[KindSpec] = &[
     KindSpec { distance: true, ..spec("looking_at_entity", true, Domain::Entity, "match", "Entity", "the mob/entity under the crosshair") },
     KindSpec { count: true, ..spec("inventory", true, Domain::Item, "item", "Item", "stacks in the inventory that add up to a count") },
     KindSpec { hand: true, ..spec("holding", true, Domain::Item, "item", "Item", "the player holds a matching item") },
+    KindSpec { position: true, ..spec("position", true, Domain::None, "", "", "the player is inside an area (Y range, within a radius of x/z, dimension)") },
     KindSpec { days: true, ..spec("time", true, Domain::Phase, "match", "Phase", "the time system is in one of these phases (optionally within a day range)") },
     KindSpec { test: true, ..spec("custom", true, Domain::None, "", "", "a function registered in global.GuideFunctions") },
     spec("block_broken", false, Domain::Block, "match", "Block", "the player breaks a block"),
@@ -173,6 +176,14 @@ pub struct Trigger {
     pub holding: Vec<Matcher>,
     /// which hand: "" (either), "main" or "off"
     pub hand: String,
+    /// position sweep: feet Y bounds (inclusive)
+    pub min_y: Option<f64>,
+    pub max_y: Option<f64>,
+    /// position sweep: horizontal centre (x, z) and radius in blocks
+    pub center: Option<(f64, f64)>,
+    pub radius: Option<f64>,
+    /// position sweep: dimension id ("" = any)
+    pub dimension: String,
     /// unknown keys are carried through untouched
     pub extra: Map<String, Value>,
 }
@@ -193,6 +204,11 @@ impl Trigger {
             where_fn: String::new(),
             holding: vec![],
             hand: String::new(),
+            min_y: None,
+            max_y: None,
+            center: None,
+            radius: None,
+            dimension: String::new(),
             extra: Map::new(),
         }
     }
@@ -212,10 +228,15 @@ impl Trigger {
         t.max_day = obj.get("maxDay").and_then(Value::as_i64);
         t.holding = matchers_from(obj.get("holding"));
         t.hand = obj.get("hand").and_then(Value::as_str).unwrap_or("").to_string();
+        t.min_y = obj.get("minY").and_then(Value::as_f64);
+        t.max_y = obj.get("maxY").and_then(Value::as_f64);
+        t.center = obj.get("x").and_then(Value::as_f64).zip(obj.get("z").and_then(Value::as_f64));
+        t.radius = obj.get("radius").and_then(Value::as_f64);
+        t.dimension = obj.get("dimension").and_then(Value::as_str).unwrap_or("").to_string();
         t.test = obj.get("test").and_then(Value::as_str).unwrap_or("").to_string();
         t.where_fn = obj.get("where").and_then(Value::as_str).unwrap_or("").to_string();
         for (k, val) in obj {
-            if !["sweep", "event", "match", "item", "by", "distance", "count", "minDamage", "minDay", "maxDay", "test", "where", "holding", "hand"].contains(&k.as_str()) {
+            if !["sweep", "event", "match", "item", "by", "distance", "count", "minDamage", "minDay", "maxDay", "test", "where", "holding", "hand", "minY", "maxY", "x", "z", "radius", "dimension"].contains(&k.as_str()) {
                 t.extra.insert(k, val);
             }
         }
@@ -258,6 +279,22 @@ impl Trigger {
             }
             if let Some(d) = self.max_day {
                 o.insert("maxDay".into(), json!(d));
+            }
+        }
+        if spec.is_some_and(|s| s.position) {
+            if let Some(y) = self.min_y {
+                o.insert("minY".into(), json!(y));
+            }
+            if let Some(y) = self.max_y {
+                o.insert("maxY".into(), json!(y));
+            }
+            if let Some((x, z)) = self.center {
+                o.insert("x".into(), json!(x));
+                o.insert("z".into(), json!(z));
+                o.insert("radius".into(), json!(self.radius.unwrap_or(16.0)));
+            }
+            if !self.dimension.is_empty() {
+                o.insert("dimension".into(), json!(self.dimension));
             }
         }
         if let Some(v) = matchers_to(&self.holding) {
@@ -723,6 +760,17 @@ pub fn validate(books: &[Book], pages: &[Page], guides: &[Guide], reg: &Registry
             if spec.days && t.min_day.zip(t.max_day).is_some_and(|(a, b)| a > b) {
                 problems.push(format!("{what}: 'from day' is after 'until day'"));
             }
+            if spec.position {
+                if t.min_y.is_none() && t.max_y.is_none() && t.center.is_none() && t.dimension.is_empty() {
+                    problems.push(format!("{what}: needs a Y range, an area or a dimension"));
+                }
+                if t.min_y.zip(t.max_y).is_some_and(|(a, b)| a > b) {
+                    problems.push(format!("{what}: 'above Y' is higher than 'below Y'"));
+                }
+                if t.center.is_some() && !t.radius.is_some_and(|r| r > 0.0) {
+                    problems.push(format!("{what}: radius must be above 0"));
+                }
+            }
             if spec.count && t.count.is_some_and(|c| c < 1) {
                 problems.push(format!("{what}: count must be at least 1"));
             }
@@ -822,6 +870,25 @@ mod tests {
         assert_eq!(serialize(&b, &pages, &g), serialize(&again.0, &again.1, &again.2));
         let reg = Registry::default();
         assert!(validate(&b, &pages, &g, &reg, false).iter().all(|p| !p.error));
+    }
+
+    #[test]
+    fn position_sweep_round_trips() {
+        let text = r#"{"guides":[{"id":"a","title":"A","book":"guide","content":"x","unlock":[
+            {"sweep":"position","minY":240.0,"x":-1100.0,"z":50.0,"radius":20.0,"dimension":"minecraft:overworld"}]}]}"#;
+        let (b, pages, g) = parse(text).unwrap();
+        let t = &g[0].unlock[0];
+        assert_eq!(t.min_y, Some(240.0));
+        assert_eq!(t.center, Some((-1100.0, 50.0)));
+        assert_eq!(t.radius, Some(20.0));
+        let original: Value = serde_json::from_str(text).unwrap();
+        let written: Value = serde_json::from_str(&serialize(&b, &pages, &g)).unwrap();
+        assert_eq!(original["guides"][0]["unlock"], written["guides"][0]["unlock"]);
+        let reg = Registry::default();
+        assert!(validate(&b, &pages, &g, &reg, false).iter().all(|p| !p.error));
+        let mut g2 = g.clone();
+        g2[0].unlock[0] = Trigger::new(true, "position");
+        assert!(validate(&b, &pages, &g2, &reg, false).iter().any(|p| p.error && p.msg.contains("needs a Y range")));
     }
 
     #[test]

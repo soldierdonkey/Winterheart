@@ -53,7 +53,11 @@ player triggered it. Unlocked ids are stored in the overworld's persistent data 
 
 **Sweeps** run twice a second for every player and stay true while the condition holds:
 `standing_on`, `standing_in`, `looking_at_block`, `looking_at_entity` (both take `distance`), `inventory`
-(`item`, `count`), `holding` (`item`, `hand`), `time` (phase, `minDay`/`maxDay`), `custom` (`test`).
+(`item`, `count`), `holding` (`item`, `hand`), `time` (phase, `minDay`/`maxDay`), `position`, `custom` (`test`).
+
+`position` checks where the player's feet are; every part is optional but at least one is needed:
+`minY`/`maxY` (inclusive), `x` + `z` + `radius` (horizontal distance, a cylinder), and `dimension`.
+Above Y 240 within 20 blocks of -1100, 50: `{ "sweep": "position", "minY": 240, "x": -1100, "z": 50, "radius": 20 }`.
 
 **Events** fire at the moment something happens:
 `block_broken`, `block_placed`, `block_used`, `item_used`, `item_crafted`, `item_smelted`, `item_picked_up`,

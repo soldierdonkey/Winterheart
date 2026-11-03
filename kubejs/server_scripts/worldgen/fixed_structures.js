@@ -30,6 +30,19 @@ const FIXED_STRUCTURES = [
         // The template carries its own air, so no clearing or foundation.
         clearAbove: false,
         foundationDepth: 0
+    },
+    {
+        template: 'winterheart:beacon',
+        // Flat-ish mountain plateau.
+        offsetX: -1100,
+        offsetZ: 50,
+        size: [21, 63, 21],
+        rotation: 'none',
+        // Bottom five layers are the rounded rock mound it was built on; converted with
+        // --keep-world-below 4 --keep-world-block minecraft:air, so the mound's air corners keep the mountain.
+        groundLayers: 5,
+        foundationDepth: 6,
+        foundationBlock: 'minecraft:stone'
     }
 ]
 
@@ -125,7 +138,7 @@ function placeFixedStructure(level, s) {
         run(`fill ${box.x1} ${y0 + (s.groundLayers || 0)} ${box.z1} ${box.x2} ${top} ${box.z2} minecraft:air`)
     }
     if (s.foundationDepth > 0) {
-        run(`fill ${box.x1} ${y0 - s.foundationDepth} ${box.z1} ${box.x2} ${y0 - 1} ${box.z2} minecraft:dirt replace #minecraft:replaceable`)
+        run(`fill ${box.x1} ${y0 - s.foundationDepth} ${box.z1} ${box.x2} ${y0 - 1} ${box.z2} ${s.foundationBlock || 'minecraft:dirt'} replace #minecraft:replaceable`)
     }
     const o = fixedStructureOrigin(box, s)
     const ok = run(`place template ${s.template} ${o.x} ${y0} ${o.z} ${s.rotation} none`)

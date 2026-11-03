@@ -286,6 +286,7 @@ ServerEvents.commandRegistry(event => {
                     feedback(ctx.source, Text.gray('--- [ Sweep probe ] ---'))
                     feedback(ctx.source, Text.aqua(`standing on: ${s.standingOn}`))
                     feedback(ctx.source, Text.aqua(`standing in: ${s.standingIn}`))
+                    feedback(ctx.source, Text.aqua(`position: ${s.position}`))
                     feedback(ctx.source, Text.aqua(`looking at block: ${s.block}`))
                     feedback(ctx.source, Text.aqua(`looking at entity: ${s.entity}`))
                     feedback(ctx.source, Text.aqua(`distance: ${s.distance}`))
