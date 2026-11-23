@@ -6,7 +6,7 @@ Progress = done steps / total steps in the todo file (rough).
 
 | Todo | Added | Progress | File |
 | --- | --- | --- | --- |
-| Remove KubeJS: scripts into seven Winterheart mods and Paxi datapacks | 2026-11-22 | 6/9 | [todo/general-kubejs-removal.md](todo/general-kubejs-removal.md) |
+| Remove KubeJS: scripts into seven Winterheart mods and Paxi datapacks | 2026-11-22 | 7/9 | [todo/general-kubejs-removal.md](todo/general-kubejs-removal.md) |
 
 <!--
 Row template (copy below the header row):

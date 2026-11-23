@@ -20,7 +20,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | winterheart-mod-template | [features/winterheart-mod-template.md](features/winterheart-mod-template.md) | `mod-src/_template/` |
 | mod-publishing | [features/mod-publishing.md](features/mod-publishing.md) | `publish-mods.sh` |
 | time-system | [features/time-system.md](features/time-system.md) | `mod-src/winterheart_time/`, `config/paxi/datapacks/winterheart_time/` |
-| mob-spawning | _todo_ | `kubejs/server_scripts/mechanics/spawning.js` |
+| mob-spawning | [features/mob-spawning.md](features/mob-spawning.md) | `mod-src/winterheart_spawning/`, `config/paxi/datapacks/winterheart_spawning/` |
 | sanity | [features/sanity.md](features/sanity.md) | `mod-src/winterheart_survival/.../sanity/SanityDespawn.java` |
 | limb-poisoning | [features/limb-poisoning.md](features/limb-poisoning.md) | `mod-src/winterheart_survival/.../limb/LimbPoising.java` |
 | proximity-effects | [features/proximity-effects.md](features/proximity-effects.md) | `mod-src/winterheart_survival/.../proximity/Proximity.java`, `config/paxi/datapacks/winterheart_survival/data/winterheart/proximity/rules.json` |

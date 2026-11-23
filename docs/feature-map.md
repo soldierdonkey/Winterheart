@@ -18,6 +18,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | winterheart-guides | `mod-src/winterheart_guides/` (Java, Gradle; JEI plugin). Depends on winterheart-core. | `mods/winterheart_guides-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-time | `mod-src/winterheart_time/` (Java, Gradle). Depends on winterheart-core and winterheart-guides. | `mods/winterheart_time-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-hud | `mod-src/winterheart_hud/` (Java, Gradle). Depends on winterheart-core. | `mods/winterheart_hud-1.0.0.jar` | none (loaded by Forge) |
+| winterheart-spawning | `mod-src/winterheart_spawning/` (Java, Gradle). Depends on winterheart-core. | `mods/winterheart_spawning-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-mod-template | `mod-src/_template/` (placeholders + `new-mod.sh`; scaffolds a mod, `--dev` for a dev-only one). Not a mod itself, no jar. | none | none |
 | mod-publishing | `publish-mods.sh` (builds and uploads every `mod-src/` mod with a `curseforge_project_id`). Not a mod, no jar. | none | `curseforge_project_id` in `mod-src/<mod>/gradle.properties` |
 
@@ -28,7 +29,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | Feature | Path | What it does |
 | --- | --- | --- |
 | time-system | `mod-src/winterheart_time/` (Java), `DP/winterheart_time/data/winterheart/time/config.json` | Custom day counter, sleep-to-pass-day with wake-up effects, eternal night from day 50, the death loop. Tuning in `config.json`. Frozen by `/toggle_test` (test-utils). |
-| mob-spawning | `SS/mechanics/spawning.js` | Scripted mob spawner: mob templates with hitboxes, spawn pools, scripted-only mobs (wendigo). Blocked by `/toggle_test`. |
+| mob-spawning | `mod-src/winterheart_spawning/` (Java), `DP/winterheart_spawning/data/winterheart/spawning/config.json` | Scripted mob spawner: mob templates with hitboxes, spawn pools, scripted-only mobs (wendigo). Blocked by `/toggle_test`. |
 | sanity | `mod-src/winterheart_survival/.../sanity/SanityDespawn.java`, `mod-src/winterheart/.../api/{Sanity,Temperature,Cmd,Titles,Scheduler,Rand}.java`, old JS helpers in `SS/utils/helper_functions.js`, `config/sanitydim/` | Despawns sanity-dimension stalkers once every player is above the threshold. Sanity is 0–100 in scripts, 0–1 in the mod. |
 | seppuku | `mod-src/winterheart_survival/.../sanity/SeppukuTrigger.java` | Plays the seppuku animation (Seppuku mod) once when a player's sanity drops to the threshold. |
 | limb-poisoning | `mod-src/winterheart_survival/.../limb/LimbPoising.java`, `DP/winterheart_survival/data/winterheart/limb_poising/config.json`; the effect itself is in winterheart-core (`mod-src/winterheart/.../effect/ModEffects.java`, `.../textures/mob_effect/limb_poising.png`) | Damaged LSO limbs drift in health (biased random walk) until treated; status effect and HUD section show it. Paused by `legendarysurvivaloverhaul:recovery`. |

@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "description": "Winterheart scripted mob spawner tuning (config.json, applied on /reload)",
+    "pack_format": 15
+  }
+}

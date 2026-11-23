@@ -1,0 +1,166 @@
+{
+  "debug_verbose": true,
+  "audit_log": true,
+  "surface_y": 60,
+  "despawn_radius": 80,
+  "max_spawn_light": 7,
+  "hostile_caps": {
+    "days_1_10": 0,
+    "days_11_20": 6,
+    "days_21_30": 12,
+    "days_31_40": 20,
+    "days_41_50": 32
+  },
+  "livestock_quotas": {
+    "days_1_10": 80,
+    "days_11_20": 20,
+    "days_21_30": 10,
+    "days_31_plus": 0
+  },
+  "hostile_pool_surface": [
+    "enderman",
+    "spider",
+    "stray",
+    "stray",
+    "zombie",
+    "skeleton",
+    "baby_zombie"
+  ],
+  "hostile_pool_cave": [
+    "enderman",
+    "spider",
+    "stray",
+    "zombie",
+    "creeper",
+    "baby_zombie",
+    "cordyceps_zombie",
+    "baby_spider"
+  ],
+  "livestock_pool": [
+    "cow",
+    "sheep",
+    "pig",
+    "chicken",
+    "rabbit",
+    "polar_bear"
+  ],
+  "mob_templates": {
+    "enderman": {
+      "id": "minecraft:enderman",
+      "name": "Enderman",
+      "width": 1,
+      "height": 3
+    },
+    "spider": {
+      "id": "minecraft:spider",
+      "name": "Spider",
+      "width": 2,
+      "height": 1
+    },
+    "skeleton": {
+      "id": "minecraft:skeleton",
+      "name": "Skeleton",
+      "width": 1,
+      "height": 2
+    },
+    "zombie": {
+      "id": "minecraft:zombie",
+      "name": "Zombie",
+      "width": 1,
+      "height": 2
+    },
+    "cordyceps_zombie": {
+      "id": "gore_edition:cordyceps_zombie",
+      "name": "Cordyceps Zombie",
+      "width": 1,
+      "height": 2
+    },
+    "creeper": {
+      "id": "minecraft:creeper",
+      "name": "Creeper",
+      "width": 1,
+      "height": 2
+    },
+    "baby_zombie": {
+      "id": "minecraft:zombie",
+      "name": "Baby Zombie",
+      "width": 1,
+      "height": 1,
+      "baby": true
+    },
+    "baby_spider": {
+      "id": "gore_edition:baby_spider",
+      "name": "Baby Spider",
+      "width": 1,
+      "height": 1
+    },
+    "wendigo": {
+      "id": "antlers:wendigo",
+      "name": "Wendigo",
+      "width": 1,
+      "height": 3
+    }
+  },
+  "livestock_templates": {
+    "cow": {
+      "id": "minecraft:cow",
+      "name": "Cow",
+      "width": 1,
+      "height": 2
+    },
+    "sheep": {
+      "id": "minecraft:sheep",
+      "name": "Sheep",
+      "width": 1,
+      "height": 2
+    },
+    "pig": {
+      "id": "minecraft:pig",
+      "name": "Pig",
+      "width": 1,
+      "height": 2
+    },
+    "chicken": {
+      "id": "minecraft:chicken",
+      "name": "Chicken",
+      "width": 1,
+      "height": 1
+    },
+    "rabbit": {
+      "id": "minecraft:rabbit",
+      "name": "Rabbit",
+      "width": 1,
+      "height": 1
+    },
+    "polar_bear": {
+      "id": "minecraft:polar_bear",
+      "name": "Polar Bear",
+      "width": 2,
+      "height": 2
+    }
+  },
+  "wendigo": {
+    "days": [
+      20,
+      30,
+      35,
+      40,
+      43,
+      46,
+      50
+    ],
+    "types": [
+      "antlers:wendigo",
+      "antlers:wendigomad",
+      "antlers:wendigo_flute"
+    ],
+    "blocked_spawn_types": [
+      "natural",
+      "chunk_generation",
+      "structure",
+      "spawner",
+      "patrol",
+      "reinforcement"
+    ]
+  }
+}
