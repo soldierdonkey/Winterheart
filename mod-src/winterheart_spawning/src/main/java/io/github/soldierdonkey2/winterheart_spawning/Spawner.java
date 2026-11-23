@@ -195,6 +195,21 @@ public final class Spawner {
         WinterheartSpawning.LOGGER.info("[Spawner] Gamerule doMobSpawning locked to false.");
     }
 
+    /**
+     * After `block_livestock_after_day`, no new livestock (the pool's species) enters the overworld: spawns, breeding and
+     * other mods' spawns are cancelled. Animals loaded from saved chunks are left alone.
+     */
+    @SubscribeEvent
+    public static void onLivestockJoin(EntityJoinLevelEvent event) {
+        Entity e = event.getEntity();
+        if (e.level().isClientSide || event.loadedFromDisk() || e.level().dimension() != Level.OVERWORLD || e.level().getServer() == null) return;
+        String id = String.valueOf(ForgeRegistries.ENTITY_TYPES.getKey(e.getType()));
+        boolean livestock = SpawnConfig.livestockPool.stream().map(SpawnConfig.livestock::get).anyMatch(t -> t != null && t.id().equals(id));
+        if (!livestock || day(WorldState.tag(e.level().getServer())) <= SpawnConfig.blockLivestockAfterDay) return;
+        WinterheartSpawning.LOGGER.info("Blocked entity: {} from spawning!", id);
+        event.setCanceled(true);
+    }
+
     /** Audit log of mobs that appear without the spawner (breeding, structures, other mods), and wendigo persistence. */
     @SubscribeEvent
     public static void onEntityJoin(EntityJoinLevelEvent event) {

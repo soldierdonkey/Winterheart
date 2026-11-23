@@ -24,6 +24,7 @@ public final class SpawnConfig {
     public record Template(String key, String id, String name, int width, int height, boolean baby) {}
 
     public static volatile boolean debugVerbose = true, auditLog = true;
+    public static volatile int blockLivestockAfterDay = 30;
     public static volatile int surfaceY = 60, despawnRadius = 80, maxSpawnLight = 7;
     public static volatile int cap1 = 0, cap11 = 6, cap21 = 12, cap31 = 20, cap41 = 32;
     public static volatile int quota1 = 80, quota11 = 20, quota21 = 10;
@@ -54,6 +55,7 @@ public final class SpawnConfig {
     static void apply(JsonObject o) {
         if (o.has("debug_verbose")) debugVerbose = o.get("debug_verbose").getAsBoolean();
         if (o.has("audit_log")) auditLog = o.get("audit_log").getAsBoolean();
+        if (o.has("block_livestock_after_day")) blockLivestockAfterDay = o.get("block_livestock_after_day").getAsInt();
         if (o.has("surface_y")) surfaceY = o.get("surface_y").getAsInt();
         if (o.has("despawn_radius")) despawnRadius = o.get("despawn_radius").getAsInt();
         if (o.has("max_spawn_light")) maxSpawnLight = o.get("max_spawn_light").getAsInt();

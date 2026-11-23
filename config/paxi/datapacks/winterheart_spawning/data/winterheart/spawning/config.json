@@ -1,6 +1,7 @@
 {
   "debug_verbose": true,
   "audit_log": true,
+  "block_livestock_after_day": 30,
   "surface_y": 60,
   "despawn_radius": 80,
   "max_spawn_light": 7,
