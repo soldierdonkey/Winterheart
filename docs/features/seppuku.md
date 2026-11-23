@@ -42,7 +42,7 @@ Build: `cd mod-src/seppuku && JAVA_HOME=<JDK 17 or 21> ./gradlew build`. The `co
 
 ## Changes
 
-- 2026-11-22: Moved the source from the separate `~/Documents/Seppuku` repo (1 commit plus uncommitted README/permission-image changes, copied without history) into `mod-src/seppuku/`. Added the template's `copyJarToMods` task and CurseForge publish block (requires `playeranimator`). Added CHANGELOG.md. `./gradlew build` with Temurin 21 passes. The rebuilt jar has the same entries and contents as the shipped `mods/seppuku-1.0.0.jar`, so the shipped jar was left unchanged.
+- 2026-11-22: Moved the source from the separate `~/Documents/Seppuku` repo (1 commit plus uncommitted README/permission-image changes, copied without history) into `mod-src/seppuku/`. Added the template's `copyJarToMods` task and CurseForge publish block (requires `playeranimator`). Added CHANGELOG.md. `./gradlew build` with Temurin 21 passes. The rebuilt jar has the same entries and contents as the shipped `mods/seppuku-1.0.0.jar`, so the shipped jar was left unchanged. Headless test (`./run-pack.sh --headless --world "Smoke Test"`): world joined in 43 s, no errors from seppuku in `logs/latest.log`.
 
 ## Gotchas
 

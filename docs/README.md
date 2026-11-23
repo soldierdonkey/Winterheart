@@ -34,6 +34,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | world-painter | _todo_ | `tools/worldpainter/` |
 | survival-data | _todo_ | `kubejs/data/minecraft/legendarysurvivaloverhaul/` |
 | mod-configs | _todo_ | `config/` |
+| run-pack | [features/run-pack.md](features/run-pack.md) | `run-pack.sh`, `python/run_pack/` |
 | agent-commands | [features/agent-commands.md](features/agent-commands.md) | `.claude/commands/` |
 
 Rows marked _todo_ have no feature doc yet. Write the doc the next time you touch that feature, and replace _todo_ with a link.

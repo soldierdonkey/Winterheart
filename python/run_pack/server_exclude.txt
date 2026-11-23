@@ -1,0 +1,29 @@
+# Client-only mods left out of server/mods by run-pack.sh --server.
+# One glob per line, matched against the jar file name in mods/. Leave the version out so updates still match.
+# Add a mod here when the dedicated server fails to start because of it, with the reason.
+# See docs/features/run-pack.md#dedicated-server.
+# Renderer (client-only by design)
+embeddium-*
+sodiumdynamiclights-*
+sodiumoptionsapi-*
+entityculling-*
+entity_model_features*
+entity_texture_features*
+# Client UI, camera, menus and cosmetics (client-only by design)
+fancymenu_*
+Controlling-*
+MouseTweaks-*
+KeybindHider-*
+clientsort-*
+BetterThirdPerson-*
+CameraOverhaul-*
+firstperson-forge-*
+tacz-firstperson-compat-*
+notenoughanimations-*
+no_nv_flash-*
+# Client particles and sounds
+BiomeParticleWeather-*
+cavedust-*
+fallingleaves-*
+particle_core-*
+PresenceFootsteps-*
