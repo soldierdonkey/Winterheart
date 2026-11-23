@@ -25,9 +25,9 @@ const DEFAULT_PROFILE = { anchor: 'surface', groundLayers: 0, foundationDepth: 4
 const FIXED_STRUCTURE_PROFILES = {
     // the bottom two layers are its dirt/grass ground
     'winterheart:watchtower': { anchor: 'surface', groundLayers: 2, foundationDepth: 6 },
-    // built by tools/schem_to_structure.py --iceberg, which prints the waterline
+    // built by python/structures/schem_to_structure.py --iceberg, which prints the waterline
     'winterheart:shipwreck': { anchor: 'sea', waterline: 14, groundDepth: 10, groundBlock: 'minecraft:packed_ice' },
-    // summit signal tower, from config/worldedit/schematics/watchtower.schem (see tools/schem_to_structure.py's
+    // summit signal tower, from config/worldedit/schematics/watchtower.schem (see python/structures/schem_to_structure.py's
     // docstring for the conversion command); the beacon axis is the target X/Z. The obsidian under the beacon is
     // swapped for a real base by script later.
     'winterheart:beacon': {
@@ -144,7 +144,7 @@ function fixedStructureSurface(level, box) {
 }
 
 // Connected blocks (e.g. Macaw's bridge corners) get recomputed from their neighbours by /place template.
-// tools/structure_fixups.py writes their saved states to <template>.fixups.json; this writes them back.
+// python/structures/structure_fixups.py writes their saved states to <template>.fixups.json; this writes them back.
 function applyFixedStructureFixups(level, s, origin) {
     const id = s.template.split(':')
     const file = `kubejs/data/${id[0]}/structures/${id[1]}.fixups.json`

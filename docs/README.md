@@ -30,7 +30,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | recipes | _todo_ | `kubejs/server_scripts/recipes/` |
 | tacz-guns | _todo_ | `tacz/` |
 | worldgen | _todo_ | `kubejs/data/*/worldgen/`, `config/paxi/datapacks/winterheart_novoatlas/` |
-| structures | _todo_ | `kubejs/server_scripts/worldgen/fixed_structures.js`, `config/paxi/datapacks/winterheart_structures/` |
+| structures | [features/structures.md](features/structures.md) | `kubejs/server_scripts/worldgen/fixed_structures.js`, `config/paxi/datapacks/winterheart_structures/` |
 | world-painter | _todo_ | `tools/worldpainter/` |
 | survival-data | _todo_ | `kubejs/data/minecraft/legendarysurvivaloverhaul/` |
 | mod-configs | _todo_ | `config/` |
