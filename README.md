@@ -33,6 +33,8 @@ Building one of our own mods (needs JDK 17 or 21; the jar is copied into `mods/`
 cd mod-src/<mod_id> && ./gradlew build
 ```
 
+Build and publish every mod to CurseForge: `./publish-mods.sh` (see [docs/features/mod-publishing.md](docs/features/mod-publishing.md)).
+
 ## Workflow
 
 - We commit directly to `main`; branches and PRs are optional.
