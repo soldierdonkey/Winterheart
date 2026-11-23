@@ -1,6 +1,7 @@
 package io.github.soldierdonkey2.winterheart;
 
 import com.mojang.logging.LogUtils;
+import io.github.soldierdonkey2.winterheart.api.Scheduler;
 import io.github.soldierdonkey2.winterheart.brewing.BrewingChanges;
 import io.github.soldierdonkey2.winterheart.compat.IdRemap;
 import io.github.soldierdonkey2.winterheart.effect.ModEffects;
@@ -31,6 +32,7 @@ public class Winterheart {
 
         MinecraftForge.EVENT_BUS.register(IdRemap.class);
         MinecraftForge.EVENT_BUS.register(SmeltPopOut.class);
+        MinecraftForge.EVENT_BUS.register(Scheduler.class);
         LOGGER.info("{} loaded", MOD_ID);
     }
 }

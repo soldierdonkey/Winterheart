@@ -14,6 +14,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | --- | --- | --- | --- |
 | seppuku | `mod-src/seppuku/` (Java, Gradle, own README/CHANGELOG; animation converter `tools/convert_epicfight.py`). Plays the bad-ending seppuku animation via PlayerAnimator; `/seppuku play\|stop`, `SeppukuApi`. | `mods/seppuku-1.0.0.jar` | `SS/mechanics/sanity_seppuku.js` |
 | winterheart-core | `mod-src/winterheart/` (Java, Gradle, own README/CHANGELOG; `python/core/` generates its item models and lang and draws the metal part textures). Items, `winterheart:limb_poising`, recipe type `winterheart:shapeless_with_remainders`, brewing changes, `kubejs:` ID remap. Other mods and datapacks build on it. | `mods/winterheart-1.0.0.jar` | none (loaded by Forge) |
+| winterheart-survival | `mod-src/winterheart_survival/` (Java, Gradle). Sanity despawn, seppuku trigger, beacon base; limb poisoning and proximity effects follow. Depends on winterheart-core. | `mods/winterheart_survival-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-mod-template | `mod-src/_template/` (placeholders + `new-mod.sh`; scaffolds a mod, `--dev` for a dev-only one). Not a mod itself, no jar. | none | none |
 | mod-publishing | `publish-mods.sh` (builds and uploads every `mod-src/` mod with a `curseforge_project_id`). Not a mod, no jar. | none | `curseforge_project_id` in `mod-src/<mod>/gradle.properties` |
 
@@ -25,11 +26,11 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | --- | --- | --- |
 | time-system | `SS/mechanics/time_system.js` | Custom day counter, sleep-to-pass-day with wake-up effects, eternal night from day 50 (`TIME_CONFIG`). Frozen by `/toggle_test` (test-utils). |
 | mob-spawning | `SS/mechanics/spawning.js` | Scripted mob spawner: mob templates with hitboxes, spawn pools, scripted-only mobs (wendigo). Blocked by `/toggle_test`. |
-| sanity | `SS/mechanics/sanity_despawn.js`, sanity helpers in `SS/utils/helper_functions.js`, `config/sanitydim/` | Despawns sanity-dimension stalkers once every player is above the threshold. Sanity is 0–100 in scripts, 0–1 in the mod. |
-| seppuku | `SS/mechanics/sanity_seppuku.js` | Plays the seppuku animation (Seppuku mod) once when a player's sanity drops to the threshold. |
+| sanity | `mod-src/winterheart_survival/.../sanity/SanityDespawn.java`, `mod-src/winterheart/.../api/{Sanity,Temperature,Cmd,Titles,Scheduler,Rand}.java`, old JS helpers in `SS/utils/helper_functions.js`, `config/sanitydim/` | Despawns sanity-dimension stalkers once every player is above the threshold. Sanity is 0–100 in scripts, 0–1 in the mod. |
+| seppuku | `mod-src/winterheart_survival/.../sanity/SeppukuTrigger.java` | Plays the seppuku animation (Seppuku mod) once when a player's sanity drops to the threshold. |
 | limb-poisoning | `SS/mechanics/limb_poisoning.js`; the effect itself is in winterheart-core (`mod-src/winterheart/.../effect/ModEffects.java`, `.../textures/mob_effect/limb_poising.png`) | Damaged LSO limbs drift in health (biased random walk) until treated; status effect shows it. Paused by `legendarysurvivaloverhaul:recovery`. |
 | proximity-effects | `SS/mechanics/proximity.js`, `DP/winterheart_survival/data/winterheart/tags/blocks/`, `DP/winterheart_survival/data/butchery/tags/blocks/skeletons.json` | Scans blocks around players and shows titles/effects for tagged blocks (`#winterheart:gore`, …). |
-| beacon-base | `SS/mechanics/beacon_base.js` | Right-clicking a beacon turns the 3x3 below it into iron blocks. |
+| beacon-base | `mod-src/winterheart_survival/.../world/BeaconBase.java` | Right-clicking a beacon turns the 3x3 below it into iron blocks. |
 | survival-hud | `SS/mechanics/custom_sidebars.js`, `CS/survival_hud.js`, `ST/survival_hud_render.js`, `kubejs/assets/winterheart/textures/gui/`, `python/survival_hud/` | Top-right survival panel. Server builds lines and sends a `winterheart_hud` packet; client stores them in `global.winterheartHud`; startup script draws the snowy frame. `python/survival_hud/` renders previews and generates the border textures offline. |
 | test-utils | `SS/utils/test_mode.js`, `SS/utils/tests.js` | `/toggle_test` (freeze time at noon, block spawns) and right-click diagnostics items. |
 | (shared) | `SS/utils/helper_functions.js`, `SS/utils/number_counting.js` | Helpers used by several features (sanity/temperature getters and setters, titles, numbers to words). |

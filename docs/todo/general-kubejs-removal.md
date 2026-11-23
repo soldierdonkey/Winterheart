@@ -4,7 +4,7 @@ Remove KubeJS from the pack entirely. Data-only scripts (recipes, tags) become P
 
 - **Feature:** spans several (`recipes`, `tacz-guns`, `proximity-effects`, `time-system`, `mob-spawning`, `sanity`, `seppuku`, `limb-poisoning`, `beacon-base`, `survival-hud`, `test-utils`, `guides`, `structures`)
 - **Added:** 2026-11-22
-- **Progress:** 2/9 (keep in sync with the row in [../TODO.md](../TODO.md))
+- **Progress:** 3/9 (keep in sync with the row in [../TODO.md](../TODO.md))
 
 ## Target layout
 
@@ -46,7 +46,7 @@ Each step is one or more feature-prefixed commits. Each one deletes the scripts 
 
 - [x] 1. Recipes and tags to datapacks (`winterheart_recipes`, proximity tags into `winterheart_survival`)
 - [x] 2. Core mod `winterheart`: registrations, ID remap, brewing, saltpeter leaching + pop-out. Tested the remap on a copy of an old-ID save. The shared sanity/temperature API and test-utils moved to steps 3 and 4 (see Notes).
-- [ ] 3. `winterheart_survival` part 1: beacon-base, sanity despawn, seppuku hook. Needs the shared sanity getter/setter: add it to the core mod here.
+- [x] 3. `winterheart_survival` part 1: beacon-base, sanity despawn, seppuku hook, plus the shared sanity/temperature/title/scheduler API in the core mod.
 - [ ] 4. `winterheart_time`, including the world-state import. Also moves test-utils (`/toggle_test`, diagnostics) and the rest of the shared API (temperature, titles, numbers to words, `global.testMode`/`global.currentTick`) into the core mod.
 - [ ] 5. `winterheart_hud`, then proximity-effects and limb-poisoning into `winterheart_survival`
 - [ ] 6. `winterheart_spawning`
@@ -77,3 +77,5 @@ Each step is one or more feature-prefixed commits. Each one deletes the scripts 
 - 2026-11-22: Item IDs also live inside binary structure templates (`watchtower.nbt`, `shipwreck.nbt`, `Spawn_v2.3.schem`): the registry remap doesn't cover them. `python/structures/remap_item_ids.py` rewrote them and their WorldEdit sources.
 - 2026-11-22: The guide book models (editor output) now live in the Paxi resource pack `config/paxi/resourcepacks/winterheart_assets/`, so the editor workflow (write file, F3+T) keeps working without rebuilding a jar.
 - 2026-11-22: `kubejs/assets/streamsreflowing/lang/` and `kubejs/assets/winterheart/textures/gui/` are still in KubeJS (the former for step 9, the latter for step 5, HUD).
+- 2026-11-22: Plan change: step 7 (guides) goes before steps 4 and 5, because `time_system.js` and `proximity.js` call `global.Guides`, which Java can't. Order from here: 7, 4, 5, 6, 8.
+- 2026-11-22: Testing limit found: the hidden headless client ticks the integrated server only a few times per run (even with `pauseOnLostFocus:false` and ServerPause's `pauseWhenAllPlayersPaused=false`). Handlers are therefore split into event glue + a public logic method that a temporary KubeJS probe calls directly with the joined player. Entities added at login aren't visible to `getAllEntities()` yet. A dedicated server ticks normally but needs the Forge install and the Minecraft EULA (`./run-pack.sh --server`), not done.

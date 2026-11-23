@@ -11,6 +11,7 @@ Our own Forge mod `winterheart` (`mod-src/winterheart/`): the core the other Win
 - `.../effect/ModEffects.java`: `winterheart:limb_poising` (the effect shown by [limb-poisoning](../feature-map.md#mechanics-kubejs)).
 - `.../recipe/ModRecipes.java`, `.../recipe/RemainderShapelessRecipe.java`: recipe type `winterheart:shapeless_with_remainders`.
 - `.../brewing/BrewingChanges.java`: removes every brewing recipe, adds crude nitrate + charred planks → potassium nitrate.
+- `.../api/`: shared helpers for the other Winterheart mods: `Sanity`, `Temperature`, `Titles`, `Cmd` (silent server commands), `Scheduler` (run later), `Rand`. See [sanity](sanity.md).
 - `.../compat/IdRemap.java`: `kubejs:<item>` → `winterheart:<item>` for the five moved items.
 - `mod-src/winterheart/src/main/resources/assets/winterheart/`: `textures/item/*.png`, `textures/mob_effect/limb_poising.png`, `models/item/*.json` and `lang/en_us.json` (the last two generated).
 - `python/core/gen_item_assets.py`: generates the item models and `en_us.json`. Its `ITEMS` and `EXTRA_LANG` tables hold the display names and tooltips.
@@ -49,5 +50,5 @@ Our own Forge mod `winterheart` (`mod-src/winterheart/`): the core the other Win
 
 - The jar is built in `mod-src/winterheart/` and copied to `mods/` (tracked). Rebuild and commit the jar together with Java changes.
 - `METALS`/`PARTS` exist in `ModItems.java` and in `python/core/gen_item_assets.py` (and `python/core/metal_parts.py`, `python/recipes/gen_recipes.py`). Change all of them together.
-- Not yet in this mod (planned for the steps that need them, see the todo): the shared sanity/temperature API and test-utils.
+- Not yet in this mod: test-utils and the rest of the shared API (see the todo).
 - The pop-out finds the furnace by where the player looks, as the old script did. Taking items with shift-click from a furnace the player isn't looking at drops the bottles into the inventory.

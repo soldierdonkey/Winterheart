@@ -14,16 +14,17 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 
 | Feature | Doc | Main path |
 | --- | --- | --- |
-| seppuku | [features/seppuku.md](features/seppuku.md) | `mod-src/seppuku/`, `kubejs/server_scripts/mechanics/sanity_seppuku.js` |
+| seppuku | [features/seppuku.md](features/seppuku.md) | `mod-src/seppuku/`, `mod-src/winterheart_survival/.../sanity/SeppukuTrigger.java` |
 | winterheart-core | [features/winterheart-core.md](features/winterheart-core.md) | `mod-src/winterheart/` |
+| winterheart-survival | _todo_ (see sanity, beacon-base, limb-poisoning, proximity-effects) | `mod-src/winterheart_survival/` |
 | winterheart-mod-template | [features/winterheart-mod-template.md](features/winterheart-mod-template.md) | `mod-src/_template/` |
 | mod-publishing | [features/mod-publishing.md](features/mod-publishing.md) | `publish-mods.sh` |
 | time-system | _todo_ | `kubejs/server_scripts/mechanics/time_system.js` |
 | mob-spawning | _todo_ | `kubejs/server_scripts/mechanics/spawning.js` |
-| sanity | _todo_ | `kubejs/server_scripts/mechanics/sanity_despawn.js` |
+| sanity | [features/sanity.md](features/sanity.md) | `mod-src/winterheart_survival/.../sanity/SanityDespawn.java` |
 | limb-poisoning | _todo_ | `kubejs/server_scripts/mechanics/limb_poisoning.js` |
 | proximity-effects | [features/proximity-effects.md](features/proximity-effects.md) | `kubejs/server_scripts/mechanics/proximity.js` |
-| beacon-base | _todo_ | `kubejs/server_scripts/mechanics/beacon_base.js` |
+| beacon-base | [features/beacon-base.md](features/beacon-base.md) | `mod-src/winterheart_survival/.../world/BeaconBase.java` |
 | survival-hud | [features/survival-hud.md](features/survival-hud.md) | `kubejs/startup_scripts/survival_hud_render.js` |
 | test-utils | _todo_ | `kubejs/server_scripts/utils/test_mode.js` |
 | guides | [README in the scripts folder](../kubejs/server_scripts/questing/guides/README.md) | `kubejs/server_scripts/questing/guides/`, `tools/guide_editor/` |
