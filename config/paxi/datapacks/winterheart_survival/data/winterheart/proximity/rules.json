@@ -1,0 +1,374 @@
+{
+  "_comment": "Proximity rules. A rule fires after its blocks are within `radius` of a player on two scans in a row (every 5 s). `level`: ignore blocks more than one below the player's feet. `overtaken_by`: not fired while one of those rules is also present. Actions run after a random `delay` [min,max] ticks: `chance` (percent, default 100), then one of `sanity` / `temperature` (add), `effect` {id, duration (number or list to pick from), amplifier}, `title` {messages, bold, italic}, `command` ({player} = the player's name).",
+  "radius": 5,
+  "debug": false,
+  "rules": [
+    {
+      "id": "gore",
+      "overtaken_by": [
+        "rotten_gore"
+      ],
+      "tag": "#winterheart:gore",
+      "level": true,
+      "on_once": {
+        "delay": [
+          0,
+          50
+        ],
+        "actions": [
+          {
+            "title": {
+              "messages": [
+                "§2Ew.",
+                "§6The sharp smell of copper and iron fills the air...",
+                "§cYou see a swarm of flies frenzied by their next meal.",
+                "§9Biological matter identified.",
+                "§4The ground is stained a deep, unsettling red.",
+                "§2A grim reminder of the wild's brutality.",
+                "§2Thus is the cycle of life.",
+                "§eYou remember, this will be you one day.",
+                "§cYou still smell traces of violence.",
+                "§2You are disgusted.",
+                "§0You must §k########§r§0 it."
+              ],
+              "bold": true,
+              "italic": true
+            }
+          }
+        ]
+      },
+      "on_repeat": {
+        "delay": [
+          0,
+          50
+        ],
+        "actions": [
+          {
+            "chance": 5,
+            "sanity": -1
+          },
+          {
+            "chance": 2,
+            "effect": {
+              "id": "minecraft:hunger",
+              "duration": 50,
+              "amplifier": 0
+            }
+          },
+          {
+            "chance": 2,
+            "effect": {
+              "id": "minecraft:nausea",
+              "duration": 15,
+              "amplifier": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "rotten_gore",
+      "tag": "#winterheart:rotten_gore",
+      "level": true,
+      "on_once": {
+        "delay": [
+          0,
+          50
+        ],
+        "actions": [
+          {
+            "title": {
+              "messages": [
+                "§2You smell a disgusting odor...",
+                "§2Something's rotting...",
+                "§4The smell of death floats up to your nose.",
+                "§3Your mind can't get over the sight.",
+                "§4You're choking on the smell of death.",
+                "§4Something died here."
+              ],
+              "bold": true,
+              "italic": true
+            }
+          }
+        ]
+      },
+      "on_repeat": {
+        "delay": [
+          0,
+          50
+        ],
+        "actions": [
+          {
+            "chance": 25,
+            "sanity": -1
+          },
+          {
+            "chance": 5,
+            "effect": {
+              "id": "legendarysurvivaloverhaul:headache",
+              "duration": 50,
+              "amplifier": 0
+            }
+          },
+          {
+            "chance": 4,
+            "effect": {
+              "id": "minecraft:nausea",
+              "duration": 20,
+              "amplifier": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "carcass",
+      "overtaken_by": [
+        "rotten_gore",
+        "gore"
+      ],
+      "tag": "#winterheart:carcass",
+      "level": true,
+      "on_once": {
+        "delay": [
+          0,
+          50
+        ],
+        "actions": [
+          {
+            "title": {
+              "messages": [
+                "§2It's only natural.",
+                "§aDon't feel bad about it.",
+                "§fDid that just move?",
+                "§aThe grim harvest sits still in silence.",
+                "§cThe faint, musky scent of leather and bone hangs low."
+              ]
+            }
+          }
+        ]
+      },
+      "on_repeat": {
+        "delay": [
+          0,
+          50
+        ],
+        "actions": [
+          {
+            "chance": 5,
+            "sanity": -1
+          },
+          {
+            "chance": 5,
+            "effect": {
+              "id": "minecraft:hunger",
+              "duration": 100,
+              "amplifier": 0
+            }
+          },
+          {
+            "title": {
+              "messages": [
+                "§0You swear you just saw it move."
+              ],
+              "bold": true,
+              "italic": true
+            },
+            "chance": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "cooking",
+      "tag": "#winterheart:cooking",
+      "on_repeat": {
+        "delay": [
+          0,
+          50
+        ],
+        "actions": [
+          {
+            "chance": 5,
+            "sanity": 1
+          },
+          {
+            "chance": 5,
+            "effect": {
+              "id": "minecraft:saturation",
+              "duration": 2,
+              "amplifier": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "furniture",
+      "tag": "#winterheart:furniture",
+      "on_once": {
+        "delay": [
+          0,
+          50
+        ],
+        "actions": [
+          {
+            "chance": 5,
+            "sanity": 1
+          },
+          {
+            "chance": 5,
+            "effect": {
+              "id": "farmersdelight:comfort",
+              "duration": 200,
+              "amplifier": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "warmth",
+      "tag": "#winterheart:warmth",
+      "on_once": {
+        "delay": [
+          0,
+          50
+        ],
+        "actions": [
+          {
+            "chance": 50,
+            "temperature": 2
+          },
+          {
+            "chance": 5,
+            "sanity": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "foliage",
+      "tag": "#winterheart:foliage",
+      "on_once": {
+        "delay": [
+          0,
+          50
+        ],
+        "actions": [
+          {
+            "chance": 7.5,
+            "sanity": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "diamond_ore",
+      "tag": "#minecraft:diamond_ores",
+      "on_once": {
+        "actions": [
+          {
+            "title": {
+              "messages": [
+                "§3💎§f You feel §o§3powerful§f."
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "lapis_ore",
+      "tag": "#minecraft:lapis_ores",
+      "on_once": {
+        "actions": [
+          {
+            "title": {
+              "messages": [
+                "§1💎§f You feel at §o§1peace§f."
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "redstone_ore",
+      "tag": "#minecraft:redstone_ores",
+      "on_once": {
+        "actions": [
+          {
+            "title": {
+              "messages": [
+                "§4💎§f You feel §o§4energized§f."
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "deepslate",
+      "blocks": [
+        "minecraft:deepslate"
+      ],
+      "level": true,
+      "on_once": {
+        "delay": [
+          0,
+          500
+        ],
+        "actions": [
+          {
+            "title": {
+              "messages": [
+                "§0Something §l§oevil§r§0 emanates from these rocks..."
+              ]
+            }
+          }
+        ]
+      },
+      "on_repeat": {
+        "delay": [
+          0,
+          50
+        ],
+        "actions": [
+          {
+            "chance": 50,
+            "sanity": -2
+          },
+          {
+            "chance": 5,
+            "effect": {
+              "id": "minecraft:blindness",
+              "duration": [
+                10,
+                40,
+                80,
+                100,
+                600
+              ],
+              "amplifier": 0
+            }
+          },
+          {
+            "title": {
+              "messages": [
+                "§0What is that?"
+              ],
+              "bold": true,
+              "italic": true
+            },
+            "chance": 4
+          },
+          {
+            "chance": 2,
+            "command": "execute at {player} run summon whos_there:white_eye"
+          }
+        ]
+      }
+    }
+  ]
+}

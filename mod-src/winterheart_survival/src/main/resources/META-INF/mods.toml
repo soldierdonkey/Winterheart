@@ -32,6 +32,20 @@ versionRange="[1.0.0,)"
 ordering="AFTER"
 side="BOTH"
 
+[[dependencies.${mod_id}]]
+modId="winterheart_guides"
+mandatory=true
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="winterheart_hud"
+mandatory=true
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
+
 # Another mod whose data/behaviour this one overrides: load AFTER it so this jar's data wins.
 # Mark mandatory=false for soft dependencies, and guard code with ModList.isLoaded.
 #[[dependencies.${mod_id}]]

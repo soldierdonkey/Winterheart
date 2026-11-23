@@ -20,7 +20,7 @@ use std::path::{Path, PathBuf};
 const GUIDES_REL: &str = "config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json";
 const PROBE_REL: &str = "kubejs/probe/generated/globals.d.ts";
 const TIME_CONFIG_REL: &str = "config/paxi/datapacks/winterheart_time/data/winterheart/time/config.json";
-const PROXIMITY_REL: &str = "kubejs/server_scripts/mechanics/proximity.js";
+const PROXIMITY_REL: &str = "config/paxi/datapacks/winterheart_survival/data/winterheart/proximity/rules.json";
 const BOOK_TEXTURE: &str = "assets/minecraft/textures/gui/book.png";
 
 // vanilla BookViewScreen geometry, in GUI pixels relative to the book texture's top-left
@@ -56,7 +56,7 @@ fn window_conf() -> Conf {
 }
 
 /// Time phases come from the `phases` table of the time system's config.json (plus ETERNAL_NIGHT, which it uses as a phase too);
-/// proximity rule ids are the `id: '...'` entries in proximity.js. Both are read from the scripts so they never drift.
+/// proximity rule ids are the `id`s in the proximity rules.json. Both are read from the data so they never drift.
 fn script_lists(root: &Path) -> (Vec<String>, Vec<String>) {
     let mut phases = Vec::new();
     if let Ok(text) = std::fs::read_to_string(root.join(TIME_CONFIG_REL)) {
@@ -69,11 +69,12 @@ fn script_lists(root: &Path) -> (Vec<String>, Vec<String>) {
     }
     let mut rules = Vec::new();
     if let Ok(text) = std::fs::read_to_string(root.join(PROXIMITY_REL)) {
-        for line in text.lines() {
-            if let Some(rest) = line.trim().strip_prefix("id:") {
-                let name = rest.trim().trim_end_matches(',').trim().trim_matches(|c| c == '\'' || c == '"');
-                if !name.is_empty() && name.chars().all(|c| c.is_ascii_alphanumeric() || c == '_') {
-                    rules.push(name.to_string());
+        if let Ok(v) = serde_json::from_str::<serde_json::Value>(&text) {
+            if let Some(list) = v.get("rules").and_then(|r| r.as_array()) {
+                for rule in list {
+                    if let Some(id) = rule.get("id").and_then(|i| i.as_str()) {
+                        rules.push(id.to_string());
+                    }
                 }
             }
         }

@@ -51,6 +51,8 @@ dependencies {
 
     // Winterheart mods this one calls (build them first; the jars are in mods/ at runtime)
     compileOnly files('../winterheart/build/classes/java/main')
+    compileOnly files('../winterheart_guides/build/classes/java/main')
+    compileOnly files('../winterheart_hud/build/classes/java/main')
 
     // Add dependencies here. Mods on Modrinth (maven.modrinth) need fg.deobf(...) and the matching
     // `content { includeGroup }` repository above. Optional mods: compileOnly, and touch them only behind

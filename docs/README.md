@@ -22,10 +22,10 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | time-system | [features/time-system.md](features/time-system.md) | `mod-src/winterheart_time/`, `config/paxi/datapacks/winterheart_time/` |
 | mob-spawning | _todo_ | `kubejs/server_scripts/mechanics/spawning.js` |
 | sanity | [features/sanity.md](features/sanity.md) | `mod-src/winterheart_survival/.../sanity/SanityDespawn.java` |
-| limb-poisoning | _todo_ | `kubejs/server_scripts/mechanics/limb_poisoning.js` |
-| proximity-effects | [features/proximity-effects.md](features/proximity-effects.md) | `kubejs/server_scripts/mechanics/proximity.js` |
+| limb-poisoning | [features/limb-poisoning.md](features/limb-poisoning.md) | `mod-src/winterheart_survival/.../limb/LimbPoising.java` |
+| proximity-effects | [features/proximity-effects.md](features/proximity-effects.md) | `mod-src/winterheart_survival/.../proximity/Proximity.java`, `config/paxi/datapacks/winterheart_survival/data/winterheart/proximity/rules.json` |
 | beacon-base | [features/beacon-base.md](features/beacon-base.md) | `mod-src/winterheart_survival/.../world/BeaconBase.java` |
-| survival-hud | [features/survival-hud.md](features/survival-hud.md) | `kubejs/startup_scripts/survival_hud_render.js` |
+| survival-hud | [features/survival-hud.md](features/survival-hud.md) | `mod-src/winterheart_hud/` |
 | test-utils | [features/test-utils.md](features/test-utils.md) | `mod-src/winterheart/.../api/TestMode.java` |
 | guides | [features/guides.md](features/guides.md) | `mod-src/winterheart_guides/`, `config/paxi/datapacks/winterheart_guides/`, `tools/guide_editor/` |
 | quests | _todo_ | `kubejs/server_scripts/questing/quests.js` |
