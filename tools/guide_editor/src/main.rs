@@ -19,7 +19,7 @@ use std::path::{Path, PathBuf};
 
 const GUIDES_REL: &str = "config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json";
 const PROBE_REL: &str = "kubejs/probe/generated/globals.d.ts";
-const TIME_SYSTEM_REL: &str = "kubejs/server_scripts/mechanics/time_system.js";
+const TIME_CONFIG_REL: &str = "config/paxi/datapacks/winterheart_time/data/winterheart/time/config.json";
 const PROXIMITY_REL: &str = "kubejs/server_scripts/mechanics/proximity.js";
 const BOOK_TEXTURE: &str = "assets/minecraft/textures/gui/book.png";
 
@@ -55,27 +55,15 @@ fn window_conf() -> Conf {
     }
 }
 
-/// Time phases come from the PHASES table in time_system.js (plus ETERNAL_NIGHT, which it uses as a phase too);
+/// Time phases come from the `phases` table of the time system's config.json (plus ETERNAL_NIGHT, which it uses as a phase too);
 /// proximity rule ids are the `id: '...'` entries in proximity.js. Both are read from the scripts so they never drift.
 fn script_lists(root: &Path) -> (Vec<String>, Vec<String>) {
     let mut phases = Vec::new();
-    if let Ok(text) = std::fs::read_to_string(root.join(TIME_SYSTEM_REL)) {
-        let mut in_phases = false;
-        for line in text.lines() {
-            let t = line.trim();
-            if t.starts_with("PHASES:") {
-                in_phases = true;
-            } else if in_phases && t.starts_with('}') {
-                in_phases = false;
-            } else if in_phases {
-                if let Some((name, _)) = t.split_once(':') {
-                    if !name.is_empty() && name.chars().all(|c| c.is_ascii_uppercase() || c == '_') {
-                        phases.push(name.to_string());
-                    }
-                }
+    if let Ok(text) = std::fs::read_to_string(root.join(TIME_CONFIG_REL)) {
+        if let Ok(v) = serde_json::from_str::<serde_json::Value>(&text) {
+            if let Some(map) = v.get("phases").and_then(|p| p.as_object()) {
+                phases.extend(map.keys().cloned());
             }
-        }
-        if text.contains("'ETERNAL_NIGHT'") {
             phases.push("ETERNAL_NIGHT".to_string());
         }
     }

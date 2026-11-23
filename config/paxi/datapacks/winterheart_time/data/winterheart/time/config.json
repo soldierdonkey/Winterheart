@@ -1,0 +1,45 @@
+{
+  "debug": false,
+  "debug_interval": 200,
+  "eternal_night_day": 50,
+  "sleep_cooldown": 200,
+  "wake_up": {
+    "enabled": true,
+    "recovery_effect": "legendarysurvivaloverhaul:recovery",
+    "recovery_duration": 700,
+    "recovery_amplifier": 0,
+    "regen_effect": "minecraft:regeneration",
+    "regen_amplifier": 0,
+    "regen_heal_fraction": 0.5,
+    "regen_ticks_per_hp": 50
+  },
+  "midnight_drain": {
+    "enabled": true,
+    "base_rate": 7.5,
+    "doubling_minutes": 2,
+    "max_rate": 50
+  },
+  "speed_intervals": {
+    "day": [0.6, 2.8],
+    "night": [1.2, 0.4]
+  },
+  "phases": {
+    "DAWN": 0,
+    "NOON": 6000,
+    "AFTERNOON": 9000,
+    "DUSK": 12542,
+    "NIGHT": 14000,
+    "MIDNIGHT": 18000
+  },
+  "retained_caps": {
+    "body_damage_": "legendarysurvivaloverhaul:body_damage",
+    "temperature_": "legendarysurvivaloverhaul:temperature",
+    "thirst_": "legendarysurvivaloverhaul:thirst",
+    "health_": "legendarysurvivaloverhaul:health",
+    "wetness_": "legendarysurvivaloverhaul:wetness",
+    "food_": "legendarysurvivaloverhaul:food",
+    "radiation_": "nuclearcraft:radiation",
+    "gore_variables_": "gore_edition:player_variables"
+  },
+  "death_splash": ["FOCUS", "SURVIVE", "OUTLAST", "PERSIST", "PROLIFERATE"]
+}

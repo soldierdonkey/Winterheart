@@ -11,7 +11,7 @@ Our own Forge mod `winterheart` (`mod-src/winterheart/`): the core the other Win
 - `.../effect/ModEffects.java`: `winterheart:limb_poising` (the effect shown by [limb-poisoning](../feature-map.md#mechanics-kubejs)).
 - `.../recipe/ModRecipes.java`, `.../recipe/RemainderShapelessRecipe.java`: recipe type `winterheart:shapeless_with_remainders`.
 - `.../brewing/BrewingChanges.java`: removes every brewing recipe, adds crude nitrate + charred planks → potassium nitrate.
-- `.../api/`: shared helpers for the other Winterheart mods: `Sanity`, `Temperature`, `Titles`, `Cmd` (silent server commands), `Scheduler` (run later), `Rand`. See [sanity](sanity.md).
+- `.../api/`: shared helpers for the other Winterheart mods: `Sanity`, `Temperature`, `Titles`, `Cmd` (silent server commands), `Scheduler` (run later), `Rand`, `Ticks` (overworld tick counter), `Numbers` (number text), `CapBackup` (capability backup/restore in the world state), plus test-utils (`TestMode`, `TestItems`, see [test-utils](test-utils.md)). See [sanity](sanity.md).
 - `.../world/WorldState.java`: world-wide key/value state (`data/winterheart_state.dat`) replacing KubeJS's overworld `persistentData`. On a world's first load it imports `kubejs_persistent_data.nbt` (`minecraft:overworld` compound) under the same key names. `WorldState.tag(server)` to read/write, `WorldState.save(server)` after a write.
 - `.../compat/IdRemap.java`: `kubejs:<item>` → `winterheart:<item>` for the five moved items.
 - `mod-src/winterheart/src/main/resources/assets/winterheart/`: `textures/item/*.png`, `textures/mob_effect/limb_poising.png`, `models/item/*.json` and `lang/en_us.json` (the last two generated).
@@ -51,5 +51,4 @@ Our own Forge mod `winterheart` (`mod-src/winterheart/`): the core the other Win
 
 - The jar is built in `mod-src/winterheart/` and copied to `mods/` (tracked). Rebuild and commit the jar together with Java changes.
 - `METALS`/`PARTS` exist in `ModItems.java` and in `python/core/gen_item_assets.py` (and `python/core/metal_parts.py`, `python/recipes/gen_recipes.py`). Change all of them together.
-- Not yet in this mod: test-utils and the rest of the shared API (see the todo).
 - The pop-out finds the furnace by where the player looks, as the old script did. Taking items with shift-click from a furnace the player isn't looking at drops the bottles into the inventory.

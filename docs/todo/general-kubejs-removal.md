@@ -4,7 +4,7 @@ Remove KubeJS from the pack entirely. Data-only scripts (recipes, tags) become P
 
 - **Feature:** spans several (`recipes`, `tacz-guns`, `proximity-effects`, `time-system`, `mob-spawning`, `sanity`, `seppuku`, `limb-poisoning`, `beacon-base`, `survival-hud`, `test-utils`, `guides`, `structures`)
 - **Added:** 2026-11-22
-- **Progress:** 4/9 (keep in sync with the row in [../TODO.md](../TODO.md))
+- **Progress:** 5/9 (keep in sync with the row in [../TODO.md](../TODO.md))
 
 ## Target layout
 
@@ -47,7 +47,7 @@ Each step is one or more feature-prefixed commits. Each one deletes the scripts 
 - [x] 1. Recipes and tags to datapacks (`winterheart_recipes`, proximity tags into `winterheart_survival`)
 - [x] 2. Core mod `winterheart`: registrations, ID remap, brewing, saltpeter leaching + pop-out. Tested the remap on a copy of an old-ID save. The shared sanity/temperature API and test-utils moved to steps 3 and 4 (see Notes).
 - [x] 3. `winterheart_survival` part 1: beacon-base, sanity despawn, seppuku hook, plus the shared sanity/temperature/title/scheduler API in the core mod.
-- [ ] 4. `winterheart_time`, including the world-state import. Also moves test-utils (`/toggle_test`, diagnostics) and the rest of the shared API (temperature, titles, numbers to words, `global.testMode`/`global.currentTick`) into the core mod.
+- [x] 4. `winterheart_time`, including the world-state import. Also moves test-utils (`/toggle_test`, diagnostics) and the rest of the shared API (temperature, titles, numbers to words, `global.testMode`/`global.currentTick`) into the core mod.
 - [ ] 5. `winterheart_hud`, then proximity-effects and limb-poisoning into `winterheart_survival`
 - [ ] 6. `winterheart_spawning`
 - [x] 7. `winterheart_guides` (+ guide editor path). Done before 4 and 5.
@@ -82,3 +82,4 @@ Each step is one or more feature-prefixed commits. Each one deletes the scripts 
 - 2026-11-22: Step 7 done. Needed `WorldState` in the core: KubeJS's overworld `persistentData` is the file `<world>/kubejs_persistent_data.nbt` (compound `minecraft:overworld`, gzip NBT). `WorldState` imports it once per world and keeps the same key names (`custom_day`, `current_phase`, `winterheart_guides_unlocked`, `fixed_structure_placed:*`, ...), so steps 4, 5, 6 and 8 read their keys unchanged. Entity `persistentData` is Forge's `getPersistentData()` (`ForgeData`), the same in Java.
 - 2026-11-22: The editor still reads `kubejs/probe/generated/globals.d.ts` (valid ids), `time_system.js` (phases) and `proximity.js` (rule ids). Replace these when steps 4, 5 and 9 land.
 - 2026-11-22: `SanityJS`, `Item-Obliterator`-style KubeJS addons: check `mods/` for anything that requires `kubejs` before step 9.
+- 2026-11-22: Step 4 done. `spawning.js` (still JS until step 6) now reads `Ticks.current()` and `TestMode.enabled()` from Java instead of `global.currentTick` / `global.testMode`. Time phases for the guide editor come from the time `config.json`; proximity rule ids still come from `proximity.js` until step 5.

@@ -1,0 +1,146 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'net.darkhax.curseforgegradle' version '1.1.28'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
+
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {}
+
+        server {
+            args '--nogui'
+        }
+    }
+}
+
+repositories {
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content { includeGroup 'maven.modrinth' }
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // Winterheart mods this one calls (build them first; the jars are in mods/ at runtime)
+    compileOnly files('../winterheart/build/classes/java/main')
+    compileOnly files('../winterheart_guides/build/classes/java/main')
+
+    // Add dependencies here. Mods on Modrinth (maven.modrinth) need fg.deobf(...) and the matching
+    // `content { includeGroup }` repository above. Optional mods: compileOnly, and touch them only behind
+    // ModList.isLoaded. Jars in the instance's mods/ folder can be used with
+    // compileOnly fileTree(dir: '../../mods', include: 'SomeMod-*.jar') when no maven has them.
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors: mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : '1',
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : mod_authors,
+        ])
+    }
+    finalizedBy 'reobfJar'
+}
+
+// Copies the reobfuscated jar into the instance's mods/ folder, replacing any older build
+def instanceMods = rootProject.file('../../mods')
+tasks.register('copyJarToMods', Copy) {
+    dependsOn 'reobfJar'
+    from tasks.named('jar').flatMap { it.archiveFile }
+    into instanceMods
+    doFirst {
+        delete fileTree(instanceMods) { include "${mod_id}-*.jar" }
+    }
+}
+tasks.named('build') { finalizedBy 'copyJarToMods' }
+
+// ---- CurseForge publishing (dev-only mods: delete down to the end marker, see README) ----
+// ./gradlew publishCurseForge
+// The API token is never read from this repo: set the CURSEFORGE_TOKEN environment variable, or put
+// curseforge_token=... in your user-level ~/.gradle/gradle.properties.
+// Release notes are read from CHANGELOG.md in this folder when it exists.
+tasks.register('publishCurseForge', net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+    group = 'publishing'
+    description = 'Uploads the reobfuscated jar to CurseForge.'
+    dependsOn 'build'
+
+    def token = providers.environmentVariable('CURSEFORGE_TOKEN')
+            .orElse(providers.gradleProperty('curseforge_token'))
+    def projectId = providers.gradleProperty('curseforge_project_id')
+
+    doFirst {
+        if (!token.isPresent()) {
+            throw new GradleException('No CurseForge token: set CURSEFORGE_TOKEN or curseforge_token in ~/.gradle/gradle.properties')
+        }
+        if (!projectId.isPresent() || projectId.get().isBlank()) {
+            throw new GradleException('Set curseforge_project_id in gradle.properties')
+        }
+    }
+    apiToken = token.getOrElse('')
+
+    if (projectId.isPresent() && !projectId.get().isBlank()) {
+        def file = upload(projectId.get(), tasks.named('jar').flatMap { it.archiveFile })
+        file.displayName = "${mod_name} ${mod_version}"
+        file.releaseType = project.findProperty('curseforge_release_type') ?: 'release'
+        def notes = project.file('CHANGELOG.md')
+        file.changelog = notes.exists() ? notes.text : ''
+        file.changelogType = 'markdown'
+        file.addGameVersion(minecraft_version)
+        file.addModLoader('Forge')
+        file.addJavaVersion('Java 17')
+        file.addEnvironment('Client', 'Server')   // required by CurseForge. Use only 'Client' or 'Server' if the mod is one-sided
+        // file.addRequirement('curseforge-slug')   // required dependencies
+        // file.addOptional('curseforge-slug')      // optional dependencies
+    }
+}
+// ---- end CurseForge publishing ----
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

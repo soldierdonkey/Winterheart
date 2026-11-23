@@ -1,3 +1,7 @@
+// Transitional: the tick counter and /toggle_test moved to the core mod (Java) in the KubeJS removal.
+const WH_TICKS = Java.loadClass('io.github.soldierdonkey2.winterheart.api.Ticks')
+const WH_TEST = Java.loadClass('io.github.soldierdonkey2.winterheart.api.TestMode')
+
 // Priority: 850
 
 const TWO_PI = 6.283185307179586
@@ -342,8 +346,8 @@ LevelEvents.tick(event => {
     let level = event.level
     if (level.dimension.toString() !== 'minecraft:overworld' || level.isClientSide()) return
 
-    if (global.currentTick % 20 !== 0) return
-    if (global.testMode) return
+    if (WH_TICKS.current() % 20 !== 0) return
+    if (WH_TEST.enabled()) return
 
     let data = level.persistentData
     let day = data.getInt('custom_day') || 1
@@ -434,8 +438,8 @@ LevelEvents.tick(event => {
     let level = event.level
     if (level.dimension.toString() !== 'minecraft:overworld' || level.isClientSide()) return
 
-    if (global.currentTick % 80 !== 0) return
-    if (global.testMode) return
+    if (WH_TICKS.current() % 80 !== 0) return
+    if (WH_TEST.enabled()) return
 
     let data = level.persistentData
     let day = data.getInt('custom_day') || 1
@@ -569,8 +573,8 @@ EntityEvents.spawned(event => {
 LevelEvents.tick(event => {
     let level = event.level
     if (level.dimension.toString() !== 'minecraft:overworld' || level.isClientSide()) return
-    if (global.currentTick % 20 !== 0) return
-    if (global.testMode) return
+    if (WH_TICKS.current() % 20 !== 0) return
+    if (WH_TEST.enabled()) return
 
     let data = level.persistentData
     let day = data.getInt('custom_day') || 1
