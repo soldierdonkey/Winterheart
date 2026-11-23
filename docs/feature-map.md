@@ -13,6 +13,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | Feature | Source in repo | Jar | Hooked from |
 | --- | --- | --- | --- |
 | seppuku | not in repo yet (`~/Documents/Seppuku`) | `mods/seppuku-1.0.0.jar` | `SS/mechanics/sanity_seppuku.js` |
+| winterheart-mod-template | `mod-src/_template/` (placeholders + `new-mod.sh`; scaffolds a mod, `--dev` for a dev-only one). Not a mod itself, no jar. | none | none |
 
 ---
 

@@ -10,6 +10,7 @@ Development instance of the **Winterheart** modpack: a cold-survival pack where 
 | `kubejs/data/` | Datapack data loaded by KubeJS (worldgen, structures, survival data). |
 | `config/` | Mod configs. |
 | `config/paxi/` | Datapacks and resource packs loaded through Paxi (load order in `datapack_load_order.json`, `resourcepack_load_order.json`). |
+| `mod-src/` | Source for our own mods. New mods start from `mod-src/_template/new-mod.sh`. |
 | `tacz/` | TACZ gun pack (only pre-1950s guns kept). |
 | `tools/` | Rust apps (`guide_editor`, `worldpainter`) and structure export scripts. |
 | `mods/`, `resourcepacks/`, `shaderpacks/` | Shipped binaries. |
@@ -25,6 +26,12 @@ Not tracked (see [.gitignore](.gitignore)): worlds, logs, crash dumps, launcher 
 1. Clone the repo into a CurseForge instance folder (the repo root is the instance root).
 2. Launch the instance with Forge 47.4.10 on Minecraft 1.20.1.
 3. Edit scripts/configs/data, then reload (`/reload` for server scripts and datapacks, F3+T for client scripts; restart for startup scripts) and test.
+
+Building one of our own mods (needs JDK 17 or 21; the jar is copied into `mods/`):
+
+```sh
+cd mod-src/<mod_id> && ./gradlew build
+```
 
 ## Workflow
 
