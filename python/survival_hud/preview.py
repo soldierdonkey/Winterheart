@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Renders the survival HUD for clear / snow / blizzard weather into tools/hud/preview.png, using the real drawing code
+"""Renders the survival HUD for clear / snow / blizzard weather into python/survival_hud/preview.png, using the real drawing code
 in startup_scripts/survival_hud_render.js and the real textures. No game launch needed.
 
-    python3 kubejs/tools/hud/preview.py            (needs node and Pillow)
+    python3 python/survival_hud/preview.py            (needs node and Pillow)
 
 Edit preview.json to change the title and lines. Colours, sizes, pile heights etc. are the constants at the top of the
 render script; textures come from gen_textures.py. Text uses a stand-in font, so widths are approximate."""
@@ -11,7 +11,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = Path(__file__).resolve().parent
-KUBEJS = HERE.parents[1]
+KUBEJS = HERE.parents[1] / 'kubejs'
 SCRIPT = KUBEJS / 'startup_scripts' / 'survival_hud_render.js'
 ASSETS = KUBEJS / 'assets'
 SCALE = 4

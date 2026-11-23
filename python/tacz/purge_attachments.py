@@ -1,6 +1,9 @@
 import os
 from pathlib import Path
 
+# The TACZ default gun pack, resolved from this file so the script works from any directory
+GUNPACK = Path(__file__).resolve().parents[2] / "tacz" / "tacz_default_gun"
+
 # Approved 1950s, WWII surplus, and vintage attachments
 ALLOWED_ATTACHMENTS = {
     # Ammunition Types
@@ -20,8 +23,8 @@ ALLOWED_ATTACHMENTS = {
 }
 
 TARGET_DIRECTORIES = [
-    Path("data/tacz/index/attachments"),
-    Path("data/tacz/recipes/attachments"),
+    GUNPACK / Path("data/tacz/index/attachments"),
+    GUNPACK / Path("data/tacz/recipes/attachments"),
 ]
 
 

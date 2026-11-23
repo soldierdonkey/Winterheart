@@ -1,6 +1,9 @@
 import os
 from pathlib import Path
 
+# The TACZ default gun pack, resolved from this file so the script works from any directory
+GUNPACK = Path(__file__).resolve().parents[2] / "tacz" / "tacz_default_gun"
+
 # Only authentic 1950s and pre-1950s historical weapons are preserved
 ALLOWED_GUNS = {
     "ak47",
@@ -18,8 +21,8 @@ ALLOWED_GUNS = {
 
 # Directories mapped directly from the TACZ file structure
 TARGET_DIRECTORIES = [
-    Path("tacz/tacz_default_gun/data/tacz/data/guns"),
-    Path("data/tacz/recipes/gun"),
+    GUNPACK / Path("data/tacz/data/guns"),
+    GUNPACK / Path("data/tacz/recipes/gun"),
 ]
 
 

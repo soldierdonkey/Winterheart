@@ -23,12 +23,12 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | limb-poisoning | _todo_ | `kubejs/server_scripts/mechanics/limb_poisoning.js` |
 | proximity-effects | _todo_ | `kubejs/server_scripts/mechanics/proximity.js` |
 | beacon-base | _todo_ | `kubejs/server_scripts/mechanics/beacon_base.js` |
-| survival-hud | _todo_ | `kubejs/startup_scripts/survival_hud_render.js` |
+| survival-hud | [features/survival-hud.md](features/survival-hud.md) | `kubejs/startup_scripts/survival_hud_render.js` |
 | test-utils | _todo_ | `kubejs/server_scripts/utils/test_mode.js` |
 | guides | [README in the scripts folder](../kubejs/server_scripts/questing/guides/README.md) | `kubejs/server_scripts/questing/guides/`, `tools/guide_editor/` |
 | quests | _todo_ | `kubejs/server_scripts/questing/quests.js` |
 | recipes | _todo_ | `kubejs/server_scripts/recipes/` |
-| tacz-guns | _todo_ | `tacz/` |
+| tacz-guns | [features/tacz-guns.md](features/tacz-guns.md) | `tacz/` |
 | worldgen | [features/worldgen.md](features/worldgen.md) | `config/paxi/datapacks/winterheart_worldgen/`, `config/paxi/datapacks/winterheart_novoatlas/` |
 | structures | [features/structures.md](features/structures.md) | `kubejs/server_scripts/worldgen/fixed_structures.js`, `config/paxi/datapacks/winterheart_structures/` |
 | world-painter | _todo_ | `tools/worldpainter/` |

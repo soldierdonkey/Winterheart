@@ -4,8 +4,8 @@
      wood_stubs.png    planks poking out past the frame
      plank_bg.png      dark plank panel background
 
-Edit SETTINGS below, run   python3 kubejs/tools/hud/gen_textures.py   (needs Pillow), then check the result with
-python3 kubejs/tools/hud/preview.py. No game launch needed; restart the game afterwards to load the new PNGs.
+Edit SETTINGS below, run   python3 python/survival_hud/gen_textures.py   (needs Pillow), then check the result with
+python3 python/survival_hud/preview.py. No game launch needed; restart the game afterwards to load the new PNGs.
 VARIANTS must equal HUD_VARIANTS in startup_scripts/survival_hud_render.js (preview.py warns if they differ).
 """
 import random
@@ -29,7 +29,7 @@ SETTINGS = {
     'CRACK_CHANCE': 0.3,
     'SPRINKLE': [0.03, 0.08, 0.14],  # snow speckles clinging to the wood, per snow level
 }
-OUT = Path(__file__).resolve().parents[2] / 'assets' / 'winterheart' / 'textures' / 'gui'
+OUT = Path(__file__).resolve().parents[2] / 'kubejs' / 'assets' / 'winterheart' / 'textures' / 'gui'
 OUT.mkdir(parents=True, exist_ok=True)
 SEED = SETTINGS['SEED']
 

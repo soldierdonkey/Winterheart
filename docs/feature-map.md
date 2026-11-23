@@ -29,7 +29,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | limb-poisoning | `SS/mechanics/limb_poisoning.js`, `ST/effects/limb_poising.js`, `kubejs/assets/winterheart/textures/mob_effect/limb_poising.png` | Damaged LSO limbs drift in health (biased random walk) until treated; status effect shows it. Paused by `legendarysurvivaloverhaul:recovery`. |
 | proximity-effects | `SS/mechanics/proximity.js`, `SS/tags/proximity_tags.js` | Scans blocks around players and shows titles/effects for tagged blocks (`#winterheart:gore`, …). |
 | beacon-base | `SS/mechanics/beacon_base.js` | Right-clicking a beacon turns the 3x3 below it into iron blocks. |
-| survival-hud | `SS/mechanics/custom_sidebars.js`, `CS/survival_hud.js`, `ST/survival_hud_render.js`, `kubejs/assets/winterheart/textures/gui/`, `kubejs/tools/hud/` | Top-right survival panel. Server builds lines and sends a `winterheart_hud` packet; client stores them in `global.winterheartHud`; startup script draws the snowy frame. `kubejs/tools/hud/` renders previews and generates the border textures offline. |
+| survival-hud | `SS/mechanics/custom_sidebars.js`, `CS/survival_hud.js`, `ST/survival_hud_render.js`, `kubejs/assets/winterheart/textures/gui/`, `python/survival_hud/` | Top-right survival panel. Server builds lines and sends a `winterheart_hud` packet; client stores them in `global.winterheartHud`; startup script draws the snowy frame. `python/survival_hud/` renders previews and generates the border textures offline. |
 | test-utils | `SS/utils/test_mode.js`, `SS/utils/tests.js` | `/toggle_test` (freeze time at noon, block spawns) and right-click diagnostics items. |
 | (shared) | `SS/utils/helper_functions.js`, `SS/utils/number_counting.js` | Helpers used by several features (sanity/temperature getters and setters, titles, numbers to words). |
 
@@ -45,7 +45,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | Feature | Path | What it does |
 | --- | --- | --- |
 | recipes | `SS/recipes/` (`equipment`, `gunpowder`, `metal_parts`, `potions`, `recipe_fixes`, `saltpeter`, `sponge`), `ST/items/{metal_parts,saltpeter}.js`, `ST/recipes/potions.js`, `kubejs/assets/winterheart/textures/item/` (+ `metal_parts.py`), `kubejs/assets/winterheart/lang/en_us.json` | Recipe overrides and the custom item chains: metal parts (gears, plates, rods…), saltpeter leaching → gunpowder, early potions, moss → sponge. |
-| tacz-guns | `SS/recipes/guns.js`, `tacz/` (`tacz-pre.toml`, `tacz_default_gun/`, `.export-state.json`), `config/tacz-*.toml` | TACZ gun pack trimmed to pre-1950s weapons (`tacz_default_gun/remove*.py`) and their crafting recipes. |
+| tacz-guns | `SS/recipes/guns.js`, `tacz/` (`tacz-pre.toml`, `tacz_default_gun/`, `.export-state.json`), `python/tacz/purge_{guns,attachments,ammo}.py`, `config/tacz-*.toml` | TACZ gun pack trimmed to pre-1950s weapons (by the purge scripts) and their gunsmith recipes. |
 
 ## World
 
