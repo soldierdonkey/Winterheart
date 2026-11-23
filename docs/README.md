@@ -15,6 +15,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | Feature | Doc | Main path |
 | --- | --- | --- |
 | seppuku | [features/seppuku.md](features/seppuku.md) | `mod-src/seppuku/`, `kubejs/server_scripts/mechanics/sanity_seppuku.js` |
+| winterheart-core | [features/winterheart-core.md](features/winterheart-core.md) | `mod-src/winterheart/` |
 | winterheart-mod-template | [features/winterheart-mod-template.md](features/winterheart-mod-template.md) | `mod-src/_template/` |
 | mod-publishing | [features/mod-publishing.md](features/mod-publishing.md) | `publish-mods.sh` |
 | time-system | _todo_ | `kubejs/server_scripts/mechanics/time_system.js` |

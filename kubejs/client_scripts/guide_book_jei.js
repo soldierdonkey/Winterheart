@@ -1,5 +1,5 @@
 // Lists every guide book from guides.json in JEI, each with its own name, tooltip and texture.
-// All books share the item kubejs:guide_book and differ only by NBT (see guides_engine.js, guideMakeBookItem),
+// All books share the item winterheart:guide_book and differ only by NBT (see guides_engine.js, guideMakeBookItem),
 // so JEI is told to treat the 'guidebook' tag as part of the item's identity.
 //
 // This runs on the client, so it reads guides.json from the local instance. On a dedicated server the clients
@@ -34,9 +34,9 @@ function guideJeiReadPages() {
 }
 
 JEIEvents.subtypes(event => {
-    event.useNBTKey('kubejs:guide_book', 'guidebook')
-    event.useNBTKey('kubejs:lost_page', 'lostpage')
-    console.info('[Guides] JEI: registered NBT subtype keys for kubejs:guide_book and kubejs:lost_page')
+    event.useNBTKey('winterheart:guide_book', 'guidebook')
+    event.useNBTKey('winterheart:lost_page', 'lostpage')
+    console.info('[Guides] JEI: registered NBT subtype keys for winterheart:guide_book and winterheart:lost_page')
 })
 
 JEIEvents.addItems(event => {
@@ -48,7 +48,7 @@ JEIEvents.addItems(event => {
         if (book.tooltip) display.Lore = [JSON.stringify({ text: book.tooltip, italic: false, color: 'gray' })]
         let nbt = { guidebook: book.id, display: display }
         if (book.texture && typeof book.model === 'number') nbt.CustomModelData = book.model
-        event.add(Item.of('kubejs:guide_book', nbt))
+        event.add(Item.of('winterheart:guide_book', nbt))
         console.info(`[Guides] JEI: added '${book.id}'`)
     })
 
@@ -56,7 +56,7 @@ JEIEvents.addItems(event => {
         if (typeof page.id !== 'string' || typeof page.name !== 'string') return
         let display = { Name: JSON.stringify({ text: page.name, italic: false }) }
         if (page.tooltip) display.Lore = [JSON.stringify({ text: page.tooltip, italic: false, color: 'gray' })]
-        event.add(Item.of('kubejs:lost_page', { lostpage: page.id, display: display }))
+        event.add(Item.of('winterheart:lost_page', { lostpage: page.id, display: display }))
         console.info(`[Guides] JEI: added lost page '${page.id}'`)
     })
 })

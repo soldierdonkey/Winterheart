@@ -244,7 +244,7 @@
           "sweep": "inventory",
           "item": [
             "butchery:sulfur",
-            "kubejs:saltpeter",
+            "winterheart:saltpeter",
             "#minecraft:coals"
           ],
           "count": 2
@@ -297,9 +297,9 @@
             "farmersdelight:tree_bark",
             "overweight_farming:vegetable_compost",
             "overweight_farming:vegetable_peels",
-            "kubejs:crude_nitrate_bottle",
-            "kubejs:potassium_nitrate_bottle",
-            "kubejs:saltpeter"
+            "winterheart:crude_nitrate_bottle",
+            "winterheart:potassium_nitrate_bottle",
+            "winterheart:saltpeter"
           ]
         }
       ]

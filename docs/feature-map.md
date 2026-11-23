@@ -13,6 +13,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | Feature | Source in repo | Jar | Hooked from |
 | --- | --- | --- | --- |
 | seppuku | `mod-src/seppuku/` (Java, Gradle, own README/CHANGELOG; animation converter `tools/convert_epicfight.py`). Plays the bad-ending seppuku animation via PlayerAnimator; `/seppuku play\|stop`, `SeppukuApi`. | `mods/seppuku-1.0.0.jar` | `SS/mechanics/sanity_seppuku.js` |
+| winterheart-core | `mod-src/winterheart/` (Java, Gradle, own README/CHANGELOG; `python/core/` generates its item models and lang and draws the metal part textures). Items, `winterheart:limb_poising`, recipe type `winterheart:shapeless_with_remainders`, brewing changes, `kubejs:` ID remap. Other mods and datapacks build on it. | `mods/winterheart-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-mod-template | `mod-src/_template/` (placeholders + `new-mod.sh`; scaffolds a mod, `--dev` for a dev-only one). Not a mod itself, no jar. | none | none |
 | mod-publishing | `publish-mods.sh` (builds and uploads every `mod-src/` mod with a `curseforge_project_id`). Not a mod, no jar. | none | `curseforge_project_id` in `mod-src/<mod>/gradle.properties` |
 
@@ -26,7 +27,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | mob-spawning | `SS/mechanics/spawning.js` | Scripted mob spawner: mob templates with hitboxes, spawn pools, scripted-only mobs (wendigo). Blocked by `/toggle_test`. |
 | sanity | `SS/mechanics/sanity_despawn.js`, sanity helpers in `SS/utils/helper_functions.js`, `config/sanitydim/` | Despawns sanity-dimension stalkers once every player is above the threshold. Sanity is 0–100 in scripts, 0–1 in the mod. |
 | seppuku | `SS/mechanics/sanity_seppuku.js` | Plays the seppuku animation (Seppuku mod) once when a player's sanity drops to the threshold. |
-| limb-poisoning | `SS/mechanics/limb_poisoning.js`, `ST/effects/limb_poising.js`, `kubejs/assets/winterheart/textures/mob_effect/limb_poising.png` | Damaged LSO limbs drift in health (biased random walk) until treated; status effect shows it. Paused by `legendarysurvivaloverhaul:recovery`. |
+| limb-poisoning | `SS/mechanics/limb_poisoning.js`; the effect itself is in winterheart-core (`mod-src/winterheart/.../effect/ModEffects.java`, `.../textures/mob_effect/limb_poising.png`) | Damaged LSO limbs drift in health (biased random walk) until treated; status effect shows it. Paused by `legendarysurvivaloverhaul:recovery`. |
 | proximity-effects | `SS/mechanics/proximity.js`, `DP/winterheart_survival/data/winterheart/tags/blocks/`, `DP/winterheart_survival/data/butchery/tags/blocks/skeletons.json` | Scans blocks around players and shows titles/effects for tagged blocks (`#winterheart:gore`, …). |
 | beacon-base | `SS/mechanics/beacon_base.js` | Right-clicking a beacon turns the 3x3 below it into iron blocks. |
 | survival-hud | `SS/mechanics/custom_sidebars.js`, `CS/survival_hud.js`, `ST/survival_hud_render.js`, `kubejs/assets/winterheart/textures/gui/`, `python/survival_hud/` | Top-right survival panel. Server builds lines and sends a `winterheart_hud` packet; client stores them in `global.winterheartHud`; startup script draws the snowy frame. `python/survival_hud/` renders previews and generates the border textures offline. |
@@ -37,14 +38,14 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 
 | Feature | Path | What it does |
 | --- | --- | --- |
-| guides | `SS/questing/guides/` (`guides.json`, `guides_engine.js`, `guides_commands.js`, `README.md`), `CS/guide_book_jei.js`, `CS/guide_book_watcher.js`, `ST/items/guide_book.js`, `ST/items/lost_page.js`, `kubejs/assets/kubejs/models/item/guide_book*.json`, `tools/guide_editor/` | Trigger-based guide pop-up books and lost journal pages. `guides.json` is edited with the Rust guide editor and hot-reloaded. Full reference: `SS/questing/guides/README.md`. |
+| guides | `SS/questing/guides/` (`guides.json`, `guides_engine.js`, `guides_commands.js`, `README.md`), `CS/guide_book_jei.js`, `CS/guide_book_watcher.js`, `tools/guide_editor/`; the items are in winterheart-core (`mod-src/winterheart/.../item/ModItems.java`), the book models in `config/paxi/resourcepacks/winterheart_assets/assets/winterheart/models/item/guide_book*.json` | Trigger-based guide pop-up books and lost journal pages. `guides.json` is edited with the Rust guide editor and hot-reloaded. Full reference: `SS/questing/guides/README.md`. |
 | quests | `SS/questing/quests.js` | Placeholder (empty). |
 
 ## Recipes and items
 
 | Feature | Path | What it does |
 | --- | --- | --- |
-| recipes | `DP/winterheart_recipes/` (generated, except gunsmith recipes), `python/recipes/gen_recipes.py`, `SS/recipes/saltpeter.js` (leaching recipe + bottle pop-out), `ST/items/{metal_parts,saltpeter}.js`, `ST/recipes/potions.js`, `kubejs/assets/winterheart/textures/item/` (+ `metal_parts.py`), `kubejs/assets/winterheart/lang/en_us.json` | Recipe overrides and the custom item chains: metal parts (gears, plates, rods…), saltpeter leaching → gunpowder, early potions, moss → sponge. |
+| recipes | `DP/winterheart_recipes/` (generated, except gunsmith recipes), `python/recipes/gen_recipes.py`, and the items, textures, brewing, leaching recipe type and bottle pop-out from winterheart-core (`mod-src/winterheart/`, `python/core/`) | Recipe overrides and the custom item chains: metal parts (gears, plates, rods…), saltpeter leaching → gunpowder, early potions, moss → sponge. |
 | tacz-guns | `python/tacz/gen_gunsmith_recipes.py` → `DP/winterheart_recipes/data/winterheart/recipes/tacz_workbench/` + `DP/winterheart_recipes/data/tacz/recipes/gun_smith_table.json`, `tacz/` (`tacz-pre.toml`, `tacz_default_gun/`, `.export-state.json`), `python/tacz/purge_{guns,attachments,ammo}.py`, `config/tacz-*.toml` | TACZ gun pack trimmed to pre-1950s weapons (by the purge scripts) and their gunsmith recipes. |
 
 ## World

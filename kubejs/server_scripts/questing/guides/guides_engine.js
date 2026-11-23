@@ -65,7 +65,7 @@ function guideBooks() {
     return Array.isArray(global.GUIDE_BOOKS) && global.GUIDE_BOOKS.length > 0 ? global.GUIDE_BOOKS : [{ id: 'guide', name: 'Guide Book' }]
 }
 
-// Lost pages: dummy items (kubejs:lost_page) tagged with `lostpage: "<id>"`, defined by the "pages" list in guides.json.
+// Lost pages: dummy items (winterheart:lost_page) tagged with `lostpage: "<id>"`, defined by the "pages" list in guides.json.
 function guideLostPages() {
     return Array.isArray(global.GUIDE_LOST_PAGES) ? global.GUIDE_LOST_PAGES : []
 }
@@ -309,7 +309,7 @@ guideCheckDataFile(null, true)
 function guideMatch(spec, id, hasTag, stack) {
     if (spec === undefined || spec === null || spec === '*') return true
     if (Array.isArray(spec)) return spec.some(s => guideMatch(s, id, hasTag, stack))
-    // { page: 'id' } matches a kubejs:lost_page stack carrying that page id in its NBT
+    // { page: 'id' } matches a winterheart:lost_page stack carrying that page id in its NBT
     if (typeof spec === 'object' && !(spec instanceof RegExp) && typeof spec.page === 'string') return guideIsLostPage(stack, spec.page)
     if (typeof spec === 'function') return !!spec(id)
     if (spec instanceof RegExp) return spec.test(id)
@@ -322,7 +322,7 @@ function guideMatch(spec, id, hasTag, stack) {
 
 function guideIsLostPage(stack, pageId) {
     try {
-        if (!stack || String(stack.id) !== 'kubejs:lost_page' || !stack.nbt) return false
+        if (!stack || String(stack.id) !== 'winterheart:lost_page' || !stack.nbt) return false
         return String(stack.nbt.getString('lostpage')) === pageId
     } catch (e) {
         return false
@@ -820,14 +820,14 @@ function guideMakeBookItem(book) {
     let nbt = { guidebook: book.id, display: display }
     // a textured book selects its item model (written by the guide editor) via CustomModelData
     if (book.texture && typeof book.model === 'number') nbt.CustomModelData = book.model
-    return Item.of('kubejs:guide_book', nbt)
+    return Item.of('winterheart:guide_book', nbt)
 }
 
 // A lost page item: one shared item id, tagged with the page id, named from the JSON.
 function guideMakeLostPageItem(page) {
     let display = { Name: JSON.stringify({ text: page.name, italic: false }) }
     if (page.tooltip) display.Lore = [JSON.stringify({ text: page.tooltip, italic: false, color: 'gray' })]
-    return Item.of('kubejs:lost_page', { lostpage: page.id, display: display })
+    return Item.of('winterheart:lost_page', { lostpage: page.id, display: display })
 }
 
 // ==========================================
@@ -943,7 +943,7 @@ PlayerEvents.loggedOut(event => {
     if (guideRT.popupActive && guideViewerCount() === 0) guideFinishPopup(event.server)
 })
 
-ItemEvents.rightClicked('kubejs:guide_book', event => {
+ItemEvents.rightClicked('winterheart:guide_book', event => {
     let tag = event.item.nbt
     let bookId = tag && tag.contains('guidebook') ? String(tag.getString('guidebook')) : null
     guideOpenFullBook(event.player, event.hand, false, bookId)

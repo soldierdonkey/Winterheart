@@ -515,7 +515,7 @@ pub fn assign_models(books: &mut [Book]) {
 
 // ---------------------------------------------------------------- lost pages
 
-/// A lost page is an item (kubejs:lost_page) tagged with its id; triggers can match it by `{ "page": id }`.
+/// A lost page is an item (winterheart:lost_page) tagged with its id; triggers can match it by `{ "page": id }`.
 #[derive(Clone)]
 pub struct Page {
     pub id: String,
@@ -555,7 +555,7 @@ impl Page {
 }
 
 /// Item model JSON for the guide book item: the default texture plus one override per textured book.
-/// Returns (file name, contents) pairs for kubejs/assets/kubejs/models/item/. Files carry a marker key so
+/// Returns (file name, contents) pairs for config/paxi/resourcepacks/winterheart_assets/assets/winterheart/models/item/. Files carry a marker key so
 /// the editor only ever deletes files it generated itself.
 pub fn model_files(books: &[Book]) -> Vec<(String, String)> {
     let mut out = Vec::new();
@@ -565,7 +565,7 @@ pub fn model_files(books: &[Book]) -> Vec<(String, String)> {
     }
     let overrides: Vec<Value> = textured
         .iter()
-        .map(|b| json!({ "predicate": { "custom_model_data": b.model }, "model": format!("kubejs:item/guide_book_{}", b.id) }))
+        .map(|b| json!({ "predicate": { "custom_model_data": b.model }, "model": format!("winterheart:item/guide_book_{}", b.id) }))
         .collect();
     let base = json!({
         "_generated_by": MODEL_MARKER,

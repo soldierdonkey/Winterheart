@@ -128,7 +128,7 @@ fn write_atomic(path: &Path, text: &str) -> std::io::Result<()> {
     std::fs::rename(&tmp, path)
 }
 
-const MODELS_REL: &str = "kubejs/assets/kubejs/models/item";
+const MODELS_REL: &str = "config/paxi/resourcepacks/winterheart_assets/assets/winterheart/models/item";
 
 /// Writes the item model files for textured books and removes ones this editor generated earlier but no
 /// longer needs. Returns true if anything on disk changed (the game then needs F3+T to see new textures).
@@ -567,7 +567,7 @@ impl App {
                         if !valid {
                             edit = edit.text_color(RED);
                         }
-                        let resp = ui.add(edit).on_hover_text("Item texture, e.g. minecraft:item/enchanted_book. Your own PNGs go in kubejs/assets/<namespace>/textures/item/.");
+                        let resp = ui.add(edit).on_hover_text("Item texture, e.g. minecraft:item/enchanted_book. Your own PNGs go in config/paxi/resourcepacks/winterheart_assets/assets/<namespace>/textures/item/.");
                         autocomplete(ui, &resp, &mut book.texture, key, registry);
                         ui.end_row();
                     });
@@ -581,7 +581,7 @@ impl App {
             ui.separator();
 
             ui.collapsing("Lost pages", |ui| {
-                ui.small("Items (kubejs:lost_page) a trigger can match with 'lost page'. Get one with /guides page <id>.");
+                ui.small("Items (winterheart:lost_page) a trigger can match with 'lost page'. Get one with /guides page <id>.");
                 let mut remove = None;
                 for (i, p) in self.pages.iter_mut().enumerate() {
                     ui.push_id(("lost_page", i), |ui| {

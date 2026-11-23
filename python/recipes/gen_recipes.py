@@ -171,12 +171,22 @@ def build():
 
     # Gunpowder from saltpeter, sulfur and coal
     out["winterheart:gunpowder_from_saltpeter"] = shapeless(
-        "minecraft:gunpowder", ["kubejs:saltpeter"] * 6 + ["butchery:sulfur"] + ["#minecraft:coals"] * 2, 16
+        "minecraft:gunpowder", ["winterheart:saltpeter"] * 6 + ["butchery:sulfur"] + ["#minecraft:coals"] * 2, 16
     )
+
+    # Leaching rich soil with purified water; the soil turns into dirt (needs the core mod's recipe type)
+    leach = shapeless(
+        "winterheart:crude_nitrate_bottle",
+        ["farmersdelight:rich_soil"] + ["legendarysurvivaloverhaul:purified_water_bottle"] * 4,
+        4,
+    )
+    leach["type"] = "winterheart:shapeless_with_remainders"
+    leach["remainders"] = {"farmersdelight:rich_soil": "minecraft:dirt"}
+    out["winterheart:crude_nitrate_from_rich_soil"] = leach
 
     # Boiling the potassium nitrate solution down to saltpeter crystals
     out["winterheart:saltpeter_from_smelting"] = cooking(
-        "smelting", "kubejs:saltpeter", "kubejs:potassium_nitrate_bottle", 0.2, 200
+        "smelting", "winterheart:saltpeter", "winterheart:potassium_nitrate_bottle", 0.2, 200
     )
 
     # Logs -> charcoal on a campfire

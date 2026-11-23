@@ -11,8 +11,8 @@ everything they have unlocked with a guide book item.
 | `guides/guides.json` | All data: books, guides (pages) and their unlock triggers. Edited with the editor. |
 | `guides/guides_engine.js` | Loads the JSON, evaluates triggers, opens books, handles the pause. |
 | `guides/guides_commands.js` | `/guides ...` debug and admin commands. |
-| `startup_scripts/items/guide_book.js` | Registers the item `kubejs:guide_book`. |
-| `startup_scripts/items/lost_page.js` | Registers the item `kubejs:lost_page`. |
+| `startup_scripts/items/guide_book.js` | Registers the item `winterheart:guide_book`. |
+| `startup_scripts/items/lost_page.js` | Registers the item `winterheart:lost_page`. |
 | `client_scripts/guide_book_watcher.js` | Tells the server when the popup book is closed. |
 | `client_scripts/guide_book_jei.js` | Lists each book in JEI. |
 | `tools/guide_editor/` | Rust/macroquad editor for `guides.json`. |
@@ -76,7 +76,7 @@ Damage types match either the message id (`inFire`) or the registry id (`minecra
 
 ## Books and items
 
-All books share one item, `kubejs:guide_book`. The item's NBT carries `guidebook: "<book id>"`, and its name and
+All books share one item, `winterheart:guide_book`. The item's NBT carries `guidebook: "<book id>"`, and its name and
 lore come from the JSON when it is created, so adding a book needs no restart.
 
 - Right-click opens that book's **unlocked** pages. An untagged item, or one whose book was deleted, opens the first book.
@@ -89,7 +89,7 @@ lore come from the JSON when it is created, so adding a book needs no restart.
 
 ## Lost pages
 
-`kubejs:lost_page` is a dummy item (empty map texture) that carries `lostpage: "<id>"` in its NBT. Pages are defined
+`winterheart:lost_page` is a dummy item (empty map texture) that carries `lostpage: "<id>"` in its NBT. Pages are defined
 by a top-level `"pages"` list in `guides.json` (also editable in the editor under "Lost pages"):
 
 ```json
@@ -97,7 +97,7 @@ by a top-level `"pages"` list in `guides.json` (also editable in the editor unde
 ```
 
 - Match one in any item matcher (`item`, `match` on item triggers, `holding`) with `{ "page": "torn_page" }`;
-  the editor offers it as `page` / `+ lost page`. Plain `"kubejs:lost_page"` matches every lost page.
+  the editor offers it as `page` / `+ lost page`. Plain `"winterheart:lost_page"` matches every lost page.
 - Get one with `/guides page <id> [player]`; `/guides pages` lists them. JEI lists one entry per page.
 - Adding the item needs a game restart once; adding pages afterwards does not.
 
