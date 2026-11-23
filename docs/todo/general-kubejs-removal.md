@@ -4,7 +4,7 @@ Remove KubeJS from the pack entirely. Data-only scripts (recipes, tags) become P
 
 - **Feature:** spans several (`recipes`, `tacz-guns`, `proximity-effects`, `time-system`, `mob-spawning`, `sanity`, `seppuku`, `limb-poisoning`, `beacon-base`, `survival-hud`, `test-utils`, `guides`, `structures`)
 - **Added:** 2026-11-22
-- **Progress:** 3/9 (keep in sync with the row in [../TODO.md](../TODO.md))
+- **Progress:** 4/9 (keep in sync with the row in [../TODO.md](../TODO.md))
 
 ## Target layout
 
@@ -50,7 +50,7 @@ Each step is one or more feature-prefixed commits. Each one deletes the scripts 
 - [ ] 4. `winterheart_time`, including the world-state import. Also moves test-utils (`/toggle_test`, diagnostics) and the rest of the shared API (temperature, titles, numbers to words, `global.testMode`/`global.currentTick`) into the core mod.
 - [ ] 5. `winterheart_hud`, then proximity-effects and limb-poisoning into `winterheart_survival`
 - [ ] 6. `winterheart_spawning`
-- [ ] 7. `winterheart_guides` (+ guide editor path)
+- [x] 7. `winterheart_guides` (+ guide editor path). Done before 4 and 5.
 - [ ] 8. `winterheart_structures` (+ world-painter output path)
 - [ ] 9. Remove `kubejs`, `rhino`, `morejs`, `probejs` jars and `kubejs/`. Check what else needs `architectury` first. Update feature map, data map, AGENTS.md "where things go".
 
@@ -79,3 +79,6 @@ Each step is one or more feature-prefixed commits. Each one deletes the scripts 
 - 2026-11-22: `kubejs/assets/streamsreflowing/lang/` and `kubejs/assets/winterheart/textures/gui/` are still in KubeJS (the former for step 9, the latter for step 5, HUD).
 - 2026-11-22: Plan change: step 7 (guides) goes before steps 4 and 5, because `time_system.js` and `proximity.js` call `global.Guides`, which Java can't. Order from here: 7, 4, 5, 6, 8.
 - 2026-11-22: Testing limit found: the hidden headless client ticks the integrated server only a few times per run (even with `pauseOnLostFocus:false` and ServerPause's `pauseWhenAllPlayersPaused=false`). Handlers are therefore split into event glue + a public logic method that a temporary KubeJS probe calls directly with the joined player. Entities added at login aren't visible to `getAllEntities()` yet. A dedicated server ticks normally but needs the Forge install and the Minecraft EULA (`./run-pack.sh --server`), not done.
+- 2026-11-22: Step 7 done. Needed `WorldState` in the core: KubeJS's overworld `persistentData` is the file `<world>/kubejs_persistent_data.nbt` (compound `minecraft:overworld`, gzip NBT). `WorldState` imports it once per world and keeps the same key names (`custom_day`, `current_phase`, `winterheart_guides_unlocked`, `fixed_structure_placed:*`, ...), so steps 4, 5, 6 and 8 read their keys unchanged. Entity `persistentData` is Forge's `getPersistentData()` (`ForgeData`), the same in Java.
+- 2026-11-22: The editor still reads `kubejs/probe/generated/globals.d.ts` (valid ids), `time_system.js` (phases) and `proximity.js` (rule ids). Replace these when steps 4, 5 and 9 land.
+- 2026-11-22: `SanityJS`, `Item-Obliterator`-style KubeJS addons: check `mods/` for anything that requires `kubejs` before step 9.

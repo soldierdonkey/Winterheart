@@ -12,6 +12,7 @@ Our own Forge mod `winterheart` (`mod-src/winterheart/`): the core the other Win
 - `.../recipe/ModRecipes.java`, `.../recipe/RemainderShapelessRecipe.java`: recipe type `winterheart:shapeless_with_remainders`.
 - `.../brewing/BrewingChanges.java`: removes every brewing recipe, adds crude nitrate + charred planks → potassium nitrate.
 - `.../api/`: shared helpers for the other Winterheart mods: `Sanity`, `Temperature`, `Titles`, `Cmd` (silent server commands), `Scheduler` (run later), `Rand`. See [sanity](sanity.md).
+- `.../world/WorldState.java`: world-wide key/value state (`data/winterheart_state.dat`) replacing KubeJS's overworld `persistentData`. On a world's first load it imports `kubejs_persistent_data.nbt` (`minecraft:overworld` compound) under the same key names. `WorldState.tag(server)` to read/write, `WorldState.save(server)` after a write.
 - `.../compat/IdRemap.java`: `kubejs:<item>` → `winterheart:<item>` for the five moved items.
 - `mod-src/winterheart/src/main/resources/assets/winterheart/`: `textures/item/*.png`, `textures/mob_effect/limb_poising.png`, `models/item/*.json` and `lang/en_us.json` (the last two generated).
 - `python/core/gen_item_assets.py`: generates the item models and `en_us.json`. Its `ITEMS` and `EXTRA_LANG` tables hold the display names and tooltips.

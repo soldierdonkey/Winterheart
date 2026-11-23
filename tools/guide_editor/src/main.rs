@@ -1,6 +1,6 @@
 //! Winterheart guide editor.
 //!
-//! Edits kubejs/server_scripts/questing/guides/guides.json. Every valid edit is written back automatically
+//! Edits config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json. Every valid edit is written back automatically
 //! and the game's guide engine hot-reloads it. The page preview is drawn with the textures and font from the
 //! instance's enabled resource packs (options.txt), so it looks the way the book does in game.
 
@@ -17,7 +17,7 @@ use model::{Book, Domain, Guide, MKind, Matcher, Page, Problem, Trigger, KINDS};
 use registry::Registry;
 use std::path::{Path, PathBuf};
 
-const GUIDES_REL: &str = "kubejs/server_scripts/questing/guides/guides.json";
+const GUIDES_REL: &str = "config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json";
 const PROBE_REL: &str = "kubejs/probe/generated/globals.d.ts";
 const TIME_SYSTEM_REL: &str = "kubejs/server_scripts/mechanics/time_system.js";
 const PROXIMITY_REL: &str = "kubejs/server_scripts/mechanics/proximity.js";

@@ -1,6 +1,6 @@
 # Guide editor
 
-Edits `kubejs/server_scripts/questing/guides/guides.json`, the guide definitions read by the KubeJS guide engine.
+Edits `config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json`, the guide definitions read by the `winterheart_guides` mod.
 
     cd tools/guide_editor
     cargo run --release

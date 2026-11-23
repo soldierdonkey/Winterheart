@@ -15,6 +15,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | seppuku | `mod-src/seppuku/` (Java, Gradle, own README/CHANGELOG; animation converter `tools/convert_epicfight.py`). Plays the bad-ending seppuku animation via PlayerAnimator; `/seppuku play\|stop`, `SeppukuApi`. | `mods/seppuku-1.0.0.jar` | `SS/mechanics/sanity_seppuku.js` |
 | winterheart-core | `mod-src/winterheart/` (Java, Gradle, own README/CHANGELOG; `python/core/` generates its item models and lang and draws the metal part textures). Items, `winterheart:limb_poising`, recipe type `winterheart:shapeless_with_remainders`, brewing changes, `kubejs:` ID remap. Other mods and datapacks build on it. | `mods/winterheart-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-survival | `mod-src/winterheart_survival/` (Java, Gradle). Sanity despawn, seppuku trigger, beacon base; limb poisoning and proximity effects follow. Depends on winterheart-core. | `mods/winterheart_survival-1.0.0.jar` | none (loaded by Forge) |
+| winterheart-guides | `mod-src/winterheart_guides/` (Java, Gradle; JEI plugin). Depends on winterheart-core. | `mods/winterheart_guides-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-mod-template | `mod-src/_template/` (placeholders + `new-mod.sh`; scaffolds a mod, `--dev` for a dev-only one). Not a mod itself, no jar. | none | none |
 | mod-publishing | `publish-mods.sh` (builds and uploads every `mod-src/` mod with a `curseforge_project_id`). Not a mod, no jar. | none | `curseforge_project_id` in `mod-src/<mod>/gradle.properties` |
 
@@ -39,7 +40,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 
 | Feature | Path | What it does |
 | --- | --- | --- |
-| guides | `SS/questing/guides/` (`guides.json`, `guides_engine.js`, `guides_commands.js`, `README.md`), `CS/guide_book_jei.js`, `CS/guide_book_watcher.js`, `tools/guide_editor/`; the items are in winterheart-core (`mod-src/winterheart/.../item/ModItems.java`), the book models in `config/paxi/resourcepacks/winterheart_assets/assets/winterheart/models/item/guide_book*.json` | Trigger-based guide pop-up books and lost journal pages. `guides.json` is edited with the Rust guide editor and hot-reloaded. Full reference: `SS/questing/guides/README.md`. |
+| guides | `mod-src/winterheart_guides/` (Java), `DP/winterheart_guides/data/winterheart/guides/guides.json`, `config/paxi/resourcepacks/winterheart_assets/` (book models), `tools/guide_editor/`; the items are in winterheart-core | Trigger-based guide pop-up books and lost journal pages. `guides.json` is edited with the Rust guide editor and hot-reloaded. Full reference: [features/guides.md](features/guides.md). |
 | quests | `SS/questing/quests.js` | Placeholder (empty). |
 
 ## Recipes and items

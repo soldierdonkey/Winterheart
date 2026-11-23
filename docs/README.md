@@ -27,7 +27,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | beacon-base | [features/beacon-base.md](features/beacon-base.md) | `mod-src/winterheart_survival/.../world/BeaconBase.java` |
 | survival-hud | [features/survival-hud.md](features/survival-hud.md) | `kubejs/startup_scripts/survival_hud_render.js` |
 | test-utils | _todo_ | `kubejs/server_scripts/utils/test_mode.js` |
-| guides | [README in the scripts folder](../kubejs/server_scripts/questing/guides/README.md) | `kubejs/server_scripts/questing/guides/`, `tools/guide_editor/` |
+| guides | [features/guides.md](features/guides.md) | `mod-src/winterheart_guides/`, `config/paxi/datapacks/winterheart_guides/`, `tools/guide_editor/` |
 | quests | _todo_ | `kubejs/server_scripts/questing/quests.js` |
 | recipes | [features/recipes.md](features/recipes.md) | `config/paxi/datapacks/winterheart_recipes/`, `python/recipes/gen_recipes.py` |
 | tacz-guns | [features/tacz-guns.md](features/tacz-guns.md) | `tacz/` |
