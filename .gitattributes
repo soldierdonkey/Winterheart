@@ -2,3 +2,8 @@
 *AHM.zip filter=lfs diff=lfs merge=lfs -text
 config/paxi/resourcepacks/AHM.zip filter=lfs diff=lfs merge=lfs -text
 config/paxi/resourcepacks/§6Dynamic§9Surroundings[[:space:]]§2R19.zip filter=lfs diff=lfs merge=lfs -text
+
+# Windows checkouts (core.autocrlf=true) must not change line endings: shell scripts break with CRLF.
+# PowerShell scripts want CRLF.
+*.sh text eol=lf
+*.ps1 text eol=crlf
