@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#dynamictrees:branches",
+    "#dynamictrees:foliage",
+    "#minecraft:crops",
+    "#minecraft:bee_growables",
+    "#minecraft:flower_pots",
+    "#minecraft:flowers"
+  ]
+}

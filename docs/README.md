@@ -21,7 +21,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | mob-spawning | _todo_ | `kubejs/server_scripts/mechanics/spawning.js` |
 | sanity | _todo_ | `kubejs/server_scripts/mechanics/sanity_despawn.js` |
 | limb-poisoning | _todo_ | `kubejs/server_scripts/mechanics/limb_poisoning.js` |
-| proximity-effects | _todo_ | `kubejs/server_scripts/mechanics/proximity.js` |
+| proximity-effects | [features/proximity-effects.md](features/proximity-effects.md) | `kubejs/server_scripts/mechanics/proximity.js` |
 | beacon-base | _todo_ | `kubejs/server_scripts/mechanics/beacon_base.js` |
 | survival-hud | [features/survival-hud.md](features/survival-hud.md) | `kubejs/startup_scripts/survival_hud_render.js` |
 | test-utils | _todo_ | `kubejs/server_scripts/utils/test_mode.js` |

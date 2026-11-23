@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#butchery:carcass",
+    "#butchery:heads",
+    "butchery:blood",
+    "butchery:blood_splatter",
+    "butchery:blood_puddle"
+  ]
+}

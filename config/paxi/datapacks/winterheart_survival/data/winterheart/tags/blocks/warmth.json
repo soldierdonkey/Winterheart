@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:wool_carpets",
+    "#minecraft:wool",
+    "#minecraft:beds",
+    "minecraft:campfire",
+    "minecraft:jack_o_lantern",
+    "hardcore_torches:lit_lantern"
+  ]
+}

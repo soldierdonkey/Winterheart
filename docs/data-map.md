@@ -40,6 +40,7 @@ What each body of Winterheart data **does** and what **format** it is in: file t
 | Disabled recipes | `DP/winterheart_recipes/data/{gore_edition,tacz,immersive_weathering}/recipes/` | `"conditions": [{"type": "forge:false"}]` at the mod's recipe ID | override (disable) | `/reload` |
 | Item tags | `DP/winterheart_recipes/data/{forge,minecraft,notreepunching}/tags/items/` | `forge:hammer`, `minecraft:brewing_stand_fuel`, `notreepunching:weak_saws`, `minecraft:animal_fat` | merge | `/reload` |
 | Survival values | `DP/winterheart_survival/data/minecraft/legendarysurvivaloverhaul/{temperature,thirst}/` | Legendary Survival Overhaul JSON (biomes, blocks, items, consumables, fuel) | new | `/reload` |
+| Proximity block tags | `DP/winterheart_survival/data/{winterheart,butchery}/tags/blocks/` | Block tags read by proximity-effects (`#winterheart:gore`, …, `#butchery:skeletons`) | new / merge | `/reload` |
 | Permafrost drops | `DP/winterheart_survival/data/immersive_weathering/loot_tables/blocks/` | Block loot tables | override | `/reload` |
 
 ## Load order

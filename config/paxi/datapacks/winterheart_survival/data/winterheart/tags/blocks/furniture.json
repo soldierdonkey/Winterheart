@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:anvil",
+    "minecraft:cartography_table",
+    "minecraft:stonecutter",
+    "butchery:taxidermy_table",
+    "tacz:workbench_a",
+    "minecraft:lectern",
+    "tacz:workbench_c",
+    "tacz:gun_smith_table",
+    "legendarysurvivaloverhaul:heater",
+    "minecraft:jukebox",
+    "hardcore_torches:unlit_lantern"
+  ]
+}

@@ -4,7 +4,7 @@ Remove KubeJS from the pack entirely. Data-only scripts (recipes, tags) become P
 
 - **Feature:** spans several (`recipes`, `tacz-guns`, `proximity-effects`, `time-system`, `mob-spawning`, `sanity`, `seppuku`, `limb-poisoning`, `beacon-base`, `survival-hud`, `test-utils`, `guides`, `structures`)
 - **Added:** 2026-11-22
-- **Progress:** 0/9 (keep in sync with the row in [../TODO.md](../TODO.md))
+- **Progress:** 1/9 (keep in sync with the row in [../TODO.md](../TODO.md))
 
 ## Target layout
 
@@ -44,7 +44,7 @@ Every feature mod depends on `winterheart` (core). `winterheart_time` and `winte
 
 Each step is one or more feature-prefixed commits. Each one deletes the scripts it replaces, so old and new code never run together, and is followed by the headless smoke test (AGENTS.md rule 7).
 
-- [ ] 1. Recipes and tags to datapacks (`winterheart_recipes`, proximity tags into `winterheart_survival`)
+- [x] 1. Recipes and tags to datapacks (`winterheart_recipes`, proximity tags into `winterheart_survival`)
 - [ ] 2. Core mod `winterheart`: registrations, ID remap, shared API, test-utils, brewing, saltpeter leaching + pop-out. Test the remaps on an existing save.
 - [ ] 3. `winterheart_survival` part 1: beacon-base, sanity despawn, seppuku hook
 - [ ] 4. `winterheart_time`, including the world-state import
@@ -71,3 +71,5 @@ Each step is one or more feature-prefixed commits. Each one deletes the scripts 
 - 2026-11-22: Recipe IDs matched by the old `event.remove` filters (scanned across `mods/*.jar` + vanilla 1.20.1): vanilla armor and tools for leather/iron/golden/diamond armor and wooden/stone/iron/golden/diamond tools (no vanilla chainmail recipes exist); `gore_edition:exarrack_can_craft_stone_{axe,axe_two,hoe,hoe_two,pickaxe,shovel}`; `tacz:gunpowder`; `tacz:gun_smith_table`; `minecraft:brewing_stand`; `immersive_weathering:green_dye_from_moss_clump`.
 - 2026-11-22: `potions.js` removed `minecraft:blaze_rod` from `#minecraft:brewing_stand_fuel`. That was always a no-op: the tag comes from `betterbrewingfuels` and only holds `minecraft:blaze_powder`. The datapack only adds coal and charcoal.
 - 2026-11-22: KubeJS `.damageIngredient('#forge:hammer')` maps to NoTreePunching's `notreepunching:tool_damaging_shaped` / `tool_damaging_shapeless` recipe types. The saltpeter leaching recipe's `.replaceIngredient(rich_soil -> dirt)` has no datapack equivalent, so it stays in KubeJS until the core mod adds a recipe type for it (step 2).
+- 2026-11-22: Step 1 done (commits `recipes:`, `tacz-guns:`, `proximity-effects:`). Left in KubeJS on purpose: `SS/recipes/saltpeter.js` (leaching recipe + pop-out, step 2). Generated files carry a `__comment__` marker naming their generator.
+- 2026-11-22: Found while porting tags: `proximity.js` looks up `#winterheart:folieage` (typo, rule never fires) and the foliage effect sets sanity from `get_temperature`. Fix both in step 5.

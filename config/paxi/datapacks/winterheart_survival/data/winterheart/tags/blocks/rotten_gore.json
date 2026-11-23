@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "butchery:wither_skeleton_corpse",
+    "butchery:stray_corpse",
+    "butchery:skeleton_corpse",
+    "butchery:villager_corpse",
+    "butchery:drowned_corpse",
+    "butchery:drained_drowned_corpse",
+    "butchery:zombie_corpse",
+    "butchery:drained_zombie_corpse",
+    "butchery:zombie_villager_corpse",
+    "butchery:playercorpse",
+    "butchery:drainedplayercorpse",
+    "antlers:sheep_corpse",
+    "antlers:bloody_cow",
+    "antlers:bloody_fox",
+    "antlers:bloody_pig",
+    "minecraft:wither_skeleton_skull"
+  ]
+}

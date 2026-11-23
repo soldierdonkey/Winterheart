@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#butchery:skeletons",
+    "#butchery:drained_carcass",
+    "#butchery:skulls",
+    "butchery:bone_barrel"
+  ]
+}
