@@ -17,6 +17,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | winterheart-survival | `mod-src/winterheart_survival/` (Java, Gradle). Sanity despawn, seppuku trigger, beacon base; limb poisoning and proximity effects follow. Depends on winterheart-core. | `mods/winterheart_survival-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-guides | `mod-src/winterheart_guides/` (Java, Gradle; JEI plugin). Depends on winterheart-core. | `mods/winterheart_guides-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-time | `mod-src/winterheart_time/` (Java, Gradle). Depends on winterheart-core and winterheart-guides. | `mods/winterheart_time-1.0.0.jar` | none (loaded by Forge) |
+| winterheart-hud | `mod-src/winterheart_hud/` (Java, Gradle). Depends on winterheart-core. | `mods/winterheart_hud-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-mod-template | `mod-src/_template/` (placeholders + `new-mod.sh`; scaffolds a mod, `--dev` for a dev-only one). Not a mod itself, no jar. | none | none |
 | mod-publishing | `publish-mods.sh` (builds and uploads every `mod-src/` mod with a `curseforge_project_id`). Not a mod, no jar. | none | `curseforge_project_id` in `mod-src/<mod>/gradle.properties` |
 
@@ -33,7 +34,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | limb-poisoning | `SS/mechanics/limb_poisoning.js`; the effect itself is in winterheart-core (`mod-src/winterheart/.../effect/ModEffects.java`, `.../textures/mob_effect/limb_poising.png`) | Damaged LSO limbs drift in health (biased random walk) until treated; status effect shows it. Paused by `legendarysurvivaloverhaul:recovery`. |
 | proximity-effects | `SS/mechanics/proximity.js`, `DP/winterheart_survival/data/winterheart/tags/blocks/`, `DP/winterheart_survival/data/butchery/tags/blocks/skeletons.json` | Scans blocks around players and shows titles/effects for tagged blocks (`#winterheart:gore`, …). |
 | beacon-base | `mod-src/winterheart_survival/.../world/BeaconBase.java` | Right-clicking a beacon turns the 3x3 below it into iron blocks. |
-| survival-hud | `SS/mechanics/custom_sidebars.js`, `CS/survival_hud.js`, `ST/survival_hud_render.js`, `kubejs/assets/winterheart/textures/gui/`, `python/survival_hud/` | Top-right survival panel. Server builds lines and sends a `winterheart_hud` packet; client stores them in `global.winterheartHud`; startup script draws the snowy frame. `python/survival_hud/` renders previews and generates the border textures offline. |
+| survival-hud | `mod-src/winterheart_hud/` (Java; code, textures in `.../assets/winterheart/textures/gui/`), `python/survival_hud/` | Top-right survival panel. The server builds lines (other mods add sections via `HudApi`) and sends a packet; the client draws the snowy frame. `python/survival_hud/` renders previews (via the JS mirror `hud_render.js`) and generates the border textures offline. |
 | test-utils | `mod-src/winterheart/.../api/{TestMode,TestItems}.java` | `/toggle_test` (freeze time at noon, block spawns) and right-click diagnostics items. |
 | (shared) | `mod-src/winterheart/.../api/` (`Sanity`, `Temperature`, `Cmd`, `Titles`, `Scheduler`, `Rand`, `Ticks`, `Numbers`, `CapBackup`), `SS/utils/helper_functions.js` (old JS helpers still used by scripts not yet ported) | Helpers used by several features. |
 

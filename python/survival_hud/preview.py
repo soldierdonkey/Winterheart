@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Renders the survival HUD for clear / snow / blizzard weather into python/survival_hud/preview.png, using the real drawing code
-in startup_scripts/survival_hud_render.js and the real textures. No game launch needed.
+in python/survival_hud/hud_render.js (a JS mirror of the Java renderer, winterheart_hud HudClient) and the real textures. No game launch needed.
 
     python3 python/survival_hud/preview.py            (needs node and Pillow)
 
@@ -11,9 +11,8 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = Path(__file__).resolve().parent
-KUBEJS = HERE.parents[1] / 'kubejs'
-SCRIPT = KUBEJS / 'startup_scripts' / 'survival_hud_render.js'
-ASSETS = KUBEJS / 'assets'
+SCRIPT = HERE / 'hud_render.js'
+ASSETS = HERE.parents[1] / 'mod-src' / 'winterheart_hud' / 'src' / 'main' / 'resources' / 'assets'
 SCALE = 4
 SCREEN_W, SCREEN_H = 200, 170
 

@@ -6,7 +6,7 @@
 
 Edit SETTINGS below, run   python3 python/survival_hud/gen_textures.py   (needs Pillow), then check the result with
 python3 python/survival_hud/preview.py. No game launch needed; restart the game afterwards to load the new PNGs.
-VARIANTS must equal HUD_VARIANTS in startup_scripts/survival_hud_render.js (preview.py warns if they differ).
+VARIANTS must equal HUD_VARIANTS in python/survival_hud/hud_render.js and VARIANTS in HudClient.java (preview.py warns if they differ).
 """
 import random
 from pathlib import Path
@@ -29,7 +29,7 @@ SETTINGS = {
     'CRACK_CHANCE': 0.3,
     'SPRINKLE': [0.03, 0.08, 0.14],  # snow speckles clinging to the wood, per snow level
 }
-OUT = Path(__file__).resolve().parents[2] / 'kubejs' / 'assets' / 'winterheart' / 'textures' / 'gui'
+OUT = Path(__file__).resolve().parents[2] / 'mod-src' / 'winterheart_hud' / 'src' / 'main' / 'resources' / 'assets' / 'winterheart' / 'textures' / 'gui'
 OUT.mkdir(parents=True, exist_ok=True)
 SEED = SETTINGS['SEED']
 
@@ -109,7 +109,7 @@ def build(kind,level,variant):
             for i in range(rw.randint(2,3)):
                 q=(cx+(i if horiz else 0),cy+(0 if horiz else i)+(i//2 if horiz else 0))
                 if q in px and px[q] not in (DARK,HI): px[q]=shade(DARK,1.1)
-    # (snow piles on top are drawn in code as one smooth curve, see survival_hud_render.js)
+    # (snow piles on top are drawn in code as one smooth curve, see HudClient.java)
     # snow clinging to the sides
     for p in list(px):
         x,y=p
