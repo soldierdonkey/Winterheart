@@ -17,7 +17,7 @@ EULA_URL = "https://aka.ms/MinecraftEULA"
 MAVEN = "https://maven.minecraftforge.net/net/minecraftforge/forge"
 
 # Instance dirs the server reads, copied into server/ on every launch (see sync_shared).
-SHARED_DIRS = ["config", "defaultconfigs", "datapacks", "kubejs", "tacz"]
+SHARED_DIRS = ["config", "defaultconfigs", "datapacks", "tacz"]
 
 
 def instance():

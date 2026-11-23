@@ -6,7 +6,7 @@ Development instance of the **Winterheart** modpack: a cold-survival pack where 
 
 | Path | What it is |
 | --- | --- |
-| `kubejs/` | KubeJS scripts: the custom mechanics (time system, spawning, sanity, limb poisoning, HUD, guides), recipes, items. `kubejs/assets/` holds textures/lang for KubeJS-registered items. |
+| `mod-src/` | Our own Forge mods: `winterheart` (core), `winterheart_survival`, `winterheart_guides`, `winterheart_time`, `winterheart_hud`, `winterheart_spawning`, `winterheart_structures`, `seppuku`, and the `_template`. Built jars go to `mods/`. |
 | `config/` | Mod configs. |
 | `config/paxi/` | Datapacks and resource packs loaded through Paxi (load order in `datapack_load_order.json`, `resourcepack_load_order.json`). All custom data lives in `config/paxi/datapacks/winterheart_*` (worldgen, structures, survival, novoatlas). |
 | `mod-src/` | Source for our own mods. New mods start from `mod-src/_template/new-mod.sh`. |

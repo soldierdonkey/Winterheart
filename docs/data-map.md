@@ -51,4 +51,4 @@ What each body of Winterheart data **does** and what **format** it is in: file t
 
 ## Load order
 
-Paxi packs in `DP/` load globally, above mod jars. Their order is pinned only for packs listed in `config/paxi/datapack_load_order.json` (currently none). The packs don't share any paths, so their order doesn't matter. KubeJS's own data folder (`kubejs/data/`) would load above all of them. Don't use it for new data (AGENTS.md).
+Paxi packs in `DP/` load globally, above mod jars. Their order is pinned only for packs listed in `config/paxi/datapack_load_order.json` (currently none). The packs don't share any paths, so their order doesn't matter.

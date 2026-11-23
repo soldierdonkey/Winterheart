@@ -140,7 +140,7 @@ forces a re-read. Engine changes need a rebuilt jar and a restart.
 cd tools/guide_editor && cargo run --release
 ```
 
-It finds the instance root by walking up to the folder with `options.txt` and `kubejs/` (override with `WINTERHEART_DIR`). It renders pages with the book texture and font from your enabled resource packs, takes valid ids from ProbeJS (`kubejs/probe/generated/globals.d.ts`), and reads time phases and proximity rule ids from the two mechanics scripts (these three sources go away with KubeJS: the editor needs new ones in steps 4, 5 and 9 of the removal todo). Edits are validated and written about 0.4 s after you stop typing; invalid data is never written. See `tools/guide_editor/README.md`.
+It finds the instance root by walking up to the folder with `options.txt` and `config/paxi/` (override with `WINTERHEART_DIR`). It renders pages with the book texture and font from your enabled resource packs, takes valid ids from `tools/guide_editor/registry_ids.json` (written by `/winterheart dump_ids`), and reads time phases from the time `config.json` and proximity rule ids from `proximity/rules.json`. Edits are validated and written about 0.4 s after you stop typing; invalid data is never written. See `tools/guide_editor/README.md`.
 
 The trigger kinds are a table in `tools/guide_editor/src/model.rs` mirroring the engine (`GuideData.SWEEP_KINDS` / `EVENT_KINDS`), so a new kind needs a matching row there.
 

@@ -1,7 +1,3 @@
-# Ignore massive ProbeJS dumps
-.probejs/
-probe/
-**/*probejs*
 
 # Ignore heavy binary and asset data
 mods/
@@ -27,5 +23,4 @@ usercache.json
 usernamecache.json
 options.txt
 .curseclient
-rhino.local.properties
 emi.json

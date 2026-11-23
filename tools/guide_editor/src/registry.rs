@@ -1,5 +1,5 @@
-//! Valid ids (items, blocks, entities, damage types, advancements and their tags) read straight out of
-//! ProbeJS's generated `globals.d.ts` (`declare namespace Special { type Item = "a:b" | ...; }`).
+//! Valid ids (items, blocks, entities, damage types, advancements and their tags) from `registry_ids.json`, a
+//! snapshot written by the game's `/winterheart dump_ids` command: `{ "Item": ["a:b", ...], "BlockTag": [...], ... }`.
 
 use std::collections::{HashMap, HashSet};
 use std::path::Path;
@@ -17,39 +17,37 @@ impl Registry {
         let text = match std::fs::read_to_string(path) {
             Ok(t) => t,
             Err(e) => {
-                reg.summary = format!("ProbeJS registry not loaded ({}): {e}", path.display());
+                reg.summary = format!("registry ids not loaded ({}): {e}", path.display());
                 return reg;
             }
         };
 
-        let mut in_special = false;
-        for line in text.lines() {
-            let t = line.trim();
-            if !in_special {
-                in_special = t.starts_with("declare namespace Special");
-                continue;
+        let json: serde_json::Value = match serde_json::from_str(&text) {
+            Ok(v) => v,
+            Err(e) => {
+                reg.summary = format!("registry_ids.json is not valid JSON: {e}");
+                return reg;
             }
-            // `Special` runs to the end of the file, but ProbeJS's brace indentation is unreliable
-            // (class bodies close with an unindented `}`), so only `type X = ...` lines are used.
-            let Some(rest) = t.strip_prefix("type ") else { continue };
-            let Some((name, body)) = rest.split_once(" = ") else { continue };
-            // string literals are the odd-numbered pieces when splitting on quotes
-            let mut values: Vec<String> = body.split('"').skip(1).step_by(2).map(str::to_string).collect();
-            values.sort();
-            values.dedup();
-            reg.sets.insert(name.to_string(), values.iter().cloned().collect());
-            reg.lists.insert(name.to_string(), values);
+        };
+        if let Some(map) = json.as_object() {
+            for (name, list) in map {
+                let mut values: Vec<String> = list.as_array().map(|a| a.iter().filter_map(|v| v.as_str().map(str::to_string)).collect()).unwrap_or_default();
+                values.sort();
+                values.dedup();
+                reg.sets.insert(name.clone(), values.iter().cloned().collect());
+                reg.lists.insert(name.clone(), values);
+            }
         }
 
         let parts: Vec<String> = ["Item", "Block", "EntityType", "DamageType", "Advancement"]
             .iter()
             .map(|k| format!("{} {}", reg.lists.get(*k).map_or(0, Vec::len), k))
             .collect();
-        reg.summary = format!("ProbeJS: {}", parts.join(", "));
+        reg.summary = format!("registry: {}", parts.join(", "));
         reg
     }
 
-    /// Adds a list that does not come from ProbeJS (time phases, proximity rules).
+    /// Adds a list that does not come from the registry dump (time phases, proximity rules).
     pub fn add_list(&mut self, key: &str, mut values: Vec<String>) {
         values.sort();
         values.dedup();

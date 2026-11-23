@@ -18,11 +18,10 @@ Rules for contributors working in this repo. For the project layout see [README.
 6. **Update the changelog.** For every player-visible change, add a line to the topmost (unreleased) section of [CHANGELOG.md](CHANGELOG.md) under the matching heading, starting with the feature name.
 7. **Smoke-test load-time changes headlessly.** Run `./run-pack.sh --headless --world "<save>"` after any change that:
    - alters control flow in a Winterheart mod (`mod-src/`),
-   - adds, removes or updates a jar in `mods/`,
-   - edits a KubeJS startup script (`kubejs/startup_scripts/`), or
+   - adds, removes or updates a jar in `mods/`, or
    - edits a Paxi datapack (`config/paxi/datapacks/`).
 
-   `<save>` is a folder name in `saves/`. Confirm that the game loads and joins the world, then check `logs/latest.log` and `logs/kubejs/{startup,server}.log` for errors from the change. Record the result (pass/fail, load time, notable log lines) in the feature doc's Changes entry. Server and client script changes alone can be tested with `/reload` (server) or F3+T (client) in a running game. If the instance is already running and the test can't run, say so rather than skipping it silently.
+   `<save>` is a folder name in `saves/`. Confirm that the game loads and joins the world, then check `logs/latest.log` for errors from the change (the Winterheart mods log under their own names, e.g. `[Guides]`, `[TimeSys]`, `[Spawner]`, `[FixedStructures]`). Record the result (pass/fail, load time, notable log lines) in the feature doc's Changes entry. Datapack JSON changes alone can be tested with `/reload`, and resource pack changes with F3+T, in a running game. Logic that depends on the server ticking (time, spawning, limb poising) can't be exercised by the hidden headless client, which barely ticks the server: drive it directly from a temporary probe or test in a running game, and say which you did. If the instance is already running and the test can't run, say so rather than skipping it silently.
 8. **Commit once a change works.** When a change roughly works (the headless test passes, or the user confirms it), commit it without waiting to be asked. Follow rule 5: feature-name prefix, only intended files, docs in the same commit. The message's first line says what changed. The body says why, and how it was tested.
 
 ## Checklist before committing
@@ -37,11 +36,11 @@ Rules for contributors working in this repo. For the project layout see [README.
 ## Conventions
 
 - Commit directly to `main` unless asked otherwise. Commit automatically per rule 8. Don't push unless the user asks.
-- Don't edit untracked or generated files (logs, saves, `minecraftinstance.json`, `kubejs/probe/`).
+- Don't edit untracked or generated files (logs, saves, `minecraftinstance.json`).
 - Binary mod or resource pack changes: note the file name and version in the feature doc and CHANGELOG.
 - **Where things go:**
-  - Datapack data (recipes as JSON, tags, worldgen, structures, loot tables, mod data files) goes in a Paxi pack `config/paxi/datapacks/winterheart_<area>/`. Don't add new data under `kubejs/data/` or `datapacks/`.
-  - `kubejs/` holds scripts and the assets of KubeJS-registered items/effects (`kubejs/assets/`).
+  - Datapack data (recipes as JSON, tags, worldgen, structures, loot tables, mod data files) goes in a Paxi pack `config/paxi/datapacks/winterheart_<area>/`. Don't add new data under `datapacks/`. Tuning that a Winterheart mod reads lives there too (JSON re-read on `/reload`).
+  - KubeJS is gone: logic and registrations go in a Winterheart mod, never a script. Item and mob effect textures/models/lang go in the mod's `src/main/resources/assets/`; assets that tools write (guide book models) go in `config/paxi/resourcepacks/winterheart_assets/`.
   - Our own mods go in `mod-src/<mod_id>/`. Start new ones from `mod-src/_template/new-mod.sh`.
   - Python/shell generators and helper scripts go in `python/<area>/`. Rust apps go in `tools/<name>/`.
 - Run scripts and tools from the instance root unless their docs say otherwise.

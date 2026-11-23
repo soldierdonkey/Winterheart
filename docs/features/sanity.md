@@ -8,7 +8,6 @@ Winterheart's glue around the Sanity Dimension mod (`sanitydim`): a Java API for
 - `mod-src/winterheart_survival/src/main/java/io/github/soldierdonkey2/winterheart_survival/sanity/SanityDespawn.java`: despawns `sanitydim:rotting_stalker` and `sanitydim:sneaking_terror`.
 - `mod-src/winterheart_survival/src/main/java/io/github/soldierdonkey2/winterheart_survival/sanity/SeppukuTrigger.java`: see [seppuku](seppuku.md).
 - `config/sanitydim/`: the Sanity Dimension mod's own config.
-- `kubejs/server_scripts/utils/helper_functions.js`: the old JS `get_sanity` / `set_sanity` (still used by scripts not yet ported, see [the KubeJS removal todo](../todo/general-kubejs-removal.md)).
 
 ## How it works
 
@@ -30,4 +29,4 @@ Winterheart's glue around the Sanity Dimension mod (`sanitydim`): a Java API for
 ## Gotchas
 
 - Sanity reads and writes depend on the capability's NBT layout and the `/sanity set` command of `sanitydim-mc1.20-1.1.0`. A mod update can break them silently.
-- `SanityJS` (a KubeJS addon in `mods/`) is unused by any script and goes with KubeJS in step 9.
+- `SanityJS` (a KubeJS addon) was removed from `mods/` together with KubeJS: nothing used it.

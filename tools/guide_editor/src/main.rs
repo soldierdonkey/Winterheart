@@ -18,7 +18,7 @@ use registry::Registry;
 use std::path::{Path, PathBuf};
 
 const GUIDES_REL: &str = "config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json";
-const PROBE_REL: &str = "kubejs/probe/generated/globals.d.ts";
+const PROBE_REL: &str = "tools/guide_editor/registry_ids.json";
 const TIME_CONFIG_REL: &str = "config/paxi/datapacks/winterheart_time/data/winterheart/time/config.json";
 const PROXIMITY_REL: &str = "config/paxi/datapacks/winterheart_survival/data/winterheart/proximity/rules.json";
 const BOOK_TEXTURE: &str = "assets/minecraft/textures/gui/book.png";
@@ -99,7 +99,7 @@ fn find_root() -> PathBuf {
     for start in starts.into_iter().flatten() {
         let mut dir = start;
         loop {
-            if dir.join("options.txt").is_file() && dir.join("kubejs").is_dir() {
+            if dir.join("options.txt").is_file() && dir.join("config").join("paxi").is_dir() {
                 return dir;
             }
             if !dir.pop() {
@@ -107,7 +107,7 @@ fn find_root() -> PathBuf {
             }
         }
     }
-    eprintln!("could not find the instance root (a folder with options.txt and kubejs/); set WINTERHEART_DIR");
+    eprintln!("could not find the instance root (a folder with options.txt and config/paxi/); set WINTERHEART_DIR");
     std::process::exit(1);
 }
 
@@ -442,7 +442,7 @@ impl App {
                 ui.colored_label(color, format!("{}{}", self.status, age));
             });
             ui.horizontal_wrapped(|ui| {
-                ui.checkbox(&mut self.allow_unknown, "allow ids not in ProbeJS");
+                ui.checkbox(&mut self.allow_unknown, "allow ids not in the registry");
                 ui.separator();
                 ui.label("GUI scale");
                 if ui.small_button("-").clicked() {
@@ -457,7 +457,7 @@ impl App {
                 }
                 ui.separator();
                 ui.label(&self.registry.summary);
-                if ui.small_button("Reload ProbeJS").clicked() {
+                if ui.small_button("Reload registry").clicked() {
                     self.registry = load_registry(&self.root, &self.registry_path);
                 }
             });

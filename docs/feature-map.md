@@ -4,7 +4,7 @@ Every file and folder in this repo that is **custom to Winterheart**: written or
 
 Each feature name below (kebab-case) is the name to use for its doc (`docs/features/<feature-name>.md`), its CHANGELOG entries and its commit prefix. See [AGENTS.md](../AGENTS.md).
 
-Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/server_scripts/`, `ST/` = `kubejs/startup_scripts/`, `CS/` = `kubejs/client_scripts/`. For what each pack and data folder *does* and its file format, see [data-map.md](data-map.md).
+Paths are repo-relative. `DP/` = `config/paxi/datapacks/`. KubeJS is gone: logic lives in the Winterheart mods (`mod-src/`), data in Paxi packs. For what each pack and data folder *does* and its file format, see [data-map.md](data-map.md).
 
 ---
 
@@ -12,7 +12,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 
 | Feature | Source in repo | Jar | Hooked from |
 | --- | --- | --- | --- |
-| seppuku | `mod-src/seppuku/` (Java, Gradle, own README/CHANGELOG; animation converter `tools/convert_epicfight.py`). Plays the bad-ending seppuku animation via PlayerAnimator; `/seppuku play\|stop`, `SeppukuApi`. | `mods/seppuku-1.0.0.jar` | `SS/mechanics/sanity_seppuku.js` |
+| seppuku | `mod-src/seppuku/` (Java, Gradle, own README/CHANGELOG; animation converter `tools/convert_epicfight.py`). Plays the bad-ending seppuku animation via PlayerAnimator; `/seppuku play\|stop`, `SeppukuApi`. | `mods/seppuku-1.0.0.jar` | `mod-src/winterheart_survival/.../sanity/SeppukuTrigger.java` |
 | winterheart-core | `mod-src/winterheart/` (Java, Gradle, own README/CHANGELOG; `python/core/` generates its item models and lang and draws the metal part textures). Items, `winterheart:limb_poising`, recipe type `winterheart:shapeless_with_remainders`, brewing changes, `kubejs:` ID remap. Other mods and datapacks build on it. | `mods/winterheart-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-survival | `mod-src/winterheart_survival/` (Java, Gradle). Sanity despawn, seppuku trigger, beacon base, limb poisoning, proximity effects. Depends on winterheart-core, winterheart-guides and winterheart-hud. | `mods/winterheart_survival-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-guides | `mod-src/winterheart_guides/` (Java, Gradle; JEI plugin). Depends on winterheart-core. | `mods/winterheart_guides-1.0.0.jar` | none (loaded by Forge) |
@@ -25,13 +25,13 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 
 ---
 
-## Mechanics (KubeJS)
+## Mechanics
 
 | Feature | Path | What it does |
 | --- | --- | --- |
 | time-system | `mod-src/winterheart_time/` (Java), `DP/winterheart_time/data/winterheart/time/config.json` | Custom day counter, sleep-to-pass-day with wake-up effects, eternal night from day 50, the death loop. Tuning in `config.json`. Frozen by `/toggle_test` (test-utils). |
 | mob-spawning | `mod-src/winterheart_spawning/` (Java), `DP/winterheart_spawning/data/winterheart/spawning/config.json` | Scripted mob spawner: mob templates with hitboxes, spawn pools, scripted-only mobs (wendigo). Blocked by `/toggle_test`. |
-| sanity | `mod-src/winterheart_survival/.../sanity/SanityDespawn.java`, `mod-src/winterheart/.../api/{Sanity,Temperature,Cmd,Titles,Scheduler,Rand}.java`, old JS helpers in `SS/utils/helper_functions.js`, `config/sanitydim/` | Despawns sanity-dimension stalkers once every player is above the threshold. Sanity is 0–100 in scripts, 0–1 in the mod. |
+| sanity | `mod-src/winterheart_survival/.../sanity/SanityDespawn.java`, `mod-src/winterheart/.../api/{Sanity,Temperature,Cmd,Titles,Scheduler,Rand}.java`, `config/sanitydim/` | Despawns sanity-dimension stalkers once every player is above the threshold. Sanity is 0–100 in Winterheart code, 0–1 in the mod. |
 | seppuku | `mod-src/winterheart_survival/.../sanity/SeppukuTrigger.java` | Plays the seppuku animation (Seppuku mod) once when a player's sanity drops to the threshold. |
 | limb-poisoning | `mod-src/winterheart_survival/.../limb/LimbPoising.java`, `DP/winterheart_survival/data/winterheart/limb_poising/config.json`; the effect itself is in winterheart-core (`mod-src/winterheart/.../effect/ModEffects.java`, `.../textures/mob_effect/limb_poising.png`) | Damaged LSO limbs drift in health (biased random walk) until treated; status effect and HUD section show it. Paused by `legendarysurvivaloverhaul:recovery`. |
 | proximity-effects | `mod-src/winterheart_survival/.../proximity/Proximity.java`, `DP/winterheart_survival/data/winterheart/proximity/rules.json`, `DP/winterheart_survival/data/winterheart/tags/blocks/`, `DP/winterheart_survival/data/butchery/tags/blocks/skeletons.json` | Scans blocks around players and runs data-driven titles/effects for tagged blocks (`#winterheart:gore`, ...). |
@@ -40,12 +40,11 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 | test-utils | `mod-src/winterheart/.../api/{TestMode,TestItems}.java` | `/toggle_test` (freeze time at noon, block spawns) and right-click diagnostics items. |
 | (shared) | `mod-src/winterheart/.../api/` (`Sanity`, `Temperature`, `Cmd`, `Titles`, `Scheduler`, `Rand`, `Ticks`, `Numbers`, `CapBackup`) | Helpers used by several features (sanity/temperature getters and setters, titles, scheduling, numbers to words). |
 
-## Guides and quests
+## Guides
 
 | Feature | Path | What it does |
 | --- | --- | --- |
 | guides | `mod-src/winterheart_guides/` (Java), `DP/winterheart_guides/data/winterheart/guides/guides.json`, `config/paxi/resourcepacks/winterheart_assets/` (book models), `tools/guide_editor/`; the items are in winterheart-core | Trigger-based guide pop-up books and lost journal pages. `guides.json` is edited with the Rust guide editor and hot-reloaded. Full reference: [features/guides.md](features/guides.md). |
-| quests | `SS/questing/quests.js` | Placeholder (empty). |
 
 ## Recipes and items
 
@@ -58,7 +57,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`, `SS/` = `kubejs/serve
 
 | Feature | Path | What it does |
 | --- | --- | --- |
-| worldgen | `DP/winterheart_worldgen/` (structure sets, biome modifiers, biome tags, `data/winterheart/worldgen/biome/spawn_clearing.json`), `DP/winterheart_novoatlas/`, `kubejs/assets/streamsreflowing/lang/` | Structure set overrides (vanilla, Philips Ruins, Gore Edition), mod worldgen tweaks, biome tags making the world cold/snowy, the `winterheart:spawn_clearing` biome, and the painted NovoAtlas overworld. |
+| worldgen | `DP/winterheart_worldgen/` (structure sets, biome modifiers, biome tags, `data/winterheart/worldgen/biome/spawn_clearing.json`), `DP/winterheart_novoatlas/`, `config/paxi/resourcepacks/winterheart_assets/assets/streamsreflowing/lang/` | Structure set overrides (vanilla, Philips Ruins, Gore Edition), mod worldgen tweaks, biome tags making the world cold/snowy, the `winterheart:spawn_clearing` biome, and the painted NovoAtlas overworld. |
 | structures | `mod-src/winterheart_structures/` (Java), `DP/winterheart_structures/data/winterheart/fixed_structures/{placements,profiles}.json`, `DP/winterheart_structures/` (templates in `data/winterheart/structures/`, `.mcfunction`s), `python/structures/` (`export_structures.sh`, `nbt_to_structure.py`, `schem_to_structure.py`, `structure_fixups.py`, `gen_beacon.py`, `gen_wreck.py`), `config/worldedit/schematics/{watchtower.nbt,shipwreck.schem,shipwreck_chest.snbt}`, `config/starterstructure.json5`, `config/starterstructure/` | Hand-built structures placed once per world at fixed spots (watchtower, shipwreck, beacon) with `/place template`, plus the spawn starter structure. Templates are exported from WorldEdit saves. |
 | world-painter | `tools/worldpainter/` | Rust planner for the escape-south route: paint biomes/heights, place structures; writes `DP/winterheart_novoatlas/` and `DP/winterheart_structures/data/winterheart/fixed_structures/placements.json`. |
 | survival-data | `DP/winterheart_survival/` (`data/minecraft/legendarysurvivaloverhaul/`, `data/immersive_weathering/loot_tables/blocks/*permafrost.json`), `config/legendarysurvivaloverhaul/` | Legendary Survival Overhaul temperature/thirst values for biomes, blocks, items, consumables and fuel; permafrost drops. |

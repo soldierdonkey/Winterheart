@@ -1,6 +1,6 @@
 # survival-hud
 
-The survival panel in the top right of the screen: a snowy spruce frame whose snow level follows the weather, with lines of survival info. It is drawn by KubeJS without a sidebar mod.
+The survival panel in the top right of the screen: a snowy spruce frame whose snow level follows the weather, with lines of survival info. It is drawn by the `winterheart_hud` mod without a sidebar mod.
 
 ## Files
 

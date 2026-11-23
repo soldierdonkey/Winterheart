@@ -42,7 +42,7 @@ Useful patterns:
 - JSON config as an `AddReloadListenerEvent` listener, so datapacks can override it and `/reload` picks it up.
 - Optional mods behind `ModList.isLoaded`, kept in a `compat/` package.
 - `ordering="AFTER"` in `mods.toml` when the mod's data must override another mod's data.
-- A small static API class (like `SeppukuApi`) when KubeJS should call the mod: `Java.loadClass('io.github.soldierdonkey2.<mod_id>.<Class>')`.
+- A small static API class (like `SeppukuApi`) when another mod should call this one (compile against it: see the `compileOnly files('../<mod>/build/classes/java/main')` lines the new mods' `build.gradle` get from `newmod.sh`).
 
 ### Dev-only mods
 

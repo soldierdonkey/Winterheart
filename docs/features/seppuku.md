@@ -1,6 +1,6 @@
 # seppuku
 
-Our own Forge mod that plays a seppuku animation on a player (PlayerAnimator, vanilla player model) for the bad ending. A KubeJS script triggers it once when a player's sanity drops to 10.
+Our own Forge mod that plays a seppuku animation on a player (PlayerAnimator, vanilla player model) for the bad ending. `SeppukuTrigger` (winterheart_survival) triggers it once when a player's sanity drops to 10.
 
 ## Files
 
@@ -19,9 +19,9 @@ Our own Forge mod that plays a seppuku animation on a player (PlayerAnimator, va
 2. `/seppuku play <targets> [animation]` (permission level 2; default `seppuku:seppuku`) sends an `AnimationPacket` to the target and to every player tracking them.
 3. On the client, `SeppukuClient` plays the animation on a PlayerAnimator layer. It runs for 59 ticks (about 3 s), then holds the kneeling pose until `/seppuku stop <targets>` or respawn.
 
-The mod does not kill the player or change sanity. Any consequence belongs in the KubeJS script.
+The mod does not kill the player or change sanity. Any consequence belongs in the code that triggers it.
 
-KubeJS API, server side:
+Another mod can call `SeppukuApi` directly. The example below is JavaScript for a script engine (the pack no longer has one) and shows the calls:
 
 ```js
 const SeppukuApi = Java.loadClass('io.github.soldierdonkey2.seppuku.SeppukuApi')

@@ -1,6 +1,7 @@
 package io.github.soldierdonkey2.winterheart;
 
 import com.mojang.logging.LogUtils;
+import io.github.soldierdonkey2.winterheart.api.DumpIds;
 import io.github.soldierdonkey2.winterheart.api.Scheduler;
 import io.github.soldierdonkey2.winterheart.api.TestItems;
 import io.github.soldierdonkey2.winterheart.api.TestMode;
@@ -27,6 +28,8 @@ public class Winterheart {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public Winterheart() {
+        // KubeJS used to switch on Forge's milk fluid; worlds and mods still reference minecraft:milk
+        net.minecraftforge.common.ForgeMod.enableMilkFluid();
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.ITEMS.register(modBus);
         ModEffects.EFFECTS.register(modBus);
@@ -37,6 +40,7 @@ public class Winterheart {
         MinecraftForge.EVENT_BUS.register(SmeltPopOut.class);
         MinecraftForge.EVENT_BUS.register(Scheduler.class);
         MinecraftForge.EVENT_BUS.register(Ticks.class);
+        MinecraftForge.EVENT_BUS.register(DumpIds.class);
         MinecraftForge.EVENT_BUS.register(TestMode.class);
         MinecraftForge.EVENT_BUS.register(TestItems.class);
         LOGGER.info("{} loaded", MOD_ID);

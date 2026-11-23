@@ -39,7 +39,7 @@ Launches the Winterheart instance from the shell in offline mode, without the Cu
 4. Offline login: `--userType legacy` and access token `0`. The UUID is UUIDv3 of `OfflinePlayer:<name>`, the same one a vanilla offline server assigns.
 5. On top of the version-JSON arguments, it adds the extra JVM flags CurseForge passes: `-Xms256m`, `-Dfml.ignorePatchDiscrepancies=true`, `-Dfml.ignoreInvalidMinecraftCertificates=true`, `-Duser.language=en`.
 
-The game directory is the repo root, so a run uses the same `mods/`, `config/`, `kubejs/`, `saves/` and `options.txt` as a CurseForge launch.
+The game directory is the repo root, so a run uses the same `mods/`, `config/`, `saves/` and `options.txt` as a CurseForge launch.
 
 ### Headless mode
 
@@ -60,7 +60,7 @@ For the client, `--headless` means a hidden client. The macOS client can't run w
 | Ctrl-C | 130 | Stopped |
 | `--run` command failed | 1 | Stopped, or left running with `--keep-running` |
 
-For rule 7, also look at `logs/kubejs/startup.log` and `logs/kubejs/server.log`. Their `Loaded N/N KubeJS … scripts … with 0 errors` lines show script errors that `latest.log` doesn't.
+For rule 7, look at `logs/latest.log`: the Winterheart mods log under their own names.
 
 ### Dedicated server
 
@@ -69,7 +69,7 @@ For rule 7, also look at `logs/kubejs/startup.log` and `logs/kubejs/server.log`.
 1. **Install (first time only).** `server_setup.py install` downloads `forge-1.20.1-<v>-installer.jar` from `maven.minecraftforge.net` into `server/.installer/` and runs it with `--installServer server/`. It is skipped once `server/libraries/net/minecraftforge/forge/1.20.1-<v>/unix_args.txt` exists.
 2. **EULA.** `server/eula.txt` is written only with `--accept-eula`, or after a y/N prompt that shows the EULA link. Without a terminal and without the flag, the launch stops.
 3. **Mods.** `server/mods/` is rebuilt as symlinks to `../../mods/*.jar`. Jars matching `server_exclude.txt` are left out.
-4. **Shared dirs.** `config`, `defaultconfigs`, `datapacks`, `kubejs` and `tacz` are copied into `server/` with `rsync -a --delete`. They are copies, not symlinks: some mods throw on a symlinked `config/`, and copying keeps server-side edits out of tracked files.
+4. **Shared dirs.** `config`, `defaultconfigs`, `datapacks` and `tacz` are copied into `server/` with `rsync -a --delete`. They are copies, not symlinks: some mods throw on a symlinked `config/`, and copying keeps server-side edits out of tracked files.
 5. **`server.properties`.** Sets `online-mode=false`, `enable-rcon=true`, `rcon.port=25575`, `rcon.password`, `broadcast-rcon-to-ops=false`, and `level-name` from `--world` (default `world`, i.e. `server/world/`).
 6. **JVM args.** `server/user_jvm_args.txt` gets `-Xmx` from `MEMORY_MB` or `allocatedMemory`.
 7. **Launch.** `java @user_jvm_args.txt @libraries/net/minecraftforge/forge/1.20.1-<v>/unix_args.txt nogui` runs in `server/`. The ready pattern is `Done \(`.

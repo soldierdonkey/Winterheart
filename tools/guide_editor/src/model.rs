@@ -21,7 +21,7 @@ pub enum Domain {
 }
 
 impl Domain {
-    /// ProbeJS type names: (ids, tags)
+    /// registry_ids.json list names: (ids, tags)
     pub fn keys(self) -> (Option<&'static str>, Option<&'static str>) {
         match self {
             Domain::Block => (Some("Block"), Some("BlockTag")),
@@ -817,7 +817,7 @@ mod tests {
 
     #[test]
     fn validation_flags_bad_data() {
-        let reg = Registry::default(); // no ProbeJS data: ids are not checked
+        let reg = Registry::default(); // no registry data: ids are not checked
         let (books, pages, mut guides) = parse(SAMPLE).unwrap();
         assert!(validate(&books, &pages, &guides, &reg, false).iter().all(|p| !p.error));
 

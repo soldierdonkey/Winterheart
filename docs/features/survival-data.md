@@ -12,7 +12,7 @@ Legendary Survival Overhaul (LSO) values for Winterheart's cold-survival balance
   - `data/minecraft/legendarysurvivaloverhaul/thirst/{blocks,consumables}/*.json`: hydration and saturation from water, rain, cauldrons and food (water source blocks: 3 hydration, 75% chance of `legendarysurvivaloverhaul:thirst`).
   - `data/immersive_weathering/loot_tables/blocks/{permafrost,grassy_permafrost}.json`: overrides Immersive Weathering's permafrost loot tables: the block itself with the right tool (silk touch), otherwise a chance of bones (25%), gold nuggets and other finds.
 - `config/legendarysurvivaloverhaul/legendarysurvivaloverhaul-{common,client}.toml`: LSO settings.
-- `kubejs/server_scripts/utils/helper_functions.js`: temperature getters and setters used by scripts (0–40 range).
+- `mod-src/winterheart/.../api/Temperature.java`: temperature getters and setters used by the Winterheart mods (0–40 range).
 
 ## How it works
 

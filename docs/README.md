@@ -28,7 +28,6 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | survival-hud | [features/survival-hud.md](features/survival-hud.md) | `mod-src/winterheart_hud/` |
 | test-utils | [features/test-utils.md](features/test-utils.md) | `mod-src/winterheart/.../api/TestMode.java` |
 | guides | [features/guides.md](features/guides.md) | `mod-src/winterheart_guides/`, `config/paxi/datapacks/winterheart_guides/`, `tools/guide_editor/` |
-| quests | _todo_ | `kubejs/server_scripts/questing/quests.js` |
 | recipes | [features/recipes.md](features/recipes.md) | `config/paxi/datapacks/winterheart_recipes/`, `python/recipes/gen_recipes.py` |
 | tacz-guns | [features/tacz-guns.md](features/tacz-guns.md) | `tacz/` |
 | worldgen | [features/worldgen.md](features/worldgen.md) | `config/paxi/datapacks/winterheart_worldgen/`, `config/paxi/datapacks/winterheart_novoatlas/` |

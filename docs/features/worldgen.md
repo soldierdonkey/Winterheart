@@ -11,7 +11,7 @@ Shapes the Winterheart overworld. The painted NovoAtlas map replaces the overwor
   - `data/{c,forge}/tags/worldgen/biome/{is_cold,is_cold/overworld,is_plains,is_snowy}.json`, `data/minecraft/tags/worldgen/biome/{is_overworld,spawns_snow_foxes,spawns_white_rabbits,spawns_cold_variant_frogs,has_structure/mineshaft}.json`: add `winterheart:spawn_clearing` (`"replace": false`) so mods treat it as a cold snowy plains biome.
   - `data/streamsreflowing/tags/worldgen/biome/no_streams.json`: Streams Reflowing carves no stream through the spawn pad.
 - `config/paxi/datapacks/winterheart_novoatlas/`: the painted overworld. It holds `data/minecraft/dimension/overworld.json` (NovoAtlas `image_map` generator) and `data/winterheart/novoatlas/{heightmap,biome_map}/world.png` plus `map_info/world.json`. Written by the World Painter (`tools/worldpainter`, File > Export to modpack).
-- `kubejs/assets/streamsreflowing/lang/en_us.json`: Streams Reflowing lang override.
+- `config/paxi/resourcepacks/winterheart_assets/assets/streamsreflowing/lang/en_us.json`: Streams Reflowing lang override.
 
 ## How it works
 
