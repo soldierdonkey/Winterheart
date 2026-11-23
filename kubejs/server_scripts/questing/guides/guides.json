@@ -138,11 +138,11 @@
         {
           "sweep": "looking_at_entity",
           "match": [
-            "#forge:zombie",
-            "#forge:spider",
-            "#forge:skeleton",
-            "#forge:enderman",
-            "#forge:creeper"
+            "minecraft:zombie",
+            "minecraft:spider",
+            "minecraft:skeleton",
+            "minecraft:enderman",
+            "minecraft:creeper"
           ]
         }
       ]

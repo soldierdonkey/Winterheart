@@ -1,3 +1,4 @@
 target/
 export/
 worldpainter_project.json
+worldpainter_project.*.json

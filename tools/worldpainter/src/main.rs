@@ -1,5 +1,6 @@
 mod biomes;
 mod export;
+mod import;
 mod install;
 mod model;
 mod noise;
@@ -1231,7 +1232,19 @@ fn headless(args: &[String]) {
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    if let Some(dir) = args.iter().skip_while(|a| *a != "--export-novoatlas").nth(1) {
+    if let Some(dir) = args.iter().skip_while(|a| *a != "--import-novoatlas").nth(1) {
+        let mut p = export::load_project(export::PROJECT_FILE).unwrap_or_else(|_| Project::new());
+        match import::import_pack(&mut p, std::path::Path::new(dir)) {
+            Ok(m) => {
+                let _ = std::fs::copy(export::PROJECT_FILE, format!("{}.bak", export::PROJECT_FILE));
+                match export::save_project(&p, export::PROJECT_FILE) {
+                    Ok(()) => println!("{m}\nsaved {}", export::PROJECT_FILE),
+                    Err(e) => eprintln!("save failed: {e}"),
+                }
+            }
+            Err(e) => eprintln!("import failed: {e}"),
+        }
+    } else if let Some(dir) = args.iter().skip_while(|a| *a != "--export-novoatlas").nth(1) {
         let p = export::load_project(export::PROJECT_FILE).unwrap_or_else(|_| Project::new());
         let w = World::new(&p);
         match novoatlas::export_pack(&p, &w, std::path::Path::new(dir)) {
