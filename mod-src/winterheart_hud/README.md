@@ -1,12 +1,13 @@
 # Winterheart: HUD
 
-**An add-on for the Winterheart modpack.** TODO: one-paragraph summary.
+**The Winterheart survival HUD: a snowy spruce panel (top right) with day, time, weather and temperature.**
 
 Forge 1.20.1 mod by soldierdonkey2.
 
 ## What it does
 
-TODO
+- Other mods add sections with `HudApi.addSection`.
+- Textures are in the mod; `python/survival_hud/` in the instance repo regenerates them.
 
 ## Requirements
 
@@ -15,7 +16,7 @@ TODO
 
 ## Configuration
 
-TODO: list the JSON files under `data/winterheart_hud/winterheart_hud/` (or remove this section). Edit, then `/reload`.
+Tuning is datapack JSON in the Winterheart modpack's Paxi packs (see the instance's `docs/data-map.md`).
 
 ## For developers
 

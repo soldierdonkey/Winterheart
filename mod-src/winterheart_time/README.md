@@ -6,7 +6,9 @@ Forge 1.20.1 mod by soldierdonkey2.
 
 ## What it does
 
-TODO
+- Day counter, sleeping to pass the day, eternal night from day 50, sanity drain after midnight, the death loop (MineZero).
+- `/customtime` admin commands.
+- Tuning: `data/winterheart/time/config.json` (applied on `/reload`).
 
 ## Requirements
 
@@ -15,7 +17,7 @@ TODO
 
 ## Configuration
 
-TODO: list the JSON files under `data/winterheart_time/winterheart_time/` (or remove this section). Edit, then `/reload`.
+Tuning is datapack JSON in the Winterheart modpack's Paxi packs (see the instance's `docs/data-map.md`).
 
 ## For developers
 

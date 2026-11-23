@@ -5,4 +5,4 @@
 Minecraft 1.20.1, Forge 47+.
 
 ### Added
-- TODO
+- The scripted spawner.

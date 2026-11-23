@@ -1,12 +1,16 @@
 # Winterheart: Survival
 
-**An add-on for the Winterheart modpack.** TODO: one-paragraph summary.
+**Survival mechanics for the Winterheart modpack: sanity-based stalker despawn and the seppuku trigger, limb poising, proximity effects and the beacon base.**
 
 Forge 1.20.1 mod by soldierdonkey2.
 
 ## What it does
 
-TODO
+- Stalkers (`sanitydim`) despawn once every player is above 75 sanity.
+- Plays the Seppuku mod's animation at 10 sanity or less.
+- Limb poising: damaged Legendary Survival Overhaul limbs drift in health until treated; `/reload` tuning in `limb_poising/config.json`.
+- Proximity effects: titles and effects near gore, rotting flesh, furniture, warmth and so on; data-driven in `proximity/rules.json`.
+- Right-clicking a beacon builds an iron base.
 
 ## Requirements
 
@@ -15,7 +19,7 @@ TODO
 
 ## Configuration
 
-TODO: list the JSON files under `data/winterheart_survival/winterheart_survival/` (or remove this section). Edit, then `/reload`.
+Tuning is datapack JSON in the Winterheart modpack's Paxi packs (see the instance's `docs/data-map.md`).
 
 ## For developers
 

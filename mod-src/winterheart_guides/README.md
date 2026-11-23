@@ -1,12 +1,15 @@
 # Winterheart: Guides
 
-**An add-on for the Winterheart modpack.** TODO: one-paragraph summary.
+**Trigger-based guide books and lost journal pages for the Winterheart modpack.**
 
 Forge 1.20.1 mod by soldierdonkey2.
 
 ## What it does
 
-TODO
+- Guides unlock from sweeps (what a player stands on, looks at or carries) and events (breaking, crafting, kills, time phases, proximity, ...), for the whole world.
+- A popup book opens for every player and the server pauses (Multiplayer Server Pause) until it is closed.
+- `/guides` admin and debug commands, a JEI plugin, and a Java API (`GuideApi`).
+- Data: `config/paxi/datapacks/winterheart_guides/.../guides.json`, hot-reloaded every 2 seconds.
 
 ## Requirements
 
@@ -15,7 +18,7 @@ TODO
 
 ## Configuration
 
-TODO: list the JSON files under `data/winterheart_guides/winterheart_guides/` (or remove this section). Edit, then `/reload`.
+Tuning is datapack JSON in the Winterheart modpack's Paxi packs (see the instance's `docs/data-map.md`).
 
 ## For developers
 

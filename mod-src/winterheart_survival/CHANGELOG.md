@@ -5,4 +5,4 @@
 Minecraft 1.20.1, Forge 47+.
 
 ### Added
-- TODO
+- Sanity despawn, seppuku trigger, beacon base, limb poising and proximity effects.

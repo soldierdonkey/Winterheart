@@ -1,12 +1,13 @@
 # Winterheart: Spawning
 
-**An add-on for the Winterheart modpack.** TODO: one-paragraph summary.
+**The Winterheart scripted mob spawner: day-based hostile caps and livestock quotas, and the scripted wendigo.**
 
 Forge 1.20.1 mod by soldierdonkey2.
 
 ## What it does
 
-TODO
+- Replaces vanilla spawning (`doMobSpawning` is switched off).
+- Tuning: `data/winterheart/spawning/config.json` (applied on `/reload`).
 
 ## Requirements
 
@@ -15,7 +16,7 @@ TODO
 
 ## Configuration
 
-TODO: list the JSON files under `data/winterheart_spawning/winterheart_spawning/` (or remove this section). Edit, then `/reload`.
+Tuning is datapack JSON in the Winterheart modpack's Paxi packs (see the instance's `docs/data-map.md`).
 
 ## For developers
 

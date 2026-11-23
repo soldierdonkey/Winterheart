@@ -1,12 +1,13 @@
 # Winterheart: Structures
 
-**An add-on for the Winterheart modpack.** TODO: one-paragraph summary.
+**Places the Winterheart hand-built structures (watchtower, shipwreck, beacon) once per world at fixed spots.**
 
 Forge 1.20.1 mod by soldierdonkey2.
 
 ## What it does
 
-TODO
+- Spots come from `data/winterheart/fixed_structures/placements.json` (written by the world painter); profiles in `profiles.json`. Applied on `/reload`.
+- Fixups restore block states `/place template` recomputes wrongly.
 
 ## Requirements
 
@@ -15,7 +16,7 @@ TODO
 
 ## Configuration
 
-TODO: list the JSON files under `data/winterheart_structures/winterheart_structures/` (or remove this section). Edit, then `/reload`.
+Tuning is datapack JSON in the Winterheart modpack's Paxi packs (see the instance's `docs/data-map.md`).
 
 ## For developers
 
