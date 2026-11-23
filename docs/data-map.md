@@ -2,7 +2,7 @@
 
 What each body of Winterheart data **does** and what **format** it is in: file types, whether it adds new content or overrides a mod's own files. For *where* files live and which feature owns them, see [feature-map.md](feature-map.md). This page doesn't repeat that.
 
-`DP/` = `config/paxi/datapacks/`. `KD/` = `kubejs/data/`.
+`DP/` = `config/paxi/datapacks/`. All custom datapack data lives in Paxi packs. `kubejs/data/` is not used.
 
 ---
 
@@ -26,16 +26,16 @@ What each body of Winterheart data **does** and what **format** it is in: file t
 
 | Data | Location | Kind of data | Mostly | Applies on |
 | --- | --- | --- | --- | --- |
-| Structure sets | `KD/{minecraft,philipsruins,gore_edition,antlers,butchery}/worldgen/structure_set/` | 47 structure sets | override (all disable) | new chunks |
-| Biome modifiers | `KD/butchery/forge/biome_modifier/` | Forge biome modifiers (Butchery sulfur ore) | override | world load |
-| Biome tags | `KD/{c,forge,minecraft,streamsreflowing}/tags/worldgen/biome/` | Biome tags (`is_cold`, `is_snowy`, `is_plains`, spawn tags, `no_streams`) | merge | world load |
-| Custom biome | `KD/winterheart/worldgen/biome/spawn_clearing.json` | Biome definition `winterheart:spawn_clearing` | new | world creation |
+| Structure sets | `DP/winterheart_worldgen/data/{minecraft,philipsruins,gore_edition,antlers,butchery}/worldgen/structure_set/` | 47 structure sets | override (all disable) | new chunks |
+| Biome modifiers | `DP/winterheart_worldgen/data/butchery/forge/biome_modifier/` | `forge:none` (removes Butchery's sulfur ore) | override | world load |
+| Biome tags | `DP/winterheart_worldgen/data/{c,forge,minecraft,streamsreflowing}/tags/worldgen/biome/` | Biome tags adding `winterheart:spawn_clearing` (`is_cold`, `is_snowy`, `is_plains`, spawn tags, `no_streams`) | merge | world load |
+| Custom biome | `DP/winterheart_worldgen/data/winterheart/worldgen/biome/spawn_clearing.json` | Biome definition `winterheart:spawn_clearing` | new | world creation |
 | Painted overworld | `DP/winterheart_novoatlas/` | `minecraft:dimension/overworld.json` + NovoAtlas biome map / heightmap PNGs and `map_info` | override | world creation |
-| Structure templates | `KD/winterheart/structures/` | `.nbt` templates + `<name>.fixups.json` (block states restored after placing) | new | `/reload` |
+| Structure templates | `DP/winterheart_structures/data/winterheart/structures/` | `.nbt` templates + `<name>.fixups.json` (block states restored after placing) | new | `/reload` |
 | Structure functions | `DP/winterheart_structures/data/winterheart/functions/structures/` | `.mcfunction` (beacon, iceberg shipwreck) | new | `/reload` |
-| Survival values | `KD/minecraft/legendarysurvivaloverhaul/{temperature,thirst}/` | Legendary Survival Overhaul JSON (biomes, blocks, items, consumables, fuel) | new | `/reload` |
-| Permafrost drops | `KD/immersive_weathering/loot_tables/blocks/` | Block loot tables | override | `/reload` |
+| Survival values | `DP/winterheart_survival/data/minecraft/legendarysurvivaloverhaul/{temperature,thirst}/` | Legendary Survival Overhaul JSON (biomes, blocks, items, consumables, fuel) | new | `/reload` |
+| Permafrost drops | `DP/winterheart_survival/data/immersive_weathering/loot_tables/blocks/` | Block loot tables | override | `/reload` |
 
 ## Load order
 
-`KD/` is KubeJS's built-in datapack, which loads above every other pack. Paxi packs in `DP/` load globally. Their order is pinned only for packs listed in `config/paxi/datapack_load_order.json` (currently none).
+Paxi packs in `DP/` load globally, above mod jars. Their order is pinned only for packs listed in `config/paxi/datapack_load_order.json` (currently none). The four packs don't share any paths, so their order doesn't matter. KubeJS's own data folder (`kubejs/data/`) would load above all of them. Don't use it for new data (AGENTS.md).

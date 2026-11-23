@@ -29,10 +29,10 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | quests | _todo_ | `kubejs/server_scripts/questing/quests.js` |
 | recipes | _todo_ | `kubejs/server_scripts/recipes/` |
 | tacz-guns | _todo_ | `tacz/` |
-| worldgen | _todo_ | `kubejs/data/*/worldgen/`, `config/paxi/datapacks/winterheart_novoatlas/` |
+| worldgen | [features/worldgen.md](features/worldgen.md) | `config/paxi/datapacks/winterheart_worldgen/`, `config/paxi/datapacks/winterheart_novoatlas/` |
 | structures | [features/structures.md](features/structures.md) | `kubejs/server_scripts/worldgen/fixed_structures.js`, `config/paxi/datapacks/winterheart_structures/` |
 | world-painter | _todo_ | `tools/worldpainter/` |
-| survival-data | _todo_ | `kubejs/data/minecraft/legendarysurvivaloverhaul/` |
+| survival-data | [features/survival-data.md](features/survival-data.md) | `config/paxi/datapacks/winterheart_survival/` |
 | mod-configs | _todo_ | `config/` |
 | run-pack | [features/run-pack.md](features/run-pack.md) | `run-pack.sh`, `python/run_pack/` |
 | agent-commands | [features/agent-commands.md](features/agent-commands.md) | `.claude/commands/` |

@@ -3,8 +3,8 @@
 pools can load. Reads mod-exported .nbt (root "SchematicBlocks", block entities with "Id"/"Pos") and WorldEdit
 Sponge .schem (v2 and v3).
 
-    python3 python/structures/nbt_to_structure.py config/worldedit/schematics/watchtower.nbt kubejs/data/winterheart/structures/watchtower.nbt
-    python3 python/structures/nbt_to_structure.py config/worldedit/schematics/shipwreck.schem kubejs/data/winterheart/structures/shipwreck.nbt \
+    python3 python/structures/nbt_to_structure.py config/worldedit/schematics/watchtower.nbt config/paxi/datapacks/winterheart_structures/data/winterheart/structures/watchtower.nbt
+    python3 python/structures/nbt_to_structure.py config/worldedit/schematics/shipwreck.schem config/paxi/datapacks/winterheart_structures/data/winterheart/structures/shipwreck.nbt \
         --keep-world-below 13 --keep-world-block minecraft:water --keep-world-block minecraft:sand \
         --keep-world-block minecraft:gravel --keep-world-block minecraft:dirt --keep-world-block minecraft:stone \
         --keep-world-block minecraft:sandstone --keep-world-block minecraft:andesite \

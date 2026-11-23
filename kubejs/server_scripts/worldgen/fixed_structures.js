@@ -1,12 +1,14 @@
 // Places structure templates once per world at fixed spots, with a fixed rotation.
 // Worldgen structures (jigsaw / structurespawn) always get a random rotation in 1.20.1, so these are
-// pasted with /place template instead. Templates live in kubejs/data/<namespace>/structures/.
+// pasted with /place template instead. Templates live in config/paxi/datapacks/winterheart_structures/data/<namespace>/structures/.
 //
 // Where each one goes comes from fixed_structures.json next to this script, written by the World Painter
 // (tools/worldpainter, Struct tab, "Place in game" types; Save all). Positions are absolute block X/Z of the
 // footprint centre. After editing it by hand, /kubejs reload server_scripts picks it up.
 
 const FIXED_STRUCTURES_FILE = 'kubejs/server_scripts/worldgen/fixed_structures.json'
+// Paxi datapack holding the templates and their <name>.fixups.json files
+const FIXED_STRUCTURES_PACK = 'config/paxi/datapacks/winterheart_structures'
 
 // How each template sits in the world. Templates not listed use DEFAULT_PROFILE.
 //   anchor 'surface': template layer `groundLayers` goes at the ground surface; the volume above is cleared
@@ -147,7 +149,7 @@ function fixedStructureSurface(level, box) {
 // python/structures/structure_fixups.py writes their saved states to <template>.fixups.json; this writes them back.
 function applyFixedStructureFixups(level, s, origin) {
     const id = s.template.split(':')
-    const file = `kubejs/data/${id[0]}/structures/${id[1]}.fixups.json`
+    const file = `${FIXED_STRUCTURES_PACK}/data/${id[0]}/structures/${id[1]}.fixups.json`
     const json = JsonIO.read(file)
     if (!json) return 0
     if (s.rotation !== 'none') {

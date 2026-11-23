@@ -42,7 +42,7 @@ Spawn is (0, 0); a new project's escape path runs 400 blocks south to a target r
   **Spawn Y** (default 66) is where the player and the Starter Structure are placed: Save all writes it to
   `config/starterstructure.json5` as both the spawn coordinates and a fixed structure position. The **flat spawn
   pad** (radius, blend) levels the exported ground to Spawn Y - 1 around spawn and gives it the pack's own
-  `winterheart:spawn_clearing` biome (a copy of Snowy Plains in `kubejs/data/winterheart/worldgen/biome`), which
+  `winterheart:spawn_clearing` biome (a copy of Snowy Plains in `config/paxi/datapacks/winterheart_worldgen/data/winterheart/worldgen/biome`), which
   Streams Reflowing is told not to carve, so no stream runs through spawn.
   The path is saved in the project; `structures.json` gets the target, radius, waypoints and length under `guide`.
 - **View**: biome / height / each noise channel, hillshade, tree pixels, grid, painted-area highlight.
