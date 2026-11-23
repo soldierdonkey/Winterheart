@@ -1,0 +1,10 @@
+{
+  "_comment": "How each template sits in the world. Templates not listed use `default`. anchor 'surface': template layer `groundLayers` goes at the ground surface; the volume above is cleared (clear: true) and dirt is filled `foundationDepth` deep under it (foundation 'fill'), or each solid bottom-layer column continues down in `foundationBlock` until it meets ground (foundation 'columns', at most `foundationDepth`). `center`: template-local [x, z] that goes on the target X/Z (rotation none only; default is the footprint centre). anchor 'sea': template layer `waterline` goes at the top water layer (sea level - 1); nothing is cleared; ice in the keel (bottom 4 layers) is extended down to the sea floor when it is at most `groundDepth` blocks below, with `groundBlock`. `legacy_placed`: worlds made before the World Painter stored one flag per template, at this [x, z].",
+  "default": { "anchor": "surface", "groundLayers": 0, "foundationDepth": 4, "clear": true, "foundation": "fill" },
+  "templates": {
+    "winterheart:watchtower": { "anchor": "surface", "groundLayers": 2, "foundationDepth": 6 },
+    "winterheart:shipwreck": { "anchor": "sea", "waterline": 14, "groundDepth": 10, "groundBlock": "minecraft:packed_ice" },
+    "winterheart:beacon": { "anchor": "surface", "groundLayers": 1, "clear": false, "foundation": "columns", "foundationDepth": 24, "foundationBlock": "minecraft:cobblestone", "center": [15, 11] }
+  },
+  "legacy_placed": { "winterheart:watchtower": [0, 400] }
+}

@@ -1017,7 +1017,7 @@ impl App {
         self.ui.toggle("Place in game (template)", &mut t.place_in_game);
         if t.place_in_game {
             self.ui.label("Save all writes these spots to");
-            self.ui.label("fixed_structures.json (pasted once/world).");
+            self.ui.label("fixed_structures/placements.json (pasted once/world).");
         }
         self.ui.gap(4.0);
         if let Some(i) = self.sel_struct.filter(|i| *i < self.proj.structures.len()) {

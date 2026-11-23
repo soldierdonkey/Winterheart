@@ -427,7 +427,7 @@ pub struct StructType {
     pub w: i32,
     pub d: i32,
     pub color: [u8; 3],
-    /// Instances of this type are written to the pack's fixed_structures.json and pasted in game
+    /// Instances of this type are written to the pack's fixed_structures/placements.json and pasted in game
     /// (the id must be a structure template).
     #[serde(default)]
     pub place_in_game: bool,

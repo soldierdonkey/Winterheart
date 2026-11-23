@@ -4,7 +4,7 @@ Remove KubeJS from the pack entirely. Data-only scripts (recipes, tags) become P
 
 - **Feature:** spans several (`recipes`, `tacz-guns`, `proximity-effects`, `time-system`, `mob-spawning`, `sanity`, `seppuku`, `limb-poisoning`, `beacon-base`, `survival-hud`, `test-utils`, `guides`, `structures`)
 - **Added:** 2026-11-22
-- **Progress:** 7/9 (keep in sync with the row in [../TODO.md](../TODO.md))
+- **Progress:** 8/9 (keep in sync with the row in [../TODO.md](../TODO.md))
 
 ## Target layout
 
@@ -51,7 +51,7 @@ Each step is one or more feature-prefixed commits. Each one deletes the scripts 
 - [x] 5. `winterheart_hud`, then proximity-effects and limb-poisoning into `winterheart_survival`
 - [x] 6. `winterheart_spawning`
 - [x] 7. `winterheart_guides` (+ guide editor path). Done before 4 and 5.
-- [ ] 8. `winterheart_structures` (+ world-painter output path)
+- [x] 8. `winterheart_structures` (+ world-painter output path)
 - [ ] 9. Remove `kubejs`, `rhino`, `morejs`, `probejs` jars and `kubejs/`. Check what else needs `architectury` first. Update feature map, data map, AGENTS.md "where things go".
 
 ## Files
@@ -85,3 +85,4 @@ Each step is one or more feature-prefixed commits. Each one deletes the scripts 
 - 2026-11-22: Step 4 done. `spawning.js` (still JS until step 6) now reads `Ticks.current()` and `TestMode.enabled()` from Java instead of `global.currentTick` / `global.testMode`. Time phases for the guide editor come from the time `config.json`; proximity rule ids still come from `proximity.js` until step 5.
 - 2026-11-22: Step 5 done (hud commit, then limb poising + proximity). Proximity rules became data (`proximity/rules.json`), and the editor reads rule ids from it. `helper_functions.js` is gone (no callers left). The poise step and the delayed proximity actions couldn't be exercised headlessly (see the feature docs).
 - 2026-11-22: Step 6 done. `Ticks` and `TestMode` (core) replaced the transitional `global.currentTick` / `global.testMode` reads in `spawning.js`, which is deleted.
+- 2026-11-22: Step 8 done. Only step 9 (remove KubeJS itself) is left. Before it: grep `mods/` for jars that require `kubejs` (SanityJS, and anything with a KubeJS dependency in its `mods.toml`) and `kubejs/` for what is still referenced (`kubejs/assets/streamsreflowing/lang/`, `kubejs/config/`, `kubejs/probe/`, `kubejs/startup_scripts/global.js`, `kubejs/server_scripts/questing/quests.js` placeholder, the guide editor's use of ProbeJS ids).

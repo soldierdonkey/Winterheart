@@ -31,8 +31,8 @@ Spawn is (0, 0); a new project's escape path runs 400 blocks south to a target r
   default, so painted Y is exact).
 - **Struct**: structure types (name, resource id, footprint) and instances (click to place, drag to move).
   Types with **Place in game** on (Watchtower, Shipwreck) are real templates: **Save all** writes their instances
-  (footprint centre, rotation) to `kubejs/server_scripts/worldgen/fixed_structures.json`, which
-  `fixed_structures.js` pastes once per world (`/kubejs reload server_scripts` picks up changes). A spot that was
+  (footprint centre, rotation) to `config/paxi/datapacks/winterheart_structures/data/winterheart/fixed_structures/placements.json`, which
+  the `winterheart_structures` mod pastes once per world (`/reload` picks up changes). A spot that was
   already pasted in a world stays; moving it pastes a new copy at the new spot.
 - **Path**: the escape route from spawn. Click on the line to add a bend, click elsewhere to extend the path to a
   new target, drag points to move them, Del removes the selected one. Sliders set the target ring radius, corridor

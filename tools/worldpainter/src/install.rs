@@ -119,10 +119,10 @@ pub fn sync_spawn(root: &Path, x: i32, y: i32, z: i32) -> Result<String, String>
     Ok(format!("spawn and starter structure set to ({x}, {y}, {z})"))
 }
 
-/// Where KubeJS's fixed_structures.js reads the in-game structure spots from.
-pub const FIXED_STRUCTURES_FILE: &str = "kubejs/server_scripts/worldgen/fixed_structures.json";
+/// Where the winterheart_structures mod reads the in-game structure spots from (applied on /reload).
+pub const FIXED_STRUCTURES_FILE: &str = "config/paxi/datapacks/winterheart_structures/data/winterheart/fixed_structures/placements.json";
 
-/// Write every "place in game" structure instance to the pack's fixed_structures.json (absolute footprint centre,
+/// Write every "place in game" structure instance to the pack's fixed_structures/placements.json (absolute footprint centre,
 /// rotation as /place template names it).
 pub fn sync_fixed_structures(root: &Path, p: &crate::model::Project) -> Result<String, String> {
     const ROT: [&str; 4] = ["none", "clockwise_90", "180", "counterclockwise_90"];
