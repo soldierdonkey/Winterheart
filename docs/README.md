@@ -27,7 +27,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | test-utils | _todo_ | `kubejs/server_scripts/utils/test_mode.js` |
 | guides | [README in the scripts folder](../kubejs/server_scripts/questing/guides/README.md) | `kubejs/server_scripts/questing/guides/`, `tools/guide_editor/` |
 | quests | _todo_ | `kubejs/server_scripts/questing/quests.js` |
-| recipes | _todo_ | `kubejs/server_scripts/recipes/` |
+| recipes | [features/recipes.md](features/recipes.md) | `config/paxi/datapacks/winterheart_recipes/`, `python/recipes/gen_recipes.py` |
 | tacz-guns | [features/tacz-guns.md](features/tacz-guns.md) | `tacz/` |
 | worldgen | [features/worldgen.md](features/worldgen.md) | `config/paxi/datapacks/winterheart_worldgen/`, `config/paxi/datapacks/winterheart_novoatlas/` |
 | structures | [features/structures.md](features/structures.md) | `kubejs/server_scripts/worldgen/fixed_structures.js`, `config/paxi/datapacks/winterheart_structures/` |

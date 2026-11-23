@@ -12,12 +12,9 @@ ServerEvents.recipes(event => {
         ]
     ).replaceIngredient('farmersdelight:rich_soil', 'minecraft:dirt');
 
-    // --- STEP 3: BOILING OFF IMPURITIES (FURNACE) ---
-    
-    // Bottle boiling: Standard 200 ticks (10s) -> 1 Saltpeter Crystal
-    event.smelting('kubejs:saltpeter', 'kubejs:potassium_nitrate_bottle')
-        .cookingTime(200)
-        .xp(0.2);
+    // STEP 3 (smelting to saltpeter) lives in config/paxi/datapacks/winterheart_recipes
+    // (python/recipes/gen_recipes.py). This recipe stays here until the core mod adds a
+    // recipe type that can replace an ingredient with a remainder (docs/todo/general-kubejs-removal.md).
 });
 
 // --- CONTAINER POP-OUT SYSTEM ---
