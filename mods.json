@@ -214,10 +214,6 @@
       "fileId": 5105472
     },
     {
-      "file": "cinematic-1.1.1.jar",
-      "source": "repo"
-    },
-    {
       "file": "citadel-2.6.3-1.20.1.jar",
       "source": "curseforge",
       "sha1": "fb0b1fa96ce28e4be77b38ad95d83c3da7ec8316",

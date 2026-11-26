@@ -2,6 +2,8 @@
 
 ### Features:
 
+- cinematic: removed the unused Cinematic 1.1.1 mod and its `/cinematic` and `/cinemoveto` commands.
+
 - tacz-guns: guns now repair with iron bolts, more for guns that take more iron to build, and start jamming below 90% durability. Guns wear out much faster.
 
 - tacz-guns: gun translations are updated to the ones shipped with TACZ. The period gun set is unchanged, now applied by the `winterheart_tacz` datapack.

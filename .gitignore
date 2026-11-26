@@ -55,7 +55,6 @@ mods/*.jar
 !mods/packfinder-*.jar
 # Third-party jars kept in git:
 !mods/BetterSnowyFeatures-1.0.4-1.20.1-FULL.jar
-!mods/cinematic-1.1.1.jar
 !mods/tacz-firstperson-compat-forge-1.20.1-1.1.4.jar
 
 # ---- Resource packs: fetched by ./fetch.sh from mods.json ----
