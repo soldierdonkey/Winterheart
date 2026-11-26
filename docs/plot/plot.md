@@ -16,7 +16,7 @@ The journal is dated 1932, but the present is years later, in the nuclear era: s
 
 The story is told from an American perspective, with American customs. Where exactly it takes place stays ambiguous for players: the game never names the country, the capitol or the northern post's location.
 
-Winterheart is **single player only**. The Multiplayer button is hidden from the main menu, and the pack crashes on purpose if launched as a dedicated server. The loop, the endings and permadeath only have to work for one Kaamos. In game: planned.
+Winterheart is **single player only**. The Multiplayer button is hidden from the main menu, and the pack crashes on purpose if launched as a dedicated server. The loop, the endings and permadeath only have to work for one Kaamos. In game: the server crash is done ([singleplayer-only](../features/singleplayer-only.md)), hiding the Multiplayer button is planned.
 
 ## Characters
 

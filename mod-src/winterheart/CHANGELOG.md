@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- Refuses to load on a dedicated server: the pack is singleplayer only.
+
 ## 1.0.0 - First release
 
 Minecraft 1.20.1, Forge 47+.

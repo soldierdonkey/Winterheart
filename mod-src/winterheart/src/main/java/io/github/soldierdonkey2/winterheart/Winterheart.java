@@ -12,10 +12,12 @@ import io.github.soldierdonkey2.winterheart.effect.ModEffects;
 import io.github.soldierdonkey2.winterheart.item.ModItems;
 import io.github.soldierdonkey2.winterheart.item.SmeltPopOut;
 import io.github.soldierdonkey2.winterheart.recipe.ModRecipes;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.slf4j.Logger;
 
 /**
@@ -26,8 +28,16 @@ import org.slf4j.Logger;
 public class Winterheart {
     public static final String MOD_ID = "winterheart";
     public static final Logger LOGGER = LogUtils.getLogger();
+    static final String SERVER_MESSAGE =
+            "Winterheart is a singleplayer-only modpack and can't run on a dedicated server. "
+                    + "Play it in singleplayer from the Minecraft client.";
 
     public Winterheart() {
+        // The loop, the endings and permadeath are built for one player (docs/plot/plot.md)
+        if (FMLEnvironment.dist == Dist.DEDICATED_SERVER) {
+            LOGGER.error(SERVER_MESSAGE);
+            throw new IllegalStateException(SERVER_MESSAGE);
+        }
         // KubeJS used to switch on Forge's milk fluid; worlds and mods still reference minecraft:milk
         net.minecraftforge.common.ForgeMod.enableMilkFluid();
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();

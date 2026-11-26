@@ -64,6 +64,8 @@ For rule 7, look at `logs/latest.log`: the Winterheart mods log under their own 
 
 ### Dedicated server
 
+Winterheart refuses to load on a dedicated server ([singleplayer-only](singleplayer-only.md)), so `--server` currently ends in a crash.
+
 `--server` runs the pack on a Forge dedicated server, with its game dir in `server/`. On each launch:
 
 1. **Install (first time only).** `server_setup.py install` downloads `forge-1.20.1-<v>-installer.jar` from `maven.minecraftforge.net` into `server/.installer/` and runs it with `--installServer server/`. It is skipped once `server/libraries/net/minecraftforge/forge/1.20.1-<v>/unix_args.txt` exists.

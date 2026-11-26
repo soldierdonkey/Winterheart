@@ -37,6 +37,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`. KubeJS is gone: logic
 | proximity-effects | `mod-src/winterheart_survival/.../proximity/Proximity.java`, `DP/winterheart_survival/data/winterheart/proximity/rules.json`, `DP/winterheart_survival/data/winterheart/tags/blocks/`, `DP/winterheart_survival/data/butchery/tags/blocks/skeletons.json` | Scans blocks around players and runs data-driven titles/effects for tagged blocks (`#winterheart:gore`, ...). |
 | beacon-base | `mod-src/winterheart_survival/.../world/BeaconBase.java` | Right-clicking a beacon turns the 3x3 below it into iron blocks. |
 | survival-hud | `mod-src/winterheart_hud/` (Java; code, textures in `.../assets/winterheart/textures/gui/`), `python/survival_hud/` | Top-right survival panel. The server builds lines (other mods add sections via `HudApi`) and sends a packet; the client draws the snowy frame. `python/survival_hud/` renders previews (via the JS mirror `hud_render.js`) and generates the border textures offline. |
+| singleplayer-only | `mod-src/winterheart/.../Winterheart.java` | Crashes a dedicated server on load with a singleplayer-only message. |
 | test-utils | `mod-src/winterheart/.../api/{TestMode,TestItems}.java` | `/toggle_test` (freeze time at noon, block spawns) and right-click diagnostics items. |
 | (shared) | `mod-src/winterheart/.../api/` (`Sanity`, `Temperature`, `Cmd`, `Titles`, `Scheduler`, `Rand`, `Ticks`, `Numbers`, `CapBackup`) | Helpers used by several features (sanity/temperature getters and setters, titles, scheduling, numbers to words). |
 

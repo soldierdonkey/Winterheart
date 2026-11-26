@@ -17,6 +17,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | --- | --- | --- |
 | seppuku | [features/seppuku.md](features/seppuku.md) | `mod-src/seppuku/`, `mod-src/winterheart_survival/.../sanity/SeppukuTrigger.java` |
 | winterheart-core | [features/winterheart-core.md](features/winterheart-core.md) | `mod-src/winterheart/` |
+| singleplayer-only | [features/singleplayer-only.md](features/singleplayer-only.md) | `mod-src/winterheart/.../Winterheart.java` |
 | winterheart-survival | _todo_ (see sanity, beacon-base, limb-poisoning, proximity-effects) | `mod-src/winterheart_survival/` |
 | winterheart-mod-template | [features/winterheart-mod-template.md](features/winterheart-mod-template.md) | `mod-src/_template/` |
 | mod-publishing | [features/mod-publishing.md](features/mod-publishing.md) | `publish-mods.sh` |
