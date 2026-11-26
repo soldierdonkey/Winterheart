@@ -40,7 +40,7 @@ The script only deletes and rewrites files carrying its own `__comment__` marker
 
 ### Durability
 
-`gundb` reads `data/<namespace>/gundb/`. Each kept gun has its own file, `gundb:tacz/<id>`, which targets `tacz:<id>` and beats the gun type's file. A file replaces the default entirely, with no merging. Each file sets `JamThreshold` to 0.9, so jamming starts once durability drops below 90%. The other values are copies of what each gun used before.
+`gundb` reads `data/<namespace>/gundb/`. Each kept gun has its own file, `gundb:tacz/<id>`, which targets `tacz:<id>` and beats the gun type's file. A file replaces the default entirely, with no merging. Each file sets `JamThreshold` to 0.9, so jamming starts once durability drops below 90%. Durability, jam chance and repair values are tuned per gun; the stat penalties are copies of what each gun used before.
 
 | Guns | Copied from `gundb`'s |
 | --- | --- |
@@ -51,6 +51,26 @@ The script only deletes and rewrites files carrying its own `__comment__` marker
 | `rpk` | `mg` |
 | `uzi` | `smg` |
 | `springfield1873` | `tacz/springfield1873` (replaces it) |
+
+### Repair
+
+Every gun repairs on an anvil with `winterheart:iron_bolt`, its main material. A full repair costs about a quarter of the iron in the gun's `GUNSMITH` recipe, counted in bolts (plate 4, rod 2, ring 4, bolt 1, screw 1, gear 20, from the part chain in [recipes](recipes.md)). Copper, diamond, wood and redstone parts aren't counted.
+
+| Gun | Iron in recipe (bolts) | Bolts for a full repair | XP levels for a full repair |
+| --- | --- | --- | --- |
+| `db_short` | 20 | 5 | 10 |
+| `db_long` | 32 | 7 | 10 |
+| `springfield1873` | 34 | 8 | 8 |
+| `kar98` | 38 | 10 | 24 |
+| `m1911` | 43 | 10 | 40 |
+| `m870` | 78 | 20 | 10 |
+| `fn_fal` | 100 | 24 | 8 |
+| `ak47` | 108 | 28 | 8 |
+| `hk_g3` | 108 | 27 | 8 |
+| `rpk` | 148 | 38 | 12 |
+| `uzi` | 150 | 39 | 18 |
+
+Each bolt restores `MaxDurability / RepairCost` points, rounded down, so `RepairCost` is not always the bolt count. After changing a gun's `MaxDurability` or recipe, recompute its `RepairCost` and `XpCost` by hand.
 
 ## Config / tunables
 
@@ -64,6 +84,10 @@ The script only deletes and rewrites files carrying its own `__comment__` marker
 | `DefaultPackDebug` | `tacz/tacz-pre.toml` | `false` | `true` stops TACZ from updating the exported pack |
 
 ## Changes
+
+- 2026-11-26: Retuned `MaxDurability` per gun (70 to 410, was 600 to 1200) and `JamChance` for `springfield1873` (0.3) and `uzi` (0.4). Loaded by the same `/reload` test as the repair change; the later `XpCost` edits weren't reloaded in a test.
+
+- 2026-11-26: Guns repair with `winterheart:iron_bolt` instead of iron or copper ingots, with `RepairCost` proportional to the iron in each recipe. `XpCost` was rescaled to keep each full repair at its earlier XP total, then hand-tuned for `m1911` (4, 40 levels) and `springfield1873` (1, 8 levels). Tested with `/reload` in a running game: no `gundb` errors. Not repaired on an anvil in game.
 
 - 2026-11-26: Added a per-gun `gundb` file for each kept gun. Tested with `/reload` in a running game: the log showed no `gundb` errors. Not checked in game that the files take effect.
 - 2026-11-26: Set `JamThreshold` to 0.9 in all eleven gun files, so jamming starts below 90% durability (was 0.85). Tested with `/reload` in a running game: no `gundb` errors. Not checked in game.

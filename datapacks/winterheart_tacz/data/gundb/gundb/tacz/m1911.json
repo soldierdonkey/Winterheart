@@ -1,11 +1,11 @@
 {
-  "RepairItem": "#forge:ingots/copper",
-  "MaxDurability": 800,
+  "RepairItem": "winterheart:iron_bolt",
+  "MaxDurability": 210,
   "Jam": true,
   "JamChance": 0.25,
   "JamThreshold": 0.9,
-  "RepairCost": 16,
-  "XpCost": 0.25,
+  "RepairCost": 9,
+  "XpCost": 4,
   "Stats": [
     {
       "Type": "AmmoSpeed",

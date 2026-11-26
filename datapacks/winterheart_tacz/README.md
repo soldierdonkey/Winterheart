@@ -18,6 +18,7 @@ Winterheart's own gunsmith recipes are in **Winterheart: Recipes**.
 - Minecraft **1.20.1**
 - **Timeless and Classics Zero**, with `DefaultPackDebug = false` (its default) so its gun pack stays up to date.
 - **Gun Durability** (optional), for the durability files.
+- **Winterheart** (mod), for the iron bolts that repair guns.
 
 ## Installation
 

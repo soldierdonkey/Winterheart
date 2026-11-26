@@ -1,11 +1,11 @@
 {
-  "RepairItem": "#forge:ingots/iron",
-  "MaxDurability": 1000,
+  "RepairItem": "winterheart:iron_bolt",
+  "MaxDurability": 210,
   "Jam": true,
   "JamChance": 0.2,
   "JamThreshold": 0.9,
-  "RepairCost": 8,
-  "XpCost": 1,
+  "RepairCost": 23,
+  "XpCost": 0.333,
   "Stats": [
     {
       "Type": "AmmoSpeed",
