@@ -1,6 +1,6 @@
 # Winterheart
 
-Development instance of the **Winterheart** modpack: a cold-survival pack where the player has to escape south before the eternal night. Minecraft 1.20.1, Forge 47.4.10. Changes: [CHANGELOG.md](CHANGELOG.md).
+Development instance of the **Winterheart** modpack: a cold-survival pack where the player is caught in a death loop at a far-north outpost as the days run out towards the eternal night. Story: [docs/plot/plot.md](docs/plot/plot.md). Minecraft 1.20.1, Forge 47.4.10. Changes: [CHANGELOG.md](CHANGELOG.md).
 
 ## Repository layout
 
