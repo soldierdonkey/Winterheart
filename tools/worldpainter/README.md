@@ -66,7 +66,8 @@ each image costs roughly 4 bytes per block of area in memory in game.
 **File > Export to modpack (install)** exports and copies the datapack to `<instance>/datapacks/winterheart_novoatlas`
 (the instance is found by walking up from the working directory), and by default moves
 `kubejs/data/minecraft/dimension/overworld.json` into `tools/worldpainter/backups/`. **Uninstall from modpack**
-removes the pack and restores the newest backup. Only new worlds pick it up.
+removes the exported `data/` and `pack.mcmeta` and restores the newest backup; the pack's publishing files (`README.md`,
+`CHANGELOG.md`, `pack.properties`) are kept by both. Only new worlds pick it up.
 
 Limits: the biome picker is a simplified version of vanilla's `OverworldBiomeBuilder`. Biomes come from climate,
 not height, so painting an absolute Y below sea level on land climate gives a flooded land biome. With the NovoAtlas export the planner's heights and biomes are what gets generated (plus the export-only detail bumps). Not yet tested in game.

@@ -42,6 +42,7 @@ Rules for contributors working in this repo. For the project layout see [README.
 - **Where things go:**
   - Datapack data (recipes as JSON, tags, worldgen, structures, loot tables, mod data files) goes in a pack `datapacks/winterheart_<area>/`; [packfinder](docs/features/packfinder.md) loads everything in that folder. Tuning that a Winterheart mod reads lives there too (JSON re-read on `/reload`).
   - KubeJS is gone: logic and registrations go in a Winterheart mod, never a script. Item and mob effect textures/models/lang go in the mod's `src/main/resources/assets/`; assets that tools write (guide book models) go in `resourcepacks/winterheart_assets/`.
+  - An in-house pack has a `README.md`, `CHANGELOG.md` and `pack.properties` in its root so `./publish.sh` can upload it ([mod-publishing](docs/features/mod-publishing.md)).
   - Our own mods go in `mod-src/<mod_id>/`. Start new ones from `mod-src/_template/new-mod.sh`.
   - Python/shell generators and helper scripts go in `python/<area>/`. Rust apps go in `tools/<name>/`.
 - Run scripts and tools from the instance root unless their docs say otherwise.

@@ -49,8 +49,10 @@ pub fn install(pack: &Path, root: &Path, disable_kubejs: bool, backup_dir: &Path
         return Err(format!("{} is not an exported datapack", pack.display()));
     }
     let dest = root.join("datapacks").join(PACK_NAME);
-    if dest.exists() {
-        fs::remove_dir_all(&dest).map_err(|e| format!("couldn't replace old install: {e}"))?;
+    // Only the exported parts are replaced: the pack's README, changelog and pack.properties stay.
+    let data = dest.join("data");
+    if data.exists() {
+        fs::remove_dir_all(&data).map_err(|e| format!("couldn't replace old install: {e}"))?;
     }
     copy_dir(pack, &dest).map_err(|e| format!("copy failed: {e}"))?;
 
@@ -145,8 +147,11 @@ pub fn sync_fixed_structures(root: &Path, p: &crate::model::Project) -> Result<S
 pub fn uninstall(root: &Path, backup_dir: &Path) -> Result<String, String> {
     let dest = root.join("datapacks").join(PACK_NAME);
     let mut notes = vec![];
-    if dest.exists() {
-        fs::remove_dir_all(&dest).map_err(|e| e.to_string())?;
+    if dest.join("pack.mcmeta").exists() {
+        fs::remove_dir_all(dest.join("data")).map_err(|e| e.to_string())?;
+        fs::remove_file(dest.join("pack.mcmeta")).map_err(|e| e.to_string())?;
+        // The folder goes too unless it holds the publishing files.
+        let _ = fs::remove_dir(&dest);
         notes.push("removed installed datapack".to_string());
     } else {
         notes.push("datapack wasn't installed".to_string());
@@ -232,8 +237,12 @@ mod tests {
         assert!(root.join("datapacks").join(PACK_NAME).join("data/x/f.json").is_file());
         assert!(!root.join(KUBEJS_OVERWORLD).exists());
 
-        // reinstall replaces cleanly
+        // reinstall replaces cleanly and keeps the pack's publishing files
+        let readme = root.join("datapacks").join(PACK_NAME).join("README.md");
+        fs::write(&readme, b"r").unwrap();
         install(&pack, &root, true, &backups).unwrap();
+        assert!(readme.is_file());
+        fs::remove_file(&readme).unwrap();
 
         uninstall(&root, &backups).unwrap();
         assert!(!root.join("datapacks").join(PACK_NAME).exists());

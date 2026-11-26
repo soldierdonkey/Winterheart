@@ -1,0 +1,54 @@
+// Zips one in-house datapack or resource pack and uploads it to CurseForge. Run through ./publish.sh, which passes
+// -Ppack_dir=<pack folder>. The pack's settings are in <pack folder>/pack.properties.
+// See docs/features/mod-publishing.md.
+plugins {
+    id 'base'
+    id 'net.darkhax.curseforgegradle' version '1.1.28'
+}
+
+def packDir = file(providers.gradleProperty('pack_dir').get())
+def pack = new Properties()
+new File(packDir, 'pack.properties').withReader('UTF-8') { pack.load(it) }
+
+tasks.register('packZip', Zip) {
+    group = 'build'
+    description = 'Zips the pack, with pack.mcmeta at the root.'
+    from packDir
+    exclude 'pack.properties', 'CHANGELOG.md', '**/.DS_Store'
+    archiveFileName = "${packDir.name}-${pack.pack_version}.zip"
+    destinationDirectory = layout.buildDirectory.dir('libs')
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+// The API token is never read from this repo: set the CURSEFORGE_TOKEN environment variable, or put
+// curseforge_token=... in your user-level ~/.gradle/gradle.properties.
+tasks.register('publishCurseForge', net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+    group = 'publishing'
+    description = 'Uploads the pack zip to CurseForge.'
+    dependsOn 'packZip'
+
+    def token = providers.environmentVariable('CURSEFORGE_TOKEN')
+            .orElse(providers.gradleProperty('curseforge_token'))
+    def projectId = pack.curseforge_project_id?.trim()
+
+    doFirst {
+        if (!token.isPresent()) {
+            throw new GradleException('No CurseForge token: set CURSEFORGE_TOKEN or curseforge_token in ~/.gradle/gradle.properties')
+        }
+        if (!projectId) {
+            throw new GradleException("Set curseforge_project_id in ${packDir.name}/pack.properties")
+        }
+    }
+    apiToken = token.getOrElse('')
+
+    if (projectId) {
+        def file = upload(projectId, tasks.named('packZip').flatMap { it.archiveFile })
+        file.displayName = "${pack.pack_name} ${pack.pack_version}"
+        file.releaseType = pack.curseforge_release_type ?: 'release'
+        def notes = new File(packDir, 'CHANGELOG.md')
+        file.changelog = notes.exists() ? notes.getText('UTF-8') : ''
+        file.changelogType = 'markdown'
+        file.addGameVersion('1.20.1')
+    }
+}

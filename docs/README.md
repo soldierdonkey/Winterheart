@@ -20,7 +20,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | singleplayer-only | [features/singleplayer-only.md](features/singleplayer-only.md) | `mod-src/winterheart/.../Winterheart.java` |
 | winterheart-survival | _todo_ (see sanity, beacon-base, limb-poisoning, proximity-effects) | `mod-src/winterheart_survival/` |
 | winterheart-mod-template | [features/winterheart-mod-template.md](features/winterheart-mod-template.md) | `mod-src/_template/` |
-| mod-publishing | [features/mod-publishing.md](features/mod-publishing.md) | `publish-mods.sh` |
+| mod-publishing | [features/mod-publishing.md](features/mod-publishing.md) | `publish.sh`, `python/publish/`, `*/pack.properties` |
 | packfinder | [features/packfinder.md](features/packfinder.md) | `mod-src/packfinder/`, `config/packfinder/` |
 | resource-packs | [features/resource-packs.md](features/resource-packs.md) | `resourcepacks/` |
 | fetch-mods | [features/fetch-mods.md](features/fetch-mods.md) | `fetch-mods.sh`, `mods.json`, `tools/fetch_mods/` |

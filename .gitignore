@@ -112,5 +112,8 @@ mod-src/*/build/
 mod-src/*/.gradle/
 mod-src/*/run/
 mod-src/*/bin/
+# Pack publishing
+python/publish/build/
+python/publish/.gradle/
 # Rust tools
 /tools/*/target/
