@@ -1051,6 +1051,14 @@
       "fileId": 4587214
     },
     {
+      "file": "polytone-1.20-3.5.26.jar",
+      "source": "modrinth",
+      "sha1": "d5ea70bd8d4a29d436901fd2b6e180147c1bdd2c",
+      "size": 1169185,
+      "url": "https://cdn.modrinth.com/data/3qAYkBMB/versions/keUL5Iuv/polytone-1.20-3.5.26.jar",
+      "page": "https://modrinth.com/mod/3qAYkBMB/version/keUL5Iuv"
+    },
+    {
       "file": "PresenceFootsteps-1.20.1-1.9.1-beta.1.jar",
       "source": "curseforge",
       "sha1": "6ccb76043763f929a11f1857a57b41bb70ab7512",

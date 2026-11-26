@@ -2,6 +2,8 @@
 
 ### Features:
 
+- resource-packs: added Polytone 3.5.26, so Dark Atmosphere's sky, lighting and water changes now apply.
+
 - packfinder: new mod that always loads every pack in `resourcepacks/` and `datapacks/`, replacing Paxi.
 
 - resource-packs: `Enchanting Reimagined` is now enabled. Removed `Quark Programmer Art.zip`, `Omega-Colorful-Lighting-Compat.zip` and the `TheForest-Colorful-Lighting-Compat` packs.

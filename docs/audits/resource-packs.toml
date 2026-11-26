@@ -42,7 +42,7 @@ file = "DarkAtmosphere2.0.zip"
 verdict = "fix-or-drop"
 asset_files = 17
 usable = 5
-notes = "Sky, lightmap and water changes need Polytone, which is not installed. 2 Wythers textures unused. Only 5 vanilla textures work."
+notes = "Sky, lightmap and water changes use Polytone (added after this audit; verdict and counts predate it). 2 Wythers textures unused. 5 vanilla textures work without Polytone."
 
 [[pack]]
 file = "TaxCreepyMob+M.1.20.1+ResP.1.0.0.zip"
