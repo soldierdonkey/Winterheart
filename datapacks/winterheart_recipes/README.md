@@ -8,7 +8,8 @@ Minecraft 1.20.1 datapack by soldierdonkey2, made for the Winterheart modpack.
 
 - Replaces vanilla tool and armor recipes and the brewing stand recipe with ones built from metal parts.
 - Adds recipes for metal parts, saltpeter, gunpowder and chainmail armor.
-- Adds TACZ gun smith table recipes for period weapons, ammunition and attachments.
+- Adds TACZ gun smith table recipes for period weapons, ammunition, attachments and workbenches.
+- Replaces or switches off TACZ's own recipes.
 - Disables some recipes from other mods and extends a few item tags.
 
 ## Requirements

@@ -2,6 +2,10 @@
 
 ### Features:
 
+- tacz-guns: the ammo and attachment workbenches can now be made at the gun smith table, and no longer at a crafting table.
+
+- tacz-guns: ammo boxes, the target, target minecart and statue use new recipes. The Blood Strike painting can no longer be crafted.
+
 - cinematic: removed the unused Cinematic 1.1.1 mod and its `/cinematic` and `/cinemoveto` commands.
 
 - tacz-guns: guns now repair with iron bolts, more for guns that take more iron to build, and start jamming below 90% durability. Guns wear out much faster.

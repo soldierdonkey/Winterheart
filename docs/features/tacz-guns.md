@@ -5,13 +5,13 @@ Timeless and Classics Zero (TACZ) guns, trimmed to authentic pre-1950s weapons, 
 ## Files
 
 - `datapacks/winterheart_tacz/pack.mcmeta`: `filter` that hides everything outside the period set in TACZ's default gun pack. Its allow-lists are the source of truth for what survives.
-- `datapacks/winterheart_tacz/data/tacz/data/blocks/{gun_smith_table,ammo_workbench,attachment_workbench}.json`: overrides of the workbench tabs (period tab icons, no RPG tab).
+- `datapacks/winterheart_tacz/data/tacz/data/blocks/{gun_smith_table,attachment_workbench}.json`: overrides of the workbench tabs (period tab icons, no RPG tab on the table; no stock, grip or laser tab on the attachment workbench). The ammo workbench uses TACZ's tabs.
 - `datapacks/winterheart_tacz/data/gundb/gundb/tacz/{ak47,db_long,db_short,fn_fal,hk_g3,kar98,m1911,m870,rpk,springfield1873,uzi}.json`: per-gun durability and jamming values for `gundb` (Gun Durability).
 - `datapacks/winterheart_tacz/{README.md,CHANGELOG.md,pack.properties}`: publishing files ([mod-publishing](mod-publishing.md)).
 - `tacz/tacz-pre.toml`: `DefaultPackDebug = false`, so TACZ exports its own default pack.
-- `python/tacz/gen_gunsmith_recipes.py`: generates the gunsmith recipes and the gun smith table's crafting recipe. Its `GUNSMITH` table is the source of truth.
+- `python/tacz/gen_gunsmith_recipes.py`: generates the gunsmith recipes and the jar recipe overrides. Its `GUNSMITH`, `OVERRIDES` and `DISABLED` tables are the source of truth.
 - `datapacks/winterheart_recipes/data/winterheart/recipes/tacz_workbench/`: generated `tacz:gun_smith_table_crafting` recipes, `winterheart:tacz_workbench/<namespace>_<id>`.
-- `datapacks/winterheart_recipes/data/tacz/recipes/gun_smith_table.json`: generated override of TACZ's recipe for the table block (iron gears, plate, rods, anvil).
+- `datapacks/winterheart_recipes/data/tacz/recipes/`: generated overrides of every recipe in TACZ's jar (`tacz:gunpowder` is switched off by `python/recipes/gen_recipes.py`, see [recipes](recipes.md)).
 - `config/tacz-{common,client}.toml`: TACZ settings.
 
 ## How it works
@@ -35,6 +35,21 @@ Winterheart's own `tacz:gun_smith_table_crafting` recipes for the kept guns, amm
 ```sh
 python3 python/tacz/gen_gunsmith_recipes.py   # then /reload
 ```
+
+Tabs only appear when a recipe belongs to them. A recipe's tab comes from its result: guns and attachments by type, ammo `tacz:ammo` unless the result sets `group`, and `custom` results by `group`. TACZ accepts only `gun`, `ammo`, `attachment` and `custom` result types, so the workbench blocks are `custom` results in `tacz:misc`.
+
+Every recipe in TACZ's jar is replaced at its own ID:
+
+| `tacz:` recipe | Now |
+| --- | --- |
+| `gun_smith_table` | iron gears, plate and rods, anvil |
+| `iron_ammo_box`, `gold_ammo_box`, `diamond_ammo_box` | planks around the matching `winterheart:*_plate` |
+| `target` | iron plates, redstone, planks |
+| `target_minecart` | target, iron bolt, minecart |
+| `statue` | iron plate and rods, smooth stone |
+| `ammo_workbench`, `attachment_workbench` | off; made at the gun smith table |
+| `misc/blood_strike_1` (painting) | off |
+| `gunpowder` | off ([recipes](recipes.md)) |
 
 The script only deletes and rewrites files carrying its own `__comment__` marker, so it shares the pack with `python/recipes/gen_recipes.py`.
 
@@ -80,10 +95,13 @@ Each bolt restores `MaxDurability / RepairCost` points, rounded down, so `Repair
 | `MaxDurability`, `RepairItem`, `RepairCost`, `XpCost` | `data/gundb/gundb/tacz/<id>.json` | per gun | Durability and anvil repair |
 | `Jam`, `JamChance`, `JamThreshold`, `FireOnZero` | same | per gun; `JamThreshold` is 0.9 in these files (0.85 when omitted), `FireOnZero` `false` | Jamming, and firing when worn out |
 | `Stats[]` (`Type`, `ReductionThreshold`, `MaxReduction`) | same | per gun | Stat penalties as durability drops |
-| `GUNSMITH`, `GUN_SMITH_TABLE` | `python/tacz/gen_gunsmith_recipes.py` | 30 recipes | Gunsmith recipes and the table's crafting recipe |
+| `GUNSMITH` | `python/tacz/gen_gunsmith_recipes.py` | 30 recipes | Gun smith table recipes |
+| `OVERRIDES`, `DISABLED` | same | see table below | Replacements for, and switched-off, recipes from TACZ's jar |
 | `DefaultPackDebug` | `tacz/tacz-pre.toml` | `false` | `true` stops TACZ from updating the exported pack |
 
 ## Changes
+
+- 2026-11-26: Fixed the ammo and attachment workbench gunsmith recipes, which used the unsupported result type `block` (now `custom`). Replaced or switched off every recipe in TACZ's jar. Removed the `ammo_workbench.json` tab override, which had no visible effect. Headless test (`--world "New World"`, then `/reload`): joined 30 s after the wait began and the log showed no parse errors for `tacz` or `winterheart` recipes. `/recipe give` reported `tacz:ammo_workbench`, `tacz:attachment_workbench`, `tacz:gunpowder` and `tacz:misc/blood_strike_1` as unknown and found the other seven and both workbench gunsmith recipes. Not checked in game: the workbench results and tabs in the GUI, and crafting.
 
 - 2026-11-26: Retuned `MaxDurability` per gun (70 to 410, was 600 to 1200) and `JamChance` for `springfield1873` (0.3) and `uzi` (0.4). Loaded by the same `/reload` test as the repair change; the later `XpCost` edits weren't reloaded in a test.
 

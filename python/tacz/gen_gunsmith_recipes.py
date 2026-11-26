@@ -6,7 +6,7 @@ Edit the tables below, run this script, then /reload in game:
     python3 python/tacz/gen_gunsmith_recipes.py
 
 Writes `tacz:gun_smith_table_crafting` recipes as winterheart:tacz_workbench/<namespace>_<id>,
-and overrides tacz:gun_smith_table (the block's crafting recipe). Like python/recipes/gen_recipes.py,
+and overrides or disables the recipes in TACZ's jar (same ID, in the tacz namespace). Like python/recipes/gen_recipes.py,
 it only deletes and rewrites files carrying its own "__comment__" marker.
 """
 import json
@@ -53,32 +53,77 @@ GUNSMITH = [
     ("block", "tacz:attachment_workbench", 1, [("winterheart:iron_plate", 6), ("winterheart:iron_gear", 2), ("winterheart:diamond_ring", 1), ("winterheart:iron_screw", 6), ("minecraft:crafting_table", 1)]),
 ]
 
-# The gun smith table itself (vanilla crafting table recipe, overrides TACZ's)
-GUN_SMITH_TABLE = {
-    "type": "minecraft:crafting_shaped",
-    "pattern": ["GAG", "SFS", "S S"],
-    "key": {
-        "A": {"item": "minecraft:anvil"},
-        "G": {"item": "winterheart:iron_gear"},
-        "F": {"item": "winterheart:iron_plate"},
-        "S": {"item": "winterheart:iron_rod"},
-    },
-    "result": {"item": "tacz:gun_smith_table"},
+def shaped(pattern, key, result, nbt=None):
+    out = {"item": result}
+    if nbt:
+        out["nbt"] = nbt
+    return {
+        "type": "minecraft:crafting_shaped",
+        "pattern": pattern,
+        "key": {k: ingredient(v) for k, v in key.items()},
+        "result": out,
+    }
+
+
+def ammo_box(metal, level):
+    return shaped(["PMP", "P P", "PPP"], {"P": "#minecraft:planks", "M": metal}, "tacz:ammo_box", {"Level": level})
+
+
+# Replacements for the crafting table recipes in TACZ's jar, by recipe name in the tacz namespace.
+# tacz:gunpowder is switched off by python/recipes/gen_recipes.py.
+OVERRIDES = {
+    "gun_smith_table": lambda: shaped(
+        ["GAG", "SFS", "S S"],
+        {"A": "minecraft:anvil", "G": "winterheart:iron_gear", "F": "winterheart:iron_plate", "S": "winterheart:iron_rod"},
+        "tacz:gun_smith_table",
+    ),
+    "iron_ammo_box": lambda: ammo_box("winterheart:iron_plate", 0),
+    "gold_ammo_box": lambda: ammo_box("winterheart:gold_plate", 1),
+    "diamond_ammo_box": lambda: ammo_box("winterheart:diamond_plate", 2),
+    "target": lambda: shaped(
+        ["PPP", "PRP", " W "],
+        {"P": "winterheart:iron_plate", "R": "minecraft:redstone", "W": "#minecraft:planks"},
+        "tacz:target",
+    ),
+    "target_minecart": lambda: shaped(
+        ["T", "B", "M"],
+        {"T": "tacz:target", "B": "winterheart:iron_bolt", "M": "minecraft:minecart"},
+        "tacz:target_minecart",
+    ),
+    "statue": lambda: shaped(
+        [" P ", "RSR", " S "],
+        {"P": "winterheart:iron_plate", "R": "winterheart:iron_rod", "S": "minecraft:smooth_stone"},
+        "tacz:statue",
+    ),
 }
 
+# TACZ jar recipes switched off. The workbenches are made at the gun smith table instead.
+DISABLED = ["ammo_workbench", "attachment_workbench", "misc/blood_strike_1"]
 
-def material(ingredient, amount):
-    item = {"tag": ingredient[1:]} if ingredient.startswith("#") else {"item": ingredient}
-    entry = {"item": item}
+# Output item and block ID of each "block" row in GUNSMITH
+WORKBENCHES = {"tacz:ammo_workbench": "tacz:workbench_a", "tacz:attachment_workbench": "tacz:workbench_c"}
+
+
+def ingredient(name):
+    return {"tag": name[1:]} if name.startswith("#") else {"item": name}
+
+
+def material(name, amount):
+    entry = {"item": ingredient(name)}
     if amount > 1:
         entry["count"] = amount
     return entry
 
 
 def gunsmith(kind, out, count, materials):
-    res = {"type": kind, "id": out}
-    if count > 1:
-        res["count"] = count
+    if kind == "block":
+        # TACZ has no block result type: a custom item stack, listed in the misc tab
+        item = {"item": WORKBENCHES[out], "nbt": {"BlockId": out}, "count": count}
+        res = {"type": "custom", "group": "tacz:misc", "item": item}
+    else:
+        res = {"type": kind, "id": out}
+        if count > 1:
+            res["count"] = count
     return {"type": "tacz:gun_smith_table_crafting", "result": res, "materials": [material(i, n) for i, n in materials]}
 
 
@@ -87,7 +132,10 @@ def build():
     for kind, out, count, materials in GUNSMITH:
         name = out.replace(":", "_")
         files[PACK / "data/winterheart/recipes/tacz_workbench" / f"{name}.json"] = gunsmith(kind, out, count, materials)
-    files[PACK / "data/tacz/recipes/gun_smith_table.json"] = GUN_SMITH_TABLE
+    for name, recipe in OVERRIDES.items():
+        files[PACK / "data/tacz/recipes" / f"{name}.json"] = recipe()
+    for name in DISABLED:
+        files[PACK / "data/tacz/recipes" / f"{name}.json"] = {"conditions": [{"type": "forge:false"}]}
     return files
 
 
