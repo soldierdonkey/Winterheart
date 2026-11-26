@@ -37,7 +37,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | world-painter | _todo_ | `tools/worldpainter/` |
 | survival-data | [features/survival-data.md](features/survival-data.md) | `config/paxi/datapacks/winterheart_survival/` |
 | mod-configs | _todo_ | `config/` |
-| run-pack | [features/run-pack.md](features/run-pack.md) | `run-pack.sh`, `tools/run_pack/` |
+| run-pack | [features/run-pack.md](features/run-pack.md) | `run-pack.sh`, `tools/run_pack/`, `mod-src/winterheart/.../remote/` |
 | agent-commands | [features/agent-commands.md](features/agent-commands.md) | `.claude/commands/` |
 
 Rows marked _todo_ have no feature doc yet. Write the doc the next time you touch that feature, and replace _todo_ with a link.

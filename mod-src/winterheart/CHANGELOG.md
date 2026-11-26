@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Added
+- Single-player command listener for run-pack (`--send`/`--console`/`--run`) on 127.0.0.1. Off unless the game was started with `WINTERHEART_RCON`.
+
 ### Changed
 - Refuses to load on a dedicated server: the pack is singleplayer only.
 

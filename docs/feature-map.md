@@ -13,7 +13,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`. KubeJS is gone: logic
 | Feature | Source in repo | Jar | Hooked from |
 | --- | --- | --- | --- |
 | seppuku | `mod-src/seppuku/` (Java, Gradle, own README/CHANGELOG; animation converter `tools/convert_epicfight.py`). Plays the bad-ending seppuku animation via PlayerAnimator; `/seppuku play\|stop`, `SeppukuApi`. | `mods/seppuku-1.0.0.jar` | `mod-src/winterheart_survival/.../sanity/SeppukuTrigger.java` |
-| winterheart-core | `mod-src/winterheart/` (Java, Gradle, own README/CHANGELOG; `python/core/` generates its item models and lang and draws the metal part textures). Items, `winterheart:limb_poising`, recipe type `winterheart:shapeless_with_remainders`, brewing changes, `kubejs:` ID remap. Other mods and datapacks build on it. | `mods/winterheart-1.0.0.jar` | none (loaded by Forge) |
+| winterheart-core | `mod-src/winterheart/` (Java, Gradle, own README/CHANGELOG; `python/core/` generates its item models and lang and draws the metal part textures). Items, `winterheart:limb_poising`, recipe type `winterheart:shapeless_with_remainders`, brewing changes, `kubejs:` ID remap, run-pack's command listener (`remote/`). Other mods and datapacks build on it. | `mods/winterheart-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-survival | `mod-src/winterheart_survival/` (Java, Gradle). Sanity despawn, seppuku trigger, beacon base, limb poisoning, proximity effects. Depends on winterheart-core, winterheart-guides and winterheart-hud. | `mods/winterheart_survival-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-guides | `mod-src/winterheart_guides/` (Java, Gradle; JEI plugin). Depends on winterheart-core. | `mods/winterheart_guides-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-time | `mod-src/winterheart_time/` (Java, Gradle). Depends on winterheart-core and winterheart-guides. | `mods/winterheart_time-1.0.0.jar` | none (loaded by Forge) |
@@ -68,7 +68,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`. KubeJS is gone: logic
 | Feature | Path | What it does |
 | --- | --- | --- |
 | mod-configs | `config/`, `defaultconfigs/`, `config/paxi/*_load_order.json`, `config/starterkit/`, `config/fancymenu/` | Mod settings, starter kit, menus, Paxi load order. |
-| run-pack | `run-pack.sh`, `tools/run_pack/` (Rust) | Launches the client from the shell (offline), and runs `--headless` smoke tests (AGENTS.md rule 7). |
+| run-pack | `run-pack.sh`, `tools/run_pack/` (Rust), `mod-src/winterheart/.../remote/` (listener) | Launches the client from the shell (offline), runs `--headless` smoke tests (AGENTS.md rule 7), and runs commands in its single-player world (`--send`/`--console`/`--run`). |
 | agent-commands | `.claude/commands/`, `.claude/settings.json`, `AGENTS.md`, `CLAUDE.md` | Contributor rules and Claude Code slash commands (`/resolve`). |
 
 ## Research notes

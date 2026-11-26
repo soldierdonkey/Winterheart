@@ -1,13 +1,16 @@
 //! run-pack: launch the Winterheart client from the shell, in offline mode, without the CurseForge app, in the
-//! foreground or hidden for headless smoke tests. Started through ./run-pack.sh.
+//! foreground or hidden for headless smoke tests, and run commands in its single-player world.
+//! Started through ./run-pack.sh.
 //! See docs/features/run-pack.md.
 
 mod launch;
+mod rcon;
 
 use regex::{Regex, RegexBuilder};
 use serde_json::Value;
 use std::fs;
-use std::os::unix::fs::MetadataExt;
+use std::io::{Read, Write};
+use std::os::unix::fs::{MetadataExt, OpenOptionsExt};
 use std::os::unix::process::{CommandExt, ExitStatusExt};
 use std::path::{Path, PathBuf};
 use std::process::{exit, Child, Command, ExitStatus, Stdio};
@@ -18,19 +21,34 @@ use std::time::{Duration, Instant};
 
 const USAGE: &str = "\
 Usage: ./run-pack.sh [--username NAME] [--world NAME] [--dry-run] [-- extra game args]
-       ./run-pack.sh --headless [--world NAME] [--until REGEX] [--timeout SECS] [--keep-running]
+       ./run-pack.sh --headless [--world NAME] [--until REGEX] [--timeout SECS] [--keep-running] [--run CMD]...
+       ./run-pack.sh --send CMD [--send CMD]...
+       ./run-pack.sh --console
 
   --world NAME     join single-player world NAME (a folder in saves/) on start
   --headless       run in the background with the window hidden; output to logs/run-pack-headless.out
   --until REGEX    headless: wait for REGEX in logs/latest.log (default: \"<user> joined the game\" with --world)
   --timeout SECS   headless: give up after SECS (default 600 with a REGEX, else no limit)
   --keep-running   headless: leave the game running once REGEX is seen instead of stopping it
+  --run CMD        once a world is loaded, run CMD in it (repeatable; no leading / needed)
+  --send CMD       run CMD in the world of a game run-pack started, print its output, then exit (repeatable)
+  --console        interactive command prompt to that world; Ctrl-D quits
+Commands run with permission 4 (cheats not needed). `quit` closes the game.
 
 Env overrides:
   MC_INSTALL     CurseForge install dir (default ~/Documents/curseforge/minecraft/Install)
   FORGE_VERSION  e.g. forge-47.4.22 (default: baseModLoader from minecraftinstance.json)
   JAVA           java binary (default: CurseForge's java-runtime-gamma, Java 17)
   MEMORY_MB      heap size (default: allocatedMemory from minecraftinstance.json, else 7040)";
+
+macro_rules! die {
+    ($code:expr, $($arg:tt)*) => {{ eprintln!($($arg)*); exit($code) }};
+}
+
+/// Port of winterheart-core's single-player command listener (remote/DevRcon.java). Soulrend uses 25576.
+const RCON_PORT: u16 = 25577;
+/// Env var that turns the listener on: `<port>:<password>`.
+const RCON_ENV: &str = "WINTERHEART_RCON";
 
 /// Paths and settings shared by main and the launch code.
 pub struct Ctx {
@@ -51,6 +69,38 @@ impl Ctx {
             _ => "7040".into(),
         }
     }
+    fn password_file(&self) -> PathBuf {
+        self.game_dir.join("local/run-pack/rcon-password")
+    }
+    fn password(&self) -> String {
+        fs::read_to_string(self.password_file())
+            .unwrap_or_default()
+            .trim()
+            .to_string()
+    }
+    /// The RCON password is generated once into local/ (gitignored).
+    fn ensure_password(&self) -> String {
+        let pw = self.password();
+        if !pw.is_empty() {
+            return pw;
+        }
+        let path = self.password_file();
+        let mut bytes = [0u8; 16];
+        fs::File::open("/dev/urandom")
+            .and_then(|mut f| f.read_exact(&mut bytes))
+            .unwrap_or_else(|e| die!(1, "Can't read /dev/urandom: {e}"));
+        let pw: String = bytes.iter().map(|b| format!("{b:02x}")).collect();
+        fs::create_dir_all(path.parent().unwrap()).ok();
+        fs::OpenOptions::new()
+            .write(true)
+            .create(true)
+            .truncate(true)
+            .mode(0o600)
+            .open(&path)
+            .and_then(|mut f| f.write_all(format!("{pw}\n").as_bytes()))
+            .unwrap_or_else(|e| die!(1, "Can't write {}: {e}", path.display()));
+        pw
+    }
     fn rel<'a>(&self, p: &'a Path) -> std::borrow::Cow<'a, str> {
         match p.strip_prefix(&self.game_dir) {
             Ok(r) => r.to_string_lossy(),
@@ -63,10 +113,6 @@ fn env(key: &str) -> Option<String> {
     std::env::var(key).ok().filter(|v| !v.is_empty())
 }
 
-macro_rules! die {
-    ($code:expr, $($arg:tt)*) => {{ eprintln!($($arg)*); exit($code) }};
-}
-
 #[derive(Default)]
 struct Opts {
     username: String,
@@ -76,6 +122,9 @@ struct Opts {
     until: Option<String>,
     timeout: Option<u64>,
     keep_running: bool,
+    console: bool,
+    run: Vec<String>,
+    send: Vec<String>,
     extra: Vec<String>,
 }
 
@@ -98,6 +147,9 @@ fn parse_args() -> Opts {
                         .unwrap_or_else(|_| die!(2, "--timeout takes whole seconds")),
                 );
             }
+            "--run" => o.run.push(val()),
+            "--send" => o.send.push(val()),
+            "--console" => o.console = true,
             "--dry-run" => o.dry_run = true,
             "--headless" => o.headless = true,
             "--keep-running" => o.keep_running = true,
@@ -117,6 +169,9 @@ fn parse_args() -> Opts {
             2,
             "--until, --timeout and --keep-running only apply with --headless"
         );
+    }
+    if !o.send.is_empty() && o.console {
+        die!(2, "Use either --send or --console");
     }
     o
 }
@@ -206,6 +261,19 @@ impl Watch {
     }
 }
 
+/// Wait until the ready pattern is in the log (if any) and the listener answers, then send the commands.
+fn run_when_ready(w: &Watch, ctx: &Ctx, cmds: &[String], limit: u64) -> bool {
+    let start = Instant::now();
+    while start.elapsed().as_secs() < limit {
+        if (w.until.is_none() || w.ready_line().is_some()) && rcon::port_open(RCON_PORT) {
+            return rcon::run_commands(RCON_PORT, &ctx.password(), cmds, false) == 0;
+        }
+        sleep(Duration::from_secs(1));
+    }
+    eprintln!("--run: no world loaded after {limit}s, commands not sent");
+    false
+}
+
 /// macOS can't run the client without a window, so the window exists but the app is kept hidden.
 /// NSRunningApplication.hide needs no Accessibility permission.
 fn hide_app(pid: u32) {
@@ -238,14 +306,22 @@ fn wait_exit(child: &mut Child, secs: u64) -> bool {
     !matches!(child.try_wait(), Ok(None))
 }
 
-fn stop_game(child: &mut Child) {
+fn stop_game(child: &mut Child, ctx: &Ctx) {
     if !matches!(child.try_wait(), Ok(None)) {
         return;
     }
     let pid = child.id();
     println!("Stopping the game (pid {pid})");
-    // There is no command listener to ask it to quit, so it gets SIGTERM. That can segfault in GLFW
-    // teardown and make macOS show a "Java quit unexpectedly" dialog; the world is saved by the shutdown hook first.
+    // First ask it to close itself (Minecraft.stop(), like the window's close button). Only possible while a
+    // world is loaded, since the listener lives on the integrated server.
+    if rcon::port_open(RCON_PORT)
+        && rcon::run_commands(RCON_PORT, &ctx.password(), &["quit".into()], true) == 0
+        && wait_exit(child, 60)
+    {
+        return;
+    }
+    // Otherwise SIGTERM. That can segfault in GLFW teardown and make macOS show a "Java quit unexpectedly"
+    // dialog; the world is saved by the shutdown hook first.
     kill(pid, libc::SIGTERM);
     if wait_exit(child, 60) {
         return;
@@ -284,6 +360,30 @@ fn main() {
         forge_version: env("FORGE_VERSION"),
         memory_env: env("MEMORY_MB"),
     };
+
+    // ---- On-demand commands to a running game ----
+    if !o.send.is_empty() || o.console {
+        if o.headless || o.world.is_some() || !o.run.is_empty() || o.dry_run || !o.extra.is_empty()
+        {
+            die!(2, "--send and --console talk to a game that is already running; they can't be combined with launch options");
+        }
+        let pw = ctx.password();
+        if pw.is_empty() {
+            die!(
+                1,
+                "No RCON password yet ({}): start the game with run-pack.sh first",
+                ctx.password_file().display()
+            );
+        }
+        if !rcon::port_open(RCON_PORT) {
+            die!(1, "No game listening on port {RCON_PORT}: start one with ./run-pack.sh --world NAME (CurseForge launches have no listener)");
+        }
+        exit(if o.console {
+            rcon::repl(RCON_PORT, &pw, "Winterheart")
+        } else {
+            rcon::run_commands(RCON_PORT, &pw, &o.send, false)
+        });
+    }
 
     // ---- Launch ----
     if !ctx.mc_install.join("versions").is_dir() {
@@ -360,12 +460,29 @@ fn main() {
         java_version(&java)
     );
 
+    let pw = ctx.ensure_password();
     let mut command = Command::new(&cmd[0]);
-    command.args(&cmd[1..]).current_dir(&ctx.game_dir);
+    command
+        .args(&cmd[1..])
+        .current_dir(&ctx.game_dir)
+        .env(RCON_ENV, format!("{RCON_PORT}:{pw}"));
 
     if !o.headless {
-        let e = command.exec();
-        die!(1, "Can't run {}: {e}", cmd[0]);
+        if o.run.is_empty() {
+            let e = command.exec();
+            die!(1, "Can't run {}: {e}", cmd[0]);
+        }
+        // --run is sent from a helper thread while the game runs in the foreground; Ctrl-C reaches the game.
+        ctrlc::set_handler(|| {}).ok();
+        let mut child = command
+            .spawn()
+            .unwrap_or_else(|e| die!(1, "Can't run {}: {e}", cmd[0]));
+        std::thread::scope(|s| {
+            s.spawn(|| run_when_ready(&watch, &ctx, &o.run, 600));
+            let status = child.wait().unwrap_or_else(|e| die!(1, "{e}"));
+            exit(exit_code(status));
+        });
+        unreachable!();
     }
 
     // ---- Headless ----
@@ -400,7 +517,7 @@ fn main() {
     let check_interrupt = |child: &mut Child| {
         if interrupted.load(Ordering::SeqCst) {
             println!();
-            stop_game(child);
+            stop_game(child, &ctx);
             summary(&watch, &ctx);
             exit(130);
         }
@@ -436,18 +553,27 @@ fn main() {
         }
     };
 
+    let mut run_rc = 0;
+    if matches!(status, Status::Ready)
+        && !o.run.is_empty()
+        && !run_when_ready(&watch, &ctx, &o.run, 60)
+    {
+        run_rc = 1;
+    }
+    check_interrupt(&mut child);
+
     match status {
         Status::Ready => {
             if o.keep_running {
-                println!("Left running, hidden (pid {pid}). Click its Dock icon to show it; stop it with: kill {pid}");
+                println!("Left running, hidden (pid {pid}). Click its Dock icon to show it. Commands: ./run-pack.sh --console; stop it with: ./run-pack.sh --send quit");
             } else {
-                stop_game(&mut child);
+                stop_game(&mut child, &ctx);
             }
             summary(&watch, &ctx);
-            exit(0);
+            exit(run_rc);
         }
         Status::Timeout => {
-            stop_game(&mut child);
+            stop_game(&mut child, &ctx);
             summary(&watch, &ctx);
             exit(124);
         }

@@ -12,6 +12,7 @@ import io.github.soldierdonkey2.winterheart.effect.ModEffects;
 import io.github.soldierdonkey2.winterheart.item.ModItems;
 import io.github.soldierdonkey2.winterheart.item.SmeltPopOut;
 import io.github.soldierdonkey2.winterheart.recipe.ModRecipes;
+import io.github.soldierdonkey2.winterheart.remote.DevRcon;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -53,6 +54,9 @@ public class Winterheart {
         MinecraftForge.EVENT_BUS.register(DumpIds.class);
         MinecraftForge.EVENT_BUS.register(TestMode.class);
         MinecraftForge.EVENT_BUS.register(TestItems.class);
+        // run-pack's single-player command listener; off unless run-pack set WINTERHEART_RCON
+        MinecraftForge.EVENT_BUS.addListener(DevRcon::onServerStarted);
+        MinecraftForge.EVENT_BUS.addListener(DevRcon::onServerStopping);
         LOGGER.info("{} loaded", MOD_ID);
     }
 }

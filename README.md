@@ -13,7 +13,7 @@ Development instance of the **Winterheart** modpack: a cold-survival pack where 
 | `tacz/` | TACZ gun pack (only pre-1950s guns kept). |
 | `python/` | Helper and generator scripts (`structures/`: structure export and generators, `survival_hud/`: HUD textures and preview, `tacz/`: gun pack purge scripts). |
 | `tools/` | Rust apps (`guide_editor`, `run_pack`, `worldpainter`). |
-| `run-pack.sh` | Launch the instance from the shell, headless smoke tests. See [docs/features/run-pack.md](docs/features/run-pack.md). |
+| `run-pack.sh` | Launch the instance from the shell, headless smoke tests, commands in the running world. See [docs/features/run-pack.md](docs/features/run-pack.md). |
 | `mods/`, `resourcepacks/`, `shaderpacks/` | Shipped binaries. |
 | `docs/` | Contributor/backend docs. See [docs/README.md](docs/README.md). |
 | `CHANGELOG.md` | Release notes, newest first. |
