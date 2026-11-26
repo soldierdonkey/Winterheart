@@ -1,4 +1,4 @@
-//! Keeps mods/ in step with mods.json. See docs/features/fetch-mods.md.
+//! Keeps mods/ and resourcepacks/ in step with mods.json. See docs/features/fetch-mods.md.
 
 mod fetch;
 mod generate;
@@ -9,9 +9,9 @@ use std::process::ExitCode;
 
 const HELP: &str = "\
 Usage: ./fetch-mods.sh [options]
-  (no options)       download missing mods into mods/ and verify them
+  (no options)       download missing mods and resource packs and verify them
   --check            report what is out of sync and change nothing (exit 1 if anything is)
-  --generate         rewrite mods.json from mods/ and the CurseForge launcher's minecraftinstance.json
+  --generate         rewrite mods.json from mods/, resourcepacks/ and the launcher's minecraftinstance.json
   --downloads <dir>  folder watched for manual downloads (default: ~/Downloads)
   --no-open          don't offer to open manual download pages in the browser
   --no-wait          don't wait for manual downloads; list them and exit 1

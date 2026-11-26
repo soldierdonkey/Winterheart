@@ -24,7 +24,7 @@ Paths are repo-relative. `DP/` = `datapacks/`. KubeJS is gone: logic lives in th
 | mod-publishing | `publish-mods.sh` (builds and uploads every `mod-src/` mod with a `curseforge_project_id`). Not a mod, no jar. | none | `curseforge_project_id` in `mod-src/<mod>/gradle.properties` |
 | packfinder | `mod-src/packfinder/` (Java). Loads every pack in `resourcepacks/` and `datapacks/`; replaced Paxi. | `mods/packfinder-1.0.0.jar` | none (loaded by Forge); order in `config/packfinder/` |
 | resource-packs | Third-party packs in `resourcepacks/`. Not a mod, no jar. | none | `config/packfinder/resourcepack_order.json` |
-| fetch-mods | `fetch-mods.sh`, `mods.json`, `tools/fetch_mods/` (Rust). Fills `mods/` from the manifest. Not a mod, no jar. | none | `mods.json` |
+| fetch-mods | `fetch-mods.sh`, `mods.json`, `tools/fetch_mods/` (Rust). Fills `mods/` and `resourcepacks/` from the manifest. Not a mod, no jar. | none | `mods.json` |
 
 ---
 

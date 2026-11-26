@@ -47,10 +47,10 @@ impl Entry {
         Entry { file: file.to_string(), source: Source::Repo, sha1: None, size: None, url: None, page: None, project_id: None, file_id: None }
     }
 
-    /// Rejects entries that could write outside mods/ or can't be verified.
-    fn validate(&self) -> Result<(), String> {
+    /// Rejects entries that could write outside their folder or can't be verified.
+    fn validate(&self, folder: Folder) -> Result<(), String> {
         let name = &self.file;
-        if name.contains(['/', '\\', ':']) || name.starts_with('.') || !name.ends_with(".jar") {
+        if name.contains(['/', '\\', ':']) || name.starts_with('.') || !name.ends_with(folder.suffix) {
             return Err(format!("{FILE}: bad file name {name:?}"));
         }
         if self.source == Source::Repo {
@@ -68,16 +68,41 @@ impl Entry {
     }
 }
 
+/// A folder the manifest fills, and the files in it that the manifest covers.
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub struct Folder {
+    pub dir: &'static str,
+    pub suffix: &'static str,
+}
+
+pub const MODS: Folder = Folder { dir: "mods", suffix: ".jar" };
+pub const RESOURCEPACKS: Folder = Folder { dir: "resourcepacks", suffix: ".zip" };
+pub const FOLDERS: [Folder; 2] = [MODS, RESOURCEPACKS];
+
 #[derive(Serialize, Deserialize, Default)]
 pub struct Manifest {
     pub mods: Vec<Entry>,
+    #[serde(default)]
+    pub resourcepacks: Vec<Entry>,
+}
+
+impl Manifest {
+    pub fn entries(&self, folder: Folder) -> &[Entry] {
+        if folder == MODS {
+            &self.mods
+        } else {
+            &self.resourcepacks
+        }
+    }
 }
 
 pub fn load(path: &Path) -> Result<Manifest, String> {
     let text = fs::read_to_string(path).map_err(|e| format!("can't read {}: {e}", path.display()))?;
     let manifest: Manifest = serde_json::from_str(&text).map_err(|e| format!("{}: {e}", path.display()))?;
-    for entry in &manifest.mods {
-        entry.validate()?;
+    for folder in FOLDERS {
+        for entry in manifest.entries(folder) {
+            entry.validate(folder)?;
+        }
     }
     Ok(manifest)
 }
@@ -88,8 +113,9 @@ pub fn sha1_file(path: &Path) -> io::Result<String> {
     Ok(hasher.finalize().iter().map(|b| format!("{b:02x}")).collect())
 }
 
-/// Names of the files in mods/ that end in .jar, sorted.
-pub fn jars(dir: &Path) -> Result<Vec<String>, String> {
+/// Names of the folder's files with its suffix, sorted. Subfolders (unzipped packs) belong to git.
+pub fn files(root: &Path, folder: Folder) -> Result<Vec<String>, String> {
+    let dir = &root.join(folder.dir);
     let read = match fs::read_dir(dir) {
         Ok(read) => read,
         Err(e) if e.kind() == io::ErrorKind::NotFound => return Ok(Vec::new()),
@@ -99,7 +125,7 @@ pub fn jars(dir: &Path) -> Result<Vec<String>, String> {
         .filter_map(Result::ok)
         .filter(|e| e.path().is_file())
         .filter_map(|e| e.file_name().into_string().ok())
-        .filter(|n| n.ends_with(".jar") && !n.starts_with('.'))
+        .filter(|n| n.ends_with(folder.suffix) && !n.starts_with('.'))
         .collect();
     names.sort();
     Ok(names)

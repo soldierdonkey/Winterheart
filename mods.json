@@ -1426,5 +1426,247 @@
       "projectId": 536660,
       "fileId": 4769518
     }
+  ],
+  "resourcepacks": [
+    {
+      "file": "-1.21.2 Fresh Moves v3.1 (With Animated Eyes).zip",
+      "source": "curseforge",
+      "sha1": "7049cc12935ff4be20173c908ad946f530861a4c",
+      "size": 321871,
+      "url": "https://edge.forgecdn.net/files/6105/672/-1.21.2%20Fresh%20Moves%20v3.1%20(With%20Animated%20Eyes).zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/fresh-moves/files/6105672",
+      "projectId": 990406,
+      "fileId": 6105672
+    },
+    {
+      "file": "AnalogueWatchClock-[1.19.3]-1.2.1.zip",
+      "source": "curseforge",
+      "sha1": "b4ce93c5b36cfc6950b7f8710ee1957c35994e3a",
+      "size": 559059,
+      "url": "https://edge.forgecdn.net/files/5060/168/AnalogueWatchClock-%5b1.19.3%5d-1.2.1.zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/analogue-watch-clock/files/5060168",
+      "projectId": 452469,
+      "fileId": 5060168
+    },
+    {
+      "file": "Better-Leaves-9.5.zip",
+      "source": "curseforge",
+      "sha1": "78b7e6cbb1661716423429d2c46ab08266cdf1f8",
+      "size": 1923769,
+      "url": "https://edge.forgecdn.net/files/7556/678/Better-Leaves-9.5.zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/motschens-better-leaves/files/7556678",
+      "projectId": 380969,
+      "fileId": 7556678
+    },
+    {
+      "file": "Clear Glass Pack 1.20.zip",
+      "source": "manual",
+      "sha1": "d1bbeef33c9fff804454bfd1f855f9ae4e703e7d",
+      "size": 588011,
+      "page": "https://www.curseforge.com/minecraft/texture-packs/clear-glass-pack/files/4582171",
+      "projectId": 286633,
+      "fileId": 4582171
+    },
+    {
+      "file": "DarkAtmosphere2.0.zip",
+      "source": "manual",
+      "sha1": "d009e855c629f149cca4f3dfc244a50b4759a82f",
+      "size": 62358,
+      "page": "https://www.curseforge.com/minecraft/texture-packs/dark-atmosphere-and-dreadful-skies/files/7154815",
+      "projectId": 1334136,
+      "fileId": 7154815
+    },
+    {
+      "file": "Enhanced Audio r7.zip",
+      "source": "curseforge",
+      "sha1": "2cd4bd529641bde061c2d2d4c44de3228fd6d767",
+      "size": 18977120,
+      "url": "https://edge.forgecdn.net/files/7873/296/Enhanced%20Audio%20r7.zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/enhanced-audio/files/7873296",
+      "projectId": 383269,
+      "fileId": 7873296
+    },
+    {
+      "file": "FA+Emissive-v1.6.zip",
+      "source": "modrinth",
+      "sha1": "9ded93d65124d02bdccd0c5700271da69e283c7f",
+      "size": 93695,
+      "url": "https://cdn.modrinth.com/data/VRS2YQn9/versions/byyyyS7z/FA%2BEmissive-v1.6.zip",
+      "page": "https://modrinth.com/mod/VRS2YQn9/version/byyyyS7z",
+      "projectId": 1346083,
+      "fileId": 7999667
+    },
+    {
+      "file": "FA+Spiders-v2.2.zip",
+      "source": "modrinth",
+      "sha1": "8a673f176a9ab80b703586547d9d527c00878451",
+      "size": 77869,
+      "url": "https://cdn.modrinth.com/data/aqKnWmBf/versions/26pzeVJN/FA%2BSpiders-v2.2.zip",
+      "page": "https://modrinth.com/mod/aqKnWmBf/version/26pzeVJN",
+      "projectId": 1346116,
+      "fileId": 7999323
+    },
+    {
+      "file": "Foliage+ V1.5.9.4.zip",
+      "source": "curseforge",
+      "sha1": "9d5158ce6bf6833cc4921923f6362679904b9f4a",
+      "size": 241664,
+      "url": "https://edge.forgecdn.net/files/4866/628/Foliage%2b%20V1.5.9.4.zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/foliage-plus/files/4866628",
+      "projectId": 846603,
+      "fileId": 4866628
+    },
+    {
+      "file": "FreshAnimations_v1.10.4.zip",
+      "source": "modrinth",
+      "sha1": "73db740a6868e043c5e615c036fca2c912615b6e",
+      "size": 850941,
+      "url": "https://cdn.modrinth.com/data/50dA9Sha/versions/xN57JJts/FreshAnimations_v1.10.4.zip",
+      "page": "https://modrinth.com/mod/50dA9Sha/version/xN57JJts",
+      "projectId": 453763,
+      "fileId": 7670377
+    },
+    {
+      "file": "Hidden-Armor-1.2.0.zip",
+      "source": "curseforge",
+      "sha1": "42dce68cf57c3e332a7a2ccc9454ab2a1420cadf",
+      "size": 209346,
+      "url": "https://edge.forgecdn.net/files/5544/136/Hidden-Armor-1.2.0.zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/hidden-armor/files/5544136",
+      "projectId": 596705,
+      "fileId": 5544136
+    },
+    {
+      "file": "LowOnFire_1.20.1.zip",
+      "source": "modrinth",
+      "sha1": "08db918bc8642b5501402fe25c9b6a8286a538b5",
+      "size": 49395,
+      "url": "https://cdn.modrinth.com/data/RRxvWKNC/versions/roiZsJIW/LowOnFire_1.20.1.zip",
+      "page": "https://modrinth.com/mod/RRxvWKNC/version/roiZsJIW",
+      "projectId": 580683,
+      "fileId": 4606406
+    },
+    {
+      "file": "Overlayed-Snow-v2.1.0-v1.14+26.2.zip",
+      "source": "curseforge",
+      "sha1": "951097edc9b017c41b946089e4076ea8b95a3f79",
+      "size": 7399,
+      "url": "https://edge.forgecdn.net/files/8440/843/Overlayed-Snow-v2.1.0-v1.14%2b26.2.zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/overlayed-snow/files/8440843",
+      "projectId": 1381420,
+      "fileId": 8440843
+    },
+    {
+      "file": "Realistic Combat Soundpack 2.0.zip",
+      "source": "curseforge",
+      "sha1": "663b6867590e97efaffbdb22d5acd19b804043fa",
+      "size": 954952,
+      "url": "https://edge.forgecdn.net/files/5244/945/Realistic%20Combat%20Soundpack%202.0.zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/realistic-combat-soundpack/files/5244945",
+      "projectId": 813439,
+      "fileId": 5244945
+    },
+    {
+      "file": "REVIVED_Farmer's Delight_crops_3D_R1.5.2-universal.zip",
+      "source": "curseforge",
+      "sha1": "6b348cfd7833a9d4ec017da67043c1b401266dc6",
+      "size": 401982,
+      "url": "https://edge.forgecdn.net/files/8076/578/REVIVED_Farmer%27s%20Delight_crops_3D_R1.5.2-universal.zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/revived-farmers-delight-crops-3d/files/8076578",
+      "projectId": 1020569,
+      "fileId": 8076578
+    },
+    {
+      "file": "Tactical3DTools[10.2].zip",
+      "source": "modrinth",
+      "sha1": "fab6d22a88ffffc23f8de79e0ed55767c3976018",
+      "size": 4777210,
+      "url": "https://cdn.modrinth.com/data/t3aIu2PW/versions/qB9HMY9l/Tactical3DTools%5B10.2%5D.zip",
+      "page": "https://modrinth.com/mod/t3aIu2PW/version/qB9HMY9l",
+      "projectId": 1057296,
+      "fileId": 8133573
+    },
+    {
+      "file": "TaxCreepyMob+M.1.20.1+ResP.1.0.0.zip",
+      "source": "curseforge",
+      "sha1": "01d385e512128267ae7bdab2f5a3615de2ccdb76",
+      "size": 9879,
+      "url": "https://edge.forgecdn.net/files/5882/677/TaxCreepyMob%2bM.1.20.1%2bResP.1.0.0.zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/taxcreepymob/files/5882677",
+      "projectId": 1135812,
+      "fileId": 5882677
+    },
+    {
+      "file": "TheForestCustomTextures.zip",
+      "source": "repo"
+    },
+    {
+      "file": "Universal Bushy Leaves.zip",
+      "source": "curseforge",
+      "sha1": "ce07969db7271dce892f5beed382cc3eb8db99fe",
+      "size": 63078,
+      "url": "https://edge.forgecdn.net/files/7831/345/Universal%20Bushy%20Leaves.zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/universal-bushy-leaves/files/7831345",
+      "projectId": 1186505,
+      "fileId": 7831345
+    },
+    {
+      "file": "§6Immersive_Interfaces_Modded§8_1.20.x.zip",
+      "source": "manual",
+      "sha1": "7da92e1fbc54e8473d5d41108058580fb860eccc",
+      "size": 593519,
+      "page": "https://www.curseforge.com/minecraft/texture-packs/immersive-interfaces-mod-support-unofficial/files/8189989",
+      "projectId": 1292547,
+      "fileId": 8189989
+    },
+    {
+      "file": "§6Immersive§8_§6Interfaces§8.zip",
+      "source": "modrinth",
+      "sha1": "176aa5cf21d2c6b6a24d11cf0e74aed4c4ca9621",
+      "size": 1197001,
+      "url": "https://cdn.modrinth.com/data/3sV1gvyJ/versions/rhXvPOmr/%C2%A76Immersive%C2%A78_%C2%A76Interfaces%C2%A78.zip",
+      "page": "https://modrinth.com/mod/3sV1gvyJ/version/rhXvPOmr",
+      "projectId": 1087342,
+      "fileId": 7937133
+    },
+    {
+      "file": "§bEnchanting§8-§bReimagined§0_§8[v1.4]§0.zip",
+      "source": "modrinth",
+      "sha1": "27207cdb36752a16ff4aa049d5e70c290787a905",
+      "size": 2747978,
+      "url": "https://cdn.modrinth.com/data/Cc6nRpKX/versions/ORSYseWX/%C2%A7bEnchanting%C2%A78-%C2%A7bReimagined%C2%A70_%C2%A78%5Bv1.4%5D%C2%A70.zip",
+      "page": "https://modrinth.com/mod/Cc6nRpKX/version/ORSYseWX",
+      "projectId": 547860,
+      "fileId": 7178708
+    },
+    {
+      "file": "§e[FORGE]Eating Animations More Compat.zip",
+      "source": "manual",
+      "sha1": "07b8f6ca60e276f145f29e2370c6f1a6983357ba",
+      "size": 1103721,
+      "page": "https://www.curseforge.com/minecraft/texture-packs/eat-animations-more-mod-compatibility/files/7898114",
+      "projectId": 1223426,
+      "fileId": 7898114
+    },
+    {
+      "file": "§eExtended_Illumina_NEA_1.20x.zip",
+      "source": "curseforge",
+      "sha1": "36915007608f62a363ccf97d64a4fe2dae9ff377",
+      "size": 5185,
+      "url": "https://edge.forgecdn.net/files/5642/781/%c2%a7eExtended_Illumina_NEA_1.20x.zip",
+      "page": "https://www.curseforge.com/minecraft/texture-packs/extended-illumina-not-enough-animations/files/5642781",
+      "projectId": 1086752,
+      "fileId": 5642781
+    },
+    {
+      "file": "§l3D§f+Ladders+v1.1.zip",
+      "source": "modrinth",
+      "sha1": "7e6b89d76377f040ea0aaa93c21e638e057e012d",
+      "size": 12521,
+      "url": "https://cdn.modrinth.com/data/ti9eZ3CP/versions/4t6UmIZn/%C2%A7l3D%C2%A7f%2BLadders%2Bv1.1.zip",
+      "page": "https://modrinth.com/mod/ti9eZ3CP/version/4t6UmIZn",
+      "projectId": 627908,
+      "fileId": 4692323
+    }
   ]
 }
