@@ -87,6 +87,23 @@ config/QuantifiedAPI/cache/
 config/worldedit/.archive-unpack/
 config/worldedit/worldedit.properties
 
+# ---- Config: written by mods, not settings (regenerated on launch) ----
+config/orespawn-guide/
+config/konkrete/locals/
+config/bettercaves/**/README.txt
+config/streamsreflowing/bank_*/examples/
+config/streamsreflowing/bank_*/GUIDE.md
+config/streamsreflowing/bank_*/README.md
+config/streamsreflowing/bank_features/.seeded_defaults
+config/streamsreflowing/bank_features/.withdrew_*
+config/starterkit/descriptions/
+config/starterkit/kits/inactive/
+config/fancymenu/ui_themes/
+config/fancymenu/layout_editor/
+config/fancymenu/legacy_checklist.txt
+config/fancymenu/user_variables.db
+config/worldedit/sessions/
+
 # ---- Schematics not loaded into a datapack ----
 # Only the structure templates in datapacks/winterheart_structures are used by the game.
 schematics/

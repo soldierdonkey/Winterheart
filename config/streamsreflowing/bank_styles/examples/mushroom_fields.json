@@ -1,8 +1,0 @@
-{
-  "biomes": [
-    "minecraft:mushroom_fields"
-  ],
-  "bed": "minecraft:gravel",
-  "waterline": "minecraft:mud",
-  "bank": "streamsreflowing:chameleon"
-}
