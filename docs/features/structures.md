@@ -49,6 +49,6 @@ The `.mcfunction` versions are for testing by hand (`/function winterheart:struc
 
 - `iceberg_shipwreck.mcfunction` doesn't match `gen_wreck.py` (10 differing lines around line 2209, already true at commit fa1690b). Either the file was edited by hand or the generator changed after it was run. Regenerating it would change the wreck, so diff it before you overwrite it.
 - Fixups only work with rotation `none`.
-- The committed `watchtower.nbt` is origin's copy (commit a166d65), not an export of the local `config/worldedit/schematics/watchtower.nbt`. Running `export_structures.sh` rewrites it with different bytes, so check the result in game before you commit it.
+- The committed `watchtower.nbt` is origin's copy (commit a79295e), not an export of the local `config/worldedit/schematics/watchtower.nbt`. Running `export_structures.sh` rewrites it with different bytes, so check the result in game before you commit it.
 - `export_structures.sh` currently stops at the shipwreck: `--merge-nbt: no block entity at template position (18, 29, 25)`. The chest position in `shipwreck_chest.snbt` no longer matches `shipwreck.schem`. The pre-move scripts fail the same way. Fix the position before re-exporting the shipwreck.
 - Templates are placed once per world. Moving one in `fixed_structures.json` doesn't move it in an existing world.

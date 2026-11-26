@@ -58,14 +58,14 @@ A differing jar, or one that is no longer listed but matches what the tool recor
 
 ## Changes
 
+- 2026-11-26: Rewrote history with `git filter-repo`, dropping `mods/`, `saves/`, `tacz_backup/`, `screenshots/` and two removed resource packs, then re-added the `repo` jars. The tracked files were identical before and after; the git data went from about 591 MiB to 100 MiB.
 - 2026-11-26: Untracked the 139 `curseforge`, `modrinth` and `manual` jars and ignored `mods/*.jar`. The files on disk did not change, so no game launch. Tested with a fresh local clone and an empty cache: 137 jars downloaded, only the 2 manual ones remained, and every jar present matched the instance byte for byte.
 - 2026-11-26: Added. Tested on macOS in an empty scratch folder holding only `mods.json` and the `repo` jars, with an empty cache: 137 downloads and 2 manual pickups (a renamed copy in the watched folder, one saved into `mods/`; a wrong file and a `.crdownload` were ignored) finished in about 15 s, and all 150 jars were byte-identical to the instance's. Also tested re-run, `--check`, a tampered, a missing, an unlisted and a delisted jar, non-interactive manual, and a bad file name. Opening browser pages was not tested. No game launch, as no jar changed.
 
 ## Gotchas
 
-- Pulling the commit that untracked the jars deletes them from an existing checkout (git refuses to if one was modified locally). Run `./fetch-mods.sh` right after.
-- Git history still contains the old jars, so clones are no smaller.
-- Checking out an older commit brings its jars back, and returning removes them again; run `./fetch-mods.sh` afterwards.
+- A clone made before the rewrite must be replaced with a fresh clone. Pushing from it would restore the old history.
+- History was rewritten on 2026-11-26 to drop old jars. Older commits contain none, and `mods.json` exists only from the commit that added this tool.
 - A new own mod whose id doesn't start with `winterheart` needs its own `!mods/<id>-*.jar` line in `.gitignore`.
 - Nothing runs this automatically (not `run-pack.sh`, not a git hook, not the CurseForge app).
 - The first removal of an old jar needs a previous fetch run on that machine; before that it is only reported as unlisted.
