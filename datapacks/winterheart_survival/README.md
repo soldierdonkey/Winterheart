@@ -6,7 +6,7 @@ Minecraft 1.20.1 datapack by soldierdonkey2, made for the Winterheart modpack.
 
 ## What it does
 
-- Sets Legendary Survival Overhaul temperatures for biomes, blocks, armor, held items, food and fuel, and thirst values for water and food.
+- Changes Legendary Survival Overhaul armor temperatures.
 - Changes what permafrost drops.
 - Tunes limb poisoning and the effects of standing near gore, warmth, furniture and foliage.
 
