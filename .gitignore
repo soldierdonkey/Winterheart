@@ -71,6 +71,7 @@ config/asyncparticles/asyncparticles-mixin.properties
 config/jei/ingredient-list-mod-sort-order.ini
 config/QuantifiedAPI/cache/
 config/worldedit/.archive-unpack/
+config/worldedit/worldedit.properties
 
 # ---- Schematics not loaded into a datapack ----
 # Only the structure templates in config/paxi/datapacks/winterheart_structures are used by the game.
