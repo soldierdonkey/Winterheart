@@ -40,7 +40,7 @@ The script only deletes and rewrites files carrying its own `__comment__` marker
 
 ### Durability
 
-`gundb` reads `data/<namespace>/gundb/`. Each kept gun has its own file, `gundb:tacz/<id>`, which targets `tacz:<id>` and beats the gun type's file. A file replaces the default entirely, with no merging. The current files are placeholders: copies of what each gun used before.
+`gundb` reads `data/<namespace>/gundb/`. Each kept gun has its own file, `gundb:tacz/<id>`, which targets `tacz:<id>` and beats the gun type's file. A file replaces the default entirely, with no merging. Each file sets `JamThreshold` to 0.9, so jamming starts once durability drops below 90%. The other values are copies of what each gun used before.
 
 | Guns | Copied from `gundb`'s |
 | --- | --- |
@@ -58,14 +58,15 @@ The script only deletes and rewrites files carrying its own `__comment__` marker
 | --- | --- | --- | --- |
 | `filter.block[].path` | `datapacks/winterheart_tacz/pack.mcmeta` | period set | Regexes; the negative lookahead lists what survives. A gun or attachment appears in both its `index/` and `data/` entry. |
 | `MaxDurability`, `RepairItem`, `RepairCost`, `XpCost` | `data/gundb/gundb/tacz/<id>.json` | per gun | Durability and anvil repair |
-| `Jam`, `JamChance`, `JamThreshold`, `FireOnZero` | same | per gun; `JamThreshold` 0.85 and `FireOnZero` `false` when omitted | Jamming, and firing when worn out |
+| `Jam`, `JamChance`, `JamThreshold`, `FireOnZero` | same | per gun; `JamThreshold` is 0.9 in these files (0.85 when omitted), `FireOnZero` `false` | Jamming, and firing when worn out |
 | `Stats[]` (`Type`, `ReductionThreshold`, `MaxReduction`) | same | per gun | Stat penalties as durability drops |
 | `GUNSMITH`, `GUN_SMITH_TABLE` | `python/tacz/gen_gunsmith_recipes.py` | 30 recipes | Gunsmith recipes and the table's crafting recipe |
 | `DefaultPackDebug` | `tacz/tacz-pre.toml` | `false` | `true` stops TACZ from updating the exported pack |
 
 ## Changes
 
-- 2026-11-26: Added a per-gun `gundb` file for each kept gun, with unchanged values. Tested with `/reload` in a running game: the log showed no `gundb` errors. Not checked in game that the files take effect.
+- 2026-11-26: Added a per-gun `gundb` file for each kept gun. Tested with `/reload` in a running game: the log showed no `gundb` errors. Not checked in game that the files take effect.
+- 2026-11-26: Set `JamThreshold` to 0.9 in all eleven gun files, so jamming starts below 90% durability (was 0.85). Tested with `/reload` in a running game: no `gundb` errors. Not checked in game.
 
 - 2026-11-26: Replaced the committed, hand-trimmed `tacz/tacz_default_gun/` and the scripts `python/tacz/purge_{guns,attachments,ammo}.py` with the datapack `winterheart_tacz`, and set `DefaultPackDebug = false`. The exported pack matches the jar except for the `unjam` animations. Translations are now the jar's. Tested: headless on `New World` before and after, with a JVM class histogram. Both had 11 client gun, 7 ammo, 10 attachment and 3 block indexes, 22 `GunData`, 22 `AttachmentData`, 31 `GunSmithTableRecipe` instances and no `LootTableInjection`. Joined in 26 s, `winterheart_tacz` enabled, `/reload` ran, and the log showed no new TACZ errors. Not checked by eye: guns in hand, attachment fitting and workbench tabs.
 

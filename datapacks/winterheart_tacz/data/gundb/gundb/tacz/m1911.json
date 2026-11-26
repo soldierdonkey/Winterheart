@@ -3,6 +3,7 @@
   "MaxDurability": 800,
   "Jam": true,
   "JamChance": 0.25,
+  "JamThreshold": 0.9,
   "RepairCost": 16,
   "XpCost": 0.25,
   "Stats": [
@@ -12,7 +13,10 @@
       "MaxReduction": 0.75
     },
     {
-      "Type": ["Damage", "ADS"],
+      "Type": [
+        "Damage",
+        "ADS"
+      ],
       "ReductionThreshold": 0.9,
       "MaxReduction": 0.4
     },
@@ -22,7 +26,9 @@
       "MaxReduction": 0.5
     },
     {
-      "Type": ["Recoil"],
+      "Type": [
+        "Recoil"
+      ],
       "ReductionThreshold": 0.9,
       "MaxReduction": 1.0
     }

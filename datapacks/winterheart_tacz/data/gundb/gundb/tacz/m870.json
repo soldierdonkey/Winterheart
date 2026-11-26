@@ -5,6 +5,7 @@
   "RepairCost": 10,
   "XpCost": 1,
   "JamChance": 0.33,
+  "JamThreshold": 0.9,
   "Stats": [
     {
       "Type": "AmmoSpeed",
@@ -12,12 +13,18 @@
       "MaxReduction": 0.6
     },
     {
-      "Type": ["Damage", "Recoil"],
+      "Type": [
+        "Damage",
+        "Recoil"
+      ],
       "ReductionThreshold": 0.9,
       "MaxReduction": 0.65
     },
     {
-      "Type": ["RPM", "ADS"],
+      "Type": [
+        "RPM",
+        "ADS"
+      ],
       "ReductionThreshold": 0.8,
       "MaxReduction": 0.75
     },
@@ -28,4 +35,3 @@
     }
   ]
 }
-

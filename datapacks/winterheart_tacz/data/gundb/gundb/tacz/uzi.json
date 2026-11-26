@@ -5,14 +5,23 @@
   "RepairCost": 6,
   "XpCost": 1,
   "JamChance": 0.15,
+  "JamThreshold": 0.9,
   "Stats": [
     {
-      "Type": ["AmmoSpeed", "Inaccuracy"],
+      "Type": [
+        "AmmoSpeed",
+        "Inaccuracy"
+      ],
       "ReductionThreshold": 0.8,
       "MaxReduction": 0.4
     },
     {
-      "Type": ["Damage", "Recoil", "ArmorIgnore", "ADS"],
+      "Type": [
+        "Damage",
+        "Recoil",
+        "ArmorIgnore",
+        "ADS"
+      ],
       "ReductionThreshold": 0.9,
       "MaxReduction": 0.65
     },
