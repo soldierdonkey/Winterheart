@@ -2,6 +2,8 @@
 
 ### Features:
 
+- resource-packs: removed `AHM.zip` and `§6Dynamic§9Surroundings §2R19.zip`, two large packs that added unused sounds.
+
 - singleplayer-only: launching the pack as a dedicated server now crashes on load with a message that Winterheart is singleplayer only.
 
 - winterheart-core: new core mod `winterheart` registers the metal parts, saltpeter and nitrate bottles, guide book, lost page and the limb poising effect (formerly KubeJS). The old `kubejs:` items in existing worlds convert automatically. Brewing is unchanged: only crude nitrate solution + charred planks.
