@@ -34,7 +34,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | test-utils | [features/test-utils.md](features/test-utils.md) | `mod-src/winterheart/.../api/TestMode.java` |
 | guides | [features/guides.md](features/guides.md) | `mod-src/winterheart_guides/`, `datapacks/winterheart_guides/`, `tools/guide_editor/` |
 | recipes | [features/recipes.md](features/recipes.md) | `datapacks/winterheart_recipes/`, `python/recipes/gen_recipes.py` |
-| tacz-guns | [features/tacz-guns.md](features/tacz-guns.md) | `tacz/` |
+| tacz-guns | [features/tacz-guns.md](features/tacz-guns.md) | `datapacks/winterheart_tacz/`, `tacz/tacz-pre.toml`, `python/tacz/gen_gunsmith_recipes.py` |
 | worldgen | [features/worldgen.md](features/worldgen.md) | `datapacks/winterheart_worldgen/`, `datapacks/winterheart_novoatlas/` |
 | structures | [features/structures.md](features/structures.md) | `mod-src/winterheart_structures/`, `datapacks/winterheart_structures/` |
 | world-painter | _todo_ | `tools/worldpainter/` |

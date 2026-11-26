@@ -10,8 +10,8 @@ Development instance of the **Winterheart** modpack: a cold-survival pack where 
 | `config/` | Mod configs. |
 | `datapacks/`, `resourcepacks/` | Every pack here is always loaded, by [packfinder](docs/features/packfinder.md) (priority in `config/packfinder/`). All custom data lives in `datapacks/winterheart_*`. |
 | `mod-src/` | Source for our own mods. New mods start from `mod-src/_template/new-mod.sh`. |
-| `tacz/` | TACZ gun pack (only pre-1950s guns kept). |
-| `python/` | Helper and generator scripts (`structures/`: structure export and generators, `survival_hud/`: HUD textures and preview, `tacz/`: gun pack purge scripts). |
+| `tacz/` | TACZ gun pack folder. `tacz-pre.toml` is tracked; TACZ exports its default pack here, and `datapacks/winterheart_tacz` trims it to pre-1950s guns. |
+| `python/` | Helper and generator scripts (`structures/`: structure export and generators, `survival_hud/`: HUD textures and preview, `tacz/`: gunsmith recipe generator). |
 | `tools/` | Rust apps (`fetch`, `guide_editor`, `run_pack`, `worldpainter`). |
 | `run-pack.sh` | Launch the instance from the shell, headless smoke tests, commands in the running world. See [docs/features/run-pack.md](docs/features/run-pack.md). |
 | `fetch.sh`, `mods.json` | Mod and resource pack manifest, and the script that downloads and verifies `mods/` and `resourcepacks/` from it. See [docs/features/fetch.md](docs/features/fetch.md). |

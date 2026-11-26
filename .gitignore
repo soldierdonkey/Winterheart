@@ -105,6 +105,11 @@ backups/
 *.backup
 *backup*.zip
 
+# ---- TACZ ----
+# TACZ exports its default gun pack here (datapacks/winterheart_tacz trims it)
+tacz/tacz_default_gun/
+tacz/.export-state.json
+
 # ---- Build output ----
 __pycache__/
 *.pyc

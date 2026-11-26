@@ -2,6 +2,8 @@
 
 ### Features:
 
+- tacz-guns: gun translations are updated to the ones shipped with TACZ. The period gun set is unchanged, now applied by the `winterheart_tacz` datapack.
+
 - spark: added the spark 1.10.53 profiler for diagnosing freezes and memory use.
 
 - mod-configs: disabled Citadel's April Fools content.

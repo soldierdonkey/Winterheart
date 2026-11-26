@@ -1,0 +1,17 @@
+{
+  "pack": {
+    "description": "Winterheart: TACZ trimmed to pre-1950s weapons",
+    "pack_format": 15
+  },
+  "filter": {
+    "block": [
+      { "namespace": "^tacz$", "path": "^index/guns/(?!(ak47|db_long|db_short|fn_fal|hk_g3|kar98|m1911|m870|rpk|springfield1873|uzi)\\.json$)" },
+      { "namespace": "^tacz$", "path": "^data/guns/(?!(ak47|db_long|db_short|fn_fal|hk_g3|kar98|m1911|m870|rpk|springfield1873|uzi)_data\\.json$)" },
+      { "namespace": "^tacz$", "path": "^index/ammo/(?!(12g|308|45_70|45acp|762x39|792x57|9mm)\\.json$)" },
+      { "namespace": "^tacz$", "path": "^index/attachments/(?!(ammo_mod_fmj|ammo_mod_he|ammo_mod_hp|ammo_mod_i|ammo_mod_slug|bayonet_6h3|muzzle_choke_sg|scope_1873_6x|scope_98k|scope_retro_2x)\\.json$)" },
+      { "namespace": "^tacz$", "path": "^data/attachments/(?!(ammo_mod_fmj|ammo_mod_he|ammo_mod_hp|ammo_mod_i|ammo_mod_slug|bayonet_6h3|muzzle_choke_sg|scope_1873_6x|scope_98k|scope_retro_2x)_data\\.json$)" },
+      { "namespace": "^tacz$", "path": "^recipes/(ammo|attachments|gun)/" },
+      { "namespace": "^tacz$", "path": "^tacz_loot_injectors/" }
+    ]
+  }
+}

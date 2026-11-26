@@ -4,10 +4,10 @@ Timeless and Classics Zero (TACZ) guns, trimmed to authentic pre-1950s weapons, 
 
 ## Files
 
-- `tacz/tacz_default_gun/`: TACZ's default gun pack, kept in the repo with the non-period guns, attachments and ammo deleted.
-- `tacz/tacz-pre.toml`: `DefaultPackDebug = true`, so TACZ doesn't overwrite our edited default pack on start.
-- `tacz/.export-state.json`: TACZ's own export hash for the default pack.
-- `python/tacz/purge_guns.py`, `purge_attachments.py`, `purge_ammo.py`: one-off scripts that deleted everything not in their `ALLOWED_*` sets from the gun pack's `data/tacz/{data/guns,index,recipes}/`.
+- `datapacks/winterheart_tacz/pack.mcmeta`: `filter` that hides everything outside the period set in TACZ's default gun pack. Its allow-lists are the source of truth for what survives.
+- `datapacks/winterheart_tacz/data/tacz/data/blocks/{gun_smith_table,ammo_workbench,attachment_workbench}.json`: overrides of the workbench tabs (period tab icons, no RPG tab).
+- `datapacks/winterheart_tacz/{README.md,CHANGELOG.md,pack.properties}`: publishing files ([mod-publishing](mod-publishing.md)).
+- `tacz/tacz-pre.toml`: `DefaultPackDebug = false`, so TACZ exports its own default pack.
 - `python/tacz/gen_gunsmith_recipes.py`: generates the gunsmith recipes and the gun smith table's crafting recipe. Its `GUNSMITH` table is the source of truth.
 - `datapacks/winterheart_recipes/data/winterheart/recipes/tacz_workbench/`: generated `tacz:gun_smith_table_crafting` recipes, `winterheart:tacz_workbench/<namespace>_<id>`.
 - `datapacks/winterheart_recipes/data/tacz/recipes/gun_smith_table.json`: generated override of TACZ's recipe for the table block (iron gears, plate, rods, anvil).
@@ -15,7 +15,21 @@ Timeless and Classics Zero (TACZ) guns, trimmed to authentic pre-1950s weapons, 
 
 ## How it works
 
-TACZ loads gun packs from `tacz/` in the instance. Because `DefaultPackDebug` is on, the trimmed `tacz_default_gun` stays as committed. Winterheart's own `tacz:gun_smith_table_crafting` recipes for the kept guns, ammo, attachments and workbenches live in the datapack `winterheart_recipes`, made from Winterheart metal parts ([recipes](recipes.md)). To change them, edit `GUNSMITH` and rerun:
+On start TACZ exports the default gun pack from its jar to `tacz/tacz_default_gun/`, skipping it when `tacz/.export-state.json` shows it is unchanged. Both are untracked. `gundb` then adds `unjam` animations to the exported pack.
+
+TACZ adds the packs in `tacz/` at the bottom of the datapack stack and loads them through the vanilla resource manager, so the `filter` in `winterheart_tacz` (above them) hides files by path:
+
+| Filtered path (namespace `tacz`) | Kept |
+| --- | --- |
+| `index/guns/`, `data/guns/<id>_data.json` | listed guns |
+| `index/ammo/` | listed ammo |
+| `index/attachments/`, `data/attachments/<id>_data.json` | listed attachments |
+| `recipes/{ammo,attachments,gun}/` | nothing |
+| `tacz_loot_injectors/` | nothing (stock adds a removed gun to the bonus chest) |
+
+The client builds its gun, ammo and attachment lists from the server's data, so filtered entries don't exist in game. Their models, textures and sounds stay in the exported pack. Attachment tags are stock and still name filtered attachments.
+
+Winterheart's own `tacz:gun_smith_table_crafting` recipes for the kept guns, ammo, attachments and workbenches live in the datapack `winterheart_recipes`, made from Winterheart metal parts ([recipes](recipes.md)). To change them, edit `GUNSMITH` and rerun:
 
 ```sh
 python3 python/tacz/gen_gunsmith_recipes.py   # then /reload
@@ -23,21 +37,17 @@ python3 python/tacz/gen_gunsmith_recipes.py   # then /reload
 
 The script only deletes and rewrites files carrying its own `__comment__` marker, so it shares the pack with `python/recipes/gen_recipes.py`.
 
-The purge scripts resolve the gun pack from their own location (`GUNPACK`), so they can be run from anywhere:
-
-```sh
-python3 python/tacz/purge_guns.py   # deletes immediately; set dry_run=True in __main__ to preview
-```
-
 ## Config / tunables
 
 | Key | File | Default | Effect |
 | --- | --- | --- | --- |
-| `ALLOWED_GUNS` / `ALLOWED_ATTACHMENTS` / `ALLOWED_AMMO` | `python/tacz/purge_*.py` | period set | What survives a purge |
+| `filter.block[].path` | `datapacks/winterheart_tacz/pack.mcmeta` | period set | Regexes; the negative lookahead lists what survives. A gun or attachment appears in both its `index/` and `data/` entry. |
 | `GUNSMITH`, `GUN_SMITH_TABLE` | `python/tacz/gen_gunsmith_recipes.py` | 30 recipes | Gunsmith recipes and the table's crafting recipe |
-| `DefaultPackDebug` | `tacz/tacz-pre.toml` | `true` | Keeps TACZ from restoring the default pack |
+| `DefaultPackDebug` | `tacz/tacz-pre.toml` | `false` | `true` stops TACZ from updating the exported pack |
 
 ## Changes
+
+- 2026-11-26: Replaced the committed, hand-trimmed `tacz/tacz_default_gun/` and the scripts `python/tacz/purge_{guns,attachments,ammo}.py` with the datapack `winterheart_tacz`, and set `DefaultPackDebug = false`. The exported pack matches the jar except for the `unjam` animations. Translations are now the jar's. Tested: headless on `New World` before and after, with a JVM class histogram. Both had 11 client gun, 7 ammo, 10 attachment and 3 block indexes, 22 `GunData`, 22 `AttachmentData`, 31 `GunSmithTableRecipe` instances and no `LootTableInjection`. Joined in 26 s, `winterheart_tacz` enabled, `/reload` ran, and the log showed no new TACZ errors. Not checked by eye: guns in hand, attachment fitting and workbench tabs.
 
 - 2026-11-22: Moved the purge scripts out of the gun pack (`tacz/tacz_default_gun/remove{,2,3}.py`) to `python/tacz/purge_{guns,attachments,ammo}.py`, so the pack no longer contains Python files. They used to mix paths relative to the instance root and to the gun pack. Now all their target dirs are anchored to `GUNPACK`. Checked by importing each module (which doesn't run the purge): all six target dirs resolve and exist. The purges were not re-run.
 
@@ -45,5 +55,6 @@ python3 python/tacz/purge_guns.py   # deletes immediately; set dry_run=True in _
 
 ## Gotchas
 
-- The purge scripts delete without asking (`dry_run=False` in `__main__`). Run them only on a clean tree, so git can undo them.
-- With `DefaultPackDebug = false`, TACZ would restore every deleted gun on the next start.
+- A new TACZ version may add folders the filter doesn't cover, or rename files. New guns, ammo and attachments are hidden automatically.
+- The filter applies to every pack below `winterheart_tacz`, so a third-party gun pack using the `tacz` namespace is filtered too.
+- A kept gun whose stat file isn't named `<id>_data.json` needs its own entry in the `data/guns/` pattern.

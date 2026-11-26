@@ -56,7 +56,7 @@ Paths are repo-relative. `DP/` = `datapacks/`. KubeJS is gone: logic lives in th
 | Feature | Path | What it does |
 | --- | --- | --- |
 | recipes | `DP/winterheart_recipes/` (generated, except gunsmith recipes), `python/recipes/gen_recipes.py`, and the items, textures, brewing, leaching recipe type and bottle pop-out from winterheart-core (`mod-src/winterheart/`, `python/core/`) | Recipe overrides and the custom item chains: metal parts (gears, plates, rods…), saltpeter leaching → gunpowder, early potions, moss → sponge. |
-| tacz-guns | `python/tacz/gen_gunsmith_recipes.py` → `DP/winterheart_recipes/data/winterheart/recipes/tacz_workbench/` + `DP/winterheart_recipes/data/tacz/recipes/gun_smith_table.json`, `tacz/` (`tacz-pre.toml`, `tacz_default_gun/`, `.export-state.json`), `python/tacz/purge_{guns,attachments,ammo}.py`, `config/tacz-*.toml` | TACZ gun pack trimmed to pre-1950s weapons (by the purge scripts) and their gunsmith recipes. |
+| tacz-guns | `DP/winterheart_tacz/` (pack filter + workbench tabs), `tacz/tacz-pre.toml`, `python/tacz/gen_gunsmith_recipes.py` → `DP/winterheart_recipes/data/winterheart/recipes/tacz_workbench/` + `DP/winterheart_recipes/data/tacz/recipes/gun_smith_table.json`, `config/tacz-*.toml` | TACZ default gun pack trimmed to pre-1950s weapons (by a pack filter) and their gunsmith recipes. |
 
 ## World
 
