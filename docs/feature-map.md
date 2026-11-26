@@ -22,6 +22,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`. KubeJS is gone: logic
 | winterheart-structures | `mod-src/winterheart_structures/` (Java, Gradle). Depends on winterheart-core. | `mods/winterheart_structures-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-mod-template | `mod-src/_template/` (placeholders + `new-mod.sh`; scaffolds a mod, `--dev` for a dev-only one). Not a mod itself, no jar. | none | none |
 | mod-publishing | `publish-mods.sh` (builds and uploads every `mod-src/` mod with a `curseforge_project_id`). Not a mod, no jar. | none | `curseforge_project_id` in `mod-src/<mod>/gradle.properties` |
+| fetch-mods | `fetch-mods.sh`, `mods.json`, `tools/fetch_mods/` (Rust). Fills `mods/` from the manifest. Not a mod, no jar. | none | `mods.json` |
 
 ---
 

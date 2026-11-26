@@ -21,6 +21,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | winterheart-survival | _todo_ (see sanity, beacon-base, limb-poisoning, proximity-effects) | `mod-src/winterheart_survival/` |
 | winterheart-mod-template | [features/winterheart-mod-template.md](features/winterheart-mod-template.md) | `mod-src/_template/` |
 | mod-publishing | [features/mod-publishing.md](features/mod-publishing.md) | `publish-mods.sh` |
+| fetch-mods | [features/fetch-mods.md](features/fetch-mods.md) | `fetch-mods.sh`, `mods.json`, `tools/fetch_mods/` |
 | time-system | [features/time-system.md](features/time-system.md) | `mod-src/winterheart_time/`, `config/paxi/datapacks/winterheart_time/` |
 | mob-spawning | [features/mob-spawning.md](features/mob-spawning.md) | `mod-src/winterheart_spawning/`, `config/paxi/datapacks/winterheart_spawning/` |
 | sanity | [features/sanity.md](features/sanity.md) | `mod-src/winterheart_survival/.../sanity/SanityDespawn.java` |
