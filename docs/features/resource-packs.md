@@ -18,6 +18,7 @@ None. Priority is set in the order file (see [packfinder](packfinder.md)).
 
 ## Changes
 
+- 2026-11-26 — removed `Clear Glass Pack 1.20.zip`. Headless load (`--world "New World"`) passed: joined in 42 s, no ERROR line naming the pack. Not checked by eye in game.
 - 2026-11-26 — removed `TheForestCustomTextures.zip`, `Universal Bushy Leaves.zip` and `Hidden-Armor-1.2.0.zip`. Headless load (`--world "New World"`) passed: joined in 45 s, 22 third-party packs and `winterheart_assets` loaded, no ERROR line naming a removed pack. Not checked by eye in game.
 - 2026-11-26 — added `mods/polytone-1.20-3.5.26.jar` (Polytone, from Modrinth), so packs' `polytone/` files load, e.g. in `DarkAtmosphere2.0.zip`. `./run-pack.sh --headless --world "New World"`: pass, joined after 40s. Log: `Reloaded Polytone Resources in 49 ms`; a `Found missing ID ... minecraft:vines` error from Polytone (a pack names a block that doesn't exist; skipped); a warning that `fusion` and `polytone` both modify Embeddium's `BlockRenderer`. Visuals not checked in game.
 - 2026-11-26 — untracked the third-party zips and added them to `mods.json` ([fetch](fetch.md)). Files unchanged.

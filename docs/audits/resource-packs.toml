@@ -7,7 +7,7 @@ method = """
 File paths only: no images opened, nothing checked in game.
 Compared each pack's asset paths with the asset namespaces of the jars in mods/ and with the load order in
 config/packfinder/resourcepack_order.json. lang, sounds.json, atlas and font files are not counted.
-Universal Bushy Leaves, Hidden Armor and TheForestCustomTextures were removed after this audit, along with their entries.
+Universal Bushy Leaves, Hidden Armor, TheForestCustomTextures and Clear Glass were removed after this audit, along with their entries.
 """
 usable_means = """
 Not for a missing mod, not in a format nothing installed reads, not overridden by a higher pack.
@@ -23,13 +23,6 @@ verdict = "drop"
 asset_files = 2924
 usable = 50
 notes = "2814 files are for missing mods; 60 more sit in an odd textures/item/models/item path. Usable files are mostly Farmer's Delight and Quark. Keep only if the animations show in game."
-
-[[pack]]
-file = "Clear Glass Pack 1.20.zip"
-verdict = "fix-or-drop"
-asset_files = 960
-usable = 36
-notes = "924 files are OptiFine connected textures and no Continuity or similar mod was found. Add one that works on Forge, or keep only for the 36 plain textures."
 
 [[pack]]
 file = "DarkAtmosphere2.0.zip"
