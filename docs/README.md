@@ -5,6 +5,7 @@ Backend/feature docs for contributors and agents. Not a player guide. Rules: [AG
 - **[feature-map.md](feature-map.md):** every custom file and folder in the repo, grouped by feature. Start here to find where something lives.
 - **[data-map.md](data-map.md):** what each datapack and data folder does and its format (overrides vs new content).
 - **`features/<feature-name>.md`:** one deep-dive doc per feature.
+- **[plot/plot.md](plot/plot.md):** the story (characters, timeline, endings) and its open questions. Check it before writing journal entries, titles or ending content.
 - **`audits/`:** research notes and analyses that are not tied to one feature's doc.
 - **[TODO.md](TODO.md):** open multi-step work, with date added and progress. Each todo's plan lives in `todo/`; workflow in [todo/README.md](todo/README.md).
 
