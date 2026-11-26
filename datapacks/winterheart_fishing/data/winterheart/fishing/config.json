@@ -24,6 +24,7 @@
     "minecraft:salmon": "butchery:salmon_carcass",
     "minecraft:pufferfish": "butchery:pufferfish"
   },
+  "junkAndTreasure": false,
   "allowFishingWithoutFish": false,
   "protectReleasedFish": true,
   "castBar": true,

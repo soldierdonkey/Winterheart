@@ -6,7 +6,7 @@ Forge 1.20.1 mod by soldierdonkey2, ported from Simple Fishing Overhaul by pajic
 
 ## What it does
 
-- A bite needs a real fish near the bobber. It swims up, bites, and reeling in removes it and gives the item set for it, a Butchery carcass for cod, salmon and pufferfish.
+- A bite needs a real fish near the bobber. It swims up, bites, and reeling in removes it and gives the item set for it, a Butchery carcass for cod, salmon and pufferfish. Junk and treasure are off by default.
 - Fish further off can become interested in the bobber and swim over. Lure widens that area.
 - Hold right-click to charge a cast: the longer you hold, the farther it goes.
 - Killing a fish drops none of its normal loot and no Butchery carcass. Named fish and fish released from a bucket can't be caught.

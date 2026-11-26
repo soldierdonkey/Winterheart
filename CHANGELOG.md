@@ -6,6 +6,8 @@
 
 - fishing: catching a cod, salmon or pufferfish now gives its Butchery carcass, and killing a fish no longer drops one.
 
+- fishing: fishing no longer gives junk or treasure.
+
 - fishing: removed Aquaculture 2.5.7, Aquaculture Delight 1.1.1 and Stardew Fishing 3.7 with all their items, fish and the fishing minigame.
 
 - fishing: added Fish No Stuck 1.0.3, which stops fish from freezing in place.

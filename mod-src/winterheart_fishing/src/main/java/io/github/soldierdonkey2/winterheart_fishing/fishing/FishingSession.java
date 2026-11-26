@@ -74,9 +74,11 @@ public class FishingSession {
         boolean caughtFish = fish != null && isHooked(fish);
         if (caughtFish) {
             items.addAll(FishingLoot.fish(level, fish, player));
-            vanillaItems.stream().filter(itemStack -> !itemStack.is(ItemTags.FISHES)).forEach(items::add);
+            if (Config.get().junkAndTreasure) {
+                vanillaItems.stream().filter(itemStack -> !itemStack.is(ItemTags.FISHES)).forEach(items::add);
+            }
             fish.discard();
-        } else if (Config.get().allowFishingWithoutFish) {
+        } else if (Config.get().allowFishingWithoutFish && Config.get().junkAndTreasure) {
             items.addAll(FishingLoot.junkOrTreasure(level, hook, player));
         }
         return new Catch(items, caughtFish);

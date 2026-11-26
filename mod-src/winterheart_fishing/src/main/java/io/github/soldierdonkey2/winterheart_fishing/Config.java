@@ -38,6 +38,7 @@ public final class Config {
         public boolean fishDropNoCarcass = true;
         /** Entity id to the item reeling that fish in gives. Fish not listed give their loot table. */
         public Map<String, String> catchItems = Map.of();
+        public boolean junkAndTreasure = false;
         public boolean allowFishingWithoutFish = false;
         public boolean protectReleasedFish = true;
         public boolean castBar = true;
