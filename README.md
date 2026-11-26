@@ -11,8 +11,8 @@ Development instance of the **Winterheart** modpack: a cold-survival pack where 
 | `config/paxi/` | Datapacks and resource packs loaded through Paxi (load order in `datapack_load_order.json`, `resourcepack_load_order.json`). All custom data lives in `config/paxi/datapacks/winterheart_*` (worldgen, structures, survival, novoatlas). |
 | `mod-src/` | Source for our own mods. New mods start from `mod-src/_template/new-mod.sh`. |
 | `tacz/` | TACZ gun pack (only pre-1950s guns kept). |
-| `python/` | Helper and generator scripts (`run_pack/`: launcher helpers, `structures/`: structure export and generators, `survival_hud/`: HUD textures and preview, `tacz/`: gun pack purge scripts). |
-| `tools/` | Rust apps (`guide_editor`, `worldpainter`). |
+| `python/` | Helper and generator scripts (`structures/`: structure export and generators, `survival_hud/`: HUD textures and preview, `tacz/`: gun pack purge scripts). |
+| `tools/` | Rust apps (`guide_editor`, `run_pack`, `worldpainter`). |
 | `run-pack.sh` | Launch the instance from the shell, headless smoke tests, dedicated server. See [docs/features/run-pack.md](docs/features/run-pack.md). |
 | `mods/`, `resourcepacks/`, `shaderpacks/` | Shipped binaries. |
 | `docs/` | Contributor/backend docs. See [docs/README.md](docs/README.md). |

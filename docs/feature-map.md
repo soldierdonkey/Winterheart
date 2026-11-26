@@ -68,7 +68,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`. KubeJS is gone: logic
 | Feature | Path | What it does |
 | --- | --- | --- |
 | mod-configs | `config/`, `defaultconfigs/`, `config/paxi/*_load_order.json`, `config/starterkit/`, `config/fancymenu/` | Mod settings, starter kit, menus, Paxi load order. |
-| run-pack | `run-pack.sh`, `python/run_pack/` | Launches the instance from the shell (offline): `--headless` smoke tests (AGENTS.md rule 7), `--server` dedicated server in `server/` (gitignored; client-only mods left out via `python/run_pack/server_exclude.txt`), `--send`/`--console`/`--run` server RCON. |
+| run-pack | `run-pack.sh`, `tools/run_pack/` (Rust) | Launches the instance from the shell (offline): `--headless` smoke tests (AGENTS.md rule 7), `--server` dedicated server in `server/` (gitignored; client-only mods left out via `tools/run_pack/server_exclude.txt`), `--send`/`--console`/`--run` server RCON. |
 | agent-commands | `.claude/commands/`, `.claude/settings.json`, `AGENTS.md`, `CLAUDE.md` | Contributor rules and Claude Code slash commands (`/resolve`). |
 
 ## Research notes
