@@ -8,9 +8,9 @@ Open questions are at the [end](#open-questions). When a question is settled, mo
 
 ## Premise
 
-The far north. The player **is Lt. Kaamos** of the Northern Watch Corps, stationed at a remote cabin. The days get shorter until, on day 50, the night stops ending. Kaamos is caught in a loop: dying sends him back to the morning, and he half-remembers living each day before ("double dreams"). Something in the woods is eating the herds.
+The far north. The player **is Lt. Kaamos** of the Northern Watch Corps, stationed at a remote cabin. The days get shorter until, on day 50, the night stops ending. Kaamos is caught in a loop: dying sends him back to the morning, and he half-remembers living each day before ("double dreams"). The world resets, but time does not: he has been in the loop for over six thousand days. Something in the woods is eating the herds.
 
-The year is not settled: see [The year](#the-year-two-options).
+The journal is dated 1932, but the present is years later, in the nuclear era: see [The year](#the-year).
 
 "Kaamos" is Finnish for the polar night, so his name is also the thing that ends the game.
 
@@ -18,7 +18,7 @@ The year is not settled: see [The year](#the-year-two-options).
 
 | Name | Who | Fate | In game |
 | --- | --- | --- | --- |
-| Lt. Kaamos | The player. Northern Watch Corps officer. Keeps the journal (`journal` book) and wrote the survival manual (`field_notebook`, *Surviving the Northernmost North*). A Kaamos from an earlier loop wrote the introduction note. | Either dies in the beacon ending and wakes in the afterlife cabin, or breaks in the bad ending and becomes the wendigo. | Yes (books in the starter kit) |
+| Lt. Kaamos | The player. Northern Watch Corps officer. Keeps the journal (`journal` book) and wrote the survival manual (`field_notebook`, *Surviving the Northernmost North*). A Kaamos from an earlier loop wrote the introduction note. Has been in the loop for over six thousand days. | Either dies in the beacon ending and wakes in the afterlife cabin, or breaks in the bad ending and becomes the wendigo. | Yes (books in the starter kit) |
 | Colonel Connors ("Colonel C.") | Kaamos's superior at the watchtower. Had warned Kaamos about the monsters. | Hanged himself off the watchtower's lower deck. Leaves a suicide note (page `suicide_note`). | Yes |
 | The ferry crew and its captain | Stranded in a ferry wrecked in the ice to the east. Lived inside the wreck because the forest was too dangerous. | Dead or gone. The captain's log (page `captains_log`) begs whoever reads it to light the beacon. | Yes |
 | The wendigo | The thing hunting the herds and Kaamos. Smells of iron, eyes glow like the moon. | It is what Kaamos becomes in the bad ending (see [The wendigo](#the-wendigo)). | Spawns (`antlers:wendigo`); the link to Kaamos is planned |
@@ -36,11 +36,11 @@ Coordinates are from `config/paxi/datapacks/winterheart_structures/data/winterhe
 | "The capitol" | Somewhere south, never reached | Where Kaamos wants to send a warning (`vile_beast`). |
 | The afterlife cabin | Planned | A dreamlike copy of the cabin in an all-white landscape (see [Beacon ending](#beacon-ending-the-catastrophe)). |
 
-The World Painter's path (`tools/worldpainter/`), which runs 400 blocks south from spawn, was planned as an escape route. That idea is dropped. It may become the early journey south to the watchtower, where Kaamos finds Connors dead (open question 3).
+The World Painter's path (`tools/worldpainter/`), which runs 400 blocks south from spawn, was planned as an escape route. That idea is dropped. It may become the early journey south to the watchtower, where Kaamos finds Connors dead (open question 2).
 
 ## Timeline
 
-The journal entries (`config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json`, book `journal`) carry the story. Day numbers come from the time system and spawner configs.
+The journal entries (`config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json`, book `journal`) carry the story. Day numbers come from the time system and spawner configs. They are game days as Kaamos perceives them in the current run, not calendar dates (see [The year](#the-year)).
 
 | When | Event | Journal entry | In game |
 | --- | --- | --- | --- |
@@ -62,25 +62,24 @@ The journal entries (`config/paxi/datapacks/winterheart_guides/data/winterheart/
 
 - **Dying** rewinds to dawn of the same day (MineZero's Return by Death) and shows *"Fall N times, stand up N+1."* with a splash word (FOCUS, SURVIVE, OUTLAST, PERSIST, PROLIFERATE). Implemented in [time-system](../features/time-system.md).
 - **Sleeping** passes the day and sets the checkpoint that death returns to.
+- **Time moves on** each time Kaamos dies, even though the world resets to the morning (see [The year](#the-year)).
 - **Respawning is free** until two conditions are both met: low sanity **and** day 50 (the eternal night). Until then every death is a rewind, however low sanity gets.
 - The journal is the same one Kaamos keeps rewriting each loop ("a thousand times and more"). The introduction note was written by Kaamos in an earlier loop.
 
 Both endings break the loop. The last line of the death message is what tells them apart: the bad ending shows "Fall N times" and never "stand up".
 
-## The year: two options
+## The year
 
-The journal cover says *September 10th, 1932*. The nuclear catastrophe idea needs nuclear weapons (1945) and missile early warning (late 1950s). Pick one of these options later:
+**The loop moves time forward.** Kaamos wrote the note, the player is Kaamos, and time moves on each time he dies, even though the world resets to the morning. Kaamos has been stuck in the loop for over six thousand days. From 1932-09-10, the date on the journal cover, 6,000 days reach 1949-02-13 and 6,322 reach 1950-01-01. The story therefore lands in the nuclear era on its own, and the 1932 journal date stays as it is.
 
-**Option A: it is 1950.** The story takes place in 1950, and nuclear weapons exist. The journal date (and anything else dated 1932) changes to match.
+How the game could show it:
 
-**Option B: the loop moves time forward.** Kaamos wrote the note, the player is Kaamos, and time moves on each time he dies, even though the world resets to the morning. Kaamos has been stuck in the loop for over six thousand days. From 1932-09-10, 6,000 days reach 1949-02-13 and about 6,300 reach 1950, so this lands in the nuclear era on its own, with the 1932 journal date left as it is.
+- A calendar item in the cabin keeps ticking forward (idea).
+- The "Day N" marker (*"You wake up. Day N begins..."*, in `mod-src/winterheart_time/src/main/java/io/github/soldierdonkey2/winterheart_time/TimeSystem.java`) is reworded to count nights slept or days perceived, not calendar days.
+- Confusion over the flow of time could become a real feature (idea).
+- The bad ending's *"WAKE UP, WAKE UP"* plays on it (see [Bad ending](#bad-ending-insanity)).
 
-- A calendar item in the cabin could keep ticking forward to show it.
-- The *"WAKE UP, WAKE UP"* in the bad ending would mean there is no new morning to wake up to: on day 50 the night never ends.
-- The "Day N" marker (*"You wake up. Day N begins..."*, in `mod-src/winterheart_time/.../TimeSystem.java`) would be reworded to count nights slept or days perceived, not calendar days.
-- Confusion over the flow of time could become a real feature.
-
-Option B is much more complex to build.
+In game: only the 1932 date on the journal cover. Nothing yet moves a calendar date or shows that time has passed. This is much more complex to build than simply setting the story in a later year.
 
 ## Endings
 
@@ -89,7 +88,7 @@ Every ending is a loss. The player can choose how to lose, but not whether.
 ### Beacon ending: the catastrophe
 
 1. Kaamos lights the beacon (as the captain's log begged).
-2. Something horrible happens that ruins the whole continent. Current idea: the beacon is part of an early warning system, and lighting it raises a false alarm that launches a series of nuclear missiles. Whether this fits the year depends on [The year](#the-year-two-options).
+2. Something horrible happens that ruins the whole continent. Current idea: the beacon is part of an early warning system, and lighting it raises a false alarm that launches a series of nuclear missiles. The loop has carried time into the nuclear era (see [The year](#the-year)), but missile early warning dates from the late 1950s, later than six thousand days reaches (open question 1).
 3. The player dies, whatever the catastrophe is.
 4. The player wakes in **the afterlife cabin**:
    - looks like the starting cabin, but fully repaired, with no carcasses outside,
@@ -104,7 +103,7 @@ In game: only lighting the beacon. Right-clicking a beacon builds its iron base 
 
 1. **Trigger:** low sanity **and** day 50 (the eternal night). Before day 50, a low-sanity death is still a free respawn. The eternal night's sanity drain pushes every player towards this unless they light the beacon.
 2. Kaamos can't take it any more. The seppuku animation plays, and the screen gets bloodier by the second.
-3. Text like **"WAKE UP, WAKE UP"** flashes on screen. There is no new morning to wake up to.
+3. Text like **"WAKE UP, WAKE UP"** flashes on screen. There is no new morning to wake up to: on day 50 the night never ends.
 4. An ominous death screen shows **"Fall N times"**, with no "stand up N+1".
 5. This is **permadeath**: the player can't wake up again. The death screen stays, with only two buttons, **Spectate** and **Title screen**, like the hardcore death screen.
 6. Kaamos becomes the wendigo (see below).
@@ -130,17 +129,21 @@ How the game shows it is undecided. Ideas so far:
 
 ## Open questions
 
-1. **The year: option A (1950) or option B (the loop moves time forward)?** See [The year](#the-year-two-options).
-2. **Option B details.** Does time move forward on each death, each night slept, or both? Does the calendar item show a date or a count? Is "the flow of time is confusing" a feature the player is meant to notice?
-3. **The early journey south.** Does the opening become a journey south to the watchtower, where Kaamos finds Connors dead? If so, does the World Painter path (`tools/worldpainter/`, its "Escape path" and the unused `escape_camp` structure) get renamed to match?
-4. **The introduction note's wording.** It is from an earlier-loop Kaamos. Does *"Find me down south"* stay (pointing to the watchtower), or change?
-5. **How low is "low sanity"** for the bad ending? The seppuku threshold now is 10 (of 100). Does starvation play a part ("go insane and starve")?
-6. **How is the catastrophe shown?** A cutscene, sky effects, explosions over the landscape, or only the death and a message?
-7. **Is the afterlife cabin the end?** Can the player explore the white landscape, are there credits, or is it an endless idle state? Is it a separate dimension or built in the same world?
-8. **How is Kaamos tied to the wendigo?** Name, disguise as the player, a skin, behaviour, a journal entry? Does the wendigo met in a normal run imply an earlier Kaamos already broke?
-9. **What does Spectate show after permadeath?** In single player, the world going on without the player, or the wendigo that is now them?
-10. **Multiplayer.** If every player is Kaamos, how do the loop, the endings and permadeath work with several players? Does one player's bad ending end the run for everyone?
-11. **Colonel Connors.** What did he tell Kaamos about the monsters, and did he know about the beacon? Was he in the loop too?
-12. **The crew.** Why did they want the beacon lit? Did they know what it does?
-13. **Where is the capitol, and which country?** The Northern Watch Corps is fictional; the setting reads as Finnish or Canadian.
-14. **The smell under the cabin floor.** Whose remains are they?
+1. **How passing time works.** See [The year](#the-year).
+   - How far forward does each death move time, and does a night slept move it too?
+   - What is the present date? Six thousand days only reach 1949, while missile early warning (late 1950s) needs about 9,000 days or more. Does the loop run longer, or does the beacon's catastrophe change?
+   - Does the calendar item show a date or a count?
+   - Is "the flow of time is confusing" a feature the player is meant to notice?
+   - The world resets but time moves on: what has changed beyond the loop (the capitol, the beacon's early warning system)?
+2. **The early journey south.** Does the opening become a journey south to the watchtower, where Kaamos finds Connors dead? If so, does the World Painter path (`tools/worldpainter/`, its "Escape path" and the unused `escape_camp` structure) get renamed to match?
+3. **The introduction note's wording.** It is from an earlier-loop Kaamos. Does *"Find me down south"* stay (pointing to the watchtower), or change?
+4. **How low is "low sanity"** for the bad ending? The seppuku threshold now is 10 (of 100). Does starvation play a part ("go insane and starve")?
+5. **How is the catastrophe shown?** A cutscene, sky effects, explosions over the landscape, or only the death and a message?
+6. **Is the afterlife cabin the end?** Can the player explore the white landscape, are there credits, or is it an endless idle state? Is it a separate dimension or built in the same world?
+7. **How is Kaamos tied to the wendigo?** Name, disguise as the player, a skin, behaviour, a journal entry? Does the wendigo met in a normal run imply an earlier Kaamos already broke?
+8. **What does Spectate show after permadeath?** In single player, the world going on without the player, or the wendigo that is now them?
+9. **Multiplayer.** If every player is Kaamos, how do the loop, the endings and permadeath work with several players? Does one player's bad ending end the run for everyone?
+10. **Colonel Connors.** What did he tell Kaamos about the monsters, and did he know about the beacon? Was he in the loop too?
+11. **The crew.** Why did they want the beacon lit? Did they know what it does?
+12. **Where is the capitol, and which country?** The Northern Watch Corps is fictional; the setting reads as Finnish or Canadian.
+13. **The smell under the cabin floor.** Whose remains are they?
