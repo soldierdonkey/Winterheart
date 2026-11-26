@@ -18,6 +18,12 @@
   "minCastDistanceMultiplier": 0.25,
   "maxCastDistanceMultiplier": 1.75,
   "fishDropNoLoot": true,
+  "fishDropNoCarcass": true,
+  "catchItems": {
+    "minecraft:cod": "butchery:cod_carcass",
+    "minecraft:salmon": "butchery:salmon_carcass",
+    "minecraft:pufferfish": "butchery:pufferfish"
+  },
   "allowFishingWithoutFish": false,
   "protectReleasedFish": true,
   "castBar": true,

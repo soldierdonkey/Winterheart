@@ -6,6 +6,7 @@
   "refmap": "winterheart_fishing.refmap.json",
   "mixins": [
     "AbstractFishMixin",
+    "ButcheryCarcassMixin",
     "FishMoveControlMixin",
     "FishingHookAccessor",
     "FishingHookMixin",

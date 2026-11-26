@@ -2,6 +2,7 @@ package io.github.soldierdonkey2.winterheart_fishing;
 
 import com.google.gson.Gson;
 import java.io.Reader;
+import java.util.Map;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
@@ -34,6 +35,9 @@ public final class Config {
         public double minCastDistanceMultiplier = 0.25;
         public double maxCastDistanceMultiplier = 1.75;
         public boolean fishDropNoLoot = true;
+        public boolean fishDropNoCarcass = true;
+        /** Entity id to the item reeling that fish in gives. Fish not listed give their loot table. */
+        public Map<String, String> catchItems = Map.of();
         public boolean allowFishingWithoutFish = false;
         public boolean protectReleasedFish = true;
         public boolean castBar = true;

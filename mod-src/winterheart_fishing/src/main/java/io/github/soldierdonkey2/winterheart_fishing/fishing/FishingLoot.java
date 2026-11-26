@@ -1,12 +1,16 @@
 package io.github.soldierdonkey2.winterheart_fishing.fishing;
 
 import java.util.List;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.AbstractFish;
+import io.github.soldierdonkey2.winterheart_fishing.Config;
+import io.github.soldierdonkey2.winterheart_fishing.WinterheartFishing;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootParams;
@@ -16,8 +20,16 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 final class FishingLoot {
     private FishingLoot() {}
 
-    /** What the fish would drop if the player killed it. */
+    /** The fish's entry in catchItems, else what its loot table gives a player who kills it. */
     static List<ItemStack> fish(ServerLevel level, AbstractFish fish, Player player) {
+        ResourceLocation type = ForgeRegistries.ENTITY_TYPES.getKey(fish.getType());
+        String id = Config.get().catchItems.get(String.valueOf(type));
+        if (id != null) {
+            ResourceLocation key = ResourceLocation.tryParse(id);
+            Item item = key != null && ForgeRegistries.ITEMS.containsKey(key) ? ForgeRegistries.ITEMS.getValue(key) : null;
+            if (item != null) return List.of(new ItemStack(item));
+            WinterheartFishing.LOGGER.warn("[Fishing] catchItems: unknown item {} for {}", id, type);
+        }
         LootParams params = new LootParams.Builder(level)
                 .withParameter(LootContextParams.THIS_ENTITY, fish)
                 .withParameter(LootContextParams.ORIGIN, fish.position())
