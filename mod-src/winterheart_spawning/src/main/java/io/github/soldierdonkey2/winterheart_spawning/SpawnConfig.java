@@ -16,7 +16,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/** The spawner's tuning, from data/winterheart/spawning/config.json (Paxi pack winterheart_spawning), re-read on /reload. */
+/** The spawner's tuning, from data/winterheart/spawning/config.json (datapack winterheart_spawning), re-read on /reload. */
 public final class SpawnConfig {
     public static final ResourceLocation FILE = new ResourceLocation("winterheart", "spawning/config.json");
 

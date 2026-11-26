@@ -555,7 +555,7 @@ impl Page {
 }
 
 /// Item model JSON for the guide book item: the default texture plus one override per textured book.
-/// Returns (file name, contents) pairs for config/paxi/resourcepacks/winterheart_assets/assets/winterheart/models/item/. Files carry a marker key so
+/// Returns (file name, contents) pairs for resourcepacks/winterheart_assets/assets/winterheart/models/item/. Files carry a marker key so
 /// the editor only ever deletes files it generated itself.
 pub fn model_files(books: &[Book]) -> Vec<(String, String)> {
     let mut out = Vec::new();

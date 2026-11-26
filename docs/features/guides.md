@@ -6,10 +6,10 @@ everything they have unlocked with a guide book item.
 
 ## Files
 
-- `config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json`: all data: books, guides (pages), lost pages and their unlock triggers. Edited with the guide editor; `pack.mcmeta` next to it.
+- `datapacks/winterheart_guides/data/winterheart/guides/guides.json`: all data: books, guides (pages), lost pages and their unlock triggers. Edited with the guide editor; `pack.mcmeta` next to it.
 - `mod-src/winterheart_guides/`: the mod (Java). `GuideManager` (loading, unlock store, popup flow), `GuideData` (parsing, validation), `Spec` (matchers), `Sweeps` (sweep triggers), `EventHooks` (event triggers and the engine tick), `Books` (rendering, opening, items), `Pause` (Multiplayer Server Pause), `GuideCommands` (`/guides`), `GuideApi` (called by other mods), `GuideFunctions` (named predicates), `net/GuideNet`, `client/GuideClient` (tells the server the popup book was closed), `client/GuidesJei` (JEI plugin).
 - `mod-src/winterheart/.../item/ModItems.java`: the items `winterheart:guide_book` and `winterheart:lost_page` ([winterheart-core](winterheart-core.md)).
-- `config/paxi/resourcepacks/winterheart_assets/assets/winterheart/models/item/guide_book*.json`: book item models, written by the editor.
+- `resourcepacks/winterheart_assets/assets/winterheart/models/item/guide_book*.json`: book item models, written by the editor.
 - `mods/winterheart_guides-1.0.0.jar`: the built jar.
 - `tools/guide_editor/`: Rust/macroquad editor for `guides.json`.
 
@@ -77,7 +77,7 @@ lore come from the JSON when it is created, so adding a book needs no restart.
 - Right-click opens that book's **unlocked** pages. An untagged item, or one whose book was deleted, opens the first book.
 - Get one with `/guides give <book> [player]`.
 - A book with a `texture` shows its own icon through `CustomModelData` (`model` is assigned once by the editor and
-  kept stable). The editor writes the model files to `config/paxi/resourcepacks/winterheart_assets/assets/winterheart/models/item/` on every save; press F3+T
+  kept stable). The editor writes the model files to `resourcepacks/winterheart_assets/assets/winterheart/models/item/` on every save; press F3+T
   in game to see texture changes.
 - JEI lists one entry per book, read from the local `guides.json`. Rejoin the world after editing books.
   JEI++'s `nbtGroupingEnabled` must be off, or it folds the books into one stack.
@@ -140,7 +140,7 @@ forces a re-read. Engine changes need a rebuilt jar and a restart.
 cd tools/guide_editor && cargo run --release
 ```
 
-It finds the instance root by walking up to the folder with `options.txt` and `config/paxi/` (override with `WINTERHEART_DIR`). It renders pages with the book texture and font from your enabled resource packs, takes valid ids from `tools/guide_editor/registry_ids.json` (written by `/winterheart dump_ids`), and reads time phases from the time `config.json` and proximity rule ids from `proximity/rules.json`. Edits are validated and written about 0.4 s after you stop typing; invalid data is never written. See `tools/guide_editor/README.md`.
+It finds the instance root by walking up to the folder with `options.txt` and `datapacks/` (override with `WINTERHEART_DIR`). It renders pages with the book texture and font from your enabled resource packs, takes valid ids from `tools/guide_editor/registry_ids.json` (written by `/winterheart dump_ids`), and reads time phases from the time `config.json` and proximity rule ids from `proximity/rules.json`. Edits are validated and written about 0.4 s after you stop typing; invalid data is never written. See `tools/guide_editor/README.md`.
 
 The trigger kinds are a table in `tools/guide_editor/src/model.rs` mirroring the engine (`GuideData.SWEEP_KINDS` / `EVENT_KINDS`), so a new kind needs a matching row there.
 

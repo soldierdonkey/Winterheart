@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Tuning for the time system, read from data/winterheart/time/config.json (Paxi pack winterheart_time) and applied on
+ * Tuning for the time system, read from data/winterheart/time/config.json (datapack winterheart_time) and applied on
  * every /reload. Missing keys keep the defaults below.
  */
 public final class TimeConfig {

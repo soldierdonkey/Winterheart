@@ -8,7 +8,7 @@ Development instance of the **Winterheart** modpack: a cold-survival pack where 
 | --- | --- |
 | `mod-src/` | Our own Forge mods: `winterheart` (core), `winterheart_survival`, `winterheart_guides`, `winterheart_time`, `winterheart_hud`, `winterheart_spawning`, `winterheart_structures`, `seppuku`, and the `_template`. Built jars go to `mods/`. |
 | `config/` | Mod configs. |
-| `config/paxi/` | Datapacks and resource packs loaded through Paxi (load order in `datapack_load_order.json`, `resourcepack_load_order.json`). All custom data lives in `config/paxi/datapacks/winterheart_*` (worldgen, structures, survival, novoatlas). |
+| `datapacks/`, `resourcepacks/` | Every pack here is always loaded, by [packfinder](docs/features/packfinder.md) (priority in `config/packfinder/`). All custom data lives in `datapacks/winterheart_*`. |
 | `mod-src/` | Source for our own mods. New mods start from `mod-src/_template/new-mod.sh`. |
 | `tacz/` | TACZ gun pack (only pre-1950s guns kept). |
 | `python/` | Helper and generator scripts (`structures/`: structure export and generators, `survival_hud/`: HUD textures and preview, `tacz/`: gun pack purge scripts). |

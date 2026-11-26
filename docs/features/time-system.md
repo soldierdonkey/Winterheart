@@ -5,7 +5,7 @@ The custom day/night cycle. The vanilla cycle is off (`gamerule doDaylightCycle 
 ## Files
 
 - `mod-src/winterheart_time/` (Java): `TimeSystem.java` (engine, sleep, death loop, hooks), `TimeConfig.java` (tuning + reload listener), `TimeCommands.java` (`/customtime`), `WinterheartTime.java`.
-- `config/paxi/datapacks/winterheart_time/data/winterheart/time/config.json`: all tuning, re-read on `/reload`.
+- `datapacks/winterheart_time/data/winterheart/time/config.json`: all tuning, re-read on `/reload`.
 - `mod-src/winterheart/.../api/{Ticks,TestMode,Numbers,CapBackup}.java`: the tick counter, `/toggle_test`, number-to-text, capability backup (core).
 - `mods/winterheart_time-1.0.0.jar`: the built jar.
 

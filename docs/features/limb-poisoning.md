@@ -6,7 +6,7 @@ Once a limb takes any damage (Legendary Survival Overhaul's per-limb HP drops be
 
 - `mod-src/winterheart_survival/src/main/java/io/github/soldierdonkey2/winterheart_survival/limb/LimbPoising.java`: the mechanic.
 - `mod-src/winterheart_survival/src/main/java/io/github/soldierdonkey2/winterheart_survival/JsonConfig.java`: reads a datapack JSON on every `/reload`.
-- `config/paxi/datapacks/winterheart_survival/data/winterheart/limb_poising/config.json`: all tuning.
+- `datapacks/winterheart_survival/data/winterheart/limb_poising/config.json`: all tuning.
 - `mod-src/winterheart/.../effect/ModEffects.java` and `.../textures/mob_effect/limb_poising.png`: the effect ([winterheart-core](winterheart-core.md)).
 - `mod-src/winterheart_hud/.../HudApi.java`: the "Limb Status" section is added through it ([survival-hud](survival-hud.md)).
 

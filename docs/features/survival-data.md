@@ -4,7 +4,7 @@ Legendary Survival Overhaul (LSO) values for Winterheart's cold-survival balance
 
 ## Files
 
-- `config/paxi/datapacks/winterheart_survival/`: Paxi pack.
+- `datapacks/winterheart_survival/`: datapack.
   - `data/minecraft/legendarysurvivaloverhaul/temperature/biomes/{frozen_ocean,deep_frozen_ocean}.json`: biome temperatures.
   - `data/minecraft/legendarysurvivaloverhaul/temperature/blocks/*.json`: heat from fires, torches, furnaces, lava, magma, jack-o'-lanterns (by block state, e.g. campfire `lit=true` → 10).
   - `data/minecraft/legendarysurvivaloverhaul/temperature/items/*.json`: armour (leather/iron/gold/diamond) and held items (ice, torches, lava bucket…).

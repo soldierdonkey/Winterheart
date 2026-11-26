@@ -40,7 +40,7 @@ public final class GuideManager {
     public static final String BOOK_TITLE = "Winterheart Guide";
     public static final String BOOK_AUTHOR = "Winterheart";
     public static final String STORE_KEY = "winterheart_guides_unlocked";
-    public static final Path DATA_FILE = FMLPaths.GAMEDIR.get().resolve("config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json");
+    public static final Path DATA_FILE = FMLPaths.GAMEDIR.get().resolve("datapacks/winterheart_guides/data/winterheart/guides/guides.json");
 
     // ---- runtime state
     private static GuideData data = GuideData.parse("{\"guides\":[]}");

@@ -86,7 +86,7 @@ biomes! {
     WINDSWEPT_GRAVELLY_HILLS, "minecraft:windswept_gravelly_hills", "Windswept Gravelly Hills", [135, 135, 130], None;
     WINDSWEPT_FOREST, "minecraft:windswept_forest", "Windswept Forest", [95, 130, 95], Some((Conifer, 0.55));
     WINDSWEPT_SAVANNA, "minecraft:windswept_savanna", "Windswept Savanna", [170, 165, 95], Some((Acacia, 0.1));
-    // the pack's own biome (config/paxi/datapacks/winterheart_worldgen/data/winterheart/worldgen/biome): only placed on the spawn pad, never picked
+    // the pack's own biome (datapacks/winterheart_worldgen/data/winterheart/worldgen/biome): only placed on the spawn pad, never picked
     SPAWN_CLEARING, "winterheart:spawn_clearing", "Spawn Clearing (spawn pad only)", [255, 214, 150], None;
 }
 

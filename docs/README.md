@@ -21,23 +21,24 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | winterheart-survival | _todo_ (see sanity, beacon-base, limb-poisoning, proximity-effects) | `mod-src/winterheart_survival/` |
 | winterheart-mod-template | [features/winterheart-mod-template.md](features/winterheart-mod-template.md) | `mod-src/_template/` |
 | mod-publishing | [features/mod-publishing.md](features/mod-publishing.md) | `publish-mods.sh` |
-| resource-packs | [features/resource-packs.md](features/resource-packs.md) | `config/paxi/resourcepacks/`, `resourcepacks/` |
+| packfinder | [features/packfinder.md](features/packfinder.md) | `mod-src/packfinder/`, `config/packfinder/` |
+| resource-packs | [features/resource-packs.md](features/resource-packs.md) | `resourcepacks/` |
 | fetch-mods | [features/fetch-mods.md](features/fetch-mods.md) | `fetch-mods.sh`, `mods.json`, `tools/fetch_mods/` |
-| time-system | [features/time-system.md](features/time-system.md) | `mod-src/winterheart_time/`, `config/paxi/datapacks/winterheart_time/` |
-| mob-spawning | [features/mob-spawning.md](features/mob-spawning.md) | `mod-src/winterheart_spawning/`, `config/paxi/datapacks/winterheart_spawning/` |
+| time-system | [features/time-system.md](features/time-system.md) | `mod-src/winterheart_time/`, `datapacks/winterheart_time/` |
+| mob-spawning | [features/mob-spawning.md](features/mob-spawning.md) | `mod-src/winterheart_spawning/`, `datapacks/winterheart_spawning/` |
 | sanity | [features/sanity.md](features/sanity.md) | `mod-src/winterheart_survival/.../sanity/SanityDespawn.java` |
 | limb-poisoning | [features/limb-poisoning.md](features/limb-poisoning.md) | `mod-src/winterheart_survival/.../limb/LimbPoising.java` |
-| proximity-effects | [features/proximity-effects.md](features/proximity-effects.md) | `mod-src/winterheart_survival/.../proximity/Proximity.java`, `config/paxi/datapacks/winterheart_survival/data/winterheart/proximity/rules.json` |
+| proximity-effects | [features/proximity-effects.md](features/proximity-effects.md) | `mod-src/winterheart_survival/.../proximity/Proximity.java`, `datapacks/winterheart_survival/data/winterheart/proximity/rules.json` |
 | beacon-base | [features/beacon-base.md](features/beacon-base.md) | `mod-src/winterheart_survival/.../world/BeaconBase.java` |
 | survival-hud | [features/survival-hud.md](features/survival-hud.md) | `mod-src/winterheart_hud/` |
 | test-utils | [features/test-utils.md](features/test-utils.md) | `mod-src/winterheart/.../api/TestMode.java` |
-| guides | [features/guides.md](features/guides.md) | `mod-src/winterheart_guides/`, `config/paxi/datapacks/winterheart_guides/`, `tools/guide_editor/` |
-| recipes | [features/recipes.md](features/recipes.md) | `config/paxi/datapacks/winterheart_recipes/`, `python/recipes/gen_recipes.py` |
+| guides | [features/guides.md](features/guides.md) | `mod-src/winterheart_guides/`, `datapacks/winterheart_guides/`, `tools/guide_editor/` |
+| recipes | [features/recipes.md](features/recipes.md) | `datapacks/winterheart_recipes/`, `python/recipes/gen_recipes.py` |
 | tacz-guns | [features/tacz-guns.md](features/tacz-guns.md) | `tacz/` |
-| worldgen | [features/worldgen.md](features/worldgen.md) | `config/paxi/datapacks/winterheart_worldgen/`, `config/paxi/datapacks/winterheart_novoatlas/` |
-| structures | [features/structures.md](features/structures.md) | `mod-src/winterheart_structures/`, `config/paxi/datapacks/winterheart_structures/` |
+| worldgen | [features/worldgen.md](features/worldgen.md) | `datapacks/winterheart_worldgen/`, `datapacks/winterheart_novoatlas/` |
+| structures | [features/structures.md](features/structures.md) | `mod-src/winterheart_structures/`, `datapacks/winterheart_structures/` |
 | world-painter | _todo_ | `tools/worldpainter/` |
-| survival-data | [features/survival-data.md](features/survival-data.md) | `config/paxi/datapacks/winterheart_survival/` |
+| survival-data | [features/survival-data.md](features/survival-data.md) | `datapacks/winterheart_survival/` |
 | mod-configs | _todo_ | `config/` |
 | run-pack | [features/run-pack.md](features/run-pack.md) | `run-pack.sh`, `tools/run_pack/`, `mod-src/winterheart/.../remote/` |
 | agent-commands | [features/agent-commands.md](features/agent-commands.md) | `.claude/commands/` |

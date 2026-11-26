@@ -11,7 +11,7 @@ Rules for contributors working in this repo. For the project layout see [README.
 3. **Map files to changes.** Each feature doc has a **Files** section listing every relevant path (repo-relative, one per line, in backticks). Add new paths as you touch them.
 4. **Keep it greppable and consistent.**
    - Use one kebab-case feature name everywhere: doc filename, doc title, `docs/README.md` index row, CHANGELOG entry, commit prefix.
-   - Use exact IDs in docs (`legendarysurvivaloverhaul:recovery`, `config/paxi/datapacks/winterheart_worldgen`), not paraphrases.
+   - Use exact IDs in docs (`legendarysurvivaloverhaul:recovery`, `datapacks/winterheart_worldgen`), not paraphrases.
    - Use the same term for the same thing. Grep for old usages before renaming anything.
    - Put each fact in one place and link to it.
 5. **Keep commits small.** One logical change per commit, staging only the intended files (`git add <paths>`, never `git add -A`). Prefix the message with the feature name: `time-system: shorten sleep cooldown #12`. Docs go in the same commit as the change they describe.
@@ -19,7 +19,7 @@ Rules for contributors working in this repo. For the project layout see [README.
 7. **Smoke-test load-time changes headlessly.** Run `./run-pack.sh --headless --world "<save>"` after any change that:
    - alters control flow in a Winterheart mod (`mod-src/`),
    - adds, removes or updates a jar in `mods/`, or
-   - edits a Paxi datapack (`config/paxi/datapacks/`).
+   - edits a datapack (`datapacks/`).
 
    `<save>` is a folder name in `saves/`. Confirm that the game loads and joins the world, then check `logs/latest.log` for errors from the change (the Winterheart mods log under their own names, e.g. `[Guides]`, `[TimeSys]`, `[Spawner]`, `[FixedStructures]`). Record the result (pass/fail, load time, notable log lines) in the feature doc's Changes entry. Datapack JSON changes alone can be tested with `/reload`, and resource pack changes with F3+T, in a running game. Logic that depends on the server ticking (time, spawning, limb poising) can't be exercised by the hidden headless client, which barely ticks the server: drive it directly from a temporary probe or test in a running game, and say which you did. If the instance is already running and the test can't run, say so rather than skipping it silently.
 8. **Commit once a change works.** When a change roughly works (the headless test passes, or the user confirms it), commit it without waiting to be asked. Follow rule 5: feature-name prefix, only intended files, docs in the same commit. The message's first line says what changed. The body says why, and how it was tested.
@@ -40,8 +40,8 @@ Rules for contributors working in this repo. For the project layout see [README.
 - Binary mod or resource pack changes: note the file name and version in the feature doc and CHANGELOG.
 - Third-party jars in `mods/` are not tracked. After adding, updating or removing a mod, run `./fetch-mods.sh --generate` and commit `mods.json`. See [docs/features/fetch-mods.md](docs/features/fetch-mods.md).
 - **Where things go:**
-  - Datapack data (recipes as JSON, tags, worldgen, structures, loot tables, mod data files) goes in a Paxi pack `config/paxi/datapacks/winterheart_<area>/`. Don't add new data under `datapacks/`. Tuning that a Winterheart mod reads lives there too (JSON re-read on `/reload`).
-  - KubeJS is gone: logic and registrations go in a Winterheart mod, never a script. Item and mob effect textures/models/lang go in the mod's `src/main/resources/assets/`; assets that tools write (guide book models) go in `config/paxi/resourcepacks/winterheart_assets/`.
+  - Datapack data (recipes as JSON, tags, worldgen, structures, loot tables, mod data files) goes in a pack `datapacks/winterheart_<area>/`; [packfinder](docs/features/packfinder.md) loads everything in that folder. Tuning that a Winterheart mod reads lives there too (JSON re-read on `/reload`).
+  - KubeJS is gone: logic and registrations go in a Winterheart mod, never a script. Item and mob effect textures/models/lang go in the mod's `src/main/resources/assets/`; assets that tools write (guide book models) go in `resourcepacks/winterheart_assets/`.
   - Our own mods go in `mod-src/<mod_id>/`. Start new ones from `mod-src/_template/new-mod.sh`.
   - Python/shell generators and helper scripts go in `python/<area>/`. Rust apps go in `tools/<name>/`.
 - Run scripts and tools from the instance root unless their docs say otherwise.

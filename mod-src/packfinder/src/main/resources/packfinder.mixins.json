@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.soldierdonkey2.packfinder.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "packfinder.refmap.json",
+  "mixins": [
+    "PackRepositoryMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -2,7 +2,7 @@
 """List blocks whose saved state must survive /place template (connected blocks the game recomputes from
 their neighbours after pasting, e.g. Macaw's bridge corners), so fixed_structures.js can write them back.
 
-    python3 python/structures/structure_fixups.py config/paxi/datapacks/winterheart_structures/data/winterheart/structures/watchtower.nbt [--match mcwbridges:]
+    python3 python/structures/structure_fixups.py datapacks/winterheart_structures/data/winterheart/structures/watchtower.nbt [--match mcwbridges:]
 
 Writes <template>.fixups.json next to the template: template-local positions and full block states.
 --match (repeatable) selects block ids by substring; default mcwbridges:.

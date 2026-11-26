@@ -9,7 +9,7 @@ Forge 1.20.1 mod by soldierdonkey2.
 - Guides unlock from sweeps (what a player stands on, looks at or carries) and events (breaking, crafting, kills, time phases, proximity, ...), for the whole world.
 - A popup book opens for every player and the server pauses (Multiplayer Server Pause) until it is closed.
 - `/guides` admin and debug commands, a JEI plugin, and a Java API (`GuideApi`).
-- Data: `config/paxi/datapacks/winterheart_guides/.../guides.json`, hot-reloaded every 2 seconds.
+- Data: `datapacks/winterheart_guides/.../guides.json`, hot-reloaded every 2 seconds.
 
 ## Requirements
 
@@ -18,7 +18,7 @@ Forge 1.20.1 mod by soldierdonkey2.
 
 ## Configuration
 
-Tuning is datapack JSON in the Winterheart modpack's Paxi packs (see the instance's `docs/data-map.md`).
+Tuning is datapack JSON in the Winterheart modpack's `datapacks/` folder (see the instance's `docs/data-map.md`).
 
 ## For developers
 

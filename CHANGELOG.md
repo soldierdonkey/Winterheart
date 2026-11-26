@@ -2,6 +2,10 @@
 
 ### Features:
 
+- packfinder: new mod that always loads every pack in `resourcepacks/` and `datapacks/`, replacing Paxi.
+
+- resource-packs: `Enchanting Reimagined` is now enabled. Removed `Quark Programmer Art.zip`, `Omega-Colorful-Lighting-Compat.zip` and the `TheForest-Colorful-Lighting-Compat` packs.
+
 - resource-packs: removed `AHM.zip` and `§6Dynamic§9Surroundings §2R19.zip`, two large packs that added unused sounds.
 
 - singleplayer-only: launching the pack as a dedicated server now crashes on load with a message that Winterheart is singleplayer only.

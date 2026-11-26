@@ -19,7 +19,7 @@ Forge 1.20.1 mod by soldierdonkey2.
 
 ## Configuration
 
-Tuning is datapack JSON in the Winterheart modpack's Paxi packs (see the instance's `docs/data-map.md`).
+Tuning is datapack JSON in the Winterheart modpack's `datapacks/` folder (see the instance's `docs/data-map.md`).
 
 ## For developers
 

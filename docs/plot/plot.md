@@ -29,7 +29,7 @@ Winterheart is **single player only**. The Multiplayer button is hidden from the
 
 ## Places
 
-Coordinates are from `config/paxi/datapacks/winterheart_structures/data/winterheart/fixed_structures/placements.json`.
+Coordinates are from `datapacks/winterheart_structures/data/winterheart/fixed_structures/placements.json`.
 
 | Place | Where | Role |
 | --- | --- | --- |
@@ -44,7 +44,7 @@ The World Painter's path (`tools/worldpainter/`), which runs 400 blocks south fr
 
 ## Timeline
 
-The journal entries (`config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json`, book `journal`) carry the story. Day numbers come from the time system and spawner configs. They are game days as Kaamos perceives them in the current run, not calendar dates (see [The year](#the-year)).
+The journal entries (`datapacks/winterheart_guides/data/winterheart/guides/guides.json`, book `journal`) carry the story. Day numbers come from the time system and spawner configs. They are game days as Kaamos perceives them in the current run, not calendar dates (see [The year](#the-year)).
 
 | When | Event | Journal entry | In game |
 | --- | --- | --- | --- |
@@ -134,7 +134,7 @@ How the game shows it is undecided. Ideas so far:
 
 - **The polar night**: Kaamos's name, the shortening days, the eternal night from day 50.
 - **"Fall seven times, stand up eight"** (Japanese proverb *nana korobi ya oki*): the death message. Taking away the "stand up" half marks the end of the loop. The seppuku in the bad ending belongs to the same Japanese motif.
-- **Hunger and iron**: the wendigo smells of iron (blood). The gore titles in `config/paxi/datapacks/winterheart_survival/data/winterheart/proximity/rules.json` will all be rewritten; the scrambled `You must ######## it.` doesn't mean anything yet.
+- **Hunger and iron**: the wendigo smells of iron (blood). The gore titles in `datapacks/winterheart_survival/data/winterheart/proximity/rules.json` will all be rewritten; the scrambled `You must ######## it.` doesn't mean anything yet.
 - **Suicide as the end of the watch**: Connors hangs himself; Kaamos's bad ending is seppuku.
 - **White**: the snow outside, and the pure white afterlife.
 

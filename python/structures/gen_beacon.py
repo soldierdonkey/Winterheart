@@ -1,7 +1,7 @@
 """Generate an mcfunction: a round ~107-block stone signal tower with an outside spiral stair and an open
 beacon platform (3x3 iron + beacon) ringed by four pillars.
 
-    python3 python/structures/gen_beacon.py config/paxi/datapacks/winterheart_structures/data/winterheart/functions/structures/beacon.mcfunction
+    python3 python/structures/gen_beacon.py datapacks/winterheart_structures/data/winterheart/functions/structures/beacon.mcfunction
 
 Coordinates are relative to the executor: run it standing where the tower's centre should be, feet on the
 ground. The foundation reaches 10 blocks down to sit on uneven summits. Stone bricks + cobblestone (plus mossy

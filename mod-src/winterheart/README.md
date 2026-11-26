@@ -20,7 +20,7 @@ Forge 1.20.1 mod by soldierdonkey2.
 
 ## Configuration
 
-None. Recipes are datapack JSON (`winterheart_recipes` Paxi pack in the modpack).
+None. Recipes are datapack JSON (`winterheart_recipes` datapack in the modpack).
 
 ## For developers
 

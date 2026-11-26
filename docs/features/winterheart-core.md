@@ -20,7 +20,7 @@ Our own Forge mod `winterheart` (`mod-src/winterheart/`): the core the other Win
 - `python/core/gen_item_assets.py`: generates the item models and `en_us.json`. Its `ITEMS` and `EXTRA_LANG` tables hold the display names and tooltips.
 - `python/core/metal_parts.py`: draws the 24 metal part textures (needs Pillow).
 - `python/structures/remap_item_ids.py`: rewrites item IDs inside structure NBT and SNBT files.
-- `config/paxi/resourcepacks/winterheart_assets/`: Paxi resource pack holding the guide book item models (`models/item/guide_book*.json`), written by `tools/guide_editor`.
+- `resourcepacks/winterheart_assets/`: resource pack holding the guide book item models (`models/item/guide_book*.json`), written by `tools/guide_editor`.
 - `mods/winterheart-1.0.0.jar`: the built jar.
 
 ## How it works

@@ -4,7 +4,7 @@ Every file and folder in this repo that is **custom to Winterheart**: written or
 
 Each feature name below (kebab-case) is the name to use for its doc (`docs/features/<feature-name>.md`), its CHANGELOG entries and its commit prefix. See [AGENTS.md](../AGENTS.md).
 
-Paths are repo-relative. `DP/` = `config/paxi/datapacks/`. KubeJS is gone: logic lives in the Winterheart mods (`mod-src/`), data in Paxi packs. For what each pack and data folder *does* and its file format, see [data-map.md](data-map.md).
+Paths are repo-relative. `DP/` = `datapacks/`. KubeJS is gone: logic lives in the Winterheart mods (`mod-src/`), data in `datapacks/`. For what each pack and data folder *does* and its file format, see [data-map.md](data-map.md).
 
 ---
 
@@ -22,7 +22,8 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`. KubeJS is gone: logic
 | winterheart-structures | `mod-src/winterheart_structures/` (Java, Gradle). Depends on winterheart-core. | `mods/winterheart_structures-1.0.0.jar` | none (loaded by Forge) |
 | winterheart-mod-template | `mod-src/_template/` (placeholders + `new-mod.sh`; scaffolds a mod, `--dev` for a dev-only one). Not a mod itself, no jar. | none | none |
 | mod-publishing | `publish-mods.sh` (builds and uploads every `mod-src/` mod with a `curseforge_project_id`). Not a mod, no jar. | none | `curseforge_project_id` in `mod-src/<mod>/gradle.properties` |
-| resource-packs | Third-party packs in `config/paxi/resourcepacks/` and `resourcepacks/`. Not a mod, no jar. | none | `config/paxi/resourcepack_load_order.json` |
+| packfinder | `mod-src/packfinder/` (Java). Loads every pack in `resourcepacks/` and `datapacks/`; replaced Paxi. | `mods/packfinder-1.0.0.jar` | none (loaded by Forge); order in `config/packfinder/` |
+| resource-packs | Third-party packs in `resourcepacks/`. Not a mod, no jar. | none | `config/packfinder/resourcepack_order.json` |
 | fetch-mods | `fetch-mods.sh`, `mods.json`, `tools/fetch_mods/` (Rust). Fills `mods/` from the manifest. Not a mod, no jar. | none | `mods.json` |
 
 ---
@@ -47,7 +48,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`. KubeJS is gone: logic
 
 | Feature | Path | What it does |
 | --- | --- | --- |
-| guides | `mod-src/winterheart_guides/` (Java), `DP/winterheart_guides/data/winterheart/guides/guides.json`, `config/paxi/resourcepacks/winterheart_assets/` (book models), `tools/guide_editor/`; the items are in winterheart-core | Trigger-based guide pop-up books and lost journal pages. `guides.json` is edited with the Rust guide editor and hot-reloaded. Full reference: [features/guides.md](features/guides.md). |
+| guides | `mod-src/winterheart_guides/` (Java), `DP/winterheart_guides/data/winterheart/guides/guides.json`, `resourcepacks/winterheart_assets/` (book models), `tools/guide_editor/`; the items are in winterheart-core | Trigger-based guide pop-up books and lost journal pages. `guides.json` is edited with the Rust guide editor and hot-reloaded. Full reference: [features/guides.md](features/guides.md). |
 
 ## Recipes and items
 
@@ -60,7 +61,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`. KubeJS is gone: logic
 
 | Feature | Path | What it does |
 | --- | --- | --- |
-| worldgen | `DP/winterheart_worldgen/` (structure sets, biome modifiers, biome tags, `data/winterheart/worldgen/biome/spawn_clearing.json`), `DP/winterheart_novoatlas/`, `config/paxi/resourcepacks/winterheart_assets/assets/streamsreflowing/lang/` | Structure set overrides (vanilla, Philips Ruins, Gore Edition), mod worldgen tweaks, biome tags making the world cold/snowy, the `winterheart:spawn_clearing` biome, and the painted NovoAtlas overworld. |
+| worldgen | `DP/winterheart_worldgen/` (structure sets, biome modifiers, biome tags, `data/winterheart/worldgen/biome/spawn_clearing.json`), `DP/winterheart_novoatlas/`, `resourcepacks/winterheart_assets/assets/streamsreflowing/lang/` | Structure set overrides (vanilla, Philips Ruins, Gore Edition), mod worldgen tweaks, biome tags making the world cold/snowy, the `winterheart:spawn_clearing` biome, and the painted NovoAtlas overworld. |
 | structures | `mod-src/winterheart_structures/` (Java), `DP/winterheart_structures/data/winterheart/fixed_structures/{placements,profiles}.json`, `DP/winterheart_structures/` (templates in `data/winterheart/structures/`, `.mcfunction`s), `python/structures/` (`export_structures.sh`, `nbt_to_structure.py`, `schem_to_structure.py`, `structure_fixups.py`, `gen_beacon.py`, `gen_wreck.py`), `config/worldedit/schematics/{watchtower.nbt,shipwreck.schem,shipwreck_chest.snbt}`, `config/starterstructure.json5`, `config/starterstructure/` | Hand-built structures placed once per world at fixed spots (watchtower, shipwreck, beacon) with `/place template`, plus the spawn starter structure. Templates are exported from WorldEdit saves. |
 | world-painter | `tools/worldpainter/` | Rust planner for the world layout and the path south from spawn: paint biomes/heights, place structures; writes `DP/winterheart_novoatlas/` and `DP/winterheart_structures/data/winterheart/fixed_structures/placements.json`. |
 | survival-data | `DP/winterheart_survival/` (`data/minecraft/legendarysurvivaloverhaul/`, `data/immersive_weathering/loot_tables/blocks/*permafrost.json`), `config/legendarysurvivaloverhaul/` | Legendary Survival Overhaul temperature/thirst values for biomes, blocks, items, consumables and fuel; permafrost drops. |
@@ -69,7 +70,7 @@ Paths are repo-relative. `DP/` = `config/paxi/datapacks/`. KubeJS is gone: logic
 
 | Feature | Path | What it does |
 | --- | --- | --- |
-| mod-configs | `config/`, `defaultconfigs/`, `config/paxi/*_load_order.json`, `config/starterkit/`, `config/fancymenu/` | Mod settings, starter kit, menus, Paxi load order. |
+| mod-configs | `config/`, `defaultconfigs/`, `config/packfinder/`, `config/starterkit/`, `config/fancymenu/` | Mod settings, starter kit, menus, pack load order. |
 | run-pack | `run-pack.sh`, `tools/run_pack/` (Rust), `mod-src/winterheart/.../remote/` (listener) | Launches the client from the shell (offline), runs `--headless` smoke tests (AGENTS.md rule 7), and runs commands in its single-player world (`--send`/`--console`/`--run`). |
 | agent-commands | `.claude/commands/`, `.claude/settings.json`, `AGENTS.md`, `CLAUDE.md` | Contributor rules and Claude Code slash commands (`/resolve`). |
 

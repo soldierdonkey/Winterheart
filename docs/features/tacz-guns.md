@@ -9,13 +9,13 @@ Timeless and Classics Zero (TACZ) guns, trimmed to authentic pre-1950s weapons, 
 - `tacz/.export-state.json`: TACZ's own export hash for the default pack.
 - `python/tacz/purge_guns.py`, `purge_attachments.py`, `purge_ammo.py`: one-off scripts that deleted everything not in their `ALLOWED_*` sets from the gun pack's `data/tacz/{data/guns,index,recipes}/`.
 - `python/tacz/gen_gunsmith_recipes.py`: generates the gunsmith recipes and the gun smith table's crafting recipe. Its `GUNSMITH` table is the source of truth.
-- `config/paxi/datapacks/winterheart_recipes/data/winterheart/recipes/tacz_workbench/`: generated `tacz:gun_smith_table_crafting` recipes, `winterheart:tacz_workbench/<namespace>_<id>`.
-- `config/paxi/datapacks/winterheart_recipes/data/tacz/recipes/gun_smith_table.json`: generated override of TACZ's recipe for the table block (iron gears, plate, rods, anvil).
+- `datapacks/winterheart_recipes/data/winterheart/recipes/tacz_workbench/`: generated `tacz:gun_smith_table_crafting` recipes, `winterheart:tacz_workbench/<namespace>_<id>`.
+- `datapacks/winterheart_recipes/data/tacz/recipes/gun_smith_table.json`: generated override of TACZ's recipe for the table block (iron gears, plate, rods, anvil).
 - `config/tacz-{common,client}.toml`: TACZ settings.
 
 ## How it works
 
-TACZ loads gun packs from `tacz/` in the instance. Because `DefaultPackDebug` is on, the trimmed `tacz_default_gun` stays as committed. Winterheart's own `tacz:gun_smith_table_crafting` recipes for the kept guns, ammo, attachments and workbenches live in the Paxi pack `winterheart_recipes`, made from Winterheart metal parts ([recipes](recipes.md)). To change them, edit `GUNSMITH` and rerun:
+TACZ loads gun packs from `tacz/` in the instance. Because `DefaultPackDebug` is on, the trimmed `tacz_default_gun` stays as committed. Winterheart's own `tacz:gun_smith_table_crafting` recipes for the kept guns, ammo, attachments and workbenches live in the datapack `winterheart_recipes`, made from Winterheart metal parts ([recipes](recipes.md)). To change them, edit `GUNSMITH` and rerun:
 
 ```sh
 python3 python/tacz/gen_gunsmith_recipes.py   # then /reload

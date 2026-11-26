@@ -5,7 +5,7 @@ The scripted mob spawner. Vanilla spawning is off (`gamerule doMobSpawning false
 ## Files
 
 - `mod-src/winterheart_spawning/` (Java): `Spawner.java` (the three controllers and the event hooks), `Placement.java` (block classification, hitbox fit, surface and cave search), `SpawnConfig.java` (tuning + reload listener), `WinterheartSpawning.java`.
-- `config/paxi/datapacks/winterheart_spawning/data/winterheart/spawning/config.json`: all tuning, re-read on `/reload`.
+- `datapacks/winterheart_spawning/data/winterheart/spawning/config.json`: all tuning, re-read on `/reload`.
 - `mods/winterheart_spawning-1.0.0.jar`: the built jar.
 
 ## How it works

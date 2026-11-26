@@ -2,7 +2,7 @@
 
 What each body of Winterheart data **does** and what **format** it is in: file types, whether it adds new content or overrides a mod's own files. For *where* files live and which feature owns them, see [feature-map.md](feature-map.md). This page doesn't repeat that.
 
-`DP/` = `config/paxi/datapacks/`. All custom datapack data lives in Paxi packs, including the tuning the Winterheart mods read.
+`DP/` = `datapacks/`. All custom datapack data lives in these packs, including the tuning the Winterheart mods read.
 
 ---
 
@@ -51,4 +51,4 @@ What each body of Winterheart data **does** and what **format** it is in: file t
 
 ## Load order
 
-Paxi packs in `DP/` load globally, above mod jars. Their order is pinned only for packs listed in `config/paxi/datapack_load_order.json` (currently none). The packs don't share any paths, so their order doesn't matter.
+[packfinder](features/packfinder.md) loads every pack in `DP/` globally, above mod jars. Their order is pinned only for packs listed in `config/packfinder/datapack_order.json` (no such file now), otherwise alphabetical. The packs don't share any paths, so their order doesn't matter.

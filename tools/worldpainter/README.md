@@ -31,7 +31,7 @@ Spawn is (0, 0); a new project's escape path runs 400 blocks south to a target r
   default, so painted Y is exact).
 - **Struct**: structure types (name, resource id, footprint) and instances (click to place, drag to move).
   Types with **Place in game** on (Watchtower, Shipwreck) are real templates: **Save all** writes their instances
-  (footprint centre, rotation) to `config/paxi/datapacks/winterheart_structures/data/winterheart/fixed_structures/placements.json`, which
+  (footprint centre, rotation) to `datapacks/winterheart_structures/data/winterheart/fixed_structures/placements.json`, which
   the `winterheart_structures` mod pastes once per world (`/reload` picks up changes). A spot that was
   already pasted in a world stays; moving it pastes a new copy at the new spot.
 - **Path**: the escape route from spawn. Click on the line to add a bend, click elsewhere to extend the path to a
@@ -42,7 +42,7 @@ Spawn is (0, 0); a new project's escape path runs 400 blocks south to a target r
   **Spawn Y** (default 66) is where the player and the Starter Structure are placed: Save all writes it to
   `config/starterstructure.json5` as both the spawn coordinates and a fixed structure position. The **flat spawn
   pad** (radius, blend) levels the exported ground to Spawn Y - 1 around spawn and gives it the pack's own
-  `winterheart:spawn_clearing` biome (a copy of Snowy Plains in `config/paxi/datapacks/winterheart_worldgen/data/winterheart/worldgen/biome`), which
+  `winterheart:spawn_clearing` biome (a copy of Snowy Plains in `datapacks/winterheart_worldgen/data/winterheart/worldgen/biome`), which
   Streams Reflowing is told not to carve, so no stream runs through spawn.
   The path is saved in the project; `structures.json` gets the target, radius, waypoints and length under `guide`.
 - **View**: biome / height / each noise channel, hillshade, tree pixels, grid, painted-area highlight.
@@ -63,7 +63,7 @@ deep ocean over "Edge ocean width" blocks before the outside edge of the padding
 `--export-novoatlas <dir>` does the same headless. Map size options are under File (2048-6144 blocks);
 each image costs roughly 4 bytes per block of area in memory in game.
 
-**File > Export to modpack (install)** exports and copies the datapack to `<instance>/config/paxi/datapacks/winterheart_novoatlas`
+**File > Export to modpack (install)** exports and copies the datapack to `<instance>/datapacks/winterheart_novoatlas`
 (the instance is found by walking up from the working directory), and by default moves
 `kubejs/data/minecraft/dimension/overworld.json` into `tools/worldpainter/backups/`. **Uninstall from modpack**
 removes the pack and restores the newest backup. Only new worlds pick it up.

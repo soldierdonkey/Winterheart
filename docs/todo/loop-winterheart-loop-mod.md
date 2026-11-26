@@ -25,13 +25,13 @@ Every change to the world ends up as a chunk write, so the mod journals writes i
 
 - **Checkpoint.** `player.saveWithoutId(tag)`. This covers what MineZero's `PlayerData` misses: saturation and exhaustion, every Forge capability (Legendary Survival Overhaul temperature, thirst and body damage, Curios), `ForgeData`, ender chest, attributes, absorption, air, cooldowns, selected slot. Stored in the mod's `SavedData`. Stats and the recipe book live outside the player tag (`stats/`, `advancements/`) and are left alone, so they carry forward.
 - **Restore.** Remove the carry-forward keys from a copy of the snapshot, copy in the player's current values for those keys, then `player.load(tag)`.
-- **Carry-forward keys** live in `config/paxi/datapacks/winterheart_loop/data/winterheart/loop/config.json` (re-read on `/reload`), as NBT paths, e.g. `ForgeCaps.<cap id>`. Things the story moves forward through the loop belong here (see open question 1).
+- **Carry-forward keys** live in `datapacks/winterheart_loop/data/winterheart/loop/config.json` (re-read on `/reload`), as NBT paths, e.g. `ForgeCaps.<cap id>`. Things the story moves forward through the loop belong here (see open question 1).
 - **Client sync** comes from the trip through limbo (part 3): changing dimension makes vanilla resend abilities, effects, health, food and XP and rebuild the client player. Mods that don't resync their capability on `PlayerChangedDimensionEvent` need a nudge, found in step 9.
 
 ### 3. Death and the rewind sequence
 
 - **Death.** Cancel `LivingDeathEvent` for the player while the loop is active, set health to 1 and start the rewind. A flag `LoopApi.setActive(false)` lets the bad ending and permadeath kill for real (replaces the bypass in [audits/minezero-vanilla-death.md](../audits/minezero-vanilla-death.md)).
-- **Rewind.** Fade to black, teleport the player to `winterheart_loop:limbo` (an empty void dimension, `config/paxi/datapacks/winterheart_loop/data/winterheart_loop/dimension/limbo.json`). Each tick, check whether the affected dimensions have unloaded their chunks. Then restore the world, restore the player (which puts them back at the checkpoint position and dimension) and fade in. Time-out after ~10 s: fall back to in-place restore for whatever is still loaded, and log it.
+- **Rewind.** Fade to black, teleport the player to `winterheart_loop:limbo` (an empty void dimension, `datapacks/winterheart_loop/data/winterheart_loop/dimension/limbo.json`). Each tick, check whether the affected dimensions have unloaded their chunks. Then restore the world, restore the player (which puts them back at the checkpoint position and dimension) and fade in. Time-out after ~10 s: fall back to in-place restore for whatever is still loaded, and log it.
 - **Events for other mods.** `LoopEvents.Checkpoint` (after the checkpoint is written) and `LoopEvents.Rewound` (after the player is back). time-system listens to `Rewound` instead of polling for `unluck`.
 - **Weather** is saved at the checkpoint and restored. **Time of day** is not touched: time-system already rewinds it to dawn.
 - **Sound and item.** A restore sound of our own (MineZero is All Rights Reserved, so none of its assets can be reused). Drop the flute and the self-damage key unless the story needs them.
@@ -48,7 +48,7 @@ Every change to the world ends up as a chunk write, so the mod journals writes i
 - [ ] Journal capture: `IOWorker#runStore` mixin, journal storage, epoch start on `/loop checkpoint` (op command for testing). Log under `[Loop]`. Check that the journal grows only for written chunks.
 - [ ] Journal restore by command (`/loop restore`) with the player standing far from the changed chunks: break blocks, let a creeper explode, drop items, move a mob, then restore and walk back.
 - [ ] Limbo dimension and the rewind sequence: teleport out, wait for unloads (including the spawn `START` ticket), restore, teleport back. Test restoring with the player standing in the changed chunks.
-- [ ] Player snapshot and restore with the carry-forward list; config in `winterheart_loop` Paxi pack.
+- [ ] Player snapshot and restore with the carry-forward list; config in `winterheart_loop` datapack.
 - [ ] Find chunks that won't unload (forced chunks from other mods); build the in-place fallback only if there are any.
 - [ ] Death interception, `LoopApi.setActive`, `LoopEvents.Checkpoint` / `Rewound`.
 - [ ] Port time-system: call the loop's checkpoint from `saveState` instead of `setcheckpoint` / `setSubaruPlayer`; listen to `Rewound` instead of polling `unluck`; drop the `unluck` / `registering_checkpoint` workaround; drop `retained_caps` and `CapBackup` if the player snapshot covers them.
@@ -60,7 +60,7 @@ Every change to the world ends up as a chunk write, so the mod journals writes i
 ## Files
 
 - `mod-src/winterheart_loop/`
-- `config/paxi/datapacks/winterheart_loop/`
+- `datapacks/winterheart_loop/`
 - `mod-src/winterheart_time/src/main/java/io/github/soldierdonkey2/winterheart_time/TimeSystem.java`
 - `mod-src/winterheart_time/src/main/java/io/github/soldierdonkey2/winterheart_time/TimeCommands.java`
 - `mod-src/winterheart_time/src/main/java/io/github/soldierdonkey2/winterheart_time/TimeConfig.java`

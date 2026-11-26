@@ -3,7 +3,7 @@
 #   sh python/structures/export_structures.sh
 set -e
 SRC=config/worldedit/schematics
-OUT=config/paxi/datapacks/winterheart_structures/data/winterheart/structures
+OUT=datapacks/winterheart_structures/data/winterheart/structures
 
 python3 python/structures/nbt_to_structure.py "$SRC/watchtower.nbt" "$OUT/watchtower.nbt"
 python3 python/structures/structure_fixups.py "$OUT/watchtower.nbt"

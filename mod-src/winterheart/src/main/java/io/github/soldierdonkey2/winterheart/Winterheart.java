@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 
 /**
  * Winterheart core: items, the limb poising effect, recipe types and the brewing changes the other
- * Winterheart mods and the Paxi datapacks build on.
+ * Winterheart mods and the modpack datapacks build on.
  */
 @Mod(Winterheart.MOD_ID)
 public class Winterheart {

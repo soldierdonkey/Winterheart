@@ -1,4 +1,4 @@
-//! Install the exported NovoAtlas datapack straight into the modpack instance (via Paxi) and back out.
+//! Install the exported NovoAtlas datapack straight into the modpack instance (its datapacks/ folder) and back out.
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -42,13 +42,13 @@ fn stamp() -> u64 {
     std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0)
 }
 
-/// Copy `pack` (the exported datapack folder) to `<root>/config/paxi/datapacks/`, optionally moving the KubeJS
+/// Copy `pack` (the exported datapack folder) to `<root>/datapacks/`, optionally moving the KubeJS
 /// overworld override (which would conflict) into `backup_dir`.
 pub fn install(pack: &Path, root: &Path, disable_kubejs: bool, backup_dir: &Path) -> Result<String, String> {
     if !pack.join("pack.mcmeta").is_file() {
         return Err(format!("{} is not an exported datapack", pack.display()));
     }
-    let dest = root.join("config/paxi/datapacks").join(PACK_NAME);
+    let dest = root.join("datapacks").join(PACK_NAME);
     if dest.exists() {
         fs::remove_dir_all(&dest).map_err(|e| format!("couldn't replace old install: {e}"))?;
     }
@@ -120,7 +120,7 @@ pub fn sync_spawn(root: &Path, x: i32, y: i32, z: i32) -> Result<String, String>
 }
 
 /// Where the winterheart_structures mod reads the in-game structure spots from (applied on /reload).
-pub const FIXED_STRUCTURES_FILE: &str = "config/paxi/datapacks/winterheart_structures/data/winterheart/fixed_structures/placements.json";
+pub const FIXED_STRUCTURES_FILE: &str = "datapacks/winterheart_structures/data/winterheart/fixed_structures/placements.json";
 
 /// Write every "place in game" structure instance to the pack's fixed_structures/placements.json (absolute footprint centre,
 /// rotation as /place template names it).
@@ -143,7 +143,7 @@ pub fn sync_fixed_structures(root: &Path, p: &crate::model::Project) -> Result<S
 
 /// Remove the installed pack and restore the most recent KubeJS overworld backup, if any.
 pub fn uninstall(root: &Path, backup_dir: &Path) -> Result<String, String> {
-    let dest = root.join("config/paxi/datapacks").join(PACK_NAME);
+    let dest = root.join("datapacks").join(PACK_NAME);
     let mut notes = vec![];
     if dest.exists() {
         fs::remove_dir_all(&dest).map_err(|e| e.to_string())?;
@@ -215,7 +215,7 @@ mod tests {
         let base = std::env::current_dir().unwrap().join("target").join("fake_instance");
         let _ = fs::remove_dir_all(&base);
         let root = base.join("inst");
-        for d in ["mods", "config/paxi/datapacks", "kubejs/data/minecraft/dimension"] {
+        for d in ["mods", "config", "datapacks", "kubejs/data/minecraft/dimension"] {
             fs::create_dir_all(root.join(d)).unwrap();
         }
         fs::write(root.join("mods/novoatlas-forge-test.jar"), b"x").unwrap();
@@ -229,14 +229,14 @@ mod tests {
         assert_eq!(find_instance_root(&root.join("config")), Some(root.clone()));
         let msg = install(&pack, &root, true, &backups).unwrap();
         assert!(!msg.contains("WARNING"), "{msg}");
-        assert!(root.join("config/paxi/datapacks").join(PACK_NAME).join("data/x/f.json").is_file());
+        assert!(root.join("datapacks").join(PACK_NAME).join("data/x/f.json").is_file());
         assert!(!root.join(KUBEJS_OVERWORLD).exists());
 
         // reinstall replaces cleanly
         install(&pack, &root, true, &backups).unwrap();
 
         uninstall(&root, &backups).unwrap();
-        assert!(!root.join("config/paxi/datapacks").join(PACK_NAME).exists());
+        assert!(!root.join("datapacks").join(PACK_NAME).exists());
         assert_eq!(fs::read_to_string(root.join(KUBEJS_OVERWORLD)).unwrap(), "{\"original\":true}");
     }
 }

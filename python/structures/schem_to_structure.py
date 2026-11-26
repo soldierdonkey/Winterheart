@@ -2,10 +2,10 @@
 """Convert a WorldEdit/Sponge .schem (v2) into a vanilla structure template for /place template.
 
     python3 python/structures/schem_to_structure.py config/worldedit/schematics/shipwreck.schem \
-        config/paxi/datapacks/winterheart_structures/data/winterheart/structures/shipwreck.nbt --iceberg
+        datapacks/winterheart_structures/data/winterheart/structures/shipwreck.nbt --iceberg
 
     python3 python/structures/schem_to_structure.py config/worldedit/schematics/watchtower.schem \
-        config/paxi/datapacks/winterheart_structures/data/winterheart/structures/beacon.nbt --drop minecraft:stone \
+        datapacks/winterheart_structures/data/winterheart/structures/beacon.nbt --drop minecraft:stone \
         --drop notreepunching:stone_loose_rock --drop minecraft:snow@2 --drop aquaculture:neptunium_block \
         --replace minecraft:iron_block=minecraft:obsidian --keep-inner-air
 

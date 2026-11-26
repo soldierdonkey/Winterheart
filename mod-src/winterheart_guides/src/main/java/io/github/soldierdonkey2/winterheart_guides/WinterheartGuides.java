@@ -9,7 +9,7 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
 
-/** Trigger-based guide books and lost journal pages. Data: config/paxi/datapacks/winterheart_guides (edited with tools/guide_editor). */
+/** Trigger-based guide books and lost journal pages. Data: datapacks/winterheart_guides (edited with tools/guide_editor). */
 @Mod(WinterheartGuides.MOD_ID)
 public class WinterheartGuides {
     public static final String MOD_ID = "winterheart_guides";

@@ -52,6 +52,7 @@ mods/*.jar
 # Kept in git ("repo" entries in mods.json). Own mods:
 !mods/winterheart*.jar
 !mods/seppuku-*.jar
+!mods/packfinder-*.jar
 # Third-party jars kept in git:
 !mods/BetterSnowyFeatures-1.0.4-1.20.1-FULL.jar
 !mods/cinematic-1.1.1.jar
@@ -82,7 +83,7 @@ config/worldedit/.archive-unpack/
 config/worldedit/worldedit.properties
 
 # ---- Schematics not loaded into a datapack ----
-# Only the structure templates in config/paxi/datapacks/winterheart_structures are used by the game.
+# Only the structure templates in datapacks/winterheart_structures are used by the game.
 schematics/
 *.litematic
 # Keep only the WorldEdit sources that python/structures/export_structures.sh needs

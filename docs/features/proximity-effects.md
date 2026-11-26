@@ -5,9 +5,9 @@ Every 5 seconds the server scans a sphere around each player for blocks matching
 ## Files
 
 - `mod-src/winterheart_survival/src/main/java/io/github/soldierdonkey2/winterheart_survival/proximity/Proximity.java`: the scan, rule matching and action runner.
-- `config/paxi/datapacks/winterheart_survival/data/winterheart/proximity/rules.json`: the rules and their actions (re-read on `/reload`). The guide editor reads the rule ids from it.
-- `config/paxi/datapacks/winterheart_survival/data/winterheart/tags/blocks/{gore,rotten_gore,carcass,cooking,furniture,warmth,foliage}.json`: the block tags the rules match.
-- `config/paxi/datapacks/winterheart_survival/data/butchery/tags/blocks/skeletons.json`: fills in `#butchery:skeletons` (Butchery doesn't ship it). `#winterheart:carcass` uses it.
+- `datapacks/winterheart_survival/data/winterheart/proximity/rules.json`: the rules and their actions (re-read on `/reload`). The guide editor reads the rule ids from it.
+- `datapacks/winterheart_survival/data/winterheart/tags/blocks/{gore,rotten_gore,carcass,cooking,furniture,warmth,foliage}.json`: the block tags the rules match.
+- `datapacks/winterheart_survival/data/butchery/tags/blocks/skeletons.json`: fills in `#butchery:skeletons` (Butchery doesn't ship it). `#winterheart:carcass` uses it.
 
 ## How it works
 

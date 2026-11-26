@@ -1,6 +1,6 @@
 //! Winterheart guide editor.
 //!
-//! Edits config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json. Every valid edit is written back automatically
+//! Edits datapacks/winterheart_guides/data/winterheart/guides/guides.json. Every valid edit is written back automatically
 //! and the game's guide engine hot-reloads it. The page preview is drawn with the textures and font from the
 //! instance's enabled resource packs (options.txt), so it looks the way the book does in game.
 
@@ -17,10 +17,10 @@ use model::{Book, Domain, Guide, MKind, Matcher, Page, Problem, Trigger, KINDS};
 use registry::Registry;
 use std::path::{Path, PathBuf};
 
-const GUIDES_REL: &str = "config/paxi/datapacks/winterheart_guides/data/winterheart/guides/guides.json";
+const GUIDES_REL: &str = "datapacks/winterheart_guides/data/winterheart/guides/guides.json";
 const PROBE_REL: &str = "tools/guide_editor/registry_ids.json";
-const TIME_CONFIG_REL: &str = "config/paxi/datapacks/winterheart_time/data/winterheart/time/config.json";
-const PROXIMITY_REL: &str = "config/paxi/datapacks/winterheart_survival/data/winterheart/proximity/rules.json";
+const TIME_CONFIG_REL: &str = "datapacks/winterheart_time/data/winterheart/time/config.json";
+const PROXIMITY_REL: &str = "datapacks/winterheart_survival/data/winterheart/proximity/rules.json";
 const BOOK_TEXTURE: &str = "assets/minecraft/textures/gui/book.png";
 
 // vanilla BookViewScreen geometry, in GUI pixels relative to the book texture's top-left
@@ -99,7 +99,7 @@ fn find_root() -> PathBuf {
     for start in starts.into_iter().flatten() {
         let mut dir = start;
         loop {
-            if dir.join("options.txt").is_file() && dir.join("config").join("paxi").is_dir() {
+            if dir.join("options.txt").is_file() && dir.join("datapacks").is_dir() {
                 return dir;
             }
             if !dir.pop() {
@@ -107,7 +107,7 @@ fn find_root() -> PathBuf {
             }
         }
     }
-    eprintln!("could not find the instance root (a folder with options.txt and config/paxi/); set WINTERHEART_DIR");
+    eprintln!("could not find the instance root (a folder with options.txt and datapacks/); set WINTERHEART_DIR");
     std::process::exit(1);
 }
 
@@ -117,7 +117,7 @@ fn write_atomic(path: &Path, text: &str) -> std::io::Result<()> {
     std::fs::rename(&tmp, path)
 }
 
-const MODELS_REL: &str = "config/paxi/resourcepacks/winterheart_assets/assets/winterheart/models/item";
+const MODELS_REL: &str = "resourcepacks/winterheart_assets/assets/winterheart/models/item";
 
 /// Writes the item model files for textured books and removes ones this editor generated earlier but no
 /// longer needs. Returns true if anything on disk changed (the game then needs F3+T to see new textures).
@@ -556,7 +556,7 @@ impl App {
                         if !valid {
                             edit = edit.text_color(RED);
                         }
-                        let resp = ui.add(edit).on_hover_text("Item texture, e.g. minecraft:item/enchanted_book. Your own PNGs go in config/paxi/resourcepacks/winterheart_assets/assets/<namespace>/textures/item/.");
+                        let resp = ui.add(edit).on_hover_text("Item texture, e.g. minecraft:item/enchanted_book. Your own PNGs go in resourcepacks/winterheart_assets/assets/<namespace>/textures/item/.");
                         autocomplete(ui, &resp, &mut book.texture, key, registry);
                         ui.end_row();
                     });

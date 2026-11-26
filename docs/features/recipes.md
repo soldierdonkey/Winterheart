@@ -5,8 +5,8 @@ Winterheart's recipe overrides and custom item chains: string- and leather-bound
 ## Files
 
 - `python/recipes/gen_recipes.py`: generates every recipe and item tag below. The tables at the top of the script are the source of truth.
-- `config/paxi/datapacks/winterheart_recipes/pack.mcmeta`: the Paxi pack (hand-written).
-- `config/paxi/datapacks/winterheart_recipes/data/`: generated output (files with the `gen_recipes.py` `__comment__` marker). TACZ gunsmith recipes in the same pack belong to [tacz-guns](tacz-guns.md).
+- `datapacks/winterheart_recipes/pack.mcmeta`: the datapack (hand-written).
+- `datapacks/winterheart_recipes/data/`: generated output (files with the `gen_recipes.py` `__comment__` marker). TACZ gunsmith recipes in the same pack belong to [tacz-guns](tacz-guns.md).
 - Items, textures, names, the brewing changes, the leaching recipe type and the bottle pop-out are in the core mod: see [winterheart-core](winterheart-core.md).
 
 ## How it works

@@ -1017,6 +1017,10 @@
       "fileId": 4739207
     },
     {
+      "file": "packfinder-1.0.0.jar",
+      "source": "repo"
+    },
+    {
       "file": "particle_core-0.3.3+1.20.1+forge.jar",
       "source": "curseforge",
       "sha1": "1da5744853d17979033d5ee3cd4251b8340ea7be",
@@ -1025,16 +1029,6 @@
       "page": "https://www.curseforge.com/minecraft/mc-mods/particle-core/files/7581036",
       "projectId": 985426,
       "fileId": 7581036
-    },
-    {
-      "file": "Paxi-1.20-Forge-4.0.jar",
-      "source": "curseforge",
-      "sha1": "a3a7008e07a27b3c831af7e4c82fbbc10a4da328",
-      "size": 96892,
-      "url": "https://edge.forgecdn.net/files/4749/994/Paxi-1.20-Forge-4.0.jar",
-      "page": "https://www.curseforge.com/minecraft/mc-mods/paxi/files/4749994",
-      "projectId": 515708,
-      "fileId": 4749994
     },
     {
       "file": "Placebo-1.20.1-8.6.3.jar",
