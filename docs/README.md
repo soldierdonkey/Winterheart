@@ -39,7 +39,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | structures | [features/structures.md](features/structures.md) | `mod-src/winterheart_structures/`, `datapacks/winterheart_structures/` |
 | world-painter | _todo_ | `tools/worldpainter/` |
 | survival-data | [features/survival-data.md](features/survival-data.md) | `datapacks/winterheart_survival/` |
-| mod-configs | _todo_ | `config/` |
+| mod-configs | [features/mod-configs.md](features/mod-configs.md) | `config/` |
 | run-pack | [features/run-pack.md](features/run-pack.md) | `run-pack.sh`, `tools/run_pack/`, `mod-src/winterheart/.../remote/` |
 | agent-commands | [features/agent-commands.md](features/agent-commands.md) | `.claude/commands/` |
 

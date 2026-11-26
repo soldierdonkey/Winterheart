@@ -130,7 +130,7 @@ struct Opts {
 
 fn parse_args() -> Opts {
     let mut o = Opts {
-        username: "Dev".into(),
+        username: "Developer".into(),
         ..Default::default()
     };
     let mut args = std::env::args().skip(1);

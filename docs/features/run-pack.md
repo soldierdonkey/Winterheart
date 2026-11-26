@@ -19,7 +19,7 @@ Launches the Winterheart instance from the shell in offline mode, without the Cu
 ## How it works
 
 ```sh
-./run-pack.sh                      # offline player "Dev"
+./run-pack.sh                      # offline player "Developer"
 ./run-pack.sh --username Tester    # different offline name
 ./run-pack.sh --dry-run            # print the java command, don't launch
 ./run-pack.sh --world "Smoke Test" # join a single-player world on start
@@ -29,7 +29,7 @@ Launches the Winterheart instance from the shell in offline mode, without the Cu
 ./run-pack.sh --headless --world "Smoke Test" --keep-running   # leave it running, hidden
 ./run-pack.sh --headless --world "Smoke Test" --run "time set day" --run "gamerule doDaylightCycle false"
 
-./run-pack.sh --send "give Dev minecraft:diamond 3"   # command in the running world, prints the output
+./run-pack.sh --send "give Developer minecraft:diamond 3"   # command in the running world, prints the output
 ./run-pack.sh --console                              # interactive prompt; Ctrl-D quits
 ./run-pack.sh --send quit                            # close the game
 ```
@@ -98,7 +98,7 @@ Replies come in 4096-byte packets, and one shorter than 4096 bytes ends the repl
 | `FORGE_VERSION` | env | `baseModLoader.name` in `minecraftinstance.json` | Version JSON to launch |
 | `JAVA` | env | `<install>/java/java-runtime-gamma/Contents/Home/bin/java` (Java 17), else `java` on PATH | Java binary |
 | `MEMORY_MB` | env | `allocatedMemory` in `minecraftinstance.json`, else 7040 | `-Xmx` |
-| `--username` | arg | `Dev` | Offline player name |
+| `--username` | arg | `Developer` | Offline player name |
 | `--world` | arg | none | `--quickPlaySingleplayer <name>` (a folder in `saves/`), which also sets the default `--until` |
 | `--until` / `--timeout` / `--keep-running` | arg | `<username> joined the game` / 600 s / off | Headless wait and stop behaviour |
 | `--run` / `--send` / `--console` | arg | — | See [On-demand commands](#on-demand-commands) |
@@ -106,6 +106,7 @@ Replies come in 4096-byte packets, and one shorter than 4096 bytes ends the repl
 
 ## Changes
 
+- 2026-11-26: The default offline name is `Developer`, was `Dev`. `Dev` is on Citadel's supporter list, which drew an orbiting space station around the player. Tested: `cargo test` and `--dry-run`. **Not tested:** a headless launch (a game was already running).
 - 2026-11-26: Console logs are color-coded text instead of XML ([Console logs](#console-logs)). Tested:
   - A scratch Java program against log4j 2.19.0 with the generated config: ANSI colors under `script` (a pseudo-terminal), plain text when piped, stack trace printed once.
   - **Client headless (rule 7)** `--world "New World"`: joined in 42 s, exit 0, 58 ERROR lines in `logs/latest.log` (same count as before). `logs/run-pack-headless.out` had no `<log4j:Event>` elements and no ANSI escapes.
@@ -129,6 +130,7 @@ Replies come in 4096-byte packets, and one shorter than 4096 bytes ends the repl
 
 ## Gotchas
 
+- Offline names on Citadel's supporter list (`assets/citadel/patreon.txt` in the jar, also fetched from GitHub) get its follower model. Check a new default name against it.
 - **The display must be awake.** If the Mac's display is asleep, the client fails at `Failed to find a primary monitor - this means LWJGL isn't working properly`. Forge then waits on an error dialog until the timeout (exit 124). Wake the screen and run it again.
 - The first run after a change in `tools/run_pack/` rebuilds it, which needs `cargo` on PATH.
 - Agents running it from a sandboxed shell need the sandbox disabled for this command, because GLFW needs the window server.

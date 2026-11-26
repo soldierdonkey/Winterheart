@@ -276,8 +276,8 @@ pub fn client_args(ctx: &Ctx, username: &str) -> Result<Vec<String>, String> {
 mod tests {
     #[test]
     fn offline_uuid_matches_vanilla() {
-        // Python: uuid.UUID(bytes=md5("OfflinePlayer:Dev") with v3 bits)
-        assert_eq!(super::offline_uuid("Dev").len(), 36);
-        assert_eq!(&super::offline_uuid("Dev")[14..15], "3");
+        // Python: uuid.UUID(bytes=md5("OfflinePlayer:Developer") with v3 bits)
+        assert_eq!(super::offline_uuid("Developer").len(), 36);
+        assert_eq!(&super::offline_uuid("Developer")[14..15], "3");
     }
 }

@@ -2,6 +2,8 @@
 
 ### Features:
 
+- mod-configs: disabled Citadel's April Fools content.
+
 - resource-packs: removed `Clear Glass Pack 1.20.zip`. Glass looks vanilla again.
 
 - resource-packs: removed `TheForestCustomTextures.zip`, `Universal Bushy Leaves.zip` and `Hidden-Armor-1.2.0.zip`. Worn armor is visible again, and The Forest's menu textures are gone.
