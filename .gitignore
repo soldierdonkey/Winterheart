@@ -67,6 +67,9 @@ mods/dumpeverything-1.0-SNAPSHOT.jar
 
 # ---- Config: runtime-only paths ----
 config/spark/tmp/
+config/spark/activity.json
+config/spark/*.sparkheap
+config/spark/*.sparkprofile
 config/xaero/
 config/chloride-client.json
 config/oculus.properties

@@ -24,6 +24,7 @@ Paths are repo-relative. `DP/` = `datapacks/`. KubeJS is gone: logic lives in th
 | mod-publishing | `publish.sh` (builds and uploads every `mod-src/` mod and in-house pack with a `curseforge_project_id`), `python/publish/` (zips packs), `pack.properties`, `README.md` and `CHANGELOG.md` in each `winterheart_*` pack. Not a mod, no jar. | none | `curseforge_project_id` in `mod-src/<mod>/gradle.properties` and `<pack>/pack.properties` |
 | packfinder | `mod-src/packfinder/` (Java). Loads every pack in `resourcepacks/` and `datapacks/`; replaced Paxi. | `mods/packfinder-1.0.0.jar` | none (loaded by Forge); order in `config/packfinder/` |
 | resource-packs | Third-party packs in `resourcepacks/`. Not a mod, no jar. | none | `config/packfinder/resourcepack_order.json` |
+| spark | Third-party profiler for lag and memory. | `mods/spark-1.10.53-forge.jar` | `config/spark/config.json` |
 | fetch | `fetch.sh`, `mods.json`, `tools/fetch/` (Rust). Fills `mods/` and `resourcepacks/` from the manifest. Not a mod, no jar. | none | `mods.json` |
 
 ---

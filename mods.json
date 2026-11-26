@@ -1183,6 +1183,14 @@
       "fileId": 8457005
     },
     {
+      "file": "spark-1.10.53-forge.jar",
+      "source": "modrinth",
+      "sha1": "231fb325368c0660954f47bfb03493f5246fa4d1",
+      "size": 3114590,
+      "url": "https://cdn.modrinth.com/data/l6YH9Als/versions/4FXHDE9F/spark-1.10.53-forge.jar",
+      "page": "https://modrinth.com/mod/l6YH9Als/version/4FXHDE9F"
+    },
+    {
       "file": "stardew_fishing-3.7-1.20.1.jar",
       "source": "curseforge",
       "sha1": "6c9d80bb6faeec33402a03ad02ce28e50fcf8253",

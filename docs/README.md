@@ -41,6 +41,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | survival-data | [features/survival-data.md](features/survival-data.md) | `datapacks/winterheart_survival/` |
 | mod-configs | [features/mod-configs.md](features/mod-configs.md) | `config/` |
 | run-pack | [features/run-pack.md](features/run-pack.md) | `run-pack.sh`, `tools/run_pack/`, `mod-src/winterheart/.../remote/` |
+| spark | [features/spark.md](features/spark.md) | `mods/spark-1.10.53-forge.jar`, `config/spark/` |
 | agent-commands | [features/agent-commands.md](features/agent-commands.md) | `.claude/commands/` |
 
 Rows marked _todo_ have no feature doc yet. Write the doc the next time you touch that feature, and replace _todo_ with a link.

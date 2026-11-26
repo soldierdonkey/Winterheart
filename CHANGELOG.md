@@ -2,6 +2,8 @@
 
 ### Features:
 
+- spark: added the spark 1.10.53 profiler for diagnosing freezes and memory use.
+
 - mod-configs: disabled Citadel's April Fools content.
 
 - resource-packs: removed `Clear Glass Pack 1.20.zip`. Glass looks vanilla again.
