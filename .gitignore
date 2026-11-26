@@ -87,7 +87,7 @@ config/QuantifiedAPI/cache/
 config/worldedit/.archive-unpack/
 config/worldedit/worldedit.properties
 
-# ---- Config: written by mods, not settings (regenerated on launch) ----
+# ---- Config: written by mods, not settings (not all come back on launch) ----
 config/orespawn-guide/
 config/konkrete/locals/
 config/bettercaves/**/README.txt
