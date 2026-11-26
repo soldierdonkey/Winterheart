@@ -5,6 +5,7 @@
 
 # ---- Launcher-managed / per-player ----
 .curseclient
+/minecraftinstance.json
 options.txt
 usercache.json
 usernamecache.json
