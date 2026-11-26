@@ -33,5 +33,6 @@ The spawn pad biome is painted by the World Painter around (0, 0). Its tags keep
 
 ## Gotchas
 
+- NovoAtlas 1.1.1 keeps each map in the heap as an `int[][]`, 4 bytes per pixel: about 134 MB for the two 4096x4096 maps. Reloading data briefly needs more.
 - The NovoAtlas `overworld.json` replaces the whole overworld. Don't add a second `data/minecraft/dimension/overworld.json` in another pack. The World Painter's installer also moves a legacy `kubejs/data/minecraft/dimension/overworld.json` out of the way if one exists.
 - Structure set overrides replace the whole file. To turn a set back on, delete our file instead of editing it.

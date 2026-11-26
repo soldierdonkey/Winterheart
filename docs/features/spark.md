@@ -35,6 +35,7 @@ Third-party profiler (`spark-1.10.53-forge.jar`, from Modrinth) for diagnosing f
   - Background profiler off: **passed**, joined 35 s after launch, 31 `/ERROR]` lines, none naming spark.
   - `spark gc`, `tickmonitor`, `heapsummary --save-to-file` and a Java-sampler profile ran. Heap histogram just after joining: about 1.9 GB. Resident memory: about 6.9 GB. ZGC: 32 cycles averaging 1.5 s about two minutes after joining, pauses 0 ms.
   - **Not tested:** active play, `/sparkc`.
+- 2026-11-26: Retest of the same sequence after setting the local CurseForge profile to 5120 MB with no extra Java arguments (G1). **Client headless (rule 7)** on a fresh copy of `New World`: **passed**, joined in 27 s, 61 `/ERROR]` lines at exit (same as the first run). Heap histogram 1.5 GB (was 1.9 GB); resident memory 3.7 GB after joining and 2.8 GB at the end (was 6.9 GB; macOS may report ZGC memory high); G1 young pauses averaged 5.9 ms over 80, one old collection of 333 ms; no tick over 100 ms reported while `tickmonitor` ran. **Not tested:** active play.
 
 ## Gotchas
 
