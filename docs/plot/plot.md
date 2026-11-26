@@ -14,13 +14,17 @@ The journal is dated 1932, but the present is years later, in the nuclear era: s
 
 "Kaamos" is Finnish for the polar night, so his name is also the thing that ends the game.
 
+The story is told from an American perspective, with American customs. Where exactly it takes place stays ambiguous for players: the game never names the country, the capitol or the northern post's location.
+
+Winterheart is **single player only**. The Multiplayer button is hidden from the main menu, and the pack crashes on purpose if launched as a dedicated server. The loop, the endings and permadeath only have to work for one Kaamos. In game: planned.
+
 ## Characters
 
 | Name | Who | Fate | In game |
 | --- | --- | --- | --- |
 | Lt. Kaamos | The player. Northern Watch Corps officer. Keeps the journal (`journal` book) and wrote the survival manual (`field_notebook`, *Surviving the Northernmost North*). A Kaamos from an earlier loop wrote the introduction note. Has been in the loop for over six thousand days. | Either dies in the beacon ending and wakes in the afterlife cabin, or breaks in the bad ending and becomes the wendigo. | Yes (books in the starter kit) |
 | Colonel Connors ("Colonel C.") | Kaamos's superior at the watchtower. Had warned Kaamos about the monsters. | Hanged himself off the watchtower's lower deck. Leaves a suicide note (page `suicide_note`). | Yes |
-| The ferry crew and its captain | Stranded in a ferry wrecked in the ice to the east. Lived inside the wreck because the forest was too dangerous. | Dead or gone. The captain's log (page `captains_log`) begs whoever reads it to light the beacon. | Yes |
+| The ferry crew and its captain | Stranded in a ferry wrecked in the ice to the east. Lived inside the wreck because the forest was too dangerous. The captain watched his crew be terrorized by wendigos and then become them. He wanted to put them out of their misery by triggering the early warning system (the beacon), but was unable to. | Dead or gone. The captain's log (page `captains_log`) begs whoever reads it to light the beacon. He notes that he stayed loyal to his humanity and never ate human flesh. | Log yes; the captain's backstory in it is planned |
 | The wendigo | The thing hunting the herds and Kaamos. Smells of iron, eyes glow like the moon. | It is what Kaamos becomes in the bad ending (see [The wendigo](#the-wendigo)). | Spawns (`antlers:wendigo`); the link to Kaamos is planned |
 
 ## Places
@@ -33,8 +37,8 @@ Coordinates are from `config/paxi/datapacks/winterheart_structures/data/winterhe
 | The watchtower | (0, 400), south of spawn | Colonel Connors' post, where he hanged himself. The only thing to find "down south". |
 | The ferry wreck | (950, 0), east | The crew's last shelter, with the captain's log. |
 | The beacon | (−1100, 0), on a summit to the west | Lighting it triggers the catastrophe (see [Endings](#endings)). |
-| "The capitol" | Somewhere south, never reached | Where Kaamos wants to send a warning (`vile_beast`). |
-| The afterlife cabin | Planned | A dreamlike copy of the cabin in an all-white landscape (see [Beacon ending](#beacon-ending-the-catastrophe)). |
+| "The capitol" | Somewhere further south, never reached or named | Where Kaamos wants to send a warning (`vile_beast`). Kept ambiguous on purpose (see [Premise](#premise)). |
+| The afterlife cabin | Planned, in its own dimension | A dreamlike copy of the cabin in an all-white landscape (see [Beacon ending](#beacon-ending-the-catastrophe)). |
 
 The World Painter's path (`tools/worldpainter/`), which runs 400 blocks south from spawn, was planned as an escape route. That idea is dropped. It may become the early journey south to the watchtower, where Kaamos finds Connors dead (open question 2).
 
@@ -93,9 +97,13 @@ Every ending is a loss. The player can choose how to lose, but not whether.
 4. The player wakes in **the afterlife cabin**:
    - looks like the starting cabin, but fully repaired, with no carcasses outside,
    - the player is in adventure mode and always at full health,
-   - the landscape around it is completely white, as if from a dream.
+   - the landscape around it is completely white, as if from a dream,
+   - it is a separate dimension, not part of the overworld.
 
    This shows the afterlife looping straight back to the cabin.
+5. **This is the end of the game.** The player can explore the white landscape, but it loops: walking away always brings them smoothly back to the cabin, as if the world were a small sphere. The render distance is low enough that the player never sees the seam. Inside the cabin are a book of credits and some notes about the game.
+
+The captain knew what the beacon does: he wanted to trigger the early warning system to put his crew, who were turning into wendigos, out of their misery (see [Characters](#characters)).
 
 In game: only lighting the beacon. Right-clicking a beacon builds its iron base ([beacon-base](../features/beacon-base.md)). Nothing else is built yet.
 
@@ -107,12 +115,15 @@ In game: only lighting the beacon. Right-clicking a beacon builds its iron base 
 4. An ominous death screen shows **"Fall N times"**, with no "stand up N+1".
 5. This is **permadeath**: the player can't wake up again. The death screen stays, with only two buttons, **Spectate** and **Title screen**, like the hardcore death screen.
 6. Kaamos becomes the wendigo (see below).
+7. **Spectate** (tentative) opens a humorous wendigo simulator: the player is the wendigo and hunts a dummy-player Kaamos. Each kill shows how long it took to eat Kaamos and teleports the player to a new random spawn point.
 
 In game: the seppuku animation plays once at sanity ≤ 10 on any day ([seppuku](../features/seppuku.md)), but it doesn't kill the player. The day-50 condition, the blood overlay, the "WAKE UP" text, the death screen and permadeath are planned.
 
 ### The wendigo
 
 The wendigo is what Kaamos becomes in the bad ending. It closes the circle: the beast hunting the herds and Kaamos is a Kaamos from an earlier loop who broke. The smell under the floor, the vanishing herds and the starvation all point to this.
+
+Kaamos is not the only one: the ferry crew became wendigos too, while their captain, who never ate human flesh, did not.
 
 How the game shows it is undecided. Ideas so far:
 
@@ -139,11 +150,7 @@ How the game shows it is undecided. Ideas so far:
 3. **The introduction note's wording.** It is from an earlier-loop Kaamos. Does *"Find me down south"* stay (pointing to the watchtower), or change?
 4. **How low is "low sanity"** for the bad ending? The seppuku threshold now is 10 (of 100). Does starvation play a part ("go insane and starve")?
 5. **How is the catastrophe shown?** A cutscene, sky effects, explosions over the landscape, or only the death and a message?
-6. **Is the afterlife cabin the end?** Can the player explore the white landscape, are there credits, or is it an endless idle state? Is it a separate dimension or built in the same world?
-7. **How is Kaamos tied to the wendigo?** Name, disguise as the player, a skin, behaviour, a journal entry? Does the wendigo met in a normal run imply an earlier Kaamos already broke?
-8. **What does Spectate show after permadeath?** In single player, the world going on without the player, or the wendigo that is now them?
-9. **Multiplayer.** If every player is Kaamos, how do the loop, the endings and permadeath work with several players? Does one player's bad ending end the run for everyone?
-10. **Colonel Connors.** What did he tell Kaamos about the monsters, and did he know about the beacon? Was he in the loop too?
-11. **The crew.** Why did they want the beacon lit? Did they know what it does?
-12. **Where is the capitol, and which country?** The Northern Watch Corps is fictional; the setting reads as Finnish or Canadian.
-13. **The smell under the cabin floor.** Whose remains are they?
+6. **How is Kaamos tied to the wendigo?** Name, disguise as the player, a skin, behaviour, a journal entry? Does the wendigo met in a normal run imply an earlier Kaamos already broke?
+7. **Colonel Connors.** What did he tell Kaamos about the monsters, and did he know about the beacon? Was he in the loop too?
+8. **The captain.** Why was he unable to trigger the early warning system himself?
+9. **The smell under the cabin floor.** Whose remains are they?
