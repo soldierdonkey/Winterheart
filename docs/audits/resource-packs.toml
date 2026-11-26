@@ -1,0 +1,180 @@
+# Audit of the packs in resourcepacks/: what each one actually contributes.
+
+[audit]
+name = "resource-packs"
+date = 2026-11-26
+method = """
+File paths only: no images opened, nothing checked in game.
+Compared each pack's asset paths with the asset namespaces of the jars in mods/ and with the load order in
+config/packfinder/resourcepack_order.json. lang, sounds.json, atlas and font files are not counted.
+"""
+usable_means = """
+Not for a missing mod, not in a format nothing installed reads, not overridden by a higher pack.
+Usable counts are approximate upper bounds: an installed mod may not contain every item a pack targets.
+"""
+
+# verdict: "drop" = safe to remove, "fix-or-drop" = a main part is inert or overridden,
+# "optional" = small feature, a matter of taste, "keep".
+
+[[pack]]
+file = "Universal Bushy Leaves.zip"
+verdict = "drop"
+asset_files = 108
+usable = 4
+notes = "chipped, ars_nouveau, vinery etc. not installed; only 3 vanilla and 1 Quark file apply. Sits on top of Better Leaves."
+
+[[pack]]
+file = "§e[FORGE]Eating Animations More Compat.zip"
+verdict = "drop"
+asset_files = 2924
+usable = 50
+notes = "2814 files are for missing mods; 60 more sit in an odd textures/item/models/item path. Usable files are mostly Farmer's Delight and Quark. Keep only if the animations show in game."
+
+[[pack]]
+file = "Clear Glass Pack 1.20.zip"
+verdict = "fix-or-drop"
+asset_files = 960
+usable = 36
+notes = "924 files are OptiFine connected textures and no Continuity or similar mod was found. Add one that works on Forge, or keep only for the 36 plain textures."
+
+[[pack]]
+file = "DarkAtmosphere2.0.zip"
+verdict = "fix-or-drop"
+asset_files = 17
+usable = 5
+notes = "Sky, lightmap and water changes need Polytone, which is not installed. 2 Wythers textures unused. Only 5 vanilla textures work."
+
+[[pack]]
+file = "TaxCreepyMob+M.1.20.1+ResP.1.0.0.zip"
+verdict = "fix-or-drop"
+asset_files = 19
+overridden = 10
+overridden_by = "FA+Emissive-v1.6.zip"
+notes = "Pick which look is wanted: move it above FA+Emissive or remove it."
+
+[[pack]]
+file = "§6Immersive§8_§6Interfaces§8.zip"
+verdict = "keep"
+asset_files = 318
+usable = 286
+notes = "The 32 optifine/gui files need OptiGUI, which was not found. The rest work."
+
+[[pack]]
+file = "Better-Leaves-9.5.zip"
+verdict = "keep"
+asset_files = 4576
+usable = 220
+overridden = 91
+overridden_by = "Universal Bushy Leaves.zip"
+notes = "dreamwoods, chipped, biomeswevegone, cobblemon etc. missing. Nearly all overridden files can only be for missing mods."
+
+[[pack]]
+file = "Tactical3DTools[10.2].zip"
+verdict = "keep"
+asset_files = 2635
+usable = 250
+notes = "Mostly for simplyswords, better_weaponry, blue_skies."
+
+[[pack]]
+file = "§6Immersive_Interfaces_Modded§8_1.20.x.zip"
+verdict = "keep"
+asset_files = 390
+usable = 63
+notes = "accessories, curios, itemswapper etc. missing."
+
+[[pack]]
+file = "REVIVED_Farmer's Delight_crops_3D_R1.5.2-universal.zip"
+verdict = "keep"
+asset_files = 293
+usable = 72
+notes = "Add-ons such as farmersrespite and culturaldelights missing."
+
+[[pack]]
+file = "Hidden-Armor-1.2.0.zip"
+verdict = "optional"
+asset_files = 271
+usable = 123
+notes = "About half is for missing armor mods."
+
+[[pack]]
+file = "AnalogueWatchClock-[1.19.3]-1.2.1.zip"
+verdict = "optional"
+asset_files = 1153
+notes = "All for the clock item."
+
+[[pack]]
+file = "§l3D§f+Ladders+v1.1.zip"
+verdict = "optional"
+asset_files = 3
+
+[[pack]]
+file = "LowOnFire_1.20.1.zip"
+verdict = "optional"
+asset_files = 11
+
+[[pack]]
+file = "§eExtended_Illumina_NEA_1.20x.zip"
+verdict = "optional"
+asset_files = 5
+
+[[pack]]
+file = "Foliage+ V1.5.9.4.zip"
+verdict = "keep"
+asset_files = 776
+overridden = 30
+overridden_by = "Better-Leaves-9.5.zip"
+
+[[pack]]
+file = "Enhanced Audio r7.zip"
+verdict = "keep"
+asset_files = 662
+overridden = 7
+overridden_by = "Realistic Combat Soundpack 2.0.zip"
+notes = "Expected overlap."
+
+[[pack]]
+file = "Realistic Combat Soundpack 2.0.zip"
+verdict = "keep"
+asset_files = 44
+
+[[pack]]
+file = "-1.21.2 Fresh Moves v3.1 (With Animated Eyes).zip"
+verdict = "keep"
+asset_files = 23
+
+[[pack]]
+file = "FreshAnimations_v1.10.4.zip"
+verdict = "keep"
+asset_files = 415
+
+[[pack]]
+file = "FA+Spiders-v2.2.zip"
+verdict = "keep"
+asset_files = 9
+
+[[pack]]
+file = "FA+Emissive-v1.6.zip"
+verdict = "keep"
+asset_files = 40
+
+[[pack]]
+file = "§bEnchanting§8-§bReimagined§0_§8[v1.4]§0.zip"
+verdict = "keep"
+asset_files = 49
+
+[[pack]]
+file = "TheForestCustomTextures.zip"
+verdict = "keep"
+asset_files = 61
+
+[[pack]]
+file = "Overlayed-Snow-v2.1.0-v1.14+26.2.zip"
+verdict = "keep"
+asset_files = 4
+notes = "Not assessed beyond paths; uses a Fusion model modifier, and Fusion is installed."
+
+[[pack]]
+file = "winterheart_assets"
+verdict = "keep"
+asset_files = 3
+notes = "In-house pack."

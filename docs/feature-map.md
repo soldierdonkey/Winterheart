@@ -76,4 +76,5 @@ Paths are repo-relative. `DP/` = `datapacks/`. KubeJS is gone: logic lives in th
 
 ## Research notes
 
+- [audits/resource-packs.toml](audits/resource-packs.toml): how much of each resource pack loads, and which packs could be dropped (from file paths only).
 - [audits/minezero-vanilla-death.md](audits/minezero-vanilla-death.md): how to bypass MineZero's death interception (untested).
