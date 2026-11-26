@@ -2,6 +2,12 @@
 
 ### Features:
 
+- fishing: removed Aquaculture 2.5.7, Aquaculture Delight 1.1.1 and Stardew Fishing 3.7 with all their items, fish and the fishing minigame. Fishing is vanilla again.
+
+- fishing: added Fish No Stuck 1.0.3, which stops fish from freezing in place.
+
+- fishing: the tackle box at the spawn cabin is now a barrel with a fishing rod.
+
 - tacz-guns: the ammo and attachment workbenches can now be made at the gun smith table, and no longer at a crafting table.
 
 - tacz-guns: ammo boxes, the target, target minecart and statue use new recipes. The Blood Strike painting can no longer be crafted.

@@ -6,7 +6,7 @@
 
     python3 python/structures/schem_to_structure.py config/worldedit/schematics/watchtower.schem \
         datapacks/winterheart_structures/data/winterheart/structures/beacon.nbt --drop minecraft:stone \
-        --drop notreepunching:stone_loose_rock --drop minecraft:snow@2 --drop aquaculture:neptunium_block \
+        --drop notreepunching:stone_loose_rock --drop minecraft:snow@2 \
         --replace minecraft:iron_block=minecraft:obsidian --keep-inner-air
 
 - Air and water are left out, so placing the template keeps whatever the world has there (air/ocean),

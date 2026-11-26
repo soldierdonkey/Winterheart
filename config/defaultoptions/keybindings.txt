@@ -37,7 +37,6 @@ key_key.entityculling.toggle:key.keyboard.unknown:NONE
 key_placebo.toggleTrails:key.keyboard.keypad.9:NONE
 key_placebo.toggleWings:key.keyboard.keypad.8:NONE
 key_key.modernfix.config:key.keyboard.unknown:NONE
-key_key.stardew_fishing.minigame_button:key.mouse.left:NONE
 key_key.old_recording.toggle:key.keyboard.o:NONE
 key_key.old_recording.boost:key.keyboard.p:NONE
 key_key.legendarysurvivaloverhaul.added_desc:key.keyboard.left.shift:NONE
