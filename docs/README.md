@@ -24,7 +24,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | packfinder | [features/packfinder.md](features/packfinder.md) | `mod-src/packfinder/`, `config/packfinder/` |
 | resource-packs | [features/resource-packs.md](features/resource-packs.md) | `resourcepacks/` |
 | fetch | [features/fetch.md](features/fetch.md) | `fetch.sh`, `mods.json`, `tools/fetch/` |
-| fishing | [features/fishing.md](features/fishing.md) | `mods/fishnostuck-mc1.20.1-v1.0.3-forge.jar` |
+| fishing | [features/fishing.md](features/fishing.md) | `mod-src/winterheart_fishing/`, `datapacks/winterheart_fishing/` |
 | time-system | [features/time-system.md](features/time-system.md) | `mod-src/winterheart_time/`, `datapacks/winterheart_time/` |
 | mob-spawning | [features/mob-spawning.md](features/mob-spawning.md) | `mod-src/winterheart_spawning/`, `datapacks/winterheart_spawning/` |
 | sanity | [features/sanity.md](features/sanity.md) | `mod-src/winterheart_survival/.../sanity/SanityDespawn.java` |

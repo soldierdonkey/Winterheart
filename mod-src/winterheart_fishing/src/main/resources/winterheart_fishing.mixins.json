@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.soldierdonkey2.winterheart_fishing.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "winterheart_fishing.refmap.json",
+  "mixins": [
+    "AbstractFishMixin",
+    "FishMoveControlMixin",
+    "FishingHookAccessor",
+    "FishingHookMixin",
+    "FollowFlockLeaderGoalMixin",
+    "RandomStrollGoalMixin"
+  ],
+  "client": [
+    "client.HumanoidModelMixin",
+    "client.ItemInHandRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

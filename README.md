@@ -6,7 +6,7 @@ Development instance of the **Winterheart** modpack: a cold-survival pack where 
 
 | Path | What it is |
 | --- | --- |
-| `mod-src/` | Our own Forge mods: `winterheart` (core), `winterheart_survival`, `winterheart_guides`, `winterheart_time`, `winterheart_hud`, `winterheart_spawning`, `winterheart_structures`, `seppuku`, and the `_template`. Built jars go to `mods/`. |
+| `mod-src/` | Our own Forge mods: `winterheart` (core), `winterheart_survival`, `winterheart_guides`, `winterheart_time`, `winterheart_hud`, `winterheart_spawning`, `winterheart_structures`, `winterheart_fishing`, `seppuku`, and the `_template`. Built jars go to `mods/`. |
 | `config/` | Mod configs. |
 | `datapacks/`, `resourcepacks/` | Every pack here is always loaded, by [packfinder](docs/features/packfinder.md) (priority in `config/packfinder/`). All custom data lives in `datapacks/winterheart_*`. |
 | `mod-src/` | Source for our own mods. New mods start from `mod-src/_template/new-mod.sh`. |
