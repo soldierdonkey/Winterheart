@@ -15,7 +15,7 @@ Development instance of the **Winterheart** modpack: a cold-survival pack where 
 | `tools/` | Rust apps (`fetch_mods`, `guide_editor`, `run_pack`, `worldpainter`). |
 | `run-pack.sh` | Launch the instance from the shell, headless smoke tests, commands in the running world. See [docs/features/run-pack.md](docs/features/run-pack.md). |
 | `fetch-mods.sh`, `mods.json` | Mod manifest, and the script that downloads and verifies `mods/` from it. See [docs/features/fetch-mods.md](docs/features/fetch-mods.md). |
-| `mods/`, `resourcepacks/`, `shaderpacks/` | Shipped binaries. |
+| `mods/`, `resourcepacks/`, `shaderpacks/` | Shipped binaries. In `mods/`, only our own and a few third-party jars are tracked; the rest are fetched. |
 | `docs/` | Contributor/backend docs. See [docs/README.md](docs/README.md). |
 | `CHANGELOG.md` | Release notes, newest first. |
 
@@ -26,8 +26,9 @@ Not tracked (see [.gitignore](.gitignore)): worlds, logs, crash dumps, launcher 
 ## Getting started
 
 1. Clone the repo into a CurseForge instance folder (the repo root is the instance root).
-2. Launch the instance with Forge 47.4.10 on Minecraft 1.20.1.
-3. Edit scripts/configs/data, then reload (`/reload` for server scripts and datapacks, F3+T for client scripts; restart for startup scripts) and test.
+2. Run `./fetch-mods.sh` to download the mods (needs [Rust](https://rustup.rs); two are manual downloads it walks you through). Run it again after a pull that changes `mods.json`.
+3. Launch the instance with Forge 47.4.10 on Minecraft 1.20.1.
+4. Edit scripts/configs/data, then reload (`/reload` for server scripts and datapacks, F3+T for client scripts; restart for startup scripts) and test.
 
 Building one of our own mods (needs JDK 17 or 21; the jar is copied into `mods/`):
 

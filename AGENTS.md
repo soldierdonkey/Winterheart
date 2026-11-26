@@ -38,6 +38,7 @@ Rules for contributors working in this repo. For the project layout see [README.
 - Commit directly to `main` unless asked otherwise. Commit automatically per rule 8. Don't push unless the user asks.
 - Don't edit untracked or generated files (logs, saves, `minecraftinstance.json`).
 - Binary mod or resource pack changes: note the file name and version in the feature doc and CHANGELOG.
+- Third-party jars in `mods/` are not tracked. After adding, updating or removing a mod, run `./fetch-mods.sh --generate` and commit `mods.json`. See [docs/features/fetch-mods.md](docs/features/fetch-mods.md).
 - **Where things go:**
   - Datapack data (recipes as JSON, tags, worldgen, structures, loot tables, mod data files) goes in a Paxi pack `config/paxi/datapacks/winterheart_<area>/`. Don't add new data under `datapacks/`. Tuning that a Winterheart mod reads lives there too (JSON re-read on `/reload`).
   - KubeJS is gone: logic and registrations go in a Winterheart mod, never a script. Item and mob effect textures/models/lang go in the mod's `src/main/resources/assets/`; assets that tools write (guide book models) go in `config/paxi/resourcepacks/winterheart_assets/`.

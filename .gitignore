@@ -47,6 +47,16 @@ XaeroWaypoints**/
 /EffekseerNativeForJava.dll
 libEffekseerNativeForJava.dylib
 
+# ---- Mod jars: fetched by ./fetch-mods.sh from mods.json ----
+mods/*.jar
+# Kept in git ("repo" entries in mods.json). Own mods:
+!mods/winterheart*.jar
+!mods/seppuku-*.jar
+# Third-party jars kept in git:
+!mods/BetterSnowyFeatures-1.0.4-1.20.1-FULL.jar
+!mods/cinematic-1.1.1.jar
+!mods/tacz-firstperson-compat-forge-1.20.1-1.1.4.jar
+
 # ---- Mods not shipped with the pack ----
 mods/cipherwright-0.3.0-1.20.1.jar
 mods/dumpeverything-1.0-SNAPSHOT.jar

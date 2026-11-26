@@ -31,7 +31,7 @@ The script copies the template to `mod-src/<mod_id>/` and replaces:
 | `__MOD_CLASS__` | `mod_id` in CamelCase (`winterheart_foo` → `WinterheartFoo`) |
 | `__MOD_NAME__`, `__MOD_DESCRIPTION__` | The other two arguments |
 
-Then fill in the TODOs. `mod-src/*/build/`, `.gradle/`, `run/` and `bin/` are already gitignored. The `build` task copies the reobfuscated jar into `mods/`, replacing older `<mod_id>-*.jar` files. Build with JDK 17 or 21:
+Then fill in the TODOs. If the mod id doesn't start with `winterheart`, add `!mods/<mod_id>-*.jar` to `.gitignore` (see [fetch-mods](fetch-mods.md)). `mod-src/*/build/`, `.gradle/`, `run/` and `bin/` are already gitignored. The `build` task copies the reobfuscated jar into `mods/`, replacing older `<mod_id>-*.jar` files. Build with JDK 17 or 21:
 
 ```sh
 cd mod-src/<mod_id> && JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home ./gradlew build

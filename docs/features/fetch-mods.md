@@ -1,9 +1,10 @@
 # fetch-mods
 
-`./fetch-mods.sh` fills `mods/` from the tracked manifest `mods.json` and verifies every third-party jar by SHA-1. `./fetch-mods.sh --generate` rewrites the manifest. The jars are still tracked in git as well; moving them out has not been done.
+`./fetch-mods.sh` fills `mods/` from the tracked manifest `mods.json` and verifies every third-party jar by SHA-1. `./fetch-mods.sh --generate` rewrites the manifest. Only the `repo` jars are tracked in git; `.gitignore` ignores every other jar in `mods/`.
 
 ## Files
 
+- `.gitignore`: ignores `mods/*.jar`, with a `!mods/...` line for each `repo` jar (own mods by pattern).
 - `fetch-mods.sh`: wrapper. Builds the tool with cargo and sets `FETCH_MODS_GAME_DIR` to the instance root.
 - `mods.json`: the manifest, one entry per shipped jar in `mods/`.
 - `tools/fetch_mods/Cargo.toml`, `tools/fetch_mods/Cargo.lock`: Rust crate.
@@ -20,7 +21,7 @@
 ./fetch-mods.sh --generate   # after adding, updating or removing a mod
 ```
 
-After changing mods in the CurseForge app, run `--generate`, read the `+`/`~`/`-` lines and commit `mods.json`.
+Run `./fetch-mods.sh` after cloning, and after any pull that changes `mods.json`. After changing mods in the CurseForge app, run `--generate`, read the `+`/`~`/`-` lines and commit `mods.json`.
 
 ### Sources
 
@@ -31,7 +32,7 @@ After changing mods in the CurseForge app, run `--generate`, read the `+`/`~`/`-
 | `manual` | the user's browser, from `page` | the author opted out on CurseForge and Modrinth doesn't have the file |
 | `repo` | git | the file is `<mod-src folder>-<version>.jar`, or the entry was already `repo` |
 
-To keep any other jar in git, set its entry to `{"file": "...", "source": "repo"}`; regeneration preserves it. `BetterSnowyFeatures`, `cinematic` and `tacz-firstperson-compat` are set this way: their `META-INF/mods.toml` declares MIT.
+To keep any other jar in git, set its entry to `{"file": "...", "source": "repo"}`; regeneration preserves it. Also add `!mods/<file>` to `.gitignore`; `--generate` warns about a `repo` jar that is still ignored. `BetterSnowyFeatures`, `cinematic` and `tacz-firstperson-compat` are set this way: their `META-INF/mods.toml` declares MIT.
 
 ### Generate
 
@@ -57,10 +58,15 @@ A differing jar, or one that is no longer listed but matches what the tool recor
 
 ## Changes
 
+- 2026-11-26: Untracked the 139 `curseforge`, `modrinth` and `manual` jars and ignored `mods/*.jar`. The files on disk did not change, so no game launch. Tested with a fresh local clone and an empty cache: 137 jars downloaded, only the 2 manual ones remained, and every jar present matched the instance byte for byte.
 - 2026-11-26: Added. Tested on macOS in an empty scratch folder holding only `mods.json` and the `repo` jars, with an empty cache: 137 downloads and 2 manual pickups (a renamed copy in the watched folder, one saved into `mods/`; a wrong file and a `.crdownload` were ignored) finished in about 15 s, and all 150 jars were byte-identical to the instance's. Also tested re-run, `--check`, a tampered, a missing, an unlisted and a delisted jar, non-interactive manual, and a bad file name. Opening browser pages was not tested. No game launch, as no jar changed.
 
 ## Gotchas
 
+- Pulling the commit that untracked the jars deletes them from an existing checkout (git refuses to if one was modified locally). Run `./fetch-mods.sh` right after.
+- Git history still contains the old jars, so clones are no smaller.
+- Checking out an older commit brings its jars back, and returning removes them again; run `./fetch-mods.sh` afterwards.
+- A new own mod whose id doesn't start with `winterheart` needs its own `!mods/<id>-*.jar` line in `.gitignore`.
 - Nothing runs this automatically (not `run-pack.sh`, not a git hook, not the CurseForge app).
 - The first removal of an old jar needs a previous fetch run on that machine; before that it is only reported as unlisted.
 - Resource packs and shader packs are not covered.

@@ -5,6 +5,7 @@ use serde_json::{json, Value};
 use std::collections::{BTreeMap, HashMap};
 use std::fs;
 use std::path::Path;
+use std::process::Command;
 
 const LAUNCHER_FILE: &str = "minecraftinstance.json";
 
@@ -76,6 +77,15 @@ fn modrinth(hashes: &[&str]) -> Result<HashMap<String, (String, String)>, String
         }
     }
     Ok(found)
+}
+
+/// A "repo" jar that .gitignore hides would never reach anyone else.
+fn warn_ignored(root: &Path, kept: &[String]) {
+    // check-ignore prints the ignored paths; tracked files are never reported.
+    let Ok(output) = Command::new("git").arg("-C").arg(root).args(["check-ignore", "--"]).args(kept).output() else { return };
+    for path in String::from_utf8_lossy(&output.stdout).lines() {
+        println!("warning: {path} is a repo mod but .gitignore hides it; add \"!{path}\" to .gitignore");
+    }
 }
 
 pub fn run(root: &Path) -> Result<(), String> {
@@ -172,8 +182,10 @@ pub fn run(root: &Path) -> Result<(), String> {
         count(Source::Manual),
         count(Source::Repo)
     );
+    let kept: Vec<String> = entries.iter().filter(|e| e.source == Source::Repo).map(|e| format!("mods/{}", e.file)).collect();
     let text = serde_json::to_string_pretty(&Manifest { mods: entries }).map_err(|e| e.to_string())?;
     fs::write(&path, text + "\n").map_err(|e| format!("can't write {}: {e}", path.display()))?;
     println!("{summary}");
+    warn_ignored(root, &kept);
     Ok(())
 }
