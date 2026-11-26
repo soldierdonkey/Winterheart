@@ -60,8 +60,6 @@ mods/*.jar
 
 # ---- Resource packs: fetched by ./fetch.sh from mods.json ----
 resourcepacks/*.zip
-# Kept in git ("repo" entries in mods.json):
-!resourcepacks/TheForestCustomTextures.zip
 
 # ---- Mods not shipped with the pack ----
 mods/cipherwright-0.3.0-1.20.1.jar

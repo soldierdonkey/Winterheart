@@ -1535,16 +1535,6 @@
       "fileId": 7670377
     },
     {
-      "file": "Hidden-Armor-1.2.0.zip",
-      "source": "curseforge",
-      "sha1": "42dce68cf57c3e332a7a2ccc9454ab2a1420cadf",
-      "size": 209346,
-      "url": "https://edge.forgecdn.net/files/5544/136/Hidden-Armor-1.2.0.zip",
-      "page": "https://www.curseforge.com/minecraft/texture-packs/hidden-armor/files/5544136",
-      "projectId": 596705,
-      "fileId": 5544136
-    },
-    {
       "file": "LowOnFire_1.20.1.zip",
       "source": "modrinth",
       "sha1": "08db918bc8642b5501402fe25c9b6a8286a538b5",
@@ -1603,20 +1593,6 @@
       "page": "https://www.curseforge.com/minecraft/texture-packs/taxcreepymob/files/5882677",
       "projectId": 1135812,
       "fileId": 5882677
-    },
-    {
-      "file": "TheForestCustomTextures.zip",
-      "source": "repo"
-    },
-    {
-      "file": "Universal Bushy Leaves.zip",
-      "source": "curseforge",
-      "sha1": "ce07969db7271dce892f5beed382cc3eb8db99fe",
-      "size": 63078,
-      "url": "https://edge.forgecdn.net/files/7831/345/Universal%20Bushy%20Leaves.zip",
-      "page": "https://www.curseforge.com/minecraft/texture-packs/universal-bushy-leaves/files/7831345",
-      "projectId": 1186505,
-      "fileId": 7831345
     },
     {
       "file": "§6Immersive_Interfaces_Modded§8_1.20.x.zip",

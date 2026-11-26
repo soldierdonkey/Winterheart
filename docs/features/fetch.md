@@ -38,7 +38,7 @@ Both lists work the same way. For resource packs:
 | `manual` | the user's browser, from `page` | the author opted out on CurseForge and Modrinth doesn't have the file |
 | `repo` | git | the file is `<mod-src folder>-<version>.jar`, or the entry was already `repo` |
 
-To keep any other file in git, set its entry to `{"file": "...", "source": "repo"}`; regeneration preserves it. Also add `!mods/<file>` or `!resourcepacks/<file>` to `.gitignore`; `--generate` warns about a `repo` file that is still ignored. `BetterSnowyFeatures`, `cinematic` and `tacz-firstperson-compat` are set this way: their `META-INF/mods.toml` declares MIT. So is `TheForestCustomTextures.zip`, which CurseForge doesn't list.
+To keep any other file in git, set its entry to `{"file": "...", "source": "repo"}`; regeneration preserves it. Also add `!mods/<file>` or `!resourcepacks/<file>` to `.gitignore`; `--generate` warns about a `repo` file that is still ignored. `BetterSnowyFeatures`, `cinematic` and `tacz-firstperson-compat` are set this way: their `META-INF/mods.toml` declares MIT.
 
 ### Generate
 

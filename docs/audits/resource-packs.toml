@@ -7,6 +7,7 @@ method = """
 File paths only: no images opened, nothing checked in game.
 Compared each pack's asset paths with the asset namespaces of the jars in mods/ and with the load order in
 config/packfinder/resourcepack_order.json. lang, sounds.json, atlas and font files are not counted.
+Universal Bushy Leaves, Hidden Armor and TheForestCustomTextures were removed after this audit, along with their entries.
 """
 usable_means = """
 Not for a missing mod, not in a format nothing installed reads, not overridden by a higher pack.
@@ -15,13 +16,6 @@ Usable counts are approximate upper bounds: an installed mod may not contain eve
 
 # verdict: "drop" = safe to remove, "fix-or-drop" = a main part is inert or overridden,
 # "optional" = small feature, a matter of taste, "keep".
-
-[[pack]]
-file = "Universal Bushy Leaves.zip"
-verdict = "drop"
-asset_files = 108
-usable = 4
-notes = "chipped, ars_nouveau, vinery etc. not installed; only 3 vanilla and 1 Quark file apply. Sits on top of Better Leaves."
 
 [[pack]]
 file = "§e[FORGE]Eating Animations More Compat.zip"
@@ -64,9 +58,7 @@ file = "Better-Leaves-9.5.zip"
 verdict = "keep"
 asset_files = 4576
 usable = 220
-overridden = 91
-overridden_by = "Universal Bushy Leaves.zip"
-notes = "dreamwoods, chipped, biomeswevegone, cobblemon etc. missing. Nearly all overridden files can only be for missing mods."
+notes = "dreamwoods, chipped, biomeswevegone, cobblemon etc. missing."
 
 [[pack]]
 file = "Tactical3DTools[10.2].zip"
@@ -88,13 +80,6 @@ verdict = "keep"
 asset_files = 293
 usable = 72
 notes = "Add-ons such as farmersrespite and culturaldelights missing."
-
-[[pack]]
-file = "Hidden-Armor-1.2.0.zip"
-verdict = "optional"
-asset_files = 271
-usable = 123
-notes = "About half is for missing armor mods."
 
 [[pack]]
 file = "AnalogueWatchClock-[1.19.3]-1.2.1.zip"
@@ -161,11 +146,6 @@ asset_files = 40
 file = "§bEnchanting§8-§bReimagined§0_§8[v1.4]§0.zip"
 verdict = "keep"
 asset_files = 49
-
-[[pack]]
-file = "TheForestCustomTextures.zip"
-verdict = "keep"
-asset_files = 61
 
 [[pack]]
 file = "Overlayed-Snow-v2.1.0-v1.14+26.2.zip"
