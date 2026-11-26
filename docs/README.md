@@ -23,7 +23,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | mod-publishing | [features/mod-publishing.md](features/mod-publishing.md) | `publish.sh`, `python/publish/`, `*/pack.properties` |
 | packfinder | [features/packfinder.md](features/packfinder.md) | `mod-src/packfinder/`, `config/packfinder/` |
 | resource-packs | [features/resource-packs.md](features/resource-packs.md) | `resourcepacks/` |
-| fetch-mods | [features/fetch-mods.md](features/fetch-mods.md) | `fetch-mods.sh`, `mods.json`, `tools/fetch_mods/` |
+| fetch | [features/fetch.md](features/fetch.md) | `fetch.sh`, `mods.json`, `tools/fetch/` |
 | time-system | [features/time-system.md](features/time-system.md) | `mod-src/winterheart_time/`, `datapacks/winterheart_time/` |
 | mob-spawning | [features/mob-spawning.md](features/mob-spawning.md) | `mod-src/winterheart_spawning/`, `datapacks/winterheart_spawning/` |
 | sanity | [features/sanity.md](features/sanity.md) | `mod-src/winterheart_survival/.../sanity/SanityDespawn.java` |

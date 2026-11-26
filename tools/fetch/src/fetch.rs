@@ -15,9 +15,9 @@ use std::time::{Duration, SystemTime};
 const THREADS: usize = 8;
 const ATTEMPTS: u32 = 3;
 /// Records what this tool installed (key -> sha1), so it only ever removes its own files.
-const STATE: &str = ".cache/fetch-mods/installed.json";
+const STATE: &str = ".cache/fetch/installed.json";
 /// Where replaced and removed files go instead of being deleted.
-const REPLACED: &str = ".cache/fetch-mods/replaced";
+const REPLACED: &str = ".cache/fetch/replaced";
 
 type State = BTreeMap<String, String>;
 
@@ -294,7 +294,7 @@ pub fn run(opts: &Options) -> Result<bool, String> {
             println!("stale: {}/{name}", folder.dir);
         }
         let ok = missing.is_empty() && missing_repo.is_empty() && stale.is_empty();
-        println!("{}", if ok { "All files match the manifest." } else { "Out of sync with the manifest; run ./fetch-mods.sh" });
+        println!("{}", if ok { "All files match the manifest." } else { "Out of sync with the manifest; run ./fetch.sh" });
         return Ok(ok);
     }
 
@@ -343,7 +343,7 @@ pub fn run(opts: &Options) -> Result<bool, String> {
         }
         let interactive = io::stdin().is_terminal();
         if !opts.wait || !interactive {
-            println!("Download them into their folders or run ./fetch-mods.sh in a terminal.");
+            println!("Download them into their folders or run ./fetch.sh in a terminal.");
             return Ok(false);
         }
         if opts.open {
@@ -360,7 +360,7 @@ pub fn run(opts: &Options) -> Result<bool, String> {
     }
 
     if !failures.is_empty() {
-        println!("{} download(s) failed; run ./fetch-mods.sh again.", failures.len());
+        println!("{} download(s) failed; run ./fetch.sh again.", failures.len());
     }
     let ok = failures.is_empty() && missing_repo.is_empty();
     if ok {

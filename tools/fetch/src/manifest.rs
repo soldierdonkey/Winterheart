@@ -8,7 +8,7 @@ use std::path::Path;
 use std::time::Duration;
 
 pub const FILE: &str = "mods.json";
-const USER_AGENT: &str = "winterheart-fetch-mods";
+const USER_AGENT: &str = "winterheart-fetch";
 
 #[derive(Serialize, Deserialize, Clone, Copy, PartialEq, Eq, Debug)]
 #[serde(rename_all = "lowercase")]

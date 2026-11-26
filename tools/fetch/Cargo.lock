@@ -89,7 +89,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "fetch_mods"
+name = "fetch"
 version = "0.1.0"
 dependencies = [
  "serde",

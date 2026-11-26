@@ -47,7 +47,7 @@ XaeroWaypoints**/
 /EffekseerNativeForJava.dll
 libEffekseerNativeForJava.dylib
 
-# ---- Mod jars: fetched by ./fetch-mods.sh from mods.json ----
+# ---- Mod jars: fetched by ./fetch.sh from mods.json ----
 mods/*.jar
 # Kept in git ("repo" entries in mods.json). Own mods:
 !mods/winterheart*.jar
@@ -58,7 +58,7 @@ mods/*.jar
 !mods/cinematic-1.1.1.jar
 !mods/tacz-firstperson-compat-forge-1.20.1-1.1.4.jar
 
-# ---- Resource packs: fetched by ./fetch-mods.sh from mods.json ----
+# ---- Resource packs: fetched by ./fetch.sh from mods.json ----
 resourcepacks/*.zip
 # Kept in git ("repo" entries in mods.json):
 !resourcepacks/TheForestCustomTextures.zip

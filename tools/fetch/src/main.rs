@@ -1,4 +1,4 @@
-//! Keeps mods/ and resourcepacks/ in step with mods.json. See docs/features/fetch-mods.md.
+//! Keeps mods/ and resourcepacks/ in step with mods.json. See docs/features/fetch.md.
 
 mod fetch;
 mod generate;
@@ -8,7 +8,7 @@ use std::path::PathBuf;
 use std::process::ExitCode;
 
 const HELP: &str = "\
-Usage: ./fetch-mods.sh [options]
+Usage: ./fetch.sh [options]
   (no options)       download missing mods and resource packs and verify them
   --check            report what is out of sync and change nothing (exit 1 if anything is)
   --generate         rewrite mods.json from mods/, resourcepacks/ and the launcher's minecraftinstance.json
@@ -17,7 +17,7 @@ Usage: ./fetch-mods.sh [options]
   --no-wait          don't wait for manual downloads; list them and exit 1
   --help             show this text
 
-Environment: FETCH_MODS_CACHE overrides the download cache (default: ~/.cache/winterheart-mods).";
+Environment: FETCH_CACHE overrides the download cache (default: ~/.cache/winterheart-mods).";
 
 pub struct Options {
     pub root: PathBuf,
@@ -55,14 +55,14 @@ fn run() -> Result<bool, String> {
     if check && generate {
         return Err("--check and --generate can't be combined".into());
     }
-    let root = match std::env::var_os("FETCH_MODS_GAME_DIR") {
+    let root = match std::env::var_os("FETCH_GAME_DIR") {
         Some(dir) => PathBuf::from(dir),
         None => std::env::current_dir().map_err(|e| e.to_string())?,
     };
     if generate {
         return generate::run(&root).map(|()| true);
     }
-    let cache = match std::env::var_os("FETCH_MODS_CACHE") {
+    let cache = match std::env::var_os("FETCH_CACHE") {
         Some(dir) => PathBuf::from(dir),
         None => home()?.join(".cache").join("winterheart-mods"),
     };
@@ -78,7 +78,7 @@ fn main() -> ExitCode {
         Ok(true) => ExitCode::SUCCESS,
         Ok(false) => ExitCode::FAILURE,
         Err(message) => {
-            eprintln!("fetch-mods: {message}");
+            eprintln!("fetch: {message}");
             ExitCode::FAILURE
         }
     }
