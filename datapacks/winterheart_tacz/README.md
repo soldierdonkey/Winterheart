@@ -9,6 +9,7 @@ Minecraft 1.20.1 datapack by soldierdonkey2, made for the Winterheart modpack.
 - Hides every gun, ammunition type and attachment in TACZ's default gun pack except the period set.
 - Removes the default pack's gunsmith recipes and bonus chest loot.
 - Trims the workbench tabs to match.
+- Has a durability and jamming file for each kept gun, used by **Gun Durability**.
 
 Winterheart's own gunsmith recipes are in **Winterheart: Recipes**.
 
@@ -16,6 +17,7 @@ Winterheart's own gunsmith recipes are in **Winterheart: Recipes**.
 
 - Minecraft **1.20.1**
 - **Timeless and Classics Zero**, with `DefaultPackDebug = false` (its default) so its gun pack stays up to date.
+- **Gun Durability** (optional), for the durability files.
 
 ## Installation
 

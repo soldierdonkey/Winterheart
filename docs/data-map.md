@@ -40,6 +40,7 @@ What each body of Winterheart data **does** and what **format** it is in: file t
 | Disabled recipes | `DP/winterheart_recipes/data/{gore_edition,tacz,immersive_weathering}/recipes/` | `"conditions": [{"type": "forge:false"}]` at the mod's recipe ID | override (disable) | `/reload` |
 | Item tags | `DP/winterheart_recipes/data/{forge,minecraft,notreepunching}/tags/items/` | `forge:hammer`, `minecraft:brewing_stand_fuel`, `notreepunching:weak_saws`, `minecraft:animal_fat` | merge | `/reload` |
 | TACZ gun pack filter | `DP/winterheart_tacz/pack.mcmeta` | `filter` block hiding non-period guns, ammo, attachments, gunsmith recipes and loot injectors of `tacz` | filter | `/reload` |
+| Gun durability | `DP/winterheart_tacz/data/gundb/gundb/tacz/` | `gundb` durability, jamming and stat penalties per gun | new (`springfield1873` overrides) | `/reload` |
 | TACZ workbench tabs | `DP/winterheart_tacz/data/tacz/data/blocks/` | Tabs and tab icons of the three TACZ workbenches | override | `/reload` |
 | Time system tuning | `DP/winterheart_time/data/winterheart/time/config.json` | Speeds, phases, wake-up effects, midnight drain, retained capabilities | new | `/reload` |
 | Spawner tuning | `DP/winterheart_spawning/data/winterheart/spawning/config.json` | Mob templates, pools, hostile caps, livestock quotas, wendigo days | new | `/reload` |

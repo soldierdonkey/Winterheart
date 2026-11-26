@@ -1,0 +1,30 @@
+{
+  "RepairItem": "#forge:ingots/copper",
+  "MaxDurability": 800,
+  "Jam": true,
+  "JamChance": 0.25,
+  "RepairCost": 16,
+  "XpCost": 0.25,
+  "Stats": [
+    {
+      "Type": "AmmoSpeed",
+      "ReductionThreshold": 0.8,
+      "MaxReduction": 0.75
+    },
+    {
+      "Type": ["Damage", "ADS"],
+      "ReductionThreshold": 0.9,
+      "MaxReduction": 0.4
+    },
+    {
+      "Type": "RPM",
+      "ReductionThreshold": 0.8,
+      "MaxReduction": 0.5
+    },
+    {
+      "Type": ["Recoil"],
+      "ReductionThreshold": 0.9,
+      "MaxReduction": 1.0
+    }
+  ]
+}

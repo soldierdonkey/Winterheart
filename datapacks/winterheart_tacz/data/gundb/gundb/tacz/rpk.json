@@ -1,0 +1,24 @@
+{
+  "RepairItem": "#forge:ingots/iron",
+  "MaxDurability": 1000,
+  "Jam": true,
+  "JamChance": 0.1,
+  "RepairCost": 24,
+  "Stats": [
+    {
+      "Type": ["AmmoSpeed", "Inaccuracy"],
+      "ReductionThreshold": 0.65,
+      "MaxReduction": 0.6
+    },
+    {
+      "Type": ["Damage", "Recoil", "ArmorIgnore", "ADS"],
+      "ReductionThreshold": 0.9,
+      "MaxReduction": 0.5
+    },
+    {
+      "Type": "RPM",
+      "ReductionThreshold": 0.8,
+      "MaxReduction": 0.4
+    }
+  ]
+}
