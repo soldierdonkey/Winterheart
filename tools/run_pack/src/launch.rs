@@ -52,6 +52,40 @@ fn rules_ok(rules: Option<&Value>) -> bool {
     ok
 }
 
+/// Replaces the console layout in Mojang's log4j config, which prints XML events for its own launcher.
+/// Colors are dropped when stdin or stdout isn't a terminal (headless, pipes). The file appender is untouched.
+const CONSOLE_LAYOUT: &str = concat!(
+    r#"<PatternLayout noConsoleNoAnsi="true" pattern=""#,
+    "%style{%d{HH:mm:ss}}{blue} ",
+    "%highlight{[%t/%level]}{FATAL=bright white bg_red, ERROR=bright red, WARN=bright yellow, INFO=green, DEBUG=cyan, TRACE=blue} ",
+    "%style{[%c{1}]}{cyan}: ",
+    "%highlight{%msg{nolookups}}{FATAL=bright red, ERROR=red, WARN=yellow, INFO=normal, DEBUG=normal, TRACE=normal}",
+    "%n%style{%throwable}{red}",
+    r#"" />"#
+);
+
+/// Writes `config` with the console layout swapped to local/run-pack/ and returns that path. Falls back to
+/// the original if it has no XML layout or the copy can't be written.
+fn text_log_config(game_dir: &Path, config: PathBuf) -> PathBuf {
+    let Ok(xml) = std::fs::read_to_string(&config) else {
+        return config;
+    };
+    let text = xml
+        .replace("<LegacyXMLLayout />", CONSOLE_LAYOUT)
+        .replace("<XMLLayout />", CONSOLE_LAYOUT);
+    let dir = game_dir.join("local/run-pack");
+    let out = dir.join("log4j.xml");
+    if text == xml
+        || std::fs::create_dir_all(&dir)
+            .and_then(|_| std::fs::write(&out, text))
+            .is_err()
+    {
+        eprintln!("Can't rewrite {}: console logs stay XML", config.display());
+        return config;
+    }
+    out
+}
+
 /// UUIDv3 of "OfflinePlayer:<name>", the same one a vanilla offline server assigns.
 fn offline_uuid(name: &str) -> String {
     let mut h: [u8; 16] = Md5::digest(format!("OfflinePlayer:{name}").as_bytes()).into();
@@ -220,6 +254,7 @@ pub fn client_args(ctx: &Ctx, username: &str) -> Result<Vec<String>, String> {
         ) {
             let path = install.join("assets").join("log_configs").join(id);
             if path.exists() {
+                let path = text_log_config(&ctx.game_dir, path);
                 args.push(arg.replace("${path}", &path.display().to_string()));
             }
         }

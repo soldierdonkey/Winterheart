@@ -7,12 +7,13 @@ Launches the Winterheart instance from the shell in offline mode, without the Cu
 - `run-pack.sh`: entry point. A wrapper that builds `tools/run_pack` (`cargo build --release`, a no-op when up to date) and `exec`s `tools/run_pack/target/release/run-pack` with `RUN_PACK_GAME_DIR` set to the instance root. `./run-pack.sh --help` lists the options.
 - `tools/run_pack/Cargo.toml`: the Rust crate (binary `run-pack`; deps `serde_json`, `regex`, `md-5`, `ctrlc`, `libc`).
 - `tools/run_pack/src/main.rs`: parses options, picks Java, refuses to start if the instance is already running, then `exec`s the game. With `--headless` it runs the game in the background and watches it instead.
-- `tools/run_pack/src/launch.rs`: reads the version JSONs and builds the client's java argument list.
+- `tools/run_pack/src/launch.rs`: reads the version JSONs and builds the client's java argument list, and rewrites the log4j config.
 - `tools/run_pack/src/rcon.rs`: RCON client behind `--send`, `--console`, `--run` and the headless stop.
 - `tools/run_pack/.gitignore`: ignores `target/`.
 - `mod-src/winterheart/src/main/java/io/github/soldierdonkey2/winterheart/remote/DevRcon.java`: the in-game side, in [winterheart-core](winterheart-core.md). Reads `WINTERHEART_RCON`, starts/stops the listener with the integrated server, runs each command and captures its output.
 - `mod-src/winterheart/src/main/java/io/github/soldierdonkey2/winterheart/remote/RconListener.java`: RCON protocol server on 127.0.0.1 (auth, exec, 4096-byte reply packets).
 - `mod-src/winterheart/src/main/java/io/github/soldierdonkey2/winterheart/Winterheart.java`: registers `DevRcon`'s server start/stop listeners.
+- `local/run-pack/log4j.xml`: gitignored. Generated on each launch, see [Console logs](#console-logs).
 - `local/run-pack/rcon-password`: gitignored. The listener password, generated on the first launch.
 
 ## How it works
@@ -40,6 +41,15 @@ Launches the Winterheart instance from the shell in offline mode, without the Cu
 5. On top of the version-JSON arguments, it adds the extra JVM flags CurseForge passes: `-Xms256m`, `-Dfml.ignorePatchDiscrepancies=true`, `-Dfml.ignoreInvalidMinecraftCertificates=true`, `-Duser.language=en`.
 
 The game directory is the repo root, so a run uses the same `mods/`, `config/`, `saves/` and `options.txt` as a CurseForge launch.
+
+### Console logs
+
+Mojang's log config (`<install>/assets/log_configs/client-1.12.xml`) prints each console event as XML (`LegacyXMLLayout`) for its own launcher. `launch.rs` writes a copy to `local/run-pack/log4j.xml` with that layout replaced by a text `PatternLayout` (`CONSOLE_LAYOUT`), and passes the copy as `-Dlog4j.configurationFile`. Lines look like `HH:mm:ss [thread/LEVEL] [logger]: message`.
+
+- Colors: time blue, logger cyan, level tag by level (INFO green, WARN yellow, ERROR red, FATAL white on red). WARN, ERROR and FATAL messages and stack traces are colored too.
+- `noConsoleNoAnsi` drops the colors unless stdin and stdout are both a terminal, so `logs/run-pack-headless.out` and piped output are plain text.
+- The file appender is unchanged, so `logs/latest.log` and `--until` behave as before.
+- If the config has no XML layout or the copy can't be written, run-pack warns and passes Mojang's config.
 
 ### Headless mode
 
@@ -96,6 +106,10 @@ Replies come in 4096-byte packets, and one shorter than 4096 bytes ends the repl
 
 ## Changes
 
+- 2026-11-26: Console logs are color-coded text instead of XML ([Console logs](#console-logs)). Tested:
+  - A scratch Java program against log4j 2.19.0 with the generated config: ANSI colors under `script` (a pseudo-terminal), plain text when piped, stack trace printed once.
+  - **Client headless (rule 7)** `--world "New World"`: joined in 42 s, exit 0, 58 ERROR lines in `logs/latest.log` (same count as before). `logs/run-pack-headless.out` had no `<log4j:Event>` elements and no ANSI escapes.
+  - **Not tested:** a foreground launch of the game itself in a terminal.
 - 2026-11-26: Added a single-player command listener like Soulrend's: `--send`, `--console` and `--run` run commands in the world of a game run-pack started. The listener (`DevRcon`, `RconListener`) is in winterheart-core and is only on with `WINTERHEART_RCON`. The headless stop now sends `quit` before falling back to SIGTERM. Binary: `mods/winterheart-1.0.0.jar`. Tested:
   - **Client headless (rule 7)** `--world "New World" --run "time query daytime" --run "/difficulty"`: joined in 43 s. `logs/latest.log` showed `Dev RCON listening on 127.0.0.1:25577`, and both replies came back (`The time is 1697`, `The difficulty is Normal`). The game closed through `quit` (`Dev RCON stopped` 2 s later) with no SIGTERM and no new `java-*.ips` crash report. 58 ERROR lines, none from Winterheart.
   - With `--keep-running`: `--send "gamerule doDaylightCycle" --send help` (9 KB reply, several packets) and piped `--console` (`seed`) worked. A wrong password was rejected (exit 1). `--send quit` closed the game in about 6 s, after which `--send list` reported no listener (exit 1).
