@@ -1,20 +1,14 @@
 # run-pack
 
-Launches the Winterheart instance from the shell in offline mode, without the CurseForge app, as a client or as a Forge dedicated server. AGENTS.md rule 7 uses it for headless smoke tests. The client reuses the Forge install, libraries, assets and Java runtime that CurseForge already downloaded. The dedicated server is installed into `server/` on first use, which is the only time run-pack downloads anything. Ported from the Soulrend development instance.
+Launches the Winterheart instance from the shell in offline mode, without the CurseForge app. AGENTS.md rule 7 uses it for headless smoke tests. The client reuses the Forge install, libraries, assets and Java runtime that CurseForge already downloaded. Ported from the Soulrend development instance.
 
 ## Files
 
 - `run-pack.sh`: entry point. A wrapper that builds `tools/run_pack` (`cargo build --release`, a no-op when up to date) and `exec`s `tools/run_pack/target/release/run-pack` with `RUN_PACK_GAME_DIR` set to the instance root. `./run-pack.sh --help` lists the options.
-- `tools/run_pack/Cargo.toml`: the Rust crate (binary `run-pack`; deps `serde_json`, `regex`, `md-5`, `glob`, `ctrlc`, `libc`).
+- `tools/run_pack/Cargo.toml`: the Rust crate (binary `run-pack`; deps `serde_json`, `regex`, `md-5`, `ctrlc`, `libc`).
 - `tools/run_pack/src/main.rs`: parses options, picks Java, refuses to start if the instance is already running, then `exec`s the game. With `--headless` it runs the game in the background and watches it instead.
 - `tools/run_pack/src/launch.rs`: reads the version JSONs and builds the client's java argument list.
-- `tools/run_pack/src/server.rs`: installs Forge into `server/` (downloads the installer with `curl` and runs `--installServer`), then links mods, copies the shared dirs, and writes `server.properties`, `user_jvm_args.txt` and `eula.txt`.
-- `tools/run_pack/server_exclude.txt`: client-only mods left out of the server (globs on jar names).
-- `tools/run_pack/src/rcon.rs`: RCON client behind `--send`, `--console` and `--run`.
 - `tools/run_pack/.gitignore`: ignores `target/`.
-- `.gitignore`: ignores `/server/`.
-- `server/`: gitignored. Holds the Forge server install, `server.properties`, worlds, `logs/`, `crash-reports/` and `.run-pack.pid`.
-- `local/run-pack/rcon-password`: gitignored. The server RCON password, generated on the first server launch.
 
 ## How it works
 
@@ -27,13 +21,6 @@ Launches the Winterheart instance from the shell in offline mode, without the Cu
 ./run-pack.sh --headless --world "Smoke Test"          # smoke test (rule 7): load the world, then stop
 ./run-pack.sh --headless --until 'Sound engine started' --timeout 300   # mods + resources loaded, no world
 ./run-pack.sh --headless --world "Smoke Test" --keep-running   # leave it running, hidden
-
-./run-pack.sh --server                             # dedicated server in the foreground (its console works)
-./run-pack.sh --server --headless --keep-running   # dedicated server in the background
-./run-pack.sh --server --headless --run "list"     # run commands once it's up
-./run-pack.sh --send "time query daytime"          # command in the running server, prints the output
-./run-pack.sh --console                            # interactive prompt to the server; Ctrl-D quits
-./run-pack.sh --send stop                          # stop the server
 ```
 
 1. `launch.rs` reads `baseModLoader.name` (`forge-47.4.10`), `allocatedMemory` and `javaArgsOverride` from `minecraftinstance.json`.
@@ -46,12 +33,12 @@ The game directory is the repo root, so a run uses the same `mods/`, `config/`, 
 
 ### Headless mode
 
-For the client, `--headless` means a hidden client. The macOS client can't run without a window, so the game runs normally with its app hidden. With `--server` there is no window, and the server simply runs in the background.
+`--headless` means a hidden client. The macOS client can't run without a window, so the game runs normally with its app hidden.
 
-1. The game runs in the background with stdin from `/dev/null`. Its stdout/stderr go to `logs/run-pack-headless.out` (`run-pack-server.out` for the server). The readable log is still `logs/latest.log`.
+1. The game runs in the background with stdin from `/dev/null`. Its stdout/stderr go to `logs/run-pack-headless.out`. The readable log is still `logs/latest.log`.
 2. Once a second, run-pack hides the app with `NSRunningApplication.hide` through `osascript -l JavaScript`. That needs no Accessibility permission.
 3. If there's a pattern (`--until REGEX`, or `<username> joined the game` when `--world` is given), run-pack waits for it in `logs/latest.log`. It only reads the file after the inode changes, so the previous run's log can't match.
-4. To stop the game, run-pack sends RCON `stop` to the server. The client has no command listener (see below), so it gets `SIGTERM`, and the shutdown hook saves the world. If the game is still running after 60 s, run-pack sends `SIGKILL`. Ctrl-C does the same.
+4. To stop the game, run-pack sends it `SIGTERM` (the client has no command listener), and the shutdown hook saves the world. If the game is still running after 60 s, run-pack sends `SIGKILL`. Ctrl-C does the same.
 5. At the end, it prints how many `/ERROR]` lines `logs/latest.log` has, plus the newest file in `crash-reports/` if a new one appeared.
 
 | Outcome | Exit code | Game |
@@ -61,29 +48,8 @@ For the client, `--headless` means a hidden client. The macOS client can't run w
 | Game exited before the pattern | 1 | — |
 | No pattern, game exited cleanly | 0 | — |
 | Ctrl-C | 130 | Stopped |
-| `--run` command failed | 1 | Stopped, or left running with `--keep-running` |
 
 For rule 7, look at `logs/latest.log`: the Winterheart mods log under their own names.
-
-### Dedicated server
-
-Winterheart refuses to load on a dedicated server ([singleplayer-only](singleplayer-only.md)), so `--server` currently ends in a crash.
-
-`--server` runs the pack on a Forge dedicated server, with its game dir in `server/`. On each launch:
-
-1. **Install (first time only).** `server.rs` downloads `forge-1.20.1-<v>-installer.jar` from `maven.minecraftforge.net` into `server/.installer/` and runs it with `--installServer server/`. It is skipped once `server/libraries/net/minecraftforge/forge/1.20.1-<v>/unix_args.txt` exists.
-2. **EULA.** `server/eula.txt` is written only with `--accept-eula`, or after a y/N prompt that shows the EULA link. Without a terminal and without the flag, the launch stops.
-3. **Mods.** `server/mods/` is rebuilt as symlinks to `../../mods/*.jar`. Jars matching `server_exclude.txt` are left out.
-4. **Shared dirs.** `config`, `defaultconfigs`, `datapacks` and `tacz` are copied into `server/` with `rsync -a --delete`. They are copies, not symlinks: some mods throw on a symlinked `config/`, and copying keeps server-side edits out of tracked files.
-5. **`server.properties`.** Sets `online-mode=false`, `enable-rcon=true`, `rcon.port=25575`, `rcon.password`, `broadcast-rcon-to-ops=false`, and `level-name` from `--world` (default `world`, i.e. `server/world/`).
-6. **JVM args.** `server/user_jvm_args.txt` gets `-Xmx` from `MEMORY_MB` or `allocatedMemory`.
-7. **Launch.** `java @user_jvm_args.txt @libraries/net/minecraftforge/forge/1.20.1-<v>/unix_args.txt nogui` runs in `server/`. The ready pattern is `Done \(`.
-
-A client-only mod that touches `net.minecraft.client` stops the server from starting. The typical error is `Attempted to load class net/minecraft/client/... for invalid dist DEDICATED_SERVER`. Add the jar to `tools/run_pack/server_exclude.txt` as a glob without the version, with the reason.
-
-### On-demand commands (server only)
-
-`--send CMD` (repeatable), `--console` and `--run CMD` use vanilla RCON on port 25575 with the password in `local/run-pack/rcon-password`. Soulrend also has a client-side listener in its dev-utils mod. Winterheart has no such mod, so these options refuse to run without a dedicated server.
 
 ## Config / tunables
 
@@ -94,15 +60,12 @@ A client-only mod that touches `net.minecraft.client` stops the server from star
 | `JAVA` | env | `<install>/java/java-runtime-gamma/Contents/Home/bin/java` (Java 17), else `java` on PATH | Java binary |
 | `MEMORY_MB` | env | `allocatedMemory` in `minecraftinstance.json`, else 7040 | `-Xmx` |
 | `--username` | arg | `Dev` | Offline player name |
-| `--world` | arg | none | Client: `--quickPlaySingleplayer <name>` (a folder in `saves/`), which also sets the default `--until`. Server: `level-name`. |
+| `--world` | arg | none | `--quickPlaySingleplayer <name>` (a folder in `saves/`), which also sets the default `--until` |
 | `--until` / `--timeout` / `--keep-running` | arg | `<username> joined the game` / 600 s / off | Headless wait and stop behaviour |
-| `--server` / `--accept-eula` | arg | off | Dedicated server in `server/` |
-| `--run` / `--send` / `--console` | arg | — | Server RCON commands |
-| `SERVER_RCON_PORT` | `tools/run_pack/src/main.rs` | 25575 | Server RCON port |
-| Excluded mods | `tools/run_pack/server_exclude.txt` | — | Globs on jar names left out of `server/mods/` |
 
 ## Changes
 
+- 2026-11-26: Removed the dedicated server and RCON code: `--server`, `--accept-eula`, `--run`, `--send` and `--console` are gone, with `tools/run_pack/src/server.rs`, `tools/run_pack/src/rcon.rs` and `tools/run_pack/server_exclude.txt`. The pack can't run on a dedicated server ([singleplayer-only](singleplayer-only.md)), so they had no use. `.gitignore` no longer lists `/server/`. Tested: `--dry-run` gives the same command as before; `--server` is rejected as an unknown option (exit 2). **Client headless (rule 7)** `--world "New World"`: joined in 37 s, stopped cleanly, exit 0, 58 ERROR lines (same third-party sources).
 - 2026-11-26: Rewrote `run-pack.sh` and its Python helpers (`launch_args.py`, `server_setup.py`, `rcon.py`) as the Rust tool `tools/run_pack`; `run-pack.sh` is now a build-and-exec wrapper, so all options and exit codes are unchanged. `server_exclude.txt` moved to `tools/run_pack/`. The headless game now runs in its own process group, so a terminal Ctrl-C reaches only run-pack, which stops the game itself. `--console` lost readline line editing and history. Tested:
   - `--dry-run --world "Smoke Test" -- --foo "a b"`: the same 70 java arguments as the bash/Python version (offline UUID included). `--server --dry-run`: same command.
   - RCON against a fake RCON server on port 25575 (instance dir pointed at a scratch dir with `RUN_PACK_GAME_DIR`): two `--send` commands, a 5000-byte reply split over two packets, `--console` from piped input ending in `stop`, and a wrong password (exit 1).
@@ -126,5 +89,3 @@ A client-only mod that touches `net.minecraft.client` stops the server from star
 - Offline mode: multiplayer servers with `online-mode=true` reject the client.
 - Forge must already be installed by CurseForge. Launch the instance from the app once after changing the Forge version.
 - Headless: the hidden client loses focus, so the pause menu opens and the integrated server stops ticking unless `options.txt` has `pauseOnLostFocus:false`. Loading and joining aren't affected.
-- Server: the Forge maven answers 403 to some default User-Agents, so `server.rs` downloads with `curl -A winterheart-run-pack/1`.
-- Server: RCON listens on all interfaces with `online-mode=false`. Use it on a trusted network, or set `server-ip=127.0.0.1` in `server/server.properties`.

@@ -28,8 +28,6 @@ streamsreflowing-stall*
 
 # ---- Worlds and generated output ----
 saves/
-# Dedicated server from run-pack.sh --server (install, worlds, server.properties)
-/server/
 downloads/
 screenshots/
 local/

@@ -24,4 +24,4 @@ None. The check is always on.
 
 ## Gotchas
 
-- `./run-pack.sh --server` (and its `--send`/`--console`/`--run` RCON commands) can't start the pack any more. Use the client for testing.
+- run-pack no longer has a dedicated server mode ([run-pack](run-pack.md)). Use the client for testing.
