@@ -9,3 +9,6 @@ net.minecraft.client.gui.screens.inventory.InventoryScreen {
 com.tacz.guns.client.gui.GunSmithTableScreen {
 }
 
+net.minecraft.client.gui.screens.TitleScreen {
+}
+
