@@ -18,6 +18,7 @@ Development instance of the **Winterheart** modpack: a cold-survival pack where 
 | `mods/`, `resourcepacks/`, `shaderpacks/` | Shipped binaries. In `mods/`, only our own and a few third-party jars are tracked; the rest are fetched. |
 | `docs/` | Contributor/backend docs. See [docs/README.md](docs/README.md). |
 | `CHANGELOG.md` | Release notes, newest first. |
+| `THIRD_PARTY_NOTICES.md` | Licenses of the third-party jars tracked in git. |
 
 For a full map of every custom file and the feature it belongs to, see **[docs/feature-map.md](docs/feature-map.md)**.
 

@@ -4,6 +4,7 @@
 
 ## Files
 
+- `THIRD_PARTY_NOTICES.md`: license notice for the third-party jars tracked in git.
 - `.gitignore`: ignores `mods/*.jar` and `resourcepacks/*.zip`, with a `!` line for each `repo` file (own mods by pattern).
 - `fetch.sh`: wrapper. Builds the tool with cargo and sets `FETCH_GAME_DIR` to the instance root.
 - `mods.json`: the manifest, one entry per shipped jar (`mods`) and resource pack zip (`resourcepacks`).
@@ -38,7 +39,7 @@ Both lists work the same way. For resource packs:
 | `manual` | the user's browser, from `page` | the author opted out on CurseForge and Modrinth doesn't have the file |
 | `repo` | git | the file is `<mod-src folder>-<version>.jar`, or the entry was already `repo` |
 
-To keep any other file in git, set its entry to `{"file": "...", "source": "repo"}`; regeneration preserves it. Also add `!mods/<file>` or `!resourcepacks/<file>` to `.gitignore`; `--generate` warns about a `repo` file that is still ignored. `BetterSnowyFeatures` and `tacz-firstperson-compat` are set this way: their `META-INF/mods.toml` declares MIT.
+To keep any other file in git, set its entry to `{"file": "...", "source": "repo"}`; regeneration preserves it. Also add `!mods/<file>` or `!resourcepacks/<file>` to `.gitignore`; `--generate` warns about a `repo` file that is still ignored. `BetterSnowyFeatures` and `tacz-firstperson-compat` are set this way: their `META-INF/mods.toml` declares MIT. [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md) carries their license notice; add or remove a row there when a third-party `repo` file changes.
 
 ### Generate
 
@@ -64,6 +65,7 @@ A differing file, or one that is no longer listed but matches what the tool reco
 
 ## Changes
 
+- 2026-11-26: Added `THIRD_PARTY_NOTICES.md` for the two third-party `repo` jars. Documentation only.
 - 2026-11-26: Removed the unused `cinematic-1.1.1.jar` (a `repo` jar). Headless load of `New World`: pass, joined in 30 s; the only related lines are the expected missing-mod warnings (`cinematic (version 1.1.1 -> MISSING)`, `Missing data pack mod:cinematic`).
 - 2026-11-26: Renamed from `fetch-mods` to `fetch`: the script, `tools/fetch/`, the crate and binary, the environment variables (`FETCH_*`) and the state folder (`.cache/fetch/`). The download cache path is unchanged. Tested with `./fetch.sh --check`; no game launch, as no jar changed.
 - 2026-11-26: Added the `resourcepacks` list and untracked the 24 third-party resource pack zips; the files on disk did not change, so no game launch. Tested in an empty scratch folder with an empty cache and only the resource pack list: 20 downloads and 4 manual pickups (renamed copies in the watched folder) left all packs byte-identical to the instance's. Also tested `--check`, a tampered, a missing and a delisted pack. The `mods` list came out unchanged.
