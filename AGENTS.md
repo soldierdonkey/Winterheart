@@ -46,3 +46,9 @@ Rules for contributors working in this repo. For the project layout see [README.
   - Our own mods go in `mod-src/<mod_id>/`. Start new ones from `mod-src/_template/new-mod.sh`.
   - Python/shell generators and helper scripts go in `python/<area>/`. Rust apps go in `tools/<name>/`.
 - Run scripts and tools from the instance root unless their docs say otherwise.
+
+## Todos
+
+Workflow in [docs/todo/README.md](docs/todo/README.md).
+
+- **Bare todo path given** (e.g. `docs/todo/butchery-fixes-missing-block-tags.md`): first check whether the todo is fleshed out enough to complete (clear steps, decisions made, nothing left to ask). If yes, complete it. If no, run `/resolve` on it.
