@@ -11,6 +11,7 @@ Progress = done steps / total steps in the todo file (rough).
 | Butchery JEI: salt basin page | 2026-11-26 | 0/5 | [todo/butchery-jei-salt-basin.md](todo/butchery-jei-salt-basin.md) |
 | Butchery JEI: blood collection page | 2026-11-26 | 0/5 | [todo/butchery-jei-blood-collection.md](todo/butchery-jei-blood-collection.md) |
 | Butchery JEI: world transformation pages (bone meals, wetting and cleaning) | 2026-11-26 | 0/6 | [todo/butchery-jei-world-transformations.md](todo/butchery-jei-world-transformations.md) |
+| Butchery fixes: add missing block tags (horse and wolf acid, iron golem heads) | 2026-11-27 | 0/6 | [todo/butchery-fixes-missing-block-tags.md](todo/butchery-fixes-missing-block-tags.md) |
 
 <!--
 Row template (copy below the header row):
