@@ -98,6 +98,11 @@ abstract class ProcessCategory<T> implements IRecipeCategory<T> {
         models.drawHoldingWater(graphics, List.of(block, Integer.toString(state)), x, y, size);
     }
 
+    /** Like preview, brightened. */
+    void previewBright(GuiGraphics graphics, String block, int x, int y, int size, float brightness) {
+        models.drawBrightened(graphics, List.of(parse(block)), x, y, size, brightness);
+    }
+
     /** Draws block states written as in /setblock, stacked bottom first. */
     void preview(GuiGraphics graphics, List<String> states, int x, int y, int size) {
         models.drawColumn(graphics, states.stream().map(ProcessCategory::parse).toList(), x, y, size);

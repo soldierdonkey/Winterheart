@@ -20,6 +20,8 @@ class CleaningCategory extends ProcessCategory<Processes.CleaningTool> {
 
     private static final int SLOT_Y = 44;
 
+    private static final float PUDDLE_BRIGHTNESS = 3;
+
     private final Processes.Cleaning cleaning;
 
     CleaningCategory(IGuiHelper gui, Processes.Cleaning cleaning) {
@@ -51,7 +53,7 @@ class CleaningCategory extends ProcessCategory<Processes.CleaningTool> {
     @Override
     public void draw(Processes.CleaningTool recipe, IRecipeSlotsView slots, GuiGraphics graphics, double mouseX,
                      double mouseY) {
-        preview(graphics, List.of(cleaning.puddle()), 148, 32, 40);
+        previewBright(graphics, cleaning.puddle(), 148, 32, 40, PUDDLE_BRIGHTNESS);
         label(graphics, text("clean.wet"), 48, SLOT_Y - 11);
         label(graphics, text("clean.uses", recipe.uses()), 98, SLOT_Y - 11);
         label(graphics, text("clean.wipe"), 148, 8);

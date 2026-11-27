@@ -7,6 +7,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
 import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.platform.Lighting;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.Util;
@@ -37,6 +38,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraftforge.client.model.data.ModelData;
 import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 import java.util.HashMap;
 import java.util.List;
@@ -63,6 +65,13 @@ final class CarcassModels {
     private static final long SWAY_MILLIS = 8000;
     /** Vanilla's default water blue. The pack recolours water by biome, and outside one it comes out olive. */
     private static final int WATER_TINT = 0xFF3F76E4;
+
+    /** How a block is shown: tilted `pitch` degrees towards the viewer, `brightness` times as bright. */
+    private record Look(float pitch, float brightness, boolean water) {}
+
+    private static final Look PLAIN = new Look(20, 1, false);
+    /** Steep enough to see the bottom of a basin. */
+    private static final Look BASIN = new Look(50, 1, true);
 
     private final Carcass carcass;
     private final Map<BlockState, Optional<Bounds>> bounds = new HashMap<>();
@@ -131,15 +140,23 @@ final class CarcassModels {
 
     /** Like drawBlock, for blocks stacked bottom first (a rose bush is two tall). Water is drawn as a cube. */
     void drawColumn(GuiGraphics graphics, List<BlockState> column, int x, int y, int size) {
-        draw(graphics, column, x, y, size, false);
+        draw(graphics, column, x, y, size, PLAIN);
     }
 
-    /** Like drawBlock, with water blue on the block's tinted faces: a basin takes its water colour from the biome. */
+    /** Like drawColumn, for a block whose texture is too dark to make out as it is. */
+    void drawBrightened(GuiGraphics graphics, List<BlockState> column, int x, int y, int size, float brightness) {
+        draw(graphics, column, x, y, size, new Look(PLAIN.pitch(), brightness, false));
+    }
+
+    /**
+     * Like drawBlock, seen from higher up and with water blue on the block's tinted faces: a basin takes its water
+     * colour from the biome.
+     */
     void drawHoldingWater(GuiGraphics graphics, List<String> stage, int x, int y, int size) {
-        draw(graphics, List.of(state(stage.get(0), stage.get(1))), x, y, size, true);
+        draw(graphics, List.of(state(stage.get(0), stage.get(1))), x, y, size, BASIN);
     }
 
-    private void draw(GuiGraphics graphics, List<BlockState> column, int x, int y, int size, boolean water) {
+    private void draw(GuiGraphics graphics, List<BlockState> column, int x, int y, int size, Look look) {
         Optional<Bounds> measured = union(column);
         PoseStack pose = graphics.pose();
         pose.pushPose();
@@ -152,14 +169,19 @@ final class CarcassModels {
             float scale = size * 0.85F / box.size();
             pose.translate(x, y, 150);
             pose.scale(scale, -scale, scale);
-            pose.mulPose(Axis.XP.rotationDegrees(20));
+            pose.mulPose(Axis.XP.rotationDegrees(look.pitch()));
             pose.mulPose(Axis.YP.rotationDegrees(angle()));
             pose.translate(-box.x(), -box.y(), -box.z());
+            graphics.flush(); // so the lighting and brightness apply to these blocks only
             Lighting.setupFor3DItems();
+            if (look.water()) {
+                lightFromAbove(look.pitch());
+            }
+            graphics.setColor(look.brightness(), look.brightness(), look.brightness(), 1);
             for (BlockState state : column) {
                 if (state.is(Blocks.WATER)) {
                     drawWater(graphics, pose);
-                } else if (water) {
+                } else if (look.water()) {
                     drawTinted(graphics, pose, state);
                 } else {
                     Minecraft.getInstance().getBlockRenderer().renderSingleBlock(state, pose, graphics.bufferSource(),
@@ -168,8 +190,18 @@ final class CarcassModels {
                 pose.translate(0, 1, 0);
             }
             graphics.flush();
+            graphics.setColor(1, 1, 1, 1);
+            Lighting.setupFor3DItems();
         }
         pose.popPose();
+    }
+
+    /** The item lights leave top faces dim, which hides what lies in a basin. This points one straight at them. */
+    private static void lightFromAbove(float pitch) {
+        float angle = (float) Math.toRadians(pitch);
+        // On screen y points down and z towards the viewer.
+        Vector3f up = new Vector3f(0, -(float) Math.cos(angle), (float) Math.sin(angle));
+        RenderSystem.setShaderLights(up, new Vector3f(0.3F, -0.5F, 0.8F).normalize());
     }
 
     private static void drawTinted(GuiGraphics graphics, PoseStack pose, BlockState state) {

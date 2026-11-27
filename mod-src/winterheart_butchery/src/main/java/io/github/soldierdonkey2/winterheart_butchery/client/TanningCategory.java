@@ -76,7 +76,7 @@ class TanningCategory extends ProcessCategory<Processes.Tanning> {
         label(graphics, text("tan.place"), SLOT_X[0] + 8, SLOT_Y - 11);
         label(graphics, text("tan.salt"), SLOT_X[1] + 8, SLOT_Y - 11);
         label(graphics, text("tan.wet"), SLOT_X[2] + 8, SLOT_Y - 11);
-        label(graphics, text("tan.wait", recipe.seconds()), SLOT_X[3] - 14, SLOT_Y + 18);
+        label(graphics, text("tan.wait", recipe.seconds()), SLOT_X[3], SLOT_Y - 11); // kept inside the page
         arrow(graphics, 34, SLOT_Y + 4);
         arrow(graphics, 78, SLOT_Y + 4);
         arrow(graphics, 126, SLOT_Y + 4);

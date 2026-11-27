@@ -50,7 +50,7 @@ Which heads and carcasses a page lists comes from Butchery's block tags when JEI
 
 The carcass counts as a blood input, so JEI++ prices blood honestly; a tree that needs both blood and meat counts a carcass for each. Carcasses that bleed 250 mB (cats, bat, ocelot, chicken, rabbit) can't fill a bottle alone, so they are listed on hover, not as inputs. Husks bleed sand and have no blood page. Which carcasses these are comes from `blood` and `blood_mb` in `python/butchery_jei/carcasses.json`; the phantom's `blood_mb_instant` applies with `Instant Bleeding`.
 
-Sculk and wither rose are shown in a render-only slot with an invisible output: R finds the page, JEI++ doesn't plan around a 20% change. The wet tool on a cleaning page is shown only. `CarcassModels.drawWater` draws the water block, which has no block model, and `drawHoldingWater` colours the water in the basin. Both use vanilla's default blue: outside a biome the pack's water colour comes out olive (`3a3d2e`), and the basin's comes out white.
+Sculk and wither rose are shown in a render-only slot with an invisible output: R finds the page, JEI++ doesn't plan around a 20% change. The wet tool on a cleaning page is shown only. `CarcassModels.drawWater` draws the water block, which has no block model, and `drawHoldingWater` colours the water in the basin. Both use vanilla's default blue: outside a biome the pack's water colour comes out olive (`3a3d2e`), and the basin's comes out white. The basin is also tilted further (50 degrees) and lit from above (`lightFromAbove`), because the item lights leave its floor too dim to show the salt. The blood puddle preview is drawn three times brighter. A zoglin carcass's bare bone leg is part of Butchery's texture, not a rendering fault.
 
 ### Slot roles
 
@@ -97,6 +97,8 @@ cd mod-src/winterheart_butchery && JAVA_HOME=/Library/Java/JavaVirtualMachines/t
 - 2026-11-27: Block previews faced away from the viewer; they now face front and sway instead of turning a full circle.
 
 - 2026-11-27: Added the salt, blood collection, special bone meal and cleaning pages. Headless load test (`New World`): pass, joined after 53 s, log line `[Butchery] JEI: added salt, 4 blood page(s), 3 bone meal page(s), 2 cleaning page(s)`, no errors from the mod. A temporary probe, since removed, built all 10 pages, ran sample R and U lookups, read the small-carcass tooltip and took screenshots; they led to fixing the olive water, the invisible basin water and crowded labels. Mouse input and JEI++ trees not tried.
+
+- 2026-11-27: Tilted and lit the salt basin so the salt on its floor shows, brightened the blood puddle preview, and moved "4. Wait" on the tanning page up beside steps 1-3. Headless load test (`New World`): pass, joined after 31 s, no errors from the mod. The three pages were checked in screenshots from a temporary probe, since removed.
 
 ## Gotchas
 
