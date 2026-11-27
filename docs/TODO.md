@@ -8,6 +8,9 @@ Progress = done steps / total steps in the todo file (rough).
 | --- | --- | --- | --- |
 | Replace MineZero with `winterheart_loop`: chunk journal + full player snapshot | 2026-11-26 | 0/12 | [todo/loop-winterheart-loop-mod.md](todo/loop-winterheart-loop-mod.md) |
 | Add Deer Mod and a GPLv3 Butchery compat for its deer | 2026-11-26 | 0/11 | [todo/butchery-compat-deer-mod.md](todo/butchery-compat-deer-mod.md) |
+| Butchery JEI: salt basin page | 2026-11-26 | 0/5 | [todo/butchery-jei-salt-basin.md](todo/butchery-jei-salt-basin.md) |
+| Butchery JEI: blood collection page | 2026-11-26 | 0/5 | [todo/butchery-jei-blood-collection.md](todo/butchery-jei-blood-collection.md) |
+| Butchery JEI: world transformation pages (bone meals, wetting and cleaning) | 2026-11-26 | 0/6 | [todo/butchery-jei-world-transformations.md](todo/butchery-jei-world-transformations.md) |
 
 <!--
 Row template (copy below the header row):
