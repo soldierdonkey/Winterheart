@@ -9,17 +9,23 @@ import net.minecraft.resources.ResourceLocation;
 import java.io.Reader;
 import java.util.List;
 
-/** One animal's workflow, as written to assets/.../jei/carcasses.json by python/butchery_jei. */
-public record Carcass(String id, String entity, Stage fresh, Stage drained,
-                      @SerializedName("bleed_seconds") int bleedSeconds, List<String> supports, List<Step> steps) {
+/**
+ * One carcass's workflow, as written to assets/.../jei/carcasses.json by python/butchery_jei. entity is null for a
+ * carcass no mob drops; drained is null for one that is cut up without bleeding.
+ */
+public record Carcass(String id, String entity, @SerializedName("entity_nbt") String entityNbt, List<String> fresh,
+                      List<String> drained, boolean bleeds, @SerializedName("bleed_seconds") int bleedSeconds,
+                      boolean tray, List<List<String>> preview, List<Step> steps,
+                      @SerializedName("hanging_differences") List<Difference> hangingDifferences) {
 
-    /** A hanging carcass block and the value of its `blockstate` property. */
-    public record Stage(String block, int state) {}
+    /** One right-click on the carcass. */
+    public record Step(String name, String tool, List<Drop> drops) {}
 
-    /** One right-click on the drained carcass. stateAfter is null when the carcass is used up. */
-    public record Step(String name, String tool, @SerializedName("state_after") Integer stateAfter, List<Drop> drops) {}
+    /** chance marks a drop that is one of several possible. */
+    public record Drop(String item, int min, int max, boolean chance, boolean organ) {}
 
-    public record Drop(String item, int min, int max, boolean organ) {}
+    /** An item whose total differs when the carcass is butchered on a hook instead of laid down. */
+    public record Difference(String item, String laid, String hanging) {}
 
     private record File(List<Carcass> animals) {}
 

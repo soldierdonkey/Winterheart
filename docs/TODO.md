@@ -7,7 +7,7 @@ Progress = done steps / total steps in the todo file (rough).
 | Todo | Added | Progress | File |
 | --- | --- | --- | --- |
 | Replace MineZero with `winterheart_loop`: chunk journal + full player snapshot | 2026-11-26 | 0/12 | [todo/loop-winterheart-loop-mod.md](todo/loop-winterheart-loop-mod.md) |
-| Add Deer Mod and a GPLv3 Butchery compat for its deer | 2026-11-26 | 0/10 | [todo/butchery-compat-deer-mod.md](todo/butchery-compat-deer-mod.md) |
+| Add Deer Mod and a GPLv3 Butchery compat for its deer | 2026-11-26 | 0/11 | [todo/butchery-compat-deer-mod.md](todo/butchery-compat-deer-mod.md) |
 
 <!--
 Row template (copy below the header row):

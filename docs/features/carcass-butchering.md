@@ -14,7 +14,7 @@ Clean-room behaviour spec of how Butchery (`butchery-5.2-forge-1.20.1.jar`) turn
 - **Source:** static reading of the 5.2 jar (data files, in-game guide book, compiled logic) and `config/Butchery.toml`. Nothing here was confirmed in a running game.
 - **Contents:** behaviour, numbers and public IDs only. No code, class names, models, textures, hitbox shapes or text from Butchery, which is All Rights Reserved.
 - **Implementers:** work from this document. Don't open or decompile the jar. Whoever wrote or extends this spec from the jar should not write the implementation. If something is missing, ask for the spec to be extended.
-- **Scope:** the **cow** is the reference animal. Other species differ in drops and sometimes in stages and tools, and were not examined.
+- **Scope:** the **cow** is the reference animal. Other species differ in drops and sometimes in stages and tools, and this spec does not describe them.
 
 "Must" below describes the observed behaviour. Behaviour that looks like a bug is listed under [Gotchas](#gotchas) so an implementer can decide whether to copy it.
 
@@ -101,7 +101,7 @@ On the click: arm swing, a sweep-attack sound and a sticky (honey block) hit sou
 
 ### 5. Butchering stages
 
-Only drained carcasses can be butchered. No table is needed: both the lying and the hanging pose work, wherever the block is. Each right-click with the right tool in the main hand does exactly one stage, in this order:
+Only drained carcasses can be butchered. No table is needed: both the lying and the hanging pose work, wherever the block is (but see the hanging first cut under [Gotchas](#gotchas)). Each right-click with the right tool in the main hand does exactly one stage, in this order:
 
 | Stage | Tool | Loot table (`butchery:blocks/…`) | Drops (cow) | With `Organs` on |
 | --- | --- | --- | --- | --- |
@@ -163,6 +163,58 @@ The block's own loot table drops nothing, so other kinds of destruction (such as
 
 Other species and their special tools (hacksaws, hammers), boss carcasses, butcher's tables, hook and rope placement and support rules, what happens when a support is broken, head and skin processing, the meat items and their recipes, and Farmer's Delight or Vampirism compatibility.
 
+## JEI support (planned)
+
+How custom butchering, such as [butchery-compat](../todo/butchery-compat-deer-mod.md), should appear in the carcass pages of [butchery-jei](butchery-jei.md). This section describes Winterheart's own mod, not Butchery. **Not built yet:** the mod reads only its own data file.
+
+### Goal
+
+A mod adds pages by shipping a data file. It needs no Java code and no dependency on `winterheart_butchery` or JEI. Its pages behave like the built-in ones: R and U on the carcasses, JEI++ recipe trees, scrolling.
+
+### Changes needed in `winterheart_butchery`
+
+1. Read `assets/<namespace>/jei/carcasses.json` from every namespace and merge the `animals` lists. Skip and log a file that fails to parse, without losing the others.
+2. Name each page `<namespace>:carcass/<id>`, so two mods can use the same `id`. JEI++ saves recipe choices by this name, so existing `winterheart_butchery` names must stay.
+3. Move what is fixed in code into optional fields, defaulting to today's behaviour: `supports` (the hook and rope items), `tools` (item tags per tool name) and `state_property` (the preview block property).
+4. Let a step name be any translation key, falling back to the built-in names.
+5. Show the category when any file has pages, even without Butchery installed.
+
+### Data format
+
+`{"animals": [animal, ...]}`. Fields marked new don't exist yet.
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `id` | string | Page name, unique within the namespace |
+| `entity` | entity ID, optional | Mob that drops the carcass. Without it there is no kill step |
+| `entity_nbt` | SNBT string, optional | Picks a variant |
+| `fresh` | item IDs | Carcass that a recipe tree costs |
+| `drained` | item IDs, optional | Bled carcass. Required when `bleeds` is true |
+| `bleeds` | boolean | Shows the hang and bleed steps |
+| `bleed_seconds` | integer | 0 shows no time |
+| `tray` | boolean | Notes that it is butchered on a metal tray |
+| `preview` | list of `[block ID, state]` | Stages of the rotating model, in order; at least one. `state` is a string value of the block's `blockstate` property |
+| `steps` | list | One per right-click, in order |
+| `steps[].name` | string | `head`, `skin`, `plucking`, `armor`, `wing`, `leg`, `spike`, `heart`, `cut` (numbered) or `all` |
+| `steps[].tool` | string | `cleaver`, `skinning_knife` or `boss` |
+| `steps[].drops[]` | list | `item`, `min`, `max`, `chance` (true if not guaranteed), `organ` |
+| `hanging_differences[]` | list, optional | `item`, `laid`, `hanging`: totals shown when hanging changes them |
+| `supports`, `tools`, `state_property` | new, optional | See step 3 above |
+
+### What a custom butchering mod must provide
+
+- A preview block with an ordinary block model. A block drawn by a block entity renderer shows only as its item.
+- Item and block IDs for every carcass, stage and drop.
+- Drop numbers that match its loot tables. Generate the file from those tables so they can't drift apart; `python/butchery_jei/gen_carcass_data.py` shows the approach for Butchery.
+- If it reuses Butchery's tools, nothing else: the default tool names already point at Butchery's tags.
+
+### Acceptance checks
+
+1. A mod that ships only the data file, items and blocks gets a page.
+2. R and U on its fresh and drained carcasses open that page.
+3. A JEI++ tree for one of its drops costs one fresh carcass and no tools.
+4. A broken file logs an error and leaves other pages working.
+
 ## Config / tunables
 
 All in `config/Butchery.toml`. "Pack" is the value Winterheart ships.
@@ -181,12 +233,14 @@ All in `config/Butchery.toml`. "Pack" is the value Winterheart ships.
 ## Changes
 
 - 2026-11-26: Wrote the spec from `butchery-5.2-forge-1.20.1.jar`. Documentation only; nothing was tested in game.
+- 2026-11-26: Added the planned [JEI support](#jei-support-planned) for custom butchering, and the hanging first cut gotcha, found by static reading.
 
 ## Gotchas
 
 Observed in Butchery, or inferred from its logic where marked. An implementation does not need to copy these.
 
 - **Drop cleanup is too broad:** it deletes all raw beef and leather item entities within 20 blocks, including ones players dropped.
+- **Hanging first cut:** on a hanging cow, stage 3 asks for its loot table under an ID that doesn't exist, so only the organ drops appear. A lying cow gives the full stage 3 drops.
 - **Looting I does nothing**, and so do levels above III.
 - **Strength III or higher** brings back full heavy-carcass slowness.
 - **Lying fresh carcass:** a cleaver click does nothing visible but still marks it as bleeding and can leave a puddle.

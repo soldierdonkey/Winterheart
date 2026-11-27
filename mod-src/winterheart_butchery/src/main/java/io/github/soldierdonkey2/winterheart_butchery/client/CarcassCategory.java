@@ -1,6 +1,7 @@
 package io.github.soldierdonkey2.winterheart_butchery.client;
 
 import io.github.soldierdonkey2.winterheart_butchery.WinterheartButchery;
+import mezz.jei.api.gui.builder.IIngredientAcceptor;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -67,8 +68,8 @@ public class CarcassCategory implements IRecipeCategory<Carcass> {
     public int getHeight() {
         int screen = Minecraft.getInstance().getWindow().getGuiScaledHeight();
         int room = Mth.clamp(screen - 76, 175, 350) - 48;
-        // All pages share the category height, so size it for the cow; other animals scroll if they are longer.
-        return Math.min(CarcassWidget.contentHeight(5), room);
+        // All pages share the category height: enough for a five-step animal. Longer pages scroll.
+        return Math.min(CarcassWidget.TYPICAL_HEIGHT, room);
     }
 
     @Override
@@ -90,11 +91,13 @@ public class CarcassCategory implements IRecipeCategory<Carcass> {
                 slot.addRichTooltipCallback((view, tooltip) -> place.tooltip().forEach(tooltip::add));
             }
         }
-        // R on either carcass opens this page too. These are invisible because a visible output would show up in JEI++
-        // as a leftover; U already works through the input and catalyst slots.
-        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT)
-                .addItemStack(item(carcass.fresh().block()))
-                .addItemStack(item(carcass.drained().block()));
+        // R on any of its carcasses opens this page too. These are invisible because a visible output would show up in
+        // JEI++ as a leftover; U already works through the input and catalyst slots.
+        IIngredientAcceptor<?> lookups = builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT);
+        lookups.addItemStacks(items(carcass.fresh()));
+        if (carcass.drained() != null) {
+            lookups.addItemStacks(items(carcass.drained()));
+        }
     }
 
     @Override
@@ -110,6 +113,11 @@ public class CarcassCategory implements IRecipeCategory<Carcass> {
         CarcassWidget widget = new CarcassWidget(carcass, places, slots, getHeight());
         builder.addSlottedWidget(widget, slots);
         builder.addInputHandler(widget);
+    }
+
+    /** The items with these IDs; unknown IDs and air are left out. */
+    static List<ItemStack> items(List<String> ids) {
+        return ids.stream().map(CarcassCategory::item).filter(stack -> !stack.isEmpty()).toList();
     }
 
     static ItemStack item(String id) {

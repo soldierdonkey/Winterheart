@@ -6,7 +6,7 @@ Forge 1.20.1 mod by soldierdonkey2.
 
 ## What it does
 
-Adds the JEI category **Carcass Butchering**. Each animal has one scrollable page: kill, hang, bleed, then every butchering step with its tool and drops, beside the live animal and a rotating carcass. Only the cow is covered so far.
+Adds the JEI category **Carcass Butchering**. Each carcass has one scrollable page: kill, hang, bleed, then every butchering step with its tool and drops, beside the live animal and a rotating carcass.
 
 ## Requirements
 

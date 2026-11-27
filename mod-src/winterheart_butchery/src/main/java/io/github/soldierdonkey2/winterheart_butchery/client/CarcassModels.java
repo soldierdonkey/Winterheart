@@ -1,5 +1,10 @@
 package io.github.soldierdonkey2.winterheart_butchery.client;
 
+import io.github.soldierdonkey2.winterheart_butchery.WinterheartButchery;
+import net.minecraft.nbt.TagParser;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.RenderShape;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -32,53 +37,81 @@ final class CarcassModels {
     private record Bounds(float x, float y, float z, float size) {}
 
     private final Carcass carcass;
-    private final Map<BlockState, Bounds> bounds = new HashMap<>();
+    private final Map<BlockState, Optional<Bounds>> bounds = new HashMap<>();
     private LivingEntity entity;
+    private boolean entityTried;
 
     CarcassModels(Carcass carcass) {
         this.carcass = carcass;
     }
 
-    void drawEntity(GuiGraphics graphics, int x, int y, int scale) {
+    /** Draws the mob standing on (x, y), scaled to fit a width x height pixel box. */
+    void drawEntity(GuiGraphics graphics, int x, int y, int width, int height) {
         Minecraft minecraft = Minecraft.getInstance();
-        if (entity == null && minecraft.level != null) {
-            Entity created = BuiltInRegistries.ENTITY_TYPE.get(new ResourceLocation(carcass.entity()))
-                    .create(minecraft.level);
-            if (created instanceof LivingEntity living) {
-                living.yBodyRot = living.yHeadRot = living.yHeadRotO = 135;
-                living.setYRot(135);
-                entity = living;
-            }
+        if (!entityTried && minecraft.level != null) {
+            entityTried = true;
+            entity = create(minecraft.level);
         }
         if (entity != null) {
+            // Entities differ from silverfish to ender dragon, so size each one by its hitbox.
+            float scale = Math.min(width / (entity.getBbWidth() * 1.4F), height / Math.max(0.1F, entity.getBbHeight()));
             Quaternionf upright = new Quaternionf().rotateZ((float) Math.PI);
-            InventoryScreen.renderEntityInInventory(graphics, x, y, scale, upright, null, entity);
+            InventoryScreen.renderEntityInInventory(graphics, x, y, Math.max(1, Math.min(40, (int) scale)), upright,
+                    null, entity);
         }
     }
 
-    /** Draws the carcass stage turned by `angle` degrees, centred on (x, y) and fitted into `size` pixels. */
-    void drawBlock(GuiGraphics graphics, Carcass.Stage stage, int x, int y, int size, float angle) {
-        BlockState state = state(stage);
-        Bounds box = bounds.computeIfAbsent(state, CarcassModels::measure);
-        float scale = size * 0.85F / box.size();
+    private LivingEntity create(Level level) {
+        try {
+            Entity created = BuiltInRegistries.ENTITY_TYPE.get(new ResourceLocation(carcass.entity())).create(level);
+            if (!(created instanceof LivingEntity living)) {
+                return null;
+            }
+            if (carcass.entityNbt() != null) {
+                living.load(TagParser.parseTag(carcass.entityNbt())); // picks the colour variant or slime size
+            }
+            living.yBodyRot = living.yHeadRot = living.yHeadRotO = 135;
+            living.setYRot(135);
+            return living;
+        } catch (Exception e) {
+            WinterheartButchery.LOGGER.error("[Butchery] could not create {} for its JEI page", carcass.entity(), e);
+            return null;
+        }
+    }
+
+    /**
+     * Draws a carcass stage (block ID, blockstate) turned by `angle` degrees, centred on (x, y) and fitted into `size`
+     * pixels. Carcasses drawn by a block entity renderer have no block model, so they show as their item instead.
+     */
+    void drawBlock(GuiGraphics graphics, List<String> stage, int x, int y, int size, float angle) {
+        BlockState state = state(stage.get(0), stage.get(1));
+        Optional<Bounds> measured = bounds.computeIfAbsent(state, CarcassModels::measure);
         PoseStack pose = graphics.pose();
         pose.pushPose();
-        pose.translate(x, y, 150);
-        pose.scale(scale, -scale, scale);
-        pose.mulPose(Axis.XP.rotationDegrees(20));
-        pose.mulPose(Axis.YP.rotationDegrees(angle));
-        pose.translate(-box.x(), -box.y(), -box.z());
-        Lighting.setupFor3DItems();
-        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(state, pose, graphics.bufferSource(),
-                LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, ModelData.EMPTY, null);
-        graphics.flush();
+        if (measured.isEmpty()) {
+            pose.translate(x, y, 0);
+            pose.scale(2.5F, 2.5F, 1);
+            graphics.renderItem(new ItemStack(state.getBlock()), -8, -8);
+        } else {
+            Bounds box = measured.get();
+            float scale = size * 0.85F / box.size();
+            pose.translate(x, y, 150);
+            pose.scale(scale, -scale, scale);
+            pose.mulPose(Axis.XP.rotationDegrees(20));
+            pose.mulPose(Axis.YP.rotationDegrees(angle));
+            pose.translate(-box.x(), -box.y(), -box.z());
+            Lighting.setupFor3DItems();
+            Minecraft.getInstance().getBlockRenderer().renderSingleBlock(state, pose, graphics.bufferSource(),
+                    LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, ModelData.EMPTY, null);
+            graphics.flush();
+        }
         pose.popPose();
     }
 
-    private static BlockState state(Carcass.Stage stage) {
-        BlockState state = BuiltInRegistries.BLOCK.get(new ResourceLocation(stage.block())).defaultBlockState();
+    private static BlockState state(String block, String value) {
+        BlockState state = BuiltInRegistries.BLOCK.get(new ResourceLocation(block)).defaultBlockState();
         Property<?> property = state.getBlock().getStateDefinition().getProperty("blockstate");
-        return property == null ? state : with(state, property, Integer.toString(stage.state()));
+        return property == null ? state : with(state, property, value);
     }
 
     private static <T extends Comparable<T>> BlockState with(BlockState state, Property<T> property, String value) {
@@ -87,7 +120,10 @@ final class CarcassModels {
     }
 
     /** Carcass models stick well out of their block, so fit the view to the model's actual vertices. */
-    private static Bounds measure(BlockState state) {
+    private static Optional<Bounds> measure(BlockState state) {
+        if (state.getRenderShape() != RenderShape.MODEL) {
+            return Optional.empty();
+        }
         BakedModel model = Minecraft.getInstance().getBlockRenderer().getBlockModel(state);
         float[] min = {Float.MAX_VALUE, Float.MAX_VALUE, Float.MAX_VALUE};
         float[] max = {-Float.MAX_VALUE, -Float.MAX_VALUE, -Float.MAX_VALUE};
@@ -108,9 +144,10 @@ final class CarcassModels {
             }
         }
         if (min[0] > max[0]) {
-            return new Bounds(0.5F, 0.5F, 0.5F, 1);
+            return Optional.empty();
         }
         float size = Math.max(max[0] - min[0], Math.max(max[1] - min[1], max[2] - min[2]));
-        return new Bounds((min[0] + max[0]) / 2, (min[1] + max[1]) / 2, (min[2] + max[2]) / 2, Math.max(size, 0.1F));
+        return Optional.of(new Bounds((min[0] + max[0]) / 2, (min[1] + max[1]) / 2, (min[2] + max[2]) / 2,
+                Math.max(size, 0.1F)));
     }
 }

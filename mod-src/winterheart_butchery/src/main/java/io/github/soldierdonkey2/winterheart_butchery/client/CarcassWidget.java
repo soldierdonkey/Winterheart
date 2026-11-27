@@ -1,18 +1,21 @@
 package io.github.soldierdonkey2.winterheart_butchery.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotDrawable;
 import mezz.jei.api.gui.inputs.IJeiInputHandler;
 import mezz.jei.api.gui.inputs.IJeiUserInput;
 import mezz.jei.api.gui.inputs.RecipeSlotUnderMouse;
 import mezz.jei.api.gui.widgets.ISlottedRecipeWidget;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.navigation.ScreenPosition;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import org.joml.Vector3f;
@@ -29,8 +32,11 @@ final class CarcassWidget implements ISlottedRecipeWidget, IJeiInputHandler {
     static final int WIDTH = 170;
 
     private static final int HEADER_HEIGHT = 74;
-    private static final int STEP_HEIGHT = 32;
-    private static final int FOOTER_HEIGHT = 12;
+    private static final int STEP_LABEL_HEIGHT = 14;
+    private static final int ROW_HEIGHT = 18;
+    private static final int LINE_HEIGHT = 10;
+    /** A five-step animal with two footer lines. */
+    static final int TYPICAL_HEIGHT = HEADER_HEIGHT + 5 * (STEP_LABEL_HEIGHT + ROW_HEIGHT) + 2 * LINE_HEIGHT + 2;
     private static final int DROPS_X = 26;
     private static final int DROPS_PER_ROW = 6;
     private static final int SLOT_SPACING = 20;
@@ -63,48 +69,83 @@ final class CarcassWidget implements ISlottedRecipeWidget, IJeiInputHandler {
         this.places = places;
         this.slots = slots;
         this.viewHeight = viewHeight;
-        this.contentHeight = contentHeight(carcass.steps().size());
+        this.contentHeight = footerTop(carcass) + footer(carcass).size() * LINE_HEIGHT + 2;
         this.models = new CarcassModels(carcass);
         scrollTo(0);
     }
 
-    static int contentHeight(int steps) {
-        return HEADER_HEIGHT + steps * STEP_HEIGHT + FOOTER_HEIGHT;
+    private static int stepHeight(Carcass.Step step) {
+        int rows = Math.max(1, Mth.positiveCeilDiv(step.drops().size(), DROPS_PER_ROW));
+        return STEP_LABEL_HEIGHT + rows * ROW_HEIGHT;
     }
 
-    /** Where every slot goes. A step with more than DROPS_PER_ROW drops is not supported yet (the cow has at most 6). */
+    private static int footerTop(Carcass carcass) {
+        return HEADER_HEIGHT + carcass.steps().stream().mapToInt(CarcassWidget::stepHeight).sum();
+    }
+
+    /** The notes under the last step. */
+    private static List<Component> footer(Carcass carcass) {
+        List<Component> lines = new ArrayList<>();
+        if (carcass.steps().stream().anyMatch(step -> step.drops().stream().anyMatch(Carcass.Drop::organ))) {
+            lines.add(text("legend"));
+        }
+        if (carcass.tray()) {
+            lines.add(text("tray"));
+        }
+        if (differs(carcass)) {
+            lines.add(text("hanging_differs").withStyle(ChatFormatting.DARK_RED));
+        }
+        return lines;
+    }
+
+    private static boolean differs(Carcass carcass) {
+        return carcass.hangingDifferences() != null && !carcass.hangingDifferences().isEmpty();
+    }
+
+    /** Where every slot goes. */
     static List<SlotPlace> layout(Carcass carcass) {
         List<SlotPlace> places = new ArrayList<>();
-        places.add(plain(RecipeIngredientRole.INPUT, 46, 12, List.of(CarcassCategory.item(carcass.fresh().block())),
-                tip("fresh")));
-        places.add(plain(RecipeIngredientRole.CATALYST, 46, 34,
-                carcass.supports().stream().map(CarcassCategory::item).toList(), tip("support")));
-        places.add(plain(RecipeIngredientRole.CATALYST, 86, 12,
-                List.of(CarcassCategory.item(carcass.drained().block())), tip("drained")));
-        places.add(plain(RecipeIngredientRole.CATALYST, 86, 34, Tools.cleavers(), tip("bleed_tool")));
+        places.add(plain(RecipeIngredientRole.INPUT, 46, 12, CarcassCategory.items(carcass.fresh()),
+                text(carcass.entity() == null ? "tip.carcass" : "tip.fresh")));
+        if (carcass.bleeds()) {
+            places.add(plain(RecipeIngredientRole.CATALYST, 46, 34,
+                    CarcassCategory.items(List.of("butchery:hook", "butchery:rope")), text("tip.support")));
+            places.add(plain(RecipeIngredientRole.CATALYST, 86, 12, CarcassCategory.items(carcass.drained()),
+                    text("tip.drained")));
+            places.add(plain(RecipeIngredientRole.CATALYST, 86, 34, Tools.cleavers(), text("tip.bleed_tool")));
+        }
         int y = HEADER_HEIGHT;
         for (Carcass.Step step : carcass.steps()) {
-            boolean knife = step.tool().equals("skinning_knife");
-            places.add(plain(RecipeIngredientRole.CATALYST, 2, y + 13,
-                    knife ? Tools.skinningKnives() : Tools.cleavers(), tip(knife ? "skinning_knife" : "cleaver")));
-            for (int i = 0; i < step.drops().size(); i++) {
-                Carcass.Drop drop = step.drops().get(i);
+            List<ItemStack> tools = switch (step.tool()) {
+                case "skinning_knife" -> Tools.skinningKnives();
+                case "boss" -> Tools.bossTools();
+                default -> Tools.cleavers();
+            };
+            places.add(plain(RecipeIngredientRole.CATALYST, 2, y + 13, tools, text("tip." + step.tool())));
+            int shown = 0;
+            for (Carcass.Drop drop : step.drops()) {
                 ItemStack stack = CarcassCategory.item(drop.item());
-                stack.setCount(drop.min()); // JEI++ counts the guaranteed amount
+                if (stack.isEmpty()) {
+                    continue;
+                }
+                stack.setCount(Math.max(1, drop.min())); // JEI++ counts the guaranteed amount
                 boolean ranged = drop.max() > drop.min();
                 String range = ranged ? drop.min() + "-" + drop.max() : "";
                 List<Component> tooltip = new ArrayList<>();
-                if (ranged) {
+                if (drop.chance()) {
+                    tooltip.add(text("chance"));
+                } else if (ranged) {
                     tooltip.add(Component.translatable("jei.winterheart_butchery.range", drop.min(), drop.max()));
                 }
                 if (drop.organ()) {
-                    tooltip.add(Component.translatable("jei.winterheart_butchery.organ"));
+                    tooltip.add(text("organ"));
                 }
                 places.add(new SlotPlace(RecipeIngredientRole.OUTPUT,
-                        DROPS_X + (i % DROPS_PER_ROW) * SLOT_SPACING, y + 13, List.of(stack), tooltip, range,
-                        drop.organ()));
+                        DROPS_X + (shown % DROPS_PER_ROW) * SLOT_SPACING,
+                        y + 13 + (shown / DROPS_PER_ROW) * ROW_HEIGHT, List.of(stack), tooltip, range, drop.organ()));
+                shown++;
             }
-            y += STEP_HEIGHT;
+            y += stepHeight(step);
         }
         return places;
     }
@@ -113,8 +154,8 @@ final class CarcassWidget implements ISlottedRecipeWidget, IJeiInputHandler {
         return new SlotPlace(role, x, y, stacks, List.of(tooltip), "", false);
     }
 
-    private static Component tip(String key) {
-        return Component.translatable("jei.winterheart_butchery.tip." + key);
+    private static MutableComponent text(String key) {
+        return Component.translatable("jei.winterheart_butchery." + key);
     }
 
     private int maxScroll() {
@@ -154,13 +195,20 @@ final class CarcassWidget implements ISlottedRecipeWidget, IJeiInputHandler {
         drawHeader(graphics, -offset);
         Font font = Minecraft.getInstance().font;
         int y = HEADER_HEIGHT - offset;
-        for (int i = 0; i < carcass.steps().size(); i++) {
+        int number = firstStepNumber();
+        int cuts = 0;
+        for (Carcass.Step step : carcass.steps()) {
             graphics.fill(0, y, BAR_X - 2, y + 1, LINE);
-            Component name = Component.translatable("jei.winterheart_butchery.step." + carcass.steps().get(i).name());
-            graphics.drawString(font, Component.literal((i + 4) + ". ").append(name), 1, y + 3, TEXT, false);
-            y += STEP_HEIGHT;
+            MutableComponent name = step.name().equals("cut")
+                    ? Component.translatable("jei.winterheart_butchery.step.cut", ++cuts)
+                    : text("step." + step.name());
+            graphics.drawString(font, Component.literal(number++ + ". ").append(name), 1, y + 3, TEXT, false);
+            y += stepHeight(step);
         }
-        small(graphics, Component.translatable("jei.winterheart_butchery.legend"), 1, y + 3);
+        for (Component line : footer(carcass)) {
+            small(graphics, line, 1, y + 3);
+            y += LINE_HEIGHT;
+        }
         for (int i = 0; i < slots.size(); i++) {
             SlotPlace place = places.get(i);
             int slotY = place.y() - offset;
@@ -184,29 +232,36 @@ final class CarcassWidget implements ISlottedRecipeWidget, IJeiInputHandler {
         drawScrollBar(graphics);
     }
 
+    /** The number of the first butchering step, after killing and after hanging and bleeding where they apply. */
+    private int firstStepNumber() {
+        return 1 + (carcass.entity() == null ? 0 : 1) + (carcass.bleeds() ? 2 : 0);
+    }
+
     /** Kill, hang and bleed, plus the rotating carcass that walks through the stages. */
     private void drawHeader(GuiGraphics graphics, int top) {
         Font font = Minecraft.getInstance().font;
-        graphics.drawString(font, Component.translatable("jei.winterheart_butchery.step.kill"), 1, top + 1, TEXT, false);
-        models.drawEntity(graphics, 17, top + 46, 17);
-        graphics.drawString(font, ">", 36, top + 16, TEXT, false);
-        small(graphics, Component.translatable("jei.winterheart_butchery.step.hang"), 46, top + 4);
-        graphics.drawString(font, ">", 71, top + 16, TEXT, false);
-        small(graphics, carcass.bleedSeconds() > 0
-                ? Component.translatable("jei.winterheart_butchery.step.bleed_timed", carcass.bleedSeconds())
-                : Component.translatable("jei.winterheart_butchery.step.bleed"), 78, top + 4);
-
-        // fresh, drained, then the carcass after each step that leaves one
-        List<Carcass.Stage> stages = new ArrayList<>(List.of(carcass.fresh(), carcass.drained()));
-        for (Carcass.Step step : carcass.steps()) {
-            if (step.stateAfter() != null) {
-                stages.add(new Carcass.Stage(carcass.drained().block(), step.stateAfter()));
-            }
+        int number = 1;
+        if (carcass.entity() != null) {
+            graphics.drawString(font, Component.literal(number++ + ". ").append(text("step.kill")), 1, top + 1, TEXT,
+                    false);
+            scissor(graphics, 0, Math.max(0, top + 11), 36, Math.max(0, top + 54 - Math.max(0, top + 11)));
+            models.drawEntity(graphics, 17, top + 50, 32, 36);
+            graphics.disableScissor();
+            graphics.drawString(font, ">", 36, top + 16, TEXT, false);
         }
+        if (carcass.bleeds()) {
+            small(graphics, Component.literal(number++ + ". ").append(text("step.hang")), 46, top + 4);
+            graphics.drawString(font, ">", 71, top + 16, TEXT, false);
+            MutableComponent bleed = carcass.bleedSeconds() > 0
+                    ? Component.translatable("jei.winterheart_butchery.step.bleed_timed", carcass.bleedSeconds())
+                    : text("step.bleed");
+            small(graphics, Component.literal(number + ". ").append(bleed), 78, top + 4);
+        }
+
         long now = net.minecraft.Util.getMillis();
-        int index = (int) (now / PREVIEW_STAGE_MILLIS % stages.size());
+        int index = (int) (now / PREVIEW_STAGE_MILLIS % carcass.preview().size());
         scissor(graphics, PREVIEW_X, top, PREVIEW_SIZE, HEADER_HEIGHT - 2);
-        models.drawBlock(graphics, stages.get(index), PREVIEW_X + PREVIEW_SIZE / 2, top + 36, PREVIEW_SIZE,
+        models.drawBlock(graphics, carcass.preview().get(index), PREVIEW_X + PREVIEW_SIZE / 2, top + 36, PREVIEW_SIZE,
                 now % 12000 / 12000F * 360);
         graphics.disableScissor();
     }
@@ -246,6 +301,23 @@ final class CarcassWidget implements ISlottedRecipeWidget, IJeiInputHandler {
         }
         return slots.stream().filter(slot -> slot.isMouseOver(mouseX, mouseY)).findFirst()
                 .map(slot -> new RecipeSlotUnderMouse(slot, getPosition()));
+    }
+
+    /** Explains the footer's warning that hanging this carcass changes its drops. */
+    @Override
+    public void getTooltip(ITooltipBuilder tooltip, double mouseX, double mouseY) {
+        if (!differs(carcass)) {
+            return;
+        }
+        int line = footerTop(carcass) + (footer(carcass).size() - 1) * LINE_HEIGHT - (int) scroll;
+        if (!inView(mouseX, mouseY) || mouseY < line || mouseY >= line + LINE_HEIGHT + 2) {
+            return;
+        }
+        tooltip.add(text("hanging_totals"));
+        for (Carcass.Difference difference : carcass.hangingDifferences()) {
+            tooltip.add(Component.translatable("jei.winterheart_butchery.difference",
+                    CarcassCategory.item(difference.item()).getHoverName(), difference.laid(), difference.hanging()));
+        }
     }
 
     /** Consumes the wheel whenever the page can scroll, so reaching the end doesn't flip JEI's page. */

@@ -46,6 +46,11 @@ public class ButcheryJei implements IModPlugin {
             for (ItemStack tool : Tools.cleavers()) {
                 registration.addRecipeCatalyst(tool, CarcassCategory.TYPE);
             }
+            for (ItemStack tool : Tools.bossTools()) {
+                if (Tools.cleavers().stream().noneMatch(cleaver -> cleaver.is(tool.getItem()))) {
+                    registration.addRecipeCatalyst(tool, CarcassCategory.TYPE);
+                }
+            }
             for (ItemStack tool : Tools.skinningKnives()) {
                 registration.addRecipeCatalyst(tool, CarcassCategory.TYPE);
             }

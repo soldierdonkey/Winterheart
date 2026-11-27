@@ -4,7 +4,7 @@ Add [Deer Mod by ArisuwuMei](https://www.curseforge.com/minecraft/mc-mods/deermo
 
 - **Feature:** `butchery-compat` (new; create `docs/features/butchery-compat.md` from [../_template.md](../_template.md))
 - **Added:** 2026-11-26
-- **Progress:** 0/10 (keep in sync with the row in [../TODO.md](../TODO.md))
+- **Progress:** 0/11 (keep in sync with the row in [../TODO.md](../TODO.md))
 
 ## Steps
 
@@ -16,6 +16,7 @@ Add [Deer Mod by ArisuwuMei](https://www.curseforge.com/minecraft/mc-mods/deermo
 - [ ] Create the compat mod in `mod-src/` from `mod-src/_template/new-mod.sh`, with its own GPLv3 `LICENSE` and credit to ArisuwuMei
 - [ ] Make carcass and head models from the deer models, recording what changed and when; draw flesh, bone and cut textures ourselves
 - [ ] Register blocks and items, handle deer death and butchering steps, add loot tables and tags, stop duplicate vanilla-style deer drops
+- [ ] Add JEI pages for the deer: build the [planned JEI support](../features/carcass-butchering.md#jei-support-planned), then ship the data file
 - [ ] Test headlessly, then butcher each variant in a running game
 - [ ] Update feature doc, feature map, docs index and CHANGELOG.md
 

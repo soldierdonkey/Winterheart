@@ -5,4 +5,4 @@
 Minecraft 1.20.1, Forge 47+.
 
 ### Added
-- JEI category showing the cow carcass workflow.
+- JEI category showing the workflow of all 80 carcasses.

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Writes the carcass data that winterheart_butchery shows in JEI.
 
-Loot tables never reach the client, so the drops are copied from Butchery's jar (or a datapack override) into the
-mod's assets. Rerun after updating Butchery, overriding one of these loot tables or changing config/Butchery.toml,
-then rebuild the mod. Run from the instance root:
+carcasses.json beside this script lists each carcass's steps and loot tables. Loot tables never reach the client, so
+the drops are copied from Butchery's jar (or a datapack override) into the mod's assets. Rerun after editing the
+table, updating Butchery, overriding one of its loot tables or changing config/Butchery.toml, then rebuild the mod. Run from the instance root:
 
     python3 python/butchery_jei/gen_carcass_data.py
 """
@@ -14,16 +14,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "mod-src/winterheart_butchery/src/main/resources/assets/winterheart_butchery/jei/carcasses.json"
-BLEED_SECONDS = 45  # hard-coded in Butchery; see docs/features/carcass-butchering.md
-
-# name, tool, loot table, organ table, drained blockstate of the hanging carcass afterwards (None: carcass gone)
-COW_STEPS = [
-    ("head", "cleaver", "cow_head_drop", None, 2),
-    ("skin", "skinning_knife", "cow_skin_drop", None, 3),
-    ("cut_1", "cleaver", "cow_cut_1_drop", "organs_drop_1", 4),
-    ("cut_2", "cleaver", "cow_cut_2_drop", "organs_drop_2", 5),
-    ("cut_3", "cleaver", "cow_cut_3_drop", "organs_drop_3", None),
-]
+# Which steps and loot tables each carcass has. Butchery hard-codes this, so it was read from the jar by hand and has
+# to be rechecked after a Butchery update. "steps" is the carcass laid down; "hanging" is the same carcass on a hook,
+# where "broken" names tables Butchery asks for under an ID that doesn't exist.
+TABLE = Path(__file__).with_name("carcasses.json")
 
 
 def config_flag(text, key):
@@ -41,22 +35,64 @@ def loot_table(jar, name):
     return json.loads(overrides[0].read_text() if overrides else jar.read(path))
 
 
-def drops(table, organ):
-    """One entry per item, adding up the pools. Fortune is ignored: Butchery rolls these without a tool."""
+def drops(jar, names, organ):
+    """The [min, max, chance] of every item over these tables. Fortune is ignored: these are rolled without a tool."""
     totals = {}
-    for pool in table["pools"]:
-        entries = pool["entries"]
-        if pool["rolls"] != 1 or len(entries) != 1 or entries[0]["type"] != "minecraft:item" or "conditions" in pool:
-            raise SystemExit(f"unsupported loot pool, extend this script: {pool}")
-        low = high = 1
-        for function in entries[0].get("functions", []):
-            if function["function"].removeprefix("minecraft:") == "set_count":
-                count = function["count"]
-                low, high = (count["min"], count["max"]) if isinstance(count, dict) else (count, count)
-        total = totals.setdefault(entries[0]["name"], [0, 0])
-        total[0] += int(low)
-        total[1] += int(high)
-    return [{"item": item, "min": low, "max": high, "organ": organ} for item, (low, high) in totals.items()]
+    for name in names:
+        for pool in loot_table(jar, name)["pools"]:
+            if pool["rolls"] != 1 or "conditions" in pool:
+                raise SystemExit(f"unsupported pool in {name}, extend this script: {pool}")
+            choice = len(pool["entries"]) > 1  # one of several entries is picked, so none is guaranteed
+            found = {}
+            for entry in pool["entries"]:
+                if entry["type"] != "minecraft:item" or "conditions" in entry:
+                    raise SystemExit(f"unsupported entry in {name}, extend this script: {entry}")
+                low = high = 1
+                for function in entry.get("functions", []):
+                    kind = function["function"].removeprefix("minecraft:")
+                    if kind == "set_count":
+                        count = function["count"]
+                        low, high = (count["min"], count["max"]) if isinstance(count, dict) else (count, count)
+                    elif kind != "apply_bonus":
+                        raise SystemExit(f"unsupported function in {name}, extend this script: {function}")
+                low, high = int(low), int(high)
+                item = entry["name"]
+                if item in found:
+                    low, high = min(low, found[item][0]), max(high, found[item][1])
+                found[item] = (low, high)
+            for item, (low, high) in found.items():
+                chance = choice and len(found) > 1
+                total = totals.setdefault(item, [0, 0, False])
+                total[0] += 0 if chance else low
+                total[1] += high
+                total[2] |= chance
+    return [{"item": item, "min": low, "max": high, "chance": chance, "organ": organ}
+            for item, (low, high, chance) in totals.items() if high > 0]
+
+
+def step_name(tables):
+    """The label of a step, from what its loot tables are called."""
+    if len(tables) > 3:
+        return "all"
+    for word in ("head", "skin", "plucking", "armor", "wing", "leg", "spike", "heart"):
+        if any(word in table for table in tables):
+            return word
+    return "cut"
+
+
+def totals(steps):
+    result = {}
+    for step in steps:
+        for drop in step:
+            total = result.setdefault(drop["item"], [0, 0])
+            total[0] += drop["min"]
+            total[1] += drop["max"]
+    return result
+
+
+def amount(total):
+    low, high = total
+    return str(low) if low == high else f"{low}-{high}"
 
 
 def main():
@@ -64,27 +100,44 @@ def main():
     jars = sorted(ROOT.glob("mods/butchery-*.jar"))
     if len(jars) != 1:
         raise SystemExit(f"expected one Butchery jar in mods/, found {jars}")
+    organs = config_flag(config, "Organs")
+    instant = config_flag(config, "Instant Bleeding")
+    farmers = config_flag(config, "Farmers Delight") and bool(list(ROOT.glob("mods/FarmersDelight-*.jar")))
+
+    def step_drops(jar, step):
+        # Butchery swaps in the _fd_compat table, where there is one, when its Farmer's Delight setting is on.
+        names = step["tables"]
+        compat = {n.removesuffix("_fd_compat") for n in names if n.endswith("_fd_compat")}
+        names = [n for n in names if not (n in compat if farmers else n.endswith("_fd_compat"))]
+        found = drops(jar, names, False)
+        if organs:
+            found += drops(jar, step.get("organ_tables", []), True)
+        if "leaves" in step:
+            found.append({"item": step["leaves"], "min": 1, "max": 1, "chance": False, "organ": False})
+        return found
+
+    animals = []
     with zipfile.ZipFile(jars[0]) as jar:
-        steps = []
-        for name, tool, table, organs, state_after in COW_STEPS:
-            found = drops(loot_table(jar, table), False)
-            if organs and config_flag(config, "Organs"):
-                found += drops(loot_table(jar, organs), True)
-            step = {"name": name, "tool": tool, "drops": found}
-            if state_after is not None:
-                step["state_after"] = state_after
-            steps.append(step)
-    cow = {
-        "id": "cow",
-        "entity": "minecraft:cow",
-        "fresh": {"block": "butchery:cow_carcass", "state": 1},
-        "drained": {"block": "butchery:drained_cow_carcass", "state": 1},
-        "bleed_seconds": 0 if config_flag(config, "Instant Bleeding") else BLEED_SECONDS,
-        "supports": ["butchery:hook", "butchery:rope"],
-        "steps": steps,
-    }
-    OUT.write_text(json.dumps({"source": jars[0].name, "animals": [cow]}, indent=2) + "\n")
-    print(f"wrote {OUT.relative_to(ROOT)} from {jars[0].name}")
+        for entry in json.loads(TABLE.read_text()):
+            animal = {key: value for key, value in entry.items() if key not in ("steps", "hanging", "bleed_ticks")}
+            animal["bleeds"] = "drained" in entry
+            animal["bleed_seconds"] = 0 if instant else entry.get("bleed_ticks", 0) // 20
+            animal["steps"] = [{"name": step_name(step["tables"] or step.get("organ_tables", [])), "tool": step["tool"],
+                                "drops": step_drops(jar, step)} for step in entry["steps"]]
+            laid = totals(step["drops"] for step in animal["steps"])
+            hanging = entry.get("hanging")
+            if hanging:
+                if "leaves" in entry["steps"][-1]:
+                    hanging[-1]["leaves"] = entry["steps"][-1]["leaves"]
+                hung = totals(step_drops(jar, step) for step in hanging)
+                animal["hanging_differences"] = [
+                    {"item": item, "laid": amount(laid.get(item, [0, 0])), "hanging": amount(hung.get(item, [0, 0]))}
+                    for item in dict.fromkeys([*laid, *hung]) if laid.get(item) != hung.get(item)]
+            animals.append(animal)
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    lines = ",\n".join(json.dumps(animal) for animal in animals)
+    OUT.write_text(f'{{"source": "{jars[0].name}", "animals": [\n{lines}\n]}}\n')
+    print(f"wrote {len(animals)} carcasses to {OUT.relative_to(ROOT)} from {jars[0].name}")
 
 
 if __name__ == "__main__":

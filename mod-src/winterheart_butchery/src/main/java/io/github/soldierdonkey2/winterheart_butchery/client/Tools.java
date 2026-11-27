@@ -26,6 +26,14 @@ final class Tools {
         return stacks(knives);
     }
 
+    /** The tool the boss carcasses need. */
+    static List<ItemStack> bossTools() {
+        Set<Item> items = new LinkedHashSet<>();
+        TagKey<Item> tag = TagKey.create(Registries.ITEM, new ResourceLocation("butchery", "boss_tool"));
+        BuiltInRegistries.ITEM.getTagOrEmpty(tag).forEach(holder -> items.add(holder.value()));
+        return stacks(items);
+    }
+
     private static Set<Item> tagged(String path) {
         Set<Item> items = new LinkedHashSet<>();
         for (String namespace : new String[]{"forge", "c"}) {
