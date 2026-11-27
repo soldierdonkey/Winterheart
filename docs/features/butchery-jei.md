@@ -99,6 +99,7 @@ cd mod-src/winterheart_butchery && JAVA_HOME=/Library/Java/JavaVirtualMachines/t
 - 2026-11-27: Added the salt, blood collection, special bone meal and cleaning pages. Headless load test (`New World`): pass, joined after 53 s, log line `[Butchery] JEI: added salt, 4 blood page(s), 3 bone meal page(s), 2 cleaning page(s)`, no errors from the mod. A temporary probe, since removed, built all 10 pages, ran sample R and U lookups, read the small-carcass tooltip and took screenshots; they led to fixing the olive water, the invisible basin water and crowded labels. Mouse input and JEI++ trees not tried.
 
 - 2026-11-27: Tilted and lit the salt basin so the salt on its floor shows, brightened the blood puddle preview, and moved "4. Wait" on the tanning page up beside steps 1-3. Headless load test (`New World`): pass, joined after 31 s, no errors from the mod. The three pages were checked in screenshots from a temporary probe, since removed.
+- 2026-11-27: Closed the salt basin, blood collection and world transformation todos on the user's word. No separate record of an in-game check of mouse input or JEI++ trees.
 
 ## Gotchas
 
