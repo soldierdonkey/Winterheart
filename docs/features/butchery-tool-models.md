@@ -20,7 +20,7 @@ Each tier in `TIERS` has a metal ramp (`W L M D S K`), a grip ramp (`e f g`) and
 | Tier | Style | Handle | Blades |
 | --- | --- | --- | --- |
 | bone | `small` | wood, tan cord wrap (`t u`) at the head | shorter knife, smaller cleaver, hacksaw and mallet |
-| copper | `plain` | copper, dark end cap, metal ferrule | standard |
+| copper | `plain` | wood, dark end cap, metal ferrule | standard |
 | iron | `plain` | banded stone, dark end cap, metal ferrule | standard |
 | gold | `fancy` | red stone with gold bands, wide gold guard, flared gold pommel | longer knife with fuller and spine spur, larger cleaver with engraved diamond, gold-capped hacksaw, studded mallet with crown spike |
 | diamond | `bound` | stone, bright wrap, 4-wide guard, pommel with gem | standard |
@@ -38,6 +38,7 @@ None. Tiers (`TIERS`), palettes and shapes are constants in the generator.
 - 2026-11-26 — added the bone, copper, gold, diamond and netherite tiers; the hacksaw bow is now wood; the skinning knife blade is longer. Checked in a flat offline preview. Not checked in game; no headless load (the instance was running).
 - 2026-11-26 — reshaped the skinning knife as a saber blade with a sharp, backswept tip, and reshaded it. Checked in a flat offline preview only.
 - 2026-11-26 — handles and blade sizes now vary by tier, after the Tactical pack's tools: small wood-and-cord bone tools, copper and stone handles, a fancy gold set, and bound diamond and netherite handles with guard and pommel. Headless load (`--world "New World"`) passed: joined in 30 s, no log line naming the models or textures (58 ERROR lines, the same count as before). Shapes checked in a flat offline preview only.
+- 2026-11-26 — copper tools now have a wood handle instead of a copper one. Asset-only change; checked in a flat offline preview, no headless load.
 
 ## Gotchas
 
