@@ -8,6 +8,14 @@ Forge 1.20.1 mod by soldierdonkey2.
 
 Adds the JEI category **Carcass Butchering**. Each carcass has one scrollable page: kill, hang, bleed, then every butchering step with its tool and drops, beside the live animal and a rotating carcass.
 
+## Considered, not relevant to Winterheart
+
+JEI pages that were considered for these Butchery processes. They are not relevant to Winterheart, so none is planned.
+
+- **Pig spit roast:** roasting a pig carcass on a wooden spit and carving it with a cleaver.
+- **Wishbone plucking:** pulling a wishbone, or a broken one, from a drained chicken carcass by hand.
+- **Frog balloon:** inflating a frog carcass into a balloon, and deflating it.
+
 ## Requirements
 
 - Minecraft **1.20.1**
