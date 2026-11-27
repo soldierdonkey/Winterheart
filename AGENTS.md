@@ -35,7 +35,7 @@ Rules for contributors working in this repo. For the project layout see [README.
 
 ## Conventions
 
-- Commit directly to `main` unless asked otherwise. Commit automatically per rule 8. Don't push unless the user asks.
+- Commit directly to `main` unless asked otherwise. Don't push unless the user asks.
 - Don't edit untracked or generated files (logs, saves, `minecraftinstance.json`).
 - Binary mod or resource pack changes: note the file name and version in the feature doc and CHANGELOG.
 - Third-party jars in `mods/` and zips in `resourcepacks/` are not tracked. After adding, updating or removing a mod or resource pack, run `./fetch.sh --generate` and commit `mods.json`. See [docs/features/fetch.md](docs/features/fetch.md).
