@@ -52,7 +52,9 @@ class Sheet:
 
     def __init__(self, tier):
         self.palette = {**WOOD, **dict(zip(METAL_CHARS, METALS[tier]))}
-        self.pixels = [[None] * SIZE for _ in range(SIZE)]
+        self.pixels: list[list[tuple[int, int, int] | None]] = [
+            [None] * SIZE for _ in range(SIZE)
+        ]
         self.used = [[False] * SIZE for _ in range(SIZE)]
         self.elements = []
 
