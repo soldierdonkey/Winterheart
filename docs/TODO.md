@@ -8,7 +8,6 @@ Progress = done steps / total steps in the todo file (rough).
 | --- | --- | --- | --- |
 | Replace MineZero with `winterheart_loop`: chunk journal + full player snapshot | 2026-11-26 | 0/12 | [todo/loop-winterheart-loop-mod.md](todo/loop-winterheart-loop-mod.md) |
 | Add Deer Mod and a GPLv3 Butchery compat for its deer | 2026-11-26 | 0/11 | [todo/butchery-compat-deer-mod.md](todo/butchery-compat-deer-mod.md) |
-| Butchery fixes: add missing block tags (horse and wolf acid, iron golem heads) | 2026-11-27 | 5/6 | [todo/butchery-fixes-missing-block-tags.md](todo/butchery-fixes-missing-block-tags.md) |
 | Composter odds: show bone meal chance per item on JEI's composting page | 2026-11-27 | 0/5 | [todo/composter-odds-jei-bonemeal.md](todo/composter-odds-jei-bonemeal.md) |
 
 <!--

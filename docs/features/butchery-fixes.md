@@ -31,10 +31,11 @@ The golem heads are also in `butchery:heads`, but `butchery:unbreakable_heads` k
 ## Changes
 
 - 2026-11-27: Added the pack. Headless load test (`New World`): pass, joined after 27 s, `Found new data pack winterheart_butchery`, and JEI went from 7 to 8 skull pages and from 25 to 27 acid pages, so the three tags load. No log errors about them. Pouring acid and hammering heads has not been tried in game.
+- 2026-11-27: Zombie horses stay included (confirmed). Closed the todo on the user's word; no separate record of an in-game check of acid or the hammer.
 
 ## Gotchas
 
 - Butchery's own `forge:horse_carcass` and `forge:drained_horse_carcass` block tags are uneven and not read by acid, so the IDs are listed instead of referencing them.
-- Zombie horses are included, as in Butchery's `forge:horse_carcass`. Remove the two IDs from `horse.json` to leave them out.
+- Zombie horses are included on purpose, as in Butchery's `forge:horse_carcass`.
 - As with other carcasses, acid used on one that has already been cut is spent and does nothing (from static reading).
 - Recheck after updating Butchery: it may start shipping these tags.
