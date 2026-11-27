@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "butchery:drained_gray_horse_carcass",
+    "butchery:drained_regular_black_horse_carcass",
+    "butchery:drained_regular_brown_horse_carcass",
+    "butchery:drained_regular_chestnut_horse_carcass",
+    "butchery:drained_regular_creamy_horse_carcass",
+    "butchery:drained_regular_dark_brown_horse_carcass",
+    "butchery:drained_white_horse_carcass",
+    "butchery:drained_zombie_horse_carcass",
+    "butchery:regular_black_horse_carcass",
+    "butchery:regular_brown_horse_carcass",
+    "butchery:regular_chestnut_horse_carcass",
+    "butchery:regular_creamy_horse_carcass",
+    "butchery:regular_dark_brown_horse_carcass",
+    "butchery:regular_gray_horse_carcass",
+    "butchery:regular_white_horse_carcass",
+    "butchery:zombie_horse_carcass"
+  ]
+}

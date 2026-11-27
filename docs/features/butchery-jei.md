@@ -34,8 +34,8 @@ A page shows the steps for a carcass **laid down**. Where a hung carcass gives d
 | Category | Pages | Inputs | Outputs | Behaviour shown |
 | --- | --- | --- | --- | --- |
 | `winterheart_butchery:tanning` | 1, cycling the 28 skins | skin, salt | `minecraft:leather` | Place on `butchery:skin_rack`, salt (`forge:`/`c:salt`), then wet with a wet `butchery:sponge` or `butchery:rag`, wait 90 s, take the leather |
-| `winterheart_butchery:skull` | 1 per drop group (7) | placed head | the group's drops | One right-click with a hammer (`forge:`/`c:hammer`) |
-| `winterheart_butchery:acid` | 1 per skeleton (25) | uncut carcass, `butchery:bottle_of_sulfuric_acid` | skeleton | 11 s; the glass bottle comes back, shown but not an output so JEI++ doesn't offer acid as a bottle source |
+| `winterheart_butchery:skull` | 1 per drop group (8) | placed head | the group's drops | One right-click with a hammer (`forge:`/`c:hammer`) |
+| `winterheart_butchery:acid` | 1 per skeleton (27) | uncut carcass, `butchery:bottle_of_sulfuric_acid` | skeleton | 11 s; the glass bottle comes back, shown but not an output so JEI++ doesn't offer acid as a bottle source |
 
 Which heads and carcasses a page lists comes from Butchery's block tags when JEI starts. Each head goes to the first group that matches, in the order of `processes.json`. A group or result whose tags are empty gets no page.
 
@@ -114,12 +114,10 @@ cd mod-src/winterheart_butchery && JAVA_HOME=/Library/Java/JavaVirtualMachines/t
 - Drops that aren't guaranteed count as 1 in a JEI++ tree, so trees through them are optimistic.
 - Hanging is shown for carcasses that bleed. Others that can be hung are shown without it.
 
-Behaviour of Butchery 5.2 seen by static reading, not confirmed in game:
+Behaviour of Butchery 5.2 seen by static reading, not confirmed in game ([butchery-fixes](butchery-fixes.md) fixes the missing tags behind acid on horses and wolves and uncrushable iron golem heads):
 
 | Carcass | Behaviour |
 | --- | --- |
-| Acid on a horse or wolf carcass | Butchery looks for the block tags `horse` and `wolf`, which don't exist, so nothing converts and there is no page |
-| Iron golem heads | The `butchery:iron_heads` block tag is empty, so a hammer gives nothing and there is no page |
 | Tanning order | The guide book says wet then salt, and allows a water bottle. The logic wants salt first, then a wet sponge or rag |
 | Cow, hanging | The first cut asks for the loot table `cow_cut_1_drop` without its namespace, so only the organs drop |
 | Bat, hanging | No heart or lungs |

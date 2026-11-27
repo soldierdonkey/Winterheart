@@ -42,6 +42,7 @@ What each body of Winterheart data **does** and what **format** it is in: file t
 | TACZ gun pack filter | `DP/winterheart_tacz/pack.mcmeta` | `filter` block hiding non-period guns, ammo, attachments, gunsmith recipes and loot injectors of `tacz` | filter | `/reload` |
 | Gun durability | `DP/winterheart_tacz/data/gundb/gundb/tacz/` | `gundb` durability, jamming and stat penalties per gun | new (`springfield1873` overrides) | `/reload` |
 | TACZ workbench tabs | `DP/winterheart_tacz/data/tacz/data/blocks/` | Tabs and tab icons of the three TACZ workbenches | override | `/reload` |
+| Butchery fix tags | `DP/winterheart_butchery/data/{forge,butchery}/tags/blocks/` | Block tags Butchery reads for acid (`forge:horse`, `forge:wolf`) and head breaking (`butchery:iron_heads`) | new | `/reload` |
 | Fishing tuning | `DP/winterheart_fishing/data/winterheart/fishing/config.json` | How fish react to bobbers, cast charging, what can be caught | new | `/reload` |
 | Time system tuning | `DP/winterheart_time/data/winterheart/time/config.json` | Speeds, phases, wake-up effects, midnight drain, retained capabilities | new | `/reload` |
 | Spawner tuning | `DP/winterheart_spawning/data/winterheart/spawning/config.json` | Mob templates, pools, hostile caps, livestock quotas, wendigo days | new | `/reload` |

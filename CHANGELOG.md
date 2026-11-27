@@ -2,6 +2,8 @@
 
 ### Features:
 
+- butchery-fixes: sulfuric acid now works on horse and wolf carcasses, zombie horses included, and hammers now break iron golem heads for redstone and iron.
+
 - butchery-jei: JEI now also shows skin tanning, crushing heads with a hammer, and making skeletons with sulfuric acid.
 
 - butchery-jei: JEI now also shows making salt in a basin, collecting blood from a blood grate, the icey, sculk and wither bone meals, and wiping up blood with a rag or sponge.
