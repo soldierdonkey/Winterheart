@@ -25,6 +25,7 @@ One row per feature. Name = doc filename = CHANGELOG/commit prefix. Paths and de
 | resource-packs | [features/resource-packs.md](features/resource-packs.md) | `resourcepacks/` |
 | fetch | [features/fetch.md](features/fetch.md) | `fetch.sh`, `mods.json`, `tools/fetch/` |
 | fishing | [features/fishing.md](features/fishing.md) | `mod-src/winterheart_fishing/`, `datapacks/winterheart_fishing/` |
+| butchery-tool-models | [features/butchery-tool-models.md](features/butchery-tool-models.md) | `python/butchery_tools/`, `resourcepacks/winterheart_assets/assets/butchery/` |
 | carcass-butchering | [features/carcass-butchering.md](features/carcass-butchering.md) | `docs/features/carcass-butchering.md` (clean-room spec of Butchery) |
 | time-system | [features/time-system.md](features/time-system.md) | `mod-src/winterheart_time/`, `datapacks/winterheart_time/` |
 | mob-spawning | [features/mob-spawning.md](features/mob-spawning.md) | `mod-src/winterheart_spawning/`, `datapacks/winterheart_spawning/` |

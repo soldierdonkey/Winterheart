@@ -2,6 +2,8 @@
 
 ### Features:
 
+- butchery-tool-models: the iron skinning knife, cleaver, hacksaw and hammer now have 3D models.
+
 - fishing: rods now catch the real fish in the water (`winterheart_fishing` 1.0.0, a port of Simple Fishing Overhaul). Hold right-click to cast farther. Killed fish drop no raw fish.
 
 - fishing: catching a cod, salmon or pufferfish now gives its Butchery carcass, and killing a fish no longer drops one.
