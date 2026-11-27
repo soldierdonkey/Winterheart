@@ -42,9 +42,8 @@ Build and publish our mods and packs to CurseForge: `./publish.sh` (see [docs/fe
 ## Workflow
 
 - We commit directly to `main`; branches and PRs are optional.
-- Open an issue (**Task**, **Bug report**, **Art request**) and reference it in commits, e.g. `time-system: shorten sleep cooldown #12`.
 - Pull before starting and before pushing. Never force-push shared work.
 - Tell the team before changing shared configs, mod lists, or assets someone else is editing.
-- Before marking work done: launch the instance, check the feature, check for new errors, and note what you tested in the issue.
+- Before marking work done: launch the instance, check the feature, and check for new errors.
 
 Contributors (people and agents): read [AGENTS.md](AGENTS.md) for the documentation and commit rules.
