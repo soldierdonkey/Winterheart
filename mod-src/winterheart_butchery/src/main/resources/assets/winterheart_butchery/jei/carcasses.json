@@ -1,0 +1,172 @@
+{
+  "source": "butchery-5.2-forge-1.20.1.jar",
+  "animals": [
+    {
+      "id": "cow",
+      "entity": "minecraft:cow",
+      "fresh": {
+        "block": "butchery:cow_carcass",
+        "state": 1
+      },
+      "drained": {
+        "block": "butchery:drained_cow_carcass",
+        "state": 1
+      },
+      "bleed_seconds": 45,
+      "supports": [
+        "butchery:hook",
+        "butchery:rope"
+      ],
+      "steps": [
+        {
+          "name": "head",
+          "tool": "cleaver",
+          "drops": [
+            {
+              "item": "butchery:cow_head",
+              "min": 1,
+              "max": 1,
+              "organ": false
+            }
+          ],
+          "state_after": 2
+        },
+        {
+          "name": "skin",
+          "tool": "skinning_knife",
+          "drops": [
+            {
+              "item": "butchery:cow_skin",
+              "min": 1,
+              "max": 2,
+              "organ": false
+            }
+          ],
+          "state_after": 3
+        },
+        {
+          "name": "cut_1",
+          "tool": "cleaver",
+          "drops": [
+            {
+              "item": "butchery:animal_fat",
+              "min": 1,
+              "max": 1,
+              "organ": false
+            },
+            {
+              "item": "butchery:raw_chuck_steak",
+              "min": 1,
+              "max": 1,
+              "organ": false
+            },
+            {
+              "item": "butchery:raw_ribeye_steak",
+              "min": 1,
+              "max": 1,
+              "organ": false
+            },
+            {
+              "item": "butchery:hoof",
+              "min": 2,
+              "max": 2,
+              "organ": false
+            },
+            {
+              "item": "butchery:heart",
+              "min": 1,
+              "max": 1,
+              "organ": true
+            },
+            {
+              "item": "butchery:lungs",
+              "min": 1,
+              "max": 1,
+              "organ": true
+            }
+          ],
+          "state_after": 4
+        },
+        {
+          "name": "cut_2",
+          "tool": "cleaver",
+          "drops": [
+            {
+              "item": "butchery:animal_fat",
+              "min": 1,
+              "max": 1,
+              "organ": false
+            },
+            {
+              "item": "butchery:raw_rump_steak",
+              "min": 1,
+              "max": 1,
+              "organ": false
+            },
+            {
+              "item": "butchery:raw_sirloin_steak",
+              "min": 1,
+              "max": 1,
+              "organ": false
+            },
+            {
+              "item": "butchery:kidney",
+              "min": 2,
+              "max": 2,
+              "organ": true
+            },
+            {
+              "item": "butchery:liver",
+              "min": 1,
+              "max": 1,
+              "organ": true
+            }
+          ],
+          "state_after": 5
+        },
+        {
+          "name": "cut_3",
+          "tool": "cleaver",
+          "drops": [
+            {
+              "item": "butchery:animal_fat",
+              "min": 1,
+              "max": 1,
+              "organ": false
+            },
+            {
+              "item": "butchery:raw_tbone_steak",
+              "min": 1,
+              "max": 1,
+              "organ": false
+            },
+            {
+              "item": "butchery:hoof",
+              "min": 2,
+              "max": 2,
+              "organ": false
+            },
+            {
+              "item": "minecraft:bone",
+              "min": 1,
+              "max": 4,
+              "organ": false
+            },
+            {
+              "item": "butchery:intestines",
+              "min": 1,
+              "max": 1,
+              "organ": true
+            },
+            {
+              "item": "butchery:stomach",
+              "min": 1,
+              "max": 1,
+              "organ": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

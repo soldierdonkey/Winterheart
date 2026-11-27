@@ -1,0 +1,21 @@
+{
+  "jei.winterheart_butchery.carcass": "Carcass Butchering",
+  "jei.winterheart_butchery.step.kill": "1. Kill",
+  "jei.winterheart_butchery.step.hang": "2. Hang",
+  "jei.winterheart_butchery.step.bleed": "3. Bleed",
+  "jei.winterheart_butchery.step.bleed_timed": "3. Bleed %ss",
+  "jei.winterheart_butchery.step.head": "Head",
+  "jei.winterheart_butchery.step.skin": "Skin",
+  "jei.winterheart_butchery.step.cut_1": "First cut",
+  "jei.winterheart_butchery.step.cut_2": "Second cut",
+  "jei.winterheart_butchery.step.cut_3": "Third cut",
+  "jei.winterheart_butchery.legend": "Red slots are organs",
+  "jei.winterheart_butchery.range": "Drops %s to %s",
+  "jei.winterheart_butchery.organ": "Organ",
+  "jei.winterheart_butchery.tip.fresh": "Dropped when an adult dies",
+  "jei.winterheart_butchery.tip.support": "Right-click to hang the carcass. Leave air below.",
+  "jei.winterheart_butchery.tip.drained": "Butcher it hanging or laid down",
+  "jei.winterheart_butchery.tip.bleed_tool": "Right-click the hanging carcass. A blood grate below collects the blood.",
+  "jei.winterheart_butchery.tip.cleaver": "Right-click with a cleaver",
+  "jei.winterheart_butchery.tip.skinning_knife": "Right-click with a skinning knife"
+}

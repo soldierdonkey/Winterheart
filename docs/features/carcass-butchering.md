@@ -1,6 +1,6 @@
 # carcass-butchering
 
-Clean-room behaviour spec of how Butchery (`butchery-5.2-forge-1.20.1.jar`) turns a dead animal into a carcass and then into items. It is written so that someone who has never looked inside that jar can build the same behaviour, for example for [butchery-compat](../todo/butchery-compat-deer-mod.md). Winterheart does not implement any of it.
+Clean-room behaviour spec of how Butchery (`butchery-5.2-forge-1.20.1.jar`) turns a dead animal into a carcass and then into items. It is written so that someone who has never looked inside that jar can build the same behaviour, for example for [butchery-compat](../todo/butchery-compat-deer-mod.md). Winterheart does not implement any of it; [butchery-jei](butchery-jei.md) only displays it.
 
 ## Files
 
