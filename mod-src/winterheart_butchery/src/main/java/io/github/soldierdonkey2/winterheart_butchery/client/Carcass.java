@@ -12,10 +12,12 @@ import java.util.List;
 /**
  * One carcass's workflow, as written to assets/.../jei/carcasses.json by python/butchery_jei. entity is null for a
  * carcass no mob drops; drained is null for one that is cut up without bleeding. repair and repaired are null unless
- * the carcass is rebuilt before it is cut up.
+ * the carcass is rebuilt before it is cut up. For a carcass that bleeds, blood is null for ordinary blood (or
+ * "infected", or "none") and bloodMb is null for the usual amount.
  */
 public record Carcass(String id, String entity, @SerializedName("entity_nbt") String entityNbt, List<String> fresh,
                       List<String> drained, boolean bleeds, @SerializedName("bleed_seconds") int bleedSeconds,
+                      String blood, @SerializedName("blood_mb") Integer bloodMb,
                       boolean tray, Repair repair, List<String> repaired, List<List<String>> preview, List<Step> steps,
                       @SerializedName("hanging_differences") List<Difference> hangingDifferences) {
 

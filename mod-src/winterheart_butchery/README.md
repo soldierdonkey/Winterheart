@@ -8,7 +8,7 @@ Forge 1.20.1 mod by soldierdonkey2.
 
 Adds the JEI category **Carcass Butchering**. Each carcass has one scrollable page: kill, hang, bleed, then every butchering step with its tool and drops, beside the live animal and a swaying carcass preview.
 
-It also adds **Skin Tanning**, **Skull Crushing** and **Acid Skeletons**.
+It also adds **Skin Tanning**, **Skull Crushing**, **Acid Skeletons**, **Salt Basin**, **Blood Collection**, **Special Bone Meals** and **Wetting and Cleaning**.
 
 ## Considered, not relevant to Winterheart
 

@@ -40,5 +40,26 @@
   {"result": "butchery:skeleton_corpse", "tags": ["c:drowned", "forge:drowned", "c:husk", "forge:husk", "c:player", "forge:player", "c:zombie", "forge:zombie"]},
   {"result": "butchery:skeleton_horse_carcass", "tags": ["c:horse", "forge:horse"]},
   {"result": "butchery:wolf_skeleton", "tags": ["c:wolf", "forge:wolf"]}
+ ]},
+ "salt": {"basin": "butchery:basin", "water": "minecraft:water_bucket", "result": "butchery:salt", "count": 6,
+   "interval_ticks": 2000, "stages": [1, 2, 3, 4, 5, 6, 7]},
+ "blood": {"grate": "butchery:blood_grate", "depth": 16, "small_depth": 5, "mb": 1000, "bottle_mb": 333, "types": [
+  {"id": "blood", "bottle": "butchery:bottle_of_blood", "bucket": "butchery:blood_bucket"},
+  {"id": "infected", "bottle": "butchery:bottle_of_infected_blood", "bucket": "butchery:infected_blood_bucket"}
+ ]},
+ "bonemeals": [
+  {"id": "icey", "item": "butchery:icey_bone_meal", "chance": 100,
+   "before": ["minecraft:water"], "before_item": "minecraft:water_bucket",
+   "after": ["minecraft:ice"], "after_item": "minecraft:ice"},
+  {"id": "sculk", "item": "butchery:sculkbonemeal", "chance": 20,
+   "before": ["minecraft:grass_block"], "before_item": "minecraft:grass_block",
+   "after": ["minecraft:sculk"], "after_item": "minecraft:sculk"},
+  {"id": "wither", "item": "butchery:wither_bone_meal", "chance": 20,
+   "before": ["minecraft:rose_bush[half=lower]", "minecraft:rose_bush[half=upper]"], "before_item": "minecraft:rose_bush",
+   "after": ["minecraft:wither_rose"], "after_item": "minecraft:wither_rose"}
+ ],
+ "cleaning": {"puddle": "butchery:blood_puddle", "water": ["minecraft:water_bucket", "minecraft:cauldron"], "tools": [
+  {"item": "butchery:rag", "tag": "ragWetness", "uses": 5},
+  {"item": "butchery:sponge", "tag": "spongeWetness", "uses": 10}
  ]}
 }

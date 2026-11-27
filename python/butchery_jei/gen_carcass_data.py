@@ -2,7 +2,7 @@
 """Writes the Butchery data that winterheart_butchery shows in JEI.
 
 carcasses.json beside this script lists each carcass's steps and loot tables, and processes.json the tanning, skull
-crushing and acid rules. Loot tables never reach the client, so
+crushing, acid, salt, blood, bone meal and cleaning rules. Loot tables never reach the client, so
 the drops are copied from Butchery's jar (or a datapack override) into the mod's assets. Rerun after editing the
 table, updating Butchery, overriding one of its loot tables or changing config/Butchery.toml, then rebuild the mod. Run from the instance root:
 
@@ -19,7 +19,7 @@ OUT = ROOT / "mod-src/winterheart_butchery/src/main/resources/assets/winterheart
 # to be rechecked after a Butchery update. "steps" is the carcass laid down; "hanging" is the same carcass on a hook,
 # where "broken" names tables Butchery asks for under an ID that doesn't exist.
 TABLE = Path(__file__).with_name("carcasses.json")
-# The same for tanning, skull crushing and acid. Skull groups are in the order Butchery tries them.
+# The same for the other processes. Skull groups are in the order Butchery tries them.
 PROCESSES = Path(__file__).with_name("processes.json")
 
 
@@ -113,7 +113,9 @@ def processes(jar, organs, vampire):
     tanning, acid = data["tanning"], data["acid"]
     tanning["seconds"] = tanning.pop("ticks") // 20
     acid["seconds"] = acid.pop("ticks") // 20
-    return {"tanning": tanning, "skulls": groups, "acid": acid}
+    salt = data["salt"]
+    salt["interval_seconds"] = salt.pop("interval_ticks") // 20
+    return {**data, "skulls": groups}
 
 
 def main():
@@ -146,6 +148,10 @@ def main():
         for entry in json.loads(TABLE.read_text()):
             animal = {key: value for key, value in entry.items() if key not in ("steps", "hanging", "bleed_ticks")}
             animal["bleeds"] = "drained" in entry
+            # Blood is only listed where it differs from 1000 mB of ordinary blood.
+            instant_mb = animal.pop("blood_mb_instant", None)
+            if instant and instant_mb:
+                animal["blood_mb"] = instant_mb
             animal["bleed_seconds"] = 0 if instant else entry.get("bleed_ticks", 0) // 20
             animal["steps"] = [{"name": step_name(step["tables"] or step.get("organ_tables", [])), "tool": step["tool"],
                                 "clicks": step.get("clicks", 1), "drops": step_drops(jar, step)}

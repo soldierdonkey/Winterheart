@@ -16,6 +16,13 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
@@ -39,12 +46,23 @@ import java.util.UUID;
 
 /** Draws the live animal and Butchery's own carcass block models, so none of its assets are copied. */
 final class CarcassModels {
-    /** Centre and largest dimension of a block model, in blocks. */
-    private record Bounds(float x, float y, float z, float size) {}
+    /** Centre and dimensions of a block model, in blocks. */
+    private record Bounds(float x, float y, float z, float width, float height, float depth) {
+        static Bounds between(float[] min, float[] max) {
+            return new Bounds((min[0] + max[0]) / 2, (min[1] + max[1]) / 2, (min[2] + max[2]) / 2,
+                    max[0] - min[0], max[1] - min[1], max[2] - min[2]);
+        }
+
+        float size() {
+            return Math.max(0.1F, Math.max(width, Math.max(height, depth)));
+        }
+    }
 
     private static final float FRONT = 205;
     private static final float SWAY = 30;
     private static final long SWAY_MILLIS = 8000;
+    /** Vanilla's default water blue. The pack recolours water by biome, and outside one it comes out olive. */
+    private static final int WATER_TINT = 0xFF3F76E4;
 
     private final Carcass carcass;
     private final Map<BlockState, Optional<Bounds>> bounds = new HashMap<>();
@@ -108,14 +126,27 @@ final class CarcassModels {
      * `size` pixels. Carcasses drawn by a block entity renderer have no block model, so they show as their item instead.
      */
     void drawBlock(GuiGraphics graphics, List<String> stage, int x, int y, int size) {
-        BlockState state = state(stage.get(0), stage.get(1));
-        Optional<Bounds> measured = bounds.computeIfAbsent(state, CarcassModels::measure);
+        drawColumn(graphics, List.of(state(stage.get(0), stage.get(1))), x, y, size);
+    }
+
+    /** Like drawBlock, for blocks stacked bottom first (a rose bush is two tall). Water is drawn as a cube. */
+    void drawColumn(GuiGraphics graphics, List<BlockState> column, int x, int y, int size) {
+        draw(graphics, column, x, y, size, false);
+    }
+
+    /** Like drawBlock, with water blue on the block's tinted faces: a basin takes its water colour from the biome. */
+    void drawHoldingWater(GuiGraphics graphics, List<String> stage, int x, int y, int size) {
+        draw(graphics, List.of(state(stage.get(0), stage.get(1))), x, y, size, true);
+    }
+
+    private void draw(GuiGraphics graphics, List<BlockState> column, int x, int y, int size, boolean water) {
+        Optional<Bounds> measured = union(column);
         PoseStack pose = graphics.pose();
         pose.pushPose();
         if (measured.isEmpty()) {
             pose.translate(x, y, 0);
             pose.scale(2.5F, 2.5F, 1);
-            graphics.renderItem(new ItemStack(state.getBlock()), -8, -8);
+            graphics.renderItem(new ItemStack(column.get(0).getBlock()), -8, -8);
         } else {
             Bounds box = measured.get();
             float scale = size * 0.85F / box.size();
@@ -125,11 +156,79 @@ final class CarcassModels {
             pose.mulPose(Axis.YP.rotationDegrees(angle()));
             pose.translate(-box.x(), -box.y(), -box.z());
             Lighting.setupFor3DItems();
-            Minecraft.getInstance().getBlockRenderer().renderSingleBlock(state, pose, graphics.bufferSource(),
-                    LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, ModelData.EMPTY, null);
+            for (BlockState state : column) {
+                if (state.is(Blocks.WATER)) {
+                    drawWater(graphics, pose);
+                } else if (water) {
+                    drawTinted(graphics, pose, state);
+                } else {
+                    Minecraft.getInstance().getBlockRenderer().renderSingleBlock(state, pose, graphics.bufferSource(),
+                            LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, ModelData.EMPTY, null);
+                }
+                pose.translate(0, 1, 0);
+            }
             graphics.flush();
         }
         pose.popPose();
+    }
+
+    private static void drawTinted(GuiGraphics graphics, PoseStack pose, BlockState state) {
+        var blocks = Minecraft.getInstance().getBlockRenderer();
+        blocks.getModelRenderer().renderModel(pose.last(), graphics.bufferSource().getBuffer(Sheets.cutoutBlockSheet()),
+                state, blocks.getBlockModel(state), (WATER_TINT >> 16 & 255) / 255F, (WATER_TINT >> 8 & 255) / 255F,
+                (WATER_TINT & 255) / 255F, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, ModelData.EMPTY, null);
+    }
+
+    /** The box around the whole column; empty if any block has nothing to measure. */
+    private Optional<Bounds> union(List<BlockState> column) {
+        float[] min = {Float.MAX_VALUE, Float.MAX_VALUE, Float.MAX_VALUE};
+        float[] max = {-Float.MAX_VALUE, -Float.MAX_VALUE, -Float.MAX_VALUE};
+        for (int height = 0; height < column.size(); height++) {
+            BlockState state = column.get(height);
+            Optional<Bounds> one = state.is(Blocks.WATER) ? Optional.of(new Bounds(0.5F, 0.5F, 0.5F, 1, 1, 1))
+                    : bounds.computeIfAbsent(state, CarcassModels::measure);
+            if (one.isEmpty()) {
+                return Optional.empty();
+            }
+            Bounds box = one.get();
+            float[] centre = {box.x(), box.y() + height, box.z()};
+            float[] extent = {box.width(), box.height(), box.depth()};
+            for (int axis = 0; axis < 3; axis++) {
+                min[axis] = Math.min(min[axis], centre[axis] - extent[axis] / 2);
+                max[axis] = Math.max(max[axis], centre[axis] + extent[axis] / 2);
+            }
+        }
+        return Optional.of(Bounds.between(min, max));
+    }
+
+    /** Fluids have no block model, so this draws the top and sides of a source block. */
+    private static void drawWater(GuiGraphics graphics, PoseStack pose) {
+        IClientFluidTypeExtensions water = IClientFluidTypeExtensions.of(Fluids.WATER);
+        TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS)
+                .apply(water.getStillTexture());
+        VertexConsumer buffer = graphics.bufferSource().getBuffer(Sheets.translucentCullBlockSheet());
+        float top = 14 / 16F;
+        // Each face is anticlockwise seen from outside: its normal, then its four corners.
+        float[][][] faces = {
+                {{0, 1, 0}, {0, top, 0}, {0, top, 1}, {1, top, 1}, {1, top, 0}},
+                {{0, 0, 1}, {0, top, 1}, {0, 0, 1}, {1, 0, 1}, {1, top, 1}},
+                {{0, 0, -1}, {1, top, 0}, {1, 0, 0}, {0, 0, 0}, {0, top, 0}},
+                {{1, 0, 0}, {1, top, 1}, {1, 0, 1}, {1, 0, 0}, {1, top, 0}},
+                {{-1, 0, 0}, {0, top, 0}, {0, 0, 0}, {0, 0, 1}, {0, top, 1}}};
+        float[][] uv = {{sprite.getU0(), sprite.getV0()}, {sprite.getU0(), sprite.getV1()},
+                {sprite.getU1(), sprite.getV1()}, {sprite.getU1(), sprite.getV0()}};
+        for (float[][] face : faces) {
+            for (int corner = 0; corner < 4; corner++) {
+                float[] at = face[corner + 1];
+                buffer.vertex(pose.last().pose(), at[0], at[1], at[2])
+                        .color(WATER_TINT >> 16 & 255, WATER_TINT >> 8 & 255, WATER_TINT & 255, WATER_TINT >>> 24)
+                        .uv(uv[corner][0], uv[corner][1])
+                        .overlayCoords(OverlayTexture.NO_OVERLAY)
+                        .uv2(LightTexture.FULL_BRIGHT)
+                        .normal(pose.last().normal(), face[0][0], face[0][1], face[0][2])
+                        .endVertex();
+            }
+        }
     }
 
     /** The models face north, away from the viewer: turn them to a front quarter view and sway either side of it. */
@@ -176,8 +275,6 @@ final class CarcassModels {
         if (min[0] > max[0]) {
             return Optional.empty();
         }
-        float size = Math.max(max[0] - min[0], Math.max(max[1] - min[1], max[2] - min[2]));
-        return Optional.of(new Bounds((min[0] + max[0]) / 2, (min[1] + max[1]) / 2, (min[2] + max[2]) / 2,
-                Math.max(size, 0.1F)));
+        return Optional.of(Bounds.between(min, max));
     }
 }

@@ -12,7 +12,7 @@ import net.minecraftforge.fml.ModList;
 
 import java.util.List;
 
-/** Registers the carcass, tanning, skull and acid categories. Does nothing when Butchery is not installed. */
+/** Registers the carcass and process categories. Does nothing when Butchery is not installed. */
 @JeiPlugin
 public class ButcheryJei implements IModPlugin {
     /** Read when JEI starts; null if Butchery is missing or the data can't be read. */
@@ -37,7 +37,11 @@ public class ButcheryJei implements IModPlugin {
         processes = Processes.load();
         if (processes != null) {
             registration.addRecipeCategories(new TanningCategory(helpers.getGuiHelper()), new SkullCategory(helpers),
-                    new AcidCategory(helpers.getGuiHelper(), processes.acid()));
+                    new AcidCategory(helpers.getGuiHelper(), processes.acid()),
+                    new SaltCategory(helpers.getGuiHelper(), processes.salt()),
+                    new BloodCategory(helpers.getGuiHelper(), processes.blood()),
+                    new BonemealCategory(helpers.getGuiHelper(), processes.bonemeals().get(0)),
+                    new CleaningCategory(helpers.getGuiHelper(), processes.cleaning()));
         }
     }
 
@@ -57,6 +61,14 @@ public class ButcheryJei implements IModPlugin {
             registration.addRecipes(AcidCategory.TYPE, acid);
             WinterheartButchery.LOGGER.info("[Butchery] JEI: added tanning, {} skull page(s), {} acid page(s)",
                     skulls.size(), acid.size());
+            var blood = processes.bloodRecipes(animals);
+            registration.addRecipes(SaltCategory.TYPE, List.of(processes.salt()));
+            registration.addRecipes(BloodCategory.TYPE, blood);
+            registration.addRecipes(BonemealCategory.TYPE, processes.bonemeals());
+            registration.addRecipes(CleaningCategory.TYPE, processes.cleaning().tools());
+            WinterheartButchery.LOGGER.info(
+                    "[Butchery] JEI: added salt, {} blood page(s), {} bone meal page(s), {} cleaning page(s)",
+                    blood.size(), processes.bonemeals().size(), processes.cleaning().tools().size());
         }
     }
 
@@ -77,6 +89,8 @@ public class ButcheryJei implements IModPlugin {
             registration.addRecipeCatalyst(CarcassCategory.item(processes.tanning().rack()), TanningCategory.TYPE);
             Tools.hammers().forEach(tool -> registration.addRecipeCatalyst(tool, SkullCategory.TYPE));
             registration.addRecipeCatalyst(CarcassCategory.item(processes.acid().bottle()), AcidCategory.TYPE);
+            registration.addRecipeCatalyst(CarcassCategory.item(processes.salt().basin()), SaltCategory.TYPE);
+            registration.addRecipeCatalyst(CarcassCategory.item(processes.blood().grate()), BloodCategory.TYPE);
         }
     }
 }
