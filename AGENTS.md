@@ -14,7 +14,7 @@ Rules for contributors working in this repo. For the project layout see [README.
    - Use exact IDs in docs (`legendarysurvivaloverhaul:recovery`, `datapacks/winterheart_worldgen`), not paraphrases.
    - Use the same term for the same thing. Grep for old usages before renaming anything.
    - Put each fact in one place and link to it.
-5. **Keep commits small.** One logical change per commit, staging only the intended files (`git add <paths>`, never `git add -A`). Prefix the message with the feature name: `time-system: shorten sleep cooldown #12`. Docs go in the same commit as the change they describe.
+5. **Keep commits small.** One logical change per commit, staging only the intended files (`git add <paths>`, never `git add -A`). Prefix the message with the feature name: `time-system: shorten sleep cooldown`. For repo-wide files with no feature, use the file name: `readme:`, `agents:`. Docs go in the same commit as the change they describe.
 6. **Update the changelog.** For every player-visible change, add a line to the topmost (unreleased) section of [CHANGELOG.md](CHANGELOG.md) under the matching heading, starting with the feature name.
 7. **Smoke-test load-time changes headlessly.** Run `./run-pack.sh --headless --world "<save>"` after any change that:
    - alters control flow in a Winterheart mod (`mod-src/`),
@@ -41,7 +41,7 @@ Rules for contributors working in this repo. For the project layout see [README.
 - Third-party jars in `mods/` and zips in `resourcepacks/` are not tracked. After adding, updating or removing a mod or resource pack, run `./fetch.sh --generate` and commit `mods.json`. See [docs/features/fetch.md](docs/features/fetch.md).
 - **Where things go:**
   - Datapack data (recipes as JSON, tags, worldgen, structures, loot tables, mod data files) goes in a pack `datapacks/winterheart_<area>/`; [packfinder](docs/features/packfinder.md) loads everything in that folder. Tuning that a Winterheart mod reads lives there too (JSON re-read on `/reload`).
-  - KubeJS is gone: logic and registrations go in a Winterheart mod, never a script. Item and mob effect textures/models/lang go in the mod's `src/main/resources/assets/`; assets that tools write (guide book models) go in `resourcepacks/winterheart_assets/`.
+  - Logic and registrations go in a Winterheart mod, never a script. Item and mob effect textures/models/lang go in the mod's `src/main/resources/assets/`; assets that tools write (guide book models) go in `resourcepacks/winterheart_assets/`.
   - An in-house pack has a `README.md`, `CHANGELOG.md` and `pack.properties` in its root so `./publish.sh` can upload it ([mod-publishing](docs/features/mod-publishing.md)).
   - Our own mods go in `mod-src/<mod_id>/`. Start new ones from `mod-src/_template/new-mod.sh`.
   - Python/shell generators and helper scripts go in `python/<area>/`. Rust apps go in `tools/<name>/`.
