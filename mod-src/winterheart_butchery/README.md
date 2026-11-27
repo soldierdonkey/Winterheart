@@ -17,6 +17,7 @@ JEI pages that were considered for these Butchery processes. They are not releva
 - **Pig spit roast:** roasting a pig carcass on a wooden spit and carving it with a cleaver.
 - **Wishbone plucking:** pulling a wishbone, or a broken one, from a drained chicken carcass by hand.
 - **Frog balloon:** inflating a frog carcass into a balloon, and deflating it.
+- **Displays and gadgets:** organs in jars, sausages on hooks, the turtle shell boat and similar.
 
 ## Requirements
 
