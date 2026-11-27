@@ -1,12 +1,14 @@
 # Winterheart: Butchery
 
-**An add-on for the Winterheart modpack.** Shows how Butchery's carcasses are butchered, as a JEI recipe page.
+**An add-on for the Winterheart modpack.** Shows Butchery's butchering and processing steps as JEI recipe pages.
 
 Forge 1.20.1 mod by soldierdonkey2.
 
 ## What it does
 
-Adds the JEI category **Carcass Butchering**. Each carcass has one scrollable page: kill, hang, bleed, then every butchering step with its tool and drops, beside the live animal and a rotating carcass.
+Adds the JEI category **Carcass Butchering**. Each carcass has one scrollable page: kill, hang, bleed, then every butchering step with its tool and drops, beside the live animal and a swaying carcass preview.
+
+It also adds **Skin Tanning**, **Skull Crushing** and **Acid Skeletons**.
 
 ## Considered, not relevant to Winterheart
 

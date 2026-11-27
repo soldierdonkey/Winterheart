@@ -9,6 +9,7 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -40,6 +41,10 @@ import java.util.UUID;
 final class CarcassModels {
     /** Centre and largest dimension of a block model, in blocks. */
     private record Bounds(float x, float y, float z, float size) {}
+
+    private static final float FRONT = 205;
+    private static final float SWAY = 30;
+    private static final long SWAY_MILLIS = 8000;
 
     private final Carcass carcass;
     private final Map<BlockState, Optional<Bounds>> bounds = new HashMap<>();
@@ -99,10 +104,10 @@ final class CarcassModels {
     }
 
     /**
-     * Draws a carcass stage (block ID, blockstate) turned by `angle` degrees, centred on (x, y) and fitted into `size`
-     * pixels. Carcasses drawn by a block entity renderer have no block model, so they show as their item instead.
+     * Draws a carcass stage (block ID, blockstate) facing the viewer and swaying, centred on (x, y) and fitted into
+     * `size` pixels. Carcasses drawn by a block entity renderer have no block model, so they show as their item instead.
      */
-    void drawBlock(GuiGraphics graphics, List<String> stage, int x, int y, int size, float angle) {
+    void drawBlock(GuiGraphics graphics, List<String> stage, int x, int y, int size) {
         BlockState state = state(stage.get(0), stage.get(1));
         Optional<Bounds> measured = bounds.computeIfAbsent(state, CarcassModels::measure);
         PoseStack pose = graphics.pose();
@@ -117,7 +122,7 @@ final class CarcassModels {
             pose.translate(x, y, 150);
             pose.scale(scale, -scale, scale);
             pose.mulPose(Axis.XP.rotationDegrees(20));
-            pose.mulPose(Axis.YP.rotationDegrees(angle));
+            pose.mulPose(Axis.YP.rotationDegrees(angle()));
             pose.translate(-box.x(), -box.y(), -box.z());
             Lighting.setupFor3DItems();
             Minecraft.getInstance().getBlockRenderer().renderSingleBlock(state, pose, graphics.bufferSource(),
@@ -125,6 +130,12 @@ final class CarcassModels {
             graphics.flush();
         }
         pose.popPose();
+    }
+
+    /** The models face north, away from the viewer: turn them to a front quarter view and sway either side of it. */
+    private static float angle() {
+        double phase = Util.getMillis() % SWAY_MILLIS / (double) SWAY_MILLIS * 2 * Math.PI;
+        return FRONT + SWAY * (float) Math.sin(phase);
     }
 
     private static BlockState state(String block, String value) {

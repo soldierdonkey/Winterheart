@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Writes the carcass data that winterheart_butchery shows in JEI.
+"""Writes the Butchery data that winterheart_butchery shows in JEI.
 
-carcasses.json beside this script lists each carcass's steps and loot tables. Loot tables never reach the client, so
+carcasses.json beside this script lists each carcass's steps and loot tables, and processes.json the tanning, skull
+crushing and acid rules. Loot tables never reach the client, so
 the drops are copied from Butchery's jar (or a datapack override) into the mod's assets. Rerun after editing the
 table, updating Butchery, overriding one of its loot tables or changing config/Butchery.toml, then rebuild the mod. Run from the instance root:
 
@@ -18,6 +19,8 @@ OUT = ROOT / "mod-src/winterheart_butchery/src/main/resources/assets/winterheart
 # to be rechecked after a Butchery update. "steps" is the carcass laid down; "hanging" is the same carcass on a hook,
 # where "broken" names tables Butchery asks for under an ID that doesn't exist.
 TABLE = Path(__file__).with_name("carcasses.json")
+# The same for tanning, skull crushing and acid. Skull groups are in the order Butchery tries them.
+PROCESSES = Path(__file__).with_name("processes.json")
 
 
 def config_flag(text, key):
@@ -95,6 +98,24 @@ def amount(total):
     return str(low) if low == high else f"{low}-{high}"
 
 
+def processes(jar, organs, vampire):
+    """processes.json with each skull group's loot tables turned into drops."""
+    data = json.loads(PROCESSES.read_text())
+    groups = []
+    for group in data["skulls"]:
+        if vampire and "vampire_tables" in group:
+            found = drops(jar, group["vampire_tables"], False)
+        else:
+            found = drops(jar, group["tables"], False)
+            if organs:
+                found += drops(jar, group.get("organ_tables", []), True)
+        groups.append({"id": group["id"], "tags": group["tags"], "exclude": group.get("exclude", []), "drops": found})
+    tanning, acid = data["tanning"], data["acid"]
+    tanning["seconds"] = tanning.pop("ticks") // 20
+    acid["seconds"] = acid.pop("ticks") // 20
+    return {"tanning": tanning, "skulls": groups, "acid": acid}
+
+
 def main():
     config = (ROOT / "config/Butchery.toml").read_text()
     jars = sorted(ROOT.glob("mods/butchery-*.jar"))
@@ -116,8 +137,12 @@ def main():
             found.append({"item": step["leaves"], "min": 1, "max": 1, "chance": False, "organ": False})
         return found
 
+    vampire = config_flag(config, "Vampires Delight Eye")
+
+    OUT.parent.mkdir(parents=True, exist_ok=True)
     animals = []
     with zipfile.ZipFile(jars[0]) as jar:
+        OUT.with_name("processes.json").write_text(json.dumps(processes(jar, organs, vampire), indent=1) + "\n")
         for entry in json.loads(TABLE.read_text()):
             animal = {key: value for key, value in entry.items() if key not in ("steps", "hanging", "bleed_ticks")}
             animal["bleeds"] = "drained" in entry
@@ -135,7 +160,6 @@ def main():
                     {"item": item, "laid": amount(laid.get(item, [0, 0])), "hanging": amount(hung.get(item, [0, 0]))}
                     for item in dict.fromkeys([*laid, *hung]) if laid.get(item) != hung.get(item)]
             animals.append(animal)
-    OUT.parent.mkdir(parents=True, exist_ok=True)
     lines = ",\n".join(json.dumps(animal) for animal in animals)
     OUT.write_text(f'{{"source": "{jars[0].name}", "animals": [\n{lines}\n]}}\n')
     print(f"wrote {len(animals)} carcasses to {OUT.relative_to(ROOT)} from {jars[0].name}")

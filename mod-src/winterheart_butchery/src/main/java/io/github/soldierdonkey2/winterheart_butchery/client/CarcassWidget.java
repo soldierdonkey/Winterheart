@@ -250,7 +250,7 @@ final class CarcassWidget implements ISlottedRecipeWidget, IJeiInputHandler {
         return 1 + (carcass.entity() == null ? 0 : 1) + (carcass.repair() == null ? 0 : 1) + (carcass.bleeds() ? 2 : 0);
     }
 
-    /** Kill, hang and bleed, plus the rotating carcass that walks through the stages. */
+    /** Kill, hang and bleed, plus the swaying carcass that walks through the stages. */
     private void drawHeader(GuiGraphics graphics, int top) {
         Font font = Minecraft.getInstance().font;
         int number = 1;
@@ -279,8 +279,7 @@ final class CarcassWidget implements ISlottedRecipeWidget, IJeiInputHandler {
         long now = net.minecraft.Util.getMillis();
         int index = (int) (now / PREVIEW_STAGE_MILLIS % carcass.preview().size());
         scissor(graphics, PREVIEW_X, top, PREVIEW_SIZE, HEADER_HEIGHT - 2);
-        models.drawBlock(graphics, carcass.preview().get(index), PREVIEW_X + PREVIEW_SIZE / 2, top + 36, PREVIEW_SIZE,
-                now % 12000 / 12000F * 360);
+        models.drawBlock(graphics, carcass.preview().get(index), PREVIEW_X + PREVIEW_SIZE / 2, top + 36, PREVIEW_SIZE);
         graphics.disableScissor();
     }
 

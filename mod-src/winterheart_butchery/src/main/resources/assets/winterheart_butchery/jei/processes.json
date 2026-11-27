@@ -1,0 +1,518 @@
+{
+ "tanning": {
+  "rack": "butchery:skin_rack",
+  "salted_state": 26,
+  "wet_state": 27,
+  "done_state": 30,
+  "salt": "butchery:salt",
+  "salt_tags": [
+   "forge:salt",
+   "c:salt"
+  ],
+  "wetters": [
+   "butchery:sponge",
+   "butchery:rag"
+  ],
+  "result": "minecraft:leather",
+  "skins": [
+   [
+    "butchery:bat_skin",
+    1
+   ],
+   [
+    "butchery:black_horse_skin",
+    2
+   ],
+   [
+    "butchery:brown_mooshroom_skin",
+    3
+   ],
+   [
+    "butchery:chestnut_horse_skin",
+    4
+   ],
+   [
+    "butchery:creamy_horse_skin",
+    5
+   ],
+   [
+    "butchery:creeper_skin",
+    6
+   ],
+   [
+    "butchery:dark_brown_horse_skin",
+    7
+   ],
+   [
+    "butchery:dolphin_skin",
+    8
+   ],
+   [
+    "butchery:donkey_skin",
+    9
+   ],
+   [
+    "butchery:fox_skin",
+    10
+   ],
+   [
+    "butchery:gray_horse_skin",
+    11
+   ],
+   [
+    "butchery:hoglin_skin",
+    12
+   ],
+   [
+    "butchery:mule_skin",
+    13
+   ],
+   [
+    "butchery:ocelot_skin",
+    14
+   ],
+   [
+    "butchery:panda_skin",
+    15
+   ],
+   [
+    "butchery:pig_skin",
+    16
+   ],
+   [
+    "butchery:red_mooshroom_skin",
+    17
+   ],
+   [
+    "butchery:sheep_skin",
+    18
+   ],
+   [
+    "butchery:snow_fox_skin",
+    19
+   ],
+   [
+    "butchery:white_horse_skin",
+    20
+   ],
+   [
+    "butchery:polar_bear_skin",
+    21
+   ],
+   [
+    "butchery:brown_llama_skin",
+    22
+   ],
+   [
+    "butchery:creamy_llama_skin",
+    23
+   ],
+   [
+    "butchery:gray_llama_skin",
+    24
+   ],
+   [
+    "butchery:white_llama_skin",
+    25
+   ],
+   [
+    "butchery:cow_skin",
+    28
+   ],
+   [
+    "butchery:zoglin_skin",
+    29
+   ],
+   [
+    "butchery:camel_skin",
+    31
+   ]
+  ],
+  "seconds": 90
+ },
+ "skulls": [
+  {
+   "id": "head",
+   "tags": [
+    "butchery:heads"
+   ],
+   "exclude": [
+    "butchery:unbreakable_heads",
+    "butchery:skullless_head",
+    "butchery:eyeless_head"
+   ],
+   "drops": [
+    {
+     "item": "minecraft:bone_meal",
+     "min": 1,
+     "max": 6,
+     "chance": false,
+     "organ": false
+    },
+    {
+     "item": "butchery:eye",
+     "min": 2,
+     "max": 2,
+     "chance": false,
+     "organ": true
+    },
+    {
+     "item": "butchery:brain",
+     "min": 1,
+     "max": 1,
+     "chance": false,
+     "organ": true
+    }
+   ]
+  },
+  {
+   "id": "skull",
+   "tags": [
+    "butchery:skulls"
+   ],
+   "exclude": [],
+   "drops": [
+    {
+     "item": "minecraft:bone_meal",
+     "min": 1,
+     "max": 3,
+     "chance": false,
+     "organ": false
+    }
+   ]
+  },
+  {
+   "id": "eyeless",
+   "tags": [
+    "butchery:eyeless_head"
+   ],
+   "exclude": [],
+   "drops": [
+    {
+     "item": "butchery:brain",
+     "min": 1,
+     "max": 1,
+     "chance": false,
+     "organ": false
+    },
+    {
+     "item": "butchery:sculk_bone",
+     "min": 1,
+     "max": 6,
+     "chance": false,
+     "organ": false
+    }
+   ]
+  },
+  {
+   "id": "skullless",
+   "tags": [
+    "butchery:skullless_head"
+   ],
+   "exclude": [],
+   "drops": [
+    {
+     "item": "butchery:eye",
+     "min": 2,
+     "max": 2,
+     "chance": false,
+     "organ": false
+    },
+    {
+     "item": "butchery:brain",
+     "min": 1,
+     "max": 1,
+     "chance": false,
+     "organ": false
+    }
+   ]
+  },
+  {
+   "id": "ice",
+   "tags": [
+    "butchery:ice_skull"
+   ],
+   "exclude": [],
+   "drops": [
+    {
+     "item": "butchery:icey_bone_meal",
+     "min": 1,
+     "max": 3,
+     "chance": false,
+     "organ": false
+    }
+   ]
+  },
+  {
+   "id": "wither",
+   "tags": [
+    "butchery:wither_skull"
+   ],
+   "exclude": [],
+   "drops": [
+    {
+     "item": "butchery:wither_bone_meal",
+     "min": 1,
+     "max": 3,
+     "chance": false,
+     "organ": false
+    }
+   ]
+  },
+  {
+   "id": "iron",
+   "tags": [
+    "butchery:iron_heads"
+   ],
+   "exclude": [],
+   "drops": [
+    {
+     "item": "minecraft:redstone",
+     "min": 2,
+     "max": 2,
+     "chance": false,
+     "organ": false
+    },
+    {
+     "item": "minecraft:iron_nugget",
+     "min": 1,
+     "max": 8,
+     "chance": false,
+     "organ": false
+    },
+    {
+     "item": "minecraft:iron_ingot",
+     "min": 0,
+     "max": 3,
+     "chance": true,
+     "organ": false
+    }
+   ]
+  },
+  {
+   "id": "spider",
+   "tags": [
+    "butchery:spider_head"
+   ],
+   "exclude": [],
+   "drops": [
+    {
+     "item": "minecraft:spider_eye",
+     "min": 3,
+     "max": 8,
+     "chance": false,
+     "organ": false
+    },
+    {
+     "item": "butchery:brain",
+     "min": 1,
+     "max": 1,
+     "chance": false,
+     "organ": false
+    }
+   ]
+  }
+ ],
+ "acid": {
+  "bottle": "butchery:bottle_of_sulfuric_acid",
+  "returned": "minecraft:glass_bottle",
+  "results": [
+   {
+    "result": "butchery:axolotl_skeleton",
+    "tags": [
+     "c:axolotl",
+     "forge:axolotl"
+    ]
+   },
+   {
+    "result": "butchery:bat_skeleton",
+    "tags": [
+     "c:bat",
+     "forge:bat"
+    ]
+   },
+   {
+    "result": "butchery:camel_skeleton",
+    "tags": [
+     "c:camel",
+     "forge:camel"
+    ]
+   },
+   {
+    "result": "butchery:cat_skeleton",
+    "tags": [
+     "c:cat",
+     "forge:cat"
+    ]
+   },
+   {
+    "result": "butchery:chicken_skeleton",
+    "tags": [
+     "c:chicken",
+     "forge:chicken"
+    ]
+   },
+   {
+    "result": "butchery:cow_skeleton",
+    "tags": [
+     "c:cow",
+     "forge:cow"
+    ]
+   },
+   {
+    "result": "butchery:creeper_skeleton",
+    "tags": [
+     "c:creeper",
+     "forge:creeper"
+    ]
+   },
+   {
+    "result": "butchery:dolphin_skeleton",
+    "tags": [
+     "c:dolphin",
+     "forge:dolphin"
+    ]
+   },
+   {
+    "result": "butchery:donkey_skeleton",
+    "tags": [
+     "c:donkey",
+     "forge:donkey"
+    ]
+   },
+   {
+    "result": "butchery:fish_skeleton",
+    "tags": [
+     "c:fish",
+     "forge:fish"
+    ]
+   },
+   {
+    "result": "butchery:fox_skeleton",
+    "tags": [
+     "c:fox",
+     "forge:fox"
+    ]
+   },
+   {
+    "result": "butchery:goat_skeleton",
+    "tags": [
+     "c:goat",
+     "forge:goat"
+    ]
+   },
+   {
+    "result": "butchery:hoglin_skeleton",
+    "tags": [
+     "c:hoglin",
+     "forge:hoglin"
+    ]
+   },
+   {
+    "result": "butchery:llama_skeleton",
+    "tags": [
+     "c:llama",
+     "forge:llama"
+    ]
+   },
+   {
+    "result": "butchery:mooshroom_skeleton",
+    "tags": [
+     "c:mooshroom",
+     "forge:mooshroom"
+    ]
+   },
+   {
+    "result": "butchery:mule_skeleton",
+    "tags": [
+     "c:mule",
+     "forge:mule"
+    ]
+   },
+   {
+    "result": "butchery:ocelot_skeleton",
+    "tags": [
+     "c:ocelot",
+     "forge:ocelot"
+    ]
+   },
+   {
+    "result": "butchery:panda_skeleton",
+    "tags": [
+     "c:panda",
+     "forge:panda"
+    ]
+   },
+   {
+    "result": "butchery:phantom_skeleton",
+    "tags": [
+     "c:phantom",
+     "forge:phantom"
+    ]
+   },
+   {
+    "result": "butchery:pig_skeleton",
+    "tags": [
+     "c:pig",
+     "forge:pig"
+    ]
+   },
+   {
+    "result": "butchery:piglin_skeleton",
+    "tags": [
+     "c:piglin",
+     "forge:piglin"
+    ]
+   },
+   {
+    "result": "butchery:polarbear_skeleton",
+    "tags": [
+     "c:polarbear",
+     "forge:polarbear"
+    ]
+   },
+   {
+    "result": "butchery:sheep_skeleton",
+    "tags": [
+     "c:sheep",
+     "forge:sheep"
+    ]
+   },
+   {
+    "result": "butchery:skeleton",
+    "tags": [
+     "c:villager",
+     "forge:villager"
+    ]
+   },
+   {
+    "result": "butchery:skeleton_corpse",
+    "tags": [
+     "c:drowned",
+     "forge:drowned",
+     "c:husk",
+     "forge:husk",
+     "c:player",
+     "forge:player",
+     "c:zombie",
+     "forge:zombie"
+    ]
+   },
+   {
+    "result": "butchery:skeleton_horse_carcass",
+    "tags": [
+     "c:horse",
+     "forge:horse"
+    ]
+   },
+   {
+    "result": "butchery:wolf_skeleton",
+    "tags": [
+     "c:wolf",
+     "forge:wolf"
+    ]
+   }
+  ],
+  "seconds": 11
+ }
+}

@@ -26,6 +26,11 @@ final class Tools {
         return stacks(knives);
     }
 
+    /** What heads are crushed with. */
+    static List<ItemStack> hammers() {
+        return stacks(tagged("hammer"));
+    }
+
     /** What iron golems are taken apart with. */
     static List<ItemStack> hacksaws() {
         return stacks(tagged("hacksaw"));

@@ -2,6 +2,8 @@
 
 ### Features:
 
+- butchery-jei: JEI now also shows skin tanning, crushing heads with a hammer, and making skeletons with sulfuric acid.
+
 - butchery-jei: JEI now shows how to butcher every carcass, humanoid corpse and iron golem: kill, hang, bleed and cut, with the tool and drops for every step. Press R or U on a carcass.
 
 - butchery-tool-models: Butchery's skinning knives, cleavers, hacksaws and hammers now have 3D models in every tier, with handles and blades that get fancier with the tier.

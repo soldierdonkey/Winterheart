@@ -6,3 +6,4 @@ Minecraft 1.20.1, Forge 47+.
 
 ### Added
 - JEI category showing the workflow of all carcasses, corpses and iron golems.
+- JEI categories for skin tanning, skull crushing and acid skeletons.
