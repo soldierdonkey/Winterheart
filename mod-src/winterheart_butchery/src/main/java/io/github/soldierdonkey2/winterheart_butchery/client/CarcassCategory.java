@@ -28,8 +28,8 @@ import java.util.List;
 /**
  * One page per animal: kill, hang and bleed, then every butchering step with its tool and drops.
  *
- * Slot roles decide what JEI++ puts in a recipe tree: the fresh carcass is the only INPUT, every drop is an OUTPUT,
- * and tools, supports and the drained carcass are never counted.
+ * Slot roles decide what JEI++ puts in a recipe tree: the fresh carcass (and any repair material) is INPUT, every drop
+ * is an OUTPUT, and tools, supports and the drained or repaired carcass are never counted.
  */
 public class CarcassCategory implements IRecipeCategory<Carcass> {
     static final RecipeType<Carcass> TYPE = RecipeType.create(WinterheartButchery.MOD_ID, "carcass", Carcass.class);
@@ -107,6 +107,9 @@ public class CarcassCategory implements IRecipeCategory<Carcass> {
         lookups.addItemStacks(items(carcass.fresh()));
         if (carcass.drained() != null) {
             lookups.addItemStacks(items(carcass.drained()));
+        }
+        if (carcass.repaired() != null) {
+            lookups.addItemStacks(items(carcass.repaired()));
         }
     }
 

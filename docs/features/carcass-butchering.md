@@ -193,10 +193,13 @@ A mod adds pages by shipping a data file. It needs no Java code and no dependenc
 | `bleeds` | boolean | Shows the hang and bleed steps |
 | `bleed_seconds` | integer | 0 shows no time |
 | `tray` | boolean | Notes that it is butchered on a metal tray |
+| `repair` | `{item, count}`, optional | Material that turns the carcass into the repaired one; counted as an input |
+| `repaired` | item IDs, with `repair` | The repaired carcass |
 | `preview` | list of `[block ID, state]` | Stages of the rotating model, in order; at least one. `state` is a string value of the block's `blockstate` property |
 | `steps` | list | One per right-click, in order |
-| `steps[].name` | string | `head`, `skin`, `plucking`, `armor`, `wing`, `leg`, `spike`, `heart`, `arm`, `body`, `stomach`, `liver`, `intestine`, `cut` (numbered) or `all` |
-| `steps[].tool` | string | `cleaver`, `skinning_knife` or `boss` |
+| `steps[].name` | string | `head`, `skin`, `plucking`, `armor`, `wing`, `leg`, `spike`, `heart`, `arm`, `body`, `stomach`, `liver`, `intestine`, `fur`, `cut` (numbered) |
+| `steps[].tool` | string | `cleaver`, `skinning_knife`, `hacksaw` or `boss` |
+| `steps[].clicks` | integer | Right-clicks the step takes; 1 for most |
 | `steps[].drops[]` | list | `item`, `min`, `max`, `chance` (true if not guaranteed), `organ` |
 | `hanging_differences[]` | list, optional | `item`, `laid`, `hanging`: totals shown when hanging changes them |
 | `supports`, `tools`, `state_property` | new, optional | See step 3 above |

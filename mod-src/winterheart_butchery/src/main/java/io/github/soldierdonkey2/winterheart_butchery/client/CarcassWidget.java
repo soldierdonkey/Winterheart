@@ -114,14 +114,27 @@ final class CarcassWidget implements ISlottedRecipeWidget, IJeiInputHandler {
                     text("tip.drained")));
             places.add(plain(RecipeIngredientRole.CATALYST, 86, 34, Tools.cleavers(), text("tip.bleed_tool")));
         }
+        if (carcass.repair() != null) {
+            ItemStack material = CarcassCategory.item(carcass.repair().item());
+            material.setCount(carcass.repair().count());
+            places.add(plain(RecipeIngredientRole.INPUT, 46, 34, List.of(material),
+                    Component.translatable("jei.winterheart_butchery.tip.repair", carcass.repair().count())));
+            places.add(plain(RecipeIngredientRole.CATALYST, 86, 12, CarcassCategory.items(carcass.repaired()),
+                    text("tip.repaired")));
+        }
         int y = HEADER_HEIGHT;
         for (Carcass.Step step : carcass.steps()) {
             List<ItemStack> tools = switch (step.tool()) {
                 case "skinning_knife" -> Tools.skinningKnives();
                 case "boss" -> Tools.bossTools();
+                case "hacksaw" -> Tools.hacksaws();
                 default -> Tools.cleavers();
             };
-            places.add(plain(RecipeIngredientRole.CATALYST, 2, y + 13, tools, text("tip." + step.tool())));
+            List<Component> toolTip = new ArrayList<>(List.of(text("tip." + step.tool())));
+            if (step.clicks() > 1) {
+                toolTip.add(Component.translatable("jei.winterheart_butchery.tip.clicks", step.clicks()));
+            }
+            places.add(new SlotPlace(RecipeIngredientRole.CATALYST, 2, y + 13, tools, toolTip, "", false));
             int shown = 0;
             for (Carcass.Drop drop : step.drops()) {
                 ItemStack stack = CarcassCategory.item(drop.item());
@@ -232,9 +245,9 @@ final class CarcassWidget implements ISlottedRecipeWidget, IJeiInputHandler {
         drawScrollBar(graphics);
     }
 
-    /** The number of the first butchering step, after killing and after hanging and bleeding where they apply. */
+    /** The number of the first butchering step, after whichever of kill, repair, hang and bleed apply. */
     private int firstStepNumber() {
-        return 1 + (carcass.entity() == null ? 0 : 1) + (carcass.bleeds() ? 2 : 0);
+        return 1 + (carcass.entity() == null ? 0 : 1) + (carcass.repair() == null ? 0 : 1) + (carcass.bleeds() ? 2 : 0);
     }
 
     /** Kill, hang and bleed, plus the rotating carcass that walks through the stages. */
@@ -256,6 +269,11 @@ final class CarcassWidget implements ISlottedRecipeWidget, IJeiInputHandler {
                     ? Component.translatable("jei.winterheart_butchery.step.bleed_timed", carcass.bleedSeconds())
                     : text("step.bleed");
             small(graphics, Component.literal(number + ". ").append(bleed), 78, top + 4);
+        }
+
+        if (carcass.repair() != null) {
+            small(graphics, Component.literal(number + ". ").append(text("step.repair")), 46, top + 4);
+            graphics.drawString(font, ">", 71, top + 16, TEXT, false);
         }
 
         long now = net.minecraft.Util.getMillis();

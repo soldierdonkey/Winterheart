@@ -11,15 +11,19 @@ import java.util.List;
 
 /**
  * One carcass's workflow, as written to assets/.../jei/carcasses.json by python/butchery_jei. entity is null for a
- * carcass no mob drops; drained is null for one that is cut up without bleeding.
+ * carcass no mob drops; drained is null for one that is cut up without bleeding. repair and repaired are null unless
+ * the carcass is rebuilt before it is cut up.
  */
 public record Carcass(String id, String entity, @SerializedName("entity_nbt") String entityNbt, List<String> fresh,
                       List<String> drained, boolean bleeds, @SerializedName("bleed_seconds") int bleedSeconds,
-                      boolean tray, List<List<String>> preview, List<Step> steps,
+                      boolean tray, Repair repair, List<String> repaired, List<List<String>> preview, List<Step> steps,
                       @SerializedName("hanging_differences") List<Difference> hangingDifferences) {
 
-    /** One right-click on the carcass. */
-    public record Step(String name, String tool, List<Drop> drops) {}
+    /** The material right-clicked onto the carcass, `count` times, to turn it into the repaired one. */
+    public record Repair(String item, int count) {}
+
+    /** One butchering step: `clicks` right-clicks on the carcass, after which the step's drops are all out. */
+    public record Step(String name, String tool, int clicks, List<Drop> drops) {}
 
     /** chance marks a drop that is one of several possible. */
     public record Drop(String item, int min, int max, boolean chance, boolean organ) {}

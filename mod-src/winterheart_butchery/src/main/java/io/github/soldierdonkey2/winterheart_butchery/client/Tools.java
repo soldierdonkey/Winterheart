@@ -26,6 +26,11 @@ final class Tools {
         return stacks(knives);
     }
 
+    /** What iron golems are taken apart with. */
+    static List<ItemStack> hacksaws() {
+        return stacks(tagged("hacksaw"));
+    }
+
     /** The tool the boss carcasses need. */
     static List<ItemStack> bossTools() {
         Set<Item> items = new LinkedHashSet<>();

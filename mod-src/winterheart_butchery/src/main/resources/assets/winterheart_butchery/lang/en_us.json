@@ -21,7 +21,6 @@
   "jei.winterheart_butchery.step.spike": "Spikes",
   "jei.winterheart_butchery.step.heart": "Heart",
   "jei.winterheart_butchery.step.cut": "Cut %s",
-  "jei.winterheart_butchery.step.all": "Butcher",
   "jei.winterheart_butchery.legend": "Red slots are organs",
   "jei.winterheart_butchery.tray": "Butcher it on a metal tray",
   "jei.winterheart_butchery.hanging_differs": "Hanging changes drops (hover)",
@@ -34,5 +33,11 @@
   "jei.winterheart_butchery.step.body": "Body",
   "jei.winterheart_butchery.step.stomach": "Stomach",
   "jei.winterheart_butchery.step.liver": "Liver",
-  "jei.winterheart_butchery.step.intestine": "Intestines"
+  "jei.winterheart_butchery.step.intestine": "Intestines",
+  "jei.winterheart_butchery.step.repair": "Repair",
+  "jei.winterheart_butchery.tip.repair": "Right-click the golem corpse with %s, one at a time",
+  "jei.winterheart_butchery.tip.repaired": "The repaired golem",
+  "jei.winterheart_butchery.tip.hacksaw": "Right-click with a hacksaw",
+  "jei.winterheart_butchery.step.fur": "Fur",
+  "jei.winterheart_butchery.tip.clicks": "Takes %s clicks"
 }

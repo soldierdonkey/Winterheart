@@ -23,6 +23,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -58,7 +59,10 @@ final class CarcassModels {
         }
         if (entity != null) {
             // Entities differ from silverfish to ender dragon, so size each one by its hitbox.
-            float scale = Math.min(width / (entity.getBbWidth() * 1.4F), height / Math.max(0.1F, entity.getBbHeight()));
+            // Many models are longer than their hitbox, hence the margin on the width. The ender dragon's hitbox is far
+            // wider than what shows from this angle, so it gets a fixed scale.
+            float scale = entity.getType() == EntityType.ENDER_DRAGON ? 3
+                    : Math.min(width / (entity.getBbWidth() * 1.8F), height / Math.max(0.1F, entity.getBbHeight()));
             Quaternionf upright = new Quaternionf().rotateZ((float) Math.PI);
             InventoryScreen.renderEntityInInventory(graphics, x, y, Math.max(1, Math.min(40, (int) scale)), upright,
                     null, entity);

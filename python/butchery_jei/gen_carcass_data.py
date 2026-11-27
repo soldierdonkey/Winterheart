@@ -67,16 +67,14 @@ def drops(jar, names, organ):
                 total[1] += high
                 total[2] |= chance
     return [{"item": item, "min": low, "max": high, "chance": chance, "organ": organ}
-            for item, (low, high, chance) in totals.items() if high > 0]
+            for item, (low, high, chance) in totals.items() if high > 0 and item != "minecraft:air"]
 
 
 def step_name(tables):
     """The label of a step, from what its loot tables are called."""
-    if len(tables) > 3:
-        return "all"
     # the order matters: "armor" contains "arm"
     for word in ("head", "skin", "plucking", "armor", "arm", "wing", "leg", "spike", "heart", "stomach", "liver",
-                 "intestine", "body"):
+                 "intestine", "body", "fur"):
         if any(word in table for table in tables):
             return word
     return "cut"
@@ -125,7 +123,8 @@ def main():
             animal["bleeds"] = "drained" in entry
             animal["bleed_seconds"] = 0 if instant else entry.get("bleed_ticks", 0) // 20
             animal["steps"] = [{"name": step_name(step["tables"] or step.get("organ_tables", [])), "tool": step["tool"],
-                                "drops": step_drops(jar, step)} for step in entry["steps"]]
+                                "clicks": step.get("clicks", 1), "drops": step_drops(jar, step)}
+                               for step in entry["steps"]]
             laid = totals(step["drops"] for step in animal["steps"])
             hanging = entry.get("hanging")
             if hanging:
