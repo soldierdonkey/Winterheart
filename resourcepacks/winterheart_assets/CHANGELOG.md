@@ -3,7 +3,7 @@
 ## Unreleased
 
 ### Added
-- 3D models for Butchery's iron tools.
+- 3D models for Butchery's tools.
 
 ## 1.0.0 - First release
 

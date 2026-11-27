@@ -7,7 +7,7 @@ Minecraft 1.20.1 resource pack by soldierdonkey2, made for the Winterheart modpa
 ## What it does
 
 - Gives each Winterheart guide book its item model.
-- Gives Butchery's iron skinning knife, cleaver, hacksaw and hammer 3D models.
+- Gives Butchery's skinning knives, cleavers, hacksaws and hammers 3D models.
 - Provides English names for Streams Reflowing biomes, blocks and settings.
 
 ## Requirements

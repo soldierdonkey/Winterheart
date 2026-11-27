@@ -21,11 +21,18 @@ OWN_MODELS = ASSETS / "winterheart/models/item/butchery"
 TEXTURES = ASSETS / "winterheart/textures/item/butchery"
 SIZE = 32  # texture width and height in pixels
 
-# Palette: one character per colour in the shapes below. "." is transparent.
-PALETTE = {
-    "W": (255, 255, 255), "L": (216, 216, 216), "M": (190, 190, 190),
-    "D": (150, 150, 150), "S": (106, 106, 106), "K": (68, 68, 68),
-    "a": (137, 103, 39), "b": (104, 78, 30), "c": (73, 54, 21), "d": (40, 30, 11),
+# One character per colour in the shapes below; "." is transparent.
+# Wood is the same on every tier.
+WOOD = {"a": (137, 103, 39), "b": (104, 78, 30), "c": (73, 54, 21), "d": (40, 30, 11)}
+# Head and blade colours of each tier, for the characters W L M D S K (light to dark).
+METAL_CHARS = "WLMDSK"
+METALS = {
+    "bone": [(252, 250, 232), (232, 227, 198), (210, 203, 170), (176, 166, 132), (134, 123, 94), (88, 78, 58)],
+    "copper": [(252, 190, 160), (231, 138, 103), (202, 109, 80), (166, 84, 62), (124, 60, 46), (82, 40, 32)],
+    "iron": [(255, 255, 255), (216, 216, 216), (190, 190, 190), (150, 150, 150), (106, 106, 106), (68, 68, 68)],
+    "gold": [(255, 255, 215), (253, 240, 118), (240, 201, 56), (212, 154, 30), (160, 104, 18), (104, 66, 10)],
+    "diamond": [(224, 255, 250), (150, 242, 228), (80, 218, 205), (43, 175, 168), (25, 122, 122), (14, 78, 82)],
+    "netherite": [(150, 138, 142), (112, 100, 104), (86, 76, 80), (66, 58, 62), (47, 40, 43), (29, 24, 26)],
 }
 
 # Display transforms of the pack's item/template/template_tool.
@@ -43,7 +50,8 @@ DISPLAY = {
 class Sheet:
     """A texture being filled, plus the elements that use it."""
 
-    def __init__(self):
+    def __init__(self, tier):
+        self.palette = {**WOOD, **dict(zip(METAL_CHARS, METALS[tier]))}
         self.pixels = [[None] * SIZE for _ in range(SIZE)]
         self.used = [[False] * SIZE for _ in range(SIZE)]
         self.elements = []
@@ -58,7 +66,7 @@ class Sheet:
                     for j, row in enumerate(rows):
                         for i, char in enumerate(row):
                             self.used[y + j][x + i] = True
-                            self.pixels[y + j][x + i] = None if char == "." else PALETTE[char]
+                            self.pixels[y + j][x + i] = None if char == "." else self.palette[char]
                     return x, y, w, h
         raise SystemExit(f"texture is full, cannot place {w}x{h}")
 
@@ -119,17 +127,22 @@ def collar(sheet, y):
 def skinning_knife(sheet):
     grip(sheet)
     collar(sheet, 8)
-    # Narrow blade with a belly that sweeps back to a raised point.
+    # Saber blade: the edge bellies forward and both sides sweep back to a sharp tip.
     sheet.plane(-2, 9, [
-        "...W.",
-        "..WL.",
-        ".WLMS",
-        "WLMDS",
-        "WLMDS",
-        "WLMS.",
-        ".WLS.",
-        ".WLS.",
-        "..LS.",
+        ".....W",
+        "....WS",
+        "...WLS",
+        "..WLMS",
+        "..WLS.",
+        ".WLMS.",
+        ".WLMS.",
+        ".WLS..",
+        ".WLS..",
+        ".WLS..",
+        ".WLS..",
+        ".WLS..",
+        "..LS..",
+        "..LS..",
     ])
 
 
@@ -155,11 +168,11 @@ def cleaver(sheet):
 
 def hacksaw(sheet):
     grip(sheet)
-    # Bone saw: toothed blade in line with the handle, steel bow behind it.
-    metal = (flat("M", "D"), flat("S"), flat("L"))
-    sheet.box([0, 8, 7], [8, 9, 8], *metal)
-    sheet.box([0, 20, 7], [8, 21, 8], *metal)
-    sheet.box([7, 9, 7], [8, 20, 8], *metal)
+    # Bone saw: toothed blade in line with the handle, wooden bow behind it.
+    wood = (flat("a", "b"), flat("c"), flat("a"))
+    sheet.box([0, 8, 7], [8, 9, 8], *wood)
+    sheet.box([0, 20, 7], [8, 21, 8], *wood)
+    sheet.box([7, 9, 7], [8, 20, 8], flat("b", "b", "b", "c"), flat("c"), flat("a"))
     sheet.plane(-1, 9, [
         ".WL",
         "SML",
@@ -197,20 +210,21 @@ def main():
     for folder in (MODELS, OWN_MODELS, TEXTURES):
         folder.mkdir(parents=True, exist_ok=True)
     write(OWN_MODELS / "template_tool.json", {"gui_light": "front", "display": DISPLAY})
-    for shape in (skinning_knife, cleaver, hacksaw, hammer):
-        name = f"iron_{shape.__name__}"
-        sheet = Sheet()
-        shape(sheet)
-        texture = f"winterheart:item/butchery/{name}"
-        png(TEXTURES / f"{name}.png", sheet.pixels)
-        write(MODELS / f"{name}.json", {
-            "credit": "Adapted from Tactical 3D Tools by CmdrMCNuggets, CC-BY-4.0",
-            "parent": "winterheart:item/butchery/template_tool",
-            "texture_size": [SIZE, SIZE],
-            "textures": {"0": texture, "particle": texture},
-            "elements": sheet.elements,
-        })
-        print(f"{name}: {len(sheet.elements)} elements")
+    for tier in METALS:
+        for shape in (skinning_knife, cleaver, hacksaw, hammer):
+            name = f"{tier}_{shape.__name__}"
+            sheet = Sheet(tier)
+            shape(sheet)
+            texture = f"winterheart:item/butchery/{name}"
+            png(TEXTURES / f"{name}.png", sheet.pixels)
+            write(MODELS / f"{name}.json", {
+                "credit": "Adapted from Tactical 3D Tools by CmdrMCNuggets, CC-BY-4.0",
+                "parent": "winterheart:item/butchery/template_tool",
+                "texture_size": [SIZE, SIZE],
+                "textures": {"0": texture, "particle": texture},
+                "elements": sheet.elements,
+            })
+            print(f"{name}: {len(sheet.elements)} elements")
 
 
 if __name__ == "__main__":
