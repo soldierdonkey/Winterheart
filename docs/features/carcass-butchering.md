@@ -195,7 +195,7 @@ A mod adds pages by shipping a data file. It needs no Java code and no dependenc
 | `tray` | boolean | Notes that it is butchered on a metal tray |
 | `preview` | list of `[block ID, state]` | Stages of the rotating model, in order; at least one. `state` is a string value of the block's `blockstate` property |
 | `steps` | list | One per right-click, in order |
-| `steps[].name` | string | `head`, `skin`, `plucking`, `armor`, `wing`, `leg`, `spike`, `heart`, `cut` (numbered) or `all` |
+| `steps[].name` | string | `head`, `skin`, `plucking`, `armor`, `wing`, `leg`, `spike`, `heart`, `arm`, `body`, `stomach`, `liver`, `intestine`, `cut` (numbered) or `all` |
 | `steps[].tool` | string | `cleaver`, `skinning_knife` or `boss` |
 | `steps[].drops[]` | list | `item`, `min`, `max`, `chance` (true if not guaranteed), `organ` |
 | `hanging_differences[]` | list, optional | `item`, `laid`, `hanging`: totals shown when hanging changes them |

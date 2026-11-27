@@ -5,11 +5,14 @@ import net.minecraft.nbt.TagParser;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.RenderShape;
+import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.block.model.BakedQuad;
@@ -30,6 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 /** Draws the live animal and Butchery's own carcass block models, so none of its assets are copied. */
 final class CarcassModels {
@@ -63,7 +67,8 @@ final class CarcassModels {
 
     private LivingEntity create(Level level) {
         try {
-            Entity created = BuiltInRegistries.ENTITY_TYPE.get(new ResourceLocation(carcass.entity())).create(level);
+            Entity created = carcass.entity().equals("minecraft:player") ? player(level)
+                    : BuiltInRegistries.ENTITY_TYPE.get(new ResourceLocation(carcass.entity())).create(level);
             if (!(created instanceof LivingEntity living)) {
                 return null;
             }
@@ -77,6 +82,16 @@ final class CarcassModels {
             WinterheartButchery.LOGGER.error("[Butchery] could not create {} for its JEI page", carcass.entity(), e);
             return null;
         }
+    }
+
+    /** Players can't be created from their entity type. This one has a default skin and sits far off, so no name tag. */
+    private static Entity player(Level level) {
+        if (!(level instanceof ClientLevel client)) {
+            return null;
+        }
+        RemotePlayer player = new RemotePlayer(client, new GameProfile(new UUID(0, 0), "Player"));
+        player.setPos(0, -10000, 0);
+        return player;
     }
 
     /**

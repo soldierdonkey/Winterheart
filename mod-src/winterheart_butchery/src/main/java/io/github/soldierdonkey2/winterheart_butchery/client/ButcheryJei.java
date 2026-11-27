@@ -27,7 +27,7 @@ public class ButcheryJei implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         if (enabled()) {
-            registration.addRecipeCategories(new CarcassCategory(registration.getJeiHelpers().getGuiHelper()));
+            registration.addRecipeCategories(new CarcassCategory(registration.getJeiHelpers()));
         }
     }
 

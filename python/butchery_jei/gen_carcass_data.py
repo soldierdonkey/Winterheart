@@ -74,7 +74,9 @@ def step_name(tables):
     """The label of a step, from what its loot tables are called."""
     if len(tables) > 3:
         return "all"
-    for word in ("head", "skin", "plucking", "armor", "wing", "leg", "spike", "heart"):
+    # the order matters: "armor" contains "arm"
+    for word in ("head", "skin", "plucking", "armor", "arm", "wing", "leg", "spike", "heart", "stomach", "liver",
+                 "intestine", "body"):
         if any(word in table for table in tables):
             return word
     return "cut"

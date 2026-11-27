@@ -29,5 +29,10 @@
   "jei.winterheart_butchery.difference": "%s: %s / %s",
   "jei.winterheart_butchery.chance": "Not guaranteed",
   "jei.winterheart_butchery.tip.carcass": "The carcass to cut up",
-  "jei.winterheart_butchery.tip.boss": "Right-click with this tool"
+  "jei.winterheart_butchery.tip.boss": "Right-click with this tool",
+  "jei.winterheart_butchery.step.arm": "Arm",
+  "jei.winterheart_butchery.step.body": "Body",
+  "jei.winterheart_butchery.step.stomach": "Stomach",
+  "jei.winterheart_butchery.step.liver": "Liver",
+  "jei.winterheart_butchery.step.intestine": "Intestines"
 }

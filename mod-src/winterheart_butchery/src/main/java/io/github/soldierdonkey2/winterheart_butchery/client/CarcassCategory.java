@@ -1,6 +1,7 @@
 package io.github.soldierdonkey2.winterheart_butchery.client;
 
 import io.github.soldierdonkey2.winterheart_butchery.WinterheartButchery;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IIngredientAcceptor;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
@@ -8,6 +9,7 @@ import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotDrawable;
 import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.helpers.IJeiHelpers;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
@@ -34,7 +36,12 @@ public class CarcassCategory implements IRecipeCategory<Carcass> {
 
     private final IDrawable icon;
 
-    CarcassCategory(IGuiHelper gui) {
+    private final CountlessItemRenderer rangedItems;
+
+    CarcassCategory(IJeiHelpers helpers) {
+        IGuiHelper gui = helpers.getGuiHelper();
+        this.rangedItems = new CountlessItemRenderer(
+                helpers.getIngredientManager().getIngredientRenderer(VanillaTypes.ITEM_STACK));
         Item cleaver = BuiltInRegistries.ITEM.get(new ResourceLocation("butchery", "iron_cleaver"));
         this.icon = gui.createDrawableItemStack(new ItemStack(cleaver));
     }
@@ -87,6 +94,9 @@ public class CarcassCategory implements IRecipeCategory<Carcass> {
                     .setSlotName(Integer.toString(i))
                     .setStandardSlotBackground()
                     .addItemStacks(place.stacks());
+            if (!place.range().isEmpty()) {
+                slot.setCustomRenderer(VanillaTypes.ITEM_STACK, rangedItems);
+            }
             if (!place.tooltip().isEmpty()) {
                 slot.addRichTooltipCallback((view, tooltip) -> place.tooltip().forEach(tooltip::add));
             }
